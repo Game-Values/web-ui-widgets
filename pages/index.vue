@@ -70,6 +70,26 @@
                 </SystemCode>
               </td>
             </tr>
+            <tr>
+              <td class="px-4 sm:px-6 py-4 w-[28rem]">
+                <GameCard class="w-[15rem]" :game="{link:'/games/1', name:'Atlas asdfasdfasd adfasdfasdf asdfasdf', image:'/game-images/atlas.svg'}" :stock-amount="'14789'" />
+              </td>
+              <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
+                <SystemCode>
+                  &lt;GameCard :game="{link:'/games/1', name:'Atlas', image:'/game-images/atlas.svg'}" :stock-amount="'14789'" />
+                </SystemCode>
+              </td>
+            </tr>
+            <tr>
+              <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
+                <GameCard :game="{link:'/games/1', name:'Atlas', image:'/game-images/atlas.svg'}" :stock-amount="'14789'" liked />
+              </td>
+              <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
+                <SystemCode>
+                  &lt;GameCard :game="{link:'/games/1', name:'Atlas', image:'/game-images/atlas.svg'}" :stock-amount="'14789'" liked />
+                </SystemCode>
+              </td>
+            </tr>
             </tbody>
           </table>
         </div>
