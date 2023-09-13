@@ -2,20 +2,24 @@
 import OutlineHeartIcon from "@heroicons/vue/24/outline/HeartIcon"
 import SolidHeartIcon from "@heroicons/vue/24/solid/HeartIcon"
 
+interface Game {
+  link: string;
+  image: string;
+  name: string;
+}
+
+interface EmitDefinition {
+  (event: "update:liked", state: boolean): void;
+}
+
 const { game, liked = false, stockAmount } = defineProps<{
-  game: {
-    link: string,
-    image: string,
-    name: string
-  }
-  liked?: boolean,
-  stockAmount?: string
-}>()
+  game: Game;
+  liked?: boolean;
+  stockAmount?: string;
+}>();
 
-const emit = defineEmits<{
-  (event: "update:liked", state: boolean): void
-}>()
-
+const emit = defineEmits<EmitDefinition>();
+const currentIcon = computed(() => (liked ? SolidHeartIcon : OutlineHeartIcon));
 </script>
 
 <template>
@@ -32,7 +36,7 @@ const emit = defineEmits<{
         {{ game.name }}
       </nuxt-link>
       <button class="likeButton" @click="emit('update:liked', !liked)">
-        <component :is="liked ? SolidHeartIcon : OutlineHeartIcon " class="h-6 w-6 text-blue-500 hover:text-blue-400" />
+        <component :is="currentIcon" class="h-6 w-6 text-blue-500 hover:text-blue-400" />
       </button>
     </div>
   </div>
