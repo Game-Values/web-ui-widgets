@@ -72,27 +72,38 @@
             </tr>
             <tr>
               <td class="px-4 sm:px-6 py-4 w-[28rem]">
-                <GameCard class="w-[15rem]" :game="{link:'/games/1', name:'Atlas asdfasdfasd adfasdfasdf asdfasdf', image:'/game-images/atlas.svg'}" :stock-amount="'14789'" />
+                <GameCard class="w-[15rem]"
+                          :game="{link:'/games/1', name:'Atlas asdfasdfasd adfasdfasdf asdfasdf', image:'/game-images/atlas.svg'}"
+                          :stock-amount="'14789'" />
               </td>
               <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
                 <SystemCode>
-                  &lt;GameCard :game="{link:'/games/1', name:'Atlas', image:'/game-images/atlas.svg'}" :stock-amount="'14789'" />
+                  &lt;GameCard :game="{link:'/games/1', name:'Atlas', image:'/game-images/atlas.svg'}"
+                  :stock-amount="'14789'" />
                 </SystemCode>
               </td>
             </tr>
             <tr>
               <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
-                <GameCard :game="{link:'/games/1', name:'Atlas', image:'/game-images/atlas.svg'}" :stock-amount="'14789'" liked />
+                <GameCard :game="{link:'/games/1', name:'Atlas', image:'/game-images/atlas.svg'}"
+                          :stock-amount="'14789'" liked />
               </td>
               <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
                 <SystemCode>
-                  &lt;GameCard :game="{link:'/games/1', name:'Atlas', image:'/game-images/atlas.svg'}" :stock-amount="'14789'" liked />
+                  &lt;GameCard :game="{link:'/games/1', name:'Atlas', image:'/game-images/atlas.svg'}"
+                  :stock-amount="'14789'" liked />
                 </SystemCode>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+<!--                <GamesIndex :games="games" header-component="h3" />-->
               </td>
             </tr>
             </tbody>
           </table>
         </div>
+        <GamesIndex :games="games" header-component="h3" />
       </div>
     </main>
   </div>
@@ -100,10 +111,45 @@
 
 
 <script setup lang="ts">
+import { Game } from "~/components/GameCard.vue"
 
 definePageMeta({
   layout: "home"
 })
+
+
+const games: Game[] = [
+  {
+    name: "ARK: Survival asdfasdf asdf asdfas df asd fasd fasd fasdfasdfasdf",
+    image: "/game-images/atlas.svg",
+    link: "/game/2"
+  },
+  {
+    name: "ARK: Survival",
+    image: "/game-images/atlas.svg",
+    link: "/game/2"
+  },
+  {
+    name: "ARK: Survival",
+    image: "/game-images/atlas.svg",
+    link: "/game/2"
+  },
+  {
+    name: "Atlas",
+    image: "/game-images/atlas.svg",
+    link: "/game/1"
+  },
+  {
+    name: "Player Unknown's Battlegrounds",
+    image: "/game-images/atlas.svg",
+    link: "/game/2"
+  },
+  {
+    name: "Brawl Stars",
+    image: "/game-images/atlas.svg",
+    link: "/game/2"
+  }
+]
 
 
 </script>
