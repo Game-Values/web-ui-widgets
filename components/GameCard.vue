@@ -12,6 +12,8 @@ interface EmitDefinition {
   (event: "update:liked", state: boolean): void;
 }
 
+const localePath = useLocalePath()
+
 const { game, liked = false, stockAmount } = defineProps<{
   game: Game;
   liked?: boolean;
@@ -32,11 +34,12 @@ const currentIcon = computed(() => (liked ? SolidHeartIcon : OutlineHeartIcon));
     </div>
 
     <div class="buttonsContainer grid items-start justify-between max-w-full mt-4 gap-2 whitespace-normal">
-      <nuxt-link class="text-white font-bold linkContainer break-words" :to="game.link">
+      <nuxt-link class="text-white font-bold linkContainer break-words" :to="localePath(game.link)">
         {{ game.name }}
       </nuxt-link>
-      <button class="likeButton" @click="emit('update:liked', !liked)">
-        <component :is="currentIcon" class="h-6 w-6 text-blue-500 hover:text-blue-400" />
+      <button class="likeButton" @click="emit('update:liked', !liked)" :aria-pressed="String(liked)">
+        <span class="sr-only">{{ $t("comp.GameCard.like") }}</span>
+        <component :is="currentIcon" class="h-6 w-6 text-blue-500 hover:text-blue-600" />
       </button>
     </div>
   </div>
