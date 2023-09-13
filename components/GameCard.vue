@@ -48,6 +48,9 @@ const currentIcon = computed(() => (liked ? SolidHeartIcon : OutlineHeartIcon))
 
 <style scoped>
 
+.cardContainer {
+  max-width: 500px;
+}
 
 .linkContainer::before {
   content: ' ';
