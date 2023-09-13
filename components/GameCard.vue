@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import OutlineHeartIcon from "@heroicons/vue/24/outline/HeartIcon"
-import SolidHeartIcon from "@heroicons/vue/24/solid/HeartIcon"
+import OutlineHeartIcon from "@heroicons/vue/24/outline/esm/HeartIcon"
+import SolidHeartIcon from "@heroicons/vue/24/solid/esm/HeartIcon"
+
 
 interface Game {
   link: string;
@@ -18,14 +19,14 @@ const { game, liked = false, stockAmount } = defineProps<{
   game: Game;
   liked?: boolean;
   stockAmount?: string;
-}>();
+}>()
 
-const emit = defineEmits<EmitDefinition>();
-const currentIcon = computed(() => (liked ? SolidHeartIcon : OutlineHeartIcon));
+const emit = defineEmits<EmitDefinition>()
+const currentIcon = computed(() => (liked ? SolidHeartIcon : OutlineHeartIcon))
 </script>
 
 <template>
-  <div class="relative cardContainer" :class="{liked}">
+  <article class="relative cardContainer" :class="{liked}">
     <div class="imageWrapper relative w-full block p-[1px]">
       <span v-if="stockAmount" class="absolute right-4 top-4 px-2 text-white rounded-full bg-white/25">
         {{ stockAmount }}
@@ -42,7 +43,7 @@ const currentIcon = computed(() => (liked ? SolidHeartIcon : OutlineHeartIcon));
         <component :is="currentIcon" class="h-6 w-6 text-blue-500 hover:text-blue-600" />
       </button>
     </div>
-  </div>
+  </article>
 </template>
 
 <style scoped>
@@ -79,7 +80,7 @@ const currentIcon = computed(() => (liked ? SolidHeartIcon : OutlineHeartIcon));
   mask-repeat: repeat, repeat;
   mask-clip: content-box, border-box;
   mask-origin: content-box, border-box;
-  mask-position: 0% 0%, 0% 0%;
+  mask-position: 0 0, 0 0;
   mask-size: auto, auto;
   mask-image: linear-gradient(black, black), linear-gradient(black, black);
   mask-composite: exclude;
