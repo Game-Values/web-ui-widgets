@@ -3,7 +3,7 @@ import OutlineHeartIcon from "@heroicons/vue/24/outline/esm/HeartIcon"
 import SolidHeartIcon from "@heroicons/vue/24/solid/esm/HeartIcon"
 
 
-interface Game {
+export interface Game {
   link: string;
   image: string;
   name: string;
