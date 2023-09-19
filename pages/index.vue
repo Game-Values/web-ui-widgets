@@ -84,6 +84,28 @@
               </td>
             </tr>
             <tr>
+              <td class="px-4 sm:px-6 py-4 w-[28rem]">
+                <GeneralStatistics :goods="6748" :deals="398053" :online="246761" :users="1758904" />
+              </td>
+              <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
+                <SystemCode>
+                  &lt;GeneralStatistics :goods="6748" :deals="398053" :online="246761" :users="1758904" />
+                </SystemCode>
+              </td>
+            </tr>
+            <tr>
+              <td class="px-4 sm:px-6 py-4 w-[40rem]" colspan="2">
+                <GeneralStatistics style="--info-list-columns: 4" :goods="6748" :deals="398053" :online="246761" :users="1758904" />
+              </td>
+            </tr>
+            <tr>
+              <td class="px-4 sm:px-6 py-4 whitespace-nowrap" colspan="2">
+                <SystemCode>
+                  &lt;GeneralStatistics style="--info-list-columns: 4" :goods="6748" :deals="398053" :online="246761" :users="1758904" />
+                </SystemCode>
+              </td>
+            </tr>
+            <tr>
               <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
                 <GameCard :game="{link:'/games/1', name:'Atlas', image:'/game-images/atlas.svg'}"
                           :stock-amount="'14789'" liked />
@@ -97,7 +119,7 @@
             </tr>
             <tr>
               <td colspan="2">
-<!--                <GamesIndex :games="games" header-component="h3" />-->
+                <!--                <GamesIndex :games="games" header-component="h3" />-->
               </td>
             </tr>
             </tbody>
