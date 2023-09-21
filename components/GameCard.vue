@@ -31,13 +31,16 @@ const currentIcon = computed(() => (liked ? SolidHeartIcon : OutlineHeartIcon))
       <span v-if="stockAmount" class="absolute right-4 top-4 px-2 text-white rounded-full bg-white/25">
         {{ stockAmount }}
       </span>
-      <img :src="game.image" alt="" role="presentation" class="w-full h-full">
+      <img :src="'/i/g/' + game.image + '.png'" alt="" role="presentation" class="w-full h-full">
     </div>
 
     <div class="buttonsContainer grid items-start justify-between max-w-full mt-4 gap-2 whitespace-normal">
-      <nuxt-link class="text-white font-bold linkContainer break-words" :to="localePath(game.link)">
+<!--      <nuxt-link class="text-white font-bold linkContainer break-words" :to="localePath(game.link)">-->
+<!--        {{ game.name }}-->
+<!--      </nuxt-link>-->
+      <a href="https://www.game-values.com/" class="text-white font-bold linkContainer break-words">
         {{ game.name }}
-      </nuxt-link>
+      </a>
       <button class="likeButton" @click="emit('update:liked', !liked)" :aria-pressed="String(liked)">
         <span class="sr-only">{{ $t("comp.GameCard.like") }}</span>
         <component :is="currentIcon" class="h-6 w-6 text-blue-500 hover:text-blue-600" />

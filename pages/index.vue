@@ -73,24 +73,24 @@
             <tr>
               <td class="px-4 sm:px-6 py-4 w-[28rem]">
                 <GameCard class="w-[15rem]"
-                          :game="{link:'/games/1', name:'Atlas asdfasdfasd adfasdfasdf asdfasdf', image:'/game-images/atlas.svg'}"
+                          :game="{link:'/g/atlas', name:'Atlas', image:'atlas'}"
                           :stock-amount="'14789'" />
               </td>
               <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
                 <SystemCode>
-                  &lt;GameCard :game="{link:'/games/1', name:'Atlas', image:'/game-images/atlas.svg'}"
+                  &lt;GameCard :game="{link:'/games/1', name:'Atlas', image:'atlas'}"
                   :stock-amount="'14789'" />
                 </SystemCode>
               </td>
             </tr>
             <tr>
               <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
-                <GameCard :game="{link:'/games/1', name:'Atlas', image:'/game-images/atlas.svg'}"
+                <GameCard :game="{link:'/games/1', name:'Atlas', image:'atlas'}"
                           :stock-amount="'14789'" liked />
               </td>
               <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
                 <SystemCode>
-                  &lt;GameCard :game="{link:'/games/1', name:'Atlas', image:'/game-images/atlas.svg'}"
+                  &lt;GameCard :game="{link:'/games/1', name:'Atlas', image:'atlas'}"
                   :stock-amount="'14789'" liked />
                 </SystemCode>
               </td>
@@ -121,35 +121,33 @@ definePageMeta({
 const games: Game[] = [
   {
     name: "ARK: Survival asdfasdf asdf asdfas df asd fasd fasd fasdfasdfasdf",
-    image: "/game-images/atlas.svg",
+    image: "atlas",
     link: "/game/2"
   },
   {
     name: "ARK: Survival",
-    image: "/game-images/atlas.svg",
+    image: "atlas",
     link: "/game/2"
   },
   {
     name: "ARK: Survival",
-    image: "/game-images/atlas.svg",
+    image: "atlas",
     link: "/game/2"
   },
   {
     name: "Atlas",
-    image: "/game-images/atlas.svg",
+    image: "atlas",
     link: "/game/1"
   },
   {
     name: "Player Unknown's Battlegrounds",
-    image: "/game-images/atlas.svg",
+    image: "atlas",
     link: "/game/2"
   },
   {
     name: "Brawl Stars",
-    image: "/game-images/atlas.svg",
+    image: "atlas",
     link: "/game/2"
   }
 ]
-
-
 </script>

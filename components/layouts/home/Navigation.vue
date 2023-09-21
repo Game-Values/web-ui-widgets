@@ -14,7 +14,7 @@
           </div>
           <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
             <div class="flex flex-shrink-0 items-center">
-              <img src="@/assets/img/logo.png" />
+              <img alt="logo" src="@/assets/img/logo.png" />
             </div>
             <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
               <NuxtLink
@@ -47,4 +47,10 @@
 <script setup>
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue"
 import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline"
+
+const navigation = [
+  { name: "Page:index", to: "/" },
+  { name: "Page:main", to: "/main" },
+]
+
 </script>
