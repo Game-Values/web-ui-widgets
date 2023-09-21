@@ -30,7 +30,6 @@ const {
   display: grid;
   grid-template: "icon value" "icon label";
   grid-template-columns: 2.5rem auto;
-  //grid-template-rows: 2.5rem;
   gap: .05rem .75rem;
 }
 
