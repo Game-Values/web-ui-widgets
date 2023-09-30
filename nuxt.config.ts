@@ -1,6 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   target: "static",
+  router: {
+    base: "/game-values/"
+  },
   modules: [
     "tailwindcss",
     "@nuxtjs/i18n"
@@ -18,6 +21,12 @@ export default defineNuxtConfig({
       autoprefixer: {}
     }
   },
+  // buildModules: [
+  //   'nuxt-vite'
+  // ],
+  // vite: {
+  //   build: true
+  // },
   build: {
     transpile: ["@heroicons/vue"]
   }

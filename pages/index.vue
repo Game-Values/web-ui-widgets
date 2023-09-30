@@ -103,7 +103,7 @@
             </tbody>
           </table>
         </div>
-        <GamesIndex :games="games" header-component="h3" />
+        <GameList :games="Cards" header-component="h3" />
       </div>
     </main>
   </div>
@@ -111,14 +111,14 @@
 
 
 <script setup lang="ts">
-import { Game } from "~/components/GameCard.vue"
+import type { GameCard } from "~/components/game/Card.vue"
 
 definePageMeta({
   layout: "home"
 })
 
 
-const games: Game[] = [
+const Cards: GameCard[] = [
   {
     name: "ARK: Survival asdfasdf asdf asdfas df asd fasd fasd fasdfasdfasdf",
     image: "atlas",

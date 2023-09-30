@@ -1,20 +1,20 @@
 <template>
   <div class="min-h-screen flex mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 bg-black">
     <main class="w-full">
-      <GamesIndex :games="games" header-component="h3" />
+      <GameList :games="Cards" header-component="h3" />
     </main>
   </div>
 </template>
 
 <script setup lang="ts">
-import { Game } from "~/components/GameCard.vue"
+import { GameCard } from "~/components/game/Card.vue"
 
 definePageMeta({
   layout: "home"
 })
 
 
-const games: Game[] = [
+const Cards: GameCard[] = [
   {
     name: "Apex Legends",
     image: "apex",
