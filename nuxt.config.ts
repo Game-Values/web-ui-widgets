@@ -21,6 +21,12 @@ export default defineNuxtConfig({
       autoprefixer: {}
     }
   },
+  // buildModules: [
+  //   'nuxt-vite'
+  // ],
+  // vite: {
+  //   build: true
+  // },
   build: {
     transpile: ["@heroicons/vue"]
   }

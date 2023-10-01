@@ -73,59 +73,37 @@
             <tr>
               <td class="px-4 sm:px-6 py-4 w-[28rem]">
                 <GameCard class="w-[15rem]"
-                          :game="{link:'/', name:'Atlas asdfasdfasd adfasdfasdf asdfasdf', image:'/game-images/atlas.svg'}"
+                          :game="{link:'/g/atlas', name:'Atlas', image:'atlas'}"
                           :stock-amount="'14789'" />
               </td>
               <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
                 <SystemCode>
-                  &lt;GameCard :game="{link:'/', name:'Atlas', image:'/game-images/atlas.svg'}"
+                  &lt;GameCard :game="{link:'/games/1', name:'Atlas', image:'atlas'}"
                   :stock-amount="'14789'" />
                 </SystemCode>
               </td>
             </tr>
             <tr>
-              <td class="px-4 sm:px-6 py-4 w-[28rem]">
-                <GeneralStatistics :goods="6748" :deals="398053" :online="246761" :users="1758904" />
-              </td>
               <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
-                <SystemCode>
-                  &lt;GeneralStatistics :goods="6748" :deals="398053" :online="246761" :users="1758904" />
-                </SystemCode>
-              </td>
-            </tr>
-            <tr>
-              <td class="px-4 sm:px-6 py-4 w-[40rem]" colspan="2">
-                <GeneralStatistics style="--info-list-columns: 4" :goods="6748" :deals="398053" :online="246761" :users="1758904" />
-              </td>
-            </tr>
-            <tr>
-              <td class="px-4 sm:px-6 py-4 whitespace-nowrap" colspan="2">
-                <SystemCode>
-                  &lt;GeneralStatistics style="--info-list-columns: 4" :goods="6748" :deals="398053" :online="246761" :users="1758904" />
-                </SystemCode>
-              </td>
-            </tr>
-            <tr>
-              <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
-                <GameCard :game="{link:'/', name:'Atlas', image:'/game-images/atlas.svg'}"
+                <GameCard :game="{link:'/games/1', name:'Atlas', image:'atlas'}"
                           :stock-amount="'14789'" liked />
               </td>
               <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
                 <SystemCode>
-                  &lt;GameCard :game="{link:'/', name:'Atlas', image:'/game-images/atlas.svg'}"
+                  &lt;GameCard :game="{link:'/games/1', name:'Atlas', image:'atlas'}"
                   :stock-amount="'14789'" liked />
                 </SystemCode>
               </td>
             </tr>
             <tr>
               <td colspan="2">
-                <!--                <GamesIndex :games="games" header-component="h3" />-->
+<!--                <GamesIndex :games="games" header-component="h3" />-->
               </td>
             </tr>
             </tbody>
           </table>
         </div>
-        <GamesIndex :games="games" header-component="h3" />
+        <GameList :games="Cards" header-component="h3" />
       </div>
     </main>
   </div>
@@ -133,45 +111,43 @@
 
 
 <script setup lang="ts">
-import { Game } from "~/components/GameCard.vue"
+import type { GameCard } from "~/components/game/Card.vue"
 
 definePageMeta({
   layout: "home"
 })
 
 
-const games: Game[] = [
+const Cards: GameCard[] = [
   {
     name: "ARK: Survival asdfasdf asdf asdfas df asd fasd fasd fasdfasdfasdf",
-    image: "/game-images/atlas.svg",
-    link: "/"
+    image: "atlas",
+    link: "/game/2"
   },
   {
     name: "ARK: Survival",
-    image: "/game-images/atlas.svg",
-    link: "/"
+    image: "atlas",
+    link: "/game/2"
   },
   {
     name: "ARK: Survival",
-    image: "/game-images/atlas.svg",
-    link: "/"
+    image: "atlas",
+    link: "/game/2"
   },
   {
     name: "Atlas",
-    image: "/game-images/atlas.svg",
-    link: "/"
+    image: "atlas",
+    link: "/game/1"
   },
   {
     name: "Player Unknown's Battlegrounds",
-    image: "/game-images/atlas.svg",
-    link: "/"
+    image: "atlas",
+    link: "/game/2"
   },
   {
     name: "Brawl Stars",
-    image: "/game-images/atlas.svg",
-    link: "/"
+    image: "atlas",
+    link: "/game/2"
   }
 ]
-
-
 </script>

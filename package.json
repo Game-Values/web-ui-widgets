@@ -23,6 +23,7 @@
     "@nuxtjs/i18n": "npm:@nuxtjs/i18n-edge@8.0.0-rc.4-28252997.568c274",
     "@vee-validate/i18n": "^4.7.3",
     "@vee-validate/rules": "^4.7.3",
+    "axios": "^1.5.1",
     "vee-validate": "^4.7.3"
   }
 }

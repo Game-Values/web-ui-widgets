@@ -5,7 +5,6 @@
         </slot>
         <slot />
         <slot name="footer" >
-            <LayoutsNotification />
             <LayoutsDefaultFooter />
         </slot>
     </div>
