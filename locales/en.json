@@ -2,6 +2,12 @@
   "comp": {
     "GameCard": {
       "like": "Like"
+    },
+    "GeneralStatistics": {
+      "goods": "number of goods",
+      "deals": "amount of deals",
+      "online": "online",
+      "users": "all"
     }
   }
 }
