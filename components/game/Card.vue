@@ -67,7 +67,7 @@ const currentIcon = computed(() => {
   return gameCard.liked ? SolidHeartIcon : OutlineHeartIcon;
 });
 
-const gameImageUrl = computed(() => `/i/g/${gameCard.image}.png`)
+const gameImageUrl = computed(() => `i/g/${gameCard.image}.png`)
 
 const svgClasses = computed(() => {
   if (errorFeedback.value) {
