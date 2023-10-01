@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen flex mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 bg-black">
+  <div class="min-h-screen flex mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 bg-gray-900">
     <main class="w-full">
       <GameList :games="Cards" header-component="h3" />
     </main>
@@ -55,21 +55,11 @@ const Cards: GameCard[] = [
     image: "mobile",
     link: "/g/mobile-games"
   },
-  // {
-  //   name: "Overwatch 2",
-  //   image: "/game-images/.svg",
-  //   link: "/game/2"
-  // },
   {
     name: "Path of Exile",
     image: "poe",
     link: "/g/path-of-exile"
   },
-  // {
-  //   name: "PlayerUnknown's Battlegrounds (PUBG)",
-  //   image: "pubg",
-  //   link: "/g/pubg"
-  // },
   {
     name: "Roblox",
     image: "roblox",
@@ -110,11 +100,6 @@ const Cards: GameCard[] = [
     image: "tom-clansis",
     link: "/g/tc-rs"
   },
-  // {
-  //   name: "Uplay",
-  //   image: "/game-images/.svg",
-  //   link: "/game/2"
-  // },
   {
     name: "Valorant",
     image: "valorant",
@@ -130,6 +115,21 @@ const Cards: GameCard[] = [
     image: "wot",
     link: "/g/wot"
   },
+  // {
+  //   name: "Overwatch 2",
+  //   image: "/game-images/.svg",
+  //   link: "/game/2"
+  // },
+  // {
+  //   name: "PlayerUnknown's Battlegrounds (PUBG)",
+  //   image: "pubg",
+  //   link: "/g/pubg"
+  // },
+  // {
+  //   name: "Uplay",
+  //   image: "/game-images/.svg",
+  //   link: "/game/2"
+  // },
   {
     name: "World of Warcraft",
     image: "wow",

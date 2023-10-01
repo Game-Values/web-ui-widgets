@@ -63,11 +63,11 @@ const toggleLike = async () => {
 
 const currentIcon = computed(() => {
   if (isLoading.value) return ArrowPathIcon;
-  if (errorFeedback.value) return NoSymbolIcon; // if there's an error
+  if (errorFeedback.value) return NoSymbolIcon;
   return gameCard.liked ? SolidHeartIcon : OutlineHeartIcon;
 });
 
-const gameImageUrl = computed(() => `i/g/${gameCard.image}.png`)
+const gameImageUrl = computed(() => `/web-ui-widgets/i/g/${gameCard.image}.png`)
 
 const svgClasses = computed(() => {
   if (errorFeedback.value) {
@@ -80,7 +80,8 @@ const svgClasses = computed(() => {
 const mousePos = ref({ x: 0, y: 0 });
 const lightSpotVisible = ref(true);
 const updateMousePosition = (event: MouseEvent) => {
-  const target = event.currentTarget as HTMLElement; // Cast to HTMLElement
+  const target = event.currentTarget as HTMLElement;
+
   if (target) {
     const rect = target.getBoundingClientRect();
     mousePos.value = {
@@ -92,11 +93,11 @@ const updateMousePosition = (event: MouseEvent) => {
 </script>
 
 <template>
-  <article class="relative cardContainer" style="overflow: hidden;"
+  <article class="relative cardContainer"
            :class="{ 'liked': gameCard.liked  }"
            @mousemove="updateMousePosition">
 
-    <div class="imageWrapper relative w-full block p-[1px]"
+    <div class="imageWrapper relative w-full block p-[1px] overflow-hidden rounded-md shadow-sm"
          @mouseenter="lightSpotVisible = true"
          @mouseleave="lightSpotVisible = false">
       <div class="light-spot" :style="{ top: mousePos.y + 'px', left: mousePos.x + 'px' }"></div>

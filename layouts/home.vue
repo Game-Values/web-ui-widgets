@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-black">
+    <div class="bg-gray-900">
         <slot name="header" >
             <LayoutsHomeNavigation />
         </slot>

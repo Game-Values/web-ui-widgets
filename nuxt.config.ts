@@ -1,9 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  target: "static",
-  router: {
-    base: "/game-values/"
+  app: {
+    baseURL: '/web-ui-widgets/',
+    buildAssetsDir: 'assets'
   },
+  // target: "static",
+  // router: {
+  //   base: "/game-values/"
+  // },
   modules: [
     "tailwindcss",
     "@nuxtjs/i18n"
