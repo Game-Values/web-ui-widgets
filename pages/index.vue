@@ -72,38 +72,61 @@
             </tr>
             <tr>
               <td class="px-4 sm:px-6 py-4 w-[28rem]">
-                <GameCard class="w-[15rem]"
-                          :game="{link:'/g/atlas', name:'Atlas', image:'atlas'}"
-                          :stock-amount="'14789'" />
+                <GameCard link="/games/atlas"
+                          name="Atlas"
+                          image="atlas" itemsPosted="100500"/>
               </td>
               <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
                 <SystemCode>
-                  &lt;GameCard :game="{link:'/games/1', name:'Atlas', image:'atlas'}"
-                  :stock-amount="'14789'" />
+                  &lt;GameCard link="/games/atlas"
+                  name="Atlas"
+                  image="atlas" itemsPosted="100500"/>
                 </SystemCode>
               </td>
             </tr>
             <tr>
               <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
-                <GameCard :game="{link:'/games/1', name:'Atlas', image:'atlas'}"
-                          :stock-amount="'14789'" liked />
+                <GameCard link="/games/atlas"
+                          name="Atlas"
+                          image="atlas" liked itemsPosted="100500"/>
               </td>
               <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
                 <SystemCode>
-                  &lt;GameCard :game="{link:'/games/1', name:'Atlas', image:'atlas'}"
-                  :stock-amount="'14789'" liked />
+                  &lt;GameCard link="/games/atlas"
+                  name="Atlas"
+                  image="atlas" liked itemsPosted="100500"/>
                 </SystemCode>
               </td>
             </tr>
             <tr>
               <td colspan="2">
-<!--                <GamesIndex :games="games" header-component="h3" />-->
+                <div style="max-height: 200px; overflow: auto;">
+                  <GameList :games="Cards" header-component="h3" />
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <SystemCode>
+                  &nbsp;GameList :games="Cards" header-component="h3" />
+                </SystemCode>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="max-height: 200px; overflow: auto;">
+                  <GeneralStatistics goods=0123 deals=1234 online=2345 users=3456 />
+                </div>
+              </td>
+              <td>
+                <SystemCode>
+                  &nbsp;GeneralStatistics goods="0123" deals="1234" online="2345" users="3456" />
+                </SystemCode>
               </td>
             </tr>
             </tbody>
           </table>
         </div>
-        <GameList :games="Cards" header-component="h3" />
       </div>
     </main>
   </div>
