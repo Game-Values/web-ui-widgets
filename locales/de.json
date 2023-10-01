@@ -2,6 +2,12 @@
   "comp": {
     "GameCard": {
       "like": "Gefällt mir"
+    },
+    "GeneralStatistics": {
+      "goods": "Anzahl von Waren",
+      "deals": "Anzahl von Geschäften",
+      "online": "online",
+      "users": "alle"
     }
   }
 }
