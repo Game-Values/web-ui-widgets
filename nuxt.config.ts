@@ -11,7 +11,8 @@ export default defineNuxtConfig({
   // },
   modules: [
     "tailwindcss",
-    "@nuxtjs/i18n"
+    "@nuxtjs/i18n",
+    "nuxt-swiper"
   ],
 
   i18n: {
