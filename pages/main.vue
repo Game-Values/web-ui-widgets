@@ -1,6 +1,14 @@
 <template>
   <div class="min-h-screen flex mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 bg-gray-900">
     <main class="w-full">
+      <SliderContainer>
+        <SliderSlide>
+          <p class="text-4xl text-white">Trade any in-game items in different games</p>
+        </SliderSlide>
+        <SliderSlide>
+          <p class="text-4xl text-white"> items in different games</p>
+        </SliderSlide>
+      </SliderContainer>
       <GameList :games="Cards" header-component="h3" />
     </main>
   </div>
