@@ -11,10 +11,10 @@ import UsersIcon from "@heroicons/vue/24/solid/esm/UsersIcon"
 import { formatNumbers } from "~/utils/format"
 
 interface Created {
-  goods: number,
-  deals: number,
-  online: number,
-  users: number
+  goods: string,
+  deals: string,
+  online: string,
+  users: string
 }
 
 const { goods, deals, online, users } = defineProps<Created>()

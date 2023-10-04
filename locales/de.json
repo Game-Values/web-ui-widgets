@@ -1,7 +1,10 @@
 {
   "comp": {
     "GameCard": {
-      "like": "Gefällt mir"
+      "like": "Gefällt mir",
+      "err": {
+        "like": "Fehler beim Gefallen des Spiels. Bitte versuchen Sie es später erneut."
+      }
     },
     "GeneralStatistics": {
       "goods": "Anzahl von Waren",
