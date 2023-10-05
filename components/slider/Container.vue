@@ -100,6 +100,9 @@ $btn-size: 44px;
     &:hover {
       background: #303031;
     }
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 
   :deep(.swiper-button-next)::after, :deep(.swiper-button-prev)::after {
