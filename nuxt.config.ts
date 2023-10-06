@@ -1,8 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: {
-    baseURL: '/web-ui-widgets/',
-    buildAssetsDir: 'assets'
+    baseURL: "/web-ui-widgets/",
+    buildAssetsDir: "assets"
   },
 
   // target: "static",
@@ -26,6 +26,7 @@ export default defineNuxtConfig({
 
   postcss: {
     plugins: {
+      "tailwindcss/nesting": "postcss-nesting",
       tailwindcss: {},
       autoprefixer: {}
     }
