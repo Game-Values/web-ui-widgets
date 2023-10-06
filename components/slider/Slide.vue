@@ -15,37 +15,28 @@ const style = computed(() =>
     "--slide-horizontal-image-url": `url(${props.horizontalImage})`
   } as CSSProperties))
 
+const twClasses = `
+grid grid-cols-1 grid-rows-2 md:grid-cols-2 md:grid-rows-1 gap-4
+py-2 px-4 md:px-8
+bg-center bg-cover bg-gray-800
+rounded-2xl border border-white/10
+h-[530px] md:h-[350px]
+`
 </script>
 
 <template>
-  <div class="slide-container" :style="style">
+  <div class="slide-container" :class="twClasses" :style="style">
     <div class="flex flex-col md:justify-center">
       <slot />
     </div>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 .slide-container {
-  display: grid;
-  gap: 1rem;
-  grid-template-areas: "data image";
-  grid-auto-columns: 1fr;
-  grid-auto-rows: 1fr;
-  padding: 69px 34px;
-    height:350px;
-
-  border: 1px solid #FFFFFF1F;
-  border-radius: 16px;
-
-  background-color: #202020;
   background-image: var(--slide-horizontal-image-url);
-  background-size: cover;
-  background-position: center;
 
   @media (max-width: 768px) {
-    height:530px;
-    grid-template-areas: "data" "image";
     background-image: var(--slide-vertical-image-url);
   }
 }

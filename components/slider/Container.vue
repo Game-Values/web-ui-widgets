@@ -52,9 +52,7 @@ const slides = computed(() => slots.default?.().filter(isSlide) ?? [])
 </template>
 
 
-<style scoped lang="scss">
-$btn-size: 44px;
-
+<style scoped>
 .pagination-spacer {
   padding-bottom: 3rem;
   --swiper-pagination-bottom: -2.5rem;
@@ -109,6 +107,4 @@ $btn-size: 44px;
     font-size: 15px;
   }
 }
-
-
 </style>
