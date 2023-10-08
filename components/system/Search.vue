@@ -3,12 +3,11 @@
     <input
       v-model="searchQuery"
       @input="handleSearch"
-      class="w-full sm:flex sm:items-center p-2 border rounded-md"
+      class="w-full sm:flex sm:items-center p-2 border rounded-md bg-gray-900"
       placeholder="Search..."
     />
   </div>
 </template>
-
 
 <script>
 import { ref, onMounted, watch } from 'vue';
