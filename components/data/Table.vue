@@ -90,7 +90,7 @@ export default defineComponent({
             <div class="flex">
               <!-- Left Column: Logo and Name -->
               <div class="flex-shrink-0 flex flex-col items-center mr-4">
-                <img :src="'/userlogo.jpg'" class="h-11 w-11 rounded-full" alt="User Image" />
+                <img :src="'/web-ui-widgets/userlogo.jpg'" class="h-11 w-11 rounded-full" alt="User Image" />
                 <!--                <span class="mt-2 text-xs">{{ truncateName(item.Seller.name) }}</span>-->
               </div>
               <!-- Right Column: Deals, Likes, and Rating -->
