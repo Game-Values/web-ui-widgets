@@ -1,19 +1,27 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: {
-    baseURL: '/web-ui-widgets/',
-    buildAssetsDir: 'assets'
+    // baseURL: '/web-ui-widgets/',
+    // buildAssetsDir: 'assets'
   },
-
   // target: "static",
-  // router: {
-  //   base: "/game-values/"
-  // },
   modules: [
     "tailwindcss",
-    "@nuxtjs/i18n"
+    "@nuxtjs/i18n",
+    "@nuxtjs/google-fonts"
   ],
-
+  googleFonts: {
+    families: {
+      Montserrat: true,
+    }
+  },
+  theme: {
+    extend: {
+      colors: {
+        'figma-bg': '#1B1B1C',
+      }
+    }
+  },
   i18n: {
     strategy: "prefix_except_default",
     locales: ["en", "de"],

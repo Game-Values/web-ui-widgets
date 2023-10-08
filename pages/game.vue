@@ -1,14 +1,22 @@
 <template>
-  <div class="min-h-screen flex mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 bg-gray-900">
+  <div class="min-h-screen flex mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 bg-transparent">
     <main class="w-full">
-
-
-
+      <GamesCard
+        v-for="game in games"
+        :key="game.id"
+        :title="game.title"
+        :description="game.description"
+        :categories="game.categories"
+      />
       <div class="flex items-center justify-between w-10/12 h-16 space-x-4">
-        <SystemSearch htmlTableId="goods" class="flex-grow w-10/12" />
+        <div class="flex items-center space-x-2">
+          <!-- Adding heroicons as an example -->
+          <heroicons-outline-search class="w-5 h-5 text-gray-400"/>
+          <SystemSearch htmlTableId="goods" class="flex-grow w-10/12" />
+        </div>
         <SwitchToggle v-model="isSwitched" />
       </div>
-      <div class="flex" style="background-color: #1d1d1e">
+      <div class="flex bg-[#1d1d1e]">
         <!-- Sidebar -->
         <div class="w-1/4 p-4">
           <SidebarSearch />
@@ -25,17 +33,17 @@
 
 <script setup lang="ts">
 definePageMeta({
-  layout: "home"
+  layout: "game"
 })
 
 import { defineComponent, ref } from "vue"
 import SwitchToggle from "~/components/system/Switch.vue"
-import SidebarSearch from '~/components/system/Facet.vue'
+import SidebarSearch from "~/components/system/Facet.vue"
 
 defineComponent({
   components: {
     SwitchToggle,
-    SidebarSearch,
+    SidebarSearch
   },
   setup() {
     const isSwitched = ref(false)
@@ -44,6 +52,18 @@ defineComponent({
     }
   }
 })
+
+const games = [
+  {
+    id: 1,
+    title: "ArcheAge: Unchained",
+    description: "We offer to buy ArcheAge Unchained gold (EU and NA)...",
+    categories: [
+      { label: "Accounts", count: 10 },
+      { label: "Other", count: 12 }
+    ]
+  }
+]
 
 const tableData = [
   {
