@@ -12,9 +12,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        teal: colors.teal,
-        cyan: colors.cyan,
-        rose: colors.rose,
+        fig_dark_1: "#1B1B1C",
       },
     },
   },

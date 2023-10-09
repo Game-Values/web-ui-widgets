@@ -1,25 +1,29 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-export default defineNuxtConfig({
-  app: {
+
+let app;
+const isDev = process.env.NODE_ENV !== 'production'
+
+if (isDev) {
+  app = {}
+} else {
+  app = {
     baseURL: '/web-ui-widgets/',
     buildAssetsDir: 'assets'
-  },
+  }
+}
+
+export default defineNuxtConfig({
+  app: app,
   // target: "static",
   modules: [
     "tailwindcss",
     "@nuxtjs/i18n",
+    "@nuxt/image",
     "@nuxtjs/google-fonts"
   ],
   googleFonts: {
     families: {
       Montserrat: true,
-    }
-  },
-  theme: {
-    extend: {
-      colors: {
-        'figma-bg': '#1B1B1C',
-      }
     }
   },
   i18n: {
@@ -38,12 +42,6 @@ export default defineNuxtConfig({
     }
   },
 
-  // buildModules: [
-  //   'nuxt-vite'
-  // ],
-  // vite: {
-  //   build: true
-  // },
   build: {
     transpile: ["@heroicons/vue"]
   },

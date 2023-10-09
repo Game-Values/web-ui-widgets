@@ -1,11 +1,13 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue"
-import { HandThumbUpIcon, ArrowSmallUpIcon } from "@heroicons/vue/24/solid/esm"
+import { ArrowLeftIcon, ArrowRightIcon, ArrowSmallUpIcon, HandThumbUpIcon } from "@heroicons/vue/24/solid/esm"
 
 export default defineComponent({
   components: {
     HandThumbUpIcon,
-    ArrowSmallUpIcon
+    ArrowSmallUpIcon,
+    ArrowLeftIcon,
+    ArrowRightIcon
   },
   props: {
     data: {
@@ -90,7 +92,7 @@ export default defineComponent({
             <div class="flex">
               <!-- Left Column: Logo and Name -->
               <div class="flex-shrink-0 flex flex-col items-center mr-4">
-                <img :src="'/web-ui-widgets/userlogo.jpg'" class="h-11 w-11 rounded-full" alt="User Image" />
+                <NuxtImg :src="'/userlogo.jpg'" alt="User Image" class="h-11 w-11 rounded-full" />
                 <!--                <span class="mt-2 text-xs">{{ truncateName(item.Seller.name) }}</span>-->
               </div>
               <!-- Right Column: Deals, Likes, and Rating -->
@@ -145,20 +147,26 @@ export default defineComponent({
     </div>
 
     <!-- Pagination Controls -->
-    <div class="mt-6 flex justify-center bg-solarized-base03 p-4 rounded-lg shadow-md">
-      <div class="mt-4 flex justify-center bg-gray-800 p-4 rounded">
+    <div class="mt-6 flex justify-center bg-fig_dark_1 p-4">
+      <div class="mt-4 flex justify-center bg-fig_dark_1 p-4">
         <button
-          @click="prevPage"
+          :class="{ 'opacity-50': currentPage === 1 }"
           :disabled="currentPage === 1"
-          class="px-4 py-2 mr-2 bg-transparent text-neon-blue border-2 border-neon-blue hover:bg-neon-blue hover:text-gray-800 rounded transition duration-300"
-          :class="{ 'opacity-50': currentPage === 1 }">Prev
+          class="p-2 mr-2 bg-transparent text-neon-blue border-2 border-blue-900 hover:bg-neon-blue hover:text-gray-800 rounded transition duration-300"
+          @click="prevPage">
+          <ArrowLeftIcon class="h-5 w-5" />
         </button>
-        <span class="self-center text-neon-blue mx-4">{{ currentPage }} / {{ totalPages }}</span>
+
+        <span class="self-center text-neon-blue mx-4">
+          {{ currentPage }} / {{ totalPages }}
+        </span>
+
         <button
-          @click="nextPage"
+          :class="{ 'opacity-50': currentPage === totalPages }"
           :disabled="currentPage === totalPages"
-          class="px-4 py-2 ml-2 bg-transparent text-neon-blue border-2 border-neon-blue hover:bg-neon-blue hover:text-gray-800 rounded transition duration-300"
-          :class="{ 'opacity-50': currentPage === totalPages }">Next
+          class="p-2 ml-2 bg-transparent text-neon-blue border-2 border-blue-900 hover:bg-neon-blue hover:text-gray-800 rounded transition duration-300"
+          @click="nextPage">
+          <ArrowRightIcon class="h-5 w-5" />
         </button>
       </div>
     </div>
@@ -171,16 +179,8 @@ export default defineComponent({
     color: #00d9ff;
   }
 
-  .border-neon-blue {
-    border-color: #00d9ff;
-  }
-
   .hover\:bg-neon-blue:hover {
     background-color: #00d9ff;
-  }
-
-  .bg-solarized-base03 {
-    background-color: #1B1B1C;
   }
 
   .text-solarized-base1 {
@@ -194,10 +194,6 @@ export default defineComponent({
   .divide-solarized-base1 > :not(template) ~ :not(template) {
     border-color: #93a1a1;
   }
-
-  .bg-solarized-base02 {
-    background-color: #262626;
-  }
 }
 
 @tailwind utilities;
@@ -207,11 +203,11 @@ export default defineComponent({
 }
 
 .border-neon-blue {
-  border-color: #00d9ff;
+  border-color: #262626;
 }
 
 .hover\:bg-neon-blue:hover {
-  background-color: #00d9ff;
+  background-color: #262626;
 }
 
 table {

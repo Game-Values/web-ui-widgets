@@ -13,7 +13,7 @@
 
     <div class="flex flex-col lg:flex-row justify-between items-start w-full">
       <div class="h-20 flex gap-2 mb-4 lg:mb-0">
-        <!-- custom buttons -->
+        <GamesActionBtn :buttons="buttons" />
       </div>
 
       <div class="flex flex-col lg:flex-row gap-2 w-full lg:w-auto">
@@ -32,6 +32,12 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'GameCard'
+  name: 'GameCard',
+  props: {
+    buttons: {
+      type: Array,
+      required: true,
+    },
+  },
 });
 </script>

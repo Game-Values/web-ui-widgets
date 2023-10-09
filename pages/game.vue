@@ -1,17 +1,19 @@
 <template>
   <div class="min-h-screen flex mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 bg-transparent">
     <main class="w-full">
+
       <GamesCard
         v-for="game in games"
         :key="game.id"
         :title="game.title"
         :description="game.description"
         :categories="game.categories"
+        :buttons="buttons"
       />
       <div class="flex items-center justify-between w-10/12 h-16 space-x-4">
         <div class="flex items-center space-x-2">
           <!-- Adding heroicons as an example -->
-          <heroicons-outline-search class="w-5 h-5 text-gray-400"/>
+          <heroicons-outline-search class="w-5 h-5 text-gray-400" />
           <SystemSearch htmlTableId="goods" class="flex-grow w-10/12" />
         </div>
         <SwitchToggle v-model="isSwitched" />
@@ -52,6 +54,15 @@ defineComponent({
     }
   }
 })
+
+const buttons = [
+  { id: 1, label: "Accounts", count: 10, bgClass: "bg-blue-500" },
+  { id: 2, label: "Characters", count: 12, bgClass: "bg-white bg-opacity-0" },
+  { id: 3, label: "Weapons", count: 12, bgClass: "bg-white bg-opacity-0" },
+  { id: 4, label: "Vehicles", count: 12, bgClass: "bg-white bg-opacity-0" },
+  { id: 5, label: "Environments", count: 12, bgClass: "bg-white bg-opacity-0" },
+  { id: 6, label: "Abilities", count: 12, bgClass: "bg-white bg-opacity-0" }
+]
 
 const games = [
   {
