@@ -1,6 +1,24 @@
 <template>
   <div class="min-h-screen flex mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 bg-gray-900">
     <main class="w-full">
+      <SliderContainer>
+        <SliderSlide
+          horizontal-image="https://picsum.photos/seed/test1/1200/500.webp"
+          vertical-image="https://picsum.photos/seed/test2/900/1000.webp"
+        >
+          <div class="flex flex-col gap-2 text-white">
+            <p class="text-4xl font-bold ">Trade any in-game items in different games</p>
+            <p>Invite friends and get bonuses</p>
+            <button class="bg-blue-500 text-white rounded-lg px-4 py-2 text-xl md:w-40 w-full">Try</button>
+          </div>
+        </SliderSlide>
+        <SliderSlide
+          horizontal-image="https://picsum.photos/seed/test4/1200/500.webp"
+          vertical-image="https://picsum.photos/seed/test5/900/1000.webp"
+        >
+          <p class="text-4xl text-white"> items in different games</p>
+        </SliderSlide>
+      </SliderContainer>
       <GameList :games="Cards" header-component="h3" />
     </main>
   </div>

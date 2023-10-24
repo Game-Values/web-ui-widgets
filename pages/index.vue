@@ -74,7 +74,7 @@
               <td class="px-4 sm:px-6 py-4 w-[28rem]">
                 <GameCard link="/games/atlas"
                           name="Atlas"
-                          image="atlas" itemsPosted="100500"/>
+                          image="atlas" itemsPosted="100500" />
               </td>
               <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
                 <SystemCode>
@@ -88,7 +88,7 @@
               <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
                 <GameCard link="/games/atlas"
                           name="Atlas"
-                          image="atlas" liked itemsPosted="100500"/>
+                          image="atlas" liked itemsPosted="100500" />
               </td>
               <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
                 <SystemCode>
@@ -115,12 +115,39 @@
             <tr>
               <td>
                 <div style="max-height: 200px; overflow: auto;">
-                  <GeneralStatistics goods=0123 deals=1234 online=2345 users=3456 />
+                  <GeneralStatistics goods="0123" deals="1234" online="2345" users="3456" />
                 </div>
               </td>
               <td>
                 <SystemCode>
                   &nbsp;GeneralStatistics goods="0123" deals="1234" online="2345" users="3456" />
+                </SystemCode>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="2">
+                <div style="overflow: auto;">
+                  <SliderSlide
+                    :horizontal-image="horizontalImage"
+                    :vertical-image="verticalImage"
+                  >
+                    <p class="text-white">Some promo text</p>
+                  </SliderSlide>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <SystemCode>
+                  <pre>
+&lt;SliderSlide
+  :horizontal-image="{{ horizontalImage }}"
+  :vertical-image="{{ verticalImage }}"
+>
+&lt;p class="text-white">Some promo text&lt;/p>
+&lt;/SliderSlide>
+                  </pre>
                 </SystemCode>
               </td>
             </tr>
@@ -139,6 +166,9 @@ import type { GameCard } from "~/components/game/Card.vue"
 definePageMeta({
   layout: "home"
 })
+
+const horizontalImage = "https://picsum.photos/seed/test1/1200/500.webp"
+const verticalImage = "https://picsum.photos/seed/test2/900/1000.webp"
 
 
 const Cards: GameCard[] = [

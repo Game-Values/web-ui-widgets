@@ -12,14 +12,17 @@ if (isDev) {
   }
 }
 
+
 export default defineNuxtConfig({
   app: app,
   // target: "static",
   modules: [
     "tailwindcss",
     "@nuxtjs/i18n",
+    "nuxt-swiper"
     "@nuxt/image",
     "@nuxtjs/google-fonts"
+
   ],
   googleFonts: {
     families: {
@@ -37,6 +40,7 @@ export default defineNuxtConfig({
 
   postcss: {
     plugins: {
+      "tailwindcss/nesting": "postcss-nesting",
       tailwindcss: {},
       autoprefixer: {}
     }
