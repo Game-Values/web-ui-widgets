@@ -1,13 +1,16 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue"
-import { ArrowLeftIcon, ArrowRightIcon, ArrowSmallUpIcon, HandThumbUpIcon } from "@heroicons/vue/24/solid/esm"
-
+import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/vue/24/solid/esm"
+import { ArrowSmallUpIcon, HandThumbUpIcon } from "@heroicons/vue/24/solid/esm"
+import { ArrowLongLeftIcon, ArrowLongRightIcon } from '@heroicons/vue/20/solid'
 export default defineComponent({
   components: {
     HandThumbUpIcon,
     ArrowSmallUpIcon,
     ArrowLeftIcon,
-    ArrowRightIcon
+    ArrowRightIcon,
+    ArrowLongLeftIcon,
+    ArrowLongRightIcon,
   },
   props: {
     data: {
@@ -46,6 +49,9 @@ export default defineComponent({
       if (this.currentPage < this.totalPages) {
         this.currentPage++
       }
+    },
+    gotoPage(pageNumber: number) {
+      this.currentPage = pageNumber;
     },
     prevPage() {
       if (this.currentPage > 1) {
@@ -147,29 +153,50 @@ export default defineComponent({
     </div>
 
     <!-- Pagination Controls -->
-    <div class="mt-6 flex justify-center bg-fig_dark_1 p-4">
-      <div class="mt-4 flex justify-center bg-fig_dark_1 p-4">
+    <nav class="flex items-center justify-between border-t border-gray-200 px-4 sm:px-0">
+      <div class="-mt-px flex w-0 flex-1">
         <button
-          :class="{ 'opacity-50': currentPage === 1 }"
           :disabled="currentPage === 1"
-          class="p-2 mr-2 bg-transparent text-neon-blue border-2 border-blue-900 hover:bg-neon-blue hover:text-gray-800 rounded transition duration-300"
-          @click="prevPage">
-          <ArrowLeftIcon class="h-5 w-5" />
-        </button>
-
-        <span class="self-center text-neon-blue mx-4">
-          {{ currentPage }} / {{ totalPages }}
-        </span>
-
-        <button
-          :class="{ 'opacity-50': currentPage === totalPages }"
-          :disabled="currentPage === totalPages"
-          class="p-2 ml-2 bg-transparent text-neon-blue border-2 border-blue-900 hover:bg-neon-blue hover:text-gray-800 rounded transition duration-300"
-          @click="nextPage">
-          <ArrowRightIcon class="h-5 w-5" />
+          @click="prevPage"
+          class="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+        >
+          <ArrowLongLeftIcon class="mr-3 h-5 w-5 text-gray-400" aria-hidden="true" />
+          Previous
         </button>
       </div>
-    </div>
+      <div class="hidden md:-mt-px md:flex">
+        <!-- Dynamic pagination links -->
+        <template v-for="page in totalPages">
+          <a
+            v-if="page === currentPage"
+            :key="'current-' + page"
+            class="inline-flex items-center border-t-2 border-indigo-500 px-4 pt-4 text-sm font-medium text-indigo-600"
+            aria-current="page"
+          >
+            {{ page }}
+          </a>
+          <a
+            v-else
+            :key="'other-' + page"
+            @click="gotoPage(page)"
+            class="inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+          >
+            {{ page }}
+          </a>
+        </template>
+
+      </div>
+      <div class="-mt-px flex w-0 flex-1 justify-end">
+        <button
+          :disabled="currentPage === totalPages"
+          @click="nextPage"
+          class="inline-flex items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+        >
+          Next
+          <ArrowLongRightIcon class="ml-3 h-5 w-5 text-gray-400" aria-hidden="true" />
+        </button>
+      </div>
+    </nav>
   </div>
 </template>
 
