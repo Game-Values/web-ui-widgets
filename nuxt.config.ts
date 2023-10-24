@@ -1,20 +1,34 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-export default defineNuxtConfig({
-  app: {
-    baseURL: "/web-ui-widgets/",
-    buildAssetsDir: "assets"
-  },
 
+let app;
+const isDev = process.env.NODE_ENV !== 'production'
+
+if (isDev) {
+  app = {}
+} else {
+  app = {
+    baseURL: '/web-ui-widgets/',
+    buildAssetsDir: 'assets'
+  }
+}
+
+
+export default defineNuxtConfig({
+  app: app,
   // target: "static",
-  // router: {
-  //   base: "/game-values/"
-  // },
   modules: [
     "tailwindcss",
     "@nuxtjs/i18n",
     "nuxt-swiper"
-  ],
+    "@nuxt/image",
+    "@nuxtjs/google-fonts"
 
+  ],
+  googleFonts: {
+    families: {
+      Montserrat: true,
+    }
+  },
   i18n: {
     strategy: "prefix_except_default",
     locales: ["en", "de"],
@@ -32,17 +46,15 @@ export default defineNuxtConfig({
     }
   },
 
-  // buildModules: [
-  //   'nuxt-vite'
-  // ],
-  // vite: {
-  //   build: true
-  // },
   build: {
     transpile: ["@heroicons/vue"]
   },
 
   devtools: {
-    enabled: true
+    enabled: true,
+
+    timeline: {
+      enabled: true
+    }
   }
 })

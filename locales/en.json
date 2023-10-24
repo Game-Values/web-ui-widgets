@@ -1,7 +1,10 @@
 {
   "comp": {
     "GameCard": {
-      "like": "Like"
+      "like": "Like",
+      "err": {
+        "like": "Failed to like the game. Please try again later."
+      }
     },
     "GeneralStatistics": {
       "goods": "number of goods",
