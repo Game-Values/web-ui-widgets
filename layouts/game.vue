@@ -7,6 +7,11 @@ const breadcrumbsList = [
   { label: "ArcheAge: Unchained", link: "https://www.game-values.com/" }
 ]
 
+const pages = [
+  { name: 'Games', href: '/main', current: false },
+  { name: 'ArcheAge: Unchained', href: 'https://www.game-values.com/', current: true },
+]
+
 const windowWidth = ref<number | null>(null);
 
 const slotWrapperClasses = computed(() => {
@@ -48,9 +53,10 @@ onBeforeUnmount(() => {
       <slot name="header">
         <LayoutsHomeNavigation />
       </slot>
-      <div class="min-h-screen flex mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 bg-transparent">
+      <div class="flex mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 bg-transparent">
         <div class="h-50 md:h-40 lg:h-48 xl:h-52 2xl:h-[50px] bg-transparent"></div>
-        <DataBCrumbs :breadcrumbs="breadcrumbsList" />
+<!--        <DataBCrumbs :breadcrumbs="breadcrumbsList" />-->
+        <NavBc :pagesList="pages" />
       </div>
     </GamesBgImg>
     <!-- Main slot with negative margin for positioning -->

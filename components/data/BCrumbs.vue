@@ -1,5 +1,5 @@
 <template>
-  <ol :class="wrapperClass" vocab="http://schema.org/" typeof="BreadcrumbList">
+  <ol :class="[wrapperClass, 'relative z-0']" vocab="http://schema.org/" typeof="BreadcrumbList">
     <li v-for="(breadcrumb, index) in breadcrumbs" :key="index" property="itemListElement" typeof="ListItem" class="inline text-white">
       <span :class="breadcrumbClass(breadcrumb)">
         <template v-if="breadcrumb.link">

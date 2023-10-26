@@ -14,7 +14,7 @@ export default defineComponent({
   props: {
     imagePath: {
       type: String,
-      default: '/web-ui-widgets/game_cover.png'
+      default: '/game_cover.png'
     },
     shiftAmount: {
       type: String,

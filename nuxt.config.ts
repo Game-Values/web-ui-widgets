@@ -7,7 +7,7 @@ if (isDev) {
   app = {}
 } else {
   app = {
-    baseURL: '/web-ui-widgets/',
+    // baseURL: '/web-ui-widgets/',
     buildAssetsDir: 'assets'
   }
 }
@@ -19,7 +19,7 @@ export default defineNuxtConfig({
   modules: [
     "tailwindcss",
     "@nuxtjs/i18n",
-    "nuxt-swiper"
+    "nuxt-swiper",
     "@nuxt/image",
     "@nuxtjs/google-fonts"
 
