@@ -8,13 +8,19 @@ if (isDev) {
 } else {
   app = {
     // baseURL: '/web-ui-widgets/',
-    buildAssetsDir: 'assets'
+    buildAssetsDir: 'assets',
+    head: {
+      bodyAttrs: {
+        class: 'bg-gray-900',
+      },
+    },
   }
 }
 
 
 export default defineNuxtConfig({
   app: app,
+
   // target: "static",
   modules: [
     "tailwindcss",

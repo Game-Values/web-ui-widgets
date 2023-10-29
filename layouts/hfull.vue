@@ -3,10 +3,10 @@
     <slot name="header">
       <LayoutsHomeNavigation />
     </slot>
-    <div class="justify-center">
+    <div class="justify-center bg-gray-900">
       <slot />
     </div>
-    <slot name="footer">
+    <slot name="footer" class="bg-gray-900">
       <LayoutsDefaultFooter />
     </slot>
   </div>

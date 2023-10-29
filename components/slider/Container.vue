@@ -25,8 +25,6 @@ function isSlide(node: VNode) {
 }
 
 const slides = computed(() => slots.default?.().filter(isSlide) ?? [])
-
-
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 <template>
-  <footer class="mt-24 bg-gray-900 sm:mt-12  bg-transparent">
+  <footer class="bg-gray-900">
     <div class="mx-auto max-w-md overflow-hidden py-12 px-4 sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
       <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
         <div v-for="item in footerNavigation.main" :key="item.name" class="px-5 py-2">
