@@ -7,7 +7,7 @@ if (isDev) {
   app = {}
 } else {
   app = {
-    // baseURL: '/web-ui-widgets/',
+    baseURL: '/web-ui-widgets/',
     buildAssetsDir: 'assets',
     head: {
       bodyAttrs: {
