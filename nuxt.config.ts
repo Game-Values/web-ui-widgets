@@ -8,12 +8,7 @@ if (isDev) {
 } else {
   app = {
     baseURL: '/web-ui-widgets/',
-    buildAssetsDir: 'assets',
-    head: {
-      bodyAttrs: {
-        class: 'bg-gray-900',
-      },
-    },
+    buildAssetsDir: 'assets'
   }
 }
 
