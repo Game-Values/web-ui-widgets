@@ -16,7 +16,7 @@ if (isDev) {
 export default defineNuxtConfig({
   app: app,
 
-  // target: "static",
+  target: "static",
   modules: [
     "tailwindcss",
     "@nuxtjs/i18n",
