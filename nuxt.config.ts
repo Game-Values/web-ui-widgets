@@ -1,3 +1,5 @@
+import { defineUntypedSchema } from 'untyped'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 let app;
@@ -14,10 +16,12 @@ if (isDev) {
 }
 
 
-export default defineNuxtConfig({
+export default defineUntypedSchema({
   app: app,
 
   target: "static",
+  debug: true,
+
   modules: [
     "tailwindcss",
     "@nuxtjs/i18n",
