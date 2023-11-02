@@ -52,9 +52,9 @@ const navigation = [
   { name: "Page:index", to: "/" },
   { name: "Page:main", to: "/main" },
   { name: "Page:game", to: "/game" },
-  { name: "Page:messages", to: "/messages" },
+  // { name: "Page:messages", to: "/messages" },
   { name: "Page:profile", to: "/profile" },
-  { name: "Page:settings", to: "/settings" },
+  // { name: "Page:settings", to: "/settings" },
   { name: "Page:payment", to: "/payment" },
 ]
 

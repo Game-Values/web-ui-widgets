@@ -6,7 +6,6 @@ const isDev = process.env.NODE_ENV !== 'production'
 if (isDev) {
   app = {
     baseURL: '/',
-    buildAssetsDir: 'assets'
   }
 } else {
   app = {
