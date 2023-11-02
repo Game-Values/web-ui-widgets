@@ -1,7 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 let app;
-const isDev = process.env.NODE_ENV !== 'production'
+// const isDev = process.env.NODE_ENV !== 'production'
+const isDev = false;
 
 if (isDev) {
   app = {}
