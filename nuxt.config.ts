@@ -1,13 +1,13 @@
-import { defineUntypedSchema } from 'untyped'
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 let app;
-// const isDev = process.env.NODE_ENV !== 'production'
-const isDev = false;
+const isDev = process.env.NODE_ENV !== 'production'
 
 if (isDev) {
-  app = {}
+  app = {
+    baseURL: '/',
+    buildAssetsDir: 'assets'
+  }
 } else {
   app = {
     baseURL: '/web-ui-widgets/',
@@ -15,13 +15,9 @@ if (isDev) {
   }
 }
 
-
-export default defineUntypedSchema({
+export default defineNuxtConfig({
   app: app,
-
   target: "static",
-  debug: true,
-
   modules: [
     "tailwindcss",
     "@nuxtjs/i18n",
