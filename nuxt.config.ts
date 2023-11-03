@@ -18,7 +18,7 @@ export default defineNuxtConfig({
 
   // target: "static",
   modules: [
-    "tailwindcss",
+    "@nuxtjs/tailwindcss",
     "@nuxtjs/i18n",
     "nuxt-swiper",
     "@nuxt/image",
