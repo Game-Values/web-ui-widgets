@@ -47,7 +47,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="bg-fig_dark_1">
+  <div class="bg-grey-dark">
     <!-- Header and Main Content Area -->
     <GamesBgImg class="flex-1">
       <slot name="header">
