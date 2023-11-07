@@ -9,20 +9,22 @@ defineProps<Props>()
 </script>
 
 <template>
-<nuxt-layout>
-    <div class="flex flex-col gap-md">
+<widget-wrapper-app>
+    <nuxt-layout>
+        <div class="flex flex-col gap-md">
 
-        <h2>
-            todo: errors
-        </h2>
+            <h2>
+                todo: errors
+            </h2>
 
-        <p>
-            status: {{ error.statusCode }}
-        </p>
+            <p>
+                status: {{ error.statusCode }}
+            </p>
 
-        <pre v-html="error.message"/>
+            <pre v-html="error.message" />
 
-        <pre v-html="error.stack"/>
-    </div>
-</nuxt-layout>
+            <pre v-html="error.stack" />
+        </div>
+    </nuxt-layout>
+</widget-wrapper-app>
 </template>

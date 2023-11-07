@@ -1,4 +1,5 @@
 @use "@/assets/styles/vars/breakpoints";
+@use "@/assets/styles/vars/colors";
 @use "@/assets/styles/vars/typography";
 
 @forward "vexip-ui/style/design" with (
@@ -23,16 +24,36 @@
         ),
     ),
 
+    $color-black: colors.$color-black,
+    $color-white: colors.$color-white,
+    $color-map: (
+        primary: (
+            base: colors.$color-primary,
+        ),
+        info: (
+            base: colors.$color-info,
+        ),
+        success: (
+            base: colors.$color-success,
+        ),
+        warning: (
+            base: colors.$color-warning,
+        ),
+        error: (
+            base: colors.$color-error,
+        ),
+    ),
+
     $font-family-map: (
         base: Montserrat,
         mono: Montserrat,
     ),
 
     $font-size-map: (
-        base: typography.$font-size-base,
+        base: typography.$font-size-normal,
     ),
 
     $line-height-map: (
-        base: typography.$line-height-base,
+        base: typography.$line-height-normal,
     ),
 );

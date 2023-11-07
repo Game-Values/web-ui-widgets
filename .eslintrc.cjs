@@ -207,7 +207,7 @@ module.exports = (() => (
             }],
 
             "vue/html-indent": ["error", 4, {
-                attribute: 0,
+                attribute: 1,
                 baseIndent: 0,
                 closeBracket: 0,
                 alignAttributesVertically: true,
@@ -216,16 +216,16 @@ module.exports = (() => (
             "vue/html-closing-bracket-spacing": ["error", {
                 startTag: "never",
                 endTag: "never",
-                selfClosingTag: "never",
+                selfClosingTag: "always",
             }],
 
             "vue/html-closing-bracket-newline": ["error", {
                 singleline: "never",
-                multiline: "never",
+                multiline: "always",
             }],
 
             "vue/max-attributes-per-line": ["error", {
-                singleline: { max: 3 },
+                singleline: { max: 1 },
                 multiline: { max: 1 },
             }],
 

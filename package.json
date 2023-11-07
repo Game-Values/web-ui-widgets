@@ -70,6 +70,8 @@
         "nuxt-viewport": "^2.0.6",
         "sass": "^1.69.5",
         "typescript": "^5.2.2",
+        "vite-plugin-dynamic-import": "^1.5.0",
+        "vite-plugin-vue-setup-inherit-attrs": "^1.0.8",
         "vue-eslint-parser": "^9.3.2"
     },
     "dependencies": {

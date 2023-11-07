@@ -1,5 +1,8 @@
 import { env } from "node:process"
 
+import { default as dynamicImport } from "vite-plugin-dynamic-import"
+import { default as inheritAttrs } from "vite-plugin-vue-setup-inherit-attrs"
+
 import { BREAKPOINTS } from "./common/consts"
 import { Locale, LocaleISO } from "./common/enums"
 import { getLocale, isDebug, isDevelopment, isProduction } from "./common/utils"
@@ -30,6 +33,19 @@ export default defineNuxtConfig({
             "@heroicons/vue",
         ],
     },
+
+    components: [
+        "~/components",
+
+        {
+            path: "~/ui",
+            prefix: "ui",
+        },
+        {
+            path: "~/widgets",
+            prefix: "widget",
+        },
+    ],
 
     css: [
         "~/assets/styles/index.sass",
@@ -248,6 +264,10 @@ export default defineNuxtConfig({
             hmrPartialAccept: isDevelopment(),
             importGlobRestoreExtension: true,
         },
+        plugins: [
+            dynamicImport(),
+            inheritAttrs(),
+        ],
         server: {
             preTransformRequests: true,
         },
