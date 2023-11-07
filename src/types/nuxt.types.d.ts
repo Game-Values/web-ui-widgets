@@ -1,3 +1,5 @@
+import type { Theme } from "@unocss/preset-uno"
+
 import "@nuxt/schema"
 
 declare module "@nuxt/schema" {
@@ -7,5 +9,6 @@ declare module "@nuxt/schema" {
 
     interface PublicRuntimeConfig {
         baseURL: string
+        theme: Theme
     }
 }

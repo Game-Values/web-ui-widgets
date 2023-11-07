@@ -1,9 +1,9 @@
-import type { NuxtModule } from "@nuxt/schema"
-
 import { env } from "node:process"
 
 import { default as dynamicImport } from "vite-plugin-dynamic-import"
 import { default as inheritAttrs } from "vite-plugin-vue-setup-inherit-attrs"
+
+import { default as uno } from "./uno.config"
 
 import { BREAKPOINTS } from "./common/consts"
 import { Locale, LocaleISO } from "./common/enums"
@@ -217,6 +217,7 @@ export default defineNuxtConfig({
     runtimeConfig: {
         public: {
             baseURL: env.NUXT_APP_BASE_URL,
+            theme: uno.theme,
         },
     },
 
