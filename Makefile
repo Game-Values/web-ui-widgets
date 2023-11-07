@@ -1,6 +1,8 @@
 all:
-	yarn install && yarn dev
+	pnpm install --ignore-scripts && pnpm run dev
+
 c:
-	rm -rf package-lock.json node_modules .nuxt yarn.lock .output
+	rm -rf node_modules .nuxt .output
+
 i: c
-	yarn install && yarn build
+	pnpm install --ignore-scripts && pnpm run build
