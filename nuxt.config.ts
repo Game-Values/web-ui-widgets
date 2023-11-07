@@ -1,3 +1,5 @@
+import type { NuxtModule } from "@nuxt/schema"
+
 import { env } from "node:process"
 
 import { default as dynamicImport } from "vite-plugin-dynamic-import"
@@ -85,94 +87,112 @@ export default defineNuxtConfig({
         dirs: [
             "../common/composables",
         ],
+        presets: [
+            {
+                from: "@vueuse/core",
+                imports: [
+                    "useDebounceFn",
+                    "useMutationObserver",
+                    "useResizeObserver",
+                ],
+            },
+        ],
     },
 
-    modules: [
-        "@hebilicious/vue-query-nuxt",
-        "@nuxt/image",
-        "@nuxtjs/tailwindcss", // todo: remove & mv to unocss
-        // "@unocss/nuxt", // todo: returns after rm tailwindcss
+    modules: ((): any[] => {
+        // todo: typing
+        let modules: any[] = [
+            "@hebilicious/vue-query-nuxt",
+            "@nuxt/image",
+            "@nuxtjs/tailwindcss", // todo: remove & mv to unocss
+            // "@unocss/nuxt", // todo: returns after rm tailwindcss
 
-        "nuxt-lazy-load",
+            "nuxt-lazy-load",
 
-        // todo: need to enable after fixes
-        // ["@nuxtjs/eslint-module", {
-        //     failOnError: isProduction(),
-        // }],
+            // todo: need to enable after fixes
+            // ["@nuxtjs/eslint-module", {
+            //     failOnError: isProduction(),
+            // }],
 
-        ["@nuxtjs/google-fonts", {
-            base64: true,
-            display: "swap",
-            families: {
-                // todo: fetch usable from figma only
-                Montserrat: true,
-            },
-            overwriting: true,
-            preload: true,
-        }],
-
-        ["@nuxtjs/i18n", {
-            debug: isDebug(),
-            defaultLocale: getLocale(),
-            langDir: "locales/i18n",
-            lazy: true,
-            locales: [
-                {
-                    code: Locale.DE,
-                    file: {
-                        cache: true,
-                        path: `${LocaleISO.DE}.json`,
-                    },
-                    iso: LocaleISO.DE,
+            ["@nuxtjs/google-fonts", {
+                base64: true,
+                display: "swap",
+                families: {
+                    // todo: fetch usable from figma only
+                    Montserrat: true,
                 },
-                {
-                    code: Locale.EN,
-                    file: {
-                        cache: true,
-                        path: `${LocaleISO.EN}.json`,
+                overwriting: true,
+                preload: true,
+            }],
+
+            ["@nuxtjs/i18n", {
+                debug: isDebug(),
+                defaultLocale: getLocale(),
+                langDir: "locales/i18n",
+                lazy: true,
+                locales: [
+                    {
+                        code: Locale.DE,
+                        file: {
+                            cache: true,
+                            path: `${LocaleISO.DE}.json`,
+                        },
+                        iso: LocaleISO.DE,
                     },
-                    iso: LocaleISO.EN,
-                },
-            ],
-            strategy: "prefix_except_default",
-            vueI18n: "i18n.config.ts",
-        }],
+                    {
+                        code: Locale.EN,
+                        file: {
+                            cache: true,
+                            path: `${LocaleISO.EN}.json`,
+                        },
+                        iso: LocaleISO.EN,
+                    },
+                ],
+                strategy: "prefix_except_default",
+                vueI18n: "i18n.config.ts",
+            }],
 
-        ["@nuxtjs/partytown", {
-            debug: isDebug(),
-        }],
+            ["@nuxtjs/web-vitals", {
+                debug: isDebug(),
+                provider: "log",
+            }],
 
-        ["@nuxtjs/web-vitals", {
-            debug: isDebug(),
-            provider: "log",
-        }],
+            ["@vexip-ui/nuxt", {
+                importStyle: "sass",
+                resolveIcon: false,
+            }],
 
-        ["@vexip-ui/nuxt", {
-            importStyle: "sass",
-            resolveIcon: false,
-        }],
+            ["@vueuse/nuxt", {
+                ssrHandlers: true,
+            }],
 
-        ["@vueuse/nuxt", {
-            ssrHandlers: true,
-        }],
+            ["nuxt-delay-hydration", {
+                debug: isDebug(),
+                mode: "mount",
+            }],
 
-        ["nuxt-delay-hydration", {
-            debug: isDebug(),
-            mode: "mount",
-        }],
+            ["nuxt-seo-experiments", {
+                debug: isDebug(),
+            }],
 
-        ["nuxt-seo-experiments", {
-            debug: isDebug(),
-        }],
+            ["nuxt-swiper", {
+                styleLang: "scss",
+            }],
 
-        ["nuxt-swiper", {
-            styleLang: "scss",
-        }],
+            ["nuxt-viewport", {
+                breakpoints: BREAKPOINTS,
+            }],
+        ]
 
-        ["nuxt-viewport", {
-            breakpoints: BREAKPOINTS,
-        }],
-    ],
+        if (isProduction())
+            modules.push(
+                ["@nuxtjs/partytown", {
+                    debug: isDebug(),
+                }],
+            )
+
+        return modules
+    })(),
 
     nitro: {
         esbuild: {
@@ -215,10 +235,13 @@ export default defineNuxtConfig({
             preprocessorOptions: {
                 sass: {
                     additionalData: `
-                        @use "@/assets/styles/helpers/mixins" as *
+                        @use "~/assets/styles/helpers/mixins" as *
 
-                        @use "@/assets/styles/vars/breakpoints" as *
-                        @use "@/assets/styles/vars/typography" as *
+                        @use "~/assets/styles/vars/breakpoints" as *
+                        @use "~/assets/styles/vars/colors" as *
+                        @use "~/assets/styles/vars/radius" as *
+                        @use "~/assets/styles/vars/spaces" as *
+                        @use "~/assets/styles/vars/typography" as *
                     `,
                 },
 
@@ -227,17 +250,20 @@ export default defineNuxtConfig({
                         if (/vexip-ui\/style(?:\/dark)?\/((?!shared).).*.scss/.test(path))
                             return (
                                 code
-                                    .replace("@use './design' as *;", "@use '@/assets/styles/vexip-ui.scss' as *;")
-                                    .replace("@use './design/variables.scss' as *;", "@use '@/assets/styles/vexip-ui.scss' as *;")
-                                    .replace("@use '../design/variables.scss' as *;", "@use '@/assets/styles/vexip-ui.scss' as *;")
-                                    .replace("@forward './variables.scss';", "@forward '@/assets/styles/vexip-ui.scss';")
+                                    .replace("@use './design' as *;", "@use '~/assets/styles/vexip-ui.scss' as *;")
+                                    .replace("@use './design/variables.scss' as *;", "@use '~/assets/styles/vexip-ui.scss' as *;")
+                                    .replace("@use '../design/variables.scss' as *;", "@use '~/assets/styles/vexip-ui.scss' as *;")
+                                    .replace("@forward './variables.scss';", "@forward '~/assets/styles/vexip-ui.scss';")
                             )
 
                         return `
-                            @use "@/assets/styles/helpers/mixins" as *;
+                            @use "~/assets/styles/helpers/mixins" as *;
 
-                            @use "@/assets/styles/vars/breakpoints" as *;
-                            @use "@/assets/styles/vars/typography" as *;
+                            @use "~/assets/styles/vars/breakpoints" as *;
+                            @use "~/assets/styles/vars/colors" as *;
+                            @use "~/assets/styles/vars/radius" as *;
+                            @use "~/assets/styles/vars/spaces" as *;
+                            @use "~/assets/styles/vars/typography" as *;
                         `
                     },
                 },

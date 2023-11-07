@@ -1,6 +1,6 @@
-@use "@/assets/styles/vars/breakpoints";
-@use "@/assets/styles/vars/colors";
-@use "@/assets/styles/vars/typography";
+@use "~/assets/styles/vars/breakpoints";
+@use "~/assets/styles/vars/colors";
+@use "~/assets/styles/vars/typography";
 
 @forward "vexip-ui/style/design" with (
     $break-point-lg: breakpoints.$breakpoint-lg,

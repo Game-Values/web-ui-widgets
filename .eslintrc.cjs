@@ -151,6 +151,16 @@ module.exports = (() => (
                 "ts-expect-error": "allow-with-description",
             }],
 
+            "@typescript-eslint/explicit-function-return-type": ["error", {
+                allowExpressions: true,
+                allowTypedFunctionExpressions: false,
+                allowHigherOrderFunctions: true,
+                allowDirectConstAssertionInArrowFunctions: true,
+                allowConciseArrowFunctionExpressionsStartingWithVoid: false,
+                allowFunctionsWithoutTypeParameters: false,
+                allowIIFEs: false,
+            }],
+
             "@typescript-eslint/naming-convention": ["error",
                 {
                     selector: "default",
