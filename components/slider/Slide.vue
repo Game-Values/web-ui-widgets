@@ -1,6 +1,5 @@
 <script setup lang="ts">
-
-import { CSSProperties } from "@vue/runtime-dom"
+import type { CSSProperties } from "@vue/runtime-dom"
 
 interface Slide {
   verticalImage: string

@@ -151,6 +151,8 @@
                 </SystemCode>
               </td>
             </tr>
+
+            <Timeline />
             </tbody>
           </table>
         </div>
@@ -162,6 +164,8 @@
 
 <script setup lang="ts">
 import type { GameCard } from "~/components/game/Card.vue"
+
+import Timeline from "@/widgets/components/Timeline.vue"
 
 definePageMeta({
   layout: "home"
