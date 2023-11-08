@@ -5,20 +5,23 @@
 Install the dependencies:
 
 ```bash
-# yarn
-yarn install
+pnpm install
+```
+
+Create .env file from .env.template & change envs if necessary
+```bash
+cp .env.template .env
 ```
 
 ## Development
 
-Start the development server on http://localhost:3000
+Start the development server on http://127.0.0.1:3000
 
 ```bash
-# yarn
-yarn dev
+pnpm run dev
 ```
 
-Then browse to http://localhost:3000 to see the homepage.
+Then browse to http://127.0.0.1:3000 to see the homepage.
 
 ## Contributions
 We will pay for your contributions. Please check available tasks and contact us via `tech@game-values.com` if you would like to solve some of them.
@@ -28,7 +31,7 @@ We will pay for your contributions. Please check available tasks and contact us 
  - postcss
  - nuxt js
  - headlessui
- - tailwindcss
+ - unocss
  - heroicons
 
 ## Licence

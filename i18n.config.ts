@@ -1,14 +1,10 @@
-import en from "./locales/en.json"
-import de from "./locales/de.json"
+import type { I18nAdditionalOptions, I18nOptions } from "vue-i18n"
 
-// You can use `defineI18nConfig` to get type inferences for options to pass to vue-i18n.
-export default defineI18nConfig(() => {
-  return {
-    legacy: false,
-    locale: "en",
-    messages: {
-      en,
-      de
+import { getLocale } from "./common/utils"
+
+export default defineI18nConfig((): I18nAdditionalOptions & I18nOptions => (
+    {
+        fallbackLocale: getLocale(),
+        legacy: false,
     }
-  }
-})
+))

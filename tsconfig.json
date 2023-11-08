@@ -1,3 +1,16 @@
 {
-  "extends": "./.nuxt/tsconfig.json"
+    "extends": "./.nuxt/tsconfig.json",
+    "compilerOptions": {
+        "baseUrl": "./src",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "strict": true,
+        "types": [
+            "@nuxt/types",
+            "@types/node"
+        ],
+        "typeRoots": [
+            "types"
+        ]
+    }
 }
