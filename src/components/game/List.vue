@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { GameCard } from "~/components/game/Card.vue"
-import { computed } from "#imports"
 
+import { computed } from "#imports"
 
 // Destructuring props
 const props = withDefaults(defineProps<{
@@ -42,16 +42,19 @@ const groupedGamesArray = computed(() => {
 <template>
 <div class="flex flex-col gap-8">
     <section v-for="{ letter, games } in groupedGamesArray" :key="letter">
-        <component :is="headerComponent" class="uppercase text-white font-bold text-xl mb-6">
+        <component
+            :is="headerComponent"
+            class="uppercase text-white font-bold text-xl mb-6"
+        >
             {{ letter }}
         </component>
         <div class="grid responsiveColumns gap-x-6 gap-y-8 grid-cols-2 sm:grid-cols-3 xl:grid-cols-4">
             <game-card
-            :key="game.link"
-            :image="game.image"
-            :link="game.link"
-            v-for="game in games"
-            :name="game.name"/>
+                :image="game.image"
+                :key="game.link"
+                :link="game.link"
+                :name="game.name"
+                v-for="game in games" />
         </div>
     </section>
 </div>

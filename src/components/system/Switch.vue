@@ -1,11 +1,13 @@
 <template>
 <button
-:class="{ 'bg-green-600': isActive, 'bg-gray-700': !isActive }"
-class="relative inline-flex items-center h-6 rounded-full w-11 transition-colors duration-300 ease-in-out"
-@click="toggle">
+    :class="{ 'bg-green-600': isActive, 'bg-gray-700': !isActive }"
+    @click="toggle"
+    class="relative inline-flex items-center h-6 rounded-full w-11 transition-colors duration-300 ease-in-out"
+>
     <span
-    :class="{ 'translate-x-6': isActive, '-translate-x-0': !isActive }"
-    class="inline-block w-4 h-4 transform bg-white rounded-full transition-transform duration-300 ease-in-out"/>
+        :class="{ 'translate-x-6': isActive, '-translate-x-0': !isActive }"
+        class="inline-block w-4 h-4 transform bg-white rounded-full transition-transform duration-300 ease-in-out"
+    />
 </button>
 </template>
 

@@ -1,5 +1,5 @@
-import { DEFAULT_LOCALE, LOCALES } from "../consts"
 import { useIncludes } from "../composables"
+import { DEFAULT_LOCALE, LOCALES } from "../consts"
 import { Locale } from "../enums"
 
 export function getLocale(): Locale {

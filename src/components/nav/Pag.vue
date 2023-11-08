@@ -2,10 +2,10 @@
 <nav class="flex items-center justify-between border-t border-gray-200 px-4 sm:px-0">
     <div class="-mt-px flex w-0 flex-1">
         <button
-        :class="currentPage === 1 ? 'text-gray-400 cursor-not-allowed' : 'text-gray-500 hover:border-gray-300 hover:text-gray-700'"
-        :disabled="currentPage === 1"
-        class="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 font-medium"
-        @click="prevPage"
+            :class="currentPage === 1 ? 'text-gray-400 cursor-not-allowed' : 'text-gray-500 hover:border-gray-300 hover:text-gray-700'"
+            :disabled="currentPage === 1"
+            @click="prevPage"
+            class="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 font-medium"
         >
             <ui-icon-arrow-long-left
                 :class="currentPage === totalPages ? 'text-gray-400' : 'text-gray-500'"
@@ -19,28 +19,30 @@
     <div class="hidden md:-mt-px md:flex">
         <template v-for="page in totalPages">
             <a
-            :key="'current-' + page"
-            @click="gotoPage(page)"
-            aria-current="page"
-            class="inline-flex items-center border-t-2 border-indigo-500 px-4 pt-4 font-medium text-indigo-600"
-            v-if="page === currentPage">
+                :key="'current-' + page"
+                aria-current="page"
+                @click="gotoPage(page)"
+                class="inline-flex items-center border-t-2 border-indigo-500 px-4 pt-4 font-medium text-indigo-600"
+                v-if="page === currentPage"
+            >
                 {{ page }}
             </a>
             <a
-            :key="'other-' + page"
-            @click="gotoPage(page)"
-            class="inline-flex items-center border-t-2 border-transparent px-4 pt-4 font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-            v-else>
+                :key="'other-' + page"
+                class="inline-flex items-center border-t-2 border-transparent px-4 pt-4 font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                @click="gotoPage(page)"
+                v-else
+            >
                 {{ page }}
             </a>
         </template>
     </div>
     <div class="-mt-px flex w-0 flex-1 justify-end">
         <button
-        :class="currentPage === totalPages ? 'text-gray-400 cursor-not-allowed' : 'text-gray-500 hover:border-gray-300 hover:text-gray-700'"
-        :disabled="currentPage === totalPages"
-        class="inline-flex items-center border-t-2 border-transparent pl-1 pt-4 font-medium"
-        @click="nextPage"
+            :class="currentPage === totalPages ? 'text-gray-400 cursor-not-allowed' : 'text-gray-500 hover:border-gray-300 hover:text-gray-700'"
+            :disabled="currentPage === totalPages"
+            @click="nextPage"
+            class="inline-flex items-center border-t-2 border-transparent pl-1 pt-4 font-medium"
         >
             Next
 

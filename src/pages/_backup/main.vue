@@ -3,8 +3,9 @@
     <main class="w-full">
         <slider-container>
             <slider-slide
-            horizontal-image="https://picsum.photos/seed/test1/1200/500.webp"
-            vertical-image="https://picsum.photos/seed/test2/900/1000.webp">
+                horizontal-image="https://picsum.photos/seed/test1/1200/500.webp"
+                vertical-image="https://picsum.photos/seed/test2/900/1000.webp"
+            >
                 <div class="flex flex-col gap-2 text-white">
                     <p class="text-4xl font-bold ">
                         Trade any in-game items in different games
@@ -16,20 +17,24 @@
                 </div>
             </slider-slide>
             <slider-slide
-            horizontal-image="https://picsum.photos/seed/test4/1200/500.webp"
-            vertical-image="https://picsum.photos/seed/test5/900/1000.webp">
+                horizontal-image="https://picsum.photos/seed/test4/1200/500.webp"
+                vertical-image="https://picsum.photos/seed/test5/900/1000.webp"
+            >
                 <p class="text-4xl text-white">
                     items in different games
                 </p>
             </slider-slide>
         </slider-container>
-        <game-list :games="Cards" header-component="h3"/>
+        <game-list
+            :games="Cards"
+            header-component="h3"
+        />
     </main>
 </ui-layout-content>
 </template>
 
 <script setup lang="ts">
-import { GameCard } from "~/components/game/Card.vue"
+import type { GameCard } from "~/components/game/Card.vue"
 
 const Cards: GameCard[] = [
     {

@@ -3,14 +3,19 @@ import { env } from "node:process"
 import { default as dynamicImport } from "vite-plugin-dynamic-import"
 import { default as inheritAttrs } from "vite-plugin-vue-setup-inherit-attrs"
 
-import { default as uno } from "./uno.config"
-
 import { BREAKPOINTS } from "./common/consts"
 import { Locale, LocaleISO } from "./common/enums"
+import { injectReflectMetadata } from "./common/plugins"
 import { getLocale, isDebug, isDevelopment, isProduction } from "./common/utils"
 import { name } from "./package.json"
+import { default as uno } from "./uno.config"
 
 export default defineNuxtConfig({
+    alias: {
+        "#schema": "../schema",
+        "#schema/*": "../schema/*",
+    },
+
     app: {
         baseURL: env.NUXT_APP_BASE_URL,
         buildAssetsDir: env.NUXT_APP_BUILD_ASSETS_DIR,
@@ -88,6 +93,23 @@ export default defineNuxtConfig({
                     "useDebounceFn",
                     "useMutationObserver",
                     "useResizeObserver",
+                ],
+            },
+            {
+                from: "class-transformer",
+                imports: [
+                    "Expose",
+                    "plainToClass",
+                ],
+            },
+            {
+                from: "class-validator",
+                imports: [
+                    "IsBoolean",
+                    "IsDefined",
+                    "IsNotEmpty",
+                    "IsNumber",
+                    "IsString",
                 ],
             },
         ],
@@ -219,6 +241,7 @@ export default defineNuxtConfig({
 
     runtimeConfig: {
         public: {
+            apiURL: env.API_URL,
             baseURL: env.NUXT_APP_BASE_URL,
             theme: uno.theme,
         },
@@ -299,6 +322,7 @@ export default defineNuxtConfig({
         plugins: [
             dynamicImport(),
             inheritAttrs(),
+            injectReflectMetadata(),
         ],
         server: {
             preTransformRequests: true,

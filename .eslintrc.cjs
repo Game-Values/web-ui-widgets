@@ -31,13 +31,11 @@ module.exports = (() => (
             "@logux/eslint-config/ts",
         ],
 
-        plugins: [
-            "import",
-        ],
-
         ignorePatterns: [
             "schema/**/*.ts",
             "*.cjs",
+            "*.mjs",
+            "*.js",
         ],
 
         rules: {
@@ -75,26 +73,6 @@ module.exports = (() => (
                 vue: "always",
             }],
 
-            "import/order": ["error", {
-                "newlines-between": "always-and-inside-groups",
-                groups: [
-                    [
-                        "type"
-                    ],
-                    [
-                        "builtin",
-                        "external",
-                    ],
-                    [
-                        "internal",
-                        "parent",
-                        "sibling",
-                        "index",
-                        "object",
-                    ],
-                ],
-            }],
-
             "max-len": ["error", {
                 code: 120,
                 tabWidth: 4,
@@ -113,16 +91,31 @@ module.exports = (() => (
                 },
             }],
 
-            "sort-imports": ["error", {
-                allowSeparatedGroups: true,
-                ignoreCase: false,
-                ignoreDeclarationSort: false,
-                ignoreMemberSort: false,
-                memberSyntaxSortOrder: [
-                    "none",
-                    "all",
-                    "multiple",
-                    "single",
+            "perfectionist/sort-imports": ["error", {
+                type: "natural",
+                order: "asc",
+                groups: [
+                    [
+                        "type",
+                        "builtin-type",
+                        "external-type",
+                        "internal-type",
+                        "parent-type",
+                        "sibling-type",
+                        "index-type",
+                    ],
+
+                    "builtin",
+                    "external",
+                    "internal",
+
+                    [
+                        "parent",
+                        "siblings",
+                        "index",
+                    ],
+
+                    "vue",
                 ],
             }],
 

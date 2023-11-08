@@ -1,5 +1,5 @@
 <template>
-<nav-bc :pages-list="pages"/>
+<nav-bc :pages-list="pages" />
 
 <div class="flex min-h-full flex-col">
     <!-- 2 column wrapper -->
@@ -10,11 +10,12 @@
             <div class="flex p-4 bg-gray-800 bg-opacity-77 rounded-xl border border-white border-opacity-0 items-start gap-4">
                 <div class="flex-none relative w-48 h-48 md:w-24 md:h-24">
                     <img
-                    class="absolute top-0 left-0 w-full h-full rounded-full shadow border-4 border-cyan-300"
-                    src="https://via.placeholder.com/196x196">
+                        class="absolute top-0 left-0 w-full h-full rounded-full shadow border-4 border-cyan-300"
+                        src="https://via.placeholder.com/196x196"
+                    >
                     <div class="absolute bottom-0 left-3/4 p-2 bg-blue-500 rounded-full flex items-center gap-2">
                         <div class="w-3 h-3 shadow flex items-center justify-center">
-                            <div class="w-3 h-3 relative"/>
+                            <div class="w-3 h-3 relative" />
                         </div>
                     </div>
                 </div>
@@ -57,20 +58,22 @@
                     </div>
                 </div>
                 <div class="flex-none flex items-center justify-center w-6 h-6">
-                    <div class="relative w-6 h-6"/>
+                    <div class="relative w-6 h-6" />
                 </div>
             </div>
 
             <!--    TABS    -->
             <div class="w-full h-[34px] justify-start items-start flex bg-gray-850 bg-opacity-77">
                 <div
-                class="flex-1 h-[34px] px-3 py-[7px] bg-blue-500 rounded-tl-lg rounded-bl-lg justify-center items-center gap-1.5 flex">
+                    class="flex-1 h-[34px] px-3 py-[7px] bg-blue-500 rounded-tl-lg rounded-bl-lg justify-center items-center gap-1.5 flex"
+                >
                     <div class="text-white text-opacity-70 font-semibold font-['Montserrat'] leading-tight">
                         Storefront
                     </div>
                 </div>
                 <div
-                class="flex-1 h-[34px] px-3 py-[7px] bg-white bg-opacity-0 rounded-tr-lg rounded-br-lg justify-center items-center gap-1.5 flex">
+                    class="flex-1 h-[34px] px-3 py-[7px] bg-white bg-opacity-0 rounded-tr-lg rounded-br-lg justify-center items-center gap-1.5 flex"
+                >
                     <div class="text-white text-opacity-70 font-normal font-['Montserrat'] leading-tight">
                         Reviews
                     </div>
@@ -80,7 +83,10 @@
             <!--    GAME 1    -->
 
             <div class="w-full h-[92px] pl-[5px] pr-[21px] py-1.5 bg-gray-800 bg-opacity-77 rounded-[17px] justify-start items-center gap-[18px] inline-flex">
-                <img class="w-20 h-20 relative rounded-xl border border-white" src="https://via.placeholder.com/80x80">
+                <img
+                    class="w-20 h-20 relative rounded-xl border border-white"
+                    src="https://via.placeholder.com/80x80"
+                >
                 <div class="flex-grow flex-shrink flex-basis-0 flex-col justify-start items-start gap-1.5 inline-flex">
                     <div class="text-white text-[17px] font-bold font-['Montserrat'] truncate">
                         Artifact
@@ -100,7 +106,10 @@
             <!-- GAME 2 -->
             <div class="w-full h-auto flex-col justify-start items-end gap-3 inline-flex pt-1">
                 <div class="w-full pl-[5px] pr-[21px] py-1.5 bg-gray-800 bg-opacity-77 rounded-[17px] shadow border border-white border-opacity-0 justify-start items-center gap-[18px] inline-flex">
-                    <img class="w-20 h-20 relative rounded-xl border border-white" src="https://via.placeholder.com/80x80">
+                    <img
+                        class="w-20 h-20 relative rounded-xl border border-white"
+                        src="https://via.placeholder.com/80x80"
+                    >
                     <div class="flex-grow flex-col justify-start items-start gap-1.5 inline-flex">
                         <div class="text-white text-[17px] font-bold font-['Montserrat'] truncate">
                             Word of Warcraft
@@ -285,13 +294,22 @@
                     </div>
                     <div class="flex justify-start items-start gap-5 flex-wrap">
                         <div class="flex-col justify-start items-start gap-2">
-                            <img class="w-16 h-16 rounded shadow border-2 border-white" src="https://via.placeholder.com/58x58">
+                            <img
+                                class="w-16 h-16 rounded shadow border-2 border-white"
+                                src="https://via.placeholder.com/58x58"
+                            >
                         </div>
                         <div class="flex-col justify-start items-start gap-2">
-                            <img class="w-16 h-16 rounded shadow border-2 border-white" src="https://via.placeholder.com/58x58">
+                            <img
+                                class="w-16 h-16 rounded shadow border-2 border-white"
+                                src="https://via.placeholder.com/58x58"
+                            >
                         </div>
                         <div class="flex-col justify-start items-start gap-2">
-                            <img class="w-16 h-16 rounded shadow border-2 border-white" src="https://via.placeholder.com/58x58">
+                            <img
+                                class="w-16 h-16 rounded shadow border-2 border-white"
+                                src="https://via.placeholder.com/58x58"
+                            >
                         </div>
                     </div>
                 </div>

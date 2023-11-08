@@ -1,5 +1,8 @@
 <template>
-<aside class="p-4 text-gray-500 rounded" style="background-color: #1d1d1e">
+<aside
+    class="p-4 text-gray-500 rounded"
+    style="background-color: #1d1d1e"
+>
     <h1 class="text-xl font-bold mb-4">
         Filters
     </h1>
@@ -10,10 +13,11 @@
             Search Category
         </h2>
         <input
-        class="p-2 w-full rounded"
-        placeholder="Search categories..."
-        v-model="searchTerm"
-        type="text">
+            class="p-2 w-full rounded"
+            placeholder="Search categories..."
+            type="text"
+            v-model="searchTerm"
+        >
     </div>
 
     <!-- Categories -->
@@ -24,7 +28,11 @@
         <div class="space-y-2">
             <div v-for="category in filteredCategories" :key="category.id">
                 <label class="flex items-center">
-                    <input class="form-checkbox h-5 w-5 text-gray-500 border-gray-500 bg-white" type="checkbox" v-model="category.selected">
+                    <input
+                        v-model="category.selected"
+                        class="form-checkbox h-5 w-5 text-gray-500 border-gray-500 bg-white"
+                        type="checkbox"
+                    >
                     <span class="ml-2">{{ category.name }}</span>
                 </label>
             </div>
@@ -49,13 +57,18 @@
             Game Mode
         </h2>
         <div class="space-y-2">
-            <label :key="mode.value" class="flex items-center" v-for="mode in gameModes">
+            <label
+                v-for="mode in gameModes"
+                :key="mode.value"
+                class="flex items-center"
+            >
                 <input
-                :value="mode.value"
-                class="form-radio h-5 w-5 text-gray-500 border-gray-500 bg-white"
-                name="gameMode"
-                type="radio"
-                v-model="selectedGameMode">
+                    :value="mode.value"
+                    class="form-radio h-5 w-5 text-gray-500 border-gray-500 bg-white"
+                    name="gameMode"
+                    v-model="selectedGameMode"
+                    type="radio"
+                >
                 <span class="ml-2">{{ mode.label }}</span>
             </label>
         </div>
@@ -67,11 +80,12 @@
             Price Range: ${{ priceRange }}
         </h2>
         <input
-        class="w-full"
-        max="1000"
-        min="0"
-        type="range"
-        v-model="priceRange">
+            class="w-full"
+            max="1000"
+            min="0"
+            v-model="priceRange"
+            type="range"
+        >
     </div>
 </aside>
 </template>

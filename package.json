@@ -25,8 +25,8 @@
     "scripts": {
         "preinstall": "npx only-allow pnpm",
         "postinstall": "npx nuxi prepare",
-        "dev": "npx nuxi dev --dotenv .env.development",
-        "build": "npx nuxi build --dotenv .env.production",
+        "dev": "npx nuxi dev",
+        "build": "npx nuxi build",
         "lint": "npx eslint .",
         "preview": "npx nuxi preview",
         "tsc": "npx vue-tsc --noEmit"
@@ -67,12 +67,17 @@
         "nuxt-swiper": "^1.2.2",
         "nuxt-viewport": "^2.0.6",
         "sass": "^1.69.5",
+        "swagger-typescript-api": "^13.0.3",
         "typescript": "^5.2.2",
         "vite-plugin-dynamic-import": "^1.5.0",
         "vite-plugin-vue-setup-inherit-attrs": "^1.0.8",
         "vue-eslint-parser": "^9.3.2"
     },
     "dependencies": {
-        "@tanstack/vue-query": "^5.8.1"
+        "@tanstack/vue-query": "^5.8.1",
+        "brandi": "^5.0.0",
+        "class-transformer": "^0.5.1",
+        "class-validator": "^0.14.0",
+        "reflect-metadata": "^0.1.13"
     }
 }

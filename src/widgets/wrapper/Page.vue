@@ -7,7 +7,9 @@ defineSlots<Slots>()
 </script>
 
 <template>
-<widget-provider-config>
+<section
+    :id="$route.name as string"
+>
     <slot />
-</widget-provider-config>
+</section>
 </template>

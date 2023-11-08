@@ -9,8 +9,11 @@ defineProps<Props>()
 
 <template>
 <li class="container text-white">
-    <div class="icon text-primary" role="presentation">
-        <slot name="icon"/>
+    <div
+        class="icon text-primary"
+        role="presentation"
+    >
+        <slot name="icon" />
     </div>
     <span class="value text-lg font-medium">
         {{ value }}

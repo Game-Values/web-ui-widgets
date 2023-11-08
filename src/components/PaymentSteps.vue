@@ -3,28 +3,38 @@
     <div class="flex items-center relative w-full">
         <!-- Connecting line for steps -->
         <div
-        :style="lineStyles"
-        class="absolute h-[2px] bg-blue-500 z-0"
-        ref="circle"
-        style="top: 50%; transform: translateY(calc(50% - 15px));"/>
+            :style="lineStyles"
+            ref="circle"
+            class="absolute h-[2px] bg-blue-500 z-0"
+            style="top: 50%; transform: translateY(calc(50% - 15px));"
+        />
 
         <div
-        :key="step.number"
-        class="flex flex-col items-center flex-grow z-10"
-        v-for="step in steps">
+            :key="step.number"
+            v-for="step in steps"
+            class="flex flex-col items-center flex-grow z-10"
+        >
             <div
-            :class="stepClass(step.number)"
-            class="w-[38px] md:w-[48px] h-[38px] md:h-[48px] rounded-full shadow flex justify-center items-center">
+                :class="stepClass(step.number)"
+                class="w-[38px] md:w-[48px] h-[38px] md:h-[48px] rounded-full shadow flex justify-center items-center"
+            >
                 <!-- Check icon for previous steps -->
                 <div v-if="step.number < currentStep" class="text-white text-xl md:text-level-3">
                     <ui-icon-check size="24" />
                 </div>
                 <!-- Step number for current and upcoming steps -->
-                <div :class="stepTextClass(step.number)" class="md:text-xl font-semibold" v-else>
+                <div
+                    v-else
+                    :class="stepTextClass(step.number)"
+                    class="md:text-xl font-semibold"
+                >
                     {{ step.number }}
                 </div>
             </div>
-            <div :class="descriptionTextClass(step.number)" class="mt-2 md:leading-tight text-center">
+            <div
+                :class="descriptionTextClass(step.number)"
+                class="mt-2 md:leading-tight text-center"
+            >
                 {{ step.description }}
             </div>
         </div>

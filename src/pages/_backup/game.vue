@@ -3,25 +3,31 @@
     <main class="w-full">
 
         <games-card
-        :buttons="buttons"
-        :categories="game.categories"
-        :description="game.description"
-        :key="game.id"
-        :title="game.title"
-        v-for="game in games"
+            :buttons="buttons"
+            :categories="game.categories"
+            :key="game.id"
+            :description="game.description"
+            v-for="game in games"
+            :title="game.title"
         />
         <div class="flex items-center justify-between w-10/12 h-16 space-x-4">
             <div class="flex items-center space-x-2">
                 <!-- Adding heroicons as an example -->
-                <ui-icon-outline-search size="20" class="text-gray-400"/>
-                <system-search class="flex-grow w-10/12" html-table-id="goods"/>
+                <ui-icon-outline-search
+                    class="text-gray-400"
+                    size="20"
+                />
+                <system-search
+                    class="flex-grow w-10/12"
+                    html-table-id="goods"
+                />
             </div>
-            <switch-toggle v-model="isSwitched"/>
+            <switch-toggle v-model="isSwitched" />
         </div>
         <div class="flex bg-[#1d1d1e]">
             <!-- Sidebar -->
             <div class="w-1/4 p-4">
-                <sidebar-search/>
+                <sidebar-search />
             </div>
 
             <!-- Main content -->

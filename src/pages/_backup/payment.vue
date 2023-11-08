@@ -1,5 +1,5 @@
 <template>
-<nav-bc :pages-list="pages"/>
+<nav-bc :pages-list="pages" />
 
 <div class="flex min-h-full flex-col">
     <!-- 2 column wrapper -->
@@ -8,14 +8,20 @@
         <div class="px-4 py-6 sm:px-6 lg:pl-8 xl:w-1/2 xl:shrink-0 xl:pl-6">
 
             <div class="h-12 lg:h-auto py-4 lg:py-12">
-                <nav-steps :steps="steps"/>
+                <nav-steps :steps="steps" />
             </div>
 
             <div class="flex justify-start items-center gap-6 pb-5">
                 <!-- Images and divs taking equal widths on larger screens and stacking on smaller screens -->
-                <img class="flex-grow flex-shrink w-full md:w-auto md:max-w-[202px] h-full md:h-[106px] rounded-lg" src="https://via.placeholder.com/202x106">
-                <img class="flex-grow flex-shrink w-full md:w-auto md:max-w-[202px] h-full md:h-[106px] rounded-lg" src="https://via.placeholder.com/202x106">
-                <div class="flex-grow flex-shrink w-full md:w-auto md:max-w-[202px] h-full md:h-[106px] bg-gradient-to-l from-zinc-900 to-zinc-900 rounded-lg"/>
+                <img
+                    class="flex-grow flex-shrink w-full md:w-auto md:max-w-[202px] h-full md:h-[106px] rounded-lg"
+                    src="https://via.placeholder.com/202x106"
+                >
+                <img
+                    class="flex-grow flex-shrink w-full md:w-auto md:max-w-[202px] h-full md:h-[106px] rounded-lg"
+                    src="https://via.placeholder.com/202x106"
+                >
+                <div class="flex-grow flex-shrink w-full md:w-auto md:max-w-[202px] h-full md:h-[106px] bg-gradient-to-l from-zinc-900 to-zinc-900 rounded-lg" />
 
                 <!-- Spacer div (assuming you want it only on larger screens) -->
                 <div class="hidden md:flex justify-center items-center">
@@ -86,7 +92,7 @@
                                                 I will pay
                                             </div>
                                         </div>
-                                        <div class="py-2.5 flex-col justify-center items-start gap-2.5 inline-flex"/>
+                                        <div class="py-2.5 flex-col justify-center items-start gap-2.5 inline-flex" />
                                         <div class="h-12 px-4 py-3 bg-white bg-opacity-10 rounded-lg justify-start items-center gap-2.5 flex">
                                             <div class="text-white text-opacity-60 font-normal leading-normal">
                                                 I will receive
@@ -97,7 +103,7 @@
                             </div>
                             <div class="justify-center items-center gap-5 inline-flex">
                                 <div class="w-5 h-5 origin-top-left transform -rotate-180 justify-center items-center flex">
-                                    <div class="w-5 h-5 relative"/>
+                                    <div class="w-5 h-5 relative" />
                                 </div>
                                 <div class="text-white text-opacity-60 font-normal leading-normal">
                                     Minimum 400 units of gold
@@ -136,12 +142,12 @@
                     </div>
                     <div class="pl-4 pr-3 py-3.5 bg-white bg-opacity-10 rounded-lg justify-start items-center gap-2.5 inline-flex">
                         <div class="w-6 h-6 justify-center items-center flex">
-                            <div class="w-6 h-6 relative"/>
+                            <div class="w-6 h-6 relative" />
                         </div>
                         <div class="flex-grow text-white font-semibold leading-tight">
                             With a credit card on the website
                         </div>
-                        <div class="w-6 px-px py-1.5 rounded-md flex-col justify-center items-center gap-2.5 inline-flex"/>
+                        <div class="w-6 px-px py-1.5 rounded-md flex-col justify-center items-center gap-2.5 inline-flex" />
                     </div>
                 </div>
                 <div class="flex-col justify-start items-start gap-3 flex">
@@ -157,13 +163,13 @@
             </div>
 
             <div class="my-5">
-                <marketing-qna :qnas="qnas"/>
+                <marketing-qna :qnas="qnas" />
             </div>
 
         </div>
 
         <!-- Right column -->
-        <div class="px-4 py-6 sm:px-6 lg:pl-8 xl:w-1/2 xl:shrink-0 xl:pl-6"/>
+        <div class="px-4 py-6 sm:px-6 lg:pl-8 xl:w-1/2 xl:shrink-0 xl:pl-6" />
     </ui-layout-content>
 </div>
 </template>

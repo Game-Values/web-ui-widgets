@@ -14,22 +14,34 @@ defineProps<Created>()
 
 <template>
 <info-list>
-    <info-list-item :label="$t('comp.GeneralStatistics.goods')" :value="formatNumbers(goods)">
+    <info-list-item
+        :label="$t('comp.GeneralStatistics.goods')"
+        :value="formatNumbers(goods)"
+    >
         <template #icon>
             <ui-icon-store-front size="40" />
         </template>
     </info-list-item>
-    <info-list-item :label="$t('comp.GeneralStatistics.deals')" :value="formatNumbers(deals)">
+    <info-list-item
+        :label="$t('comp.GeneralStatistics.deals')"
+        :value="formatNumbers(deals)"
+    >
         <template #icon>
             <ui-icon-credit-card size="40" />
         </template>
     </info-list-item>
-    <info-list-item :label="$t('comp.GeneralStatistics.online')" :value="formatNumbers(online)">
+    <info-list-item
+        :label="$t('comp.GeneralStatistics.online')"
+        :value="formatNumbers(online)"
+    >
         <template #icon>
             <ui-icon-user size="40" />
         </template>
     </info-list-item>
-    <info-list-item :label="$t('comp.GeneralStatistics.users')" :value="formatNumbers(users)">
+    <info-list-item
+        :label="$t('comp.GeneralStatistics.users')"
+        :value="formatNumbers(users)"
+    >
         <template #icon>
             <ui-icon-users size="40" />
         </template>

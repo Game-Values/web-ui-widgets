@@ -6,7 +6,12 @@
                 Frequently asked questions
             </h2>
             <dl class="mt-10 space-y-6 divide-y divide-blue-900/10 divide-solid">
-                <ui-headless-disclosure :key="qna.question" as="div" class="pt-6" v-for="qna in qnas" v-slot="{ open }">
+                <ui-headless-disclosure
+                    :key="qna.question"
+                    as="div"
+                    class="pt-6"
+v-for="qna in qnas" v-slot="{ open }"
+                >
                     <dt>
                         <ui-headless-disclosure-button class="flex w-full items-start justify-between text-left text-white text-opacity-60">
                             <span class="font-semibold leading-7">{{ qna.question }}</span>
@@ -23,7 +28,10 @@
                             </span>
                         </ui-headless-disclosure-button>
                     </dt>
-                    <ui-headless-disclosure-panel as="dd" class="mt-2 pr-12">
+                    <ui-headless-disclosure-panel
+                        as="dd"
+                        class="mt-2 pr-12"
+                    >
                         <p class="leading-7 text-blue-600">
                             {{ qna.answer }}
                         </p>

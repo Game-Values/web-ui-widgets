@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { Color } from "~/types"
-import type { ComputedRef } from "vue"
 import type { IconProps } from "vexip-ui"
+import type { ComputedRef } from "vue"
 
 interface Props extends IconProps {
     color?: Color

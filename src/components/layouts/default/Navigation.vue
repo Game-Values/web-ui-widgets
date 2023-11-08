@@ -19,15 +19,18 @@
                     </ui-headless-disclosure-button>
                 </div>
                 <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                    <nuxt-link class="flex flex-shrink-0 items-center" to="/">
+                    <nuxt-link
+                        class="flex flex-shrink-0 items-center"
+                        to="/"
+                    >
                         <img src="~/assets/images/logo.png">
                     </nuxt-link>
                     <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
                         <nuxt-link
-                        :key="`nav-${i}`"
-                        :to="nav.to"
-                        v-for="(nav, i) in navigation"
-                        class="inline-flex items-center px-1 pt-1 font-medium text-gray-100 hover:text-primary"
+                            :key="`nav-${i}`"
+                            :to="nav.to"
+                            class="inline-flex items-center px-1 pt-1 font-medium text-gray-100 hover:text-primary"
+                            v-for="(nav, i) in navigation"
                         >
                             {{ nav.name }}
                         </nuxt-link>
@@ -35,7 +38,7 @@
                 </div>
                 <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                     <!--                <AlertsButton />-->
-                    <authentication-navigation/>
+                    <authentication-navigation />
                 </div>
             </div>
         </ui-layout-content>
@@ -44,10 +47,11 @@
             <div class="space-y-1 pt-2 pb-4">
                 <!-- Current: "bg-rose-50 border-rose-500 text-rose-700", Default: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" -->
                 <nuxt-link
-                :key="`nav-mobile-${i}`"
-                :to="nav.to"
-                class="block hover:border-l-4 hover:border-blue-500 hover:bg-blue-50 py-2 pl-3 pr-4 font-medium text-blue-700"
-                v-for="(nav, i) in navigation">
+                    :key="`nav-mobile-${i}`"
+                    :to="nav.to"
+                    v-for="(nav, i) in navigation"
+                    class="block hover:border-l-4 hover:border-blue-500 hover:bg-blue-50 py-2 pl-3 pr-4 font-medium text-blue-700"
+                >
                     {{ nav.name }}
                 </nuxt-link>
             </div>

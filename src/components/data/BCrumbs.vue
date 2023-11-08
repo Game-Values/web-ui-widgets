@@ -1,14 +1,23 @@
 <template>
-<ol :class="[wrapperClass, 'relative z-0']" typeof="BreadcrumbList" vocab="http://schema.org/">
+<ol
+    :class="[wrapperClass, 'relative z-0']"
+    typeof="BreadcrumbList"
+    vocab="http://schema.org/"
+>
     <li
-    :key="index"
-    class="inline text-white"
-    property="itemListElement"
-    typeof="ListItem"
-    v-for="(breadcrumb, index) in breadcrumbs">
+        :key="index"
+        class="inline text-white"
+        property="itemListElement"
+        v-for="(breadcrumb, index) in breadcrumbs"
+        typeof="ListItem"
+    >
         <span :class="breadcrumbClass(breadcrumb)">
             <template v-if="breadcrumb.link">
-                <nuxt-link :to="breadcrumb.link" property="item" typeof="WebPage">
+                <nuxt-link
+                    :to="breadcrumb.link"
+                    property="item"
+                    typeof="WebPage"
+                >
                     <span property="name">{{ breadcrumb.label }}</span>
                 </nuxt-link>
             </template>
@@ -16,7 +25,10 @@
                 <span property="name">{{ breadcrumb.label }}</span>
             </template>
         </span>
-        <meta :content="(index + 1).toString()" property="position">
+        <meta
+            :content="(index + 1).toString()"
+            property="position"
+        >
         <span v-if="index < breadcrumbs.length - 1" :class="separatorClass">&nbsp;/&nbsp;</span>
     </li>
 </ol>

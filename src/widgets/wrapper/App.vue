@@ -7,7 +7,9 @@ defineSlots<Slots>()
 </script>
 
 <template>
-<widget-provider-config>
-    <slot />
-</widget-provider-config>
+<widget-provider-setup>
+    <widget-provider-config>
+        <slot />
+    </widget-provider-config>
+</widget-provider-setup>
 </template>

@@ -2,6 +2,22 @@
 import type { PropType } from "vue"
 
 export default defineComponent({
+    props: {
+        data: {
+            required: true,
+            type: Array as PropType<Array<Record<string, any>>>,
+        },
+        id: {
+            required: false,
+            type: String,
+        },
+    },
+    data() {
+        return {
+            currentPage: 1,
+            itemsPerPage: 9,
+    }
+    },
     computed: {
         headers(): string[] {
             if (this.data.length > 0)
@@ -17,12 +33,6 @@ export default defineComponent({
         totalPages(): number {
             return Math.ceil(this.data.length / this.itemsPerPage)
         }
-    },
-    data() {
-        return {
-            currentPage: 1,
-            itemsPerPage: 9,
-    }
     },
     methods: {
         gotoPage(pageNumber: number) {
@@ -50,23 +60,16 @@ export default defineComponent({
             this.currentPage = newPage
         },
     },
-    props: {
-        data: {
-            required: true,
-            type: Array as PropType<Array<Record<string, any>>>,
-        },
-        id: {
-            required: false,
-            type: String,
-        },
-    },
 })
 </script>
 
 <template>
 <div class="min-w-full divide-gray-200 divide-solid divide-y">
     <div class="min-w-full divide-solid divide-y divide-solarized-base1 bg-solarized-base03 p-6 rounded-lg shadow-lg">
-        <table :id="id" class="min-w-full w-full table-fixed">
+        <table
+            :id="id"
+            class="min-w-full w-full table-fixed"
+        >
             <thead class="text-solarized-base0">
                 <tr>
                     <!-- Seller Column Title -->
@@ -76,9 +79,10 @@ export default defineComponent({
                     <!-- Other Columns Titles -->
                     <template v-for="header in headers">
                         <th
-                        :key="header"
-                        v-if="header !== 'Seller'"
-                        class="px-6 py-3 flex-grow text-left font-medium text-gray-100 uppercase tracking-wider">
+                            v-if="header !== 'Seller'"
+                            :key="header"
+                            class="px-6 py-3 flex-grow text-left font-medium text-gray-100 uppercase tracking-wider"
+                        >
                             {{ header }}
                         </th>
                     </template>
@@ -86,15 +90,20 @@ export default defineComponent({
             </thead>
             <tbody class="text-solarized-base1">
                 <tr
-                :key="JSON.stringify(item)"
-                v-for="item in paginatedData"
-                class="hover:bg-solarized-base02 hover:rounded-lg transition-colors duration-300">
+                    v-for="item in paginatedData"
+                    :key="JSON.stringify(item)"
+                    class="hover:bg-solarized-base02 hover:rounded-lg transition-colors duration-300"
+                >
                     <!-- Seller Column -->
                     <td class="px-6 py-4 w-48 flex-none whitespace-nowrap">
                         <div class="flex">
                             <!-- Left Column: Logo and Name -->
                             <div class="flex-shrink-0 flex flex-col items-center mr-4">
-                                <nuxt-img :src="'/userlogo.jpg'" alt="User Image" class="h-11 w-11 rounded-full"/>
+                                <nuxt-img
+                                    :src="'/userlogo.jpg'"
+                                    alt="User Image"
+                                    class="h-11 w-11 rounded-full"
+                                />
                                 <!--                <span class="mt-2">{{ truncateName(item.Seller.name) }}</span>-->
                             </div>
                             <!-- Right Column: Deals, Likes, and Rating -->
@@ -124,7 +133,11 @@ export default defineComponent({
                     </td>
                     <!-- Other Columns -->
                     <template v-for="header in headers">
-                        <td :key="header" class="px-6 py-4 flex-grow whitespace-nowrap" v-if="header !== 'Seller'">
+                        <td
+                            :key="header"
+                            class="px-6 py-4 flex-grow whitespace-nowrap"
+                            v-if="header !== 'Seller'"
+                        >
                             <div v-if="typeof item[header] === 'object'">
                                 <div v-for="(value, subKey) in item[header]" :key="subKey">
                                     <strong>{{ subKey }}:</strong> {{ value }}
@@ -154,9 +167,10 @@ export default defineComponent({
 
     <!-- Pagination Controls -->
     <nav-pag
-    :current-page="currentPage"
-    :total-pages="totalPages"
-    @update:currentPage="updatePage"/>
+        :current-page="currentPage"
+        :total-pages="totalPages"
+        @update:currentPage="updatePage"
+    />
 </div>
 </template>
 

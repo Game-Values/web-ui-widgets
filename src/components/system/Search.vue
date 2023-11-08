@@ -1,10 +1,11 @@
 <template>
 <div>
     <input
-    @input="handleSearch"
-    class="w-full sm:flex sm:items-center p-2 border rounded-md bg-gray-900"
-    placeholder="Search..."
-    v-model="searchQuery">
+        class="w-full sm:flex sm:items-center p-2 border rounded-md bg-gray-900"
+        @input="handleSearch"
+        placeholder="Search..."
+        v-model="searchQuery"
+    >
 </div>
 </template>
 

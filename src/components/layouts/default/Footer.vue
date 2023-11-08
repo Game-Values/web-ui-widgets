@@ -1,21 +1,36 @@
 <template>
 <footer class="bg-gray-900">
     <ui-layout-content class="mx-auto max-w-md overflow-hidden py-12 px-4 sm:max-w-3xl sm:px-6 lg:px-8">
-        <nav aria-label="Footer" class="-mx-5 -my-2 flex flex-wrap justify-center">
-            <div :key="item.name" class="px-5 py-2" v-for="item in footerNavigation.main">
-                <nuxt-link :to="item.to" class="text-gray-400 hover:text-gray-300">
+        <nav
+            aria-label="Footer"
+            class="-mx-5 -my-2 flex flex-wrap justify-center"
+        >
+            <div
+                v-for="item in footerNavigation.main"
+                :key="item.name"
+                class="px-5 py-2"
+            >
+                <nuxt-link
+                    :to="item.to"
+                    class="text-gray-400 hover:text-gray-300"
+                >
                     {{ item.name }}
                 </nuxt-link>
             </div>
         </nav>
         <div class="mt-8 flex justify-center space-x-6">
             <a
-            :key="item.name"
-            :href="item.href"
-            v-for="item in footerNavigation.social"
-            class="text-gray-400 hover:text-gray-300">
+                :href="item.href"
+                :key="item.name"
+                class="text-gray-400 hover:text-gray-300"
+                v-for="item in footerNavigation.social"
+            >
                 <span class="sr-only">{{ item.name }}</span>
-                <component :is="item.icon" aria-hidden="true" class="h-6 w-6"/>
+                <component
+                    :is="item.icon"
+                    aria-hidden="true"
+                    class="h-6 w-6"
+                />
             </a>
         </div>
         <p class="mt-8 text-center text-gray-400">

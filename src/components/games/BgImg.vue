@@ -1,8 +1,9 @@
 <template>
 <div
-:style="backgroundImage"
-class="relative bg-no-repeat bg-cover h-[394px] bg-gradient-to-b from-black to-black">
-    <slot/>
+    :style="backgroundImage"
+    class="relative bg-no-repeat bg-cover h-[394px] bg-gradient-to-b from-black to-black"
+>
+    <slot />
 </div>
 </template>
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { CSSProperties } from "@vue/runtime-dom"
+import type { CSSProperties } from "vue"
 
 interface Slide {
     horizontalImage: string
@@ -24,9 +24,13 @@ h-[530px] md:h-[350px]
 </script>
 
 <template>
-<div :class="twClasses" :style="style" class="slide-container">
+<div
+    :class="twClasses"
+    :style="style"
+    class="slide-container"
+>
     <div class="flex flex-col md:justify-center">
-        <slot/>
+        <slot />
     </div>
 </div>
 </template>

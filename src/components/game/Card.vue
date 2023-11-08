@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { Component } from "vue"
 import type { GameAPI } from "~/api"
+import type { Component } from "vue"
 
 export interface GameCard {
     image: string;
@@ -92,26 +92,35 @@ const updateMousePosition = (event: MouseEvent) => {
 
 <template>
 <article
-:class="{ 'liked': gameCard.liked }"
-class="relative cardContainer"
-@mousemove="updateMousePosition">
+    :class="{ 'liked': gameCard.liked }"
+    @mousemove="updateMousePosition"
+    class="relative cardContainer"
+>
 
     <div
-    @mouseenter="lightSpotVisible = true"
-    class="imageWrapper relative w-full block p-[1px] overflow-hidden rounded-md shadow-sm"
-    @mouseleave="lightSpotVisible = false">
-        <div :style="{ top: mousePos.y + 'px', left: mousePos.x + 'px' }" class="light-spot"/>
+        class="imageWrapper relative w-full block p-[1px] overflow-hidden rounded-md shadow-sm"
+        @mouseenter="lightSpotVisible = true"
+        @mouseleave="lightSpotVisible = false"
+    >
+        <div
+            :style="{ top: mousePos.y + 'px', left: mousePos.x + 'px' }"
+            class="light-spot"
+        />
         <span v-if="gameCard.itemsPosted" class="absolute right-4 top-4 px-2 text-white rounded-full bg-white/25">
             {{ gameCard.itemsPosted }}
         </span>
         <img
-        :alt="gameCard.name"
-        :src="gameImageUrl"
-        class="w-full h-full"
-        role="presentation">
+            :alt="gameCard.name"
+            :src="gameImageUrl"
+            class="w-full h-full"
+            role="presentation"
+        >
     </div>
     <div class="buttonsContainer grid items-start justify-between max-w-full mt-4 gap-2 whitespace-normal">
-        <a class="text-white font-bold linkContainer break-words" href="https://www.game-values.com/">
+        <a
+            class="text-white font-bold linkContainer break-words"
+            href="https://www.game-values.com/"
+        >
             {{ gameCard.name }}
         </a>
         <ui-button-circle-ghost

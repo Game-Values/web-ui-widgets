@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { VNode } from "vue"
 import { SliderSlide } from "#components"
 import { computed } from "#imports"
+import { VNode } from "vue"
 
 const modules = [SwiperAutoplay, SwiperEffectCreative, SwiperNavigation, SwiperPagination, SwiperA11y]
 const autoplaySettings = {
@@ -29,19 +29,20 @@ const slides = computed(() => slots.default?.().filter(isSlide) ?? [])
 <template>
 <div class="pagination-spacer">
     <swiper
-    :a11y="true"
-    :autoplay="autoplaySettings"
-    :creative-effect="creativeEffectSettings"
-    :effect="'creative'"
-    :loop="true"
-    :modules="modules"
-    :navigation="true"
-    :pagination="true"
-    :slides-per-view="1"
-    :space-between="20"
-    class="slider-container">
+        :a11y="true"
+        :autoplay="autoplaySettings"
+        :creative-effect="creativeEffectSettings"
+        :effect="'creative'"
+        :loop="true"
+        :modules="modules"
+        :navigation="true"
+        :pagination="true"
+        :slides-per-view="1"
+        :space-between="20"
+        class="slider-container"
+    >
         <swiper-slide v-for="(slide, idx) in slides" :key="idx">
-            <component :is="slide"/>
+            <component :is="slide" />
         </swiper-slide>
     </swiper>
 </div>
