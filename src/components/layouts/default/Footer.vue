@@ -1,6 +1,6 @@
 <template>
 <footer class="bg-gray-900">
-    <div class="mx-auto max-w-md overflow-hidden py-12 px-4 sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
+    <ui-layout-content class="mx-auto max-w-md overflow-hidden py-12 px-4 sm:max-w-3xl sm:px-6 lg:px-8">
         <nav aria-label="Footer" class="-mx-5 -my-2 flex flex-wrap justify-center">
             <div :key="item.name" class="px-5 py-2" v-for="item in footerNavigation.main">
                 <nuxt-link :to="item.to" class="text-base text-gray-400 hover:text-gray-300">
@@ -22,7 +22,7 @@
             &copy; {{ new Date().getFullYear() }} {{ siteName }}. All
             rights reserved.
         </p>
-    </div>
+    </ui-layout-content>
 </footer>
 </template>
 

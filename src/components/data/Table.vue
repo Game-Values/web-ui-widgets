@@ -1,22 +1,12 @@
 <script lang="ts">
-import { ArrowLongLeftIcon, ArrowLongRightIcon, ArrowUpIcon } from "@heroicons/vue/20/solid"
-import { ArrowLeftIcon, ArrowRightIcon , ArrowSmallUpIcon, HandThumbUpIcon } from "@heroicons/vue/24/solid/esm"
-import type { PropType } from "vue";
-import { defineComponent } from "vue"
+import type { PropType } from "vue"
+
 export default defineComponent({
-    components: {
-        ArrowLeftIcon,
-        ArrowLongLeftIcon,
-        ArrowLongRightIcon,
-        ArrowRightIcon,
-        ArrowSmallUpIcon,
-        HandThumbUpIcon,
-    },
     computed: {
         headers(): string[] {
-            if (this.data.length > 0) 
+            if (this.data.length > 0)
         return Object.keys(this.data[0]).filter(key => key !== "Seller")
-      
+
             return []
         },
         paginatedData(): Array<Record<string, any>> {
@@ -51,7 +41,7 @@ export default defineComponent({
         truncate(str?: string, length: number = 5): string {
             if (!str) return ""
 
-            if (str.length <= length) 
+            if (str.length <= length)
                 return str
 
             return str.substring(0, length) + "..."
@@ -74,13 +64,13 @@ export default defineComponent({
 </script>
 
 <template>
-<div class="min-w-full divide-y divide-gray-200">
-    <div class="min-w-full divide-y divide-solarized-base1 bg-solarized-base03 p-6 rounded-lg shadow-lg">
+<div class="min-w-full divide-gray-200 divide-solid divide-y">
+    <div class="min-w-full divide-solid divide-y divide-solarized-base1 bg-solarized-base03 p-6 rounded-lg shadow-lg">
         <table :id="id" class="min-w-full w-full table-fixed">
             <thead class="text-solarized-base0">
                 <tr>
                     <!-- Seller Column Title -->
-                    <th class="px-6 py-3 w-48 flex-none text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
+                    <th class="px-6 py-3 w-48 flex-none text-left font-medium text-gray-100 uppercase tracking-wider">
                         Seller
                     </th>
                     <!-- Other Columns Titles -->
@@ -88,7 +78,7 @@ export default defineComponent({
                         <th
                         :key="header"
                         v-if="header !== 'Seller'"
-                        class="px-6 py-3 flex-grow text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
+                        class="px-6 py-3 flex-grow text-left font-medium text-gray-100 uppercase tracking-wider">
                             {{ header }}
                         </th>
                     </template>
@@ -105,27 +95,27 @@ export default defineComponent({
                             <!-- Left Column: Logo and Name -->
                             <div class="flex-shrink-0 flex flex-col items-center mr-4">
                                 <nuxt-img :src="'/userlogo.jpg'" alt="User Image" class="h-11 w-11 rounded-full"/>
-                                <!--                <span class="mt-2 text-xs">{{ truncateName(item.Seller.name) }}</span>-->
+                                <!--                <span class="mt-2">{{ truncateName(item.Seller.name) }}</span>-->
                             </div>
                             <!-- Right Column: Deals, Likes, and Rating -->
                             <div class="flex-grow flex flex-col justify-between space-y-1">
                                 <!-- This div displays the deals info -->
-                                <div class="text-xs text-gray-100">
+                                <div class="text-gray-100">
                                     {{ truncate(item.Seller.name, 16) }}
                                 </div>
-                                <div class="text-xs text-gray-500">
+                                <div class="text-gray-500">
                                     {{ item.Seller.deals }} deals compl.
                                 </div>
                                 <!-- This flex container arranges its children in a row layout -->
-                                <div class="flex text-xs space-x-2">
+                                <div class="flex space-x-2">
                                     <!-- HandThumbUpIcon + liked in green -->
                                     <div class="flex items-center text-green-500">
-                                        <hand-thumb-up-icon class="h-4 w-4 mr-1"/>
+                                        <ui-icon-hand-thumb-up class="mr-1" />
                                         <span>{{ item.Seller.liked }}</span>
                                     </div>
                                     <!-- ArrowsUpDownIcon + rating in blue -->
-                                    <div class="flex items-center text-blue-500">
-                                        <arrow-small-up-icon class="h-4 w-4 mr-1"/>
+                                    <div class="flex items-center text-primary">
+                                        <ui-icon-arrow-small-up class="mr-1" />
                                         <span>{{ item.Seller.rating }}</span>
                                     </div>
                                 </div>
@@ -141,7 +131,7 @@ export default defineComponent({
                                 </div>
                             </div>
                             <div v-else>
-                                <div v-if="header === 'Description'" class="text-sm w-full whitespace-pre-line">
+                                <div v-if="header === 'Description'" class="w-full whitespace-pre-line">
                                     <div class="text-gray-200">
                                         {{ item[header] }}
                                     </div>
@@ -193,8 +183,6 @@ export default defineComponent({
   }
 }
 
-@tailwind utilities;
-
 .text-neon-blue {
   color: #00d9ff;
 }
@@ -234,12 +222,12 @@ th:nth-child(2), td:nth-child(2) {
 }
 
 tr:hover td:first-child {
-  border-top-left-radius: 0.5rem; /* Increase for a more pronounced rounding */
-  border-bottom-left-radius: 0.5rem;
+  border-top-left-radius: 0.8rem; /* Increase for a more pronounced rounding */
+  border-bottom-left-radius: 0.8rem;
 }
 
 tr:hover td:last-child {
-  border-top-right-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
+  border-top-right-radius: 0.8rem;
+  border-bottom-right-radius: 0.8rem;
 }
 </style>

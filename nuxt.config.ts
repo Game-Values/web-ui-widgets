@@ -30,12 +30,6 @@ export default defineNuxtConfig({
         },
     },
 
-    build: {
-        transpile: [
-            "@heroicons/vue",
-        ],
-    },
-
     components: [
         "~/components",
 
@@ -104,8 +98,7 @@ export default defineNuxtConfig({
         let modules: any[] = [
             "@hebilicious/vue-query-nuxt",
             "@nuxt/image",
-            "@nuxtjs/tailwindcss", // todo: remove & mv to unocss
-            // "@unocss/nuxt", // todo: returns after rm tailwindcss
+            "@unocss/nuxt",
 
             "nuxt-lazy-load",
 
@@ -118,8 +111,14 @@ export default defineNuxtConfig({
                 base64: true,
                 display: "swap",
                 families: {
-                    // todo: fetch usable from figma only
-                    Montserrat: true,
+                    Montserrat: {
+                        wght: [
+                            400,
+                            500,
+                            600,
+                            700,
+                        ],
+                    },
                 },
                 overwriting: true,
                 preload: true,
@@ -169,6 +168,10 @@ export default defineNuxtConfig({
             ["nuxt-delay-hydration", {
                 debug: isDebug(),
                 mode: "mount",
+            }],
+
+            ["nuxt-headlessui", {
+                prefix: "ui-headless",
             }],
 
             ["nuxt-seo-experiments", {
@@ -241,6 +244,7 @@ export default defineNuxtConfig({
                         @use "~/assets/styles/vars/breakpoints" as *
                         @use "~/assets/styles/vars/colors" as *
                         @use "~/assets/styles/vars/radius" as *
+                        @use "~/assets/styles/vars/sizes" as *
                         @use "~/assets/styles/vars/spaces" as *
                         @use "~/assets/styles/vars/typography" as *
                     `,
@@ -263,6 +267,7 @@ export default defineNuxtConfig({
                             @use "~/assets/styles/vars/breakpoints" as *;
                             @use "~/assets/styles/vars/colors" as *;
                             @use "~/assets/styles/vars/radius" as *;
+                            @use "~/assets/styles/vars/sizes" as *;
                             @use "~/assets/styles/vars/spaces" as *;
                             @use "~/assets/styles/vars/typography" as *;
                         `

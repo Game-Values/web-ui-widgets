@@ -1,14 +1,5 @@
 <script setup lang="ts">
-import {
-    ArrowPathIcon,
-    NoSymbolIcon,
-    HeartIcon as OutlineHeartIcon,
-} from "@heroicons/vue/24/outline/esm"
-import SolidHeartIcon from "@heroicons/vue/24/solid/esm/HeartIcon"
-
-import { computed, ref } from "#imports"
-
-import { GameAPI } from "~/api"
+import type { GameAPI } from "~/api"
 
 export interface GameCard {
     image: string;
@@ -61,10 +52,10 @@ const toggleLike = async () => {
 
 }
 
-const currentIcon = computed(() => {
-    if (isLoading.value) return ArrowPathIcon
-    if (errorFeedback.value) return NoSymbolIcon
-    return gameCard.liked ? SolidHeartIcon : OutlineHeartIcon
+const currentIcon = computed((): string => {
+    if (isLoading.value) return "ui-icon-arrow-path"
+    if (errorFeedback.value) return "ui-icon-no-symbol"
+    return gameCard.liked ? "ui-icon-solid-heart" : "ui-icon-outline-heart"
 })
 
 const gameImageUrl = computed(() => withBaseURL(`i/g/${gameCard.image}.png`))
@@ -73,7 +64,7 @@ const svgClasses = computed(() => {
     if (errorFeedback.value)
         return "h-6 w-6 text-gray-500 hover:text-gray-600 focus:ring-2 focus:ring-gray-500"
     else
-        return "h-6 w-6 text-blue-500 hover:text-blue-600 focus:ring-2 focus:ring-blue-500"
+        return "h-6 w-6 text-primary hover:text-blue-600 focus:ring-2 focus:ring-blue-500"
 
 })
 
@@ -123,8 +114,9 @@ class="relative cardContainer"
         @click="toggleLike"
         class="likeButton">
             <component
-            :class="svgClasses"
-            :is="currentIcon"/>
+                :is="currentIcon"
+                :class="svgClasses"
+            />
         </button>
     </div>
     <p v-if="errorFeedback" class="text-red-500 mt-2">
@@ -196,8 +188,8 @@ class="relative cardContainer"
 
 .light-spot {
   position: absolute;
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
   background: radial-gradient(rgba(200, 200, 200, 0.1) 70%, transparent);
   box-shadow: 0 0 35px 15px rgba(255, 255, 255, 0.1);
@@ -209,8 +201,8 @@ class="relative cardContainer"
 }
 
 .cardContainer:hover .light-spot {
-  width: 3.125rem;
-  height: 3.125rem;
+  width: 5rem;
+  height: 5rem;
   opacity: 1;
 }
 </style>

@@ -49,8 +49,8 @@ const slides = computed(() => slots.default?.().filter(isSlide) ?? [])
 
 <style scoped>
 .pagination-spacer {
-  padding-bottom: 3rem;
-  --swiper-pagination-bottom: -2.5rem;
+  padding-bottom: 4.8rem;
+  --swiper-pagination-bottom: -4rem;
   --swiper-pagination-bullet-border-radius: 4px;
   --swiper-pagination-bullet-size: 12px;
   --swiper-pagination-bullet-width: 20px;

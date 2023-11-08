@@ -1,22 +1,13 @@
 <template>
 <div class="relative code-container sm:flex sm:items-center w-full">
-    <pre class="code-block bg-gray-500 p-4 rounded w-full"><slot/></pre>
-    <button
-    @click="copyCode"
-    class="copy-button absolute top-2 right-2 sm:top-1 sm:right-1 bg-gray-400 border rounded p-2 hover:bg-gray-100">
-        <svg
-        class="w-6 h-6"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg">
-            <path
-            d="M9 5a2 2 0 012-2h2a2 2 0 012-2v2h3a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V9a2 2 0 012-2h3V5zm2 0v2m0 0h6M9 12h.01M9 16h.01"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"/>
-        </svg>
-    </button>
+    <pre class="code-block bg-gray-500 p-4 rounded w-full text-black text-lg font-medium leading-none">
+        <slot />
+    </pre>
+    <div class="absolute top-2 right-2 sm:top-1 sm:right-1 ">
+        <ui-button-secondary @click="copyCode">
+            <ui-icon-clipboard size="24" />
+        </ui-button-secondary>
+    </div>
 </div>
 </template>
 

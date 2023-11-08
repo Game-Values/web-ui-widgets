@@ -3,7 +3,7 @@
 
 <div class="flex min-h-full flex-col">
     <!-- 2 column wrapper -->
-    <div class="mx-auto w-full max-w-7xl grow lg:flex xl:px-2">
+    <ui-layout-content class="mx-auto w-full grow lg:flex xl:px-2">
         <!-- Left column -->
         <div class="px-4 py-6 sm:px-6 lg:pl-8 xl:w-1/2 xl:shrink-0 xl:pl-6">
 
@@ -19,50 +19,53 @@
 
                 <!-- Spacer div (assuming you want it only on larger screens) -->
                 <div class="hidden md:flex justify-center items-center">
-                    <arrow-right-circle-icon class="w-6 h-6 text-gray-100"/>
+                    <ui-icon-arrow-right-circle
+                        class="text-gray-100"
+                        size="24"
+                    />
                 </div>
             </div>
 
             <div class="w-full md:w-auto h-auto flex-col justify-start items-start gap-3 inline-flex pb-5">
-                <div class="self-stretch text-white text-2xl md:text-3xl font-bold font-montserrat">
+                <div class="self-stretch text-white text-level-3 md:text-3xl font-bold font-montserrat">
                     Gold ArcheAge: Unchained
                 </div>
-                <div class="self-stretch text-white text-sm md:text-base font-normal font-montserrat leading-tight">
+                <div class="self-stretch text-white md:text-base font-normal font-montserrat leading-tight">
                     In-game currency is a special form of currency used within the game for purchases, trading, upgrades, and other in-game purposes. It can be represented as...
-                    <span class="text-blue-500">Show more...</span>
+                    <span class="text-primary">Show more...</span>
                 </div>
             </div>
 
             <div class="flex justify-between items-start gap-6">
                 <div class="flex-col justify-start items-start gap-2">
-                    <div class="text-white text-opacity-10 text-xs font-normal font-['Montserrat'] uppercase leading-5">
+                    <div class="text-white text-opacity-10 font-normal font-['Montserrat'] uppercase leading-5">
                         Server:
                     </div>
-                    <div class="text-white text-sm font-normal font-['Montserrat'] leading-tight truncate w-48">
+                    <div class="text-white font-normal font-['Montserrat'] leading-tight truncate w-48">
                         Very long server name
                     </div>
                 </div>
                 <div class="flex-col justify-start items-start gap-2">
-                    <div class="text-white text-opacity-10 text-xs font-normal font-['Montserrat'] uppercase leading-5">
+                    <div class="text-white text-opacity-10 font-normal font-['Montserrat'] uppercase leading-5">
                         Availability:
                     </div>
-                    <div class="text-white text-sm font-normal font-['Montserrat'] leading-tight w-20 truncate">
+                    <div class="text-white font-normal font-['Montserrat'] leading-tight w-20 truncate">
                         120
                     </div>
                 </div>
                 <div class="flex-col justify-start items-start gap-2">
-                    <div class="text-white text-opacity-10 text-xs font-normal font-['Montserrat'] uppercase leading-5">
+                    <div class="text-white text-opacity-10 font-normal font-['Montserrat'] uppercase leading-5">
                         Currency:
                     </div>
-                    <div class="text-white text-sm font-normal font-['Montserrat'] leading-tight w-20 truncate">
+                    <div class="text-white font-normal font-['Montserrat'] leading-tight w-20 truncate">
                         Gold
                     </div>
                 </div>
                 <div class="flex-col justify-start items-start gap-2">
-                    <div class="text-white text-opacity-10 text-xs font-normal font-['Montserrat'] uppercase leading-5">
+                    <div class="text-white text-opacity-10 font-normal font-['Montserrat'] uppercase leading-5">
                         Price per unit:
                     </div>
-                    <div class="text-white text-sm font-semibold font-['Montserrat'] leading-tight w-20 truncate">
+                    <div class="text-white font-semibold font-['Montserrat'] leading-tight w-20 truncate">
                         20,22
                     </div>
                 </div>
@@ -73,7 +76,7 @@
                     <div class="self-stretch justify-start items-start gap-6 inline-flex">
                         <div class="flex-col justify-start items-start gap-3 inline-flex">
                             <div class="flex-col justify-start items-start gap-4 flex">
-                                <div class="text-white text-opacity-10 text-sm font-normal leading-tight">
+                                <div class="text-white text-opacity-10 font-normal leading-tight">
                                     Specify the quantity:
                                 </div>
                                 <div class="flex-col justify-start items-start gap-3 flex">
@@ -102,7 +105,7 @@
                             </div>
                         </div>
                         <div class="flex-col justify-start items-start gap-4 inline-flex">
-                            <div class="text-white text-opacity-10 text-sm font-normal leading-tight">
+                            <div class="text-white text-opacity-10 font-normal leading-tight">
                                 Other filter:
                             </div>
                             <div class="h-12 flex-col justify-start items-start gap-3 flex">
@@ -117,7 +120,7 @@
                         </div>
                     </div>
                     <div class="flex-col justify-start items-start gap-4 flex">
-                        <div class="text-white text-opacity-10 text-sm font-normal leading-tight">
+                        <div class="text-white text-opacity-10 font-normal leading-tight">
                             Order comment:
                         </div>
                         <div class="px-4 py-3 bg-white bg-opacity-10 rounded-lg justify-start items-center gap-2.5 inline-flex">
@@ -128,14 +131,14 @@
                     </div>
                 </div>
                 <div class="flex-col justify-start items-start gap-4 flex">
-                    <div class="text-white text-opacity-10 text-sm font-normal leading-tight">
+                    <div class="text-white text-opacity-10 font-normal leading-tight">
                         Payment method:
                     </div>
                     <div class="pl-4 pr-3 py-3.5 bg-white bg-opacity-10 rounded-lg justify-start items-center gap-2.5 inline-flex">
                         <div class="w-6 h-6 justify-center items-center flex">
                             <div class="w-6 h-6 relative"/>
                         </div>
-                        <div class="flex-grow text-white text-sm font-semibold leading-tight">
+                        <div class="flex-grow text-white font-semibold leading-tight">
                             With a credit card on the website
                         </div>
                         <div class="w-6 px-px py-1.5 rounded-md flex-col justify-center items-center gap-2.5 inline-flex"/>
@@ -147,7 +150,7 @@
                             Place an order for $1,924
                         </div>
                     </div>
-                    <div class="text-white text-opacity-60 text-sm font-normal leading-tight">
+                    <div class="text-white text-opacity-60 font-normal leading-tight">
                         The seller will not receive payment until you confirm that they have fulfilled all obligations.
                     </div>
                 </div>
@@ -161,22 +164,11 @@
 
         <!-- Right column -->
         <div class="px-4 py-6 sm:px-6 lg:pl-8 xl:w-1/2 xl:shrink-0 xl:pl-6"/>
-    </div>
+    </ui-layout-content>
 </div>
 </template>
 
 <script lang="ts" setup>
-import { ArrowDownCircleIcon, ArrowRightCircleIcon, ArrowUpCircleIcon, ArrowUpIcon } from "@heroicons/vue/20/solid"
-import { defineComponent } from "vue"
-
-defineComponent({
-    components: {
-        ArrowDownCircleIcon,
-        ArrowRightCircleIcon,
-        ArrowUpCircleIcon,
-        ArrowUpIcon,
-    },
-})
 const qnas = [
     {
         answer: "To improve his graphics! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus expedita illum esse ratione.",
@@ -214,34 +206,31 @@ definePageMeta({
 <!--
 <template>
   <div class="bg-white">
-    <div class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8 lg:py-40">
-      <div class="mx-auto max-w-4xl divide-y divide-gray-900/10">
-        <h2 class="text-2xl font-bold leading-10 tracking-tight text-gray-900">Frequently asked questions</h2>
-        <dl class="mt-10 space-y-6 divide-y divide-gray-900/10">
-          <Disclosure as="div" v-for="faq in faqs" :key="faq.question" class="pt-6" v-slot="{ open }">
+    <ui-layout-content class="mx-auto px-6 py-24 sm:py-32 lg:px-8 lg:py-40">
+      <div class="mx-auto max-w-4xl divide-solid divide-y divide-gray-900/10">
+        <h2 class="text-level-3 font-bold leading-10 tracking-tight text-gray-900">Frequently asked questions</h2>
+        <dl class="mt-10 space-y-6 divide-solid divide-y divide-gray-900/10">
+          <ui-headless-disclosure as="div" v-for="faq in faqs" :key="faq.question" class="pt-6" v-slot="{ open }">
             <dt>
-              <DisclosureButton class="flex w-full items-start justify-between text-left text-gray-900">
+              <ui-headless-disclosure-button class="flex w-full items-start justify-between text-left text-gray-900">
                 <span class="text-base font-semibold leading-7">{{ faq.question }}</span>
                 <span class="ml-6 flex h-7 items-center">
                   <PlusSmallIcon v-if="!open" class="h-6 w-6" aria-hidden="true" />
                   <MinusSmallIcon v-else class="h-6 w-6" aria-hidden="true" />
                 </span>
-              </DisclosureButton>
+              </ui-headless-disclosure-button>
             </dt>
-            <DisclosurePanel as="dd" class="mt-2 pr-12">
+            <ui-headless-disclosure-panel as="dd" class="mt-2 pr-12">
               <p class="text-base leading-7 text-gray-600">{{ faq.answer }}</p>
-            </DisclosurePanel>
-          </Disclosure>
+            </ui-headless-disclosure-panel>
+          </ui-headless-disclosure>
         </dl>
       </div>
-    </div>
+    </ui-layout-content>
   </div>
 </template>
 
 <script setup>
-import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
-import { MinusSmallIcon, PlusSmallIcon } from '@heroicons/vue/24/outline'
-
 const faqs = [
   {
     question: "What's the best thing about Switzerland?",

@@ -29,11 +29,11 @@ export default defineComponent({
     methods: {
         breadcrumbClass(breadcrumb: any) {
             return breadcrumb.link
-                ? "text-blue-500 text-sm font-normal font-['Montserrat'] leading-tight"
-                : "text-white text-opacity-70 text-sm font-normal font-['Montserrat'] leading-tight"
+                ? "text-primary font-normal font-['Montserrat'] leading-tight"
+                : "text-white text-opacity-70 font-normal font-['Montserrat'] leading-tight"
     },
         separatorClass() {
-            return "!text-white text-sm font-normal font-['Montserrat'] leading-tight mx-1 inline"
+            return "!text-white font-normal font-['Montserrat'] leading-tight mx-1 inline"
     },
     },
     props: {

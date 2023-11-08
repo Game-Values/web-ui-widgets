@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs"
 
 import {
     defineConfig,
+    presetIcons,
     presetTypography,
     presetUno,
     transformerDirectives,
@@ -14,8 +15,25 @@ import { Breakpoint } from "./common/enums"
 let breakpoints: Record<string, string> = extractSassVars("breakpoints")
 let colors: Record<string, string> = extractSassVars("colors")
 let radius: Record<string, string> = extractSassVars("radius")
+let sizes: Record<string, string> = extractSassVars("sizes")
 let spaces: Record<string, string> = extractSassVars("spaces")
 let typography: Record<string, string> = extractSassVars("typography")
+
+let numericSpaces: Record<number, string | undefined> = {
+    1: useGet(spaces, "$space-1"),
+    1.5: useGet(spaces, "$space-1_5"),
+    10: useGet(spaces, "$space-10"),
+    2: useGet(spaces, "$space-2"),
+    2.5: useGet(spaces, "$space-2_5"),
+    3: useGet(spaces, "$space-3"),
+    3.5: useGet(spaces, "$space-3_5"),
+    4: useGet(spaces, "$space-4"),
+    5: useGet(spaces, "$space-5"),
+    6: useGet(spaces, "$space-6"),
+    7: useGet(spaces, "$space-7"),
+    8: useGet(spaces, "$space-8"),
+    9: useGet(spaces, "$space-9"),
+}
 
 function extractSassVars(filename: string): Record<string, string> {
     let content: string = readFileSync(`./src/assets/styles/vars/${filename}.sass`, "utf-8")
@@ -34,16 +52,28 @@ function extractSassVars(filename: string): Record<string, string> {
 
 export default defineConfig({
     presets: [
+        presetIcons(),
         presetTypography(),
         presetUno(),
     ],
 
     shortcuts: {
-        // todo
+        content: `w-full max-w-[${useGet(sizes, "$layout-max-width")}] ${Breakpoint.LG}:mx-auto`,
+        fit: "w-full h-full",
+        "flex-center": "flex items-center justify-center",
+        "flex-col": "flex flex-col",
+        "flex-col-center": "flex flex-col items-center justify-center",
+        "flex-col-items-center": "flex flex-col items-center",
+        "flex-col-justify-center": "flex flex-col justify-center",
+        "flex-items-center": "flex items-center",
+        "flex-justify-center": "flex items-center justify-center",
+        overlay: "fit absolute left-0 top-0",
+        screen: "w-screen h-screen",
     },
 
     theme: {
         borderRadius: {
+            DEFAULT: useGet(spaces, "$space-1"),
             lg: useGet(radius, "$radius-lg"),
             normal: useGet(radius, "$radius-normal"),
             sm: useGet(radius, "$radius-sm"),
@@ -85,21 +115,51 @@ export default defineConfig({
         },
 
         fontFamily: {
+            montserrat: "Montserrat",
             sans: "Montserrat",
             serif: "Montserrat",
         },
 
         fontSize: {
-            "level-1": useGet(typography, "$font-size-level-1"),
-            "level-2": useGet(typography, "$font-size-level-2"),
-            "level-3": useGet(typography, "$font-size-level-3"),
-            "level-4": useGet(typography, "$font-size-level-4"),
-            "level-5": useGet(typography, "$font-size-level-5"),
-            "level-6": useGet(typography, "$font-size-level-6"),
-            lg: useGet(typography, "$font-size-lg"),
-            normal: useGet(typography, "$font-size-normal"),
-            sm: useGet(typography, "$font-size-sm"),
+            "level-1": [
+                useGet(typography, "$font-size-level-1"),
+                useGet(typography, "$line-height-normal"),
+            ],
+            "level-2": [
+                useGet(typography, "$font-size-level-2"),
+                useGet(typography, "$line-height-normal"),
+            ],
+            "level-3": [
+                useGet(typography, "$font-size-level-3"),
+                useGet(typography, "$line-height-normal"),
+            ],
+            "level-4": [
+                useGet(typography, "$font-size-level-4"),
+                useGet(typography, "$line-height-normal"),
+            ],
+            "level-5": [
+                useGet(typography, "$font-size-level-5"),
+                useGet(typography, "$line-height-normal"),
+            ],
+            "level-6": [
+                useGet(typography, "$font-size-level-6"),
+                useGet(typography, "$line-height-normal"),
+            ],
+            lg: [
+                useGet(typography, "$font-size-lg"),
+                useGet(typography, "$line-height-normal"),
+            ],
+            normal: [
+                useGet(typography, "$font-size-normal"),
+                useGet(typography, "$line-height-normal"),
+            ],
+            sm: [
+                useGet(typography, "$font-size-sm"),
+                useGet(typography, "$line-height-normal"),
+            ],
         },
+
+        height: numericSpaces,
 
         lineHeight: {
             "level-1": useGet(typography, "$line-height-level-1"),
@@ -108,12 +168,14 @@ export default defineConfig({
             "level-4": useGet(typography, "$line-height-level-4"),
             "level-5": useGet(typography, "$line-height-level-5"),
             "level-6": useGet(typography, "$line-height-level-6"),
-            normal: useGet(typography, "$line-height-base"),
+            normal: useGet(typography, "$line-height-normal"),
         },
 
-        spacing: {
+        spacing: useAssign(numericSpaces, {
             normal: useGet(spaces, "$space-normal"),
-        },
+        }),
+
+        width: numericSpaces,
     },
 
     transformers: [

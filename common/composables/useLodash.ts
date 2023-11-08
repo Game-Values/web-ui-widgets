@@ -92,6 +92,13 @@ export function useEntries(target: any): [string, unknown][] {
 }
 
 /**
+ * @see https://lodash.com/docs/#fromEntries
+ */
+export function useFromEntries(target: any): any {
+    return Object.fromEntries(target)
+}
+
+/**
  * @see https://lodash.com/docs/#keys
  */
 export function useKeys(target: any): string[] {
@@ -208,4 +215,16 @@ export function useMerge<T extends object, S = Partial<T>>(target: T, source: S)
         ))
 
     return target
+}
+
+/**
+ * @see https://lodash.com/docs/#omit
+ */
+export function useOmit<T = any>(target: T, ...keys: string[]): Partial<T> {
+    let keysToRemove: Set<string> = new Set(keys.flat())
+
+    return useFromEntries(
+        useEntries(target)
+            .filter(([key]: [string, unknown]): boolean => !keysToRemove.has(key)),
+    )
 }

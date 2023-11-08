@@ -9,13 +9,13 @@ defineProps<Props>()
 
 <template>
 <li class="container text-white">
-    <div class="icon text-blue-500" role="presentation">
+    <div class="icon text-primary" role="presentation">
         <slot name="icon"/>
     </div>
     <span class="value text-lg font-medium">
         {{ value }}
     </span>
-    <span class="label text-gray-500 text-sm">
+    <span class="label text-gray-500">
         {{ label }}
     </span>
 </li>
@@ -25,8 +25,8 @@ defineProps<Props>()
 .container {
   display: grid;
   grid-template: "icon value" "icon label";
-  grid-template-columns: 2.5rem auto;
-  gap: .05rem .75rem;
+  grid-template-columns: 4rem auto;
+  gap: 0.08rem 1.2rem;
 }
 
 .icon {
@@ -34,8 +34,8 @@ defineProps<Props>()
 }
 
 .icon > :global(svg) {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 4rem;
+  height: 4rem;
 }
 
 .value {

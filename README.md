@@ -31,7 +31,7 @@ We will pay for your contributions. Please check available tasks and contact us 
  - postcss
  - nuxt js
  - headlessui
- - tailwindcss
+ - unocss
  - heroicons
 
 ## Licence

@@ -3,8 +3,11 @@
     <ol class="mx-auto flex w-full max-w-screen-xl space-x-4 px-4 sm:px-6 lg:px-8" role="list">
         <li class="flex">
             <div class="flex items-center">
-                <a class="text-blue-400 hover:text-blue-500" href="/">
-                    <home-icon aria-hidden="true" class="h-5 w-5 flex-shrink-0"/>
+                <a class="text-blue-400 hover:text-primary" href="/">
+                    <ui-icon-home
+                        class="flex-shrink-0"
+                        size="20"
+                    />
                     <span class="sr-only">Home</span>
                 </a>
             </div>
@@ -23,7 +26,7 @@
                     stroke="currentColor"
                     stroke-width="2"/>
                 </svg>
-                <a :aria-current="page.current ? 'page' : undefined" :href="page.href" class="ml-4 text-sm font-medium text-blue-500 hover:text-blue-700">{{ page.name }}</a>
+                <a :aria-current="page.current ? 'page' : undefined" :href="page.href" class="ml-4 font-medium text-primary hover:text-blue-700">{{ page.name }}</a>
             </div>
         </li>
     </ol>
@@ -31,13 +34,8 @@
 </template>
 
 <script>
-import { HomeIcon } from "@heroicons/vue/20/solid"
-
 export default {
     name: "Breadcrumb",
-    components: {
-        HomeIcon,
-    },
     props: {
         pagesList: {
             required: true,

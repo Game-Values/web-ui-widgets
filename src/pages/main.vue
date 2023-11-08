@@ -1,5 +1,5 @@
 <template>
-<div class="min-h-screen flex mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 bg-gray-900">
+<ui-layout-content class="min-h-screen flex mx-auto px-2 sm:px-6 lg:px-8 bg-gray-900">
     <main class="w-full">
         <slider-container>
             <slider-slide
@@ -25,7 +25,7 @@
         </slider-container>
         <game-list :games="Cards" header-component="h3"/>
     </main>
-</div>
+</ui-layout-content>
 </template>
 
 <script setup lang="ts">

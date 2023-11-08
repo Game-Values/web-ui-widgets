@@ -54,9 +54,9 @@ onBeforeUnmount(() => {
                 <LayoutsHomeNavigation />
                 <NavBc :pagesList="pages" />
             </slot>
-            <div class="flex mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 bg-transparent">
+            <ui-layout-content class="flex mx-auto px-2 sm:px-6 lg:px-8 bg-transparent">
                 <div class="h-50 md:h-40 lg:h-48 xl:h-52 2xl:h-[50px] bg-transparent"></div>
-            </div>
+            </ui-layout-content>
         </GamesBgImg>
         <!-- Main slot with negative margin for positioning -->
         <div :class="slotWrapperClasses">
@@ -77,6 +77,6 @@ body {
 }
 
 .slot-content-default {
-    margin-top: -12rem;
+    margin-top: -19.2rem;
 }
 </style>

@@ -16,15 +16,15 @@
             :class="stepClass(step.number)"
             class="w-[38px] md:w-[48px] h-[38px] md:h-[48px] rounded-full shadow flex justify-center items-center">
                 <!-- Check icon for previous steps -->
-                <div v-if="step.number < currentStep" class="text-white text-xl md:text-2xl">
-                    <check-icon class="h-5 w-5 md:h-6 md:w-6"/>
+                <div v-if="step.number < currentStep" class="text-white text-xl md:text-level-3">
+                    <ui-icon-check size="24" />
                 </div>
                 <!-- Step number for current and upcoming steps -->
-                <div :class="stepTextClass(step.number)" class="text-xs md:text-xl font-semibold" v-else>
+                <div :class="stepTextClass(step.number)" class="md:text-xl font-semibold" v-else>
                     {{ step.number }}
                 </div>
             </div>
-            <div :class="descriptionTextClass(step.number)" class="mt-2 text-xs md:text-sm leading-tight text-center">
+            <div :class="descriptionTextClass(step.number)" class="mt-2 md:leading-tight text-center">
                 {{ step.description }}
             </div>
         </div>
@@ -33,18 +33,12 @@
 </template>
 
 <script lang="ts">
-import { CheckIcon } from "@heroicons/vue/24/solid/esm"
-import { computed, defineComponent } from "vue"
-
 interface Step {
     description: string;
     number: number;
 }
 
 export default defineComponent({
-    components: {
-        CheckIcon,
-    },
     props: {
         currentStep: {
             required: true,
@@ -70,13 +64,13 @@ export default defineComponent({
 
         function stepClass(stepNumber: number): string {
             let baseClasses = ["w-[38px] h-[38px] rounded-full shadow flex justify-center items-center"]
-            if (stepNumber < props.currentStep) 
+            if (stepNumber < props.currentStep)
                 baseClasses.push("bg-blue-500", "border-2", "border-white", "border-opacity-10")
-            else if (stepNumber === props.currentStep) 
+            else if (stepNumber === props.currentStep)
                 baseClasses.push("bg-blue-500", "border-2", "border-white", "border-opacity-10")
-            else 
+            else
                 baseClasses.push("bg-zinc-100", "border-2", "border-zinc-300", "border-opacity-60")
-      
+
             return baseClasses.join(" ")
         }
 
