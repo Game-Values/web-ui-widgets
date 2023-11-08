@@ -27,7 +27,7 @@
                         <span class="text-xl">🇩🇪</span>
 
                         <!-- Level Text -->
-                        <div class="text-primary text-base font-normal font-montserrat">
+                        <div class="text-primary font-normal font-montserrat">
                             Level
                         </div>
 
@@ -38,7 +38,7 @@
                         />
 
                         <!-- Level Number -->
-                        <div class="text-primary text-base font-normal font-montserrat">
+                        <div class="text-primary font-normal font-montserrat">
                             12
                         </div>
                     </div>

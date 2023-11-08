@@ -3,7 +3,7 @@
     <ui-layout-content class="mx-auto max-w-md overflow-hidden py-12 px-4 sm:max-w-3xl sm:px-6 lg:px-8">
         <nav aria-label="Footer" class="-mx-5 -my-2 flex flex-wrap justify-center">
             <div :key="item.name" class="px-5 py-2" v-for="item in footerNavigation.main">
-                <nuxt-link :to="item.to" class="text-base text-gray-400 hover:text-gray-300">
+                <nuxt-link :to="item.to" class="text-gray-400 hover:text-gray-300">
                     {{ item.name }}
                 </nuxt-link>
             </div>
@@ -18,7 +18,7 @@
                 <component :is="item.icon" aria-hidden="true" class="h-6 w-6"/>
             </a>
         </div>
-        <p class="mt-8 text-center text-base text-gray-400">
+        <p class="mt-8 text-center text-gray-400">
             &copy; {{ new Date().getFullYear() }} {{ siteName }}. All
             rights reserved.
         </p>

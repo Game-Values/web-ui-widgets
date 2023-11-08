@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { Component } from "vue"
 import type { GameAPI } from "~/api"
 
 export interface GameCard {
@@ -52,10 +53,16 @@ const toggleLike = async () => {
 
 }
 
-const currentIcon = computed((): string => {
-    if (isLoading.value) return "ui-icon-arrow-path"
-    if (errorFeedback.value) return "ui-icon-no-symbol"
-    return gameCard.liked ? "ui-icon-solid-heart" : "ui-icon-outline-heart"
+const currentIcon = computed((): Component => {
+    if (isLoading.value)
+        return defineAsyncComponent((): Promise<Component> => import("~/ui/icon/ArrowPath.vue"))
+
+    if (errorFeedback.value)
+        return defineAsyncComponent((): Promise<Component> => import("~/ui/icon/NoSymbol.vue"))
+
+    return gameCard.liked
+        ? defineAsyncComponent((): Promise<Component> => import("~/ui/icon/SolidHeart.vue"))
+        : defineAsyncComponent((): Promise<Component> => import("~/ui/icon/OutlineHeart.vue"))
 })
 
 const gameImageUrl = computed(() => withBaseURL(`i/g/${gameCard.image}.png`))
@@ -107,23 +114,30 @@ class="relative cardContainer"
         <a class="text-white font-bold linkContainer break-words" href="https://www.game-values.com/">
             {{ gameCard.name }}
         </a>
-        <button
-        :aria-pressed="String(gameCard.liked)"
-        :disabled="errorFeedback.value"
-        aria-label="Like Game"
-        @click="toggleLike"
-        class="likeButton">
+        <ui-button-circle-ghost
+            :aria-pressed="String(gameCard.liked)"
+            :disabled="errorFeedback.value"
+            aria-label="Like Game"
+            @click="toggleLike"
+            class="likeButton"
+        >
             <component
                 :is="currentIcon"
                 :class="svgClasses"
+                size="24"
             />
-        </button>
+        </ui-button-circle-ghost>
     </div>
     <p v-if="errorFeedback" class="text-red-500 mt-2">
         {{ errorFeedback }}
     </p>
 </article>
 </template>
+
+<style lang="sass" scoped>
+.vxp-button
+    @apply border-0
+</style>
 
 <style scoped>
 /* Shared styles for card container */

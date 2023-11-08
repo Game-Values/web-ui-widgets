@@ -13,7 +13,7 @@
         <div class="flex items-center justify-between w-10/12 h-16 space-x-4">
             <div class="flex items-center space-x-2">
                 <!-- Adding heroicons as an example -->
-                <heroicons-outline-search class="w-5 h-5 text-gray-400"/>
+                <ui-icon-outline-search size="20" class="text-gray-400"/>
                 <system-search class="flex-grow w-10/12" html-table-id="goods"/>
             </div>
             <switch-toggle v-model="isSwitched"/>

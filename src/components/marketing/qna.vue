@@ -9,7 +9,7 @@
                 <ui-headless-disclosure :key="qna.question" as="div" class="pt-6" v-for="qna in qnas" v-slot="{ open }">
                     <dt>
                         <ui-headless-disclosure-button class="flex w-full items-start justify-between text-left text-white text-opacity-60">
-                            <span class="text-base font-semibold leading-7">{{ qna.question }}</span>
+                            <span class="font-semibold leading-7">{{ qna.question }}</span>
                             <span class="ml-6 flex h-7 items-center">
                                 <ui-icon-minus-small
                                     v-if="open"
@@ -24,7 +24,7 @@
                         </ui-headless-disclosure-button>
                     </dt>
                     <ui-headless-disclosure-panel as="dd" class="mt-2 pr-12">
-                        <p class="text-base leading-7 text-blue-600">
+                        <p class="leading-7 text-blue-600">
                             {{ qna.answer }}
                         </p>
                     </ui-headless-disclosure-panel>

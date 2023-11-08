@@ -30,7 +30,7 @@
                 <div class="self-stretch text-white text-level-3 md:text-3xl font-bold font-montserrat">
                     Gold ArcheAge: Unchained
                 </div>
-                <div class="self-stretch text-white md:text-base font-normal font-montserrat leading-tight">
+                <div class="self-stretch text-white md:font-normal font-montserrat leading-tight">
                     In-game currency is a special form of currency used within the game for purchases, trading, upgrades, and other in-game purposes. It can be represented as...
                     <span class="text-primary">Show more...</span>
                 </div>
@@ -82,13 +82,13 @@
                                 <div class="flex-col justify-start items-start gap-3 flex">
                                     <div class="justify-start items-center gap-3 inline-flex">
                                         <div class="h-12 px-4 py-3 bg-white bg-opacity-10 rounded-lg justify-start items-center gap-2.5 flex">
-                                            <div class="text-white text-opacity-60 text-base font-normal leading-normal">
+                                            <div class="text-white text-opacity-60 font-normal leading-normal">
                                                 I will pay
                                             </div>
                                         </div>
                                         <div class="py-2.5 flex-col justify-center items-start gap-2.5 inline-flex"/>
                                         <div class="h-12 px-4 py-3 bg-white bg-opacity-10 rounded-lg justify-start items-center gap-2.5 flex">
-                                            <div class="text-white text-opacity-60 text-base font-normal leading-normal">
+                                            <div class="text-white text-opacity-60 font-normal leading-normal">
                                                 I will receive
                                             </div>
                                         </div>
@@ -99,7 +99,7 @@
                                 <div class="w-5 h-5 origin-top-left transform -rotate-180 justify-center items-center flex">
                                     <div class="w-5 h-5 relative"/>
                                 </div>
-                                <div class="text-white text-opacity-60 text-base font-normal leading-normal">
+                                <div class="text-white text-opacity-60 font-normal leading-normal">
                                     Minimum 400 units of gold
                                 </div>
                             </div>
@@ -111,7 +111,7 @@
                             <div class="h-12 flex-col justify-start items-start gap-3 flex">
                                 <div class="justify-start items-center gap-3 inline-flex">
                                     <div class="h-12 px-4 py-3 bg-white bg-opacity-10 rounded-lg justify-start items-center gap-2.5 flex">
-                                        <div class="text-white text-opacity-60 text-base font-normal leading-normal">
+                                        <div class="text-white text-opacity-60 font-normal leading-normal">
                                             Other filter
                                         </div>
                                     </div>
@@ -124,7 +124,7 @@
                             Order comment:
                         </div>
                         <div class="px-4 py-3 bg-white bg-opacity-10 rounded-lg justify-start items-center gap-2.5 inline-flex">
-                            <div class="flex-grow text-white text-opacity-60 text-base font-normal leading-normal">
+                            <div class="flex-grow text-white text-opacity-60 font-normal leading-normal">
                                 Specify the method of item transfer (e.g., your in-game username)
                             </div>
                         </div>
@@ -213,7 +213,7 @@ definePageMeta({
           <ui-headless-disclosure as="div" v-for="faq in faqs" :key="faq.question" class="pt-6" v-slot="{ open }">
             <dt>
               <ui-headless-disclosure-button class="flex w-full items-start justify-between text-left text-gray-900">
-                <span class="text-base font-semibold leading-7">{{ faq.question }}</span>
+                <span class="font-semibold leading-7">{{ faq.question }}</span>
                 <span class="ml-6 flex h-7 items-center">
                   <PlusSmallIcon v-if="!open" class="h-6 w-6" aria-hidden="true" />
                   <MinusSmallIcon v-else class="h-6 w-6" aria-hidden="true" />
@@ -221,7 +221,7 @@ definePageMeta({
               </ui-headless-disclosure-button>
             </dt>
             <ui-headless-disclosure-panel as="dd" class="mt-2 pr-12">
-              <p class="text-base leading-7 text-gray-600">{{ faq.answer }}</p>
+              <p class="leading-7 text-gray-600">{{ faq.answer }}</p>
             </ui-headless-disclosure-panel>
           </ui-headless-disclosure>
         </dl>

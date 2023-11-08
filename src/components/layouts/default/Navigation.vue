@@ -46,7 +46,7 @@
                 <nuxt-link
                 :key="`nav-mobile-${i}`"
                 :to="nav.to"
-                class="block hover:border-l-4 hover:border-blue-500 hover:bg-blue-50 py-2 pl-3 pr-4 text-base font-medium text-blue-700"
+                class="block hover:border-l-4 hover:border-blue-500 hover:bg-blue-50 py-2 pl-3 pr-4 font-medium text-blue-700"
                 v-for="(nav, i) in navigation">
                     {{ nav.name }}
                 </nuxt-link>

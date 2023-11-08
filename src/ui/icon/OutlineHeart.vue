@@ -12,6 +12,6 @@ withDefaults(defineProps<Props>(), useUiProps<IconProps>())
 
 <template>
 <ui-base-icon v-bind="$props">
-    <i class="i-heroicons-outline-heart" />
+    <i class="i-heroicons-heart" />
 </ui-base-icon>
 </template>
