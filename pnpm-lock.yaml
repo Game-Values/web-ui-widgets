@@ -6,7 +6,7 @@ settings:
 
 dependencies:
   '@tanstack/vue-query':
-    specifier: ^5.7.3
+    specifier: ^5.8.1
     version: 5.8.1(vue@3.3.8)
 
 devDependencies:
@@ -44,7 +44,7 @@ devDependencies:
     specifier: ^1.5.1
     version: 1.5.1
   '@types/node':
-    specifier: ^20.8.10
+    specifier: ^20.9.0
     version: 20.9.0
   '@typescript-eslint/eslint-plugin':
     specifier: ^6.10.0
@@ -1690,7 +1690,7 @@ packages:
     dependencies:
       '@nuxt/kit': 3.8.1
       '@rollup/plugin-replace': 5.0.5(rollup@3.29.4)
-      '@vitejs/plugin-vue': 4.4.0(vite@4.5.0)(vue@3.3.8)
+      '@vitejs/plugin-vue': 4.4.1(vite@4.5.0)(vue@3.3.8)
       '@vitejs/plugin-vue-jsx': 3.0.2(vite@4.5.0)(vue@3.3.8)
       autoprefixer: 10.4.16(postcss@8.4.31)
       clear: 0.1.0
@@ -3043,8 +3043,8 @@ packages:
       - supports-color
     dev: true
 
-  /@vitejs/plugin-vue@4.4.0(vite@4.5.0)(vue@3.3.8):
-    resolution: {integrity: sha512-xdguqb+VUwiRpSg+nsc2HtbAUSGak25DXYvpQQi4RVU1Xq1uworyoH/md9Rfd8zMmPR/pSghr309QNcftUVseg==}
+  /@vitejs/plugin-vue@4.4.1(vite@4.5.0)(vue@3.3.8):
+    resolution: {integrity: sha512-HCQG8VDFDM7YDAdcj5QI5DvUi+r6xvo9LgvYdk7LSkUNwdpempdB5horkMSZsbdey9Ywsf5aaU8kEPw9M5kREA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: ^4.0.0
