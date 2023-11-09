@@ -1,8 +1,11 @@
 <script lang="ts" setup>
 import type { DIAbstract } from "~/abstract"
 import type { Context } from "~/types"
+import type { Token } from "brandi"
 
-import { Adapters, Clients, Controllers, Services } from "~/helpers"
+import { Container } from "brandi"
+
+import { Adapters, Clients, Controllers, Facades, Services } from "~/helpers"
 
 interface Slots {
     default: () => any
@@ -10,27 +13,20 @@ interface Slots {
 
 defineSlots<Slots>()
 
-useAssign<Context>(useContext(), {
-    adapters: new Adapters(),
-    clients: new Clients(),
-    controllers: new Controllers(),
-    services: new Services(),
-})
+let container: Container = new Container()
+let tokens: Map<string, Token<any>> = new Map()
 
-let dis: DIAbstract[] = (
-    useValues(
-        usePick(
-            useContext(),
-            "adapters",
-            "clients",
-            "controllers",
-            "services",
-        ),
-    )
-)
+let dis: Record<string, DIAbstract> = {
+    adapters: new Adapters(container, tokens),
+    clients: new Clients(container, tokens),
+    controllers: new Controllers(container, tokens),
+    facades: new Facades(container, tokens),
+    services: new Services(container, tokens),
+}
 
-dis.forEach((di: DIAbstract): void => di.updateTokens())
-dis.forEach((di: DIAbstract): void => di.inject())
+useAssign<Context>(useContext(), dis)
+useForObj(dis, (di: DIAbstract): void => di.updateTokens())
+useForObj(dis, (di: DIAbstract): void => di.inject())
 </script>
 
 <template>

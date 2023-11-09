@@ -7,10 +7,11 @@ defineSlots<Slots>()
 </script>
 
 <template>
-<!-- fixme: without classes in layout -->
-<ui-base-layout class="bg-gray-900 justify-center">
+<ui-layout-app>
     <template #header>
-        <layouts-home-navigation />
+        <ui-layout-content>
+            <layouts-home-navigation />
+        </ui-layout-content>
     </template>
 
     <template #main>
@@ -20,5 +21,5 @@ defineSlots<Slots>()
     <template #footer>
         <layouts-default-footer />
     </template>
-</ui-base-layout>
+</ui-layout-app>
 </template>

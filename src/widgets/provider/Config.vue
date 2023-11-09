@@ -16,7 +16,7 @@ let vexipUiLocale: Ref<Partial<LocaleConfig>> = ref<Partial<LocaleConfig>>({})
 
 await Promise.all([
     import(`~/locales/vexip-ui/${DEFAULT_LOCALE_ISO}.json`)
-        .then((localeConfig: LocaleConfig) => setRef(vexipUiLocale, localeConfig)),
+        .then((localeConfig: LocaleConfig): void => setRef(vexipUiLocale, localeConfig)),
 
     setLocale(DEFAULT_LOCALE),
 ])

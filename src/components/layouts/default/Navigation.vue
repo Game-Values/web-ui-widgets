@@ -1,7 +1,7 @@
 <template>
 <header>
     <ui-headless-disclosure v-slot="{ open }" as="nav">
-        <ui-layout-content class="mx-auto px-2 sm:px-6 lg:px-8">
+        <div class="mx-auto px-2 sm:px-6 lg:px-8">
             <div class="relative flex h-16 justify-between">
                 <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
                     <!-- Mobile menu button -->

@@ -1,5 +1,5 @@
 <template>
-<ui-layout-content class="min-h-screen flex mx-auto px-2 sm:px-6 lg:px-8 bg-transparent">
+<div class="min-h-screen flex mx-auto px-2 sm:px-6 lg:px-8 bg-transparent">
     <main class="w-full">
 
         <games-card
@@ -36,7 +36,7 @@
             </div>
         </div>
     </main>
-</ui-layout-content>
+</div>
 </template>
 
 <script setup lang="ts">

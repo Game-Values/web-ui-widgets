@@ -1,6 +1,6 @@
 <template>
-<footer class="bg-gray-900">
-    <ui-layout-content class="mx-auto max-w-md overflow-hidden py-12 px-4 sm:max-w-3xl sm:px-6 lg:px-8">
+<footer>
+    <div class="mx-auto max-w-md overflow-hidden py-12 px-4 sm:max-w-3xl sm:px-6 lg:px-8">
         <nav
             aria-label="Footer"
             class="-mx-5 -my-2 flex flex-wrap justify-center"
@@ -37,7 +37,7 @@
             &copy; {{ new Date().getFullYear() }} {{ siteName }}. All
             rights reserved.
         </p>
-    </ui-layout-content>
+    </div>
 </footer>
 </template>
 

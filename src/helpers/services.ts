@@ -4,7 +4,7 @@ import type { Token } from "brandi"
 import { token } from "brandi"
 
 import { DIAbstract } from "~/abstract"
-import { AdapterToken, ClientToken, ServiceToken } from "~/enums"
+import { AdapterToken, ServiceToken } from "~/enums"
 import { GameService } from "~/services"
 
 interface ServucesTokens {
@@ -27,7 +27,6 @@ export class Services extends DIAbstract<ServucesTokens> {
             [
                 GameService,
                 this.__getToken(AdapterToken.API),
-                this.__getToken(ClientToken.DTO),
             ],
         ]
     }

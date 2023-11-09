@@ -3,7 +3,7 @@
 
 <div class="flex min-h-full flex-col">
     <!-- 2 column wrapper -->
-    <ui-layout-content class="mx-auto w-full grow lg:flex xl:px-2">
+    <div class="mx-auto w-full grow lg:flex xl:px-2">
         <!-- Left column -->
         <div class="px-4 py-6 sm:px-6 lg:pl-8 xl:w-1/2 xl:shrink-0 xl:pl-6">
 
@@ -212,7 +212,7 @@ definePageMeta({
 <!--
 <template>
   <div class="bg-white">
-    <ui-layout-content class="mx-auto px-6 py-24 sm:py-32 lg:px-8 lg:py-40">
+    <div class="mx-auto px-6 py-24 sm:py-32 lg:px-8 lg:py-40">
       <div class="mx-auto max-w-4xl divide-solid divide-y divide-gray-900/10">
         <h2 class="text-level-3 font-bold leading-10 tracking-tight text-gray-900">Frequently asked questions</h2>
         <dl class="mt-10 space-y-6 divide-solid divide-y divide-gray-900/10">
@@ -232,7 +232,7 @@ definePageMeta({
           </ui-headless-disclosure>
         </dl>
       </div>
-    </ui-layout-content>
+    </div>
   </div>
 </template>
 

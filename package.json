@@ -42,6 +42,7 @@
         "@nuxtjs/i18n": "8.0.0-rc.5",
         "@nuxtjs/partytown": "^1.3.0",
         "@nuxtjs/web-vitals": "^0.2.6",
+        "@pinia/nuxt": "^0.5.1",
         "@rushstack/eslint-patch": "^1.5.1",
         "@types/node": "^20.9.0",
         "@typescript-eslint/eslint-plugin": "^6.10.0",
@@ -78,6 +79,7 @@
         "brandi": "^5.0.0",
         "class-transformer": "^0.5.1",
         "class-validator": "^0.14.0",
+        "lodash-decorators": "^6.0.1",
         "reflect-metadata": "^0.1.13"
     }
 }

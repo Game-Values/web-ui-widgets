@@ -1,5 +1,5 @@
-import { HttpClient as Http } from "#schema/http-client"
+import { HttpClient as _HttpClient } from "#schema/http-client"
 
-export class HttpClient extends Http {
+export class HttpClient extends _HttpClient {
     public baseUrl: string = useRuntimeConfig().public.apiURL
 }

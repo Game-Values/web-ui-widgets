@@ -3,7 +3,7 @@
 
 <div class="flex min-h-full flex-col">
     <!-- 2 column wrapper -->
-    <ui-layout-content class="mx-auto w-full grow lg:flex xl:px-2">
+    <div class="mx-auto w-full grow lg:flex xl:px-2">
         <!-- Left column -->
         <div class="px-4 py-6 sm:px-6 lg:pl-8 xl:w-1/2 xl:shrink-0 xl:pl-6">
 

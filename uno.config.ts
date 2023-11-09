@@ -96,7 +96,7 @@ export default defineConfig({
             blue: useGet(colors, "$color-blue"),
             "blue-dark": useGet(colors, "$color-blue-dark"),
             error: useGet(colors, "$color-error"),
-            grey: useGet(colors, "$color-grey"),
+            "grey-dark": useGet(colors, "$color-grey-dark"),
             "grey-extra-dark": useGet(colors, "$color-grey-extra-dark"),
             "grey-light": useGet(colors, "$color-grey-light"),
             info: useGet(colors, "$color-info"),

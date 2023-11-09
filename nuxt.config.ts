@@ -99,7 +99,6 @@ export default defineNuxtConfig({
                 from: "class-transformer",
                 imports: [
                     "Expose",
-                    "plainToClass",
                 ],
             },
             {
@@ -110,6 +109,12 @@ export default defineNuxtConfig({
                     "IsNotEmpty",
                     "IsNumber",
                     "IsString",
+                ],
+            },
+            {
+                from: "lodash-decorators",
+                imports: [
+                    "Memoize",
                 ],
             },
         ],
@@ -169,7 +174,7 @@ export default defineNuxtConfig({
                         iso: LocaleISO.EN,
                     },
                 ],
-                strategy: "prefix_except_default",
+                strategy: "no_prefix",
                 vueI18n: "i18n.config.ts",
             }],
 
@@ -206,6 +211,14 @@ export default defineNuxtConfig({
 
             ["nuxt-viewport", {
                 breakpoints: BREAKPOINTS,
+            }],
+
+            ["@pinia/nuxt", {
+                autoImports: [
+                    "acceptHMRUpdate",
+                    "defineStore",
+                    "storeToRefs",
+                ],
             }],
         ]
 

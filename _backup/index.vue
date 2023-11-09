@@ -1,5 +1,5 @@
 <template>
-<ui-layout-content class="min-h-screen flex mx-auto px-2 sm:px-6 lg:px-8">
+<div class="min-h-screen flex mx-auto px-2 sm:px-6 lg:px-8">
     <main class="w-full">
         <div class="w-full">
             <h1 class="text-level-3 font-bold text-primary">

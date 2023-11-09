@@ -1,6 +1,6 @@
 <template>
 <div class="bg-gray-800">
-    <ui-layout-content class="mx-auto px-6 py-24 sm:py-10 lg:px-8 lg:py-10">
+    <div class="mx-auto px-6 py-24 sm:py-10 lg:px-8 lg:py-10">
         <div class="mx-auto max-w-4xl divide-y divide-blue-900/10 divide-solid">
             <h2 class="text-level-3 font-bold leading-10 tracking-tight text-white text-opacity-60">
                 Frequently asked questions
@@ -39,7 +39,7 @@ v-for="qna in qnas" v-slot="{ open }"
                 </ui-headless-disclosure>
             </dl>
         </div>
-    </ui-layout-content>
+    </div>
 </div>
 </template>
 

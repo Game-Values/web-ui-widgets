@@ -15,22 +15,22 @@ const pages = [
 const windowWidth = ref<null | number>(null)
 
 const slotWrapperClasses = computed(() => {
-    if (!windowWidth.value) 
+    if (!windowWidth.value)
         return "slot-content-default"
 
-    if (windowWidth.value >= 1024) 
+    if (windowWidth.value >= 1024)
         return "-mt-48"
-    else if (windowWidth.value >= 768) 
+    else if (windowWidth.value >= 768)
         return "-mt-36"
-    else 
+    else
         return "-mt-24"
-    
+
 })
 
 const updateWidth = () => {
-    if (typeof window !== "undefined") 
+    if (typeof window !== "undefined")
         windowWidth.value = window.innerWidth
-    
+
 }
 
 onMounted(() => {
@@ -39,9 +39,9 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
-    if (typeof window !== "undefined") 
+    if (typeof window !== "undefined")
         window.removeEventListener("resize", updateWidth)
-    
+
 })
 </script>
 
@@ -53,9 +53,9 @@ onBeforeUnmount(() => {
             <layouts-home-navigation />
             <nav-bc :pages-list="pages" />
         </slot>
-        <ui-layout-content class="flex mx-auto px-2 sm:px-6 lg:px-8 bg-transparent">
+        <div class="flex mx-auto px-2 sm:px-6 lg:px-8 bg-transparent">
             <div class="h-50 md:h-40 lg:h-48 xl:h-52 2xl:h-[50px] bg-transparent" />
-        </ui-layout-content>
+        </div>
     </games-bg-img>
     <!-- Main slot with negative margin for positioning -->
     <div :class="slotWrapperClasses">

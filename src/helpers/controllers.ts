@@ -5,7 +5,7 @@ import { token } from "brandi"
 
 import { DIAbstract } from "~/abstract"
 import { GameController } from "~/controllers"
-import { ControllerToken } from "~/enums"
+import { ClientToken, ControllerToken, ServiceToken } from "~/enums"
 
 interface ControllersTokens {
     [ControllerToken.GAME]: Token<GameController>
@@ -24,7 +24,11 @@ export class Controllers extends DIAbstract<ControllersTokens> {
 
     protected get __injections(): Injection[] {
         return [
-
+            [
+                GameController,
+                this.__getToken(ServiceToken.GAME),
+                this.__getToken(ClientToken.STORE),
+            ],
         ]
     }
 }

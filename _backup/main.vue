@@ -1,5 +1,5 @@
 <template>
-<ui-layout-content class="min-h-screen flex mx-auto px-2 sm:px-6 lg:px-8 bg-gray-900">
+<div class="min-h-screen flex mx-auto px-2 sm:px-6 lg:px-8 bg-gray-900">
     <main class="w-full">
         <slider-container>
             <slider-slide
@@ -30,7 +30,7 @@
             header-component="h3"
         />
     </main>
-</ui-layout-content>
+</div>
 </template>
 
 <script setup lang="ts">
