@@ -6,6 +6,7 @@ import type { RouteLocation } from "vue-router"
 <widget-wrapper-app>
     <nuxt-layout>
         <nuxt-page
+            :id="($route.name as string)"
             :page-key="(route: RouteLocation) => route.fullPath"
         />
     </nuxt-layout>

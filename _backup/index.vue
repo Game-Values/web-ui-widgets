@@ -188,7 +188,7 @@
 </ui-layout-content>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import type { GameCard } from "~/components/game/Card.vue"
 
 import Timeline from "~/widgets/components/Timeline.vue"

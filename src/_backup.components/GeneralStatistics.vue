@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import InfoList from "~/components/parts/InfoList.vue"
 import InfoListItem from "~/components/parts/InfoListItem.vue"
 

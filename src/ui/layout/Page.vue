@@ -7,9 +7,7 @@ defineSlots<Slots>()
 </script>
 
 <template>
-<section
-    :id="$route.name as string"
->
+<section class="py-page">
     <slot />
 </section>
 </template>

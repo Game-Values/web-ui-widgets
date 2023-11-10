@@ -1,14 +1,10 @@
 <script lang="ts" setup>
-import type { LayoutProps } from "vexip-ui"
-
-import { TIMEOUT_DEBOUNCE } from "~/consts"
+import type { LayoutProps, LayoutSection } from "vexip-ui"
 
 type Props = LayoutProps
 
-interface Slots {
-    // footer: () => any
-    // header: () => any
-    main: () => any
+type Slots = {
+    [key in LayoutSection]: () => any
 }
 
 withDefaults(defineProps<Props>(), (
@@ -19,15 +15,6 @@ withDefaults(defineProps<Props>(), (
 ))
 
 defineSlots<Slots>()
-
-let layoutRef = ref()
-
-let mutationCallback = useDebounceFn((): Promise<void> => (
-    useNextTick((): void => layoutRef.value.scroll.refresh())
-), TIMEOUT_DEBOUNCE)
-
-useMutationObserver(layoutRef, mutationCallback, { childList: true, subtree: true })
-useResizeObserver(layoutRef, mutationCallback)
 </script>
 
 <!-- <template #header>
@@ -50,10 +37,15 @@ useResizeObserver(layoutRef, mutationCallback)
 </template> -->
 
 <template>
-<v-layout
-    v-bind="$props"
-    ref="layoutRef"
->
+<v-layout v-bind="$props">
+    <template #header-left>
+        <slot name="headerLeft">
+            <ui-base-link to="/">
+                <ui-icon-logo />
+            </ui-base-link>
+        </slot>
+    </template>
+
     <template #main>
         <slot name="main" />
     </template>

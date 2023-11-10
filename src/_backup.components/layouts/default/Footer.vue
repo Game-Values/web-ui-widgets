@@ -41,7 +41,7 @@
 </footer>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 const siteName: string = "Game Values, UG"
 
 const footerNavigation = {

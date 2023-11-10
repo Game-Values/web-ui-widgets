@@ -33,7 +33,7 @@
 </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import type { GameCard } from "~/components/game/Card.vue"
 
 const Cards: GameCard[] = [

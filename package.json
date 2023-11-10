@@ -34,6 +34,7 @@
     "devDependencies": {
         "@hebilicious/vue-query-nuxt": "^0.2.1",
         "@iconify-json/heroicons": "^1.1.13",
+        "@iconify/utils": "^2.1.11",
         "@logux/eslint-config": "^52.0.1",
         "@nuxt/image": "^1.0.0",
         "@nuxt/types": "^2.17.2",
@@ -68,6 +69,7 @@
         "nuxt-swiper": "^1.2.2",
         "nuxt-viewport": "^2.0.6",
         "sass": "^1.69.5",
+        "svgo": "^3.0.3",
         "swagger-typescript-api": "^13.0.3",
         "typescript": "^5.2.2",
         "vite-plugin-dynamic-import": "^1.5.0",

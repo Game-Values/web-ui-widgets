@@ -39,6 +39,10 @@ export default defineNuxtConfig({
         "~/components",
 
         {
+            path: "~/entities",
+            prefix: "entity",
+        },
+        {
             path: "~/ui",
             prefix: "ui",
         },
@@ -64,6 +68,10 @@ export default defineNuxtConfig({
         timeline: {
             enabled: isDevelopment(),
         },
+    },
+
+    dir: {
+        public: "public",
     },
 
     experimental: {
@@ -128,6 +136,7 @@ export default defineNuxtConfig({
             "@unocss/nuxt",
 
             "nuxt-lazy-load",
+            "nuxt-swiper",
 
             // todo: need to enable after fixes
             // ["@nuxtjs/eslint-module", {
@@ -203,10 +212,6 @@ export default defineNuxtConfig({
 
             ["nuxt-seo-experiments", {
                 debug: isDebug(),
-            }],
-
-            ["nuxt-swiper", {
-                styleLang: "scss",
             }],
 
             ["nuxt-viewport", {

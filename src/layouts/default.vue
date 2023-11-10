@@ -7,19 +7,7 @@ defineSlots<Slots>()
 </script>
 
 <template>
-<ui-layout-app>
-    <template #header>
-        <ui-layout-content>
-            <layouts-home-navigation />
-        </ui-layout-content>
-    </template>
-
-    <template #main>
-        <slot />
-    </template>
-
-    <template #footer>
-        <layouts-default-footer />
-    </template>
-</ui-layout-app>
+<widget-layout-app>
+    <slot />
+</widget-layout-app>
 </template>

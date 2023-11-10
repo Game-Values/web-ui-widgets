@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type { GameAPI } from "~/api"
 import type { Component } from "vue"
 

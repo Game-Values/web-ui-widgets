@@ -6,20 +6,31 @@ import { getLocale } from "~~/common/utils"
 import { DEFAULT_LOCALE, LOCALES } from "~/consts"
 import { RouteName } from "~/enums"
 
+function isStaticPath(path: string): boolean {
+    return /^\/~\/assets/.test(path)
+}
+
+function hasLocale(locale: Locale): boolean {
+    return Boolean(locale) && LOCALES.includes(locale)
+}
+
 export default defineNuxtRouteMiddleware((to: RouteLocationNormalized): void => {
-    let locale: Locale = useGet<Locale>(to.params, "locale")
+    // if (
+    //     isStaticPath(to.fullPath) ||
+    //     hasLocale(useGet<Locale>(to.params, "locale"))
+    // )
+    //     return
 
-    if (locale && LOCALES.includes(locale))
-        return
+    // useNuxtApp()
 
-    return navigateTo({
-        name: RouteName.MAIN,
-        params: {
-            locale: (
-                LOCALES.includes(getLocale())
-                    ? getLocale()
-                    : DEFAULT_LOCALE
-            ),
-        },
-    })
+    // return navigateTo({
+    //     name: RouteName.MAIN,
+    //     params: {
+    //         locale: (
+    //             LOCALES.includes(getLocale())
+    //                 ? getLocale()
+    //                 : DEFAULT_LOCALE
+    //         ),
+    //     },
+    // })
 })

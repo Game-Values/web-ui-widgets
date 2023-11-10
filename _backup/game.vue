@@ -39,7 +39,7 @@
 </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import { defineComponent, ref } from "vue"
 
 import SidebarSearch from "~/components/system/Facet.vue"

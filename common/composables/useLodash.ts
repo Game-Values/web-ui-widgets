@@ -51,6 +51,13 @@ export function isNull(target: any): boolean {
 }
 
 /**
+ * @see https://lodash.com/docs/#isNumber
+ */
+export function isNumber(target: any): boolean {
+    return Number.isInteger(target)
+}
+
+/**
  * @see https://lodash.com/docs/#isUndefined
  */
 export function isUndefined(target: any): boolean {

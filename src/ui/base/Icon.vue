@@ -38,3 +38,10 @@ defineSlots<Slots>()
     <slot />
 </v-icon>
 </template>
+
+<style lang="sass" scoped>
+.vxp-icon
+    :deep(> g),
+    :deep(> g > i)
+        @apply w-inherit h-inherit
+</style>

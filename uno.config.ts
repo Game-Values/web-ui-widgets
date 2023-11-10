@@ -1,15 +1,18 @@
 import { readFileSync } from "node:fs"
+import { join } from "node:path"
+import { cwd } from "node:process"
 
+import { FileSystemIconLoader } from "@iconify/utils/lib/loader/node-loaders"
+import { optimize } from "svgo"
 import {
     defineConfig,
     presetIcons,
-    presetTypography,
     presetUno,
     transformerDirectives,
     transformerVariantGroup,
 } from "unocss"
 
-import { useAssign, useGet } from "./common/composables"
+import { useAssign, useClone, useGet } from "./common/composables"
 import { Breakpoint } from "./common/enums"
 
 let breakpoints: Record<string, string> = extractSassVars("breakpoints")
@@ -52,12 +55,24 @@ function extractSassVars(filename: string): Record<string, string> {
 
 export default defineConfig({
     presets: [
-        presetIcons(),
-        presetTypography(),
+        presetIcons({
+            collections: {
+                custom: FileSystemIconLoader(
+                    join(cwd(), "src", "assets", "icons"),
+                ),
+            },
+            customizations: {
+                transform: (svg: string): string => (
+                    useGet<string>(optimize(svg), "data")
+                ),
+            },
+        }),
         presetUno(),
     ],
 
     shortcuts: {
+        "border-solid": "border border-solid",
+        "border-solid-secondary": "border border-solid border-secondary",
         content: `w-full max-w-[${useGet(sizes, "$layout-max-width")}] ${Breakpoint.LG}:mx-auto`,
         fit: "w-full h-full",
         "flex-center": "flex items-center justify-center",
@@ -72,13 +87,12 @@ export default defineConfig({
     },
 
     theme: {
-        borderRadius: {
-            DEFAULT: useGet(spaces, "$space-1"),
-            lg: useGet(radius, "$radius-lg"),
-            normal: useGet(radius, "$radius-normal"),
-            sm: useGet(radius, "$radius-sm"),
-            tag: useGet(radius, "$radius-tag"),
-        },
+        borderRadius: useAssign(useClone(numericSpaces), (
+            {
+                DEFAULT: useGet(spaces, "$space-1"),
+                tag: useGet(radius, "$radius-tag"),
+            }
+        )),
 
         breakpoints: {
             [Breakpoint.LG]: useGet(breakpoints, "$breakpoint-lg"),
@@ -171,9 +185,13 @@ export default defineConfig({
             normal: useGet(typography, "$line-height-normal"),
         },
 
-        spacing: useAssign(numericSpaces, {
-            normal: useGet(spaces, "$space-normal"),
-        }),
+        spacing: useAssign(useClone(numericSpaces), (
+            {
+                "main-slider": useGet(spaces, "$space-main-slider"),
+                normal: useGet(spaces, "$space-normal"),
+                page: useGet(spaces, "$space-page"),
+            }
+        )),
 
         width: numericSpaces,
     },

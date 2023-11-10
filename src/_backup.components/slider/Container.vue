@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { SliderSlide } from "#components"
 import { computed } from "#imports"
 import { VNode } from "vue"
