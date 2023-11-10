@@ -1,5 +1,7 @@
 import type { ClassConstructor } from "class-transformer"
 
+import { createModel } from "~/factories"
+
 export abstract class CollectionAbstract<
     T extends object,
     Raw extends object,
@@ -7,6 +9,10 @@ export abstract class CollectionAbstract<
     public constructor(
         private _items: Raw[],
     ) {}
+
+    public add(item: any): void {
+        this._items.push(item)
+    }
 
     public getById(id: number | string): T | undefined {
         return this.getItemsMap("id").get(id)
@@ -27,7 +33,9 @@ export abstract class CollectionAbstract<
     }
 
     public get items(): T[] {
-        return this._items.map((item: Raw): T => new this.__Model(item))
+        return this._items.map((item: Raw): T => (
+            createModel(this.__Model, item)
+        ))
     }
 
     public get itemsSet(): Set<T> {

@@ -9,7 +9,7 @@
     },
     {
         "id": 0,
-        "icon": "gta5",
+        "icon": "gta",
         "url": "/g/gta5",
         "name": "GTA 5 Online",
         "count": 0,
@@ -57,7 +57,7 @@
     },
     {
         "id": 0,
-        "icon": "mobile",
+        "icon": "mobile-games",
         "url": "/g/mobile-games",
         "name": "Mobile Games",
         "count": 0,
@@ -113,7 +113,7 @@
     },
     {
         "id": 0,
-        "icon": "tom-clansis",
+        "icon": "tom-clancys",
         "url": "/g/tc-division",
         "name": "Tom Clancy's The Division",
         "count": 0,
@@ -121,7 +121,7 @@
     },
     {
         "id": 0,
-        "icon": "tom-clansis",
+        "icon": "tom-clancys",
         "url": "/g/tc-gr",
         "name": "Tom Clancy’s Ghost Recon",
         "count": 0,
@@ -129,7 +129,7 @@
     },
     {
         "id": 0,
-        "icon": "tom-clansis",
+        "icon": "tom-clancys",
         "url": "/g/tc-rs",
         "name": "Tom Clancy's Rainbow Six",
         "count": 0,

@@ -3,7 +3,6 @@ export enum AdapterToken {
 }
 
 export enum ClientToken {
-    DTO = "DTOClient",
     HTTP = "HttpClient",
     STORE = "StoreToken",
 }

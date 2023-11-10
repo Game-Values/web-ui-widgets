@@ -40,8 +40,12 @@ defineSlots<Slots>()
 <v-layout v-bind="$props">
     <template #header-left>
         <slot name="headerLeft">
-            <ui-base-link to="/">
-                <ui-icon-logo />
+            <ui-base-link :to="useMainRoute().fullPath">
+                <ui-base-icon
+                    height="40"
+                    name="custom:logo"
+                    width="158"
+                />
             </ui-base-link>
         </slot>
     </template>

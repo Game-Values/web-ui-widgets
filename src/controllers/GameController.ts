@@ -10,8 +10,6 @@ export class GameController {
 
     public async fetchGames(): Promise<void> {
         let gamesRaw: GameRaw[] = await this._gameService.fetchGames()
-
-        console.log(this._storeClient.gamesStore.setGamesRaw)
         this._storeClient.gamesStore.setGamesRaw(gamesRaw)
     }
 }

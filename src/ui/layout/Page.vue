@@ -7,7 +7,7 @@ defineSlots<Slots>()
 </script>
 
 <template>
-<section class="py-page">
+<section class="[&>*]:py-page">
     <slot />
 </section>
 </template>

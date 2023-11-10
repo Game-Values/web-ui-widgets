@@ -7,6 +7,8 @@ interface MainSlide {
     title: string
 }
 
+useI18n()
+
 let mainSlides: ComputedRef<MainSlide[]> = computed((): MainSlide[] => (
     Array(5)
         .fill({
@@ -88,7 +90,6 @@ let mainSlides: ComputedRef<MainSlide[]> = computed((): MainSlide[] => (
 .swiper
     --swiper-navigation-size: #{$space-10}
     --swiper-navigation-sides-offset: -#{$space-5}
-    --swiper-pagination-bottom: -#{$space-10}
     --swiper-pagination-bullet-border-radius: #{$space-1}
     --swiper-pagination-bullet-inactive-color: #{$color-white}
     --swiper-pagination-bullet-inactive-opacity: 0.12

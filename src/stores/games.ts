@@ -4,7 +4,7 @@ import type { StoreState } from "pinia"
 import type { Ref } from "vue"
 
 import { Games } from "~/dto"
-import { createStore } from "~/factories"
+import { createCollection, createStore } from "~/factories"
 
 export namespace GamesStore {
     export type Id = "gamesStore"
@@ -29,7 +29,7 @@ export let useGamesStore: GamesStore.Store = createStore<
     GamesStore.Actions
 >("gamesStore", (): GamesStore.Store => {
     let gamesRaw: Ref<GameRaw[]> = ref([])
-    let games = computed((): Games => new Games(getRef(gamesRaw)))
+    let games = computed((): Games => createCollection(Games, getRef(gamesRaw)))
 
     function setGamesRaw(raw: GameRaw[]): void {
         setRef(gamesRaw, raw)

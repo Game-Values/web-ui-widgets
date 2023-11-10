@@ -11,6 +11,6 @@ export class ApiAdapter extends Api {
 
     public fetchMockJSON<T extends object>(mockName: MockName): Promise<T> {
         return import(`~/mocks/json/${mockName}.json`)
-            .then((module: Module<T>): T => module.default)
+            .then((module: Module<T>): T => module?.default || module)
     }
 }

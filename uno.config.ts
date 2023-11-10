@@ -1,8 +1,12 @@
+import type { Module } from "./src/types"
+import type { IconifyJSON } from "@iconify-json/heroicons"
+
 import { readFileSync } from "node:fs"
-import { join } from "node:path"
+import { basename, join } from "node:path"
 import { cwd } from "node:process"
 
 import { FileSystemIconLoader } from "@iconify/utils/lib/loader/node-loaders"
+import { glob } from "fast-glob"
 import { optimize } from "svgo"
 import {
     defineConfig,
@@ -14,6 +18,7 @@ import {
 
 import { useAssign, useClone, useGet } from "./common/composables"
 import { Breakpoint } from "./common/enums"
+import { isDevelopment } from "./common/utils"
 
 let breakpoints: Record<string, string> = extractSassVars("breakpoints")
 let colors: Record<string, string> = extractSassVars("colors")
@@ -54,16 +59,49 @@ function extractSassVars(filename: string): Record<string, string> {
 }
 
 export default defineConfig({
+    content: {
+        filesystem: [
+            join(cwd(), "schema", "icons.json"),
+        ],
+        inline: [
+            async (): Promise<string> => {
+                let icons: string[] = (
+                    await glob(
+                        join(cwd(), "src", "assets", "icons", "*.svg"),
+                    )
+                ).map((iconpath: string): string => (
+                    `i-custom:${basename(iconpath, ".svg")}`
+                ))
+
+                if (isDevelopment())
+                    return JSON.stringify(icons, null, 4)
+
+                return JSON.stringify(icons)
+            },
+        ],
+    },
+
     presets: [
         presetIcons({
             collections: {
                 custom: FileSystemIconLoader(
                     join(cwd(), "src", "assets", "icons"),
                 ),
+                iconify: (): Promise<IconifyJSON> => (
+                    import("@iconify-json/heroicons/icons.json")
+                        .then((module: Module<IconifyJSON>): IconifyJSON => module.default || module)
+                ),
             },
             customizations: {
                 transform: (svg: string): string => (
-                    useGet<string>(optimize(svg), "data")
+                    useGet<string>(
+                        optimize(svg, {
+                            plugins: [
+                                "removeDimensions",
+                            ],
+                        }),
+                        "data",
+                    )
                 ),
             },
         }),
