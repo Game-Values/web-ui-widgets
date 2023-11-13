@@ -1,8 +1,8 @@
 all:
-	pnpm install --ignore-scripts && pnpm run dev
+	pnpm install && pnpm run dev
 
 c:
 	rm -rf node_modules .nuxt .output
 
 i: c
-	pnpm install --ignore-scripts && pnpm run build
+	pnpm install && pnpm run build
