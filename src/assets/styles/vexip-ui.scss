@@ -3,24 +3,29 @@
 @use "~/assets/styles/vars/typography";
 
 @forward "vexip-ui/style/design" with (
+    $break-point-xxl: breakpoints.$breakpoint-lg,
+    $break-point-xl: breakpoints.$breakpoint-lg,
     $break-point-lg: breakpoints.$breakpoint-lg,
     $break-point-md: breakpoints.$breakpoint-md,
     $break-point-sm: breakpoints.$breakpoint-sm,
     $break-point-map: (
+        xxl: (
+            min-width: breakpoints.$breakpoint-md,
+        ),
+        xl: (
+            min-width: breakpoints.$breakpoint-md,
+        ),
         lg: (
-            min-width: breakpoints.$breakpoint-lg,
+            min-width: breakpoints.$breakpoint-md,
         ),
         md: (
             min-width: breakpoints.$breakpoint-md,
-            max-width: breakpoints.$breakpoint-lg - 1px,
         ),
         sm: (
             min-width: breakpoints.$breakpoint-sm,
-            max-width: breakpoints.$breakpoint-md - 1px,
         ),
         xs: (
             min-width: breakpoints.$breakpoint-xs,
-            max-width: breakpoints.$breakpoint-sm - 1px,
         ),
     ),
 

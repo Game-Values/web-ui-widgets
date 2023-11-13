@@ -6,12 +6,19 @@ defineProps<ButtonProps>()
 
 defineSlots<{
     default: () => VNode
+    icon: () => VNode
 }>()
 </script>
 
 <template>
 <v-button v-bind="$props">
-    <slot />
+    <template v-if="$slots.default">
+        <slot />
+    </template>
+
+    <template v-if="$slots.icon">
+        <slot name="icon" />
+    </template>
 </v-button>
 </template>
 
@@ -21,6 +28,7 @@ defineSlots<{
     --vxp-button-radius: theme("spacing.3")
     --vxp-button-v-padding: theme("spacing.6")
     --vxp-button-h-padding: theme("spacing.10")
+    --vxp-button-icon-span: 0
 
 .vxp-button
     @apply text-level-5 font-semibold
@@ -30,4 +38,7 @@ defineSlots<{
     --vxp-button-h-padding: 0
 
     @apply w-8 h-8
+
+    &.vxp-button--loading
+        @apply before:(bg-transparent)
 </style>

@@ -5,9 +5,9 @@ import type { VNode } from "vue"
 
 withDefaults(defineProps<IconProps & {
     color?: Color
-    height?: string
-    name: string
-    width?: string
+    custom?: string
+    height?: number | string
+    width?: number | string
 }>(), {
     size: "16",
 })
@@ -22,16 +22,24 @@ defineSlots<{
     v-bind="$props"
     :style="{
         color: color ? useThemeColor(color) : 'currentColor',
-        fontSize: size && pxToRem(size),
-        height: height ? pxToRem(height) : '100%',
-        width: width ? pxToRem(width) : '100%',
+        fontSize: pxToRem(size),
+        height: height ? pxToRem(height) : 'var(--vpx-icon-height)',
+        width: width ? pxToRem(width) : 'var(--vpx-icon-width)',
     }"
 >
-    <i :class="`i-${name}`" />
+    <slot>
+        <i
+            v-if="custom"
+            :class="`i-custom:${custom}`"
+        />
+    </slot>
 </v-icon>
 </template>
 
 <style lang="sass" scoped>
 .vxp-icon
+    --vpx-icon-width: 1em
+    --vpx-icon-height: 1em
+
     @apply [&>*]:(w-inherit h-inherit)
 </style>

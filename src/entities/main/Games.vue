@@ -2,10 +2,22 @@
 let { storeClient } = useClients()
 
 let { games } = storeToRefs(storeClient.gamesStore)
+
+let { lg } = useBreakpoints()
+
+let rowGap = computed((): number[] => {
+    let horizontalGap = getRef(lg) ? remToNumber(useThemeSpace(9)) : 0
+    let verticalGap = remToNumber(useThemeSpace(12))
+
+    return [
+        horizontalGap,
+        verticalGap,
+    ]
+})
 </script>
 
 <template>
-<ui-layout-row :gap="Array(2).fill(remToNumber(useThemeSpace(10)))">
+<ui-layout-row :gap="rowGap">
     <ui-layout-col
         v-for="[firstChar, gamesCollection] in games.groupedGames"
         :key="firstChar"
@@ -18,7 +30,7 @@ let { games } = storeToRefs(storeClient.gamesStore)
                 {{ firstChar }}
             </ui-typography-title>
 
-            <game-grid :games="gamesCollection" />
+            <widget-game-grid :games="gamesCollection" />
         </ui-layout-space>
     </ui-layout-col>
 </ui-layout-row>

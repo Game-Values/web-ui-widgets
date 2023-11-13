@@ -16,7 +16,13 @@ defineSlots<{
 </template>
 
 <style lang="sass" scoped>
+.vxp-tag
+    @apply font-semibold
+
+    &--small
+        @apply text-sm
+
 .vxp-tag--circle
     --vxp-tag-v-padding: 0
-    --vxp-tag-h-padding: theme("spacing.2")
+    --vxp-tag-h-padding: theme("spacing.1")
 </style>

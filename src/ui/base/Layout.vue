@@ -19,8 +19,8 @@ defineSlots<{
         <slot name="logo">
             <ui-base-link :to="useMainRoute().fullPath">
                 <ui-base-icon
+                    custom="logo"
                     height="40"
-                    name="custom:logo"
                     width="158"
                 />
             </ui-base-link>
@@ -60,6 +60,7 @@ defineSlots<{
 :deep(.vxp-layout__main),
 :deep(.vxp-layout__footer)
     @apply content
+    @apply px-9
 
 // todo: (?)
 :deep(.vxp-layout__user)

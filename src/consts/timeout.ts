@@ -1,1 +1,3 @@
-export const TIMEOUT_DEBOUNCE: number = 300
+export const DEFAULT_TIMEOUT: number = 250
+
+export const DEBOUNCE_TIMEOUT: number = 300

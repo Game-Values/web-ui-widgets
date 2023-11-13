@@ -9,12 +9,18 @@ await mainFacade.bootstrap()
     <entity-main-slider />
 
     <ui-layout-row>
-        <ui-layout-col :span="20">
+        <ui-layout-col
+            :lg="20"
+            :span="24"
+        >
             <entity-main-games />
         </ui-layout-col>
 
-        <ui-layout-col :span="4">
-            Chat
+        <ui-layout-col
+            :lg="4"
+            :span="0"
+        >
+            // TODO: Chat
         </ui-layout-col>
     </ui-layout-row>
 </ui-layout-page>

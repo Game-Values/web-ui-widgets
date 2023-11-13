@@ -1,5 +1,3 @@
-import type { Module } from "./src/types"
-import type { IconifyJSON } from "@iconify-json/heroicons"
 import type { Theme } from "@unocss/preset-uno"
 
 import { readFileSync } from "node:fs"
@@ -192,7 +190,7 @@ export default defineConfig({
         ],
         inline: [
             async (): Promise<string> => {
-                let icons: string[] = (
+                let customIcons: string[] = (
                     await glob(
                         join(cwd(), "src", "assets", "icons", "*.svg"),
                     )
@@ -201,9 +199,9 @@ export default defineConfig({
                 ))
 
                 if (isDevelopment())
-                    return JSON.stringify(icons, null, 4)
+                    return JSON.stringify(customIcons, null, 4)
 
-                return JSON.stringify(icons)
+                return JSON.stringify(customIcons)
             },
         ],
     },
@@ -213,10 +211,6 @@ export default defineConfig({
             collections: {
                 custom: FileSystemIconLoader(
                     join(cwd(), "src", "assets", "icons"),
-                ),
-                iconify: (): Promise<IconifyJSON> => (
-                    import("@iconify-json/heroicons/icons.json")
-                        .then((module: Module<IconifyJSON>): IconifyJSON => module.default || module)
                 ),
             },
             customizations: {

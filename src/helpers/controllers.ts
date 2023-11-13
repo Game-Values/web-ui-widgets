@@ -31,4 +31,9 @@ export class Controllers extends DIAbstract<ControllersTokens> {
             ],
         ]
     }
+
+    @Memoize()
+    public get gameController(): GameController {
+        return this.__getInjection(this.__tokens[ControllerToken.GAME])
+    }
 }
