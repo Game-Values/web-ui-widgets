@@ -1,22 +1,18 @@
 <script lang="ts" setup>
 import type { RowProps } from "vexip-ui"
+import type { VNode } from "vue"
 
-type Props = RowProps
+withDefaults(defineProps<RowProps>(), {
+    gap: Array(2).fill(
+        remToNumber(
+            useThemeSpace(9),
+        ),
+    ),
+})
 
-interface Slots {
-    default: () => any
-}
-
-withDefaults(defineProps<Props>(), (
-    useUiProps<RowProps>({
-        gap: [
-            remToPx(useGet(useRuntimeConfig().public.theme.spacing, "6"), false),
-            remToPx(useGet(useRuntimeConfig().public.theme.spacing, "6"), false),
-        ],
-    })
-))
-
-defineSlots<Slots>()
+defineSlots<{
+    default: () => VNode
+}>()
 </script>
 
 <template>

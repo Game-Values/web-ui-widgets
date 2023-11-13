@@ -1,15 +1,12 @@
 <script lang="ts" setup>
 import type { TagProps } from "vexip-ui"
+import type { VNode } from "vue"
 
-type Props = TagProps
+defineProps<TagProps>()
 
-interface Slots {
-    default: () => any
-}
-
-withDefaults(defineProps<Props>(), useUiProps<TagProps>())
-
-defineSlots<Slots>()
+defineSlots<{
+    default: () => VNode
+}>()
 </script>
 
 <template>
@@ -21,5 +18,5 @@ defineSlots<Slots>()
 <style lang="sass" scoped>
 .vxp-tag--circle
     --vxp-tag-v-padding: 0
-    --vxp-tag-h-padding: #{$space-1_5}
+    --vxp-tag-h-padding: theme("spacing.2")
 </style>

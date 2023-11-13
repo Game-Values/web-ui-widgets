@@ -1,7 +1,4 @@
-export function pxToRem(
-    val: number | string,
-    withPostfix: boolean = true,
-): number | string {
+export function pxToRem(val: number | string): string {
     let rem: string = ""
 
     if (isString(val))
@@ -9,16 +6,10 @@ export function pxToRem(
     else
         rem += (val as number * 0.1).toFixed(1)
 
-    if (withPostfix)
-        return rem + "rem"
-
-    return Number(rem)
+    return rem + "rem"
 }
 
-export function remToPx(
-    val: number | string,
-    withPostfix: boolean = true,
-): number | string {
+export function remToPx(val: number | string): string {
     let px: string = ""
 
     if (isString(val))
@@ -26,8 +17,5 @@ export function remToPx(
     else
         px += (val as number * 10).toFixed(1)
 
-    if (withPostfix)
-        return px + "px"
-
-    return Number(px)
+    return px + "px"
 }

@@ -1,19 +1,14 @@
 <script lang="ts" setup>
 import type { CardProps } from "vexip-ui"
+import type { VNode } from "vue"
 
-type Props = CardProps
+withDefaults(defineProps<CardProps>(), {
+    shadow: "never",
+})
 
-interface Slots {
-    default: () => any
-}
-
-withDefaults(defineProps<Props>(), (
-    useUiProps<CardProps>({
-        shadow: "never",
-    })
-))
-
-defineSlots<Slots>()
+defineSlots<{
+    default: () => VNode
+}>()
 </script>
 
 <template>

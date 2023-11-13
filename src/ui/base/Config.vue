@@ -1,15 +1,13 @@
 <script lang="ts" setup>
 import type { ConfigProviderProps } from "vexip-ui"
+import type { VNode } from "vue"
 
-type Props = ConfigProviderProps
+defineProps<ConfigProviderProps>()
 
-interface Slots {
-    default: () => any
-}
+defineSlots<{
+    default: () => VNode
+}>()
 
-defineProps<Props>()
-
-defineSlots<Slots>()
 </script>
 
 <template>

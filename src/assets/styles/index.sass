@@ -5,6 +5,11 @@
 @use "@unocss/reset/sanitize/forms.css"
 @use "@unocss/reset/sanitize/reduce-motion.css"
 
+*,
+*::before,
+*::after
+    @apply box-border
+
 html
     @apply text-62.5%
     @apply bg-grey-dark

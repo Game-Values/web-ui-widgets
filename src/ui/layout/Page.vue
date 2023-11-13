@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-interface Slots {
-    default: () => any
-}
+import type { VNode } from "vue"
 
-defineSlots<Slots>()
+defineSlots<{
+    default: () => VNode
+}>()
 </script>
 
 <template>
-<section class="[&>*]:py-page">
+<section class="[&>*]:py-18">
     <slot />
 </section>
 </template>

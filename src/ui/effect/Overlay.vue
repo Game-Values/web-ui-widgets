@@ -1,18 +1,16 @@
 <script lang="ts" setup>
-interface Props {
+import type { VNode } from "vue"
+
+defineProps<{
     height?: number | string
     overlayClass?: string
     width?: number | string
-}
+}>()
 
-interface Slots {
-    default: () => any
-    overlay: () => any
-}
-
-defineProps<Props>()
-
-defineSlots<Slots>()
+defineSlots<{
+    default: () => VNode
+    overlay: () => VNode
+}>()
 </script>
 
 <template>

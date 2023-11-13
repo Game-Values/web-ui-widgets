@@ -2,16 +2,15 @@
 import type { DIAbstract } from "~/abstract"
 import type { Context } from "~/types"
 import type { Token } from "brandi"
+import type { VNode } from "vue"
 
 import { Container } from "brandi"
 
 import { Adapters, Clients, Controllers, Facades, Services } from "~/helpers"
 
-interface Slots {
-    default: () => any
-}
-
-defineSlots<Slots>()
+defineSlots<{
+    default: () => VNode
+}>()
 
 let container: Container = new Container()
 let tokens: Map<string, Token<any>> = new Map()

@@ -1,15 +1,12 @@
 <script lang="ts" setup>
 import type { SpaceProps } from "vexip-ui"
+import type { VNode } from "vue"
 
-type Props = SpaceProps
+defineProps<SpaceProps>()
 
-interface Slots {
-    default: () => any
-}
-
-withDefaults(defineProps<Props>(), useUiProps<SpaceProps>())
-
-defineSlots<Slots>()
+defineSlots<{
+    default: () => VNode
+}>()
 </script>
 
 <template>

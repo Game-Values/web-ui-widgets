@@ -98,9 +98,7 @@ export default defineNuxtConfig({
             {
                 from: "@vueuse/core",
                 imports: [
-                    "useDebounceFn",
-                    "useMutationObserver",
-                    "useResizeObserver",
+
                 ],
             },
             {
@@ -163,7 +161,7 @@ export default defineNuxtConfig({
             ["@nuxtjs/i18n", {
                 debug: isDebug(),
                 defaultLocale: getLocale(),
-                langDir: "locales/i18n",
+                langDir: "locales",
                 lazy: true,
                 locales: [
                     {
@@ -287,15 +285,14 @@ export default defineNuxtConfig({
         css: {
             preprocessorOptions: {
                 sass: {
-                    additionalData: `
-                        @use "~/assets/styles/helpers/mixins" as *
-
+                    additionalData: (code: string): string => `
                         @use "~/assets/styles/vars/breakpoints" as *
                         @use "~/assets/styles/vars/colors" as *
-                        @use "~/assets/styles/vars/radius" as *
                         @use "~/assets/styles/vars/sizes" as *
                         @use "~/assets/styles/vars/spaces" as *
                         @use "~/assets/styles/vars/typography" as *
+
+                        ${code}
                     `,
                 },
 
@@ -311,14 +308,13 @@ export default defineNuxtConfig({
                             )
 
                         return `
-                            @use "~/assets/styles/helpers/mixins" as *;
-
                             @use "~/assets/styles/vars/breakpoints" as *;
                             @use "~/assets/styles/vars/colors" as *;
-                            @use "~/assets/styles/vars/radius" as *;
                             @use "~/assets/styles/vars/sizes" as *;
                             @use "~/assets/styles/vars/spaces" as *;
                             @use "~/assets/styles/vars/typography" as *;
+
+                            ${code}
                         `
                     },
                 },

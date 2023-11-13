@@ -1,21 +1,16 @@
 <script lang="ts" setup>
 import type { LinkerProps } from "vexip-ui"
+import type { VNode } from "vue"
 
-interface Props extends LinkerProps {
+let props = withDefaults(defineProps<LinkerProps & {
     href?: string
-}
+}>(), {
+    href: "javascript:void(0)",
+})
 
-interface Slots {
-    default: () => any
-}
-
-let props = withDefaults(defineProps<Props>(), (
-    useUiProps<LinkerProps>({
-        href: "javascript:void(0)",
-    })
-))
-
-defineSlots<Slots>()
+defineSlots<{
+    default: () => VNode
+}>()
 
 let href = computed((): string | undefined => (
     props.to

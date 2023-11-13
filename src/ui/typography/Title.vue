@@ -1,15 +1,12 @@
 <script lang="ts" setup>
 import type { TitleProps } from "vexip-ui"
+import type { VNode } from "vue"
 
-type Props = TitleProps
+defineProps<TitleProps>()
 
-interface Slots {
-    default: () => any
-}
-
-withDefaults(defineProps<Props>(), useUiProps<TitleProps>())
-
-defineSlots<Slots>()
+defineSlots<{
+    default: () => VNode
+}>()
 </script>
 
 <template>
@@ -20,12 +17,12 @@ defineSlots<Slots>()
 
 <style lang="sass" scoped>
 .vxp-title-vars
-    --vxp-title-font-size-level-1: #{$font-size-level-1}
-    --vxp-title-font-size-level-2: #{$font-size-level-2}
-    --vxp-title-font-size-level-3: #{$font-size-level-3}
-    --vxp-title-font-size-level-4: #{$font-size-level-4}
-    --vxp-title-font-size-level-5: #{$font-size-level-5}
-    --vxp-title-font-size-level-6: #{$font-size-level-6}
+    // --vxp-title-font-size-level-1: theme("fontSize.level-1")
+    // --vxp-title-font-size-level-2: theme("fontSize.level-2")
+    // --vxp-title-font-size-level-3: theme("fontSize.level-3")
+    // --vxp-title-font-size-level-4: theme("fontSize.level-4")
+    // --vxp-title-font-size-level-5: theme("fontSize.level-5")
+    // --vxp-title-font-size-level-6: theme("fontSize.level-6")
     --vxp-title-font-weight: 700
 
 .vxp-title

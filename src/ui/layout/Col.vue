@@ -1,19 +1,14 @@
 <script lang="ts" setup>
 import type { ColumnProps } from "vexip-ui"
+import type { VNode } from "vue"
 
-type Props = ColumnProps
+withDefaults(defineProps<ColumnProps>(), {
+    useFlex: true,
+})
 
-interface Slots {
-    default: () => any
-}
-
-withDefaults(defineProps<Props>(), (
-    useUiProps<ColumnProps>({
-        useFlex: true,
-    })
-))
-
-defineSlots<Slots>()
+defineSlots<{
+    default: () => VNode
+}>()
 </script>
 
 <template>

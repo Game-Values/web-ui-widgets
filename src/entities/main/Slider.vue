@@ -58,7 +58,7 @@ let mainSlides: ComputedRef<MainSlide[]> = computed((): MainSlide[] => (
                     align: 'center',
                 }"
             >
-                <div class="flex-col gap-y-5 p-main-slider">
+                <div class="flex-col gap-y-8 p-18">
                     <!-- todo: typography components -->
                     <ui-typography-title :level="1">
                         <i18n-t :keypath="slide.title" />
@@ -69,7 +69,7 @@ let mainSlides: ComputedRef<MainSlide[]> = computed((): MainSlide[] => (
                     </ui-typography-text>
 
                     <ui-base-button
-                        class="sm:max-w-[18rem]"
+                        class="sm:max-w-[18rem] height-[50rem]"
                         type="primary"
                     >
                         <i18n-t keypath="Try" />
@@ -87,15 +87,15 @@ let mainSlides: ComputedRef<MainSlide[]> = computed((): MainSlide[] => (
 
 <style lang="sass" scoped>
 .swiper
-    --swiper-navigation-size: #{$space-10}
-    --swiper-navigation-sides-offset: -#{$space-5}
-    --swiper-pagination-bullet-border-radius: #{$space-1}
-    --swiper-pagination-bullet-inactive-color: #{$color-white}
+    --swiper-navigation-size: 4.2rem
+    --swiper-navigation-sides-offset: calc(var(--swiper-navigation-size) / 2 * -1)
+    --swiper-pagination-bullet-border-radius: theme("width.1")
+    --swiper-pagination-bullet-inactive-color: theme("colors.white")
     --swiper-pagination-bullet-inactive-opacity: 0.12
-    --swiper-pagination-bullet-size: #{$space-3}
-    --swiper-pagination-bullet-width: #{$space-5}
-    --swiper-pagination-color: #{$color-white}
-    --swiper-pagination-opacity: 0.9
+    --swiper-pagination-bullet-size: theme("width.5")
+    --swiper-pagination-bullet-width: theme("width.8")
+    --swiper-pagination-color: theme("colors.white")
+    --swiper-pagination-top: calc(100% - theme("spacing.12"))
 
     @apply overflow-visible
 
@@ -110,17 +110,18 @@ let mainSlides: ComputedRef<MainSlide[]> = computed((): MainSlide[] => (
         @apply text-grey-light
         @apply border-solid-secondary rounded-full
         @apply transition-colors
+        @apply hidden
         @apply hover:(bg-grey-dark)
         @apply after:(text-normal leading-none)
 
-        @include md
-            @apply hidden
+        @screen md
+            @apply flex
 
     :deep(.swiper-pagination-bullet)
         @apply transition-all duration-300
 
     :deep(.swiper-pagination-bullet-active)
-        @apply w-10
+        @apply w-14
 </style>
 
 <i18n lang="yaml">

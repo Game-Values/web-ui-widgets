@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-interface Slots {
-    default: () => any
-}
+import type { VNode } from "vue"
 
-defineSlots<Slots>()
+defineSlots<{
+    default: () => VNode
+}>()
 </script>
 
 <template>

@@ -1,13 +1,10 @@
 <script lang="ts" setup>
 // import { TIMEOUT_DEBOUNCE } from "~/consts"
+import type { VNode } from "vue"
 
-interface Slots {
-    // footer: () => any
-    // header: () => any
-    default: () => any
-}
-
-defineSlots<Slots>()
+defineSlots<{
+    default: () => VNode
+}>()
 
 // let layoutRef = ref()
 
@@ -20,9 +17,17 @@ defineSlots<Slots>()
 </script>
 
 <template>
-<ui-layout-app>
-    <template #main>
-        <slot />
+<ui-base-layout>
+    <slot />
+
+    <template #logo>
+        <ui-base-link :to="useMainRoute().fullPath">
+            <ui-base-icon
+                height="40"
+                name="custom:logo"
+                width="158"
+            />
+        </ui-base-link>
     </template>
-</ui-layout-app>
+</ui-base-layout>
 </template>

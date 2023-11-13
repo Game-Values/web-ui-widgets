@@ -1,15 +1,12 @@
 <script lang="ts" setup>
 import type { TextProps } from "vexip-ui"
+import type { VNode } from "vue"
 
-type Props = TextProps
+defineProps<TextProps>()
 
-interface Slots {
-    default: () => any
-}
-
-withDefaults(defineProps<Props>(), useUiProps<TextProps>())
-
-defineSlots<Slots>()
+defineSlots<{
+    default: () => VNode
+}>()
 </script>
 
 <template>
@@ -19,8 +16,3 @@ defineSlots<Slots>()
     <slot />
 </v-text>
 </template>
-
-<style lang="sass" scoped>
-// .vxp-text
-//     @apply prose
-</style>

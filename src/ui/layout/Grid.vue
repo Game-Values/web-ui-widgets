@@ -1,21 +1,18 @@
 <script lang="ts" setup>
 import type { GridProps } from "vexip-ui"
+import type { VNode } from "vue"
 
-type Props = GridProps
-
-interface Slots {
-    default: () => any
-}
-
-withDefaults(defineProps<Props>(), (
-    useUiProps<GridProps>({
-        gap: Array(2).fill(
-            remToPx(useThemeSpace(6), false),
+withDefaults(defineProps<GridProps>(), {
+    gap: Array(2).fill(
+        remToNumber(
+            useThemeSpace(9),
         ),
-    })
-))
+    ),
+})
 
-defineSlots<Slots>()
+defineSlots<{
+    default: () => VNode
+}>()
 </script>
 
 <template>

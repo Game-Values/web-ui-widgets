@@ -1,15 +1,12 @@
 <script lang="ts" setup>
 import type { CellProps } from "vexip-ui"
+import type { VNode } from "vue"
 
-type Props = CellProps
+defineProps<CellProps>()
 
-interface Slots {
-    default: () => any
-}
-
-withDefaults(defineProps<Props>(), useUiProps<CellProps>())
-
-defineSlots<Slots>()
+defineSlots<{
+    default: () => VNode
+}>()
 </script>
 
 <template>

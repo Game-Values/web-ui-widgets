@@ -4,18 +4,15 @@ import type { ImageProps } from "vexip-ui"
 
 import { Breakpoint } from "~/enums"
 
-interface Props extends ImageProps {
-    src: string
-}
+let props = defineProps<
+    ImageProps & {
+        src: string
+    }
+>()
 
-let props = withDefaults(defineProps<Props>(), (
-    useUiProps<ImageProps>({
-        width: "100%",
-        height: "100%",
-        lazy: true,
-        skeleton: true,
-    })
-))
+defineSlots<{
+    fallback: () => VNode
+}>()
 
 let attrs = useAttrs()
 let image = useImage()
@@ -44,7 +41,7 @@ let srcset = computed((): ImageSizes => {
     return image.getSizes(props.src, options)
 })
 
-let imageProps = computed((): Partial<Props> => (
+let imageProps = computed((): ImageProps => (
     useMerge({ ...attrs, ...props }, getRef(srcset))
 ))
 </script>
@@ -54,7 +51,7 @@ let imageProps = computed((): Partial<Props> => (
     <v-image v-bind="imageProps" />
 
     <template #fallback>
-        <ui-effect-skeleton
+        <v-skeleton
             v-bind="attrs"
             :height="width"
             :width="width"
