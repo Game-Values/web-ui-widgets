@@ -17,3 +17,9 @@ defineSlots<Slots>()
     <slot />
 </v-tag>
 </template>
+
+<style lang="sass" scoped>
+.vxp-tag--circle
+    --vxp-tag-v-padding: 0
+    --vxp-tag-h-padding: #{$space-1_5}
+</style>

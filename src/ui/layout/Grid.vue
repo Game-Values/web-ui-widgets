@@ -9,10 +9,9 @@ interface Slots {
 
 withDefaults(defineProps<Props>(), (
     useUiProps<GridProps>({
-        gap: [
-            remToPx(useGet(useRuntimeConfig().public.theme.spacing, "6"), false),
-            remToPx(useGet(useRuntimeConfig().public.theme.spacing, "6"), false),
-        ],
+        gap: Array(2).fill(
+            remToPx(useThemeSpace(6), false),
+        ),
     })
 ))
 
@@ -24,3 +23,8 @@ defineSlots<Slots>()
     <slot />
 </v-grid>
 </template>
+
+<style lang="sass" scoped>
+.vxp-grid
+    @apply fit
+</style>

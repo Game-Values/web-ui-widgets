@@ -65,7 +65,6 @@ let mainSlides: ComputedRef<MainSlide[]> = computed((): MainSlide[] => (
                     </ui-typography-title>
 
                     <ui-typography-text>
-                        {{ slide.description }}
                         <i18n-t :keypath="slide.description" />
                     </ui-typography-text>
 
@@ -102,7 +101,7 @@ let mainSlides: ComputedRef<MainSlide[]> = computed((): MainSlide[] => (
 
     :deep(.swiper-wrapper)
         @apply rounded-2xl border-solid-secondary
-        @apply first:rounded-4 first:overflow-hidden first:overflow-clip
+        @apply first:(rounded-4 overflow-hidden overflow-clip)
 
     :deep(.swiper-button-next),
     :deep(.swiper-button-prev)
@@ -111,8 +110,8 @@ let mainSlides: ComputedRef<MainSlide[]> = computed((): MainSlide[] => (
         @apply text-grey-light
         @apply border-solid-secondary rounded-full
         @apply transition-colors
-        @apply hover:bg-grey-dark
-        @apply after:text-normal after:leading-none
+        @apply hover:(bg-grey-dark)
+        @apply after:(text-normal leading-none)
 
         @include md
             @apply hidden

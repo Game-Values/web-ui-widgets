@@ -8,13 +8,10 @@ import { cwd } from "node:process"
 import { FileSystemIconLoader } from "@iconify/utils/lib/loader/node-loaders"
 import { glob } from "fast-glob"
 import { optimize } from "svgo"
-import {
-    defineConfig,
-    presetIcons,
-    presetUno,
-    transformerDirectives,
-    transformerVariantGroup,
-} from "unocss"
+import { defineConfig, presetIcons, presetUno, transformerDirectives, transformerVariantGroup } from "unocss"
+
+// fixme: not work
+// import { default as presetAutoprefixer } from "unocss-preset-autoprefixer"
 
 import { useAssign, useClone, useGet } from "./common/composables"
 import { Breakpoint } from "./common/enums"
@@ -106,6 +103,7 @@ export default defineConfig({
             },
         }),
         presetUno(),
+        // presetAutoprefixer(),
     ],
 
     shortcuts: {

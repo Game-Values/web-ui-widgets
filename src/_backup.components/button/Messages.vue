@@ -44,5 +44,5 @@ defineProps({
 .vxp-button
     @apply border-0
     @apply hover:text-gray-500
-    @apply focus:outline-none focus:ring-2 focus:text-gray-500 focus:ring-rose-500 focus:ring-offset-2
+    @apply focus:(outline-none ring-2 text-gray-500 ring-rose-500 ring-offset-2)
 </style>

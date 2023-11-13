@@ -17,3 +17,8 @@ defineSlots<Slots>()
     <slot />
 </v-space>
 </template>
+
+<style lang="sass" scoped>
+.vxp-space
+    @apply w-full
+</style>

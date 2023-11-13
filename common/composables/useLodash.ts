@@ -158,7 +158,7 @@ export function useIdentity<T = any>(target: T): T {
  */
 export function useGet<T = any>(
     target: any,
-    path: string | string[],
+    path: number | string | (number | string)[],
     defaultValue?: T | undefined,
 ): T {
     let travel: (re: RegExp) => object = (re: RegExp): object =>

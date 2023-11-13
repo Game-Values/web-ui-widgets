@@ -257,6 +257,14 @@ export default defineNuxtConfig({
         timing: isDevelopment(),
     },
 
+    postcss: {
+        plugins: {
+            autoprefixer: {},
+            cssnano: {},
+            "postcss-nested": {},
+        },
+    },
+
     runtimeConfig: {
         public: {
             apiURL: env.API_URL,

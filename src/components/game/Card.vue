@@ -13,30 +13,45 @@ defineProps<Props>()
     :id="game.id"
 >
     <ui-effect-overlay>
-        <ui-base-link class="fit">
-            <ui-layout-space
-                class="w-full"
-                vertical
-            >
-                <div class="w-full h-13.6rem border-solid-secondary rounded-3">
-                    <ui-base-icon :name="`custom:${game.icon}`" />
-                </div>
+        <ui-layout-space
+            :size="remToPx(useThemeSpace(4), false)"
+            vertical
+        >
+            <div class="w-full h-13.6rem border-solid-secondary rounded-3">
+                <ui-base-icon :name="`custom:${game.icon}`" />
+            </div>
 
-                <ui-typography-title :level="4">
-                    {{ game.name }}
-                </ui-typography-title>
-            </ui-layout-space>
-        </ui-base-link>
+            <ui-typography-title :level="4">
+                {{ game.name }}
+            </ui-typography-title>
+        </ui-layout-space>
 
         <template
             #overlay
         >
-            <!-- <ui-data-tag
-                circle
-                class="top-2.5 rigth-2.5"
+            <ui-base-link
+                :href="game.url"
+                class="relative fit"
             >
-                {{ game.count }}
-            </ui-data-tag> -->
+                <div
+                    v-show="game.count"
+                    :class="`
+                        absolute
+                        top-2.5
+                        left-[calc(100%-${useThemeSpace(2.5)})]
+                        -translate-x-full
+                        text-sm
+                        -tracking-[0.012rem]
+                    `"
+                >
+                    <ui-data-tag
+                        :color="useThemeColor('secondary')"
+                        circle
+                    >
+                        {{ game.count }}
+                    </ui-data-tag>
+                </div>
+            </ui-base-link>
         </template>
     </ui-effect-overlay>
 </ui-form-card>

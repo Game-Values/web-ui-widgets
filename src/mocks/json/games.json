@@ -12,7 +12,7 @@
         "icon": "gta",
         "url": "/g/gta5",
         "name": "GTA 5 Online",
-        "count": 0,
+        "count": "1K",
         "liked": false
     },
     {
@@ -20,7 +20,7 @@
         "icon": "genshin",
         "url": "/g/genshin",
         "name": "Genshin Impact",
-        "count": 0,
+        "count": "1K",
         "liked": false
     },
     {
@@ -28,7 +28,7 @@
         "icon": "hearthstone",
         "url": "/g/hearthstone",
         "name": "Hearthstone",
-        "count": 0,
+        "count": "1K",
         "liked": false
     },
     {
@@ -36,7 +36,7 @@
         "icon": "lol",
         "url": "/g/lol",
         "name": "League of Legends",
-        "count": 0,
+        "count": "1K",
         "liked": false
     },
     {
@@ -44,7 +44,7 @@
         "icon": "la2",
         "url": "/g/la2",
         "name": "Lineage 2",
-        "count": 0,
+        "count": "1K",
         "liked": false
     },
     {
@@ -52,7 +52,7 @@
         "icon": "minecraft",
         "url": "/g/minecraft",
         "name": "Minecraft",
-        "count": 0,
+        "count": "1K",
         "liked": false
     },
     {
@@ -60,7 +60,7 @@
         "icon": "mobile-games",
         "url": "/g/mobile-games",
         "name": "Mobile Games",
-        "count": 0,
+        "count": "1K",
         "liked": false
     },
     {
@@ -68,7 +68,7 @@
         "icon": "poe",
         "url": "/g/path-of-exile",
         "name": "Path of Exile",
-        "count": 0,
+        "count": "1K",
         "liked": false
     },
     {
@@ -76,7 +76,7 @@
         "icon": "roblox",
         "url": "/g/roblox",
         "name": "Roblox",
-        "count": 0,
+        "count": "1K",
         "liked": false
     },
     {
@@ -84,7 +84,7 @@
         "icon": "rocket-league",
         "url": "/g/rocket-league",
         "name": "Rocket League",
-        "count": 0,
+        "count": "1K",
         "liked": false
     },
     {
@@ -92,7 +92,7 @@
         "icon": "rust",
         "url": "/g/rust",
         "name": "Rust",
-        "count": 0,
+        "count": "1K",
         "liked": false
     },
     {
@@ -100,7 +100,7 @@
         "icon": "standoff2",
         "url": "/g/standoff2",
         "name": "Standoff 2",
-        "count": 0,
+        "count": "1K",
         "liked": false
     },
     {
@@ -108,7 +108,7 @@
         "icon": "steam",
         "url": "/g/steam",
         "name": "Steam",
-        "count": 0,
+        "count": "1K",
         "liked": false
     },
     {
@@ -116,7 +116,7 @@
         "icon": "tom-clancys",
         "url": "/g/tc-division",
         "name": "Tom Clancy's The Division",
-        "count": 0,
+        "count": "1K",
         "liked": false
     },
     {
@@ -124,7 +124,7 @@
         "icon": "tom-clancys",
         "url": "/g/tc-gr",
         "name": "Tom Clancy’s Ghost Recon",
-        "count": 0,
+        "count": "1K",
         "liked": false
     },
     {
@@ -140,7 +140,7 @@
         "icon": "valorant",
         "url": "/g/valorant",
         "name": "Valorant",
-        "count": 0,
+        "count": "1K",
         "liked": false
     },
     {
@@ -148,7 +148,7 @@
         "icon": "warframe",
         "url": "/g/warframe",
         "name": "Warframe",
-        "count": 0,
+        "count": 135,
         "liked": false
     },
     {
@@ -156,7 +156,7 @@
         "icon": "wot",
         "url": "/g/wot",
         "name": "World of Tanks",
-        "count": 0,
+        "count": "1K",
         "liked": false
     },
     {
@@ -164,7 +164,7 @@
         "icon": "wow",
         "url": "/g/wow",
         "name": "World of Warcraft",
-        "count": 0,
+        "count": "1K",
         "liked": false
     }
 ]
