@@ -260,6 +260,12 @@ export default defineNuxtConfig({
         },
     },
 
+    routeRules: {
+        "/": {
+            redirect: `/${getLocale()}`,
+        },
+    },
+
     runtimeConfig: {
         public: {
             apiURL: env.API_URL,

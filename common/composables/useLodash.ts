@@ -119,6 +119,10 @@ export function useValues<T = unknown>(target: any): T[] {
     return Object.values(isObject(target) ? target : {})
 }
 
+export function useConcat(target: any[], ...targets: any[]): any[] {
+    return (target || []).concat(...targets)
+}
+
 /**
  * @see https://lodash.com/docs/#includes
  */

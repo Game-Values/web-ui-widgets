@@ -12,5 +12,6 @@
 
 *.log*
 
+dist
 node_modules
 schema
