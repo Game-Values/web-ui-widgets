@@ -71,10 +71,6 @@ export default defineNuxtConfig({
         },
     },
 
-    dir: {
-        public: "public",
-    },
-
     experimental: {
         asyncContext: true,
         asyncEntry: true,

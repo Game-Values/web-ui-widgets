@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import type { ComputedRef } from "vue"
 
+import { Breakpoint } from "~/enums"
+
 interface MainSlide {
     description?: string
     src: string
@@ -17,11 +19,31 @@ let mainSlides: ComputedRef<MainSlide[]> = computed((): MainSlide[] => (
             title: "Trade any in-game items in different games",
         })
 ))
+
+let breakpoint = useBreakpoint()
+
+let titleLevel = computed((): number => (
+    useGet({
+        [Breakpoint.LG]: 1,
+        [Breakpoint.MD]: 3,
+        [Breakpoint.SM]: 2,
+        [Breakpoint.XS]: 3,
+    }, getRef(breakpoint))
+))
+
+let sliderHeight = computed((): number => (
+    useGet({
+        [Breakpoint.LG]: 352,
+        [Breakpoint.MD]: 352,
+        [Breakpoint.SM]: 430,
+        [Breakpoint.XS]: 540,
+    }, getRef(breakpoint))
+))
 </script>
 
 <template>
 <swiper
-    :autoplay="{
+    :autoplay="false && {
         delay: 8000,
         disableOnInteraction: true,
     }"
@@ -51,36 +73,50 @@ let mainSlides: ComputedRef<MainSlide[]> = computed((): MainSlide[] => (
         v-for="slide in mainSlides"
         :key="slide.src"
     >
-        <ui-layout-row class="h-[35rem]">
-            <ui-layout-col
-                :span="12"
-                :use-flex="{
-                    align: 'center',
-                }"
-            >
-                <div class="flex-col gap-y-8 p-18">
-                    <!-- todo: typography components -->
-                    <ui-typography-title :level="1">
+        <ui-effect-overlay :height="sliderHeight">
+            <!-- todo -->
+            <div
+                class="
+                    fit
+                    bg-[url(/images/slide-1.png)]
+                    bg-no-repeat
+                    bg-contain
+                    bg-right
+                "
+            />
+
+            <template #overlay>
+                <ui-layout-space
+                    :size="remToNumber(useThemeSpace(8))"
+                    justify="center"
+                    class="
+                        relative
+                        fit
+                        md:(bottom-0 p-12 max-w-1/2)
+                        xs:(bottom-18 p-7 max-w-full)
+                    "
+                    vertical
+                >
+                    <ui-typography-title :level="titleLevel">
                         <i18n-t :keypath="slide.title" />
                     </ui-typography-title>
 
-                    <ui-typography-text>
+                    <ui-typography-text class="sm:(hidden)">
                         <i18n-t :keypath="slide.description" />
                     </ui-typography-text>
 
                     <ui-base-button
-                        class="sm:max-w-[18rem] height-[50rem]"
                         type="primary"
+                        class="
+                            w-full
+                            sm:(max-w-[18rem])
+                        "
                     >
                         <i18n-t keypath="Try" />
                     </ui-base-button>
-                </div>
-            </ui-layout-col>
-
-            <ui-layout-col :span="12">
-                <!-- image (?) -->
-            </ui-layout-col>
-        </ui-layout-row>
+                </ui-layout-space>
+            </template>
+        </ui-effect-overlay>
     </swiper-slide>
 </swiper>
 </template>
