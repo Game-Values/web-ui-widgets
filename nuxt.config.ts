@@ -262,7 +262,7 @@ export default defineNuxtConfig({
 
     routeRules: {
         "/": {
-            redirect: `/${getLocale()}`,
+            redirect: env.NUXT_APP_BASE_URL + getLocale(),
         },
     },
 

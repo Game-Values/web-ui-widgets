@@ -1,22 +1,16 @@
-<script lang="tsx" setup>
+<script lang="ts" setup>
 import type { ButtonProps } from "vexip-ui"
-import type { Component, VNode } from "vue"
+import type { VNode } from "vue"
 
 import { promiseTimeout } from "@vueuse/core"
 
 import { DEFAULT_TIMEOUT } from "~/consts"
 
-let props = withDefaults(defineProps<(
+let props = defineProps<(
     ButtonProps & {
         action: () => Promise<any>
     }
-)>(), {
-    loadingIcon: (
-        <ui-base-icon size="20">
-            <i class="i-heroicons:arrow-path" />
-        </ui-base-icon>
-    )
-})
+)>()
 
 defineSlots<{
     default: () => VNode

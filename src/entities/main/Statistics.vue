@@ -1,50 +1,32 @@
-<script lang="tsx" setup>
-import type { Component } from "vue"
-
+<script lang="ts" setup>
 useI18n()
 
 interface Statistic {
     label: string
     count: number
-    icon: Component
+    icon: string
 }
 
 let statistics: Statistic[] = [
     {
         label: "goods",
         count: 123456,
-        icon: (
-            <ui-base-icon>
-                <i class="i-heroicons:inbox-stack" />
-            </ui-base-icon>
-        ),
+        icon: "i-heroicons:inbox-stack",
     },
     {
         label: "deals",
         count: 123456,
-        icon: (
-            <ui-base-icon>
-                <i class="i-heroicons:credit-card" />
-            </ui-base-icon>
-        ),
+        icon: "i-heroicons:credit-card",
     },
     {
         label: "online",
         count: 123456,
-        icon: (
-            <ui-base-icon>
-                <i class="i-heroicons:user" />
-            </ui-base-icon>
-        ),
+        icon: "i-heroicons:user",
     },
     {
         label: "users",
         count: 123456,
-        icon: (
-            <ui-base-icon>
-                <i class="i-heroicons:users" />
-            </ui-base-icon>
-        ),
+        icon: "i-heroicons:users",
     },
 ]
 </script>
@@ -68,6 +50,13 @@ let statistics: Statistic[] = [
                 color="primary"
                 size="40"
             />
+
+            <ui-base-icon
+                color="primary"
+                size="40"
+            >
+                <i :class="statistic.icon" />
+            </ui-base-icon>
 
             <ui-layout-space
                 :size="0"

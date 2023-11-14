@@ -1,4 +1,4 @@
-<script lang="tsx" setup>
+<script lang="ts" setup>
 import type { LinkerProps } from "vexip-ui"
 import type { VNode } from "vue"
 

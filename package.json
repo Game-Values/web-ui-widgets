@@ -27,10 +27,6 @@
         "postinstall": "npx nuxi prepare",
         "dev": "npx nuxi dev",
         "build": "npx nuxi build",
-        "preview": "npx nuxi preview",
-        "generate": "npx nuxi generate",
-        "publish": "push-dir --dir=dist --branch=gh-pages --cleanup --force",
-        "deploy": "npx run-s generate publish",
         "lint": "npx run-p lint:*",
         "lint:styles": "npx stylelint .",
         "lint:scripts": "npx eslint ."
