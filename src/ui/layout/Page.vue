@@ -7,7 +7,14 @@ defineSlots<{
 </script>
 
 <template>
-<section class="[&>*]:py-18">
+<section
+    class="
+        [&>*]:(lg:(py-18))
+        [&>*]:(md:(py-14))
+        [&>*]:(sm:(py-10))
+        [&>*]:(xs:(py-6))
+    "
+>
     <slot />
 </section>
 </template>

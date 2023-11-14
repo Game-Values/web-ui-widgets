@@ -10,9 +10,7 @@ defineSlots<{
 </script>
 
 <template>
-<v-text
-    v-bind="$props"
->
+<v-text v-bind="$props">
     <slot />
 </v-text>
 </template>

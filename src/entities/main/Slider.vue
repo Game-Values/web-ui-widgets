@@ -63,6 +63,13 @@ let sliderHeight = computed((): number => (
         SwiperPagination,
     ]"
     :slides-per-view="1"
+    :style="`
+        --swiper-height: ${pxToRem(sliderHeight)};
+    `"
+    class="
+        md:(mb-4rem)
+        xs:(mb-6rem)
+    "
     a11y
     effect="creative"
     loop
@@ -131,9 +138,9 @@ let sliderHeight = computed((): number => (
     --swiper-pagination-bullet-size: theme("width.5")
     --swiper-pagination-bullet-width: theme("width.8")
     --swiper-pagination-color: theme("colors.white")
-    --swiper-pagination-top: calc(100% - theme("spacing.12"))
+    --swiper-pagination-top: calc(var(--swiper-height) + theme("spacing.10"))
 
-    @apply overflow-visible
+    @apply w-full overflow-visible
 
     :deep(.swiper-wrapper)
         @apply rounded-2xl border-solid-secondary
