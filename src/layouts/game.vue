@@ -4,34 +4,33 @@ import { computed, onBeforeUnmount, onMounted, ref } from "vue"
 const breadcrumbsList = [
     { label: "Homepage", link: "/" },
     { label: "Games", link: "/main" },
-    { label: "ArcheAge: Unchained", link: "https://www.game-values.com/" }
+    { label: "ArcheAge: Unchained", link: "https://www.game-values.com/" },
 ]
 
 const pages = [
-    { name: "Games", href: "/main", current: false },
-    { name: "ArcheAge: Unchained", href: "https://www.game-values.com/", current: true }
+    { current: false, href: "/main", name: "Games" },
+    { current: true, href: "https://www.game-values.com/", name: "ArcheAge: Unchained" },
 ]
 
-const windowWidth = ref<number | null>(null)
+const windowWidth = ref<null | number>(null)
 
 const slotWrapperClasses = computed(() => {
-    if (!windowWidth.value) {
+    if (!windowWidth.value)
         return "slot-content-default"
-    }
 
-    if (windowWidth.value >= 1024) {
+    if (windowWidth.value >= 1024)
         return "-mt-48"
-    } else if (windowWidth.value >= 768) {
+    else if (windowWidth.value >= 768)
         return "-mt-36"
-    } else {
+    else
         return "-mt-24"
-    }
+
 })
 
 const updateWidth = () => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== "undefined")
         windowWidth.value = window.innerWidth
-    }
+
 }
 
 onMounted(() => {
@@ -40,35 +39,34 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== "undefined")
         window.removeEventListener("resize", updateWidth)
-    }
+
 })
 </script>
 
 <template>
-    <div class="bg-grey-dark">
-        <!-- Header and Main Content Area -->
-        <GamesBgImg class="flex-1">
-            <slot name="header">
-                <LayoutsHomeNavigation />
-                <NavBc :pagesList="pages" />
-            </slot>
-            <ui-layout-content class="flex mx-auto px-2 sm:px-6 lg:px-8 bg-transparent">
-                <div class="h-50 md:h-40 lg:h-48 xl:h-52 2xl:h-[50px] bg-transparent"></div>
-            </ui-layout-content>
-        </GamesBgImg>
-        <!-- Main slot with negative margin for positioning -->
-        <div :class="slotWrapperClasses">
-            <slot />
-        </div>
-        <!-- Footer Area -->
-        <slot name="footer">
-            <LayoutsDefaultFooter />
+<div class="bg-grey-dark">
+    <!-- Header and Main Content Area -->
+    <games-bg-img class="flex-1">
+        <slot name="header">
+            <layouts-home-navigation />
+            <nav-bc :pages-list="pages" />
         </slot>
+        <div class="flex mx-auto px-2 sm:px-6 lg:px-8 bg-transparent">
+            <div class="h-50 md:h-40 lg:h-48 xl:h-52 2xl:h-[50px] bg-transparent" />
+        </div>
+    </games-bg-img>
+    <!-- Main slot with negative margin for positioning -->
+    <div :class="slotWrapperClasses">
+        <slot />
     </div>
+    <!-- Footer Area -->
+    <slot name="footer">
+        <layouts-default-footer />
+    </slot>
+</div>
 </template>
-
 
 <style>
 html,

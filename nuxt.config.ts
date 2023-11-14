@@ -3,14 +3,19 @@ import { env } from "node:process"
 import { default as dynamicImport } from "vite-plugin-dynamic-import"
 import { default as inheritAttrs } from "vite-plugin-vue-setup-inherit-attrs"
 
-import { default as uno } from "./uno.config"
-
 import { BREAKPOINTS } from "./common/consts"
 import { Locale, LocaleISO } from "./common/enums"
+import { injectReflectMetadata } from "./common/plugins"
 import { getLocale, isDebug, isDevelopment, isProduction } from "./common/utils"
 import { name } from "./package.json"
+import { default as uno } from "./uno.config"
 
 export default defineNuxtConfig({
+    alias: {
+        "#schema": "../schema",
+        "#schema/*": "../schema/*",
+    },
+
     app: {
         baseURL: env.NUXT_APP_BASE_URL,
         buildAssetsDir: env.NUXT_APP_BUILD_ASSETS_DIR,
@@ -34,6 +39,10 @@ export default defineNuxtConfig({
         "~/components",
 
         {
+            path: "~/entities",
+            prefix: "entity",
+        },
+        {
             path: "~/ui",
             prefix: "ui",
         },
@@ -44,6 +53,7 @@ export default defineNuxtConfig({
     ],
 
     css: [
+        "~/assets/styles/vexip-ui.scss",
         "~/assets/styles/index.sass",
     ],
 
@@ -85,9 +95,29 @@ export default defineNuxtConfig({
             {
                 from: "@vueuse/core",
                 imports: [
-                    "useDebounceFn",
-                    "useMutationObserver",
-                    "useResizeObserver",
+
+                ],
+            },
+            {
+                from: "class-transformer",
+                imports: [
+                    "Expose",
+                ],
+            },
+            {
+                from: "class-validator",
+                imports: [
+                    "IsBoolean",
+                    "IsDefined",
+                    "IsNotEmpty",
+                    "IsNumber",
+                    "IsString",
+                ],
+            },
+            {
+                from: "lodash-decorators",
+                imports: [
+                    "Memoize",
                 ],
             },
         ],
@@ -101,6 +131,7 @@ export default defineNuxtConfig({
             "@unocss/nuxt",
 
             "nuxt-lazy-load",
+            "nuxt-swiper",
 
             // todo: need to enable after fixes
             // ["@nuxtjs/eslint-module", {
@@ -127,7 +158,7 @@ export default defineNuxtConfig({
             ["@nuxtjs/i18n", {
                 debug: isDebug(),
                 defaultLocale: getLocale(),
-                langDir: "locales/i18n",
+                langDir: "locales",
                 lazy: true,
                 locales: [
                     {
@@ -147,7 +178,7 @@ export default defineNuxtConfig({
                         iso: LocaleISO.EN,
                     },
                 ],
-                strategy: "prefix_except_default",
+                strategy: "no_prefix",
                 vueI18n: "i18n.config.ts",
             }],
 
@@ -157,7 +188,7 @@ export default defineNuxtConfig({
             }],
 
             ["@vexip-ui/nuxt", {
-                importStyle: "sass",
+                importStyle: false,
                 resolveIcon: false,
             }],
 
@@ -178,12 +209,16 @@ export default defineNuxtConfig({
                 debug: isDebug(),
             }],
 
-            ["nuxt-swiper", {
-                styleLang: "scss",
-            }],
-
             ["nuxt-viewport", {
                 breakpoints: BREAKPOINTS,
+            }],
+
+            ["@pinia/nuxt", {
+                autoImports: [
+                    "acceptHMRUpdate",
+                    "defineStore",
+                    "storeToRefs",
+                ],
             }],
         ]
 
@@ -217,8 +252,17 @@ export default defineNuxtConfig({
         timing: isDevelopment(),
     },
 
+    postcss: {
+        plugins: {
+            autoprefixer: {},
+            cssnano: {},
+            "postcss-nested": {},
+        },
+    },
+
     runtimeConfig: {
         public: {
+            apiURL: env.API_URL,
             baseURL: env.NUXT_APP_BASE_URL,
             theme: uno.theme,
         },
@@ -238,38 +282,27 @@ export default defineNuxtConfig({
         css: {
             preprocessorOptions: {
                 sass: {
-                    additionalData: `
-                        @use "~/assets/styles/helpers/mixins" as *
-
+                    additionalData: (code: string): string => `
                         @use "~/assets/styles/vars/breakpoints" as *
                         @use "~/assets/styles/vars/colors" as *
-                        @use "~/assets/styles/vars/radius" as *
                         @use "~/assets/styles/vars/sizes" as *
                         @use "~/assets/styles/vars/spaces" as *
                         @use "~/assets/styles/vars/typography" as *
+
+                        ${code}
                     `,
                 },
 
                 scss: {
-                    additionalData: (code: string, path: string): string => {
-                        if (/vexip-ui\/style(?:\/dark)?\/((?!shared).).*.scss/.test(path))
-                            return (
-                                code
-                                    .replace("@use './design' as *;", "@use '~/assets/styles/vexip-ui.scss' as *;")
-                                    .replace("@use './design/variables.scss' as *;", "@use '~/assets/styles/vexip-ui.scss' as *;")
-                                    .replace("@use '../design/variables.scss' as *;", "@use '~/assets/styles/vexip-ui.scss' as *;")
-                                    .replace("@forward './variables.scss';", "@forward '~/assets/styles/vexip-ui.scss';")
-                            )
-
+                    additionalData: (code: string): string => {
                         return `
-                            @use "~/assets/styles/helpers/mixins" as *;
-
                             @use "~/assets/styles/vars/breakpoints" as *;
                             @use "~/assets/styles/vars/colors" as *;
-                            @use "~/assets/styles/vars/radius" as *;
                             @use "~/assets/styles/vars/sizes" as *;
                             @use "~/assets/styles/vars/spaces" as *;
                             @use "~/assets/styles/vars/typography" as *;
+
+                            ${code}
                         `
                     },
                 },
@@ -299,6 +332,7 @@ export default defineNuxtConfig({
         plugins: [
             dynamicImport(),
             inheritAttrs(),
+            injectReflectMetadata(),
         ],
         server: {
             preTransformRequests: true,

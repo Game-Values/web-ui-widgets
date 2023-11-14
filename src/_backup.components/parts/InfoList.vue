@@ -1,0 +1,18 @@
+<script lang="ts" setup>
+
+</script>
+
+<template>
+<ul>
+    <slot />
+</ul>
+</template>
+
+<style scoped>
+ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(var(--info-list-columns, 1), 1fr);
+  gap: 1.6rem;
+}
+</style>

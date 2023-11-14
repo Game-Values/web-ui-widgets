@@ -5,8 +5,32 @@
 @use "@unocss/reset/sanitize/forms.css"
 @use "@unocss/reset/sanitize/reduce-motion.css"
 
+*,
+*::before,
+*::after
+    @apply box-border
+
 html
     @apply text-62.5%
+    @apply bg-grey-dark
 
 body
     @apply font-normal font-montserrat leading-base text-normal text-white
+
+h1
+    @apply text-level-1
+
+h2
+    @apply text-level-2
+
+h3
+    @apply text-level-3
+
+h4
+    @apply text-level-4
+
+h5
+    @apply text-level-5
+
+h6
+    @apply text-level-6

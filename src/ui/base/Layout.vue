@@ -1,79 +1,77 @@
 <script lang="ts" setup>
 import type { LayoutProps } from "vexip-ui"
+import type { VNode } from "vue"
 
-import { TIMEOUT_DEBOUNCE } from "~/consts"
+withDefaults(defineProps<LayoutProps>(), {
+    footer: true,
+    headerFixed: true,
+    noAside: true,
+})
 
-type Props = LayoutProps
-
-interface Slots {
-    footer: () => any
-    header: () => any
-    main: () => any
-}
-
-withDefaults(defineProps<Props>(), (
-    useUiProps<LayoutProps>({
-        footer: true,
-        noAside: true,
-    })
-))
-
-defineSlots<Slots>()
-
-let layoutRef = ref()
-
-let mutationCallback = useDebounceFn((): Promise<void> => (
-    useNextTick((): void => layoutRef.value.scroll.refresh())
-), TIMEOUT_DEBOUNCE)
-
-useMutationObserver(layoutRef, mutationCallback, { childList: true, subtree: true })
-useResizeObserver(layoutRef, mutationCallback)
+defineSlots<{
+    default: () => VNode
+    logo: () => VNode
+}>()
 </script>
-
 <template>
-<v-layout
-    v-bind="$props"
-    ref="layoutRef"
->
-    <template #header>
-        <!-- h-[var(--vxp-layout-header-height)] -->
-        <ui-layout-content class="flex-center h-[var(--vxp-layout-header-height)]">
-            <slot name="header" />
-        </ui-layout-content>
+<v-layout v-bind="$props">
+    <template #header-left>
+        <slot name="logo">
+            <ui-base-link :to="useMainRoute().fullPath">
+                <ui-base-icon
+                    custom="logo"
+                    height="40"
+                    width="158"
+                />
+            </ui-base-link>
+        </slot>
     </template>
 
     <template #main>
-        <!-- class="max-h-[calc(100vh-var(--vxp-layout-header-height))]" -->
-        <ui-layout-content>
-            <slot name="main" />
-        </ui-layout-content>
-    </template>
-
-    <template #footer>
-        <ui-layout-content class="flex-center h-[var(--vxp-layout-footer-height)]">
-            <slot name="footer" />
-        </ui-layout-content>
+        <slot />
     </template>
 </v-layout>
 </template>
 
+<style lang="scss">
+@forward "vexip-ui/style/layout" with (
+    $layout: (
+        header-height: theme("height.header-lg"),
+        header-bg-color: theme("colors.grey-dark"),
+        header-b-color: theme("colors.grey-dark"),
+        main-bg-color: transparent,
+        footer-bg-color: transparent,
+    ),
+);
+</style>
+
 <style lang="sass" scoped>
 .vxp-layout-vars
-    @include lg
-        --vxp-layout-header-height: #{$layout-header-height-lg}
-        --vxp-layout-footer-height: #{$layout-footer-height-lg}
+    @screen lg
+        --vxp-layout-header-height: theme("height.header-lg")
+        --vxp-layout-footer-height: theme("height.footer-lg")
 
-    @include md
-        --vxp-layout-header-height: #{$layout-header-height-md}
-        --vxp-layout-footer-height: #{$layout-footer-height-md}
+    @screen md
+        --vxp-layout-header-height: theme("height.header-md")
+        --vxp-layout-footer-height: theme("height.footer-md")
 
-    @include sm
-        --vxp-layout-header-height: #{$layout-header-height-sm}
-        --vxp-layout-footer-height: #{$layout-footer-height-sm}
+    @screen sm
+        --vxp-layout-header-height: theme("height.header-sm")
+        --vxp-layout-footer-height: theme("height.footer-sm")
 
-    @include xs
-        --vxp-layout-header-height: #{$layout-header-height-xs}
-        --vxp-layout-footer-height: #{$layout-footer-height-xs}
+    @screen xs
+        --vxp-layout-header-height: theme("height.header-xs")
+        --vxp-layout-footer-height: theme("height.footer-xs")
+
+:deep(.vxp-layout__header),
+:deep(.vxp-layout__main),
+:deep(.vxp-layout__footer)
+    @apply content
+    @apply px-9
+
+// todo: (?)
+:deep(.vxp-layout__user)
+    @apply hidden
 
 // :deep(.vxp-layout__scrollbar)
 //     @apply top-0

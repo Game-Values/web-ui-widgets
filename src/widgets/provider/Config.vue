@@ -1,31 +1,24 @@
 <script lang="ts" setup>
 import type { LocaleConfig } from "vexip-ui"
-import type { Ref } from "vue"
+import type { ComputedRef, VNode } from "vue"
 
-import { DEFAULT_LOCALE, DEFAULT_LOCALE_ISO } from "~/consts"
+import { DEFAULT_LOCALE, DEFAULT_LOCALE_ISO, VEXIP_LOCALE } from "~/consts"
 
-interface Slots {
-    default: () => any
-}
-
-defineSlots<Slots>()
+defineSlots<{
+    default: () => VNode
+}>()
 
 let { setLocale } = useI18n()
 
-let vexipUiLocale: Ref<Partial<LocaleConfig>> = ref<Partial<LocaleConfig>>({})
+let vexipLocale: ComputedRef<LocaleConfig> = computed((): LocaleConfig => (
+    useGet<() => LocaleConfig>(VEXIP_LOCALE, DEFAULT_LOCALE_ISO)()
+))
 
-await Promise.all([
-    import(`~/locales/vexip-ui/${DEFAULT_LOCALE_ISO}.json`)
-        .then((localeConfig: LocaleConfig) => setRef(vexipUiLocale, localeConfig)),
-
-    setLocale(DEFAULT_LOCALE),
-])
+await setLocale(DEFAULT_LOCALE)
 </script>
 
 <template>
-<ui-base-config
-    :locale="vexipUiLocale"
->
+<ui-base-config :locale="vexipLocale">
     <slot />
 </ui-base-config>
 </template>

@@ -1,0 +1,170 @@
+[
+    {
+        "id": 0,
+        "icon": "apex",
+        "slug": "apex",
+        "name": "Apex Legends",
+        "count": 0,
+        "liked": false
+    },
+    {
+        "id": 0,
+        "icon": "gta",
+        "slug": "gta5",
+        "name": "GTA 5 Online",
+        "count": "1K",
+        "liked": false
+    },
+    {
+        "id": 0,
+        "icon": "genshin",
+        "slug": "genshin",
+        "name": "Genshin Impact",
+        "count": "1K",
+        "liked": false
+    },
+    {
+        "id": 0,
+        "icon": "hearthstone",
+        "slug": "hearthstone",
+        "name": "Hearthstone",
+        "count": "1K",
+        "liked": false
+    },
+    {
+        "id": 0,
+        "icon": "lol",
+        "slug": "lol",
+        "name": "League of Legends",
+        "count": "1K",
+        "liked": false
+    },
+    {
+        "id": 0,
+        "icon": "la2",
+        "slug": "la2",
+        "name": "Lineage 2",
+        "count": "1K",
+        "liked": false
+    },
+    {
+        "id": 0,
+        "icon": "minecraft",
+        "slug": "minecraft",
+        "name": "Minecraft",
+        "count": "1K",
+        "liked": false
+    },
+    {
+        "id": 0,
+        "icon": "mobile-games",
+        "slug": "mobile-games",
+        "name": "Mobile Games",
+        "count": "1K",
+        "liked": false
+    },
+    {
+        "id": 0,
+        "icon": "poe",
+        "slug": "path-of-exile",
+        "name": "Path of Exile",
+        "count": "1K",
+        "liked": false
+    },
+    {
+        "id": 0,
+        "icon": "roblox",
+        "slug": "roblox",
+        "name": "Roblox",
+        "count": "1K",
+        "liked": false
+    },
+    {
+        "id": 0,
+        "icon": "rocket-league",
+        "slug": "rocket-league",
+        "name": "Rocket League",
+        "count": "1K",
+        "liked": false
+    },
+    {
+        "id": 0,
+        "icon": "rust",
+        "slug": "rust",
+        "name": "Rust",
+        "count": "1K",
+        "liked": false
+    },
+    {
+        "id": 0,
+        "icon": "standoff2",
+        "slug": "standoff2",
+        "name": "Standoff 2",
+        "count": "1K",
+        "liked": false
+    },
+    {
+        "id": 0,
+        "icon": "steam",
+        "slug": "steam",
+        "name": "Steam",
+        "count": "1K",
+        "liked": false
+    },
+    {
+        "id": 0,
+        "icon": "tom-clancys",
+        "slug": "tc-division",
+        "name": "Tom Clancy's The Division",
+        "count": "1K",
+        "liked": false
+    },
+    {
+        "id": 0,
+        "icon": "tom-clancys",
+        "slug": "tc-gr",
+        "name": "Tom Clancy’s Ghost Recon",
+        "count": "1K",
+        "liked": false
+    },
+    {
+        "id": 0,
+        "icon": "tom-clancys",
+        "slug": "tc-rs",
+        "name": "Tom Clancy's Rainbow Six",
+        "count": 0,
+        "liked": false
+    },
+    {
+        "id": 0,
+        "icon": "valorant",
+        "slug": "valorant",
+        "name": "Valorant",
+        "count": "1K",
+        "liked": false
+    },
+    {
+        "id": 0,
+        "icon": "warframe",
+        "slug": "warframe",
+        "name": "Warframe",
+        "count": 135,
+        "liked": false
+    },
+    {
+        "id": 0,
+        "icon": "wot",
+        "slug": "wot",
+        "name": "World of Tanks",
+        "count": "1K",
+        "liked": false
+    },
+    {
+        "id": 0,
+        "icon": "wow",
+        "slug": "wow",
+        "name": "World of Warcraft",
+        "count": "1K",
+        "liked": false
+    }
+]

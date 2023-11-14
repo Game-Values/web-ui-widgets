@@ -51,6 +51,13 @@ export function isNull(target: any): boolean {
 }
 
 /**
+ * @see https://lodash.com/docs/#isNumber
+ */
+export function isNumber(target: any): boolean {
+    return Number.isInteger(target)
+}
+
+/**
  * @see https://lodash.com/docs/#isUndefined
  */
 export function isUndefined(target: any): boolean {
@@ -140,18 +147,25 @@ export function useLast<T = any>(target: any): T {
 }
 
 /**
+ * @see https://lodash.com/docs/#identity
+ */
+export function useIdentity<T = any>(target: T): T {
+    return target
+}
+
+/**
  * @see https://lodash.com/docs/#get
  */
 export function useGet<T = any>(
     target: any,
-    path: string | string[],
+    path: number | string | (number | string)[],
     defaultValue?: T | undefined,
-): T | undefined {
+): T {
     let travel: (re: RegExp) => object = (re: RegExp): object =>
         String.prototype.split
             .call(path || "", re)
             .filter(Boolean)
-            .reduce((result: any, key: string) => (!isNil(result) ? result[key] : result), target)
+            .reduce((result: any, key: string): any => (!isNil(result) ? result[key] : result), target)
 
     let result = (
         travel(/[,[\]]+?/) ||
@@ -163,7 +177,7 @@ export function useGet<T = any>(
         result === target
             ? defaultValue
             : result
-    ) as T | undefined
+    ) as T
 }
 
 /**
@@ -185,6 +199,15 @@ export function useClone<T = any>(target: T): T {
  */
 export function useCloneDeep<T = any>(target: T): T {
     return structuredClone<T>(target)
+}
+
+/**
+ * @see https://lodash.com/docs/#for
+ */
+export function useForObj(target: any, iteratee: (val: any, key: any) => void): void {
+    if (isObject(target))
+        for (let key in target)
+            iteratee(target[key], key)
 }
 
 /**
@@ -227,4 +250,38 @@ export function useOmit<T = any>(target: T, ...keys: string[]): Partial<T> {
         useEntries(target)
             .filter(([key]: [string, unknown]): boolean => !keysToRemove.has(key)),
     )
+}
+
+/**
+ * @see https://lodash.com/docs/#pick
+ */
+export function usePick<T = any>(target: T, ...keys: string[]): Partial<T> {
+    let result: T = {} as T
+
+    let key: string
+    for (key of keys)
+        if (
+            target &&
+            Object.prototype.hasOwnProperty.call(target, key)
+        )
+            result[key] = target[key]
+
+    return result
+}
+
+/**
+ * @see https://lodash.com/docs/#pickBy
+ */
+export function usePickBy<T = any>(target: T, predicate: <P = any>(target: P) => P = useIdentity): Partial<T> {
+    let result: T = {} as T
+
+    for (let key in target)
+        if (
+            target &&
+            Object.prototype.hasOwnProperty.call(target, key) &&
+            predicate(target[key])
+        )
+            result[key] = target[key]
+
+    return result
 }

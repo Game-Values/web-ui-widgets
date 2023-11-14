@@ -8,6 +8,7 @@ declare module "@nuxt/schema" {
     }
 
     interface PublicRuntimeConfig {
+        apiURL: string
         baseURL: string
         theme: Theme
     }

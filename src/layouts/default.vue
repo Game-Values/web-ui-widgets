@@ -1,24 +1,13 @@
 <script lang="ts" setup>
-interface Slots {
-    default: () => any
-}
+import type { VNode } from "vue"
 
-defineSlots<Slots>()
+defineSlots<{
+    default: () => VNode
+}>()
 </script>
 
 <template>
-<!-- fixme: without classes in layout -->
-<ui-base-layout class="bg-gray-900 justify-center">
-    <template #header>
-        <layouts-home-navigation />
-    </template>
-
-    <template #main>
-        <slot />
-    </template>
-
-    <template #footer>
-        <layouts-default-footer />
-    </template>
-</ui-base-layout>
+<widget-layout-app>
+    <slot />
+</widget-layout-app>
 </template>
