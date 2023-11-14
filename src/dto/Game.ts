@@ -32,5 +32,5 @@ export class Game implements GameRaw {
     @IsDefined()
     @IsString()
     @IsNotEmpty()
-    declare public url: string
+    declare public slug: string
 }

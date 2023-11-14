@@ -2,7 +2,7 @@
     {
         "id": 0,
         "icon": "apex",
-        "url": "/g/apex",
+        "slug": "apex",
         "name": "Apex Legends",
         "count": 0,
         "liked": false
@@ -10,7 +10,7 @@
     {
         "id": 0,
         "icon": "gta",
-        "url": "/g/gta5",
+        "slug": "gta5",
         "name": "GTA 5 Online",
         "count": "1K",
         "liked": false
@@ -18,7 +18,7 @@
     {
         "id": 0,
         "icon": "genshin",
-        "url": "/g/genshin",
+        "slug": "genshin",
         "name": "Genshin Impact",
         "count": "1K",
         "liked": false
@@ -26,7 +26,7 @@
     {
         "id": 0,
         "icon": "hearthstone",
-        "url": "/g/hearthstone",
+        "slug": "hearthstone",
         "name": "Hearthstone",
         "count": "1K",
         "liked": false
@@ -34,7 +34,7 @@
     {
         "id": 0,
         "icon": "lol",
-        "url": "/g/lol",
+        "slug": "lol",
         "name": "League of Legends",
         "count": "1K",
         "liked": false
@@ -42,7 +42,7 @@
     {
         "id": 0,
         "icon": "la2",
-        "url": "/g/la2",
+        "slug": "la2",
         "name": "Lineage 2",
         "count": "1K",
         "liked": false
@@ -50,7 +50,7 @@
     {
         "id": 0,
         "icon": "minecraft",
-        "url": "/g/minecraft",
+        "slug": "minecraft",
         "name": "Minecraft",
         "count": "1K",
         "liked": false
@@ -58,7 +58,7 @@
     {
         "id": 0,
         "icon": "mobile-games",
-        "url": "/g/mobile-games",
+        "slug": "mobile-games",
         "name": "Mobile Games",
         "count": "1K",
         "liked": false
@@ -66,7 +66,7 @@
     {
         "id": 0,
         "icon": "poe",
-        "url": "/g/path-of-exile",
+        "slug": "path-of-exile",
         "name": "Path of Exile",
         "count": "1K",
         "liked": false
@@ -74,7 +74,7 @@
     {
         "id": 0,
         "icon": "roblox",
-        "url": "/g/roblox",
+        "slug": "roblox",
         "name": "Roblox",
         "count": "1K",
         "liked": false
@@ -82,7 +82,7 @@
     {
         "id": 0,
         "icon": "rocket-league",
-        "url": "/g/rocket-league",
+        "slug": "rocket-league",
         "name": "Rocket League",
         "count": "1K",
         "liked": false
@@ -90,7 +90,7 @@
     {
         "id": 0,
         "icon": "rust",
-        "url": "/g/rust",
+        "slug": "rust",
         "name": "Rust",
         "count": "1K",
         "liked": false
@@ -98,7 +98,7 @@
     {
         "id": 0,
         "icon": "standoff2",
-        "url": "/g/standoff2",
+        "slug": "standoff2",
         "name": "Standoff 2",
         "count": "1K",
         "liked": false
@@ -106,7 +106,7 @@
     {
         "id": 0,
         "icon": "steam",
-        "url": "/g/steam",
+        "slug": "steam",
         "name": "Steam",
         "count": "1K",
         "liked": false
@@ -114,7 +114,7 @@
     {
         "id": 0,
         "icon": "tom-clancys",
-        "url": "/g/tc-division",
+        "slug": "tc-division",
         "name": "Tom Clancy's The Division",
         "count": "1K",
         "liked": false
@@ -122,7 +122,7 @@
     {
         "id": 0,
         "icon": "tom-clancys",
-        "url": "/g/tc-gr",
+        "slug": "tc-gr",
         "name": "Tom Clancy’s Ghost Recon",
         "count": "1K",
         "liked": false
@@ -130,7 +130,7 @@
     {
         "id": 0,
         "icon": "tom-clancys",
-        "url": "/g/tc-rs",
+        "slug": "tc-rs",
         "name": "Tom Clancy's Rainbow Six",
         "count": 0,
         "liked": false
@@ -138,7 +138,7 @@
     {
         "id": 0,
         "icon": "valorant",
-        "url": "/g/valorant",
+        "slug": "valorant",
         "name": "Valorant",
         "count": "1K",
         "liked": false
@@ -146,7 +146,7 @@
     {
         "id": 0,
         "icon": "warframe",
-        "url": "/g/warframe",
+        "slug": "warframe",
         "name": "Warframe",
         "count": 135,
         "liked": false
@@ -154,7 +154,7 @@
     {
         "id": 0,
         "icon": "wot",
-        "url": "/g/wot",
+        "slug": "wot",
         "name": "World of Tanks",
         "count": "1K",
         "liked": false
@@ -162,7 +162,7 @@
     {
         "id": 0,
         "icon": "wow",
-        "url": "/g/wow",
+        "slug": "wow",
         "name": "World of Warcraft",
         "count": "1K",
         "liked": false

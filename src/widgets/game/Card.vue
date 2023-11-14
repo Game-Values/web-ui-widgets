@@ -9,7 +9,7 @@ defineProps<{
 <template>
 <ui-form-card :id="game.id">
     <ui-base-link
-        :href="game.url"
+        :to="useGameRoute(game.slug).fullPath"
         class="group relative fit"
     >
         <ui-layout-space

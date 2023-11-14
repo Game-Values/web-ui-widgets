@@ -10,6 +10,7 @@ declare module "vue-router" {
 
     interface RouteParams {
         locale: Locale
+        slug: string
     }
 
     interface RouteRecordRaw {

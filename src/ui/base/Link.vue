@@ -12,22 +12,19 @@ defineSlots<{
     default: () => VNode
 }>()
 
-let href = computed((): string | undefined => (
-    props.to
-        ? useGet<string>(useRouter().resolve(props.to), "fullPath")
-        : props.href
-))
-
 function beforeNavigate(e: Event): void {
-    if (props.to)
+    if (props.to) {
         e.preventDefault()
+        navigateTo(props.to)
+    }
 }
 </script>
 
 <template>
 <v-linker
-    v-bind="$props"
-    :href="href"
+    v-if="href"
+    v-bind="props"
+    :href="to || href"
     @click="beforeNavigate"
 >
     <slot />
