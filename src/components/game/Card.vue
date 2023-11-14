@@ -19,6 +19,7 @@ defineProps<{
     >
         <ui-layout-space
             :size="remToNumber(useThemeSpace(4))"
+            class="flex-1"
             vertical
         >
             <ui-effect-mouse-light
@@ -43,6 +44,7 @@ defineProps<{
             </ui-effect-mouse-light>
 
             <ui-layout-space
+                class="flex-1"
                 justify="space-between"
                 no-wrap
             >

@@ -36,6 +36,10 @@ defineSlots<{
 </v-icon>
 </template>
 
+<style lang="scss">
+@forward "vexip-ui/style/icon";
+</style>
+
 <style lang="sass" scoped>
 .vxp-icon
     --vpx-icon-width: 1em

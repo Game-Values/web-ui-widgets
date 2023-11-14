@@ -13,6 +13,7 @@ let { gameController } = useControllers()
     v-bind="$attrs"
     :action="() => gameController.likeGame(game)"
     type="info"
+    size="small"
     circle
     text
     @click.prevent

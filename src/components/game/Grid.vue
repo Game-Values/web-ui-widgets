@@ -9,7 +9,7 @@ defineProps<{
 
 let breakpoint = useBreakpoint()
 
-let gridColumns = computed((): Record<Breakpoint, number> => (
+let gridColumns = computed((): number => (
     useGet({
         [Breakpoint.LG]: 4,
         [Breakpoint.MD]: 3,

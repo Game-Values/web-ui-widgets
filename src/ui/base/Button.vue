@@ -11,34 +11,41 @@ defineSlots<{
 </script>
 
 <template>
-<v-button v-bind="$props">
-    <template v-if="$slots.default">
+<v-button
+    v-bind="$props"
+>
+    <template
+        v-if="$slots.default"
+        #default
+    >
         <slot />
-    </template>
-
-    <template v-if="$slots.icon">
-        <slot name="icon" />
     </template>
 </v-button>
 </template>
 
-<style lang="sass" scoped>
-.vxp-button-vars
-    --vxp-button-height: theme("height.button")
-    --vxp-button-radius: theme("spacing.3")
-    --vxp-button-v-padding: theme("spacing.6")
-    --vxp-button-h-padding: theme("spacing.10")
-    --vxp-button-icon-span: 0
+<style lang="scss">
+@forward "vexip-ui/style/button" with (
+    $button: (
+        height: theme("height.button"),
+        radius: theme("spacing.3"),
+        v-padding: theme("spacing.6"),
+        h-padding: theme("spacing.10"),
+        font-size: $font-size-level-5,
+        icon-span: 0,
+    ),
+);
+</style>
 
+<style lang="sass" scoped>
 .vxp-button
-    @apply text-level-5 font-semibold
+    @apply font-semibold
 
 .vxp-button--circle
     --vxp-button-v-padding: 0
     --vxp-button-h-padding: 0
 
-    @apply w-8 h-8
+    @apply w-8 h-8 p-4
 
-    &.vxp-button--loading
-        @apply before:(bg-transparent)
+    // &.vxp-button--loading
+    //     @apply before:(bg-transparent)
 </style>

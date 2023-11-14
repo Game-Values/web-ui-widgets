@@ -2,9 +2,7 @@
 import type { ColumnProps } from "vexip-ui"
 import type { VNode } from "vue"
 
-withDefaults(defineProps<ColumnProps>(), {
-    useFlex: true,
-})
+defineProps<ColumnProps>()
 
 defineSlots<{
     default: () => VNode
@@ -16,3 +14,11 @@ defineSlots<{
     <slot />
 </v-column>
 </template>
+
+<style lang="scss">
+@forward "vexip-ui/style/column" with (
+    $column: (
+        display: flex,
+    ),
+);
+</style>

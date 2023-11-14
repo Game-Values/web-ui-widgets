@@ -15,7 +15,11 @@ defineSlots<{
 </v-space>
 </template>
 
-<style lang="sass" scoped>
-.vxp-space
-    @apply w-full
+<style lang="scss">
+@forward "vexip-ui/style/space" with (
+    $space: (
+        v-gap: theme("spacing.2"),
+        h-gap: theme("spacing.4"),
+    ),
+);
 </style>

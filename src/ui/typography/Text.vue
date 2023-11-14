@@ -16,3 +16,11 @@ defineSlots<{
     <slot />
 </v-text>
 </template>
+
+<style lang="scss">
+@forward "vexip-ui/style/typography" with (
+    $text: (
+        color: inherit,
+    ),
+);
+</style>

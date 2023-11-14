@@ -17,6 +17,10 @@ defineSlots<{
 </v-grid>
 </template>
 
+<style lang="scss">
+@forward "vexip-ui/style/grid";
+</style>
+
 <style lang="sass" scoped>
 .vxp-grid
     @apply fit

@@ -10,26 +10,32 @@ defineSlots<{
 </script>
 
 <template>
-<v-title v-bind="$props">
+<v-title
+    v-bind="$props"
+    :thin="[5, 6].includes(level!)"
+>
     <slot />
 </v-title>
 </template>
 
-<style lang="sass" scoped>
-.vxp-title-vars
-    // --vxp-title-font-size-level-1: theme("fontSize.level-1")
-    // --vxp-title-font-size-level-2: theme("fontSize.level-2")
-    // --vxp-title-font-size-level-3: theme("fontSize.level-3")
-    // --vxp-title-font-size-level-4: theme("fontSize.level-4")
-    // --vxp-title-font-size-level-5: theme("fontSize.level-5")
-    // --vxp-title-font-size-level-6: theme("fontSize.level-6")
-    --vxp-title-font-weight: 700
+<style lang="scss">
+@forward "vexip-ui/style/typography" with (
+    $title: (
+        font-size-level-1: $font-size-level-1,
+        font-size-level-2: $font-size-level-2,
+        font-size-level-3: $font-size-level-3,
+        font-size-level-4: $font-size-level-4,
+        font-size-level-5: $font-size-level-5,
+        font-size-level-6: $font-size-level-6,
+        font-weight: 700,
+        font-weight-thin: 600,
+        color: inherit,
+    ),
+);
+</style>
 
+<style lang="sass" scoped>
 .vxp-title
     @apply m-0
     @apply leading-normal
-
-h5,
-h6
-    --vxp-title-font-weight: 600
 </style>

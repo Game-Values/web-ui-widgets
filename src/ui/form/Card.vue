@@ -2,9 +2,7 @@
 import type { CardProps } from "vexip-ui"
 import type { VNode } from "vue"
 
-withDefaults(defineProps<CardProps>(), {
-    shadow: "never",
-})
+defineProps<CardProps>()
 
 defineSlots<{
     default: () => VNode
@@ -17,10 +15,15 @@ defineSlots<{
 </v-card>
 </template>
 
-<style lang="sass" scoped>
-.vxp-card-vars
-    --vxp-card-body-h-padding: 0
-    --vxp-card-body-v-padding: 0
-    --vxp-card-bg-color: transparent
-    --vxp-card-b-color: transparent
+<style lang="scss">
+@forward "vexip-ui/style/card" with (
+    $card: (
+        border: 0,
+        shadow: none,
+        bg-color: transparent,
+        b-color: transparent,
+        body-v-padding: 0,
+        body-h-padding: 0,
+    ),
+);
 </style>

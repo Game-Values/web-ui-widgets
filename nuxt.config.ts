@@ -53,6 +53,7 @@ export default defineNuxtConfig({
     ],
 
     css: [
+        "~/assets/styles/vexip-ui.scss",
         "~/assets/styles/index.sass",
     ],
 
@@ -191,7 +192,7 @@ export default defineNuxtConfig({
             }],
 
             ["@vexip-ui/nuxt", {
-                importStyle: "sass",
+                importStyle: false,
                 resolveIcon: false,
             }],
 
@@ -297,16 +298,7 @@ export default defineNuxtConfig({
                 },
 
                 scss: {
-                    additionalData: (code: string, path: string): string => {
-                        if (/vexip-ui\/style(?:\/dark)?\/((?!shared).).*.scss/.test(path))
-                            return (
-                                code
-                                    .replace("@use './design' as *;", "@use '~/assets/styles/vexip-ui.scss' as *;")
-                                    .replace("@use './design/variables.scss' as *;", "@use '~/assets/styles/vexip-ui.scss' as *;")
-                                    .replace("@use '../design/variables.scss' as *;", "@use '~/assets/styles/vexip-ui.scss' as *;")
-                                    .replace("@forward './variables.scss';", "@forward '~/assets/styles/vexip-ui.scss';")
-                            )
-
+                    additionalData: (code: string): string => {
                         return `
                             @use "~/assets/styles/vars/breakpoints" as *;
                             @use "~/assets/styles/vars/colors" as *;

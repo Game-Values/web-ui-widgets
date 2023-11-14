@@ -14,3 +14,7 @@ defineSlots<{
     <slot />
 </v-cell>
 </template>
+
+<style lang="scss">
+@forward "vexip-ui/style/cell";
+</style>

@@ -33,13 +33,20 @@ defineSlots<{
 </v-layout>
 </template>
 
+<style lang="scss">
+@forward "vexip-ui/style/layout" with (
+    $layout: (
+        header-height: theme("height.header-lg"),
+        header-bg-color: theme("colors.grey-dark"),
+        header-b-color: theme("colors.grey-dark"),
+        main-bg-color: transparent,
+        footer-bg-color: transparent,
+    ),
+);
+</style>
+
 <style lang="sass" scoped>
 .vxp-layout-vars
-    --vxp-layout-header-border: none
-    --vxp-layout-header-bg-color: transparent
-    --vxp-layout-main-bg-color: transparent
-    --vxp-layout-footer-bg-color: transparent
-
     @screen lg
         --vxp-layout-header-height: theme("height.header-lg")
         --vxp-layout-footer-height: theme("height.footer-lg")

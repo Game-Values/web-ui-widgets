@@ -43,6 +43,9 @@ devDependencies:
   '@nuxt/image':
     specifier: ^1.0.0
     version: 1.0.0
+  '@nuxt/kit':
+    specifier: ^3.8.1
+    version: 3.8.1
   '@nuxt/types':
     specifier: ^2.17.2
     version: 2.17.2

@@ -28,3 +28,7 @@ defineSlots<{
     <slot />
 </v-linker>
 </template>
+
+<style lang="scss">
+@forward "vexip-ui/style/linker";
+</style>

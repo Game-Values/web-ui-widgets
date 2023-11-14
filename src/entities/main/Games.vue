@@ -24,6 +24,7 @@ let rowGap = computed((): number[] => {
     >
         <ui-layout-space
             :size="remToNumber(useThemeSpace(7))"
+            class="flex-1"
             vertical
         >
             <ui-typography-title :level="3">
