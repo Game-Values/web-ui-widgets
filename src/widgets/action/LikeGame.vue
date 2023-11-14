@@ -10,10 +10,12 @@ let { gameController } = useControllers()
 
 <template>
 <button-action
+    v-bind="$attrs"
     :action="() => gameController.likeGame(game)"
     type="info"
     circle
     text
+    @click.prevent
 >
     <template #icon>
         <ui-base-icon size="20">

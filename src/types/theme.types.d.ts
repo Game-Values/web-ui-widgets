@@ -2,6 +2,7 @@ export type Color = (
     "accent-extra-light" |
     "accent-light" |
     "accent-medium" |
+    "accent-medium-light" |
     "accent-watery" |
     "black" |
     "blue-dark" |

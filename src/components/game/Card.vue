@@ -7,10 +7,15 @@ defineProps<{
 </script>
 
 <template>
-<ui-form-card :id="game.id">
+<ui-form-card
+    :id="game.id"
+    :class="['group', {
+        'liked': game.liked,
+    }]"
+>
     <ui-base-link
         :to="useGameRoute(game.slug).fullPath"
-        class="group relative fit"
+        class="relative fit"
     >
         <ui-layout-space
             :size="remToNumber(useThemeSpace(4))"
@@ -24,6 +29,8 @@ defineProps<{
                     rounded-3
                     transition-colors
                     group-hover:(bg-secondary)
+                    group-[.liked]:(bg-gradient-to-b from-accent-medium from-0% to-accent-medium-light to-100%)
+                    hover-group-[.liked]:(bg-accent-medium)!
                 "
             >
                 <ui-base-icon
@@ -43,12 +50,7 @@ defineProps<{
                     {{ game.name }}
                 </ui-typography-title>
 
-                <div
-                    class="relative z-10"
-                    @click.prevent
-                >
-                    <widget-action-like-game :game="game" />
-                </div>
+                <widget-action-like-game :game="game" />
             </ui-layout-space>
         </ui-layout-space>
 

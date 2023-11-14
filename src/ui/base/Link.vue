@@ -1,31 +1,29 @@
-<script lang="ts" setup>
+<script lang="tsx" setup>
 import type { LinkerProps } from "vexip-ui"
 import type { VNode } from "vue"
 
-let props = withDefaults(defineProps<LinkerProps & {
+defineProps<LinkerProps & {
     href?: string
-}>(), {
-    href: "javascript:void(0)",
-})
+}>()
 
 defineSlots<{
     default: () => VNode
 }>()
-
-function beforeNavigate(e: Event): void {
-    if (props.to) {
-        e.preventDefault()
-        navigateTo(props.to)
-    }
-}
 </script>
 
 <template>
+<nuxt-link
+    v-if="to"
+    v-bind="$props"
+    class="vxp-linker vxp-linker-vars"
+>
+    <slot />
+</nuxt-link>
+
 <v-linker
-    v-if="href"
-    v-bind="props"
-    :href="to || href"
-    @click="beforeNavigate"
+    v-else
+    v-bind="$props"
+    :to="href || 'javascript:void(0)'"
 >
     <slot />
 </v-linker>

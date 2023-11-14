@@ -22,7 +22,7 @@ export abstract class CollectionAbstract<
         let itemsMap: Map<number | string, T> = new Map()
 
         this.items.forEach((item: T, i: number): void => {
-            itemsMap.set(useGet(this.items, key.toString(), i), item)
+            itemsMap.set(useGet(item, key.toString(), i), item)
         })
 
         return itemsMap

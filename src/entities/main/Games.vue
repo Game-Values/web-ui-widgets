@@ -30,7 +30,7 @@ let rowGap = computed((): number[] => {
                 {{ firstChar }}
             </ui-typography-title>
 
-            <widget-game-grid :games="gamesCollection" />
+            <game-grid :games="gamesCollection" />
         </ui-layout-space>
     </ui-layout-col>
 </ui-layout-row>

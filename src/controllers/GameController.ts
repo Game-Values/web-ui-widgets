@@ -1,5 +1,5 @@
 import type { StoreClient } from "#build/clients"
-import type { Game } from "~/types"
+import type { Game } from "~/dto"
 import type { GameRaw } from "~/mocks/types"
 import type { GameService } from "~/services"
 
@@ -16,8 +16,19 @@ export class GameController {
         this._storeClient.gamesStore.setGamesRaw(gamesRaw)
     }
 
+    // todo: mv to service
     public async likeGame(game: Game): Promise<void> {
         await promiseTimeout(500)
-        await this.fetchGames()
+
+        let gamesRaw: GameRaw[] = this._storeClient.gamesStore.games.items.map((item: Game) => {
+            if (game.slug === item.slug)
+                return useAssign(item, {
+                    liked: !item.liked,
+                })
+
+            return item
+        })
+
+        this._storeClient.gamesStore.setGamesRaw(gamesRaw)
     }
 }

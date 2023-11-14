@@ -59,6 +59,12 @@ let theme: Theme = {
         ))
     },
 
+    backgroundImage: {
+        "game-card-gradient": `
+            linear-gradient(180deg, ${useGet(colors, "$color-accent-medium")} 0%, ${useGet(colors, "$color-accent-medium-light")} 100%)
+        `,
+    },
+
     breakpoints: {
         [Breakpoint.LG]: useGet(breakpoints, "$breakpoint-lg"),
         [Breakpoint.MD]: useGet(breakpoints, "$breakpoint-md"),
@@ -70,6 +76,7 @@ let theme: Theme = {
         "accent-extra-light": useGet(colors, "$color-accent-extra-light"),
         "accent-light": useGet(colors, "$color-accent-light"),
         "accent-medium": useGet(colors, "$color-accent-medium"),
+        "accent-medium-light": useGet(colors, "$color-accent-medium-light"),
         "accent-watery": useGet(colors, "$color-accent-watery"),
         black: useGet(colors, "$color-black"),
         blue: useGet(colors, "$color-blue"),

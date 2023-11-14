@@ -26,7 +26,7 @@ let gridColumns = computed((): Record<Breakpoint, number> => (
         :key="game.name"
         :width="1"
     >
-        <widget-game-card :game="game" />
+        <game-card :game="game" />
     </ui-layout-cell>
 </ui-layout-grid>
 </template>
