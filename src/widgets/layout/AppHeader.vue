@@ -38,20 +38,20 @@ let isMobileMenuActive = ref(false)
         >
             <!-- todo: component & i18n -->
             <ui-form-input
-                    class="
-                        lg:(max-w-39rem)
-                        sm:(flex!)
-                        xs:(hidden!)
-                    "
-                    placeholder="Search"
-                    clearable
-                >
-                    <template #suffix>
-                        <ui-base-icon size="18">
-                            <i class="i-heroicons:magnifying-glass" />
-                        </ui-base-icon>
-                    </template>
-                </ui-form-input>
+                class="
+                    lg:(max-w-39rem)
+                    sm:(flex!)
+                    xs:(hidden!)
+                "
+                placeholder="Search"
+                clearable
+            >
+                <template #suffix>
+                    <ui-base-icon size="18">
+                        <i class="i-heroicons:magnifying-glass" />
+                    </ui-base-icon>
+                </template>
+            </ui-form-input>
         </ui-layout-col>
 
         <ui-layout-col

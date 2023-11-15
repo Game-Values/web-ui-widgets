@@ -13,8 +13,8 @@ defineSlots<{
 </script>
 
 <template>
-<ui-layout-content
-    v-bind="$props"
+<component
+    :is="tag"
     class="
         [&>*]:(lg:(py-18))
         [&>*]:(md:(py-14))
@@ -23,5 +23,5 @@ defineSlots<{
     "
 >
     <slot />
-</ui-layout-content>
+</component>
 </template>
