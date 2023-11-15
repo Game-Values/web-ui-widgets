@@ -2,54 +2,38 @@
 import type { LayoutProps } from "vexip-ui"
 import type { VNode } from "vue"
 
-defineProps<LayoutProps>()
+withDefaults(defineProps<LayoutProps>(), {
+    footer: true,
+    noAside: true,
+})
 
 defineSlots<{
-    default: () => VNode
-    asideMain: () => VNode
-    headerLogo: () => VNode
-    headerMain: () => VNode
-    headerRight: () => VNode
+    header: () => VNode
+    main: () => VNode
+    footer: () => VNode
 }>()
 </script>
+
 <template>
 <v-layout v-bind="$props">
-    <template
-        v-if="$slots.headerLogo"
-        #header-left
-    >
-        <slot name="headerLogo">
-            <ui-base-link :to="useMainRoute().fullPath">
-                <ui-base-icon
-                    custom="logo"
-                    height="40"
-                    width="158"
-                />
-            </ui-base-link>
-        </slot>
-    </template>
-
-    <template
-        v-if="$slots.headerMain"
-        #header-main
-    >
-        <slot name="headerMain" />
-    </template>
-
-    <template
-        v-if="$slots.headerRight"
-        #header-right
-    >
-        <slot name="headerRight" />
+    <template #header>
+        <slot name="header" />
     </template>
 
     <template #main>
-        <slot />
+        <slot name="main" />
+    </template>
+
+    <template #footer>
+        <slot name="footer" />
     </template>
 </v-layout>
 </template>
 
 <style lang="scss">
+@forward "vexip-ui/style/native-scroll";
+@forward "vexip-ui/style/scrollbar";
+
 @forward "vexip-ui/style/layout" with (
     $layout: (
         header-height: theme("height.header-lg"),
@@ -62,33 +46,6 @@ defineSlots<{
 </style>
 
 <style lang="sass" scoped>
-.vxp-layout-vars
-    @screen lg
-        --vxp-layout-header-height: theme("height.header-lg")
-        --vxp-layout-footer-height: theme("height.footer-lg")
-
-    @screen md
-        --vxp-layout-header-height: theme("height.header-md")
-        --vxp-layout-footer-height: theme("height.footer-md")
-
-    @screen sm
-        --vxp-layout-header-height: theme("height.header-sm")
-        --vxp-layout-footer-height: theme("height.footer-sm")
-
-    @screen xs
-        --vxp-layout-header-height: theme("height.header-xs")
-        --vxp-layout-footer-height: theme("height.footer-xs")
-
-:deep(.vxp-layout__header),
-:deep(.vxp-layout__main),
-:deep(.vxp-layout__footer)
-    @apply content
-    @apply px-9
-
-// todo: (?)
-:deep(.vxp-layout__user)
-    @apply hidden
-
-// :deep(.vxp-layout__scrollbar)
-//     @apply top-0
+.vxp-layout
+    @apply screen
 </style>
