@@ -76,6 +76,7 @@
         "nuxt-swiper": "^1.2.2",
         "nuxt-viewport": "^2.0.6",
         "postcss-nested": "^6.0.1",
+        "push-dir": "^0.4.1",
         "sass": "^1.69.5",
         "stylelint": "^15.11.0",
         "svgo": "^3.0.3",
