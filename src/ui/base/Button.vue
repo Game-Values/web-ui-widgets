@@ -26,10 +26,10 @@ defineSlots<{
 <style lang="scss">
 @forward "vexip-ui/style/button" with (
     $button: (
-        height: theme("height.button"),
-        radius: theme("spacing.3"),
         v-padding: theme("spacing.6"),
         h-padding: theme("spacing.10"),
+        height: theme("height.button"),
+        radius: theme("spacing.3"),
         font-size: $font-size-level-5,
         icon-span: 0,
     ),

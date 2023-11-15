@@ -30,5 +30,9 @@ defineSlots<{
 </template>
 
 <style lang="scss">
-@forward "vexip-ui/style/linker";
+@forward "vexip-ui/style/linker" with (
+    $linker: (
+        series-span: 0,
+    ),
+);
 </style>

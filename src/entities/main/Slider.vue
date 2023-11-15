@@ -108,7 +108,12 @@ let sliderHeight = computed((): number => (
                         <i18n-t :keypath="slide.title" />
                     </ui-typography-title>
 
-                    <ui-typography-text class="sm:(hidden)">
+                    <ui-typography-text
+                        class="
+                            md:(block)
+                            sm:(hidden)
+                        "
+                    >
                         <i18n-t :keypath="slide.description" />
                     </ui-typography-text>
 

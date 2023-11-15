@@ -10,10 +10,7 @@ defineSlots<{
 </script>
 
 <template>
-<v-title
-    v-bind="$props"
-    :thin="[5, 6].includes(level!)"
->
+<v-title v-bind="$props">
     <slot />
 </v-title>
 </template>
@@ -29,12 +26,14 @@ defineSlots<{
         font-size-level-6: $font-size-level-6,
         font-weight: 700,
         font-weight-thin: 600,
-        color: inherit,
     ),
 );
 </style>
 
 <style lang="sass" scoped>
+.vxp-title-vars
+    --vxp-title-color: inherit
+
 .vxp-title
     @apply m-0
     @apply leading-normal

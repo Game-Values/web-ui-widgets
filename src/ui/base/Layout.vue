@@ -2,21 +2,23 @@
 import type { LayoutProps } from "vexip-ui"
 import type { VNode } from "vue"
 
-withDefaults(defineProps<LayoutProps>(), {
-    footer: true,
-    headerFixed: true,
-    noAside: true,
-})
+defineProps<LayoutProps>()
 
 defineSlots<{
     default: () => VNode
-    logo: () => VNode
+    asideMain: () => VNode
+    headerLogo: () => VNode
+    headerMain: () => VNode
+    headerRight: () => VNode
 }>()
 </script>
 <template>
 <v-layout v-bind="$props">
-    <template #header-left>
-        <slot name="logo">
+    <template
+        v-if="$slots.headerLogo"
+        #header-left
+    >
+        <slot name="headerLogo">
             <ui-base-link :to="useMainRoute().fullPath">
                 <ui-base-icon
                     custom="logo"
@@ -25,6 +27,20 @@ defineSlots<{
                 />
             </ui-base-link>
         </slot>
+    </template>
+
+    <template
+        v-if="$slots.headerMain"
+        #header-main
+    >
+        <slot name="headerMain" />
+    </template>
+
+    <template
+        v-if="$slots.headerRight"
+        #header-right
+    >
+        <slot name="headerRight" />
     </template>
 
     <template #main>
