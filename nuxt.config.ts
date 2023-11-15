@@ -1,16 +1,19 @@
+import type { NuxtConfig } from "@nuxt/schema"
+
 import { env } from "node:process"
 
 import { default as dynamicImport } from "vite-plugin-dynamic-import"
 import { default as inheritAttrs } from "vite-plugin-vue-setup-inherit-attrs"
 
 import { BREAKPOINTS } from "./common/consts"
-import { Locale, LocaleISO } from "./common/enums"
+import { useMerge } from "./common/composables"
+import { DeployTarget, Locale, LocaleISO } from "./common/enums"
 import { injectReflectMetadata } from "./common/plugins"
 import { getLocale, isDebug, isDevelopment, isProduction } from "./common/utils"
 import { name } from "./package.json"
 import { default as uno } from "./uno.config"
 
-export default defineNuxtConfig({
+let nuxtConfig: NuxtConfig = {
     alias: {
         "#schema": "../schema",
         "#schema/*": "../schema/*",
@@ -354,4 +357,15 @@ export default defineNuxtConfig({
         propsDestructure: true,
         runtimeCompiler: true,
     },
-})
+}
+
+if (env.DEPLOY_TARGET === DeployTarget.GITHUB)
+    useMerge(nuxtConfig, {
+        router: {
+            base: "/game-values/",
+        },
+        ssr: false,
+        target: "static",
+    })
+
+export default defineNuxtConfig(nuxtConfig)
