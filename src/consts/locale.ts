@@ -6,6 +6,6 @@ import { enUSLocale, deDELocale } from "vexip-ui"
 import { LocaleISO } from "~/enums"
 
 export const VEXIP_LOCALE: Record<LocaleISO, Callable<LocaleConfig>> = {
-    [LocaleISO.DE]: (): LocaleConfig => enUSLocale(),
-    [LocaleISO.EN]: (): LocaleConfig => deDELocale(),
+    [LocaleISO.DE]: (): LocaleConfig => deDELocale(),
+    [LocaleISO.EN]: (): LocaleConfig => enUSLocale(),
 }

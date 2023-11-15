@@ -24,7 +24,7 @@ let typography: Record<string, string> = extractSassVars("typography")
 
 let theme: Theme = {
     get borderRadius(): Theme["borderRadius"] {
-        let numericSpacing: Theme["spacing"] = getBumericSpacing()
+        let numericSpacing: Theme["spacing"] = getNumericSpacing()
 
         return useAssign(numericSpacing, (
             {
@@ -34,9 +34,10 @@ let theme: Theme = {
     },
 
     get height(): Theme["width"] {
-        return useAssign(getBumericSpacing(), (
+        return useAssign(getNumericSpacing(), (
             {
                 button: useGet(sizes, "$button-height"),
+                input: useGet(sizes, "$input-height"),
 
                 [`header-${Breakpoint.LG}`]: useGet(sizes, "$header-height-lg"),
                 [`header-${Breakpoint.MD}`]: useGet(sizes, "$header-height-md"),
@@ -52,7 +53,7 @@ let theme: Theme = {
     },
 
     get width(): Theme["height"] {
-        return useAssign(getBumericSpacing(), (
+        return useAssign(getNumericSpacing(), (
             {
                 layout: useGet(sizes, "$layout-width"),
             }
@@ -149,7 +150,7 @@ let theme: Theme = {
         normal: useGet(typography, "$line-height-normal"),
     },
 
-    spacing: getBumericSpacing(),
+    spacing: getNumericSpacing(),
 }
 
 function extractSassVars(filename: string): Record<string, string> {
@@ -167,7 +168,7 @@ function extractSassVars(filename: string): Record<string, string> {
     }, {})
 }
 
-function getBumericSpacing(): Theme["spacing"] {
+function getNumericSpacing(): Theme["spacing"] {
     return {
         1: useGet(spaces, "$space-1"),
         2: useGet(spaces, "$space-2"),
