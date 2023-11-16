@@ -1,13 +1,27 @@
 <script lang="ts" setup>
 import type { VNode } from "vue"
 
+withDefaults(defineProps<{
+    tag?: keyof HTMLElementTagNameMap
+}>(), {
+    tag: "div",
+})
+
 defineSlots<{
     default: () => VNode
 }>()
 </script>
 
 <template>
-<div class="content">
+<component
+    :is="tag"
+    class="
+        content
+        px-8
+        py-6
+        fit
+    "
+>
     <slot />
-</div>
+</component>
 </template>

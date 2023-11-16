@@ -41,7 +41,7 @@ export abstract class DIAbstract<Tokens = any> {
     }
 
     public updateTokens(): void {
-        useForObj(this.__tokens, (token: Token<any>, key: keyof Tokens): void => {
+        useForEach(this.__tokens, (token: Token<any>, key: keyof Tokens): void => {
             this._tokens.set(key.toString(), token)
         })
     }

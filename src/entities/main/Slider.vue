@@ -94,7 +94,7 @@ let sliderHeight = computed((): number => (
 
             <template #overlay>
                 <ui-layout-space
-                    :size="remToNumber(useThemeSpace(8))"
+                    size="large"
                     justify="center"
                     class="
                         relative

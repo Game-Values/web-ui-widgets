@@ -3,7 +3,7 @@ import type { GridProps } from "vexip-ui"
 import type { VNode } from "vue"
 
 withDefaults(defineProps<GridProps>(), {
-    gap: remToNumber(useThemeSpace(9)),
+    gap: remToNumber(useTheme("spacing.9")),
 })
 
 defineSlots<{

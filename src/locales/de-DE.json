@@ -1,16 +1,14 @@
 {
-  "comp": {
-    "GameCard": {
-      "like": "Gefällt mir",
-      "err": {
-        "like": "Fehler beim Gefallen des Spiels. Bitte versuchen Sie es später erneut."
-      }
+    "labels": {
+        "Blog": "Blog",
+        "Promotions": "Werbeaktionen",
+        "Top-10": "Top-10",
+        "AI Assistant": "KI Assistent",
+        "Log in": "Einloggen",
+        "Sign up": "Anmelden"
     },
-    "GeneralStatistics": {
-      "goods": "Anzahl von Waren",
-      "deals": "Anzahl von Geschäften",
-      "online": "online",
-      "users": "alle"
+
+    "plural": {
+        "reviews": "keine bewertungen | {n} rezension | {n} bewertungen"
     }
-  }
 }

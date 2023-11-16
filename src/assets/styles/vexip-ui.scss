@@ -74,6 +74,8 @@
     $line-height-map: (
         base: typography.$line-height-normal,
     ),
+
+    $transition-duration: 100ms,
 );
 
 @use "vexip-ui/style/preset";

@@ -18,8 +18,6 @@ defineSlots<{
     loading: () => VNode
 }>()
 
-let bindingProps = useOmit(props, "action")
-
 let isLoading = ref(false)
 
 async function callAction() {
@@ -34,7 +32,7 @@ async function callAction() {
 
 <template>
 <ui-base-button
-    v-bind="bindingProps"
+    v-bind="useOmit(props, 'action')"
     :loading="isLoading"
     @click="callAction"
 >

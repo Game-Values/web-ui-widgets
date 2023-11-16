@@ -5,10 +5,7 @@ import { Breakpoint } from "~/enums"
 export function useBreakpoint(): ComputedRef<Breakpoint> {
     let { match } = useViewport()
 
-    return computed(() => {
-        if (match(Breakpoint.LG))
-            return Breakpoint.LG
-
+    return computed((): Breakpoint => {
         if (match(Breakpoint.MD))
             return Breakpoint.MD
 
@@ -17,6 +14,8 @@ export function useBreakpoint(): ComputedRef<Breakpoint> {
 
         if (match(Breakpoint.XS))
             return Breakpoint.XS
+
+        return Breakpoint.LG
     })
 }
 
