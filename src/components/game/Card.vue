@@ -18,7 +18,6 @@ defineProps<{
         class="relative fit"
     >
         <ui-layout-space
-            :size="remToNumber(useThemeSpace(4))"
             class="flex-1"
             vertical
         >
@@ -58,7 +57,7 @@ defineProps<{
 
         <ui-data-tag
             v-if="game.count"
-            :color="useThemeColor('secondary')"
+            :color="useTheme('colors.secondary')"
             size="small"
             class="
                 absolute!

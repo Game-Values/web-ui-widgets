@@ -5,8 +5,9 @@ import { env } from "node:process"
 import { default as dynamicImport } from "vite-plugin-dynamic-import"
 import { default as inheritAttrs } from "vite-plugin-vue-setup-inherit-attrs"
 
+import { merge } from "lodash-es"
+
 import { BREAKPOINTS } from "./common/consts"
-import { useMerge } from "./common/composables"
 import { DeployTarget, Locale, LocaleISO } from "./common/enums"
 import { injectReflectMetadata } from "./common/plugins"
 import { getLocale, isDebug, isDevelopment, isProduction } from "./common/utils"
@@ -91,9 +92,6 @@ let nuxtConfig: NuxtConfig = {
     },
 
     imports: {
-        dirs: [
-            "../common/composables",
-        ],
         presets: [
             {
                 from: "@vueuse/core",
@@ -134,6 +132,7 @@ let nuxtConfig: NuxtConfig = {
             "@unocss/nuxt",
 
             "nuxt-lazy-load",
+            "nuxt-lodash",
             "nuxt-swiper",
 
             // todo: need to enable after fixes
@@ -360,7 +359,7 @@ let nuxtConfig: NuxtConfig = {
 }
 
 if (env.DEPLOY_TARGET === DeployTarget.GITHUB)
-    useMerge(nuxtConfig, {
+    merge(nuxtConfig, {
         router: {
             base: "/game-values/",
         },

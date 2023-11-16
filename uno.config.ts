@@ -7,12 +7,12 @@ import { cwd } from "node:process"
 import { FileSystemIconLoader } from "@iconify/utils/lib/loader/node-loaders"
 import { glob } from "fast-glob"
 import { optimize } from "svgo"
+import { assign, get } from "lodash-es"
 import { defineConfig, presetIcons, presetUno, transformerDirectives, transformerVariantGroup } from "unocss"
 
 // fixme: not work
 // import { default as presetAutoprefixer } from "unocss-preset-autoprefixer"
 
-import { useAssign, useGet } from "./common/composables"
 import { Breakpoint } from "./common/enums"
 import { isDevelopment } from "./common/utils"
 
@@ -26,79 +26,70 @@ let theme: Theme = {
     get borderRadius(): Theme["borderRadius"] {
         let numericSpacing: Theme["spacing"] = getNumericSpacing()
 
-        return useAssign(numericSpacing, (
+        return assign(numericSpacing, (
             {
-                DEFAULT: useGet(numericSpacing, 1),
+                DEFAULT: get(numericSpacing, 1),
             }
         ))
     },
 
-    get height(): Theme["width"] {
-        return useAssign(getNumericSpacing(), (
+    get height(): Theme["height"] {
+        return assign(getNumericSpacing(), (
             {
-                button: useGet(sizes, "$button-height"),
-                input: useGet(sizes, "$input-height"),
-
-                [`header-${Breakpoint.LG}`]: useGet(sizes, "$header-height-lg"),
-                [`header-${Breakpoint.MD}`]: useGet(sizes, "$header-height-md"),
-                [`header-${Breakpoint.SM}`]: useGet(sizes, "$header-height-sm"),
-                [`header-${Breakpoint.XS}`]: useGet(sizes, "$header-height-xs"),
-
-                [`footer-${Breakpoint.LG}`]: useGet(sizes, "$footer-height-lg"),
-                [`footer-${Breakpoint.MD}`]: useGet(sizes, "$footer-height-md"),
-                [`footer-${Breakpoint.SM}`]: useGet(sizes, "$footer-height-sm"),
-                [`footer-${Breakpoint.XS}`]: useGet(sizes, "$footer-height-xs"),
+                button: get(sizes, "$button-height"),
+                input: get(sizes, "$input-height"),
             }
         ))
     },
 
-    get width(): Theme["height"] {
-        return useAssign(getNumericSpacing(), (
+    get width(): Theme["width"] {
+        return assign(getNumericSpacing(), (
             {
-                layout: useGet(sizes, "$layout-width"),
+                layout: get(sizes, "$layout-width"),
             }
         ))
     },
 
     backgroundImage: {
         "game-card-gradient": `
-            linear-gradient(180deg, ${useGet(colors, "$color-accent-medium")} 0%, ${useGet(colors, "$color-accent-medium-light")} 100%)
+            linear-gradient(180deg, ${get(colors, "$color-accent-medium")} 0%, ${get(colors, "$color-accent-medium-light")} 100%)
         `,
     },
 
     breakpoints: {
-        [Breakpoint.LG]: useGet(breakpoints, "$breakpoint-lg"),
-        [Breakpoint.MD]: useGet(breakpoints, "$breakpoint-md"),
-        [Breakpoint.SM]: useGet(breakpoints, "$breakpoint-sm"),
-        [Breakpoint.XS]: useGet(breakpoints, "$breakpoint-xs"),
+        [Breakpoint.LG]: get(breakpoints, "$breakpoint-lg"),
+        [Breakpoint.MD]: get(breakpoints, "$breakpoint-md"),
+        [Breakpoint.SM]: get(breakpoints, "$breakpoint-sm"),
+        [Breakpoint.XS]: get(breakpoints, "$breakpoint-xs"),
     },
 
     colors: {
-        "accent-extra-light": useGet(colors, "$color-accent-extra-light"),
-        "accent-light": useGet(colors, "$color-accent-light"),
-        "accent-medium": useGet(colors, "$color-accent-medium"),
-        "accent-medium-light": useGet(colors, "$color-accent-medium-light"),
-        "accent-watery": useGet(colors, "$color-accent-watery"),
-        black: useGet(colors, "$color-black"),
-        blue: useGet(colors, "$color-blue"),
-        "blue-dark": useGet(colors, "$color-blue-dark"),
-        error: useGet(colors, "$color-error"),
-        "grey-dark": useGet(colors, "$color-grey-dark"),
-        "grey-extra-dark": useGet(colors, "$color-grey-extra-dark"),
-        "grey-light": useGet(colors, "$color-grey-light"),
-        info: useGet(colors, "$color-info"),
-        "negative-light": useGet(colors, "$color-negative-light"),
-        "negative-medium": useGet(colors, "$color-negative-medium"),
-        pink: useGet(colors, "$color-pink"),
-        "positive-light": useGet(colors, "$color-positive-light"),
-        primary: useGet(colors, "$color-primary"),
-        "purple-dark": useGet(colors, "$color-purple-dark"),
-        secondary: useGet(colors, "$color-secondary"),
-        success: useGet(colors, "$color-success"),
-        warning: useGet(colors, "$color-warning"),
-        "warning-medium": useGet(colors, "$color-warning-medium"),
-        white: useGet(colors, "$color-white"),
-        yellow: useGet(colors, "$color-yellow"),
+        "accent-extra-light": get(colors, "$color-accent-extra-light"),
+        "accent-light": get(colors, "$color-accent-light"),
+        "accent-medium": get(colors, "$color-accent-medium"),
+        "accent-medium-light": get(colors, "$color-accent-medium-light"),
+        "accent-watery": get(colors, "$color-accent-watery"),
+        black: get(colors, "$color-black"),
+        blue: get(colors, "$color-blue"),
+        "blue-dark": get(colors, "$color-blue-dark"),
+        error: get(colors, "$color-error"),
+        "grey-dark": get(colors, "$color-grey-dark"),
+        "grey-extra-dark": get(colors, "$color-grey-extra-dark"),
+        "grey-light": get(colors, "$color-grey-light"),
+        info: get(colors, "$color-info"),
+        "negative-light": get(colors, "$color-negative-light"),
+        "negative-medium": get(colors, "$color-negative-medium"),
+        pink: get(colors, "$color-pink"),
+        positive: get(colors, "$color-positive"),
+        "positive-light": get(colors, "$color-positive-light"),
+        primary: get(colors, "$color-primary"),
+        "purple-dark": get(colors, "$color-purple-dark"),
+        secondary: get(colors, "$color-secondary"),
+        success: get(colors, "$color-success"),
+        warning: get(colors, "$color-warning"),
+        "warning-medium": get(colors, "$color-warning-medium"),
+        white: get(colors, "$color-white"),
+        yellow: get(colors, "$color-yellow"),
     },
 
     fontFamily: {
@@ -109,45 +100,45 @@ let theme: Theme = {
 
     fontSize: {
         "level-1": [
-            useGet(typography, "$font-size-level-1"),
-            useGet(typography, "$line-height-normal"),
+            get(typography, "$font-size-level-1"),
+            get(typography, "$line-height-normal"),
         ],
         "level-2": [
-            useGet(typography, "$font-size-level-2"),
-            useGet(typography, "$line-height-normal"),
+            get(typography, "$font-size-level-2"),
+            get(typography, "$line-height-normal"),
         ],
         "level-3": [
-            useGet(typography, "$font-size-level-3"),
-            useGet(typography, "$line-height-normal"),
+            get(typography, "$font-size-level-3"),
+            get(typography, "$line-height-normal"),
         ],
         "level-4": [
-            useGet(typography, "$font-size-level-4"),
-            useGet(typography, "$line-height-normal"),
+            get(typography, "$font-size-level-4"),
+            get(typography, "$line-height-normal"),
         ],
         "level-5": [
-            useGet(typography, "$font-size-level-5"),
-            useGet(typography, "$line-height-normal"),
+            get(typography, "$font-size-level-5"),
+            get(typography, "$line-height-normal"),
         ],
         "level-6": [
-            useGet(typography, "$font-size-level-6"),
-            useGet(typography, "$line-height-normal"),
+            get(typography, "$font-size-level-6"),
+            get(typography, "$line-height-normal"),
         ],
         lg: [
-            useGet(typography, "$font-size-lg"),
-            useGet(typography, "$line-height-normal"),
+            get(typography, "$font-size-lg"),
+            get(typography, "$line-height-normal"),
         ],
         normal: [
-            useGet(typography, "$font-size-normal"),
-            useGet(typography, "$line-height-normal"),
+            get(typography, "$font-size-normal"),
+            get(typography, "$line-height-normal"),
         ],
         sm: [
-            useGet(typography, "$font-size-sm"),
-            useGet(typography, "$line-height-normal"),
+            get(typography, "$font-size-sm"),
+            get(typography, "$line-height-normal"),
         ],
     },
 
     lineHeight: {
-        normal: useGet(typography, "$line-height-normal"),
+        normal: get(typography, "$line-height-normal"),
     },
 
     spacing: getNumericSpacing(),
@@ -160,7 +151,7 @@ function extractSassVars(filename: string): Record<string, string> {
     return vars.reduce((result: Record<string, string>, line: string): Record<string, string> => {
         let [key, val]: string[] = line.split(": ")
         if (key && val)
-            useAssign(result, {
+            assign(result, {
                 [key]: val,
             })
 
@@ -170,24 +161,24 @@ function extractSassVars(filename: string): Record<string, string> {
 
 function getNumericSpacing(): Theme["spacing"] {
     return {
-        1: useGet(spaces, "$space-1"),
-        2: useGet(spaces, "$space-2"),
-        3: useGet(spaces, "$space-3"),
-        4: useGet(spaces, "$space-4"),
-        5: useGet(spaces, "$space-5"),
-        6: useGet(spaces, "$space-6"),
-        7: useGet(spaces, "$space-7"),
-        8: useGet(spaces, "$space-8"),
-        9: useGet(spaces, "$space-9"),
-        10: useGet(spaces, "$space-10"),
-        11: useGet(spaces, "$space-11"),
-        12: useGet(spaces, "$space-12"),
-        13: useGet(spaces, "$space-13"),
-        14: useGet(spaces, "$space-14"),
-        15: useGet(spaces, "$space-15"),
-        16: useGet(spaces, "$space-16"),
-        17: useGet(spaces, "$space-17"),
-        18: useGet(spaces, "$space-18"),
+        1: get(spaces, "$space-1"),
+        2: get(spaces, "$space-2"),
+        3: get(spaces, "$space-3"),
+        4: get(spaces, "$space-4"),
+        5: get(spaces, "$space-5"),
+        6: get(spaces, "$space-6"),
+        7: get(spaces, "$space-7"),
+        8: get(spaces, "$space-8"),
+        9: get(spaces, "$space-9"),
+        10: get(spaces, "$space-10"),
+        11: get(spaces, "$space-11"),
+        12: get(spaces, "$space-12"),
+        13: get(spaces, "$space-13"),
+        14: get(spaces, "$space-14"),
+        15: get(spaces, "$space-15"),
+        16: get(spaces, "$space-16"),
+        17: get(spaces, "$space-17"),
+        18: get(spaces, "$space-18"),
     }
 }
 
@@ -223,7 +214,7 @@ export default defineConfig({
             },
             customizations: {
                 transform: (svg: string): string => (
-                    useGet<string>(
+                    get<string>(
                         optimize(svg, {
                             plugins: [
                                 "removeDimensions",
@@ -245,7 +236,7 @@ export default defineConfig({
     shortcuts: {
         "border-solid": "border border-solid",
         "border-solid-secondary": "border border-solid border-secondary",
-        content: `w-full max-w-[${useGet(theme.width, "layout")}] ${Breakpoint.LG}:mx-auto`,
+        content: `w-full max-w-[${get(theme.width, "layout")}] ${Breakpoint.LG}:mx-auto`,
         fit: "w-full h-full",
         "flex-center": "flex items-center justify-center",
         "flex-col": "flex flex-col",

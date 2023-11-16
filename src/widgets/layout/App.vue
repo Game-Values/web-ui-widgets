@@ -14,7 +14,7 @@ defineSlots<{
 
     <template #main>
         <widget-layout-app-main>
-            <!-- <slot /> -->
+            <slot />
         </widget-layout-app-main>
     </template>
 

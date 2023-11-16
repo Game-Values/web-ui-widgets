@@ -2,15 +2,28 @@
 import type { TitleProps } from "vexip-ui"
 import type { VNode } from "vue"
 
-defineProps<TitleProps>()
+defineProps<(
+    TitleProps & {
+        color?: string
+        size?: string
+    }
+)>()
 
 defineSlots<{
     default: () => VNode
 }>()
+
+let omitted
 </script>
 
 <template>
-<v-title v-bind="$props">
+<v-title
+    v-bind="useOmit($props, 'color', 'size')"
+    :style="{
+        color,
+        fontSize: size,
+    }"
+>
     <slot />
 </v-title>
 </template>

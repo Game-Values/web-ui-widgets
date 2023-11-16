@@ -4,7 +4,7 @@ let props = defineProps<{
 }>()
 
 let emit = defineEmits<{
-    (e: "update:model-value", modelValue: number): void
+    (e: "update:model-value", modelValue: boolean): void
 }>()
 
 let active = computed({

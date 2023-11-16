@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import type { Color } from "~/types"
 import type { IconProps } from "vexip-ui"
 import type { VNode } from "vue"
 
 withDefaults(defineProps<IconProps & {
-    color?: Color
+    color?: string
     custom?: string
     height?: number | string
     width?: number | string
@@ -21,7 +20,7 @@ defineSlots<{
 <v-icon
     v-bind="$props"
     :style="{
-        color: color ? useThemeColor(color) : 'currentColor',
+        color: color ? useTheme(`colors.${color}`) : 'currentColor',
         fontSize: pxToRem(size),
         height: height ? pxToRem(height) : 'var(--vpx-icon-height)',
         width: width ? pxToRem(width) : 'var(--vpx-icon-width)',

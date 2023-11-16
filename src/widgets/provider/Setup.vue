@@ -24,8 +24,9 @@ let dis: Record<string, DIAbstract> = {
 }
 
 useAssign<Context>(useContext(), dis)
-useForObj(dis, (di: DIAbstract): void => di.updateTokens())
-useForObj(dis, (di: DIAbstract): void => di.inject())
+
+useForEach(dis, (di: DIAbstract): void => di.updateTokens())
+useForEach(dis, (di: DIAbstract): void => di.inject())
 </script>
 
 <template>

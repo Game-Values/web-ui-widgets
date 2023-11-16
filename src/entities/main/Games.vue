@@ -6,8 +6,8 @@ let { games } = storeToRefs(storeClient.gamesStore)
 let { lg } = useBreakpoints()
 
 let rowGap = computed((): number[] => {
-    let horizontalGap = getRef(lg) ? remToNumber(useThemeSpace(9)) : 0
-    let verticalGap = remToNumber(useThemeSpace(12))
+    let horizontalGap = getRef(lg) ? remToNumber(useTheme("spacing.9")) : 0
+    let verticalGap = remToNumber(useTheme("spacing.12"))
 
     return [
         horizontalGap,
@@ -23,7 +23,7 @@ let rowGap = computed((): number[] => {
         :key="firstChar"
     >
         <ui-layout-space
-            :size="remToNumber(useThemeSpace(7))"
+            size="large"
             class="flex-1"
             vertical
         >

@@ -3,7 +3,7 @@ import type { RowProps } from "vexip-ui"
 import type { VNode } from "vue"
 
 withDefaults(defineProps<RowProps>(), {
-    gap: remToNumber(useThemeSpace(9)),
+    gap: remToNumber(useTheme("spacing.9")),
 })
 
 defineSlots<{
@@ -15,7 +15,7 @@ defineSlots<{
 <v-row
     v-bind="$props"
 >
-    <slot/>
+    <slot />
 </v-row>
 </template>
 

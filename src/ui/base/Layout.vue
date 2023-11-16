@@ -33,16 +33,7 @@ defineSlots<{
 <style lang="scss">
 @forward "vexip-ui/style/native-scroll";
 @forward "vexip-ui/style/scrollbar";
-
-@forward "vexip-ui/style/layout" with (
-    $layout: (
-        header-height: theme("height.header-lg"),
-        header-bg-color: theme("colors.grey-dark"),
-        header-b-color: theme("colors.grey-dark"),
-        main-bg-color: transparent,
-        footer-bg-color: transparent,
-    ),
-);
+@forward "vexip-ui/style/layout";
 </style>
 
 <style lang="sass" scoped>

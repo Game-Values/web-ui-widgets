@@ -41,8 +41,8 @@ let statistics: Statistic[] = [
         :xs="12"
     >
         <ui-layout-space
-            :size="remToNumber(useThemeSpace(7))"
             align="center"
+            size="large"
             no-wrap
         >
             <component
@@ -59,14 +59,14 @@ let statistics: Statistic[] = [
             </ui-base-icon>
 
             <ui-layout-space
-                :size="0"
+                size="small"
                 vertical
             >
                 <ui-typography-title :level="6">
                     {{ formatNumbers(statistic.count) }}
                 </ui-typography-title>
 
-                <ui-typography-text :style="{ fontSize: useThemeFontSize('sm') }">
+                <ui-typography-text :size="useFirst(useTheme('fontSize.sm'))">
                     <i18n-t :keypath="statistic.label" />
                 </ui-typography-text>
             </ui-layout-space>
