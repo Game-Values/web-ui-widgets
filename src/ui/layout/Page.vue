@@ -33,6 +33,9 @@ defineSlots<{
         @screen lt-sm
             @apply py-6
 
+        + *
+            @apply pt-0
+
     :deep(> .vxp-row)
         @screen lg
             --vxp-row-v-gap: theme("spacing.18")
