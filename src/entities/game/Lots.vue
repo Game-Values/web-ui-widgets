@@ -246,11 +246,13 @@ let lotsData = [
     <ui-data-table-col
         :name="t('Availability')"
         id-key="Amount"
+        sorter
     />
 
     <ui-data-table-col
         :name="t('Price')"
         id-key="Price"
+        sorter
     />
 </ui-data-table>
 </template>

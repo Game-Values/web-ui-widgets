@@ -81,7 +81,7 @@ let game = {
     --vxp-card-body-h-padding: 3rem
 
     @apply border-solid-secondary rounded-5
-    @apply backdrop-blur-[5rem]
+    @apply backdrop-blur-5rem
 </style>
 
 <i18n lang="yaml">

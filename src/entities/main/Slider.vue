@@ -121,7 +121,7 @@ let sliderHeight = computed((): number => (
                         type="primary"
                         class="
                             w-full
-                            sm:(max-w-[18rem])
+                            sm:(max-w-18rem)
                         "
                     >
                         <i18n-t keypath="Try" />
