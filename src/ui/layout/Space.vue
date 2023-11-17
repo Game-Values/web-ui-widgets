@@ -31,6 +31,6 @@ defineSlots<{
         --vxp-space-h-gap: theme("spacing.7")
 
     &--small
-        --vxp-space-v-gap: theme("spacing.1"),
-        --vxp-space-h-gap: theme("spacing.1"),
+        --vxp-space-v-gap: theme("spacing.1")
+        --vxp-space-h-gap: theme("spacing.1")
 </style>

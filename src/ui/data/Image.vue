@@ -1,12 +1,12 @@
 <script inherit-attrs="false" lang="ts" setup>
-import type { ImageOptions, ImageSizes } from "@nuxt/image"
+// import type { ImageOptions, ImageSizes } from "@nuxt/image"
 import type { ImageProps } from "vexip-ui"
 
 // import { Breakpoint } from "~/enums"
 
 withDefaults(defineProps<ImageProps>(), {
     lazy: true,
-    skeleton: true,
+    // skeleton: true,
 })
 
 defineSlots<{
@@ -47,16 +47,31 @@ defineSlots<{
 
 <template>
 <lazy-client-only>
-    <v-image v-bind="$props" />
+    <v-image
+        v-bind="{
+            ...$attrs,
+            ...$props,
+        }"
+    />
 
     <template #fallback>
-        <v-skeleton
-            v-bind="$attrs"
-            :height="width"
-            :width="width"
-            activated
-            image
-        />
+        <slot name="fallback">
+            <ui-effect-skeleton
+                v-bind="$attrs"
+                :height="width"
+                :width="width"
+                activated
+                image
+            />
+        </slot>
     </template>
 </lazy-client-only>
 </template>
+
+<style lang="scss">
+@forward "vexip-ui/style/image" with (
+    $image: (
+
+    ),
+);
+</style>

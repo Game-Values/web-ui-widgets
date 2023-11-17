@@ -34,17 +34,28 @@ let theme: Theme = {
     },
 
     get height(): Theme["height"] {
-        return assign(getNumericSpacing(), (
+        return assign(
+            getNumericSpacing(),
+
+            reductionSizeToBreakpoints("header", "height"),
+            reductionSizeToBreakpoints("footer", "height"),
+            reductionSizeToBreakpoints("game-preview", "height"),
+
             {
+                avatar: get(sizes, "$avatar-size"),
                 button: get(sizes, "$button-height"),
+                dot: get(sizes, "$dot-size"),
                 input: get(sizes, "$input-height"),
-            }
-        ))
+                switch: get(sizes, "$switch-height"),
+            },
+        )
     },
 
     get width(): Theme["width"] {
         return assign(getNumericSpacing(), (
             {
+                avatar: get(sizes, "$avatar-size"),
+                dot: get(sizes, "$dot-size"),
                 layout: get(sizes, "$layout-width"),
             }
         ))
@@ -89,6 +100,8 @@ let theme: Theme = {
         warning: get(colors, "$color-warning"),
         "warning-medium": get(colors, "$color-warning-medium"),
         white: get(colors, "$color-white"),
+        "white-2": get(colors, "$color-white-2"),
+        "white-12": get(colors, "$color-white-12"),
         yellow: get(colors, "$color-yellow"),
     },
 
@@ -157,6 +170,19 @@ function extractSassVars(filename: string): Record<string, string> {
 
         return result
     }, {})
+}
+
+function reductionSizeToBreakpoints(
+    name: string,
+    themeKey: string,
+): Record<string, string> {
+    return Object.values(Breakpoint).reduce((
+        (result: Record<string, string>, breakpoint: Breakpoint): Record<string, string> => (
+            assign(result, {
+                [`${name}-${breakpoint}`]: get(sizes, `$${name}-${themeKey}-${breakpoint}`),
+            })
+        )
+    ), {})
 }
 
 function getNumericSpacing(): Theme["spacing"] {

@@ -121,6 +121,12 @@ let nuxtConfig: NuxtConfig = {
                     "Memoize",
                 ],
             },
+            {
+                from: "vexip-ui",
+                imports: [
+                    "defineColumns",
+                ],
+            },
         ],
     },
 

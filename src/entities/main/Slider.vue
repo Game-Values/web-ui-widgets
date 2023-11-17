@@ -162,7 +162,7 @@ let sliderHeight = computed((): number => (
         @apply hover:(bg-grey-dark)
         @apply after:(text-normal leading-none)
 
-        @screen md
+        @screen lt-lg
             @apply flex
 
     :deep(.swiper-pagination-bullet)

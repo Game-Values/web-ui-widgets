@@ -13,6 +13,7 @@ export enum ControllerToken {
 
 export enum FacadeToken {
     MAIN = "MainFacade",
+    GAME = "GameFacade",
 }
 
 export enum ServiceToken {
