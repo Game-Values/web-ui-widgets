@@ -18,20 +18,22 @@ defineSlots<{
 <style lang="scss">
 @forward "vexip-ui/style/tag" with (
     $tag: (
-        v-padding: 0,
+        v-padding: theme("spacing.2"),
         h-padding: theme("spacing.2"),
-        small-font-size: $font-size-sm,
+        bg-color: transparent,
     ),
 );
 </style>
 
 <style lang="sass" scoped>
 .vxp-tag
-    @apply font-semibold
+    &--circle
+        --vxp-tag-radius: theme("spacing.10")
 
     &--small
         @apply text-sm
 
         &.vxp-tag--circle
+            --vxp-tag-v-padding: theme("spacing.1")
             --vxp-tag-h-padding: theme("spacing.1")
 </style>

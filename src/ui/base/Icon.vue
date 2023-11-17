@@ -45,4 +45,7 @@ defineSlots<{
     --vpx-icon-height: 1em
 
     @apply [&>*]:(w-inherit h-inherit)
+
+    :deep(svg)
+        @apply w-full h-full
 </style>

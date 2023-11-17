@@ -1,5 +1,10 @@
 <template>
-<header>
+<header
+    :style="{
+        height: useTheme(`height.header-${getRef(useBreakpoint())}`),
+    }"
+    class="relative z-1"
+>
     <ui-layout-content>
         <ui-layout-row
             align="middle"

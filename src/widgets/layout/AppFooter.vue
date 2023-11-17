@@ -54,7 +54,12 @@ let colsOrder = computed(() => (
 </script>
 
 <template>
-<footer class="py-10 bg-grey-extra-dark">
+<footer
+    :style="{
+        height: useTheme(`height.footer-${getRef(useBreakpoint())}`),
+    }"
+    class="py-10 bg-grey-extra-dark"
+>
     <ui-layout-content>
         <ui-layout-row
             :gap="[

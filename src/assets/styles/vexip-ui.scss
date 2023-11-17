@@ -33,6 +33,10 @@
         base: colors.$color-grey-dark,
     ),
 
+    $border-color-map: (
+        base: colors.$color-secondary,
+    ),
+
     $color-black: colors.$color-black,
     $color-white: colors.$color-white,
     $color-map: (
@@ -54,12 +58,15 @@
     ),
 
     $content-color-map: (
-        primary: colors.$color-white,
         base: colors.$color-white,
+        primary: colors.$color-white,
     ),
 
     $fill-color-map: (
-        background: colors.$color-grey-dark,
+        base: colors.$color-secondary,
+        secondary: colors.$color-secondary,
+        background: colors.$color-secondary,
+        humble: colors.$color-white-2,
     ),
 
     $font-family-map: (
@@ -79,3 +86,13 @@
 );
 
 @use "vexip-ui/style/preset";
+
+@forward "vexip-ui/style/table" with (
+    $table: (
+        cell-v-padding: theme("spacing.9"),
+        cell-h-padding: theme("spacing.9"),
+        bg-color: rgba($color-black, 0.06),
+        b-color: theme("colors.grey-dark"),
+        row-b-color-bottom: theme("colors.grey-dark"),
+    ),
+);

@@ -24,7 +24,6 @@ defineSlots<{
     <slot />
 
     <div
-        v-bind="$attrs"
         :class="['overlay fit', overlayClass]"
     >
         <slot name="overlay" />

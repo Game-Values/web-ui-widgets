@@ -7,3 +7,11 @@ defineProps<SkeletonProps>()
 <template>
 <v-skeleton v-bind="$props" />
 </template>
+
+<style lang="scss">
+@forward "vexip-ui/style/skeleton" with (
+    $skeleton: (
+
+    ),
+);
+</style>

@@ -121,7 +121,7 @@ let sliderHeight = computed((): number => (
                         type="primary"
                         class="
                             w-full
-                            sm:(max-w-[18rem])
+                            sm:(max-w-18rem)
                         "
                     >
                         <i18n-t keypath="Try" />
@@ -162,7 +162,7 @@ let sliderHeight = computed((): number => (
         @apply hover:(bg-grey-dark)
         @apply after:(text-normal leading-none)
 
-        @screen md
+        @screen lt-lg
             @apply flex
 
     :deep(.swiper-pagination-bullet)
