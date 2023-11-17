@@ -3,6 +3,7 @@ import type { AvatarProps } from "vexip-ui"
 
 withDefaults(defineProps<AvatarProps>(), {
     circle: true,
+    size: remToNumber(useTheme("width.avatar")),
 })
 
 defineSlots<{
@@ -12,7 +13,7 @@ defineSlots<{
 
 <template>
 <v-avatar v-bind="$props">
-    <ui-base-icon :size="size">
+    <ui-base-icon :size="remToNumber(useTheme('spacing.8'))">
         <i class="i-heroicons:user" />
     </ui-base-icon>
 </v-avatar>
