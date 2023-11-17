@@ -31,11 +31,11 @@ await gameFacade.bootstrap()
     </ui-layout-row>
 
     <ui-layout-row align="middle">
-        <ui-layout-col :lg="6">
+        <ui-layout-col :lg="12">
             <entity-game-search />
         </ui-layout-col>
 
-        <ui-layout-col :lg="6">
+        <ui-layout-col :lg="12">
             <entity-game-online-players-switch />
         </ui-layout-col>
     </ui-layout-row>
