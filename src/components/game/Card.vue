@@ -57,6 +57,7 @@ defineProps<{
 
         <ui-data-tag
             v-if="game.count"
+            :color="useTheme('colors.secondary')"
             size="small"
             class="
                 absolute!

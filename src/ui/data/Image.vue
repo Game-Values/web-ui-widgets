@@ -6,7 +6,7 @@ import type { ImageProps } from "vexip-ui"
 
 withDefaults(defineProps<ImageProps>(), {
     lazy: true,
-    // skeleton: true,
+    skeleton: true,
 })
 
 defineSlots<{

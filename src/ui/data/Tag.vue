@@ -34,6 +34,6 @@ defineSlots<{
         @apply text-sm
 
         &.vxp-tag--circle
-            --vxp-tag-v-padding: theme("spacing.1")
+            --vxp-tag-v-padding: 0
             --vxp-tag-h-padding: theme("spacing.1")
 </style>
