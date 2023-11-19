@@ -185,7 +185,7 @@
             </div>
         </div>
     </main>
-</ui-layout-content>
+</ui-content>
 </template>
 
 <script lang="ts" setup>

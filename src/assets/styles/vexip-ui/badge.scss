@@ -1,0 +1,7 @@
+@use "../vars/sizes";
+
+@forward "vexip-ui/style/badge" with (
+    $badge: (
+        dot-size: sizes.$dot-size,
+    ),
+);

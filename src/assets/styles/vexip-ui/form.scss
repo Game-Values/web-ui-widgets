@@ -1,0 +1,14 @@
+@use "vexip-ui/style/form";
+
+.vxp-form-vars {
+    --vxp-row-h-gap: 0;
+    --vxp-row-v-gap: 0;
+}
+
+.vxp-form--label-top .vxp-form__label {
+    @apply mb-7;
+}
+
+.vxp-form__label {
+    @apply text-secondary;
+}

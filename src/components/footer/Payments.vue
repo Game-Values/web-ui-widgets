@@ -24,8 +24,8 @@ let payments: Record<PaymentType, Payment> = {
             36,
         ],
     },
-    [PaymentType.COIN]: {
-        icon: PaymentType.COIN,
+    [PaymentType.BINANCE]: {
+        icon: PaymentType.BINANCE,
         size: [
             39,
             36,
@@ -49,7 +49,7 @@ let payments: Record<PaymentType, Payment> = {
 </script>
 
 <template>
-<ui-layout-space
+<v-space
     align="center"
     size="large"
 >
@@ -57,11 +57,11 @@ let payments: Record<PaymentType, Payment> = {
         v-for="(payment, paymentType) in payments"
         :key="paymentType"
     >
-        <ui-base-icon
+        <ui-icon
             :custom="useKebabCase(useToLower(payment.icon))"
-            :width="useFirst(payment.size)"
             :height="useLast(payment.size)"
+            :width="useFirst(payment.size)"
         />
     </template>
-</ui-layout-space>
+</v-space>
 </template>

@@ -1,0 +1,24 @@
+@use "../vars/sizes";
+@use "../vars/spaces";
+@use "../vars/typography";
+
+@forward "vexip-ui/style/tag" with (
+    $tag: (
+        v-padding: spaces.$space-2,
+        h-padding: spaces.$space-2,
+        bg-color: transparent,
+    ),
+);
+
+.vxp-tag-vars.vxp-tag--circle {
+    --vxp-tag-radius: #{spaces.$space-10};
+}
+
+.vxp-tag-vars.vxp-tag--small.vxp-tag--circle {
+    --vxp-tag-v-padding: 0;
+    --vxp-tag-h-padding: #{spaces.$space-1};
+}
+
+.vxp-tag-vars.vxp-tag--small {
+    @apply text-sm
+}

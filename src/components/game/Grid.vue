@@ -20,13 +20,16 @@ let gridColumns = computed((): number => (
 </script>
 
 <template>
-<ui-layout-grid :columns="gridColumns">
-    <ui-layout-cell
+<v-grid
+    :columns="gridColumns"
+    class="flex-1"
+>
+    <v-cell
         v-for="game in games.items"
         :key="game.name"
         :width="1"
     >
         <game-card :game="game" />
-    </ui-layout-cell>
-</ui-layout-grid>
+    </v-cell>
+</v-grid>
 </template>

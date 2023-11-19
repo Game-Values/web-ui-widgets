@@ -14,13 +14,20 @@ let active = computed({
 </script>
 
 <template>
-<ui-effect-drawer
+<v-drawer
     v-bind="$props"
     v-model:active="active"
     width="100%"
     closable
     @close="$emit('update:model-value', false)"
 >
+    <template #close>
+        <ui-icon
+            heroicons="x-mark"
+            size="24"
+        />
+    </template>
+
     <template #title>
         <ul
             class="
@@ -29,19 +36,19 @@ let active = computed({
             "
         >
             <li>
-                <ui-base-link type="primary">
-                    <ui-typography-title :level="6">
+                <ui-link type="primary">
+                    <v-title :level="6">
                         Log In
-                    </ui-typography-title>
-                </ui-base-link>
+                    </v-title>
+                </ui-link>
             </li>
 
             <li>
-                <ui-base-link type="primary">
-                    <ui-typography-title :level="6">
+                <ui-link type="primary">
+                    <v-title :level="6">
                         Sign up
-                    </ui-typography-title>
-                </ui-base-link>
+                    </v-title>
+                </ui-link>
             </li>
         </ul>
     </template>
@@ -53,29 +60,29 @@ let active = computed({
             gap-y-10
         "
     >
-        <ui-base-link>
-            <ui-typography-title :level="6">
+        <ui-link>
+            <v-title :level="6">
                 Blog
-            </ui-typography-title>
-        </ui-base-link>
+            </v-title>
+        </ui-link>
 
-        <ui-base-link>
-            <ui-typography-title :level="6">
+        <ui-link>
+            <v-title :level="6">
                 Promotions
-            </ui-typography-title>
-        </ui-base-link>
+            </v-title>
+        </ui-link>
 
-        <ui-base-link>
-            <ui-typography-title :level="6">
+        <ui-link>
+            <v-title :level="6">
                 TOP-10
-            </ui-typography-title>
-        </ui-base-link>
+            </v-title>
+        </ui-link>
 
-        <ui-base-link>
-            <ui-typography-title :level="6">
+        <ui-link>
+            <v-title :level="6">
                 AI Assistant
-            </ui-typography-title>
-        </ui-base-link>
+            </v-title>
+        </ui-link>
     </nav>
-</ui-effect-drawer>
+</v-drawer>
 </template>

@@ -12,24 +12,24 @@ useI18n()
 </script>
 
 <template>
-<ui-layout-space
+<v-space
     size="large"
     vertical
 >
-    <ui-base-link
+    <ui-link
         href="https://www.trustpilot.com"
         target="_blank"
     >
-        <ui-base-icon
+        <ui-icon
             custom="logo-trustpilot"
             height="40"
             width="160"
         />
-    </ui-base-link>
+    </ui-link>
 
-    <ui-typography-title :level="4">
+    <v-title :level="4">
         <i18n-t keypath="Excellent" />
-    </ui-typography-title>
+    </v-title>
 
     <ul class="flex gap-x-3">
         <li
@@ -53,32 +53,32 @@ useI18n()
                 },
             ]"
         >
-            <ui-base-icon
+            <ui-icon
                 custom="trustpilot-star"
                 size="28"
             />
         </li>
     </ul>
 
-    <ui-layout-space
+    <v-space
         align="center"
         size="small"
     >
-        <ui-typography-text>
+        <v-text>
             <i18n-t keypath="TrustScore">
                 <template #score>
                     {{ score }}
                 </template>
             </i18n-t>
-        </ui-typography-text>
+        </v-text>
 
-        <ui-layout-divider vertical />
+        <v-divider vertical />
 
-        <ui-base-link
+        <ui-link
             href="https://www.trustpilot.com"
             target="_blank"
         >
-            <ui-typography-text
+            <v-text
                 strong
                 underline
             >
@@ -91,10 +91,10 @@ useI18n()
                         {{ reviews }}
                     </template>
                 </i18n-t>
-            </ui-typography-text>
-        </ui-base-link>
-    </ui-layout-space>
-</ui-layout-space>
+            </v-text>
+        </ui-link>
+    </v-space>
+</v-space>
 </template>
 
 <i18n lang="yaml">

@@ -34,24 +34,24 @@ let isVerticalSpacing = computed(() => (
 </script>
 
 <template>
-<ui-layout-space
+<v-space
     :vertical="isVerticalSpacing"
     size="large"
 >
-    <ui-layout-space>
-        <ui-data-image
+    <v-space>
+        <ui-image
             :src="`/images/${locale}-flag.png`"
-            width="30"
             height="22"
+            width="30"
         />
 
-        <ui-typography-text
+        <v-text
             class="uppercase"
             strong
         >
             {{ locale }}
-        </ui-typography-text>
-    </ui-layout-space>
+        </v-text>
+    </v-space>
 
     <ul
         class="
@@ -63,12 +63,12 @@ let isVerticalSpacing = computed(() => (
             v-for="policyLink in policyLinks"
             :key="policyLink.i18n"
         >
-            <ui-base-link>
+            <ui-link>
                 <i18n-t :keypath="policyLink.i18n" />
-            </ui-base-link>
+            </ui-link>
         </li>
     </ul>
-</ui-layout-space>
+</v-space>
 </template>
 
 <i18n lang="yaml">
@@ -81,4 +81,3 @@ en:
     End-User License Agreement: End-User License Agreement
     Agency Agreement: Agency Agreement
 </i18n>
-

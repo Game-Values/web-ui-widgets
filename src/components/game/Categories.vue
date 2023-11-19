@@ -9,18 +9,18 @@ defineProps<{
 </script>
 
 <template>
-<ui-layout-space>
-    <ui-data-tag
+<v-space>
+    <v-tag
         v-for="category in categoriesMock"
         :key="category.label"
         circle
     >
-        <ui-layout-space>
-            <ui-typography-text>
-                {{ category.label }}
-            </ui-typography-text>
+        <v-space>
+            <v-text>
+                {{ category.label }}a
+            </v-text>
 
-            <ui-typography-text
+            <v-text
                 class="
                     bg-secondary
                     px-3
@@ -28,10 +28,10 @@ defineProps<{
                 "
             >
                 {{ category.count }}
-            </ui-typography-text>
-        </ui-layout-space>
-    </ui-data-tag>
-</ui-layout-space>
+            </v-text>
+        </v-space>
+    </v-tag>
+</v-space>
 </template>
 
 <style lang="sass" scoped>

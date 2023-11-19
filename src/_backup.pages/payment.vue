@@ -170,7 +170,7 @@
 
         <!-- Right column -->
         <div class="px-4 py-6 sm:px-6 lg:pl-8 xl:w-1/2 xl:shrink-0 xl:pl-6" />
-    </ui-layout-content>
+    </ui-content>
 </div>
 </template>
 

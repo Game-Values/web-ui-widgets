@@ -19,60 +19,57 @@ let game = {
 </script>
 
 <template>
-<ui-form-card>
-    <ui-layout-row
+<v-card>
+    <v-row
         :gap="[
             remToNumber(useTheme('spacing.11')),
             remToNumber(useTheme('spacing.11')),
         ]"
     >
-        <ui-layout-col
+        <v-column
             :use-flex="{
                 justify: 'space-between',
             }"
         >
-            <ui-typography-title :level="1">
+            <v-title :level="1">
                 {{ game.title }}
-            </ui-typography-title>
+            </v-title>
 
             <widget-action-like-game :game="game" />
-        </ui-layout-col>
+        </v-column>
 
-        <ui-layout-col>
-            <ui-typography-text :size="useFirst(useTheme('fontSize.lg'))">
+        <v-column>
+            <v-text :size="useFirst(useTheme('fontSize.lg'))">
                 {{ game.description }}
-            </ui-typography-text>
-        </ui-layout-col>
+            </v-text>
+        </v-column>
 
-        <ui-layout-col
+        <v-column
             :md="18"
         >
             <game-categories :categories-mock="game.categories" />
-        </ui-layout-col>
+        </v-column>
 
-        <ui-layout-col
+        <v-column
             :md="6"
         >
-            <ui-layout-space
-                class="flex-1"
-                vertical
-            >
-                <ui-base-button
+            <v-space vertical>
+                <v-button
                     block
                 >
                     <i18n-t keypath="Add Section" />
-                </ui-base-button>
+                </v-button>
 
-                <ui-base-button
+                <v-button
                     type="primary"
                     block
                 >
                     <i18n-t keypath="Sell" />
-                </ui-base-button>
-            </ui-layout-space>
-        </ui-layout-col>
-    </ui-layout-row>
-</ui-form-card>
+                </v-button>
+            </v-space>
+        </v-column>
+    </v-row>
+</v-card>
 </template>
 
 <style lang="sass" scoped>

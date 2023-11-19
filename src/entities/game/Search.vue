@@ -7,16 +7,17 @@ let { t } = useI18n({
 </script>
 
 <template>
-<ui-form-input
+<v-input
     :placeholder="t('Search by description')"
     clearable
 >
     <template #suffix>
-        <ui-base-icon size="18">
-            <i class="i-heroicons:magnifying-glass" />
-        </ui-base-icon>
+        <ui-icon
+            heroicons="magnifying-glass"
+            size="18"
+        />
     </template>
-</ui-form-input>
+</v-input>
 </template>
 
 <i18n lang="yaml">

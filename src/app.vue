@@ -4,11 +4,13 @@ import type { RouteLocation } from "vue-router"
 
 <template>
 <widget-wrapper-app>
-    <nuxt-layout>
-        <nuxt-page
-            :id="($route.name as string)"
-            :page-key="(route: RouteLocation) => route.fullPath"
-        />
-    </nuxt-layout>
+    <ui-content>
+        <app-breadcrumbs />
+    </ui-content>
+
+    <nuxt-page
+        :id="($route.name as string)"
+        :page-key="(route: RouteLocation) => route.fullPath"
+    />
 </widget-wrapper-app>
 </template>

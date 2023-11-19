@@ -1,0 +1,27 @@
+@use "../vars/sizes";
+@use "../vars/spaces";
+@use "../vars/typography";
+
+@forward "vexip-ui/style/button" with (
+    $button: (
+        v-padding: spaces.$space-6,
+        h-padding: spaces.$space-10,
+        height: sizes.$button-height,
+        radius: spaces.$space-3,
+        font-size: typography.$font-size-level-5,
+        icon-span: 0,
+    ),
+);
+
+.vxp-button-vars.vxp-button--circle {
+    --vxp-button-v-padding: 0;
+    --vxp-button-h-padding: 0;
+}
+
+.vxp-button {
+    @apply font-semibold;
+}
+
+.vxp-button--circle {
+    @apply w-8 h-8 p-4;
+}

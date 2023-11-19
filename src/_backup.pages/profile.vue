@@ -316,7 +316,7 @@
             </div>
 
         </div>
-    </ui-layout-content>
+    </ui-content>
 </div>
 </template>
 

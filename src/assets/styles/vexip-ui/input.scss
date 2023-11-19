@@ -1,0 +1,16 @@
+@use "../vars/colors";
+@use "../vars/sizes";
+@use "../vars/spaces";
+
+@use "vexip-ui/style/input";
+
+.vxp-input-vars {
+    --vxp-input-bg-color: #{colors.$color-secondary};
+    --vxp-input-b-color: #{colors.$color-secondary};
+    --vxp-input-placeholder-color: #{rgba(colors.$color-white, 0.6)};
+    --vxp-input-icon-color: #{rgba(colors.$color-white, 0.6)};
+    --vxp-input-radius: #{spaces.$space-2};
+    --vxp-input-height: #{sizes.$input-height};
+    --vxp-input-v-padding: #{spaces.$space-4};
+    --vxp-input-h-padding: #{spaces.$space-7};
+}

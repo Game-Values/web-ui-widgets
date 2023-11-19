@@ -1,10 +1,12 @@
 <template>
-<ui-data-badge
-    type="success"
+<v-badge
     is-dot
+    type="success"
 >
-    <ui-data-avatar />
-</ui-data-badge>
+    <v-avatar>
+        <ui-icon heroicons="user" />
+    </v-avatar>
+</v-badge>
 </template>
 
 <style lang="sass" scoped>

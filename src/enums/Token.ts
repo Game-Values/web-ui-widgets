@@ -9,13 +9,16 @@ export enum ClientToken {
 
 export enum ControllerToken {
     GAME = "GameController",
+    ORDER = "OrderController",
 }
 
 export enum FacadeToken {
-    MAIN = "MainFacade",
     GAME = "GameFacade",
+    MAIN = "MainFacade",
+    ORDER = "OrderFacade",
 }
 
 export enum ServiceToken {
     GAME = "GameService",
+    ORDER = "OrderService",
 }

@@ -2,79 +2,70 @@
 useI18n()
 
 interface Statistic {
-    label: string
     count: number
     icon: string
+    label: string
 }
 
 let statistics: Statistic[] = [
     {
+        count: 123456,
+        icon: "inbox-stack",
         label: "goods",
-        count: 123456,
-        icon: "i-heroicons:inbox-stack",
     },
     {
+        count: 123456,
+        icon: "credit-card",
         label: "deals",
-        count: 123456,
-        icon: "i-heroicons:credit-card",
     },
     {
+        count: 123456,
+        icon: "user",
         label: "online",
-        count: 123456,
-        icon: "i-heroicons:user",
     },
     {
-        label: "users",
         count: 123456,
-        icon: "i-heroicons:users",
+        icon: "users",
+        label: "users",
     },
 ]
 </script>
 
 <template>
-<ui-layout-row>
-    <ui-layout-col
+<v-row>
+    <v-column
         v-for="statistic in statistics"
         :key="statistic.label"
         :lg="24"
         :sm="6"
         :xs="12"
     >
-        <ui-layout-space
+        <v-space
             align="center"
             size="large"
             no-wrap
         >
-            <component
-                :is="statistic.icon"
+            <ui-icon
+                :heroicons="statistic.icon"
                 color="primary"
                 size="40"
             />
 
-            <ui-base-icon
-                color="primary"
-                size="40"
-            >
-                <i :class="statistic.icon" />
-            </ui-base-icon>
-
-            <ui-layout-space
+            <v-space
                 size="small"
                 vertical
             >
-                <ui-typography-title :level="6">
+                <v-title :level="6">
                     {{ formatNumbers(statistic.count) }}
-                </ui-typography-title>
+                </v-title>
 
-                <ui-typography-text :size="useFirst(useTheme('fontSize.sm'))">
+                <v-text :size="useFirst(useTheme('fontSize.sm'))">
                     <i18n-t :keypath="statistic.label" />
-                </ui-typography-text>
-            </ui-layout-space>
-
-
-        </ui-layout-space>
-    </ui-layout-col>
-</ui-layout-row>
+                </v-text>
+            </v-space>
+        </v-space>
+    </v-column>
+</v-row>
 </template>
 
 <i18n lang="yaml">

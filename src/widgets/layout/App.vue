@@ -1,23 +1,29 @@
 <script lang="ts" setup>
+import type { ScopedProps } from "~/types"
 import type { VNode } from "vue"
 
 defineSlots<{
-    default: () => VNode
+    default: (scopedProps: ScopedProps) => VNode
 }>()
 </script>
 
 <template>
-<ui-base-layout>
+<v-layout>
     <template #header>
         <widget-layout-app-header />
     </template>
 
-    <template #main>
+    <template #default>
         <slot />
     </template>
 
     <template #footer>
         <widget-layout-app-footer />
     </template>
-</ui-base-layout>
+</v-layout>
 </template>
+
+<style lang="sass" scoped>
+.vxp-layout
+    @apply screen
+</style>
