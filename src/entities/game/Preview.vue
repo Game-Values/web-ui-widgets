@@ -1,5 +1,12 @@
 <script lang="ts" setup>
 // todo: from api
+
+// todo: props are correct (?)
+withDefaults(defineProps<{
+    backgroundPosition?: string
+}>(), {
+    backgroundPosition: "center",
+})
 </script>
 
 <template>
@@ -13,7 +20,7 @@
     :style="{
         background: `
             linear-gradient(180deg, ${useTheme('colors.black')} 0%, ${useTheme('colors.secondary')} 100%),
-            center / cover no-repeat url(https://raw.githubusercontent.com/Game-Values/web-ui-widgets/master/src/public/images/dota2.png),
+            url(https://raw.githubusercontent.com/Game-Values/web-ui-widgets/master/src/public/images/dota2.png) ${backgroundPosition} / cover no-repeat,
             ${useTheme('colors.grey-light')} center / cover no-repeat
         `,
     }"

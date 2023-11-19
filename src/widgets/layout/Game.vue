@@ -16,6 +16,7 @@ let gamePreviewOffset = computed(() => useTheme(`height.header-${getRef(breakpoi
         :style="{
             top: `-${gamePreviewOffset}`,
         }"
+        background-position="center 30%"
         class="absolute fit"
     />
 
