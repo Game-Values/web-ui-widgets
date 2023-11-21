@@ -20,7 +20,7 @@ withDefaults(defineProps<{
     :style="{
         background: `
             linear-gradient(180deg, ${useTheme('colors.black')} 0%, ${useTheme('colors.secondary')} 100%),
-            url(https://raw.githubusercontent.com/Game-Values/web-ui-widgets/master/src/public/images/dota2.png) ${backgroundPosition} / cover no-repeat,
+            url(https://raw.githubusercontent.com/Game-Values/web-ui-widgets/master/src/public/images/apex.jpg) ${backgroundPosition} / cover no-repeat,
             ${useTheme('colors.grey-light')} center / cover no-repeat
         `,
     }"
