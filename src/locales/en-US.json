@@ -1,11 +1,46 @@
 {
-    "labels": {
+    "label": {
         "Blog": "Blog",
+        "Currency": "Currency",
         "Promotions": "Promotions",
         "Top-10": "Top-10",
         "AI Assistant": "AI Assistant",
         "Log in": "Log in",
-        "Sign up": "Sign up"
+        "Sign up": "Sign up",
+        "Pay": "Pay"
+    },
+
+    "game": {
+        "Server": "Server",
+        "Availability": "Availability",
+        "Quantity": "Quantity"
+    },
+
+    "order": {
+        "Specify the quantity": "Specify the quantity",
+        "Other filter": "Other filter",
+        "Order comment": "Order comment",
+        "Payment method": "Payment method",
+        "I will pay": "I will pay",
+        "I will receive": "I will receive",
+        "Specify the method of item transfer (e.g., your in-game username)": "Specify the method of item transfer (e.g., your in-game username)",
+        "With a credit card on the website": "With a credit card on the website",
+        "Price per unit": "Price per unit",
+        "Check order details before payment": "Check order details before payment",
+        "The seller will not receive payment until you confirm that they have fulfilled all obligations": "The seller will not receive payment until you confirm that they have fulfilled all obligations",
+        "Cancel the order": "Cancel the order",
+        "Your order has been successfully placed and paid for": "Your order has been successfully placed and paid for",
+        "Please check the receipt of the item from the seller and confirm the transaction. If you have not received the item, please contact our technical support. Our moderator will join the chat and resolve the dispute": "Please check the receipt of the item from the seller and confirm the transaction. If you have not received the item, please contact our technical support. Our moderator will join the chat and resolve the dispute",
+        "I haven't received the item": "I haven't received the item",
+        "Confirm Receipt": "Confirm Receipt",
+        "Do not press the button if you haven't checked the receipt of the item, even if the seller has requested it": "Do not press the button if you haven't checked the receipt of the item, even if the seller has requested it"
+    },
+
+    "template": {
+        "Deal": "Deal #{orderId}",
+        "Place an order for": "Place an order for {price}",
+        "Your order for": "Your order for {price}",
+        "Transfer the item to the username": "Transfer the item to the username {username}"
     },
 
     "plural": {

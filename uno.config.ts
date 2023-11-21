@@ -1,4 +1,6 @@
+import type { IconifyJSON } from "@iconify/types"
 import type { Theme } from "@unocss/preset-uno"
+import type { Module } from "~/types"
 
 import { readFileSync } from "node:fs"
 import { basename, join } from "node:path"
@@ -6,8 +8,8 @@ import { cwd } from "node:process"
 
 import { FileSystemIconLoader } from "@iconify/utils/lib/loader/node-loaders"
 import { glob } from "fast-glob"
-import { optimize } from "svgo"
 import { assign, get } from "lodash-es"
+import { optimize } from "svgo"
 import { defineConfig, presetIcons, presetUno, transformerDirectives, transformerVariantGroup } from "unocss"
 
 // fixme: not work
@@ -37,8 +39,6 @@ let theme: Theme = {
         return assign(
             getNumericSpacing(),
 
-            reductionSizeToBreakpoints("header", "height"),
-            reductionSizeToBreakpoints("footer", "height"),
             reductionSizeToBreakpoints("game-preview", "height"),
 
             {
@@ -100,7 +100,6 @@ let theme: Theme = {
         warning: get(colors, "$color-warning"),
         "warning-medium": get(colors, "$color-warning-medium"),
         white: get(colors, "$color-white"),
-        "white-2": get(colors, "$color-white-2"),
         "white-12": get(colors, "$color-white-12"),
         yellow: get(colors, "$color-yellow"),
     },
@@ -210,17 +209,14 @@ function getNumericSpacing(): Theme["spacing"] {
 
 export default defineConfig({
     content: {
-        filesystem: [
-            join(cwd(), "schema", "icons.json"),
-        ],
         inline: [
             async (): Promise<string> => {
                 let customIcons: string[] = (
                     await glob(
                         join(cwd(), "src", "assets", "icons", "*.svg"),
                     )
-                ).map((iconpath: string): string => (
-                    `i-custom:${basename(iconpath, ".svg")}`
+                ).map((filepath: string): string => (
+                    `i-custom:${basename(filepath, ".svg")}`
                 ))
 
                 if (isDevelopment())
@@ -237,10 +233,14 @@ export default defineConfig({
                 custom: FileSystemIconLoader(
                     join(cwd(), "src", "assets", "icons"),
                 ),
+                heroicons: (): Promise<IconifyJSON> => (
+                    import("@iconify-json/heroicons/icons.json")
+                        .then((module: Module<IconifyJSON>): IconifyJSON => module.default)
+                ),
             },
             customizations: {
                 transform: (svg: string): string => (
-                    get<string>(
+                    get(
                         optimize(svg, {
                             plugins: [
                                 "removeDimensions",
@@ -271,6 +271,8 @@ export default defineConfig({
         "flex-col-justify-center": "flex flex-col justify-center",
         "flex-items-center": "flex items-center",
         "flex-justify-center": "flex items-center justify-center",
+        "max-fit": "max-w-full max-h-full",
+        "max-screen": "max-w-screen max-h-screen",
         overlay: "fit absolute left-0 top-0",
         screen: "w-screen h-screen",
     },

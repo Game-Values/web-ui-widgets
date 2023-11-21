@@ -37,7 +37,6 @@ export let useGamesStore: GamesStore.Store = createStore<
 
     return {
         games,
-
         setGamesRaw,
     }
 })

@@ -1,0 +1,7 @@
+@use "../vars/spaces";
+
+@forward "vexip-ui/style/textarea" with (
+    $textarea: (
+        min-height: spaces.$space-15,
+    ),
+);

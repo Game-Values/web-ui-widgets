@@ -4,18 +4,18 @@ let isMobileMenuActive = ref(false)
 
 <template>
 <lazy-client-only>
-    <ui-base-button
+    <v-button
         class="lg:(hidden!)"
         size="small"
         text
         @click="isMobileMenuActive = true"
     >
-        <ui-base-icon size="30">
-            <i class="i-heroicons:bars-3" />
-        </ui-base-icon>
-    </ui-base-button>
+        <ui-icon
+            icon="bars-3"
+            size="30"
+        />
+    </v-button>
 
     <header-mobile-menu-drawer v-model="isMobileMenuActive" />
 </lazy-client-only>
 </template>
-

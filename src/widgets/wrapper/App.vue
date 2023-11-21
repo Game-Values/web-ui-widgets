@@ -1,15 +1,18 @@
 <script lang="ts" setup>
+import type { ScopedProps } from "~/types"
 import type { VNode } from "vue"
 
 defineSlots<{
-    default: () => VNode
+    default: (scopedProps: ScopedProps) => VNode
 }>()
 </script>
 
 <template>
 <widget-provider-setup>
     <widget-provider-config>
-        <slot />
+        <nuxt-layout>
+            <slot />
+        </nuxt-layout>
     </widget-provider-config>
 </widget-provider-setup>
 </template>

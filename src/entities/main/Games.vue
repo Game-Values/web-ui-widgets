@@ -17,22 +17,21 @@ let rowGap = computed((): number[] => {
 </script>
 
 <template>
-<ui-layout-row :gap="rowGap">
-    <ui-layout-col
+<v-row :gap="rowGap">
+    <v-column
         v-for="[firstChar, gamesCollection] in games.groupedGames"
         :key="firstChar"
     >
-        <ui-layout-space
+        <v-space
             size="large"
-            class="flex-1"
             vertical
         >
-            <ui-typography-title :level="3">
+            <v-title :level="3">
                 {{ firstChar }}
-            </ui-typography-title>
+            </v-title>
 
             <game-grid :games="gamesCollection" />
-        </ui-layout-space>
-    </ui-layout-col>
-</ui-layout-row>
+        </v-space>
+    </v-column>
+</v-row>
 </template>

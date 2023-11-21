@@ -21,12 +21,12 @@ let footerLinks = computed((): FooterLink[] => (
             to: "javascript:void(0)",
             children: [
                 {
-                    i18n: "labels.Promotions",
+                    i18n: "label.Promotions",
                     i18nScope: "global",
                     to: "javascript:void(0)",
                 },
                 {
-                    i18n: "labels.AI Assistant",
+                    i18n: "label.AI Assistant",
                     i18nScope: "global",
                     to: "javascript:void(0)",
                 },
@@ -35,7 +35,7 @@ let footerLinks = computed((): FooterLink[] => (
                     to: "javascript:void(0)",
                 },
                 {
-                    i18n: "labels.Top-10",
+                    i18n: "label.Top-10",
                     i18nScope: "global",
                     to: "javascript:void(0)",
                 },
@@ -50,7 +50,7 @@ let footerLinks = computed((): FooterLink[] => (
                     to: "javascript:void(0)",
                 },
                 {
-                    i18n: "labels.Blog",
+                    i18n: "label.Blog",
                     i18nScope: "global",
                     to: "javascript:void(0)",
                 },
@@ -88,14 +88,14 @@ let footerLinksOffset = computed((): number => (
 </script>
 
 <template>
-<ui-layout-space :size="footerLinksOffset">
-    <ui-layout-space
+<v-space :size="footerLinksOffset">
+    <v-space
         v-for="footerLink in footerLinks"
         :key="footerLink.i18n"
         size="large"
         vertical
     >
-        <ui-typography-title
+        <v-title
             :level="6"
             :color="useTheme('colors.secondary')"
             :size="useFirst(useTheme('fontSize.sm'))"
@@ -104,23 +104,23 @@ let footerLinksOffset = computed((): number => (
                 :keypath="footerLink.i18n"
                 :scope="footerLink.i18nScope"
             />
-        </ui-typography-title>
+        </v-title>
 
         <ul class="flex-col gap-y-3">
             <li
                 v-for="footerLinkChild in footerLink.children"
                 :key="footerLinkChild.i18n"
             >
-                <ui-base-link>
+                <ui-link>
                     <i18n-t
                         :keypath="footerLinkChild.i18n"
                         :scope="footerLinkChild.i18nScope"
                     />
-                </ui-base-link>
+                </ui-link>
             </li>
         </ul>
-    </ui-layout-space>
-</ui-layout-space>
+    </v-space>
+</v-space>
 </template>
 
 <i18n lang="yaml">

@@ -43,7 +43,7 @@ let sliderHeight = computed((): number => (
 
 <template>
 <swiper
-    :autoplay="false && {
+    :autoplay="{
         delay: 8000,
         disableOnInteraction: true,
     }"
@@ -77,10 +77,10 @@ let sliderHeight = computed((): number => (
     pagination
 >
     <swiper-slide
-        v-for="slide in mainSlides"
-        :key="slide.src"
+        v-for="(mainSlide, i) in mainSlides"
+        :key="i"
     >
-        <ui-effect-overlay :height="sliderHeight">
+        <ui-overlay :height="sliderHeight">
             <!-- todo -->
             <div
                 class="
@@ -93,31 +93,30 @@ let sliderHeight = computed((): number => (
             />
 
             <template #overlay>
-                <ui-layout-space
+                <v-space
                     size="large"
                     justify="center"
                     class="
                         relative
-                        fit
                         md:(bottom-0 p-12 max-w-1/2)
                         xs:(bottom-18 p-7 max-w-full)
                     "
                     vertical
                 >
-                    <ui-typography-title :level="titleLevel">
-                        <i18n-t :keypath="slide.title" />
-                    </ui-typography-title>
+                    <v-title :level="titleLevel">
+                        <i18n-t :keypath="mainSlide.title" />
+                    </v-title>
 
-                    <ui-typography-text
+                    <v-text
                         class="
                             md:(block)
                             sm:(hidden)
                         "
                     >
-                        <i18n-t :keypath="slide.description" />
-                    </ui-typography-text>
+                        <i18n-t :keypath="mainSlide.description" />
+                    </v-text>
 
-                    <ui-base-button
+                    <v-button
                         type="primary"
                         class="
                             w-full
@@ -125,17 +124,17 @@ let sliderHeight = computed((): number => (
                         "
                     >
                         <i18n-t keypath="Try" />
-                    </ui-base-button>
-                </ui-layout-space>
+                    </v-button>
+                </v-space>
             </template>
-        </ui-effect-overlay>
+        </ui-overlay>
     </swiper-slide>
 </swiper>
 </template>
 
 <style lang="sass" scoped>
 .swiper
-    --swiper-navigation-size: 4.2rem
+    --swiper-navigation-size: theme("spacing.14")
     --swiper-navigation-sides-offset: calc(var(--swiper-navigation-size) / 2 * -1)
     --swiper-pagination-bullet-border-radius: theme("width.1")
     --swiper-pagination-bullet-inactive-color: theme("colors.white")
@@ -145,7 +144,8 @@ let sliderHeight = computed((): number => (
     --swiper-pagination-color: theme("colors.white")
     --swiper-pagination-top: calc(var(--swiper-height) + theme("spacing.10"))
 
-    @apply w-full overflow-visible
+    @apply w-full
+    @apply overflow-visible
 
     :deep(.swiper-wrapper)
         @apply rounded-2xl border-solid-secondary

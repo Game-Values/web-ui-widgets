@@ -4,28 +4,15 @@ import type { VNode } from "vue"
 defineSlots<{
     default: () => VNode
 }>()
-
-let breakpoint = useBreakpoint()
-
-let gamePreviewOffset = computed(() => useTheme(`height.header-${getRef(breakpoint)}`))
 </script>
 
 <template>
 <widget-layout-app>
     <entity-game-preview
-        :style="{
-            top: `-${gamePreviewOffset}`,
-        }"
         background-position="center 30%"
-        class="absolute fit"
+        class="absolute -top-7rem fit"
     />
 
-    <div
-        :style="{
-            marginTop: gamePreviewOffset,
-        }"
-    >
-        <slot />
-    </div>
+    <slot />
 </widget-layout-app>
 </template>

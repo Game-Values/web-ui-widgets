@@ -19,14 +19,14 @@ let { gameController } = useControllers()
     @click.prevent
 >
     <template #icon>
-        <ui-base-icon size="20">
-            <i
-                :class="{
-                    'i-heroicons:heart-solid': game.liked,
-                    'i-heroicons:heart': !game.liked,
-                }"
-            />
-        </ui-base-icon>
+        <ui-icon
+            :heroicons="(
+                game.liked
+                    ? 'heart-solid'
+                    : 'heart'
+            )"
+            size="20"
+        />
     </template>
 </button-action>
 </template>

@@ -169,111 +169,99 @@ let lotsData = [
 </script>
 
 <template>
-<ui-data-table
+<v-table
     :data="lotsData"
-    :row-height="110"
 >
-    <ui-data-table-col
+    <v-table-column
         #default="{ row }"
         :name="t('Seller')"
         :width="250"
         id-key="Seller"
     >
-        <ui-layout-space
+        <v-space
             align="center"
             size="large"
             no-wrap
         >
             <user-avatar />
 
-            <ui-layout-space
+            <v-space
                 size="small"
                 vertical
                 no-wrap
             >
-                <ui-typography-title :level="6">
+                <v-title :level="6">
                     {{ row.Seller.name }}
-                </ui-typography-title>
+                </v-title>
 
-                <ui-typography-text>
+                <v-text>
                     <i18n-t keypath="Deals">
                         <template #percent>
                             {{ row.Seller.deals }}
                         </template>
                     </i18n-t>
-                </ui-typography-text>
+                </v-text>
 
-                <ui-layout-space
+                <v-space
                     size="large"
                     no-wrap
                 >
-                    <ui-typography-text
-                        :color="useTheme('colors.success')"
+                    <v-text
                         class="flex-items-center gap-x-2"
+                        type="success"
                     >
-                        <ui-base-icon>
-                            <i class="i-heroicons:hand-thumb-up" />
-                        </ui-base-icon>
+                        <ui-icon heroicons="hand-thumb-up" />
 
                         {{ row.Seller.liked }}
-                    </ui-typography-text>
+                    </v-text>
 
-                    <ui-typography-text
-                        :color="useTheme('colors.primary')"
+                    <v-text
                         class="flex-items-center"
+                        type="primary"
                     >
-                        <ui-base-icon>
-                            <i class="i-heroicons:arrow-small-up" />
-                        </ui-base-icon>
+                        <ui-icon heroicons="arrow-small-up" />
 
                         {{ row.Seller.rating }}
-                    </ui-typography-text>
-                </ui-layout-space>
-            </ui-layout-space>
-        </ui-layout-space>
-    </ui-data-table-col>
+                    </v-text>
+                </v-space>
+            </v-space>
+        </v-space>
+    </v-table-column>
 
-    <ui-data-table-col
+    <v-table-column
         :name="t('Description')"
         id-key="Description"
     />
 
-    <ui-data-table-col
-        :name="t('Server')"
+    <v-table-column
+        :name="$t('game.Server')"
         id-key="Server"
     />
 
-    <ui-data-table-col
-        :name="t('Availability')"
+    <v-table-column
+        :name="$t('game.Availability')"
+        :width="200"
         id-key="Amount"
         sorter
     />
 
-    <ui-data-table-col
+    <v-table-column
         :name="t('Price')"
         id-key="Price"
         sorter
     />
-</ui-data-table>
+</v-table>
 </template>
-
-<style lang="sass" scoped>
-
-</style>
 
 <i18n lang="yaml">
 de:
     Seller: Verkäufer
     Description: Beschreibung
-    Server: Server
-    Availability: Verfügbarkeit
     Price: Preis
     Deals: "{percent} Angebote"
 en:
     Seller: Seller
     Description: Description
-    Server: Server
-    Availability: Availability
     Price: Price
     Deals: "{percent} Deals"
 </i18n>

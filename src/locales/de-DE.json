@@ -1,11 +1,46 @@
 {
-    "labels": {
+    "label": {
         "Blog": "Blog",
+        "Currency": "Währung",
         "Promotions": "Werbeaktionen",
         "Top-10": "Top-10",
         "AI Assistant": "KI Assistent",
         "Log in": "Einloggen",
-        "Sign up": "Anmelden"
+        "Sign up": "Anmelden",
+        "Pay": "Zahlen"
+    },
+
+    "game": {
+        "Server": "Server",
+        "Availability": "Availability",
+        "Quantity": "Menge"
+    },
+
+    "order": {
+        "Specify the quantity": "Geben Sie die Menge an",
+        "Other filter": "Anderer Filter",
+        "Order comment": "Bestellkommentar",
+        "Payment method": "Zahlungsart",
+        "I will pay": "Ich werde bezahlen",
+        "I will receive": "Ich werde empfangen",
+        "Specify the method of item transfer (e.g., your in-game username)": "Geben Sie die Methode zur Übertragung von Gegenständen an (z. B. Ihren Benutzernamen im Spiel)",
+        "With a credit card on the website": "Mit Kreditkarte auf der Website",
+        "Price per unit": "Preis pro Einheit",
+        "Check order details before payment": "Überprüfen Sie die Bestelldetails vor der Zahlung",
+        "The seller will not receive payment until you confirm that they have fulfilled all obligations": "Der Verkäufer erhält die Zahlung erst, wenn Sie bestätigen, dass er alle Verpflichtungen erfüllt hat",
+        "Cancel the order": "Bestellung stornieren",
+        "Your order has been successfully placed and paid for": "Ihre Bestellung wurde erfolgreich aufgegeben und bezahlt",
+        "Please check the receipt of the item from the seller and confirm the transaction. If you have not received the item, please contact our technical support. Our moderator will join the chat and resolve the dispute": "Bitte überprüfen Sie den Erhalt des Artikels vom Verkäufer und bestätigen Sie die Transaktion. Wenn Sie den Artikel nicht erhalten haben, wenden Sie sich bitte an unseren technischen Support. Unser Moderator nimmt am Chat teil und löst den Streit",
+        "I haven't received the item": "Ich habe den Artikel nicht erhalten",
+        "Confirm Receipt": "Empfang bestätigen",
+        "Do not press the button if you haven't checked the receipt of the item, even if the seller has requested it": "Drücken Sie die Taste nicht, wenn Sie den Erhalt des Artikels nicht überprüft haben, auch wenn der Verkäufer dies verlangt hat"
+    },
+
+    "template": {
+        "Deal": "Handeln #{orderId}",
+        "Place an order for": "Eine Bestellung für {price} aufgeben",
+        "Your order for": "Ihre Bestellung für {price}",
+        "Transfer the item to the username": "Übertragen Sie den Artikel an den Benutzernamen {username}"
     },
 
     "plural": {

@@ -7,13 +7,13 @@ let hasOnlinePlayers = ref(true)
 </script>
 
 <template>
-<ui-layout-space align="center">
-    <ui-form-switch v-model:value="hasOnlinePlayers" />
+<v-space align="center">
+    <v-switch v-model:value="hasOnlinePlayers" />
 
-    <ui-typography-text :size="useFirst(useTheme('fontSize.lg'))">
+    <v-text :size="useFirst(useTheme('fontSize.lg'))">
         <i18n-t keypath="Online Players Only" />
-    </ui-typography-text>
-</ui-layout-space>
+    </v-text>
+</v-space>
 </template>
 
 <style lang="sass" scoped>

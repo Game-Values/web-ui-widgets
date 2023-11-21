@@ -29,7 +29,7 @@ module.exports = (() => (
             "@vue/typescript/recommended",
             "@vue/eslint-config-typescript/recommended",
             "@logux/eslint-config/ts",
-            "@unocss",
+            // "@unocss", todo: not work
         ],
 
         ignorePatterns: [

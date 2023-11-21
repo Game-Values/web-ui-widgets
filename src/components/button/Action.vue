@@ -31,7 +31,7 @@ async function callAction() {
 </script>
 
 <template>
-<ui-base-button
+<v-button
     v-bind="useOmit(props, 'action')"
     :loading="isLoading"
     @click="callAction"
@@ -44,5 +44,5 @@ async function callAction() {
             name="icon"
         />
     </template>
-</ui-base-button>
+</v-button>
 </template>

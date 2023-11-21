@@ -7,21 +7,18 @@ defineProps<{
 </script>
 
 <template>
-<ui-form-card
+<v-card
     :id="game.id"
     :class="['group', {
         'liked': game.liked,
     }]"
 >
-    <ui-base-link
+    <ui-link
         :to="useGameRoute(game.slug).fullPath"
         class="relative fit"
     >
-        <ui-layout-space
-            class="flex-1"
-            vertical
-        >
-            <ui-effect-mouse-light
+        <v-space vertical>
+            <ui-mouse-light
                 class="
                     h-13.6rem
                     w-full
@@ -33,29 +30,28 @@ defineProps<{
                     hover-group-[.liked]:(bg-accent-medium)!
                 "
             >
-                <ui-base-icon
+                <ui-icon
                     :custom="game.icon"
                     :style="`
                         --vpx-icon-width: 100%;
                         --vpx-icon-height: 100%;
                     `"
                 />
-            </ui-effect-mouse-light>
+            </ui-mouse-light>
 
-            <ui-layout-space
-                class="flex-1"
+            <v-space
                 justify="space-between"
                 no-wrap
             >
-                <ui-typography-title :level="4">
+                <v-title :level="4">
                     {{ game.name }}
-                </ui-typography-title>
+                </v-title>
 
                 <widget-action-like-game :game="game" />
-            </ui-layout-space>
-        </ui-layout-space>
+            </v-space>
+        </v-space>
 
-        <ui-data-tag
+        <v-tag
             v-if="game.count"
             :color="useTheme('colors.secondary')"
             size="small"
@@ -68,7 +64,7 @@ defineProps<{
             circle
         >
             {{ game.count }}
-        </ui-data-tag>
-    </ui-base-link>
-</ui-form-card>
+        </v-tag>
+    </ui-link>
+</v-card>
 </template>

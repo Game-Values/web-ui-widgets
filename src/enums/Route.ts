@@ -1,4 +1,5 @@
 export enum RouteName {
+    GAME = "locale-g-gameSlug",
     MAIN = "locale",
-    GAME = "locale-g-slug",
+    ORDER = "locale-g-gameSlug-orderType-orderId",
 }

@@ -3,7 +3,7 @@ import { SocialType } from "~/enums"
 </script>
 
 <template>
-<ui-layout-space
+<v-space
     align="center"
     size="large"
 >
@@ -11,10 +11,10 @@ import { SocialType } from "~/enums"
         v-for="socialType in SocialType"
         :key="socialType"
     >
-        <ui-base-icon
+        <ui-icon
             :custom="useToLower(socialType)"
             size="40"
         />
     </template>
-</ui-layout-space>
+</v-space>
 </template>

@@ -1,6 +1,6 @@
-import type { Route } from "vue-router"
+import type { Route } from "~/types"
 
-import { RouteName } from "~/enums"
+import { OrderType, RouteName } from "~/enums"
 
 export function useMainRoute(): Route {
     return useLocaleRoute()({
@@ -8,11 +8,21 @@ export function useMainRoute(): Route {
     })
 }
 
-export function useGameRoute(slug: string): Route {
+export function useGameRoute(gameSlug: string): Route {
     return useLocaleRoute()({
         name: RouteName.GAME,
         params: {
-            slug,
+            gameSlug,
+        },
+    })
+}
+
+export function useOrderRoute(): Route {
+    return useLocaleRoute()({
+        name: RouteName.ORDER,
+        params: {
+            orderId: 1,
+            orderType: OrderType.GOLD,
         },
     })
 }

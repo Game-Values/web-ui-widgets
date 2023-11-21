@@ -41,7 +41,7 @@
                     <authentication-navigation />
                 </div>
             </div>
-        </ui-layout-content>
+        </ui-content>
 
         <ui-headless-disclosure-panel class="sm:hidden">
             <div class="space-y-1 pt-2 pb-4">

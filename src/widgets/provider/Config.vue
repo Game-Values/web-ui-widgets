@@ -1,24 +1,50 @@
 <script lang="ts" setup>
-import type { LocaleConfig } from "vexip-ui"
-import type { ComputedRef, VNode } from "vue"
+import type { ScopedProps } from "~/types"
+import type { VNode } from "vue"
 
 import { DEFAULT_LOCALE, DEFAULT_LOCALE_ISO, VEXIP_LOCALE } from "~/consts"
 
+const DEFAULT_GAP: number[] = Array(2).fill(remToNumber(useTheme("spacing.9")))
+
 defineSlots<{
-    default: () => VNode
+    default: (scopedProps: ScopedProps) => VNode
 }>()
 
 let { setLocale } = useI18n()
-
-let vexipLocale: ComputedRef<LocaleConfig> = computed((): LocaleConfig => (
-    useGet<() => LocaleConfig>(VEXIP_LOCALE, DEFAULT_LOCALE_ISO)()
-))
 
 await setLocale(DEFAULT_LOCALE)
 </script>
 
 <template>
-<ui-base-config :locale="vexipLocale">
+<v-config-provider
+    :locale="useGet(VEXIP_LOCALE, DEFAULT_LOCALE_ISO)()"
+    :props="{
+        avatar: {
+            circle: true,
+            size: remToNumber(useTheme('width.avatar')),
+        },
+        card: {
+            shadow: 'hover',
+        },
+        drawer: {
+            undivided: true,
+        },
+        form: {
+            labelAlign: 'top',
+        },
+        grid: {
+            gap: DEFAULT_GAP,
+        },
+        layout: {
+            footer: true,
+            noAside: true,
+        },
+        row: {
+            columnFlex: true,
+            gap: DEFAULT_GAP,
+        },
+    }"
+>
     <slot />
-</ui-base-config>
+</v-config-provider>
 </template>

@@ -5,16 +5,16 @@ await mainFacade.bootstrap()
 </script>
 
 <template>
-<ui-layout-page>
-    <ui-layout-row>
-        <ui-layout-col
+<ui-page>
+    <v-row>
+        <v-column
             :lg="19"
             :span="24"
         >
             <entity-main-slider />
-        </ui-layout-col>
+        </v-column>
 
-        <ui-layout-col
+        <v-column
             :lg="5"
             :span="24"
             :use-flex="{
@@ -23,23 +23,23 @@ await mainFacade.bootstrap()
             class="lg:(mb-10 self-center)"
         >
             <entity-main-statistics />
-        </ui-layout-col>
-    </ui-layout-row>
+        </v-column>
+    </v-row>
 
-    <ui-layout-row>
-        <ui-layout-col
+    <v-row>
+        <v-column
             :lg="18"
             :span="24"
         >
             <entity-main-games />
-        </ui-layout-col>
+        </v-column>
 
-        <ui-layout-col
+        <v-column
             :lg="6"
             :span="0"
         >
             // TODO: Chat
-        </ui-layout-col>
-    </ui-layout-row>
-</ui-layout-page>
+        </v-column>
+    </v-row>
+</ui-page>
 </template>

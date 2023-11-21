@@ -54,20 +54,15 @@ let colsOrder = computed(() => (
 </script>
 
 <template>
-<footer
-    :style="{
-        height: useTheme(`height.footer-${getRef(useBreakpoint())}`),
-    }"
-    class="py-10 bg-grey-extra-dark"
->
-    <ui-layout-content>
-        <ui-layout-row
+<footer class="py-10 bg-grey-extra-dark">
+    <ui-content>
+        <v-row
             :gap="[
                 remToNumber(useTheme('spacing.9')),
                 remToNumber(useTheme('spacing.12')),
             ]"
         >
-            <ui-layout-col
+            <v-column
                 :lg="6"
                 :md="8"
                 :sm="8"
@@ -79,9 +74,9 @@ let colsOrder = computed(() => (
                 "
             >
                 <footer-copyright />
-            </ui-layout-col>
+            </v-column>
 
-            <ui-layout-col
+            <v-column
                 :lg="6"
                 :md="8"
                 :sm="8"
@@ -93,9 +88,9 @@ let colsOrder = computed(() => (
                 "
             >
                 <footer-links />
-            </ui-layout-col>
+            </v-column>
 
-            <ui-layout-col
+            <v-column
                 :lg="6"
                 :md="12"
                 :sm="24"
@@ -107,9 +102,9 @@ let colsOrder = computed(() => (
                 "
             >
                 <footer-policies />
-            </ui-layout-col>
+            </v-column>
 
-            <ui-layout-col
+            <v-column
                 :lg="6"
                 :md="8"
                 :sm="8"
@@ -124,9 +119,9 @@ let colsOrder = computed(() => (
                     :reviews="trustpilotReviews"
                     :score="trustpilotScore"
                 />
-            </ui-layout-col>
+            </v-column>
 
-            <ui-layout-col
+            <v-column
                 :lg="12"
                 :md="24"
                 :sm="24"
@@ -138,9 +133,9 @@ let colsOrder = computed(() => (
                 "
             >
                 <footer-payments />
-            </ui-layout-col>
+            </v-column>
 
-            <ui-layout-col
+            <v-column
                 :lg="12"
                 :md="12"
                 :sm="24"
@@ -152,8 +147,8 @@ let colsOrder = computed(() => (
                 "
             >
                 <footer-socials />
-            </ui-layout-col>
-        </ui-layout-row>
-    </ui-layout-content>
+            </v-column>
+        </v-row>
+    </ui-content>
 </footer>
 </template>
