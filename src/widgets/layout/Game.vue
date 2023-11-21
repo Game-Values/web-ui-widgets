@@ -8,10 +8,9 @@ defineSlots<{
 
 <template>
 <widget-layout-app>
-    <entity-game-preview
-        background-position="center 30%"
-        class="absolute -top-7rem fit"
-    />
+    <div class="absolute -top-7rem fit">
+        <entity-game-preview />
+    </div>
 
     <slot />
 </widget-layout-app>

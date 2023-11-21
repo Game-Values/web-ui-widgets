@@ -1,0 +1,154 @@
+@use "variables"
+
+@use "../vars/colors"
+@use "../vars/typography"
+
+.vxp-badge-vars
+    --vxp-badge-dot-size: theme("width.dot")
+
+.vxp-breadcrumb-vars
+    --vxp-breadcrumb-v-padding: 0
+    --vxp-breadcrumb-h-padding: 0
+
+.vxp-button-vars
+    --vxp-button-v-padding: theme("spacing.6")
+    --vxp-button-h-padding: theme("spacing.10")
+    --vxp-button-height: theme("height.button")
+    --vxp-button-radius: theme("spacing.3")
+    --vxp-button-font-size: #{typography.$font-size-level-5}
+    --vxp-button-icon-span: 0
+
+    &.vxp-button--circle
+        --vxp-button-v-padding: 0
+        --vxp-button-h-padding: 0
+
+.vxp-card-vars
+    --vxp-card-border: 0
+    --vxp-card-shadow: none
+    --vxp-card-bg-color: transparent
+    --vxp-card-b-color: transparent
+    --vxp-card-body-v-padding: 0
+    --vxp-card-body-h-padding: 0
+
+.vxp-divider-vars
+    --vxp-divider-text-color: inherit
+    --vxp-divider-text-size-primary: inherit
+
+.vxp-drawer-vars
+    --vxp-drawer-text-color: inherit
+    --vxp-drawer-text-size-primary: inherit
+
+    --vxp-drawer-header-v-padding: theme("spacing.8")
+    --vxp-drawer-header-h-padding: theme("spacing.8")
+    --vxp-drawer-close-color: theme("colors.white")
+
+.vxp-form-vars
+    --vxp-row-h-gap: 0
+    --vxp-row-v-gap: 0
+
+.vxp-input-vars
+    --vxp-input-bg-color: theme("colors.secondary")
+    --vxp-input-b-color: theme("colors.secondary")
+    --vxp-input-placeholder-color: rgba(colors.$color-white 0.6)
+    --vxp-input-icon-color: rgba(colors.$color-white 0.6)
+    --vxp-input-radius: theme("spacing.2")
+    --vxp-input-height: theme("height.input")
+    --vxp-input-v-padding: theme("spacing.4")
+    --vxp-input-h-padding: theme("spacing.7")
+
+.vxp-linker-vars
+    --vxp-linker-series-span: 0
+
+.vxp-space-vars
+    --vxp-space-v-gap: theme("spacing.3")
+    --vxp-space-h-gap: theme("spacing.3")
+
+    &.vxp-space--large
+        --vxp-space-v-gap: theme("spacing.7")
+        --vxp-space-h-gap: theme("spacing.7")
+
+    &.vxp-space--small
+        --vxp-space-v-gap: theme("spacing.1")
+        --vxp-space-h-gap: theme("spacing.1")
+
+.vxp-switch-vars
+    height: theme("height.switch")
+    bg-color-open: theme("colors.secondary")
+    signal-bg-color: theme("colors.secondary")
+
+    &.vxp-switch--open
+        --vxp-switch-signal-bg-color: theme("colors.primary")
+
+.vxp-table-vars
+    --vxp-table-cell-v-padding: theme("spacing.9")
+    --vxp-table-cell-h-padding: theme("spacing.9")
+    --vxp-table-bg-color: rgba(colors.$color-black 0.06)
+    --vxp-table-b-color: theme("colors.grey-dark")
+    --vxp-table-row-b-color-bottom: theme("colors.grey-dark")
+
+.vxp-tag-vars
+    --vxp-tag-v-padding: theme("spacing.2")
+    --vxp-tag-h-padding: theme("spacing.2")
+    --vxp-tag-bg-color: transparent
+
+    &.vxp-tag--circle
+        --vxp-tag-radius: theme("spacing.10")
+
+        &.vxp-tag--small
+            --vxp-tag-v-padding: 0
+            --vxp-tag-h-padding: theme("spacing.1")
+
+.vxp-text-vars
+    --vxp-text-color: inherit
+
+.vxp-title-vars
+    --vxp-title-font-size-level-1: #{typography.$font-size-level-1}
+    --vxp-title-font-size-level-2: #{typography.$font-size-level-2}
+    --vxp-title-font-size-level-3: #{typography.$font-size-level-3}
+    --vxp-title-font-size-level-4: #{typography.$font-size-level-4}
+    --vxp-title-font-size-level-5: #{typography.$font-size-level-5}
+    --vxp-title-font-size-level-6: #{typography.$font-size-level-6}
+    --vxp-title-font-weight: 700
+    --vxp-title-font-weight-thin: 400
+    --vxp-title-color: inherit
+
+.vxp-textarea-vars
+    --vxp-textarea-min-height: theme("spacing.15")
+
+.vxp-button
+    @apply text-level-4 font-semibold
+
+    &--circle
+        @apply w-8 h-8 p-4
+
+.vxp-form
+    &--label-top .vxp-form__label
+        @apply mb-7
+        @apply text-secondary
+
+.vxp-layout
+    @apply screen
+
+.vxp-space
+    @apply w-full
+
+.vxp-table
+    @apply border-grey-extra-dark
+    @apply rounded-5
+
+    &__head
+        @apply text-level-4 font-semibold
+
+    &__content
+        @apply py-5
+
+
+.vxp-tag
+    &--small
+        @apply text-sm
+
+.vxp-text
+    @apply font-size-inherit
+
+.vxp-title
+    @apply m-0

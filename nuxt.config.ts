@@ -60,7 +60,8 @@ let nuxtConfig: NuxtConfig = {
     ],
 
     css: [
-        "~/assets/styles/index.sass",
+        "@/assets/styles/vexip-ui/index.sass",
+        "@/assets/styles/index.sass",
     ],
 
     debug: isDebug(),
@@ -121,12 +122,6 @@ let nuxtConfig: NuxtConfig = {
                 from: "lodash-decorators",
                 imports: [
                     "Memoize",
-                ],
-            },
-            {
-                from: "vexip-ui",
-                imports: [
-                    "defineColumns",
                 ],
             },
         ],
@@ -198,7 +193,8 @@ let nuxtConfig: NuxtConfig = {
             }],
 
             ["@vexip-ui/nuxt", {
-                importStyle: "sass",
+                importStyle: false,
+                resolveIcon: false,
             }],
 
             ["@vueuse/nuxt", {
@@ -286,11 +282,11 @@ let nuxtConfig: NuxtConfig = {
             preprocessorOptions: {
                 sass: {
                     additionalData: (code: string): string => `
-                        @use "~/assets/styles/vars/breakpoints" as *
-                        @use "~/assets/styles/vars/colors" as *
-                        @use "~/assets/styles/vars/sizes" as *
-                        @use "~/assets/styles/vars/spaces" as *
-                        @use "~/assets/styles/vars/typography" as *
+                        @use "@/assets/styles/vars/breakpoints" as *
+                        @use "@/assets/styles/vars/colors" as *
+                        @use "@/assets/styles/vars/sizes" as *
+                        @use "@/assets/styles/vars/spaces" as *
+                        @use "@/assets/styles/vars/typography" as *
 
                         ${code}
                     `,
@@ -302,34 +298,18 @@ let nuxtConfig: NuxtConfig = {
                         if (/vexip-ui\/style(?:\/dark)?\/((?!shared).).*.scss/.test(filepath))
                             return (
                                 code
-                                    .replace("@use './design' as *;", "@use \"~/assets/styles/vexip-ui/variables.scss\" as *;")
-                                    .replace("@use './design/variables.scss' as *;", "@use \"~/assets/styles/vexip-ui/variables.scss\" as *;")
-                                    .replace("@use '../design/variables.scss' as *;", "@use \"~/assets/styles/vexip-ui/variables.scss\" as *;")
-                                    .replace("@forward './variables.scss';", "@use \"~/assets/styles/vexip-ui/variables.scss\";")
-
-                                    .replace("@use './badge.scss';", "@use \"~/assets/styles/vexip-ui/badge.scss\";")
-                                    .replace("@use './breadcrumb.scss';", "@use \"~/assets/styles/vexip-ui/breadcrumb.scss\";")
-                                    .replace("@use './button.scss';", "@use \"~/assets/styles/vexip-ui/button.scss\";")
-                                    .replace("@use './card.scss';", "@use \"~/assets/styles/vexip-ui/card.scss\";")
-                                    .replace("@use './divider.scss';", "@use \"~/assets/styles/vexip-ui/divider.scss\";")
-                                    .replace("@use './drawer.scss';", "@use \"~/assets/styles/vexip-ui/drawer.scss\";")
-                                    .replace("@use './form.scss';", "@use \"~/assets/styles/vexip-ui/form.scss\";")
-                                    .replace("@use './input.scss';", "@use \"~/assets/styles/vexip-ui/input.scss\";")
-                                    .replace("@use './linker.scss';", "@use \"~/assets/styles/vexip-ui/linker.scss\";")
-                                    .replace("@use './space.scss';", "@use \"~/assets/styles/vexip-ui/space.scss\";")
-                                    .replace("@use './switch.scss';", "@use \"~/assets/styles/vexip-ui/switch.scss\";")
-                                    .replace("@use './table.scss';", "@use \"~/assets/styles/vexip-ui/table.scss\";")
-                                    .replace("@use './tag.scss';", "@use \"~/assets/styles/vexip-ui/tag.scss\";")
-                                    .replace("@use './textarea.scss';", "@use \"~/assets/styles/vexip-ui/textarea.scss\";")
-                                    .replace("@use './typography.scss';", "@use \"~/assets/styles/vexip-ui/typography.scss\";")
+                                    .replace("@use './design' as *;", "@use \"@/assets/styles/vexip-ui/variables.scss\" as *;")
+                                    .replace("@use './design/variables.scss' as *;", "@use \"@/assets/styles/vexip-ui/variables.scss\" as *;")
+                                    .replace("@use '../design/variables.scss' as *;", "@use \"@/assets/styles/vexip-ui/variables.scss\" as *;")
+                                    .replace("@forward './variables.scss';", "@use \"@/assets/styles/vexip-ui/variables.scss\";")
                             )
 
                         return `
-                            @use "~/assets/styles/vars/breakpoints" as *;
-                            @use "~/assets/styles/vars/colors" as *;
-                            @use "~/assets/styles/vars/sizes" as *;
-                            @use "~/assets/styles/vars/spaces" as *;
-                            @use "~/assets/styles/vars/typography" as *;
+                            @use "@/assets/styles/vars/breakpoints" as *;
+                            @use "@/assets/styles/vars/colors" as *;
+                            @use "@/assets/styles/vars/sizes" as *;
+                            @use "@/assets/styles/vars/spaces" as *;
+                            @use "@/assets/styles/vars/typography" as *;
 
                             ${code}
                         `

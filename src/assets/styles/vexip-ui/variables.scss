@@ -4,7 +4,7 @@
 @use "../vars/spaces";
 @use "../vars/typography";
 
-@forward "vexip-ui/style/design" with (
+@forward "vexip-ui/style" with (
     $break-point-xxl: breakpoints.$breakpoint-lg,
     $break-point-xl: breakpoints.$breakpoint-lg,
     $break-point-lg: breakpoints.$breakpoint-lg,

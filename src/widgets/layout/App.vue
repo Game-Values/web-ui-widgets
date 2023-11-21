@@ -22,8 +22,3 @@ defineSlots<{
     </template>
 </v-layout>
 </template>
-
-<style lang="sass" scoped>
-.vxp-layout
-    @apply screen
-</style>

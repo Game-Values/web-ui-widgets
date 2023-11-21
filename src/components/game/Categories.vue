@@ -17,7 +17,7 @@ defineProps<{
     >
         <v-space>
             <v-text>
-                {{ category.label }}a
+                {{ category.label }}
             </v-text>
 
             <v-text
