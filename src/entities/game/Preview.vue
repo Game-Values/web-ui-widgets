@@ -11,12 +11,6 @@ withDefaults(defineProps<{
 
 <template>
 <div
-    :class="`
-        lg:(h-game-preview-lg)
-        md:(h-game-preview-md)
-        sm:(h-game-preview-sm)
-        xs:(h-game-preview-xs)
-    `"
     :style="{
         background: `
             linear-gradient(180deg, ${useTheme('colors.black')} 0%, ${useTheme('colors.secondary')} 100%),
@@ -24,5 +18,6 @@ withDefaults(defineProps<{
             ${useTheme('colors.grey-light')} center / cover no-repeat
         `,
     }"
+    class="h-50rem"
 />
 </template>

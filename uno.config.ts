@@ -39,8 +39,6 @@ let theme: Theme = {
         return assign(
             getNumericSpacing(),
 
-            reductionSizeToBreakpoints("game-preview", "height"),
-
             {
                 avatar: get(sizes, "$avatar-size"),
                 button: get(sizes, "$button-height"),
