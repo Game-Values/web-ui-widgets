@@ -18,26 +18,10 @@ defineProps<{
         class="relative fit"
     >
         <v-space vertical>
-            <ui-mouse-light
-                class="
-                    h-13.6rem
-                    w-full
-                    border-solid-secondary
-                    rounded-3
-                    transition-colors
-                    group-hover:(bg-secondary)
-                    group-[.liked]:(bg-gradient-to-b from-accent-medium from-0% to-accent-medium-light to-100%)
-                    hover-group-[.liked]:(bg-accent-medium)!
-                "
-            >
-                <ui-icon
-                    :custom="game.icon"
-                    :style="`
-                        --vpx-icon-width: 100%;
-                        --vpx-icon-height: 100%;
-                    `"
-                />
-            </ui-mouse-light>
+            <game-icon
+                :game="game"
+                height="136"
+            />
 
             <v-space
                 justify="space-between"

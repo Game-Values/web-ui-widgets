@@ -5,6 +5,8 @@ export const HEROICONS: string[] = [
     "i-heroicons:bars-3",
     "i-heroicons:check",
     "i-heroicons:credit-card",
+    "i-heroicons:exclamation-triangle",
+    "i-heroicons:hand-thumb-down",
     "i-heroicons:hand-thumb-up",
     "i-heroicons:heart",
     "i-heroicons:heart-solid",

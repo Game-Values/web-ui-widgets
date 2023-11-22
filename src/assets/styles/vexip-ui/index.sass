@@ -1,7 +1,15 @@
 @use "variables"
 
 @use "../vars/colors"
+@use "../vars/sizes"
 @use "../vars/typography"
+
+.vxp-avatar-vars
+    &.vxp-avatar--large
+        --vxp-avatar-size: #{sizes.$avatar-size-large}
+
+    &.vxp-avatar--small
+        --vxp-avatar-size: #{sizes.$avatar-size-small}
 
 .vxp-badge-vars
     --vxp-badge-dot-size: theme("width.dot")
@@ -22,13 +30,24 @@
         --vxp-button-v-padding: 0
         --vxp-button-h-padding: 0
 
+    &.vxp-button--small
+        --vxp-button-height: theme("height.button-small")
+
 .vxp-card-vars
+    --vxp-card-radius: theme("spacing.5")
     --vxp-card-border: 0
     --vxp-card-shadow: none
     --vxp-card-bg-color: transparent
     --vxp-card-b-color: transparent
     --vxp-card-body-v-padding: 0
     --vxp-card-body-h-padding: 0
+
+.vxp-collapse-vars
+    --vxp-collapse-content-h-padding: 0
+    --vxp-collapse-header-bg-color: theme("colors.white-02")
+    --vxp-collapse-divider: theme("spacing.5") solid transparent
+    --vxp-collapse-border: 0
+    --vxp-collapse-radius: theme("spacing.7")
 
 .vxp-divider-vars
     --vxp-divider-text-color: inherit
@@ -49,8 +68,8 @@
 .vxp-input-vars
     --vxp-input-bg-color: theme("colors.secondary")
     --vxp-input-b-color: theme("colors.secondary")
-    --vxp-input-placeholder-color: rgba(colors.$color-white 0.6)
-    --vxp-input-icon-color: rgba(colors.$color-white 0.6)
+    --vxp-input-placeholder-color: theme("colors.white-6")
+    --vxp-input-icon-color: theme("colors.white-6")
     --vxp-input-radius: theme("spacing.2")
     --vxp-input-height: theme("height.input")
     --vxp-input-v-padding: theme("spacing.4")
@@ -72,9 +91,9 @@
         --vxp-space-h-gap: theme("spacing.1")
 
 .vxp-switch-vars
-    height: theme("height.switch")
-    bg-color-open: theme("colors.secondary")
-    signal-bg-color: theme("colors.secondary")
+    --vxp-switch-height: theme("height.switch")
+    --vxp-switch-bg-color-open: theme("colors.secondary")
+    --vxp-switch-signal-bg-color: theme("colors.secondary")
 
     &.vxp-switch--open
         --vxp-switch-signal-bg-color: theme("colors.primary")
@@ -82,7 +101,7 @@
 .vxp-table-vars
     --vxp-table-cell-v-padding: theme("spacing.9")
     --vxp-table-cell-h-padding: theme("spacing.9")
-    --vxp-table-bg-color: rgba(colors.$color-black 0.06)
+    --vxp-table-bg-color: theme("colors.black-06")
     --vxp-table-b-color: theme("colors.grey-dark")
     --vxp-table-row-b-color-bottom: theme("colors.grey-dark")
 
@@ -98,8 +117,11 @@
             --vxp-tag-v-padding: 0
             --vxp-tag-h-padding: theme("spacing.1")
 
-.vxp-text-vars
-    --vxp-text-color: inherit
+//.vxp-text-vars
+//    --vxp-text-color: inherit
+
+.vxp-time-ago
+    @apply text-inherit font-size-inherit normal-nums
 
 .vxp-title-vars
     --vxp-title-font-size-level-1: #{typography.$font-size-level-1}
@@ -110,7 +132,7 @@
     --vxp-title-font-size-level-6: #{typography.$font-size-level-6}
     --vxp-title-font-weight: 700
     --vxp-title-font-weight-thin: 400
-    --vxp-title-color: inherit
+    //--vxp-title-color: inherit
 
 .vxp-textarea-vars
     --vxp-textarea-min-height: theme("spacing.15")
@@ -120,6 +142,32 @@
 
     &--circle
         @apply w-8 h-8 p-4
+
+    &--small
+        @apply text-normal font-normal
+
+.vxp-card
+    @apply w-full
+
+.vxp-collapse
+    @apply w-full
+    @apply border-0
+
+    &__arrow
+        @apply text-level-3
+
+    &__header
+        @apply p-2
+        @apply rounded-7
+
+    &__body
+        @apply p-0
+
+    &__panel
+        @apply w-full
+
+.vxp-column > .vxp-row
+    @apply w-auto
 
 .vxp-form
     &--label-top .vxp-form__label
@@ -131,6 +179,7 @@
 
 .vxp-space
     @apply w-full
+    @apply font-size-inherit
 
 .vxp-table
     @apply border-grey-extra-dark

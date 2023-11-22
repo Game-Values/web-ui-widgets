@@ -73,12 +73,12 @@ let game = {
 </template>
 
 <style lang="sass" scoped>
-:deep(.vxp-card__content)
-    --vxp-card-body-v-padding: 4rem
-    --vxp-card-body-h-padding: 3rem
+.vxp-card
+    --vxp-card-body-v-padding: theme("spacing.12")
+    --vxp-card-body-h-padding: theme("spacing.10")
 
     @apply border-solid-secondary rounded-5
-    @apply backdrop-blur-5rem
+    @apply backdrop-blur-16
 </style>
 
 <i18n lang="yaml">

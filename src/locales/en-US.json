@@ -44,6 +44,7 @@
     },
 
     "plural": {
+        "lots": "no lots | {n} lot | {n} lots",
         "reviews": "no reviews | {n} review | {n} reviews"
     }
 }
