@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-useI18n()
-
 let { orderFacade } = useFacades()
 
 await orderFacade.bootstrap()

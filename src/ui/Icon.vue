@@ -20,7 +20,13 @@ defineSlots<{
 
 <template>
 <v-icon
-    v-bind="useOmit($props, 'icon')"
+    v-bind="(
+        useOmit($props, [
+            'custom',
+            'heroicons',
+            'icon',
+        ])
+    )"
     :style="{
         color: color ? useTheme(`colors.${color}`) : 'currentColor',
         fontSize: size ? pxToRem(size) : 'inherit',

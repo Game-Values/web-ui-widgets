@@ -21,7 +21,6 @@ await setLocale(DEFAULT_LOCALE)
     :props="{
         avatar: {
             circle: true,
-            size: remToNumber(useTheme('width.avatar')),
         },
         card: {
             shadow: 'hover',

@@ -1,2 +1,2 @@
-export * from "~/stores/games"
-export * from "~/stores/order"
+export * from "./games"
+export * from "./order"

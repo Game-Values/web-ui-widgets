@@ -40,8 +40,10 @@ let theme: Theme = {
             getNumericSpacing(),
 
             {
-                avatar: get(sizes, "$avatar-size"),
+                "avatar-large": get(sizes, "$avatar-size-large"),
+                "avatar-small": get(sizes, "$avatar-size-small"),
                 button: get(sizes, "$button-height"),
+                "button-small": get(sizes, "$button-height-small"),
                 dot: get(sizes, "$dot-size"),
                 input: get(sizes, "$input-height"),
                 switch: get(sizes, "$switch-height"),
@@ -52,7 +54,8 @@ let theme: Theme = {
     get width(): Theme["width"] {
         return assign(getNumericSpacing(), (
             {
-                avatar: get(sizes, "$avatar-size"),
+                "avatar-large": get(sizes, "$avatar-size-large"),
+                "avatar-small": get(sizes, "$avatar-size-small"),
                 dot: get(sizes, "$dot-size"),
                 layout: get(sizes, "$layout-width"),
             }
@@ -79,6 +82,7 @@ let theme: Theme = {
         "accent-medium-light": get(colors, "$color-accent-medium-light"),
         "accent-watery": get(colors, "$color-accent-watery"),
         black: get(colors, "$color-black"),
+        "black-06": get(colors, "$color-black-06"),
         blue: get(colors, "$color-blue"),
         "blue-dark": get(colors, "$color-blue-dark"),
         error: get(colors, "$color-error"),
@@ -86,10 +90,12 @@ let theme: Theme = {
         "grey-extra-dark": get(colors, "$color-grey-extra-dark"),
         "grey-light": get(colors, "$color-grey-light"),
         info: get(colors, "$color-info"),
+        "negative-dark": get(colors, "$color-negative-dark"),
         "negative-light": get(colors, "$color-negative-light"),
         "negative-medium": get(colors, "$color-negative-medium"),
         pink: get(colors, "$color-pink"),
         positive: get(colors, "$color-positive"),
+        "positive-dark": get(colors, "$color-positive-dark"),
         "positive-light": get(colors, "$color-positive-light"),
         primary: get(colors, "$color-primary"),
         "purple-dark": get(colors, "$color-purple-dark"),
@@ -98,7 +104,9 @@ let theme: Theme = {
         warning: get(colors, "$color-warning"),
         "warning-medium": get(colors, "$color-warning-medium"),
         white: get(colors, "$color-white"),
+        "white-02": get(colors, "$color-white-02"),
         "white-12": get(colors, "$color-white-12"),
+        "white-6": get(colors, "$color-white-6"),
         yellow: get(colors, "$color-yellow"),
     },
 

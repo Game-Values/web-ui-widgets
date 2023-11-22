@@ -169,11 +169,9 @@ let lotsData = [
 </script>
 
 <template>
-<v-table
-    :data="lotsData"
->
+<v-table :data="lotsData">
     <v-table-column
-        #default="{ row }"
+        #default="{ row, rowIndex }"
         :name="t('Seller')"
         :width="250"
         id-key="Seller"
@@ -183,7 +181,7 @@ let lotsData = [
             size="large"
             no-wrap
         >
-            <user-avatar />
+            <user-lot-avatar :online="Boolean(rowIndex % 2)" />
 
             <v-space
                 size="small"

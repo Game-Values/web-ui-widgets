@@ -1,4 +1,4 @@
-import type { GamesStore, OrderStore } from "~/stores"
+// import type { GamesStore, OrderStore } from "~/stores"
 import type { Store } from "pinia"
 
 import { useGamesStore, useOrderStore } from "~/stores"
@@ -14,12 +14,12 @@ export class StoreClient {
     }
 
     @Memoize()
-    public get gamesStore(): GamesStore.Store {
+    public get gamesStore() {
         return useGamesStore()
     }
 
     @Memoize()
-    public get orderStore(): OrderStore.Store {
+    public get orderStore() {
         return useOrderStore()
     }
 }

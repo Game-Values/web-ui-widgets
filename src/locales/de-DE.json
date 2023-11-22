@@ -44,6 +44,7 @@
     },
 
     "plural": {
+        "lots": "keine lose | {n} viel | {n} viele",
         "reviews": "keine bewertungen | {n} rezension | {n} bewertungen"
     }
 }
