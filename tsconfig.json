@@ -8,7 +8,8 @@
         "types": [
             "@nuxt/types",
             "@pinia/nuxt",
-            "@types/node"
+            "@types/node",
+            "swiper/vue"
         ],
         "typeRoots": [
             "types"

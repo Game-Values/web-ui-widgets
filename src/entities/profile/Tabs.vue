@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import type { AsyncComponent } from "~/types"
+import type { Component } from "vue"
 
 import { PROFILE_TABS } from "~/consts"
 import { ProfileTab } from "~/enums"
 
 let profileTab = ref("Storefront")
 
-let profileViews = computed((): Record<OrderStep, AsyncComponent> => (
+let profileViews = computed((): Record<ProfileTab, AsyncComponent> => (
     {
-        [ProfileTab.REVIEWS]: resolveAsyncComponent("views/profile/Reviews.vue"),
-        [ProfileTab.STOREFRONT]: resolveAsyncComponent("views/profile/Storefront.vue"),
+        [ProfileTab.REVIEWS]: defineAsyncComponent((): Component => import("~/views/profile/Reviews.vue")),
+        [ProfileTab.STOREFRONT]: defineAsyncComponent((): Component => import("~/views/profile/Storefront.vue")),
     }
 ))
 
