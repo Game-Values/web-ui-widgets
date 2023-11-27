@@ -11,3 +11,10 @@ export enum ProfileTab {
     REVIEWS = "Reviews",
     STOREFRONT = "Storefront",
 }
+
+export enum SettingsTab {
+    BASIC = "Basic",
+    NOTIFICATIONS = "Notifications",
+    REFERRAL = "Referral",
+    SECURITY = "Security",
+}
