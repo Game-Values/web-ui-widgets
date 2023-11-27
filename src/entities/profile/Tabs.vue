@@ -5,7 +5,7 @@ import type { Component } from "vue"
 import { PROFILE_TABS } from "~/consts"
 import { ProfileTab } from "~/enums"
 
-let profileTab = ref("Storefront")
+let profileTab = ref(ProfileTab.STOREFRONT)
 
 let profileViews = computed((): Record<ProfileTab, AsyncComponent> => (
     {
