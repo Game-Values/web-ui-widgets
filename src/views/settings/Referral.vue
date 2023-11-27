@@ -2,7 +2,7 @@
 <v-row>
     <v-column>
         <ui-image
-            src="/images/development-settings-referral.png"
+            src="https://raw.githubusercontent.com/Game-Values/web-ui-widgets/master/src/public/images/development-settings-referral.png"
         />
     </v-column>
 </v-row>
