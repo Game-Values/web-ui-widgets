@@ -1,3 +1,11 @@
+<script lang="ts" setup>
+let { storeClient } = useClients()
+let { loginModal, registrationModal } = useModals()
+let { fullPath: mainRoutePath } = useMainRoute()
+
+let { authenticated } = storeToRefs(storeClient.meStore)
+</script>
+
 <template>
 <header class="relative z-1">
     <ui-content>
@@ -13,7 +21,7 @@
                 :sm="8"
                 :xs="12"
             >
-                <ui-link :to="useMainRoute().fullPath">
+                <ui-link :to="mainRoutePath">
                     <ui-icon
                         custom="logo"
                         height="40"
@@ -35,8 +43,8 @@
                         sm:(flex!)
                         xs:(hidden!)
                     "
-                    placeholder="Search"
                     clearable
+                    placeholder="Search"
                 >
                     <template #suffix>
                         <ui-icon
@@ -48,9 +56,9 @@
             </v-column>
 
             <v-column
-                :span="0"
                 :lg="7"
                 :md="8"
+                :xs="0"
             >
                 <!-- todo: component & i18n -->
                 <nav>
@@ -83,36 +91,68 @@
             </v-column>
 
             <v-column
-                :span="0"
                 :lg="4"
+                :span="0"
                 :use-flex="{
                     align: 'end',
                 }"
             >
                 <!-- todo: component & i18n -->
-                <ul
+                <v-space
                     class="
                         hidden
-                        gap-x-10
                         lg:(flex)
                     "
+                    justify="end"
+                    size="large"
                 >
-                    <li>
-                        <ui-link type="primary">
+                    <template v-if="authenticated">
+                        <ui-link>
+                            <ui-icon
+                                heroicons="shopping-cart"
+                                size="24"
+                            />
+                        </ui-link>
+
+                        <ui-link>
+                            <ui-icon
+                                heroicons="envelope"
+                                size="24"
+                            />
+                        </ui-link>
+
+                        <ui-link>
+                            <ui-icon
+                                heroicons="heart-solid"
+                                size="24"
+                            />
+                        </ui-link>
+
+                        <widget-dropdown-user-menu />
+                    </template>
+
+                    <template v-else>
+                        <v-button
+                            text
+                            type="primary"
+                            @click="loginModal.show()"
+                        >
                             <v-title :level="6">
                                 Log In
                             </v-title>
-                        </ui-link>
-                    </li>
+                        </v-button>
 
-                    <li>
-                        <ui-link type="primary">
+                        <v-button
+                            text
+                            type="primary"
+                            @click="registrationModal.show()"
+                        >
                             <v-title :level="6">
                                 Sign up
                             </v-title>
-                        </ui-link>
-                    </li>
-                </ul>
+                        </v-button>
+                    </template>
+                </v-space>
             </v-column>
 
             <v-column

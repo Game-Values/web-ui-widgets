@@ -28,6 +28,9 @@ await setLocale(DEFAULT_LOCALE)
         drawer: {
             undivided: true,
         },
+        dropdown: {
+            transfer: true,
+        },
         form: {
             labelAlign: 'top',
         },
@@ -37,6 +40,14 @@ await setLocale(DEFAULT_LOCALE)
         layout: {
             footer: true,
             noAside: true,
+        },
+        modal: {
+            title: ' ',
+            width: 415,
+            autoRemove: true,
+            noFooter: true,
+            transfer: true,
+            undivided: true,
         },
         row: {
             columnFlex: true,

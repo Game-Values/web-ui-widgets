@@ -3,6 +3,7 @@
 .idea
 
 .eslintcache
+.http
 .nuxt
 .nitro
 .output

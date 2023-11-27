@@ -2,6 +2,12 @@ import type { Route } from "~/types"
 
 import { OrderType, RouteName } from "~/enums"
 
+export function useAccountRoute(): Route {
+    return useLocaleRoute()({
+        name: RouteName.ACCOUNT,
+    })
+}
+
 export function useMainRoute(): Route {
     return useLocaleRoute()({
         name: RouteName.MAIN,

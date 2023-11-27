@@ -1,5 +1,6 @@
 export * from "~~/common/enums"
 
+export * from "~/enums/Http"
 export * from "~/enums/Layout"
 export * from "~/enums/Order"
 export * from "~/enums/Payment"

@@ -108,10 +108,13 @@ let nuxtConfig: NuxtConfig = {
             {
                 from: "class-validator",
                 imports: [
+                    "IsArray",
                     "IsBoolean",
                     "IsDefined",
+                    "IsEmail",
                     "IsNotEmpty",
                     "IsNumber",
+                    "IsNumberString",
                     "IsString",
                 ],
             },
@@ -260,7 +263,6 @@ let nuxtConfig: NuxtConfig = {
     runtimeConfig: {
         public: {
             apiURL: env.API_URL,
-            baseURL: env.NUXT_APP_BASE_URL,
             theme: uno.theme,
         },
     },

@@ -16,6 +16,7 @@ defineProps<{
 
 <style lang="sass" scoped>
 .vxp-avatar--premium
+    // todo: mv to @apply
     border: theme("spacing.2") solid transparent
     border-radius: 50%
 
