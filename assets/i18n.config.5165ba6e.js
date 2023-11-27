@@ -1,0 +1,1 @@
+import{aZ as e,a_ as t}from"./entry.b541426a.js";import"./swiper-vue.4a1ee2d5.js";import"./entry.74ee7ca8.js";function l(){try{let a=new Intl.NumberFormat().resolvedOptions().locale.slice(0,e.length);return t.includes(a)?a:e}catch{return e}}var n=()=>({fallbackLocale:l(),legacy:!1});export{n as default};

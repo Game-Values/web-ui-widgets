@@ -1,0 +1,1 @@
+import{E as t,k as o}from"./entry.b541426a.js";import{j as a,F as n,R as s,V as p,K as r}from"./swiper-vue.4a1ee2d5.js";var u=a({__name:"Page",props:{tag:{default:"section"}},setup(c){return(e,d)=>{const _=t;return n(),s(_,{is:e.tag},{default:p(()=>[r(e.$slots,"default",{},void 0,!0)]),_:3},8,["is"])}}});const f=o(u,[["__scopeId","data-v-8d33e2fa"]]);export{f as _};
