@@ -14,4 +14,4 @@ services:
             - NITRO_HOST=0.0.0.0
             - NITRO_PORT=80
         ports:
-            - "80:80"
+            - "3000:80"
