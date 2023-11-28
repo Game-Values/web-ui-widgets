@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+    frontend:
+        working_dir: /frontend
+        build:
+            context: .
+            dockerfile: Dockerfile
+        environment:
+            - NODE_ENV=production
+            - API_URL=https://api.game-values.com
+            - OPENAPI_URL=http://game-values.com:1080/api/v1/openapi.json
+        ports:
+            - "3000:80"
