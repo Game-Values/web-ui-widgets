@@ -2,12 +2,11 @@ import type { NuxtConfig } from "@nuxt/schema"
 
 import { env } from "node:process"
 
-import { merge } from "lodash-es"
 import { default as dynamicImport } from "vite-plugin-dynamic-import"
 import { default as inheritAttrs } from "vite-plugin-vue-setup-inherit-attrs"
 
 import { BREAKPOINTS } from "./common/consts"
-import { DeployTarget, Locale, LocaleISO } from "./common/enums"
+import { Locale, LocaleISO } from "./common/enums"
 import { injectReflectMetadata } from "./common/plugins"
 import { getLocale, isDebug, isDevelopment, isProduction } from "./common/utils"
 import { name } from "./package.json"
@@ -20,8 +19,6 @@ let nuxtConfig: NuxtConfig = {
     },
 
     app: {
-        baseURL: env.NUXT_APP_BASE_URL,
-        buildAssetsDir: env.NUXT_APP_BUILD_ASSETS_DIR,
         head: {
             charset: "utf-8",
             viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0",
@@ -255,7 +252,8 @@ let nuxtConfig: NuxtConfig = {
 
     routeRules: {
         "/": {
-            redirect: env.NUXT_APP_BASE_URL + getLocale(),
+            // todo: via middleware
+            redirect: `/${getLocale()}`,
         },
     },
 
@@ -357,14 +355,5 @@ let nuxtConfig: NuxtConfig = {
         runtimeCompiler: true,
     },
 }
-
-if (env.DEPLOY_TARGET === DeployTarget.GITHUB)
-    merge(nuxtConfig, {
-        router: {
-            base: "/game-values/",
-        },
-        ssr: false,
-        target: "static",
-    })
 
 export default defineNuxtConfig(nuxtConfig)
