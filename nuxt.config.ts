@@ -35,6 +35,12 @@ let nuxtConfig: NuxtConfig = {
         },
     },
 
+    build: {
+        transpile: [
+            "reflect-metadata",
+        ],
+    },
+
     components: [
         {
             path: "~/entities",
@@ -96,7 +102,7 @@ let nuxtConfig: NuxtConfig = {
             {
                 from: "@vueuse/core",
                 imports: [
-
+                    // todo: added here & rm from code
                 ],
             },
             {
@@ -329,8 +335,9 @@ let nuxtConfig: NuxtConfig = {
             treeShaking: true,
             tsconfigRaw: {
                 compilerOptions: {
-                    alwaysStrict: true,
+                    emitDecoratorMetadata: true,
                     experimentalDecorators: true,
+                    strict: true,
                 },
             },
         },

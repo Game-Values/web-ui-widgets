@@ -17,7 +17,7 @@
     "author": {
         "email": "iamborisbutenko@gmail.com",
         "name": "Boris Butenko",
-        "url": "https://github.com/borisbutenko/tripstep"
+        "url": "https://github.com/Game-Values/web-ui-widgets"
     },
     "eslintConfig": {
         "extends": "@logux/eslint-config/ts"
@@ -48,6 +48,7 @@
         "@pinia/nuxt": "^0.5.1",
         "@rushstack/eslint-patch": "^1.6.0",
         "@types/node": "^20.10.0",
+        "@types/reflect-metadata": "^0.1.0",
         "@typescript-eslint/eslint-plugin": "^6.13.1",
         "@typescript-eslint/parser": "^6.13.1",
         "@unocss/eslint-plugin": "^0.57.7",

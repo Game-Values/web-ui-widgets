@@ -9,6 +9,7 @@
             "@nuxt/types",
             "@pinia/nuxt",
             "@types/node",
+            "reflect-metadata",
             "swiper/vue"
         ],
         "typeRoots": [

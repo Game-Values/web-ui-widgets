@@ -8,16 +8,10 @@ export let injectReflectMetadata: () => Plugin = (): Plugin => (
         enforce: "pre",
         name: "vite-plugin-inject-metadata",
         transform: (code: string, id: string): SourceDescription => {
-            let output: string = code
+            let magicString: MagicString = new MagicString(code)
 
-            if (/src\/dto\/.*.ts/.test(id))
-                output = `
-                    import "reflect-metadata";
-
-                    ${code}
-                `
-
-            let magicString: MagicString = new MagicString(output)
+            if (/src\/dto\/.*.ts$/.test(id))
+                magicString.prepend("import \"reflect-metadata\";")
 
             return {
                 code: magicString.toString(),
