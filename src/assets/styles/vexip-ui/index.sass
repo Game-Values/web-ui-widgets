@@ -143,8 +143,19 @@
             --vxp-tag-h-padding: theme("spacing.1")
 
 .vxp-text-vars
-    &:not(.vxp-text--error)
-        --vxp-text-color: inherit
+    --vxp-text-color: inherit
+
+    &.vxp-text--error
+        --vxp-text-color: theme("colors.error")
+
+    &.vxp-text--info
+        --vxp-text-color: theme("colors.info")
+
+    &.vxp-text--primary
+        --vxp-text-color: theme("colors.primary")
+
+    &.vxp-text--success
+        --vxp-text-color: theme("colors.success")
 
 .vxp-time-ago
     @apply text-inherit font-size-inherit normal-nums
