@@ -1,7 +1,5 @@
-import type { GamesStore, MeStore, OrderStore, UserStore } from "~/stores"
+import type { GamesStore, MeStore, OrderStore, UserStore } from "~/types"
 import type { Store } from "pinia"
-
-import { useGamesStore, useMeStore, useOrderStore, useUserStore } from "~/stores"
 
 // todo: stores typing
 export class StoreClient {

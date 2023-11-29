@@ -1,30 +1,8 @@
-import type { DefineStore } from "~/types"
+import type { OrderStore } from "~/types"
 import type { ComputedRef, Ref } from "vue"
 
 import { OrderStep, OrderType } from "~/enums"
 import { createStore } from "~/factories"
-
-export namespace OrderStore {
-    export type Id = "orderStore"
-
-    export type State = {
-        orderStep: OrderStep
-        orderSteps: OrderStep[]
-        orderType: OrderType
-    }
-
-    export type Getters = {
-        orderStepIndex: () => number
-    }
-
-    export type Actions = {
-        nextOrderStep: () => void
-        prevOrderStep: () => void
-        setOrderStep: (orderStep: OrderStep) => void
-    }
-
-    export type Store = DefineStore<Id, State, Getters, Actions>
-}
 
 export let useOrderStore: OrderStore.Store = createStore<
     OrderStore.Id,

@@ -215,10 +215,8 @@ let nuxtConfig: NuxtConfig = {
             }],
 
             ["@pinia/nuxt", {
-                autoImports: [
-                    "acceptHMRUpdate",
-                    "defineStore",
-                    "storeToRefs",
+                storesDirs: [
+                    "src/stores/**",
                 ],
             }],
         ]
