@@ -21,7 +21,7 @@ declare module "vue-router" {
     }
 
     interface RouteParams {
-        gameSlug: string
+        gameId: string
         locale: Locale
         orderId: number
         orderType: OrderType

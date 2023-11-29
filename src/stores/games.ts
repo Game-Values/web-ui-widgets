@@ -1,4 +1,4 @@
-import type { GameRaw } from "~/mocks/types"
+import type { GameRaw } from "#schema/data-contracts"
 import type { GamesStore } from "~/types"
 import type { ComputedRef, Ref } from "vue"
 

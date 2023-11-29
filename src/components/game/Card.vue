@@ -10,11 +10,11 @@ defineProps<{
 <v-card
     :id="game.id"
     :class="['group', {
-        'liked': game.liked,
+        'liked': false,
     }]"
 >
     <ui-link
-        :to="useGameRoute(game.slug).fullPath"
+        :to="useGameRoute(game.id)"
         class="relative fit"
     >
         <v-space vertical>
@@ -36,7 +36,7 @@ defineProps<{
         </v-space>
 
         <v-tag
-            v-if="game.count"
+            v-if="game.attributes.lots"
             :color="useTheme('colors.secondary')"
             size="small"
             class="
@@ -47,7 +47,7 @@ defineProps<{
             "
             circle
         >
-            {{ game.count }}
+            {{ game.attributes.lots }}
         </v-tag>
     </ui-link>
 </v-card>

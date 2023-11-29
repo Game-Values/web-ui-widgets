@@ -1,4 +1,4 @@
-import type { GameRaw } from "~/mocks/types"
+import type { GameRaw } from "#schema/data-contracts"
 
 import { CollectionAbstract } from "~/abstract"
 import { Game } from "~/dto/Game"

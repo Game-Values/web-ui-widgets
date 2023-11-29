@@ -7,6 +7,6 @@ export class GameFacade implements FacadeAbstract {
     ) {}
 
     public async bootstrap(): Promise<void> {
-        // todo
+        await this._gameController.fetchGame(useRoute().params.gameId)
     }
 }

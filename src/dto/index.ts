@@ -1,3 +1,6 @@
+export * from "~/dto/Attributes"
 export * from "~/dto/Game"
 export * from "~/dto/Games"
+export * from "~/dto/Section"
+export * from "~/dto/Sections"
 export * from "~/dto/User"

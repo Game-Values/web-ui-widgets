@@ -14,11 +14,11 @@ export function useMainRoute(): Route {
     })
 }
 
-export function useGameRoute(gameSlug: string): Route {
+export function useGameRoute(gameId: string): Route {
     return useLocaleRoute()({
         name: RouteName.GAME,
         params: {
-            gameSlug,
+            gameId,
         },
     })
 }

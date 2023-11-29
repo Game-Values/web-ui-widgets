@@ -1,36 +1,40 @@
-import type { GameRaw } from "~/mocks/types"
+import type { GameRaw } from "#schema/data-contracts"
+
+import { Attributes } from "~/dto/Attributes"
 
 export class Game implements GameRaw {
     @Expose()
+    @Type((): typeof Attributes => Attributes)
     @IsDefined()
-    @IsNumber()
-    declare public count: number
+    @IsInstance(Attributes)
+    declare public attributes: Attributes
 
     @Expose()
     @IsDefined()
     @IsString()
     @IsNotEmpty()
-    declare public icon: string
+    declare public created: string
 
     @Expose()
     @IsDefined()
-    @IsNumber()
-    declare public id: number
+    @IsString()
+    @IsNotEmpty()
+    declare public id: string
 
     @Expose()
     @IsDefined()
     @IsBoolean()
-    declare public liked: boolean
+    declare public is_active: boolean
+
+    @Expose()
+    @IsDefined()
+    @IsString()
+    @IsNotEmpty()
+    declare public modified: string
 
     @Expose()
     @IsDefined()
     @IsString()
     @IsNotEmpty()
     declare public name: string
-
-    @Expose()
-    @IsDefined()
-    @IsString()
-    @IsNotEmpty()
-    declare public slug: string
 }

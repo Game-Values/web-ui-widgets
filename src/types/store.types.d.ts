@@ -1,7 +1,6 @@
-import type { UserRaw } from "#schema/data-contracts"
-import type { Games, User } from "~/dto"
+import type { GameRaw, UserRaw } from "#schema/data-contracts"
+import type { Game, Games, User } from "~/dto"
 import type { OrderStep, OrderType } from "~/enums"
-import type { GameRaw } from "~/mocks/types"
 import type { DefineStoreOptions, StoreActions, StoreGeneric, StoreGetters, StoreState } from "pinia"
 
 export type DefineStore<
@@ -40,6 +39,22 @@ export namespace GamesStore {
 
     export type Actions = {
         setGamesRaw: (gamesRaw: GameRaw[]) => void
+    }
+
+    export type Store = DefineStore<Id, State, Getters, Actions>
+}
+
+export namespace GameStore {
+    export type Id = "gameStore"
+
+    export type State = StoreState<Getters>
+
+    export type Getters = {
+        game: () => Game
+    }
+
+    export type Actions = {
+        setGameRaw: (game: GameRaw) => void
     }
 
     export type Store = DefineStore<Id, State, Getters, Actions>

@@ -1,21 +1,9 @@
 <script lang="ts" setup>
-// todo: from api
-
 useI18n()
 
-let game = {
-    categories: [
-        { count: 10, label: "Accounts" },
-        { count: 11, label: "Items" },
-        { count: 12, label: "Other" },
-        { count: 7, label: "Gold" },
-        { count: 9, label: "Services" },
-    ],
-    description: "We offer to buy ArcheAge Unchained gold (EU and NA) on Game Values. Sellers are real players, and transactions are made without intermediaries and are protected by a security guarantee system (sellers are paid only after orders are completed).",
-    id: 1,
-    liked: false,
-    title: "ArcheAge: Unchained",
-}
+let { storeClient } = useClients()
+
+let { game } = storeToRefs(storeClient.gameStore)
 </script>
 
 <template>
@@ -32,22 +20,20 @@ let game = {
             }"
         >
             <v-title :level="1">
-                {{ game.title }}
+                {{ game.name }}
             </v-title>
 
             <widget-action-like-game :game="game" />
         </v-column>
 
-        <v-column>
-            <v-text :size="useFirst(useTheme('fontSize.lg'))">
-                {{ game.description }}
-            </v-text>
+        <v-column class="text-lg">
+            <v-text v-html="game.attributes.description" />
         </v-column>
 
         <v-column
             :md="18"
         >
-            <game-categories :categories-mock="game.categories" />
+            <entity-game-sections />
         </v-column>
 
         <v-column
@@ -61,8 +47,8 @@ let game = {
                 </v-button>
 
                 <v-button
-                    type="primary"
                     block
+                    type="primary"
                 >
                     <i18n-t keypath="Sell" />
                 </v-button>

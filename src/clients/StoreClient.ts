@@ -1,4 +1,10 @@
-import type { GamesStore, MeStore, OrderStore, UserStore } from "~/types"
+import type {
+    GamesStore,
+    GameStore,
+    MeStore,
+    OrderStore,
+    UserStore,
+} from "~/types"
 import type { Store } from "pinia"
 
 // todo: stores typing
@@ -9,6 +15,11 @@ export class StoreClient {
 
     private _resetStore(store: Store): void {
         store.$reset()
+    }
+
+    @Memoize()
+    public get gameStore(): GameStore.Store {
+        return useGameStore()
     }
 
     @Memoize()

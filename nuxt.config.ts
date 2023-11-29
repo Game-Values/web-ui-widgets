@@ -103,6 +103,8 @@ let nuxtConfig: NuxtConfig = {
                 from: "class-transformer",
                 imports: [
                     "Expose",
+                    "Transform",
+                    "Type",
                 ],
             },
             {
@@ -112,6 +114,7 @@ let nuxtConfig: NuxtConfig = {
                     "IsBoolean",
                     "IsDefined",
                     "IsEmail",
+                    "IsInstance",
                     "IsNotEmpty",
                     "IsNumber",
                     "IsNumberString",

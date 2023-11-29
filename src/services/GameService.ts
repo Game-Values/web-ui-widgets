@@ -1,14 +1,21 @@
+import type { GameRaw, ReadAllGamesApiV1GamesGetParamsRaw } from "#schema/data-contracts"
+import type { HttpResponse } from "#schema/http-client"
 import type { ApiAdapter } from "~/adapters"
-import type { GameRaw } from "~/mocks/types"
 
 export class GameService {
     public constructor(
         private _apiAdapter: ApiAdapter,
     ) {}
 
-    public async fetchGames(): Promise<GameRaw[]> {
-        let gamesRaw: GameRaw[] = await this._apiAdapter.fetchMockJSON("games")
+    public async fetchGame(gameId: string): Promise<GameRaw> {
+        let { data }: HttpResponse<GameRaw> = await this._apiAdapter.readGameApiV1GamesGameIdGet(gameId)
 
-        return gamesRaw
+        return data
+    }
+
+    public async fetchGames(payload: ReadAllGamesApiV1GamesGetParamsRaw): Promise<GameRaw[]> {
+        let { data }: HttpResponse<GameRaw[]> = await this._apiAdapter.readAllGamesApiV1GamesGet(payload)
+
+        return data
     }
 }

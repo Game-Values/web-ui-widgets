@@ -25,7 +25,7 @@ defineProps<{
         hover-group-[.liked]:(bg-accent-medium)!
     "
 >
-    <ui-icon :custom="game.icon" />
+    <ui-icon :custom="useKebabCase(game.name)" />
 </ui-mouse-light>
 </template>
 

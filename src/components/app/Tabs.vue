@@ -23,6 +23,7 @@ defineSlots<{
     size="large"
     vertical
 >
+    <!-- todo: maybe v-radio-group with shape="button-group" (?) -->
     <v-button-group>
         <v-button
             v-for="tab in tabs"
