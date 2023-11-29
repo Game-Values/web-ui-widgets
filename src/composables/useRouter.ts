@@ -32,3 +32,9 @@ export function useOrderRoute(): Route {
         },
     })
 }
+
+export function useSettingsRoute(): Route {
+    return useLocaleRoute()({
+        name: RouteName.ACCOUNT_SETTINGS,
+    })
+}

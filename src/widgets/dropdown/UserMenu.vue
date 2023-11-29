@@ -1,5 +1,8 @@
 <script lang="ts" setup>
+import {useSettingsRoute} from "~/composables/useRouter";
+
 let accountRoute = useAccountRoute()
+let settingsRoute = useSettingsRoute()
 
 let { authController } = useControllers()
 </script>
@@ -28,7 +31,7 @@ let { authController } = useControllers()
                 Profile
             </v-dropdown-item>
 
-            <v-dropdown-item>
+            <v-dropdown-item @select="navigateTo(settingsRoute)">
                 Settings
             </v-dropdown-item>
 
