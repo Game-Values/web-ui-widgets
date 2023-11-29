@@ -1,6 +1,7 @@
 <script lang="ts" setup>
+let accountRoute = useAccountRoute()
+
 let { authController } = useControllers()
-let { fullPath: accountRoutePath } = useAccountRoute()
 </script>
 
 <template>
@@ -23,7 +24,7 @@ let { fullPath: accountRoutePath } = useAccountRoute()
                 Favorites
             </v-dropdown-item>
 
-            <v-dropdown-item>
+            <v-dropdown-item @select="navigateTo(accountRoute)">
                 Profile
             </v-dropdown-item>
 

@@ -1,12 +1,13 @@
 <script lang="ts" setup>
-import type { ScopedProps } from "~/types"
+import type { Route, ScopedProps } from "~/types"
 import type { LinkerProps } from "vexip-ui"
 import type { VNode } from "vue"
 
 // todo: (?)
 
-defineProps<LinkerProps & {
+defineProps<Omit<LinkerProps, "to"> & {
     href?: string
+    to?: Route
 }>()
 
 defineSlots<{
