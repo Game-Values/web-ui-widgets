@@ -58,10 +58,7 @@ let lotsData = [
     size="large"
     vertical
 >
-    <v-title
-        :level="3"
-        class="w-full"
-    >
+    <v-title :level="3">
         <v-space
             align="center"
             justify="space-between"

@@ -39,8 +39,8 @@ export function createStore<
             Store.Actions
         > = defineStore(storeId, storeDefinition)
 
-        // if (import.meta.hot)
-        //     import.meta.hot.accept(acceptHMRUpdate(useStore, import.meta.hot))
+        if (import.meta.hot)
+            import.meta.hot.accept(acceptHMRUpdate(useStore, import.meta.hot))
 
         return useStore()
     }

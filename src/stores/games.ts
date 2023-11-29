@@ -1,7 +1,7 @@
 import type { GameRaw } from "~/mocks/types"
 import type { DefineStore } from "~/types"
 import type { StoreState } from "pinia"
-import type { Ref } from "vue"
+import type { ComputedRef, Ref } from "vue"
 
 import { Games } from "~/dto"
 import { createCollection, createStore } from "~/factories"
@@ -29,7 +29,7 @@ export let useGamesStore: GamesStore.Store = createStore<
     GamesStore.Actions
 >("gamesStore", (): GamesStore.Store => {
     let gamesRaw: Ref<GameRaw[]> = ref([])
-    let games = computed((): Games => createCollection(Games, getRef(gamesRaw)))
+    let games: ComputedRef<Games> = computed((): Games => createCollection(Games, getRef(gamesRaw)))
 
     function setGamesRaw(raw: GameRaw[]): void {
         setRef(gamesRaw, raw)

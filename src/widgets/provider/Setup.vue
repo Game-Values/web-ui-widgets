@@ -1,15 +1,15 @@
 <script lang="ts" setup>
 import type { DIAbstract } from "~/abstract"
-import type { Context } from "~/types"
+import type { ScopedProps } from "~/types"
 import type { Token } from "brandi"
 import type { VNode } from "vue"
 
 import { Container } from "brandi"
 
-import { Adapters, Clients, Controllers, Facades, Services } from "~/helpers"
+import { Adapters, Clients, Controllers, Facades, Modals, Services } from "~/helpers"
 
 defineSlots<{
-    default: () => VNode
+    default: (scopedProps: ScopedProps) => VNode
 }>()
 
 let container: Container = new Container()
@@ -20,10 +20,11 @@ let dis: Record<string, DIAbstract> = {
     clients: new Clients(container, tokens),
     controllers: new Controllers(container, tokens),
     facades: new Facades(container, tokens),
+    modals: new Modals(container, tokens),
     services: new Services(container, tokens),
 }
 
-useAssign<Context>(useContext(), dis)
+useAssign(useContext(), dis)
 
 useForEach(dis, (di: DIAbstract): void => di.updateTokens())
 useForEach(dis, (di: DIAbstract): void => di.inject())

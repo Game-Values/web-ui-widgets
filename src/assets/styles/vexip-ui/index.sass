@@ -2,6 +2,7 @@
 
 @use "../vars/colors"
 @use "../vars/sizes"
+@use "../vars/spaces"
 @use "../vars/typography"
 
 .vxp-avatar-vars
@@ -26,9 +27,13 @@
     --vxp-button-font-size: #{typography.$font-size-level-5}
     --vxp-button-icon-span: 0
 
-    &.vxp-button--circle
+    &.vxp-button--circle,
+    &.vxp-button--text
         --vxp-button-v-padding: 0
         --vxp-button-h-padding: 0
+
+    &.vxp-button--text
+        --vxp-button-height: auto
 
     &.vxp-button--small
         --vxp-button-height: theme("height.button-small")
@@ -61,6 +66,12 @@
     --vxp-drawer-header-h-padding: theme("spacing.8")
     --vxp-drawer-close-color: theme("colors.white")
 
+.vxp-dropdown-vars
+    --vxp-dropdown-d-color: theme("colors.secondary")
+    --vxp-dropdown-b-color: transparent
+    --vxp-dropdown-bg-color-hover: transparent
+    --vxp-dropdown-shadow: 0 0.8rem 1.6rem 0 #{rgba(colors.$color-black, 0.36)}
+
 .vxp-form-vars
     --vxp-row-h-gap: 0
     --vxp-row-v-gap: 0
@@ -77,6 +88,20 @@
 
 .vxp-linker-vars
     --vxp-linker-series-span: 0
+
+.vxp-masker-vars
+    --vxp-masker-opacity: 80%
+
+.vxp-modal-vars
+    --vxp-modal-header-v-padding: theme("spacing.10")
+    --vxp-modal-header-h-padding: theme("spacing.10")
+    --vxp-modal-body-v-padding: theme("spacing.10")
+    --vxp-modal-body-h-padding: theme("spacing.10")
+    --vxp-modal-footer-v-padding: theme("spacing.10")
+    --vxp-modal-footer-h-padding: theme("spacing.10")
+    --vxp-modal-bg-color: theme("colors.white-02")
+    --vxp-modal-s-color: 0 0.05rem 0.5rem 0 rgba(61, 152, 255, 0.20)
+    --vxp-modal-radius: theme("spacing.3")
 
 .vxp-space-vars
     --vxp-space-v-gap: theme("spacing.3")
@@ -117,8 +142,9 @@
             --vxp-tag-v-padding: 0
             --vxp-tag-h-padding: theme("spacing.1")
 
-//.vxp-text-vars
-//    --vxp-text-color: inherit
+.vxp-text-vars
+    &:not(.vxp-text--error)
+        --vxp-text-color: inherit
 
 .vxp-time-ago
     @apply text-inherit font-size-inherit normal-nums
@@ -132,7 +158,7 @@
     --vxp-title-font-size-level-6: #{typography.$font-size-level-6}
     --vxp-title-font-weight: 700
     --vxp-title-font-weight-thin: 400
-    //--vxp-title-color: inherit
+    --vxp-title-color: inherit
 
 .vxp-textarea-vars
     --vxp-textarea-min-height: theme("spacing.15")
@@ -148,6 +174,13 @@
 
 .vxp-card
     @apply w-full
+
+.vxp-checkbox
+    &__label
+        @apply ms-3
+
+    &__signal
+        @apply shrink-0
 
 .vxp-collapse
     @apply w-full
@@ -166,10 +199,26 @@
     &__panel
         @apply w-full
 
-.vxp-column > .vxp-row
-    @apply w-auto max-w-[calc(100%+var(--vxp-row-h-gap))]
+.vxp-column
+    > .vxp-row
+        @apply w-auto max-w-[calc(100%+var(--vxp-row-h-gap))]
+
+.vxp-dropdown
+    &__item
+        @apply px-10 py-5
+        @apply hover:(text-info)
+
+        &--divided
+            @apply after:(left-10)
+            @apply after:(w-[calc(100%-#{spaces.$space-10}*2)])
 
 .vxp-form
+    &__item
+        @apply mb-7
+
+        &--error
+            @apply mb-10
+
     &--label-top .vxp-form__label
         @apply mb-7
         @apply text-secondary
@@ -177,9 +226,18 @@
 .vxp-layout
     @apply screen
 
+.vxp-modal
+    &__close
+        @apply relative bottom-3 left-3
+        @apply text-level-3
+
+    &__wrapper
+        @apply border-solid-secondary
+        @apply backdrop-blur-16
+
 .vxp-space
     @apply w-full
-    @apply font-size-inherit
+    @apply text-inherit font-size-inherit
 
 .vxp-table
     @apply border-grey-extra-dark
@@ -201,3 +259,4 @@
 
 .vxp-title
     @apply m-0
+    @apply w-full

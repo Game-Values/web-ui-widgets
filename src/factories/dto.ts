@@ -1,7 +1,7 @@
 import type { CollectionAbstract } from "~/abstract"
 import type { ClassConstructor } from "class-transformer"
 
-import { plainToClass } from "class-transformer"
+import { plainToInstance } from "class-transformer"
 
 export function createCollection<
     T extends CollectionAbstract<any, Raw>,
@@ -20,7 +20,7 @@ export function createModel<
     Model: ClassConstructor<T>,
     raw: Raw,
 ): T {
-    return plainToClass(Model, raw, {
+    return plainToInstance(Model, raw, {
         excludeExtraneousValues: true,
         excludePrefixes: [
             "_",
