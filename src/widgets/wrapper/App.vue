@@ -5,7 +5,7 @@ import type { VNode } from "vue"
 import { Layout } from "~/enums"
 
 defineProps<{
-    layout: Layout
+    layout?: Layout
 }>()
 
 defineSlots<{
