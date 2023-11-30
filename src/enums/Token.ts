@@ -20,6 +20,7 @@ export enum FacadeToken {
     GAME = "GameFacade",
     MAIN = "MainFacade",
     ORDER = "OrderFacade",
+    SALE = "SaleFacade",
 }
 
 export enum ModalToken {

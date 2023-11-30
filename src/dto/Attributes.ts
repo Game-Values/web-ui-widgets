@@ -20,4 +20,10 @@ export class Attributes {
     @IsDefined()
     @IsInstance(Sections)
     declare public sections: Sections
+
+    @Expose()
+    @Transform(({ value }: { value: string[] | undefined }): string[] => value || [])
+    @IsDefined()
+    @IsArray()
+    declare public servers: string[]
 }

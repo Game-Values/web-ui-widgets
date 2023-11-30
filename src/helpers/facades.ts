@@ -5,12 +5,13 @@ import { token } from "brandi"
 
 import { DIAbstract } from "~/abstract"
 import { ControllerToken, FacadeToken } from "~/enums"
-import { GameFacade, MainFacade, OrderFacade } from "~/facades"
+import { GameFacade, MainFacade, OrderFacade, SaleFacade } from "~/facades"
 
 interface FacadesTokens {
     [FacadeToken.GAME]: Token<GameFacade>
     [FacadeToken.MAIN]: Token<MainFacade>
     [FacadeToken.ORDER]: Token<OrderFacade>
+    [FacadeToken.SALE]: Token<SaleFacade>
 }
 
 export class Facades extends DIAbstract<FacadesTokens> {
@@ -18,6 +19,7 @@ export class Facades extends DIAbstract<FacadesTokens> {
         [FacadeToken.GAME]: token<GameFacade>(FacadeToken.GAME),
         [FacadeToken.MAIN]: token<MainFacade>(FacadeToken.MAIN),
         [FacadeToken.ORDER]: token<OrderFacade>(FacadeToken.ORDER),
+        [FacadeToken.SALE]: token<SaleFacade>(FacadeToken.SALE),
     }
 
     protected get __bindings(): Binding[] {
@@ -25,6 +27,7 @@ export class Facades extends DIAbstract<FacadesTokens> {
             [this.__tokens[FacadeToken.MAIN], MainFacade],
             [this.__tokens[FacadeToken.GAME], GameFacade],
             [this.__tokens[FacadeToken.ORDER], OrderFacade],
+            [this.__tokens[FacadeToken.SALE], SaleFacade],
         ]
     }
 
@@ -42,6 +45,11 @@ export class Facades extends DIAbstract<FacadesTokens> {
                 OrderFacade,
                 this.__getToken(ControllerToken.ORDER),
             ],
+            [
+                // todo: SaleController & SaleService (?)
+                SaleFacade,
+                this.__getToken(ControllerToken.GAME),
+            ],
         ]
     }
 
@@ -57,6 +65,11 @@ export class Facades extends DIAbstract<FacadesTokens> {
 
     @Memoize()
     public get orderFacade(): OrderFacade {
-        return this.__getInjection(this.__tokens[FacadeToken.GAME])
+        return this.__getInjection(this.__tokens[FacadeToken.ORDER])
+    }
+
+    @Memoize()
+    public get saleFacade(): SaleFacade {
+        return this.__getInjection(this.__tokens[FacadeToken.SALE])
     }
 }

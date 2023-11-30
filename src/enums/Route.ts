@@ -1,6 +1,7 @@
 export enum RouteName {
-    ACCOUNT = "locale-user-account",
-    ACCOUNT_SETTINGS = "locale-user-account-settings",
+    ACCOUNT = "locale-account",
+    ACCOUNT_SALE = "locale-account-sale",
+    ACCOUNT_SETTINGS = "locale-account-settings",
     GAME = "locale-g-gameId",
     MAIN = "locale",
     ORDER = "locale-g-gameId-orderType-orderId",

@@ -122,6 +122,11 @@
         --vxp-space-v-gap: theme("spacing.1")
         --vxp-space-h-gap: theme("spacing.1")
 
+.vxp-select-vars
+    --vxp-select-list-b-color: transparent
+    --vxp-select-list-radius: theme("spacing.3")
+    --vxp-select-list-shadow: 0 0.8rem 1.6rem 0 #{rgba(colors.$color-black, 0.36)}
+
 .vxp-switch-vars
     --vxp-switch-height: theme("height.switch")
     --vxp-switch-bg-color-open: theme("colors.secondary")
@@ -181,6 +186,9 @@
 .vxp-textarea-vars
     --vxp-textarea-min-height: theme("spacing.15")
 
+.vxp-upload-vars
+    --vxp-upload-file-bg-color-hover: theme("colors.white-02")
+
 .vxp-button
     @apply text-level-4 font-semibold
 
@@ -223,6 +231,9 @@
 .vxp-column
     > .vxp-row
         @apply w-auto max-w-[calc(100%+var(--vxp-row-h-gap))]
+
+        &.vxp-form
+            @apply w-full
 
 .vxp-dropdown
     &__item

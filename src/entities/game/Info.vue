@@ -1,9 +1,17 @@
 <script lang="ts" setup>
+import type { Route } from "~/types"
+
 useI18n()
 
 let { storeClient } = useClients()
 
 let { game } = storeToRefs(storeClient.gameStore)
+
+let sellRoute = computed((): Route => (
+    useSaleRoute({
+        gameId: useGet(getRef(game), "id"),
+    })
+))
 </script>
 
 <template>
@@ -23,7 +31,9 @@ let { game } = storeToRefs(storeClient.gameStore)
                 {{ game.name }}
             </v-title>
 
-            <widget-action-like-game :game="game" />
+            <widget-wrapper-auth-only>
+                <widget-action-like-game :game="game" />
+            </widget-wrapper-auth-only>
         </v-column>
 
         <v-column class="text-lg">
@@ -39,20 +49,23 @@ let { game } = storeToRefs(storeClient.gameStore)
         <v-column
             :md="6"
         >
-            <v-space vertical>
-                <v-button
-                    block
-                >
-                    <i18n-t keypath="Add Section" />
-                </v-button>
+            <widget-wrapper-auth-only>
+                <v-space vertical>
+                    <v-button
+                        block
+                    >
+                        <i18n-t keypath="Add Section" />
+                    </v-button>
 
-                <v-button
-                    block
-                    type="primary"
-                >
-                    <i18n-t keypath="Sell" />
-                </v-button>
-            </v-space>
+                    <ui-button-link
+                        :to="sellRoute"
+                        block
+                        type="primary"
+                    >
+                        <i18n-t keypath="Sell" />
+                    </ui-button-link>
+                </v-space>
+            </widget-wrapper-auth-only>
         </v-column>
     </v-row>
 </v-card>

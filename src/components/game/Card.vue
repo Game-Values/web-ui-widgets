@@ -31,10 +31,12 @@ defineProps<{
                     {{ game.name }}
                 </v-title>
 
-                <widget-action-like-game
-                    :game="game"
-                    @click.prevent
-                />
+                <widget-wrapper-auth-only>
+                    <widget-action-like-game
+                        :game="game"
+                        @click.prevent
+                    />
+                </widget-wrapper-auth-only>
             </v-space>
         </v-space>
 

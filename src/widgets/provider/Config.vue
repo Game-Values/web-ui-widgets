@@ -53,6 +53,9 @@ await setLocale(DEFAULT_LOCALE)
             columnFlex: true,
             gap: DEFAULT_GAP,
         },
+        select: {
+            transfer: true,
+        },
     }"
 >
     <slot />

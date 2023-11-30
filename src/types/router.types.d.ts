@@ -15,6 +15,11 @@ export type Route = (
 )
 
 declare module "vue-router" {
+    interface LocationQuery {
+        gameId: string
+        orderType: OrderType
+    }
+
     interface RouteMeta {
         auth: boolean
         layout: Layout

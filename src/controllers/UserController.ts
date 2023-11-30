@@ -11,8 +11,6 @@ export class UserController {
     private _mergeUserRaw(payload: UserUpdateRaw): UserUpdateRaw {
         let { user } = this._storeClient.meStore
 
-        console.log(user.liked_games, payload.liked_games)
-
         return useMerge(user, payload, {
             liked_games: useConcat(
                 user.liked_games,
