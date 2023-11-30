@@ -13,7 +13,7 @@ export class GameService {
         return data
     }
 
-    public async fetchGames(payload: ReadAllGamesApiV1GamesGetParamsRaw): Promise<GameRaw[]> {
+    public async fetchGames(payload: ReadAllGamesApiV1GamesGetParamsRaw = { page: 0 }): Promise<GameRaw[]> {
         let { data }: HttpResponse<GameRaw[]> = await this._apiAdapter.readAllGamesApiV1GamesGet(payload)
 
         return data

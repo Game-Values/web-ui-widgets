@@ -81,6 +81,11 @@ let nuxtConfig: NuxtConfig = {
         },
     },
 
+    dir: {
+        public: "../public",
+        static: "../public",
+    },
+
     experimental: {
         asyncContext: true,
         asyncEntry: true,

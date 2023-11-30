@@ -8,7 +8,7 @@ defineSlots<{
 </script>
 
 <template>
-<widget-layout-game>
+<widget-layout-app-error>
     <slot />
-</widget-layout-game>
+</widget-layout-app-error>
 </template>

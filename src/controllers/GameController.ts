@@ -1,6 +1,5 @@
 import type { StoreClient } from "#build/clients"
 import type { GameRaw } from "#schema/data-contracts"
-import type { Game } from "~/dto"
 import type { GameService } from "~/services"
 
 export class GameController {
@@ -15,7 +14,7 @@ export class GameController {
     }
 
     public async fetchGames(): Promise<void> {
-        let gamesRaw: GameRaw[] = await this._gameService.fetchGames({ page: 0 })
+        let gamesRaw: GameRaw[] = await this._gameService.fetchGames()
         this._storeClient.gamesStore.setGamesRaw(gamesRaw)
     }
 }

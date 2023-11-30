@@ -1,28 +1,34 @@
 <script lang="ts" setup>
+import type { AsyncComponent } from "~/types"
 import type { H3Error } from "h3"
+import type { Component } from "vue"
+
+import { INTERNAL_SERVER_ERROR } from "http-status"
+
+import { Layout } from "~/enums"
 
 interface Props {
     error: H3Error
 }
 
-defineProps<Props>()
+let props = defineProps<Props>()
+
+let errorViews = computed((): Record<number, AsyncComponent> => (
+    {
+        [INTERNAL_SERVER_ERROR]: defineAsyncComponent((): Promise<Component> => import("~/views/error/500.vue")),
+    }
+))
+
+let errorView = computed((): AsyncComponent => (
+    useGet(getRef(errorViews), props.error.statusCode) ||
+    useGet(getRef(errorViews), INTERNAL_SERVER_ERROR)
+))
 </script>
 
 <template>
-<widget-wrapper-app>
-    <div class="flex flex-col gap-md">
-
-        <v-title :level="2">
-            todo: errors
-        </v-title>
-
-        <v-text>
-            status: {{ error.statusCode }}
-        </v-text>
-
-        <pre v-html="error.message" />
-
-        <pre v-html="error.stack" />
-    </div>
+<widget-wrapper-app :layout="Layout.ERROR">
+    <ui-page>
+        <component :is="errorView" />
+    </ui-page>
 </widget-wrapper-app>
 </template>

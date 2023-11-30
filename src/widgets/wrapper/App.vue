@@ -2,6 +2,12 @@
 import type { ScopedProps } from "~/types"
 import type { VNode } from "vue"
 
+import { Layout } from "~/enums"
+
+defineProps<{
+    layout: Layout
+}>()
+
 defineSlots<{
     default: (scopedProps: ScopedProps) => VNode
 }>()
@@ -11,7 +17,7 @@ defineSlots<{
 <widget-provider-setup>
     <widget-provider-auth>
         <widget-provider-config>
-            <nuxt-layout>
+            <nuxt-layout :name="layout">
                 <slot />
             </nuxt-layout>
 
