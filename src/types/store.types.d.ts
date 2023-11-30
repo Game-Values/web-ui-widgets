@@ -1,32 +1,20 @@
 import type { GameRaw, UserRaw } from "#schema/data-contracts"
 import type { Game, Games, User } from "~/dto"
 import type { OrderStep, OrderType } from "~/enums"
-import type { DefineStoreOptions, StoreActions, StoreGeneric, StoreGetters, StoreState } from "pinia"
+import type {
+    _ActionsTree,
+    _GettersTree,
+    Store as _Store,
+    StateTree,
+    StoreState,
+} from "pinia"
 
 export type DefineStore<
     Id extends string,
-    State extends StoreState<any>,
-    Getters extends StoreGetters<any>,
-    Actions extends StoreActions<any>,
-> = (
-    Omit<
-        DefineStoreOptions<
-            Id,
-            State,
-            Getters,
-            Actions
-        >,
-
-        "id"
-    > |
-
-    StoreGeneric<
-        Id,
-        State,
-        Getters,
-        Actions
-    >
-)
+    State extends StateTree,
+    Getters extends _GettersTree<State>,
+    Actions extends _ActionsTree,
+> = _Store<Id, State, Getters, Actions>
 
 export namespace GamesStore {
     export type Id = "gamesStore"

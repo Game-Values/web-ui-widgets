@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import type { ScopedProps } from "~/types"
 import type { ButtonProps } from "vexip-ui"
 import type { VNode } from "vue"
 
@@ -13,14 +14,14 @@ let props = defineProps<(
 )>()
 
 defineSlots<{
-    default: () => VNode
-    icon: () => VNode
-    loading: () => VNode
+    default: (scopedProps: ScopedProps) => VNode
+    icon: (scopedProps: ScopedProps) => VNode
+    loading: (scopedProps: ScopedProps) => VNode
 }>()
 
 let isLoading = ref(false)
 
-async function callAction() {
+async function callAction(): Promise<void> {
     setRef(isLoading, true)
 
     await props.action()
@@ -33,6 +34,7 @@ async function callAction() {
 <template>
 <v-button
     v-bind="useOmit(props, 'action')"
+    :disabled="isLoading"
     :loading="isLoading"
     @click="callAction"
 >

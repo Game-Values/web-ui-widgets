@@ -5,18 +5,27 @@ defineProps<{
     game: Game
 }>()
 
-let { gameController } = useControllers()
+let { storeClient } = useClients()
+let { userController } = useControllers()
+
+let { authenticated } = storeToRefs(storeClient.meStore)
 </script>
 
 <template>
 <button-action
+    v-if="authenticated"
     v-bind="$attrs"
-    :action="() => gameController.likeGame(game)"
-    type="info"
-    size="small"
+    :action="(
+        () => userController.updateUser({
+            liked_games: [
+                game.id,
+            ],
+        })
+    )"
     circle
+    size="small"
     text
-    @click.prevent
+    type="info"
 >
     <template #icon>
         <ui-icon

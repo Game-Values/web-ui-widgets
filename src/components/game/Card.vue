@@ -31,7 +31,10 @@ defineProps<{
                     {{ game.name }}
                 </v-title>
 
-                <widget-action-like-game :game="game" />
+                <widget-action-like-game
+                    :game="game"
+                    @click.prevent
+                />
             </v-space>
         </v-space>
 

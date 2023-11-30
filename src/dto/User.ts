@@ -34,6 +34,7 @@ export class User implements UserRaw {
     declare public is_superuser: boolean
 
     @Expose()
+    @Transform(({ value }: { value: null | string[] }): string[] => value || [])
     @IsDefined()
     @IsArray()
     declare public liked_games: string[]

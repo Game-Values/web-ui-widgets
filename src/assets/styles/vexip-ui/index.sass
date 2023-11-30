@@ -32,6 +32,13 @@
         --vxp-button-v-padding: 0
         --vxp-button-h-padding: 0
 
+    &.vxp-button--disabled
+        &.vxp-button--loading
+            --vxp-button-color-disabled: inherit
+
+            &.vxp-button--info
+                --vxp-button-color-disabled: theme("colors.info")
+
     &.vxp-button--text
         --vxp-button-height: auto
 
@@ -179,6 +186,9 @@
 
     &--circle
         @apply w-8 h-8 p-4
+
+    &--loading
+        @apply before:(bg-transparent)
 
     &--small
         @apply text-normal font-normal

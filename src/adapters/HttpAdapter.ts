@@ -56,6 +56,10 @@ export class HttpAdapter extends HttpClient {
 
     // todo:
     public async fetch<T, E>(requestParams: FullRequestParams): Promise<AsyncData<T, E>> {
+        if (isClient()) {
+            console.log(new URLSearchParams(this.toQueryString(requestParams.body)))
+        }
+
         let queryFn: () => Promise<AsyncData<T, E>> = (
             (): Promise<AsyncData<T, E>> => useFetch<T, E>(requestParams.path, {
                 key: hash(requestParams),
