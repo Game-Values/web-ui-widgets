@@ -16,9 +16,9 @@ let isGameLiked = computed((): boolean => (
 
 async function handleLikeGame(): Promise<void> {
     if (getRef(isGameLiked))
-        await userController.likeGame(props.game.id)
-    else
         await userController.dislikeGame(props.game.id)
+    else
+        await userController.likeGame(props.game.id)
 }
 </script>
 

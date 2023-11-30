@@ -1,19 +1,25 @@
-import type { GameRaw } from "#schema/data-contracts"
+import type { ItemRaw } from "#schema/data-contracts"
 
-import { GameAttributes } from "~/dto/GameAttributes"
+import { ItemAttributes } from "~/dto/ItemAttributes"
 
-export class Game implements GameRaw {
+export class Item implements ItemRaw {
     @Expose()
-    @Type((): typeof GameAttributes => GameAttributes)
+    @Type((): typeof ItemAttributes => ItemAttributes)
     @IsDefined()
-    @IsInstance(GameAttributes)
-    declare public attributes: GameAttributes
+    @IsInstance(ItemAttributes)
+    declare public attributes: ItemAttributes
 
     @Expose()
     @IsDefined()
     @IsString()
     @IsNotEmpty()
     declare public created: string
+
+    @Expose()
+    @IsDefined()
+    @IsString()
+    @IsNotEmpty()
+    declare public gid: string
 
     @Expose()
     @IsDefined()

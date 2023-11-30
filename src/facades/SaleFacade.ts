@@ -7,6 +7,16 @@ export class SaleFacade implements FacadeAbstract {
     ) {}
 
     public async bootstrap(): Promise<void> {
-        await this._gameController.fetchGames()
+        let promises: Promise<void>[] = [
+            this._gameController.fetchGames(),
+        ]
+
+        let gameId: string = useGet(useRoute().query, "gameId", "")
+        if (gameId)
+            promises.push(
+                this._gameController.fetchGame(gameId),
+            )
+
+        await Promise.all(promises)
     }
 }

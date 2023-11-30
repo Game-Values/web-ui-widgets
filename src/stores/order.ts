@@ -1,7 +1,7 @@
 import type { OrderStore } from "~/types"
 import type { ComputedRef, Ref } from "vue"
 
-import { OrderStep, OrderType } from "~/enums"
+import { ItemType, OrderStep } from "~/enums"
 import { createStore } from "~/factories"
 
 export let useOrderStore: OrderStore.Store = createStore<
@@ -16,7 +16,7 @@ export let useOrderStore: OrderStore.Store = createStore<
         OrderStep.CONFIRM_RECEIPT,
     ])
 
-    let orderType: Ref<OrderType> = ref(OrderType.GOLD)
+    let orderType: Ref<ItemType> = ref(ItemType.GOLD)
     let orderStep: Ref<OrderStep> = ref(OrderStep.CHOOSE_DEAL)
 
     let orderStepIndex: ComputedRef<number> = computed((): number => (
@@ -35,7 +35,7 @@ export let useOrderStore: OrderStore.Store = createStore<
             setOrderStep(useGet(getRef(orderSteps), _orderStepIndex - 1))
     }
 
-    function setOrderType(_orderType: OrderType): void {
+    function setOrderType(_orderType: ItemType): void {
         setRef(orderType, _orderType)
     }
 

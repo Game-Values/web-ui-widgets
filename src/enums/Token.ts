@@ -12,6 +12,7 @@ export enum ClientToken {
 export enum ControllerToken {
     AUTH = "AuthController",
     GAME = "GameController",
+    ITEM = "ItemController",
     ORDER = "OrderController",
     USER = "UserController",
 }
@@ -33,6 +34,7 @@ export enum ModalToken {
 export enum ServiceToken {
     AUTH = "AuthService",
     GAME = "GameService",
+    ITEM = "ItemService",
     ORDER = "OrderService",
     USER = "UserService",
 }

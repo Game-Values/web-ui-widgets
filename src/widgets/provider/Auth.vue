@@ -6,11 +6,17 @@ defineSlots<{
     default: (scopedProps: ScopedProps) => VNode
 }>()
 
-let { cookieClient } = useClients()
-let { userController } = useControllers()
+let { cookieClient, storeClient } = useClients()
+let { authController, userController } = useControllers()
+
+let { authenticated } = storeToRefs(storeClient.meStore)
 
 if (cookieClient.accessToken)
     await userController.fetchUser()
+
+// todo
+if (!getRef(authenticated))
+    await authController.logout()
 </script>
 
 <template>

@@ -1,7 +1,7 @@
 import type { Route } from "~/types"
 import type { LocationQuery } from "vue-router"
 
-import { OrderType, RouteName } from "~/enums"
+import { ItemType, RouteName } from "~/enums"
 
 export function useAccountRoute(): Route {
     return useLocaleRoute()({
@@ -29,7 +29,7 @@ export function useOrderRoute(): Route {
         name: RouteName.ORDER,
         params: {
             orderId: 1,
-            orderType: OrderType.GOLD,
+            orderType: ItemType.GOLD, // todo
         },
     })
 }

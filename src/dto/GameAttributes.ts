@@ -2,7 +2,7 @@ import type { Section } from "~/dto/Section"
 
 import { Sections } from "~/dto/Sections"
 
-export class Attributes {
+export class GameAttributes {
     @Expose()
     @IsDefined()
     @IsString()

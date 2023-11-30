@@ -2,7 +2,7 @@
 import type { ScopedProps } from "~/types"
 import type { VNode } from "vue"
 
-import { default as HttpStatus } from "http-status"
+import { HttpStatus } from "~/enums"
 
 defineSlots<{
     default: (scopedProps: ScopedProps) => VNode
@@ -12,7 +12,7 @@ let errorCode = computed((): number => (
     useGet(getRef(useError()), "statusCode", HttpStatus.INTERNAL_SERVER_ERROR)
 ))
 </script>
-    
+
 <template>
 <widget-layout-app>
     <ui-image

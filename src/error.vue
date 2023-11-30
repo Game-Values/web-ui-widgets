@@ -3,9 +3,7 @@ import type { AsyncComponent } from "~/types"
 import type { H3Error } from "h3"
 import type { Component } from "vue"
 
-import { default as HttpStatus } from "http-status"
-
-import { Layout } from "~/enums"
+import { HttpStatus, Layout } from "~/enums"
 
 interface Props {
     error: H3Error

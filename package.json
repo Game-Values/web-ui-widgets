@@ -99,6 +99,7 @@
         "hash-sum": "^2.0.0",
         "http-status": "^1.7.3",
         "lodash-decorators": "^6.0.1",
+        "object-to-formdata": "^4.5.1",
         "reflect-metadata": "^0.1.13"
     }
 }

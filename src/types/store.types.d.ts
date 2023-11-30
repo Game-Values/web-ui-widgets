@@ -1,6 +1,6 @@
-import type { GameRaw, UserRaw } from "#schema/data-contracts"
-import type { Game, Games, User } from "~/dto"
-import type { OrderStep, OrderType } from "~/enums"
+import type { GameRaw, ItemRaw, UserRaw } from "#schema/data-contracts"
+import type { Game, Games, Item, User } from "~/dto"
+import type { ItemType, OrderStep } from "~/enums"
 import type {
     _ActionsTree,
     _GettersTree,
@@ -8,6 +8,7 @@ import type {
     StateTree,
     StoreState,
 } from "pinia"
+import type { UnwrapRef } from "vue"
 
 export type DefineStore<
     Id extends string,
@@ -26,7 +27,7 @@ export namespace GamesStore {
     }
 
     export type Actions = {
-        setGamesRaw: (gamesRaw: GameRaw[]) => void
+        setGamesRaw: (raw: GameRaw[]) => void
     }
 
     export type Store = DefineStore<Id, State, Getters, Actions>
@@ -42,7 +43,23 @@ export namespace GameStore {
     }
 
     export type Actions = {
-        setGameRaw: (game: GameRaw) => void
+        setGameRaw: (raw: GameRaw) => void
+    }
+
+    export type Store = DefineStore<Id, State, Getters, Actions>
+}
+
+export namespace ItemStore {
+    export type Id = "saleStore"
+
+    export type State = StoreState<Getters>
+
+    export type Getters = {
+        item: () => Item
+    }
+
+    export type Actions = {
+        setItemRaw: (raw: ItemRaw) => void
     }
 
     export type Store = DefineStore<Id, State, Getters, Actions>
@@ -68,7 +85,7 @@ export namespace OrderStore {
     export type State = {
         orderStep: OrderStep
         orderSteps: OrderStep[]
-        orderType: OrderType
+        orderType: ItemType // todo
     }
 
     export type Getters = {
@@ -84,6 +101,28 @@ export namespace OrderStore {
     export type Store = DefineStore<Id, State, Getters, Actions>
 }
 
+export namespace SaleStore {
+    export type Id = "saleStore"
+
+    export type State = {
+        saleForm: UnwrapRef<
+            Pick<Item, (
+                "attributes" |
+                "gid" |
+                "name"
+            )>
+        >
+    }
+
+    export type Getters = ItemStore.Getters
+
+    export type Actions = {
+
+    }
+
+    export type Store = DefineStore<Id, State, Getters, Actions>
+}
+
 export namespace UserStore {
     export type Id = "userStore"
 
@@ -94,7 +133,7 @@ export namespace UserStore {
     }
 
     export type Actions = {
-        setUserRaw: (userRaw: UserRaw) => void
+        setUserRaw: (raw: UserRaw) => void
     }
 
     export type Store = DefineStore<Id, State, Getters, Actions>

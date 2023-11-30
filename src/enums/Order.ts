@@ -3,7 +3,3 @@ export enum OrderStep {
     CONFIRM_ORDER = "CONFIRM_ORDER",
     CONFIRM_RECEIPT = "CONFIRM_RECEIPT",
 }
-
-export enum OrderType {
-    GOLD = "gold",
-}

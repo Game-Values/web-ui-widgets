@@ -1,6 +1,6 @@
+export { default as HttpStatus } from "http-status"
+
 export enum HttpCookie {
-    // CURRENCY = "currency",
-    // LANGUAGE = "language",
     ACCESS_TOKEN = "access_token",
     REFRESH_TOKEN = "refresh_token",
     TOKEN_TYPE = "token_type",
@@ -9,7 +9,6 @@ export enum HttpCookie {
 export enum HttpHeader {
     ACCEPT = "accept",
     AUTHORIZATION = "authorization",
-    CONTENT_TYPE = "content-type",
     COOKIE = "cookie",
 }
 

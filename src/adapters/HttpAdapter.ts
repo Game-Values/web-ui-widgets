@@ -6,6 +6,7 @@ import type { FetchContext } from "ofetch"
 
 import { HttpClient } from "#schema/http-client"
 import { default as hash } from "hash-sum"
+import { serialize } from "object-to-formdata"
 
 import { HttpHeader, HttpToken } from "~/enums"
 
@@ -39,7 +40,6 @@ export class HttpAdapter extends HttpClient {
             credentials: "include",
             headers: {
                 [HttpHeader.ACCEPT]: "application/json",
-                [HttpHeader.CONTENT_TYPE]: "application/x-www-form-urlencoded",
             },
         }
 
@@ -60,12 +60,12 @@ export class HttpAdapter extends HttpClient {
             (): Promise<AsyncData<T, E>> => useFetch<T, E>(requestParams.path, {
                 key: hash(requestParams),
                 onRequest: (context: FetchContext): void => {
-                    useMerge(context.options, this.mergeRequestParams(this._requestParams, requestParams))
-
                     if (requestParams.body)
-                        context.options.body = new URLSearchParams(
-                            this.toQueryString(requestParams.body),
+                        requestParams.body = serialize(
+                            cleanObject(requestParams.body),
                         )
+
+                    useMerge(context.options, this.mergeRequestParams(this._requestParams, requestParams))
                 },
             })
         )

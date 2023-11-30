@@ -123,8 +123,10 @@ let nuxtConfig: NuxtConfig = {
                 imports: [
                     "IsArray",
                     "IsBoolean",
+                    "IsCurrency",
                     "IsDefined",
                     "IsEmail",
+                    "IsEnum",
                     "IsInstance",
                     "IsNotEmpty",
                     "IsNumber",

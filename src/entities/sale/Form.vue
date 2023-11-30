@@ -1,38 +1,17 @@
 <script setup lang="ts">
-import type { Game } from "~/dto"
-import type { OrderType } from "~/enums"
-import type { UnwrapRef } from "vue"
-
-// todo: mv to dto & sale store
-interface Sale {
-    gameId: string
-    gameItem: string
-    gameServer: string // todo: or serverId (?)
-    orderDescription: string
-    orderPrice: number
-    orderType: OrderType
-}
-
 let { storeClient } = useClients()
+let { itemController } = useControllers()
 
+let { game } = storeToRefs(storeClient.gameStore)
 let { games } = storeToRefs(storeClient.gamesStore)
-
-let formModel: UnwrapRef<Partial<Sale>> = ({
-    gameId: useGet(useRoute().query, "gameId", ""),
-    orderType: useGet(useRoute().query, "orderType", ""),
-})
-
-let game = computed((): Game | undefined => (
-    getRef(games).getById(formModel.gameId!)
-))
 </script>
 
 <template>
-<v-form :model="formModel">
+<v-form :model="storeClient.saleStore.saleForm">
     <template v-if="game">
         <v-form-item
             label="Game"
-            prop="gameId"
+            prop="gid"
         >
             <v-select
                 :key-config="{
@@ -40,12 +19,19 @@ let game = computed((): Game | undefined => (
                     value: 'id',
                 }"
                 :options="games.items"
+                @select="(
+                    useRouter().push(
+                        useSaleRoute({
+                            gameId: $event,
+                        }),
+                    )
+                )"
             />
         </v-form-item>
 
         <v-form-item
-            label="Order type"
-            prop="orderType"
+            label="Item type"
+            prop="attributes.type"
         >
             <v-select
                 :key-config="{
@@ -58,7 +44,7 @@ let game = computed((): Game | undefined => (
 
         <v-form-item
             label="Server"
-            prop="gameServer"
+            prop="attributes.server"
         >
             <v-select
                 :options="game.attributes.servers"
@@ -67,21 +53,21 @@ let game = computed((): Game | undefined => (
 
         <v-form-item
             label="Item name"
-            prop="gameItem"
+            prop="name"
         >
             <v-input />
         </v-form-item>
 
         <v-form-item
-            label="Order description"
-            prop="orderDescription"
+            label="Item description"
+            prop="attributes.description"
         >
             <v-textarea />
         </v-form-item>
 
         <v-form-item
-            label="Item name"
-            prop="gameItem"
+            label="Item price"
+            prop="attributes.price"
         >
             <v-number-input>
                 <template #suffix>
@@ -91,7 +77,10 @@ let game = computed((): Game | undefined => (
         </v-form-item>
 
         <v-form-item>
-            <v-form-submit block>
+            <v-form-submit
+                block
+                @submit="itemController.createItem()"
+            >
                 Sell
             </v-form-submit>
         </v-form-item>

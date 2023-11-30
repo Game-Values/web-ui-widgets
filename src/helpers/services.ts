@@ -5,11 +5,12 @@ import { token } from "brandi"
 
 import { DIAbstract } from "~/abstract"
 import { AdapterToken, ServiceToken } from "~/enums"
-import { AuthService, GameService, OrderService, UserService } from "~/services"
+import { AuthService, GameService, ItemService, OrderService, UserService } from "~/services"
 
 interface ServiceTokens {
     [ServiceToken.AUTH]: Token<AuthService>
     [ServiceToken.GAME]: Token<GameService>
+    [ServiceToken.ITEM]: Token<ItemService>
     [ServiceToken.ORDER]: Token<OrderService>
     [ServiceToken.USER]: Token<UserService>
 }
@@ -18,6 +19,7 @@ export class Services extends DIAbstract<ServiceTokens> {
     protected __tokens: ServiceTokens = {
         [ServiceToken.AUTH]: token<AuthService>(ServiceToken.AUTH),
         [ServiceToken.GAME]: token<GameService>(ServiceToken.GAME),
+        [ServiceToken.ITEM]: token<ItemService>(ServiceToken.ITEM),
         [ServiceToken.ORDER]: token<OrderService>(ServiceToken.ORDER),
         [ServiceToken.USER]: token<UserService>(ServiceToken.USER),
     }
@@ -26,6 +28,7 @@ export class Services extends DIAbstract<ServiceTokens> {
         return [
             [this.__tokens[ServiceToken.AUTH], AuthService],
             [this.__tokens[ServiceToken.GAME], GameService],
+            [this.__tokens[ServiceToken.ITEM], ItemService],
             [this.__tokens[ServiceToken.ORDER], OrderService],
             [this.__tokens[ServiceToken.USER], UserService],
         ]
@@ -39,6 +42,10 @@ export class Services extends DIAbstract<ServiceTokens> {
             ],
             [
                 GameService,
+                this.__getToken(AdapterToken.API),
+            ],
+            [
+                ItemService,
                 this.__getToken(AdapterToken.API),
             ],
             [
