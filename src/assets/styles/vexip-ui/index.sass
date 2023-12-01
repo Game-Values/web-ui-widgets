@@ -236,7 +236,7 @@
 
 .vxp-column
     > .vxp-row
-        @apply w-auto max-w-[calc(100%+var(--vxp-row-h-gap))]
+        @apply w-auto min-w-full max-w-[calc(100%+var(--vxp-row-h-gap))]
 
         &.vxp-form
             @apply w-full
@@ -260,6 +260,9 @@
     &--label-top .vxp-form__label
         @apply mb-7
         @apply text-secondary
+
+.vxp-highlight
+    @apply font-size-inherit
 
 .vxp-layout
     @apply screen

@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+let { lg } = useBreakpoints()
+
 let { mainFacade } = useFacades()
 
 await mainFacade.bootstrap()
@@ -8,18 +10,19 @@ await mainFacade.bootstrap()
 <ui-page>
     <v-row>
         <v-column
-            :lg="19"
-            :span="24"
+            :lg="18"
+            :xs="24"
         >
             <entity-main-slider />
         </v-column>
 
         <v-column
             :lg="5"
-            :span="24"
+            :offset="lg ? 1 : 0"
             :use-flex="{
                 justify: 'end',
             }"
+            :xs="24"
             class="lg:(mb-10 self-center)"
         >
             <entity-main-statistics />
