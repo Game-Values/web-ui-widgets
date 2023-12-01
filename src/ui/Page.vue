@@ -5,7 +5,7 @@ import type { VNode } from "vue"
 withDefaults(defineProps<{
     tag?: keyof HTMLElementTagNameMap
 }>(), {
-    tag: "section",
+    tag: "main",
 })
 
 defineSlots<{
@@ -14,7 +14,7 @@ defineSlots<{
 </script>
 
 <template>
-<ui-content :is="tag">
+<ui-content :tag="tag">
     <slot />
 </ui-content>
 </template>

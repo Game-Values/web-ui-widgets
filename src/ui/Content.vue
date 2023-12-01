@@ -5,7 +5,7 @@ import type { VNode } from "vue"
 withDefaults(defineProps<{
     tag?: keyof HTMLElementTagNameMap
 }>(), {
-    tag: "div",
+    tag: "section",
 })
 
 defineSlots<{

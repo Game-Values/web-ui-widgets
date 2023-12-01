@@ -10,7 +10,9 @@ defineSlots<{
 <template>
 <widget-layout-app>
     <div class="absolute -top-7rem fit">
-        <entity-game-preview />
+        <lazy-client-only>
+            <entity-game-preview />
+        </lazy-client-only>
     </div>
 
     <slot />

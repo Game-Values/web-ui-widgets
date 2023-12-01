@@ -6,19 +6,9 @@ import type {
     SaleStore,
     UserStore,
 } from "~/types"
-// import type { Store } from "pinia"
 
 // todo: stores typing
 export class StoreClient {
-    // todo: stores clear (?)
-    // private _disposeStore(store: Store): void {
-    //     store.$dispose()
-    // }
-    //
-    // private _resetStore(store: Store): void {
-    //     store.$reset()
-    // }
-
     @Memoize()
     public get gamesStore(): GamesStore.Store {
         return useGamesStore()

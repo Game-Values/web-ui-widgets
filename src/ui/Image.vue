@@ -50,7 +50,7 @@ defineSlots<{
 </script>
 
 <template>
-<lazy-client-only>
+<client-only>
     <v-image
         v-bind="{
             ...$attrs,
@@ -58,21 +58,17 @@ defineSlots<{
         }"
     />
 
-    <template #fallback>
-        <slot name="fallback">
-            <v-skeleton
-                v-bind="$attrs"
-                :height="height"
-                :width="width"
-                activated
-                image
-            />
-        </slot>
+    <template
+        v-if="skeleton"
+        #fallback
+    >
+        <v-skeleton
+            v-bind="$attrs"
+            :height="height"
+            :width="width"
+            activated
+            image
+        />
     </template>
-</lazy-client-only>
+</client-only>
 </template>
-
-<style lang="sass" scoped>
-//.vxp-image
-//    @apply max-fit
-</style>

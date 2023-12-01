@@ -1,5 +1,5 @@
 import type { FullRequestParams } from "#schema/http-client"
-import type { QueryFunction, QueryKey, UseQueryReturnType } from "@tanstack/vue-query"
+// import type { QueryFunction, QueryKey, UseQueryReturnType } from "@tanstack/vue-query"
 import type { CookieClient } from "~/clients"
 import type { AsyncData } from "nuxt/dist/app"
 import type { FetchContext } from "ofetch"
@@ -17,22 +17,22 @@ export class HttpAdapter extends HttpClient {
         super()
     }
 
-    private async _queryFetch<T = any, E = any>(queryKey: QueryKey, queryFn: QueryFunction): UseQueryReturnType<T, E> {
-        // return (
-        //     useQueryClient().getQueryState(queryKey) ||
-        //     useQuery(queryKey, queryFn).suspense()
-        // )
-
-        // let queryState: QueryState = useQueryClient().getQueryState(queryKey)
-
-        // if (!queryState)
-        //     queryState = await useQuery(queryKey, queryFn).suspense()
-
-        return (
-            useQueryClient().getQueryState(queryKey) ||
-            useQuery(queryKey, queryFn).suspense()
-        )
-    }
+    // private async _queryFetch<T = any, E = any>(queryKey: QueryKey, queryFn: QueryFunction): UseQueryReturnType<T, E> {
+    //     // return (
+    //     //     useQueryClient().getQueryState(queryKey) ||
+    //     //     useQuery(queryKey, queryFn).suspense()
+    //     // )
+    //
+    //     // let queryState: QueryState = useQueryClient().getQueryState(queryKey)
+    //
+    //     // if (!queryState)
+    //     //     queryState = await useQuery(queryKey, queryFn).suspense()
+    //
+    //     return (
+    //         useQueryClient().getQueryState(queryKey) ||
+    //         useQuery(queryKey, queryFn).suspense()
+    //     )
+    // }
 
     private get _requestParams(): Partial<FullRequestParams> & { baseURL: string } {
         let requestParams: Partial<FullRequestParams> & { baseURL: string } = {

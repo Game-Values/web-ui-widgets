@@ -9,7 +9,7 @@ export let useMeStore: () => MeStore.Store = createStore<
     MeStore.State,
     MeStore.Getters,
     MeStore.Actions
->("userStore", {
+>("meStore", {
     actions: {
         setMeRaw(meRaw: UserRaw): void {
             this.meRaw = meRaw
@@ -18,7 +18,9 @@ export let useMeStore: () => MeStore.Store = createStore<
 
     getters: {
         authenticated(): boolean {
-            return !isNil(this.me.id)
+            return !isNil(
+                useGet(this.me, "id"),
+            )
         },
 
         me(): User {
