@@ -1,4 +1,4 @@
-export type Callable<T> = () => T
+export type Callable<T = void> = () => T
 
 export type Keyable<K extends string, V = any> = {
     [key: K]: V

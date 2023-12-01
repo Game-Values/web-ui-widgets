@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import type { ScopedProps } from "~/types"
 import type { VNode } from "vue"
 
 defineProps<{
@@ -8,8 +9,8 @@ defineProps<{
 }>()
 
 defineSlots<{
-    default: () => VNode
-    overlay: () => VNode
+    default: (scopedProps: ScopedProps) => VNode
+    overlay: (scopedProps: ScopedProps) => VNode
 }>()
 </script>
 
@@ -21,9 +22,10 @@ defineSlots<{
     }"
     class="relative"
 >
-    <slot />
+    <slot v-if="$slots.default" />
 
     <div
+        v-if="$slots.overlay"
         :class="['overlay fit', overlayClass]"
     >
         <slot name="overlay" />

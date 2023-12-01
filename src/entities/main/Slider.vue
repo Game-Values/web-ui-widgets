@@ -1,37 +1,17 @@
 <script lang="ts" setup>
+import type { Callable } from "~/types"
 import type { ComputedRef } from "vue"
 
 import { Breakpoint } from "~/enums"
 
-interface MainSlide {
-    description?: string
-    src: string
-    title: string
-}
-
-useI18n()
-
-let mainSlides: ComputedRef<MainSlide[]> = computed((): MainSlide[] => (
-    Array(5)
-        .fill({
-            description: "Invite friends and get bonuses",
-            src: "~/assets/icons/logo.svg",
-            title: "Trade any in-game items in different games",
-        })
-))
-
 let breakpoint = useBreakpoint()
 
-let titleLevel = computed((): number => (
-    useGet({
-        [Breakpoint.LG]: 1,
-        [Breakpoint.MD]: 3,
-        [Breakpoint.SM]: 2,
-        [Breakpoint.XS]: 3,
-    }, getRef(breakpoint))
-))
+let { registrationModal } = useModals()
+let { storeClient } = useClients()
 
-let sliderHeight = computed((): number => (
+let { authenticated } = storeToRefs(storeClient.meStore)
+
+let sliderHeight: ComputedRef<number> = computed((): number => (
     useGet({
         [Breakpoint.LG]: 352,
         [Breakpoint.MD]: 352,
@@ -39,6 +19,13 @@ let sliderHeight = computed((): number => (
         [Breakpoint.XS]: 540,
     }, getRef(breakpoint))
 ))
+
+function resolveAction<T = {
+    handler: Callable
+    label: string
+}>(action: T): T | undefined {
+    return getRef(authenticated) ? undefined : action
+}
 </script>
 
 <template>
@@ -65,70 +52,50 @@ let sliderHeight = computed((): number => (
     :slides-per-view="1"
     :style="`
         --swiper-height: ${pxToRem(sliderHeight)};
+        height: var(--swiper-height);
     `"
+    a11y
     class="
         md:(mb-4rem)
         xs:(mb-6rem)
     "
-    a11y
     effect="creative"
     loop
     navigation
     pagination
 >
-    <swiper-slide
-        v-for="(mainSlide, i) in mainSlides"
-        :key="i"
-    >
-        <ui-overlay :height="sliderHeight">
-            <!-- todo -->
-            <div
-                class="
-                    fit
-                    bg-[url(/images/slide-1.png)]
-                    bg-no-repeat
-                    bg-contain
-                    bg-right
-                "
+    <lazy-client-only>
+        <swiper-slide>
+            <slide-main
+                :action="resolveAction({
+                    label: 'Try',
+                    handler: (): void => registrationModal.show(),
+                })"
+                src="/images/main-slide-1.png"
+                text="Invite friends and get bonuses"
+                title="Unlock the Power of Hassle-Free Trading"
             />
+        </swiper-slide>
 
-            <template #overlay>
-                <v-space
-                    size="large"
-                    justify="center"
-                    class="
-                        relative
-                        md:(bottom-0 p-12 max-w-1/2)
-                        xs:(bottom-18 p-7 max-w-full)
-                    "
-                    vertical
-                >
-                    <v-title :level="titleLevel">
-                        <i18n-t :keypath="mainSlide.title" />
-                    </v-title>
+        <swiper-slide>
+            <slide-main
+                src="/images/main-slide-6.png"
+                text="Congratulations to our Users 🏆"
+            >
+                <template #title>
+                    <v-space vertical>
+                        <v-text type="warning">
+                            Top 3 Champions
+                        </v-text>
 
-                    <v-text
-                        class="
-                            md:(block)
-                            sm:(hidden)
-                        "
-                    >
-                        <i18n-t :keypath="mainSlide.description" />
-                    </v-text>
-
-                    <v-button
-                        type="primary"
-                        class="
-                            w-full
-                            sm:(max-w-18rem)
-                        "
-                    >
-                        <i18n-t keypath="Try" />
-                    </v-button>
-                </v-space>
-            </template>
-        </ui-overlay>
-    </swiper-slide>
+                        <v-text>
+                            1st Season
+                        </v-text>
+                    </v-space>
+                </template>
+            </slide-main>
+        </swiper-slide>
+    </lazy-client-only>
 </swiper>
 </template>
 
@@ -170,14 +137,3 @@ let sliderHeight = computed((): number => (
     :deep(.swiper-pagination-bullet-active)
         @apply w-14
 </style>
-
-<i18n lang="yaml">
-de:
-    Try: Versuchen
-    Trade any in-game items in different games: Tauschen Sie beliebige In-Game-Gegenstände in verschiedenen Spielen
-    Invite friends and get bonuses: Freunde einladen und Boni erhalten
-en:
-    Try: Try
-    Trade any in-game items in different games: Trade any in-game items in different games
-    Invite friends and get bonuses: Invite friends and get bonuses
-</i18n>
