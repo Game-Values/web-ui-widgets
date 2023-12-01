@@ -1,25 +1,35 @@
 <script lang="ts" setup>
-import type { UnwrapRef } from "vue"
+import type { BodyCreateUserProfileApiV1UsersPostRaw } from "#schema/data-contracts"
+import type { ComputedRef, UnwrapRef } from "vue"
 
-interface FormModel {
+// todo: auth store
+interface FormModel extends BodyCreateUserProfileApiV1UsersPostRaw {
     agreeWithPolicies: boolean
-    email: string
-    nickname: string
-    password: string
     repeatPassword: string
     sendNotifications: boolean
 }
 
+let { authController } = useControllers()
 let { loginModal, registrationModal } = useModals()
 
 let formModel: UnwrapRef<FormModel> = reactive({
     agreeWithPolicies: true,
     email: "",
-    nickname: "",
+    full_name: "",
     password: "",
     repeatPassword: "",
     sendNotifications: true,
 })
+
+let registrationPayload: ComputedRef<BodyCreateUserProfileApiV1UsersPostRaw> = (
+    computed((): BodyCreateUserProfileApiV1UsersPostRaw => (
+        usePick(formModel, [
+            "email",
+            "full_name",
+            "password",
+        ])
+    ))
+)
 </script>
 
 <template>
@@ -35,10 +45,10 @@ let formModel: UnwrapRef<FormModel> = reactive({
         </v-form-item>
 
         <v-form-item
-            prop="nickname"
+            prop="full_name"
             required
         >
-            <v-input placeholder="Nickname" />
+            <v-input placeholder="Fullname" />
         </v-form-item>
 
         <v-form-item
@@ -71,7 +81,14 @@ let formModel: UnwrapRef<FormModel> = reactive({
         </v-form-item>
 
         <v-form-item>
-            <v-form-submit block>
+            <v-form-submit
+                :disabled="!formModel.agreeWithPolicies"
+                block
+                @submit="(
+                    authController.registration(registrationPayload)
+                        .then((): void => reloadNuxtApp())
+                )"
+            >
                 Registration
             </v-form-submit>
         </v-form-item>

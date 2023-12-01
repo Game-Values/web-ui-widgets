@@ -5,6 +5,7 @@ import type { UnwrapRef } from "vue"
 let { authController } = useControllers()
 let { loginModal, recoveryPasswordModal, registrationModal } = useModals()
 
+// todo: auth store
 let formModel: UnwrapRef<BodyLoginWithOauth2ApiV1LoginOauthPostRaw> = reactive({
     password: "",
     username: "",

@@ -1,4 +1,8 @@
-import type { BodyLoginWithOauth2ApiV1LoginOauthPostRaw, TokenRaw } from "#schema/data-contracts"
+import type {
+    BodyCreateUserProfileApiV1UsersPostRaw,
+    BodyLoginWithOauth2ApiV1LoginOauthPostRaw,
+    TokenRaw,
+} from "#schema/data-contracts"
 import type { CookieClient } from "~/clients"
 import type { AuthService } from "~/services"
 
@@ -33,8 +37,7 @@ export class AuthController {
         this._clearCookies()
     }
 
-    public async refreshToken(): Promise<void> {
-        let tokenRaw: TokenRaw = await this._authService.refreshToken()
-        this._setCookies(tokenRaw)
+    public async registration(payload: BodyCreateUserProfileApiV1UsersPostRaw): Promise<void> {
+        await this._authService.registration(payload)
     }
 }
