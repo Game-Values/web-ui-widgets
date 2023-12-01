@@ -6,7 +6,10 @@ definePageMeta({
     layout: Layout.GAME,
 })
 
+let { storeClient } = useClients()
 let { gameFacade } = useFacades()
+
+storeClient.gameStore.$dispose()
 
 await gameFacade.bootstrap()
 </script>
