@@ -9,12 +9,21 @@ export class HttpClient {
         private _httpAdapter: HttpAdapter,
     ) {}
 
+    private _resolveRequestParams(requestParams: FullRequestParams): FullRequestParams {
+        if (isObject(requestParams.body))
+            requestParams.body = cleanObject(requestParams.body)
+
+        return requestParams
+    }
+
     public async request<T, E>(requestParams: FullRequestParams): Promise<{
         data: AsyncData<T, E>,
         error: AsyncData<T, E>,
     }> {
         let { data, error }: AsyncData<T, E> = await useAsyncData<T, E>(hash(requestParams), (
-            (): Promise<T> => this._httpAdapter.request<T, E>(requestParams)
+            (): Promise<T> => this._httpAdapter.request<T, E>(
+                this._resolveRequestParams(requestParams),
+            )
         ))
 
         return {

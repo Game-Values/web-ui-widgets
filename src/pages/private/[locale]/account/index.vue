@@ -1,10 +1,16 @@
+<script lang="ts" setup>
+let { storeClient } = useClients()
+
+let { me } = storeToRefs(storeClient.meStore)
+</script>
+
 <template>
 <ui-page>
     <v-row>
         <v-column :lg="18">
             <v-row>
                 <v-column>
-                    <user-card />
+                    <user-card :user="me" />
                 </v-column>
 
                 <v-column>

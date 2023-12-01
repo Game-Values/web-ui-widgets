@@ -1,5 +1,9 @@
-<script setup lang="ts">
+<script lang="ts" setup>
+import type { User } from "~/dto"
 
+defineProps<{
+    user: User
+}>()
 </script>
 
 <template>
@@ -19,7 +23,7 @@
                 justify="space-between"
             >
                 <v-title :level="1">
-                    User Name
+                    {{ user.full_name }}
                 </v-title>
 
                 <v-space
@@ -53,9 +57,11 @@
                 Brief profile description, seller or store information in 2-3 lines
             </v-text>
 
-            <v-button>
-                Send Message
-            </v-button>
+            <widget-wrapper-unauth-only>
+                <v-button>
+                    Send Message
+                </v-button>
+            </widget-wrapper-unauth-only>
         </v-space>
 
         <ui-icon

@@ -23,8 +23,8 @@ export class UserController {
         await this.fetchUser()
     }
 
-    // public async updateUser(payload: UserUpdateRaw): Promise<void> {
-    //     let userRaw: UserRaw = await this._userService.updateUser(payload)
-    //     this._storeClient.meStore.setUserRaw(userRaw)
-    // }
+    public async updateUser(): Promise<void> {
+        let userRaw: UserRaw = await this._userService.updateUser(this._storeClient.settingsStore.settings)
+        // this._storeClient.meStore.setMeRaw(userRaw)
+    }
 }

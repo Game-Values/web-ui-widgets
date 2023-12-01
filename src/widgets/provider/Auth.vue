@@ -9,13 +9,11 @@ defineSlots<{
 let { cookieClient, storeClient } = useClients()
 let { authController, userController } = useControllers()
 
-let { authenticated } = storeToRefs(storeClient.meStore)
-
 if (cookieClient.accessToken)
     await userController.fetchUser()
 
 // todo
-if (!getRef(authenticated))
+if (!storeClient.meStore.authenticated)
     await authController.logout()
 </script>
 

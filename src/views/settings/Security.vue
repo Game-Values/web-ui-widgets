@@ -1,3 +1,8 @@
+<script lang="ts" setup>
+let { storeClient } = useClients()
+let { userController } = useControllers()
+</script>
+
 <template>
 <!-- todo: mv to components / entities -->
 
@@ -11,8 +16,14 @@
                 Change password
             </v-title>
 
-            <v-form class="max-w-40rem">
-                <v-form-item label="Old password">
+            <v-form
+                :model="storeClient.settingsStore.settingsRaw"
+                class="max-w-40rem"
+            >
+                <v-form-item
+                    label="Old password"
+                    prop="oldPassword"
+                >
                     <v-input
                         placeholder="Password"
                         plain-password
@@ -20,7 +31,10 @@
                     />
                 </v-form-item>
 
-                <v-form-item label="New Password">
+                <v-form-item
+                    label="New Password"
+                    prop="password"
+                >
                     <v-input
                         placeholder="Password"
                         plain-password
@@ -28,7 +42,10 @@
                     />
                 </v-form-item>
 
-                <v-form-item label="New Password again">
+                <v-form-item
+                    label="New Password again"
+                    props="repeatPassword"
+                >
                     <v-input
                         placeholder="Password"
                         plain-password
@@ -37,7 +54,10 @@
                 </v-form-item>
 
                 <v-form-item>
-                    <v-form-submit block>
+                    <v-form-submit
+                        block
+                        @submit="userController.updateUser()"
+                    >
                         Save
                     </v-form-submit>
                 </v-form-item>
@@ -96,7 +116,9 @@
                 </v-form-item>
 
                 <v-form-item>
-                    <v-form-submit block>
+                    <v-form-submit
+                        block
+                    >
                         Connect
                     </v-form-submit>
                 </v-form-item>
