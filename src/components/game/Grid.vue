@@ -1,10 +1,11 @@
 <script lang="ts" setup>
-import type { Games } from "~/dto"
+import type { Games, LikedGames } from "~/dto"
 
 import { Breakpoint } from "~/enums"
 
 defineProps<{
     games: Games
+    likedGames: LikedGames
 }>()
 
 let breakpoint = useBreakpoint()
@@ -29,7 +30,10 @@ let gridColumns = computed((): number => (
         :key="game.name"
         :width="1"
     >
-        <game-card :game="game" />
+        <game-card
+            :game="game"
+            :liked="likedGames.likedIds.includes(game.id)"
+        />
     </v-cell>
 </v-grid>
 </template>

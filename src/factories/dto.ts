@@ -5,10 +5,10 @@ import { plainToInstance } from "class-transformer"
 
 export function createCollection<
     T extends CollectionAbstract<any, Raw>,
-    Raw extends object,
+    Raw extends object[],
 >(
     Collection: ClassConstructor<T>,
-    raw: Raw[],
+    raw: Raw,
 ): T {
     return new Collection(raw)
 }

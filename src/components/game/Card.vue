@@ -3,6 +3,7 @@ import type { Game } from "~/dto"
 
 defineProps<{
     game: Game
+    liked: boolean
 }>()
 </script>
 
@@ -10,7 +11,7 @@ defineProps<{
 <v-card
     :id="game.id"
     :class="['group', {
-        'liked': false,
+        'liked': liked,
     }]"
 >
     <ui-link

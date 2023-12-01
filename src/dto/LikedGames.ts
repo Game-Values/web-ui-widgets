@@ -6,7 +6,7 @@ import { LikedGame } from "~/dto/LikedGame"
 export class LikedGames extends CollectionAbstract<LikedGame, LikedGameRaw> {
     protected __Model: typeof LikedGame = LikedGame
 
-    public get likedIds(): string {
+    public get likedIds(): string[] {
         return useMap(this.items, "gid")
     }
 }

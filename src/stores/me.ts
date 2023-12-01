@@ -18,11 +18,7 @@ export let useMeStore: () => MeStore.Store = createStore<
 
     getters: {
         authenticated(): boolean {
-            return (
-                !isNil(
-                    useGet(this.meRaw, "id"),
-                )
-            )
+            return !isNil(this.me.id)
         },
 
         me(): User {

@@ -31,7 +31,10 @@ let rowGap = computed((): number[] => {
                 {{ firstChar }}
             </v-title>
 
-            <game-grid :games="gamesCollection" />
+            <game-grid
+                :games="gamesCollection"
+                :liked-games="me.liked_games"
+            />
         </v-space>
     </v-column>
 </v-row>

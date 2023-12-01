@@ -75,9 +75,9 @@ let nuxtConfig: NuxtConfig = {
     },
 
     devtools: {
-        enabled: isDevelopment(),
+        enabled: false, // isDevelopment()
         timeline: {
-            enabled: isDevelopment(),
+            enabled: false, // isDevelopment()
         },
     },
 
@@ -99,7 +99,7 @@ let nuxtConfig: NuxtConfig = {
         treeshakeClientOnly: true,
         typescriptBundlerResolution: true,
         viewTransition: true,
-        watcher: "parcel",
+        // watcher: "parcel",
     },
 
     imports: {
@@ -351,16 +351,15 @@ let nuxtConfig: NuxtConfig = {
             treeShaking: true,
             tsconfigRaw: {
                 compilerOptions: {
-                    emitDecoratorMetadata: true,
                     experimentalDecorators: true,
                     strict: true,
                 },
             },
         },
-        experimental: {
-            hmrPartialAccept: isDevelopment(),
-            importGlobRestoreExtension: true,
-        },
+        // experimental: {
+        //     hmrPartialAccept: isDevelopment(),
+        //     importGlobRestoreExtension: true,
+        // },
         plugins: [
             dynamicImport(),
             inheritAttrs(),
