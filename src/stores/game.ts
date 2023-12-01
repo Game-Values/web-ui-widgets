@@ -1,25 +1,28 @@
 import type { GameRaw } from "#schema/data-contracts"
 import type { GameStore } from "~/types"
-import type { ComputedRef, Ref } from "vue"
 
 import { Game } from "~/dto"
 import { createModel, createStore } from "~/factories"
 
-export let useGameStore: GameStore.Store = createStore<
+export let useGameStore: () => GameStore.Store = createStore<
     GameStore.Id,
     GameStore.State,
     GameStore.Getters,
     GameStore.Actions
->("gameStore", (): GameStore.Store => {
-    let gameRaw: Ref<GameRaw> = ref({})
-    let game: ComputedRef<Game> = computed((): Game => createModel(Game, getRef(gameRaw)))
+>("gameStore", {
+    actions: {
+        setGameRaw(gameRaw: GameRaw): void {
+            this.gameRaw = gameRaw
+        },
+    },
 
-    function setGameRaw(raw: GameRaw): void {
-        setRef(gameRaw, raw)
-    }
+    getters: {
+        game(): Game {
+            return createModel(Game, this.gameRaw)
+        },
+    },
 
-    return {
-        game,
-        setGameRaw,
-    }
+    state: (): GameStore.State => ({
+        gameRaw: {},
+    }),
 })

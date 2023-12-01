@@ -1,25 +1,28 @@
 import type { GameRaw } from "#schema/data-contracts"
 import type { GamesStore } from "~/types"
-import type { ComputedRef, Ref } from "vue"
 
 import { Games } from "~/dto"
 import { createCollection, createStore } from "~/factories"
 
-export let useGamesStore: GamesStore.Store = createStore<
+export let useGamesStore: () => GamesStore.Store = createStore<
     GamesStore.Id,
     GamesStore.State,
     GamesStore.Getters,
     GamesStore.Actions
->("gamesStore", (): GamesStore.Store => {
-    let gamesRaw: Ref<GameRaw[]> = ref([])
-    let games: ComputedRef<Games> = computed((): Games => createCollection(Games, getRef(gamesRaw)))
+>("gamesStore", {
+    actions: {
+        setGamesRaw(gamesRaw: GameRaw[]): void {
+            this.gamesRaw = gamesRaw
+        },
+    },
 
-    function setGamesRaw(raw: GameRaw[]): void {
-        setRef(gamesRaw, raw)
-    }
+    getters: {
+        games(): Games {
+            return createCollection(Games, this.gamesRaw)
+        },
+    },
 
-    return {
-        games,
-        setGamesRaw,
-    }
+    state: (): GamesStore.State => ({
+        gamesRaw: [],
+    }),
 })

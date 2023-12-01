@@ -105,6 +105,15 @@ let nuxtConfig: NuxtConfig = {
     imports: {
         presets: [
             {
+                from: "pinia",
+                imports: [
+                    "mapActions",
+                    "mapState",
+                    "mapStores",
+                    "mapWritableState",
+                ],
+            },
+            {
                 from: "@vueuse/core",
                 imports: [
                     // todo: added here & rm from code

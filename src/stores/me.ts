@@ -1,11 +1,32 @@
-import type { MeStore, UserStore } from "~/types"
-import type { ComputedRef } from "vue"
+import type { UserRaw } from "#schema/data-contracts"
+import type { MeStore } from "~/types"
 
-export let useMeStore: MeStore.Store = (): MeStore.Store => {
-    let userStore: UserStore.Store = useUserStore("meStore")
-    let authenticated: ComputedRef<boolean> = computed((): boolean => Boolean(useGet(userStore.user, "id")))
+import { User } from "~/dto"
+import { createModel, createStore } from "~/factories"
 
-    return mergeStores(userStore, {
-        authenticated,
-    })
-}
+export let useMeStore: () => MeStore.Store = createStore<
+    MeStore.Id,
+    MeStore.State,
+    MeStore.Getters,
+    MeStore.Actions
+>("userStore", {
+    actions: {
+        setMeRaw(meRaw: UserRaw): void {
+            this.meRaw = meRaw
+        },
+    },
+
+    getters: {
+        authenticated(): boolean {
+            return !isNil(this.meRaw.id)
+        },
+
+        me(): User {
+            return createModel(User, this.meRaw)
+        },
+    },
+
+    state: (): MeStore.State => ({
+        meRaw: {},
+    }),
+})

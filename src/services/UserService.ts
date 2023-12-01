@@ -1,4 +1,4 @@
-import type {UserLikeRaw, UserRaw, UserUpdateRaw} from "#schema/data-contracts"
+import type { UserRaw } from "#schema/data-contracts"
 import type { HttpResponse } from "#schema/http-client"
 import type { ApiAdapter } from "~/adapters"
 
@@ -7,7 +7,7 @@ export class UserService {
         private _apiAdapter: ApiAdapter,
     ) {}
 
-    public async dislikeGame(payload: UserLikeRaw): Promise<void> {
+    public async dislikeGame(payload: string): Promise<void> {
         await this._apiAdapter.dislikeGameEndpointApiV1UsersDislikeGamePost(payload)
     }
 
@@ -17,7 +17,7 @@ export class UserService {
         return data
     }
 
-    public async likeGame(payload: UserLikeRaw): Promise<void> {
+    public async likeGame(payload: string): Promise<void> {
         await this._apiAdapter.likeGameEndpointApiV1UsersLikeGamePost(payload)
     }
 

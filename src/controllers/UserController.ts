@@ -9,17 +9,17 @@ export class UserController {
     ) {}
 
     public async dislikeGame(gameId: string): Promise<void> {
-        await this._userService.dislikeGame({ liked_game: gameId })
+        await this._userService.dislikeGame(gameId)
         await this.fetchUser()
     }
 
     public async fetchUser(): Promise<void> {
         let userRaw: UserRaw = await this._userService.fetchUser()
-        this._storeClient.meStore.setUserRaw(userRaw)
+        this._storeClient.meStore.setMeRaw(userRaw)
     }
 
     public async likeGame(gameId: string): Promise<void> {
-        await this._userService.likeGame({ liked_game: gameId })
+        await this._userService.likeGame(gameId)
         await this.fetchUser()
     }
 

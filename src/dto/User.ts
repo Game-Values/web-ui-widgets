@@ -1,4 +1,7 @@
 import type { UserRaw } from "#schema/data-contracts"
+import type { LikedGameRaw } from "~/dto/LikedGame"
+
+import { LikedGames } from "~/dto/LikedGames"
 
 export class User implements UserRaw {
     @Expose()
@@ -34,10 +37,10 @@ export class User implements UserRaw {
     declare public is_superuser: boolean
 
     @Expose()
-    @Transform(({ value }: { value: null | string[] }): string[] => value || [])
+    @Transform(({ value }: { value: LikedGameRaw[] }): LikedGames => new LikedGames(value || []))
     @IsDefined()
     @IsArray()
-    declare public liked_games: string[]
+    declare public liked_games: LikedGames
 
     @Expose()
     @IsDefined()

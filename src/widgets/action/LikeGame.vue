@@ -8,10 +8,10 @@ let props = defineProps<{
 let { storeClient } = useClients()
 let { userController } = useControllers()
 
-let { user } = storeToRefs(storeClient.meStore)
+let { me } = storeToRefs(storeClient.meStore)
 
 let isGameLiked = computed((): boolean => (
-    getRef(user).liked_games.includes(props.game.id)
+    getRef(me).liked_games.likedIds.includes(props.game.id)
 ))
 
 async function handleLikeGame(): Promise<void> {

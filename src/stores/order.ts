@@ -4,53 +4,41 @@ import type { ComputedRef, Ref } from "vue"
 import { ItemType, OrderStep } from "~/enums"
 import { createStore } from "~/factories"
 
-export let useOrderStore: OrderStore.Store = createStore<
+export let useOrderStore: () => OrderStore.Store = createStore<
     OrderStore.Id,
     OrderStore.State,
     OrderStore.Getters,
     OrderStore.Actions
->("orderStore", (): OrderStore.Store => {
-    let orderSteps: OrderStep[] = reactive([
-        OrderStep.CHOOSE_DEAL,
-        OrderStep.CONFIRM_ORDER,
-        OrderStep.CONFIRM_RECEIPT,
-    ])
+>("orderStore", {
+    actions: {
+        nextOrderStep(): void {
+            if (~this.orderStepIndex)
+                this.orderStep = useGet(this.orderSteps, this.orderStepIndex + 1)
+        },
 
-    let orderType: Ref<ItemType> = ref(ItemType.GOLD)
-    let orderStep: Ref<OrderStep> = ref(OrderStep.CHOOSE_DEAL)
+        prevOrderStep(): void {
+            if (this.orderStepIndex > 0)
+                this.orderStep = useGet(this.orderSteps, this.orderStepIndex - 1)
+        },
 
-    let orderStepIndex: ComputedRef<number> = computed((): number => (
-        getRef(orderSteps).indexOf(getRef(orderStep))
-    ))
+        setOrderStep(orderStep: OrderStep): void {
+            this.orderStep = orderStep
+        },
+    },
 
-    function nextOrderStep(): void {
-        let _orderStepIndex: number = getRef(orderStepIndex)
-        if (~_orderStepIndex)
-            setOrderStep(useGet(getRef(orderSteps), _orderStepIndex + 1))
-    }
+    getters: {
+        orderStepIndex(): number {
+            return this.orderSteps.indexOf(this.orderStep)
+        },
+    },
 
-    function prevOrderStep(): void {
-        let _orderStepIndex: number = getRef(orderStepIndex)
-        if (_orderStepIndex > 0)
-            setOrderStep(useGet(getRef(orderSteps), _orderStepIndex - 1))
-    }
-
-    function setOrderType(_orderType: ItemType): void {
-        setRef(orderType, _orderType)
-    }
-
-    function setOrderStep(_orderStep: OrderStep): void {
-        setRef(orderStep, _orderStep)
-    }
-
-    return {
-        nextOrderStep,
-        orderStep,
-        orderStepIndex,
-        orderSteps,
-        orderType,
-        prevOrderStep,
-        setOrderStep,
-        setOrderType,
-    }
+    state: (): OrderStore.State => ({
+        orderStep: OrderStep.CHOOSE_DEAL,
+        orderSteps: [
+            OrderStep.CHOOSE_DEAL,
+            OrderStep.CONFIRM_ORDER,
+            OrderStep.CONFIRM_RECEIPT,
+        ],
+        orderType: ItemType.GOLD,
+    }),
 })

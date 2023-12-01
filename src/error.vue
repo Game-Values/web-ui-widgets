@@ -21,6 +21,8 @@ let errorView = computed((): AsyncComponent => (
     useGet(getRef(errorViews), props.error.statusCode) ||
     useGet(getRef(errorViews), HttpStatus.INTERNAL_SERVER_ERROR)
 ))
+
+console.log(props.error)
 </script>
 
 <template>

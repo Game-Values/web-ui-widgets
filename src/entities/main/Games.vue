@@ -2,6 +2,7 @@
 let { storeClient } = useClients()
 
 let { games } = storeToRefs(storeClient.gamesStore)
+let { me } = storeToRefs(storeClient.meStore)
 
 let { lg } = useBreakpoints()
 

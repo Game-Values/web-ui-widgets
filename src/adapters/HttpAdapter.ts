@@ -61,9 +61,12 @@ export class HttpAdapter extends HttpClient {
                 key: hash(requestParams),
                 onRequest: (context: FetchContext): void => {
                     if (requestParams.body)
-                        requestParams.body = serialize(
-                            cleanObject(requestParams.body),
-                        )
+                        if (isObject(requestParams.body))
+                            requestParams.body = serialize(
+                                cleanObject(requestParams.body),
+                            )
+                        else
+                            requestParams.body = JSON.stringify(requestParams.body)
 
                     useMerge(context.options, this.mergeRequestParams(this._requestParams, requestParams))
                 },

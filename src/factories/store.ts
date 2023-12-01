@@ -1,5 +1,12 @@
-import type { Callable, DefineStore, MaybeCallable } from "~/types"
-import type { _ActionsTree, _GettersTree, StateTree, StoreDefinition } from "pinia"
+import type {
+    _ActionsTree,
+    _GettersTree,
+    Store as _Store,
+    _StoreWithState,
+    DefineStoreOptions,
+    StateTree,
+    StoreDefinition,
+} from "pinia"
 
 export function createStore<
     Id extends string,
@@ -8,18 +15,24 @@ export function createStore<
     Actions extends _ActionsTree,
 >(
     defaultStoreId: string,
-    storeDefinition: MaybeCallable<any>,
-): Callable<
-    DefineStore<
-        Id,
-        State,
-        Getters,
-        Actions
-    >
+    storeOptions: Omit<
+        DefineStoreOptions<
+            Id,
+            State,
+            Getters,
+            Actions
+        >,
+        "id"
+    >,
+): () => _StoreWithState<
+    Id,
+    State,
+    Getters,
+    Actions
 > {
     return function (
         storeId: string = defaultStoreId,
-    ): DefineStore<
+    ): _Store<
         Id,
         State,
         Getters,
@@ -30,7 +43,7 @@ export function createStore<
             State,
             Getters,
             Actions
-        > = defineStore(storeId, storeDefinition) as StoreDefinition<
+        > = defineStore(storeId, storeOptions) as StoreDefinition<
             Id,
             State,
             Getters,
