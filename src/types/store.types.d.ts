@@ -43,7 +43,7 @@ export namespace GamesStore {
 export namespace GameStore {
     export type Id = "gameStore"
 
-    export type State = {f
+    export type State = {
         gameRaw: GameRaw
     }
 

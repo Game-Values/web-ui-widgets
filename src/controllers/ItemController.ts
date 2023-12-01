@@ -9,7 +9,7 @@ export class ItemController {
 
     public async createItem(): Promise<void> {
         await this._itemService.createItem(
-            this._storeClient.saleStore.item,
+            this._storeClient.saleStore.saleItem,
         )
     }
 }
