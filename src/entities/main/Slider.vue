@@ -72,81 +72,74 @@ let sliderAction = computed((): (
     loop
     navigation
     pagination
-    @after-init="(
-        (swiper: Swiper) => (
-            nextTick(() => swiper.updateSlides())
-        )
-    )"
 >
-    <lazy-client-only>
-        <swiper-slide>
-            <slide-main
-                :action="sliderAction"
-                src="/images/main-slide-1.png"
-                text="Invite friends and get bonuses"
-                title="Unlock the Power of Hassle-Free Trading"
-            />
-        </swiper-slide>
+    <swiper-slide>
+        <slide-main
+            :action="sliderAction"
+            src="/images/main-slide-1.png"
+            text="Invite friends and get bonuses"
+            title="Unlock the Power of Hassle-Free Trading"
+        />
+    </swiper-slide>
 
-        <swiper-slide>
-            <slide-main
-                :action="sliderAction"
-                src="/images/main-slide-2.png"
-                title="AI CoPilot for Gamers > [Loading______35%]"
-            />
-        </swiper-slide>
+    <swiper-slide>
+        <slide-main
+            :action="sliderAction"
+            src="/images/main-slide-2.png"
+            title="AI CoPilot for Gamers > [Loading______35%]"
+        />
+    </swiper-slide>
 
-        <swiper-slide>
-            <slide-main src="/images/main-slide-3.png">
-                <template #title>
-                    <v-highlight
-                        :key-words="[
-                            '0% Fees',
-                        ]"
-                        content="Trade Smart with 0% Fees for More Possibilities!"
-                    >
-                        <template #light="{ text }">
-                            <v-text type="success">
-                                {{ text }}
-                            </v-text>
-                        </template>
-                    </v-highlight>
-                </template>
-            </slide-main>
-        </swiper-slide>
+    <swiper-slide>
+        <slide-main src="/images/main-slide-3.png">
+            <template #title>
+                <v-highlight
+                    :key-words="[
+                        '0% Fees',
+                    ]"
+                    content="Trade Smart with 0% Fees for More Possibilities!"
+                >
+                    <template #light="{ text }">
+                        <v-text type="success">
+                            {{ text }}
+                        </v-text>
+                    </template>
+                </v-highlight>
+            </template>
+        </slide-main>
+    </swiper-slide>
 
-        <swiper-slide>
-            <slide-main
-                src="/images/main-slide-4.png"
-                text="Unlock Rewards: Referral Program Launching Soon!"
-                title="Referral Program"
-            />
-        </swiper-slide>
+    <swiper-slide>
+        <slide-main
+            src="/images/main-slide-4.png"
+            text="Unlock Rewards: Referral Program Launching Soon!"
+            title="Referral Program"
+        />
+    </swiper-slide>
 
-        <swiper-slide>
-            <slide-main
-                src="/images/main-slide-5.png"
-                text="Share Your Feedback & Ideas"
-                title="Help Shape Our Platform!"
-            />
-        </swiper-slide>
+    <swiper-slide>
+        <slide-main
+            src="/images/main-slide-5.png"
+            text="Share Your Feedback & Ideas"
+            title="Help Shape Our Platform!"
+        />
+    </swiper-slide>
 
-        <swiper-slide>
-            <slide-main
-                src="/images/main-slide-6.png"
-                text="Congratulations to our Users 🏆"
-            >
-                <template #title>
-                    <v-highlight
-                        :key-words="[
-                            'Top 3 Champions',
-                        ]"
-                        content="Top 3 Champions 1st Season"
-                    />
-                </template>
-            </slide-main>
-        </swiper-slide>
-    </lazy-client-only>
+    <swiper-slide>
+        <slide-main
+            src="/images/main-slide-6.png"
+            text="Congratulations to our Users 🏆"
+        >
+            <template #title>
+                <v-highlight
+                    :key-words="[
+                        'Top 3 Champions',
+                    ]"
+                    content="Top 3 Champions 1st Season"
+                />
+            </template>
+        </slide-main>
+    </swiper-slide>
 </swiper>
 </template>
 
