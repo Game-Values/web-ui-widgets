@@ -11,7 +11,7 @@ let isMobileMenuActive = ref(false)
         @click="isMobileMenuActive = true"
     >
         <ui-icon
-            icon="bars-3"
+            heroicons="bars-3"
             size="30"
         />
     </v-button>

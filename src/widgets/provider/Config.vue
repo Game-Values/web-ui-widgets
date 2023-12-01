@@ -26,6 +26,7 @@ await setLocale(DEFAULT_LOCALE)
             shadow: 'hover',
         },
         drawer: {
+            transfer: true,
             undivided: true,
         },
         dropdown: {

@@ -57,8 +57,7 @@ let { authenticated } = storeToRefs(storeClient.meStore)
 
             <v-column
                 :lg="7"
-                :md="8"
-                :xs="0"
+                :span="0"
             >
                 <!-- todo: component & i18n -->
                 <nav>
@@ -106,6 +105,7 @@ let { authenticated } = storeToRefs(storeClient.meStore)
                     justify="end"
                     size="large"
                 >
+                    <!-- todo: component -->
                     <template v-if="authenticated">
                         <ui-link>
                             <ui-icon
@@ -174,9 +174,12 @@ let { authenticated } = storeToRefs(storeClient.meStore)
 
             <v-column
                 :lg="0"
-                :md="2"
+                :md="10"
                 :sm="4"
                 :xs="5"
+                :use-flex="{
+                    justify: 'end',
+                }"
             >
                 <header-mobile-menu />
             </v-column>
