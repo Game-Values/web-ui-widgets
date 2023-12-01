@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { Callable } from "~/types"
+import type { Swiper } from "swiper"
 import type { ComputedRef } from "vue"
 
 import { Breakpoint } from "~/enums"
@@ -71,6 +72,11 @@ let sliderAction = computed((): (
     loop
     navigation
     pagination
+    @after-init="(
+        (swiper: Swiper) => (
+            nextTick(() => swiper.updateSlides())
+        )
+    )"
 >
     <lazy-client-only>
         <swiper-slide>
