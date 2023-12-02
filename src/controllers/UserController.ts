@@ -8,23 +8,28 @@ export class UserController {
         private _storeClient: StoreClient,
     ) {}
 
-    public async dislikeGame(gameId: string): Promise<void> {
-        await this._userService.dislikeGame(gameId)
-        await this.fetchUser()
+    public async dislikeGameMe(gameId: string): Promise<void> {
+        await this._userService.dislikeGameMe(gameId)
+        await this.fetchMe()
     }
 
-    public async fetchUser(): Promise<void> {
-        let userRaw: UserRaw = await this._userService.fetchUser()
-        this._storeClient.meStore.setMeRaw(userRaw)
+    public async fetchMe(): Promise<void> {
+        let userRaw: UserRaw = await this._userService.fetchMe()
+        this._storeClient.userMeStore.setUserRaw(userRaw)
     }
 
-    public async likeGame(gameId: string): Promise<void> {
-        await this._userService.likeGame(gameId)
-        await this.fetchUser()
+    public async fetchUser(userId: string): Promise<void> {
+        // let userRaw: UserRaw = await this._userService.fetchUser(userId)
+        // this._storeClient.userStore.setUserRaw(userRaw)
     }
 
-    public async updateUser(): Promise<void> {
-        let userRaw: UserRaw = await this._userService.updateUser(this._storeClient.settingsStore.settings)
-        // this._storeClient.meStore.setMeRaw(userRaw)
+    public async likeGameMe(gameId: string): Promise<void> {
+        await this._userService.likeGameMe(gameId)
+        await this.fetchMe()
+    }
+
+    public async updateMe(): Promise<void> {
+        await this._userService.updateMe(this._storeClient.settingsStore.settings)
+        await this.fetchMe()
     }
 }

@@ -4,7 +4,7 @@ import type { GameStore } from "~/types"
 import { Game } from "~/dto"
 import { createModel, createStore } from "~/factories"
 
-export let useGameStore: () => GameStore.Store = createStore<
+export let useGameStore: (storeId?: string) => GameStore.Store = createStore<
     GameStore.Id,
     GameStore.State,
     GameStore.Getters,

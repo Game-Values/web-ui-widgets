@@ -10,7 +10,9 @@
         <v-column :lg="14">
             <v-row>
                 <v-column>
-                    <user-card />
+                    <user-card
+
+                    />
                 </v-column>
 
                 <v-column>

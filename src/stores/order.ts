@@ -1,10 +1,9 @@
 import type { OrderStore } from "~/types"
-import type { ComputedRef, Ref } from "vue"
 
 import { ItemType, OrderStep } from "~/enums"
 import { createStore } from "~/factories"
 
-export let useOrderStore: () => OrderStore.Store = createStore<
+export let useOrderStore: (storeId?: string) => OrderStore.Store = createStore<
     OrderStore.Id,
     OrderStore.State,
     OrderStore.Getters,
@@ -39,6 +38,6 @@ export let useOrderStore: () => OrderStore.Store = createStore<
             OrderStep.CONFIRM_ORDER,
             OrderStep.CONFIRM_RECEIPT,
         ],
-        orderType: ItemType.GOLD,
+        itemType: ItemType.GOLD,
     }),
 })

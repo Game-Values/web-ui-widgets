@@ -3,7 +3,7 @@ let { storeClient } = useClients()
 let { loginModal, registrationModal } = useModals()
 let { fullPath: mainRoutePath } = useMainRoute()
 
-let { authenticated } = storeToRefs(storeClient.meStore)
+let { authenticated } = storeToRefs(storeClient.userMeStore)
 </script>
 
 <template>

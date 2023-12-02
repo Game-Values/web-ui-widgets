@@ -8,7 +8,7 @@ defineSlots<{
 
 let { storeClient } = useClients()
 
-let { authenticated } = storeToRefs(storeClient.meStore)
+let { authenticated } = storeToRefs(storeClient.userMeStore)
 </script>
 
 <template>

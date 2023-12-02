@@ -10,7 +10,7 @@ let emit = defineEmits<{
 let { storeClient } = useClients()
 let { loginModal, registrationModal } = useModals()
 
-let { authenticated } = storeToRefs(storeClient.meStore)
+let { authenticated } = storeToRefs(storeClient.userMeStore)
 
 let active = computed({
     get: () => props.modelValue,

@@ -2,7 +2,7 @@
 let { storeClient } = useClients()
 
 let { games } = storeToRefs(storeClient.gamesStore)
-let { me } = storeToRefs(storeClient.meStore)
+let { user } = storeToRefs(storeClient.userMeStore)
 
 let { lg } = useBreakpoints()
 
@@ -33,7 +33,7 @@ let rowGap = computed((): number[] => {
 
             <game-grid
                 :games="gamesCollection"
-                :liked-games="me.liked_games"
+                :liked-games="user.liked_games"
             />
         </v-space>
     </v-column>

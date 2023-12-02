@@ -1,5 +1,5 @@
 import type { Route } from "~/types"
-import type { LocationQuery } from "vue-router"
+import type { LocationQuery, RouteParams } from "vue-router"
 
 import { ItemType, RouteName } from "~/enums"
 
@@ -26,10 +26,10 @@ export function useGameRoute(gameId: string): Route {
 
 export function useOrderRoute(): Route {
     return useLocaleRoute()({
-        name: RouteName.ORDER,
+        name: RouteName.GAME_ITEM_ORDER,
         params: {
+            itemType: ItemType.GOLD, // todo
             orderId: 1,
-            orderType: ItemType.GOLD, // todo
         },
     })
 }
@@ -44,5 +44,14 @@ export function useSaleRoute(query?: LocationQuery): Route {
 export function useSettingsRoute(): Route {
     return useLocaleRoute()({
         name: RouteName.ACCOUNT_SETTINGS,
+    })
+}
+
+export function useUserRoute(userId: string): Route {
+    return useLocaleRoute()({
+        name: RouteName.USER,
+        params: {
+            userId,
+        },
     })
 }

@@ -7,12 +7,12 @@ let auth: () => Promise<boolean> = onceClientOnly(async (): Promise<boolean> => 
     let { authController, userController } = useControllers()
 
     if (cookieClient.accessToken)
-        await userController.fetchUser()
+        await userController.fetchMe()
 
-    if (!storeClient.meStore.authenticated)
+    if (!storeClient.userMeStore.authenticated)
         await authController.logout()
 
-    return storeClient.meStore.authenticated
+    return storeClient.userMeStore.authenticated
 })
 
 export default defineNuxtRouteMiddleware(async (to: RouteLocationNormalized): Promise<void> => {

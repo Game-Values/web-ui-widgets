@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 let { storeClient } = useClients()
 
-let { me } = storeToRefs(storeClient.meStore)
+let { user } = storeToRefs(storeClient.userMeStore)
 </script>
 
 <template>
@@ -10,7 +10,7 @@ let { me } = storeToRefs(storeClient.meStore)
         <v-column :lg="18">
             <v-row>
                 <v-column>
-                    <user-card :user="me" />
+                    <user-card :user="user" />
                 </v-column>
 
                 <v-column>

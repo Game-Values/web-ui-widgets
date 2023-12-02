@@ -53,6 +53,7 @@ export class Controllers extends DIAbstract<ControllersTokens> {
             ],
             [
                 OrderController,
+                this.__getToken(ServiceToken.ITEM),
                 this.__getToken(ServiceToken.ORDER),
                 this.__getToken(ClientToken.STORE),
             ],

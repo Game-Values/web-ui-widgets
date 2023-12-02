@@ -7,21 +7,29 @@ export class UserService {
         private _apiAdapter: ApiAdapter,
     ) {}
 
-    public async dislikeGame(payload: string): Promise<void> {
+    public async dislikeGameMe(payload: string): Promise<void> {
         await this._apiAdapter.dislikeGameEndpointApiV1UsersDislikeGamePost(payload)
     }
 
-    public async fetchUser(): Promise<UserRaw> {
+    public async fetchMe(): Promise<UserRaw> {
         let { data }: HttpResponse<UserRaw> = await this._apiAdapter.readUserApiV1UsersGet()
 
         return data
     }
 
-    public async likeGame(payload: string): Promise<void> {
+    public async fetchUser(userId: string): Promise<UserRaw> {
+        // this._apiAdapter.user
+
+        // let { data }: HttpResponse<UserRaw> = await this._apiAdapter.readUserApiV1UsersGet()
+        //
+        // return data
+    }
+
+    public async likeGameMe(payload: string): Promise<void> {
         await this._apiAdapter.likeGameEndpointApiV1UsersLikeGamePost(payload)
     }
 
-    public async updateUser(payload: UserUpdateRaw): Promise<UserRaw> {
+    public async updateMe(payload: UserUpdateRaw): Promise<UserRaw> {
         let { data }: HttpResponse<UserRaw> = await this._apiAdapter.updateUserApiV1UsersPut(payload)
 
         return data

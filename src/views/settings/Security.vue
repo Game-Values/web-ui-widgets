@@ -56,7 +56,7 @@ let { userController } = useControllers()
                 <v-form-item>
                     <v-form-submit
                         block
-                        @submit="userController.updateUser()"
+                        @submit="userController.updateMe()"
                     >
                         Save
                     </v-form-submit>

@@ -4,7 +4,7 @@ import type { Callable } from "~/types"
 let { registrationModal } = useModals()
 let { storeClient } = useClients()
 
-let { authenticated } = storeToRefs(storeClient.meStore)
+let { authenticated } = storeToRefs(storeClient.userMeStore)
 
 let sliderAction = computed((): (
     {

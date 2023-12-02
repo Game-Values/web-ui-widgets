@@ -4,7 +4,7 @@ import type { SettingsStore } from "~/types"
 import { createStore } from "~/factories"
 
 // todo: composable store
-export let useSettingsStore: () => SettingsStore.Store = createStore<
+export let useSettingsStore: (storeId?: string) => SettingsStore.Store = createStore<
     SettingsStore.Id,
     SettingsStore.State,
     SettingsStore.Getters,
@@ -25,7 +25,7 @@ export let useSettingsStore: () => SettingsStore.Store = createStore<
 
         return {
             settingsRaw: useAssign(
-                usePick(storeClient.meStore.meRaw, [
+                usePick(storeClient.userMeStore.userRaw, [
                     "email",
                     "full_name",
                 ]),

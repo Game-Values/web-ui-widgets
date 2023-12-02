@@ -4,12 +4,13 @@ import type { UserStore } from "~/types"
 import { User } from "~/dto"
 import { createModel, createStore } from "~/factories"
 
-export let useUserStore: () => UserStore.Store = createStore<
+// todo: composable store
+export let useUserStore: (storeId?: string) => UserStore.Store = createStore<
     UserStore.Id,
     UserStore.State,
     UserStore.Getters,
     UserStore.Actions
->("userStore", {
+>("UserStore", {
     actions: {
         setUserRaw(userRaw: UserRaw): void {
             this.userRaw = userRaw
@@ -17,6 +18,12 @@ export let useUserStore: () => UserStore.Store = createStore<
     },
 
     getters: {
+        authenticated(): boolean {
+            return Boolean(
+                useGet(this.userRaw, "id"),
+            )
+        },
+
         user(): User {
             return createModel(User, this.userRaw)
         },

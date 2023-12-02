@@ -43,4 +43,10 @@ export class Item implements ItemRaw {
     @IsString()
     @IsNotEmpty()
     declare public name: string
+
+    @Expose()
+    @IsDefined()
+    @IsString()
+    @IsNotEmpty()
+    declare public owner_id: string
 }

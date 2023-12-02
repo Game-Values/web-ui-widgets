@@ -3,7 +3,7 @@ import type { SaleStore } from "~/types"
 import { Item } from "~/dto"
 import { createModel, createStore } from "~/factories"
 
-export let useSaleStore: () => SaleStore.Store = createStore<
+export let useSaleStore: (storeId?: string) => SaleStore.Store = createStore<
     SaleStore.Id,
     SaleStore.State,
     SaleStore.Getters,

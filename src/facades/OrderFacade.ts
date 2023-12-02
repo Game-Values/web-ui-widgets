@@ -7,6 +7,8 @@ export class OrderFacade implements FacadeAbstract {
     ) {}
 
     public async bootstrap(): Promise<void> {
-        // todo
+        await Promise.all([
+
+        ])
     }
 }

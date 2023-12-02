@@ -15,7 +15,7 @@ let routesI18n = computed((): Record<RouteName, string> => (
     {
         [RouteName.GAME]: t("Game"),
         [RouteName.MAIN]: t("Homepage"),
-        [RouteName.ORDER]: $t("template.Deal", {
+        [RouteName.GAME_ITEM_ORDER]: $t("template.Deal", {
             orderId: useRoute().params.orderId,
         }),
     }

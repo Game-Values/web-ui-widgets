@@ -14,7 +14,7 @@ let { userController } = useControllers()
 
     <v-form-item label="Nickname">
         <v-input
-            :value="storeClient.meStore.me.full_name"
+            :value="storeClient.userMeStore.user.full_name"
             disabled
         />
     </v-form-item>
@@ -50,7 +50,7 @@ let { userController } = useControllers()
     <v-form-item>
         <v-form-submit
             block
-            @submit="userController.updateUser()"
+            @submit="userController.updateMe()"
         >
             Save
         </v-form-submit>

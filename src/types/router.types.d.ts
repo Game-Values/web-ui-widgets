@@ -31,6 +31,7 @@ declare module "vue-router" {
         locale: Locale
         orderId: number
         paymentType: PaymentType
+        userId: string
     }
 
     interface RouteRecordRaw {

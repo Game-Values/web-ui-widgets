@@ -8,24 +8,24 @@ let props = defineProps<{
 let { storeClient } = useClients()
 let { userController } = useControllers()
 
-let { me } = storeToRefs(storeClient.meStore)
+let { user } = storeToRefs(storeClient.userMeStore)
 
 let isGameLiked = computed((): boolean => (
-    getRef(me).liked_games.likedIds.includes(props.game.id)
+    getRef(user).liked_games.likedIds.includes(props.game.id)
 ))
 
-async function handleLikeGame(): Promise<void> {
+async function handleLikeGameMe(): Promise<void> {
     if (getRef(isGameLiked))
-        await userController.dislikeGame(props.game.id)
+        await userController.dislikeGameMe(props.game.id)
     else
-        await userController.likeGame(props.game.id)
+        await userController.likeGameMe(props.game.id)
 }
 </script>
 
 <template>
 <button-action
     v-bind="$attrs"
-    :action="handleLikeGame"
+    :action="handleLikeGameMe"
     circle
     size="small"
     text

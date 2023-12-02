@@ -4,7 +4,7 @@ import type {
     UserRaw,
     UserUpdateRaw,
 } from "#schema/data-contracts"
-import type { Game, Games, Item, User } from "~/dto"
+import type { Game, Games, Item, Items, User } from "~/dto"
 import type { ItemType, OrderStep } from "~/enums"
 import type {
     _ActionsTree,
@@ -13,7 +13,6 @@ import type {
     StateTree,
     StoreActions,
 } from "pinia"
-import type { UnwrapRef } from "vue"
 
 export type DefineStore<
     Id extends string,
@@ -64,7 +63,7 @@ export namespace GameStore {
 }
 
 export namespace ItemStore {
-    export type Id = "saleStore"
+    export type Id = "itemStore"
 
     export type State = {
         itemRaw: ItemRaw
@@ -81,20 +80,19 @@ export namespace ItemStore {
     export type Store = DefineStore<Id, State, Getters, Actions>
 }
 
-export namespace MeStore {
-    export type Id = "meStore"
+export namespace ItemsStore {
+    export type Id = "itemsStore"
 
     export type State = {
-        meRaw: UserStore.State["userRaw"]
+        itemsRaw: ItemRaw[]
     }
 
     export type Getters = {
-        authenticated: () => boolean
-        me: UserStore.Getters["user"]
+        items: () => Items
     }
 
     export type Actions = {
-        setMeRaw: UserStore.Actions["setUserRaw"]
+        setItemsRaw: (itemsRaw: ItemRaw[]) => void
     }
 
     export type Store = DefineStore<Id, State, Getters, Actions>
@@ -106,7 +104,7 @@ export namespace OrderStore {
     export type State = {
         orderStep: OrderStep
         orderSteps: OrderStep[]
-        orderType: ItemType // todo
+        itemType: ItemType // todo
     }
 
     export type Getters = {
@@ -170,6 +168,7 @@ export namespace UserStore {
     }
 
     export type Getters = {
+        authenticated: () => boolean
         user: () => User
     }
 

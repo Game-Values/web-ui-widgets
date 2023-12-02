@@ -8,9 +8,9 @@ export function createCollection<
     Raw extends object[],
 >(
     Collection: ClassConstructor<T>,
-    raw: Raw,
+    raw: Raw[],
 ): T {
-    return new Collection(raw)
+    return new Collection(raw || [])
 }
 
 export function createModel<

@@ -1,7 +1,7 @@
 import type {
     GamesStore,
     GameStore,
-    MeStore,
+    ItemsStore,
     OrderStore,
     SaleStore,
     SettingsStore,
@@ -21,8 +21,13 @@ export class StoreClient {
     }
 
     @Memoize()
-    public get meStore(): MeStore.Store {
-        return useMeStore()
+    public get itemsGameStore(): ItemsStore.Store {
+        return useItemsStore("itemsGameStore")
+    }
+
+    @Memoize()
+    public get itemsStore(): GameStore.Store {
+        return useGameStore()
     }
 
     @Memoize()
@@ -38,6 +43,11 @@ export class StoreClient {
     @Memoize()
     public get settingsStore(): SettingsStore.Store {
         return useSettingsStore()
+    }
+
+    @Memoize()
+    public get userMeStore(): UserStore.Store {
+        return useUserStore("userMeStore")
     }
 
     @Memoize()

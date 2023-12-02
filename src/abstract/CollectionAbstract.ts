@@ -7,7 +7,7 @@ export abstract class CollectionAbstract<
     Raw extends object,
 > {
     public constructor(
-        private _items: Raw[] = [],
+        private _items: Raw[],
     ) {}
 
     public add(item: any): void {
