@@ -29,5 +29,11 @@ await saleFacade.bootstrap()
             <entity-sale-upload />
         </v-column>
     </v-row>
+
+    <v-row>
+        <v-column>
+            <app-faq />
+        </v-column>
+    </v-row>
 </ui-page>
 </template>

@@ -21,6 +21,15 @@ defineSlots<{
 
 let breakpoint = useBreakpoint()
 
+let slideHeight: ComputedRef<number> = computed((): number => (
+    useGet({
+        [Breakpoint.LG]: 352,
+        [Breakpoint.MD]: 352,
+        [Breakpoint.SM]: 430,
+        [Breakpoint.XS]: 540,
+    }, getRef(breakpoint))
+))
+
 let titleLevel: ComputedRef<number> = computed((): number => (
     useGet({
         [Breakpoint.LG]: 1,
@@ -33,14 +42,15 @@ let titleLevel: ComputedRef<number> = computed((): number => (
 
 <template>
 <ui-overlay
-    :class="`
-        bg-no-repeat
-        bg-cover
-        bg-right
-    `"
+    :height="slideHeight"
     :style="{
         backgroundImage: `url(${src})`,
     }"
+    class="
+        bg-no-repeat
+        bg-cover
+        bg-right
+    "
 >
     <template #overlay>
         <slot>

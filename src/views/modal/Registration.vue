@@ -86,7 +86,7 @@ let registrationPayload: ComputedRef<BodyCreateUserProfileApiV1UsersPostRaw> = (
                 block
                 @submit="(
                     authController.registration(registrationPayload)
-                        // .then((): void => reloadNuxtApp())
+                        .then((): void => reloadNuxtApp())
                 )"
             >
                 Registration

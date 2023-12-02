@@ -9,10 +9,10 @@ defineProps<{
 
 <template>
 <v-card
-    :id="game.id"
     :class="['group', {
         'liked': liked,
     }]"
+    :id="game.id"
 >
     <ui-link
         :to="useGameRoute(game.id)"
@@ -45,13 +45,13 @@ defineProps<{
             v-if="game.attributes.lots"
             :color="useTheme('colors.secondary')"
             size="small"
+            circle
             class="
                 absolute!
                 top-2.5
                 right-2.5
                 text-sm
             "
-            circle
         >
             {{ game.attributes.lots }}
         </v-tag>

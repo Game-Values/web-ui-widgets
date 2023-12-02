@@ -44,5 +44,11 @@ await mainFacade.bootstrap()
             // TODO: Chat
         </v-column>
     </v-row>
+
+    <v-row>
+        <v-column>
+            <app-faq />
+        </v-column>
+    </v-row>
 </ui-page>
 </template>

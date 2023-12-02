@@ -45,5 +45,11 @@ await gameFacade.bootstrap()
             <entity-game-lots />
         </v-column>
     </v-row>
+
+    <v-row>
+        <v-column>
+            <app-faq />
+        </v-column>
+    </v-row>
 </ui-page>
 </template>

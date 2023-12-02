@@ -1,25 +1,10 @@
 <script lang="ts" setup>
 import type { Callable } from "~/types"
-import type { Swiper } from "swiper"
-import type { ComputedRef } from "vue"
-
-import { Breakpoint } from "~/enums"
-
-let breakpoint = useBreakpoint()
 
 let { registrationModal } = useModals()
 let { storeClient } = useClients()
 
 let { authenticated } = storeToRefs(storeClient.meStore)
-
-let sliderHeight: ComputedRef<number> = computed((): number => (
-    useGet({
-        [Breakpoint.LG]: 352,
-        [Breakpoint.MD]: 352,
-        [Breakpoint.SM]: 430,
-        [Breakpoint.XS]: 540,
-    }, getRef(breakpoint))
-))
 
 let sliderAction = computed((): (
     {
@@ -59,10 +44,6 @@ let sliderAction = computed((): (
         SwiperPagination,
     ]"
     :slides-per-view="1"
-    :style="`
-        --swiper-height: ${pxToRem(sliderHeight)};
-        height: var(--swiper-height);
-    `"
     a11y
     class="
         md:(mb-4rem)
@@ -83,62 +64,72 @@ let sliderAction = computed((): (
     </swiper-slide>
 
     <swiper-slide>
-        <slide-main
-            :action="sliderAction"
-            src="/images/main-slide-2.png"
-            title="AI CoPilot for Gamers > [Loading______35%]"
-        />
+        <lazy-client-only>
+            <slide-main
+                :action="sliderAction"
+                src="/images/main-slide-2.png"
+                title="AI CoPilot for Gamers > [Loading______35%]"
+            />
+        </lazy-client-only>
     </swiper-slide>
 
     <swiper-slide>
-        <slide-main src="/images/main-slide-3.png">
-            <template #title>
-                <v-highlight
-                    :key-words="[
-                        '0% Fees',
-                    ]"
-                    content="Trade Smart with 0% Fees for More Possibilities!"
-                >
-                    <template #light="{ text }">
-                        <v-text type="success">
-                            {{ text }}
-                        </v-text>
-                    </template>
-                </v-highlight>
-            </template>
-        </slide-main>
+        <lazy-client-only>
+            <slide-main src="/images/main-slide-3.png">
+                <template #title>
+                    <v-highlight
+                        :key-words="[
+                            '0% Fees',
+                        ]"
+                        content="Trade Smart with 0% Fees for More Possibilities!"
+                    >
+                        <template #light="{ text }">
+                            <v-text type="success">
+                                {{ text }}
+                            </v-text>
+                        </template>
+                    </v-highlight>
+                </template>
+            </slide-main>
+        </lazy-client-only>
     </swiper-slide>
 
     <swiper-slide>
-        <slide-main
-            src="/images/main-slide-4.png"
-            text="Unlock Rewards: Referral Program Launching Soon!"
-            title="Referral Program"
-        />
+        <lazy-client-only>
+            <slide-main
+                src="/images/main-slide-4.png"
+                text="Unlock Rewards: Referral Program Launching Soon!"
+                title="Referral Program"
+            />
+        </lazy-client-only>
     </swiper-slide>
 
     <swiper-slide>
-        <slide-main
-            src="/images/main-slide-5.png"
-            text="Share Your Feedback & Ideas"
-            title="Help Shape Our Platform!"
-        />
+        <lazy-client-only>
+            <slide-main
+                src="/images/main-slide-5.png"
+                text="Share Your Feedback & Ideas"
+                title="Help Shape Our Platform!"
+            />
+        </lazy-client-only>
     </swiper-slide>
 
     <swiper-slide>
-        <slide-main
-            src="/images/main-slide-6.png"
-            text="Congratulations to our Users 🏆"
-        >
-            <template #title>
-                <v-highlight
-                    :key-words="[
-                        'Top 3 Champions',
-                    ]"
-                    content="Top 3 Champions 1st Season"
-                />
-            </template>
-        </slide-main>
+        <lazy-client-only>
+            <slide-main
+                src="/images/main-slide-6.png"
+                text="Congratulations to our Users 🏆"
+            >
+                <template #title>
+                    <v-highlight
+                        :key-words="[
+                            'Top 3 Champions',
+                        ]"
+                        content="Top 3 Champions 1st Season"
+                    />
+                </template>
+            </slide-main>
+        </lazy-client-only>
     </swiper-slide>
 </swiper>
 </template>
@@ -153,7 +144,7 @@ let sliderAction = computed((): (
     --swiper-pagination-bullet-size: theme("width.5")
     --swiper-pagination-bullet-width: theme("width.8")
     --swiper-pagination-color: theme("colors.white")
-    --swiper-pagination-top: calc(var(--swiper-height) + theme("spacing.10"))
+    --swiper-pagination-top: calc(100% + theme("spacing.10"))
 
     @apply w-full
     @apply overflow-visible

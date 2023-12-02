@@ -21,17 +21,15 @@ let errorView = computed((): AsyncComponent => (
     useGet(getRef(errorViews), props.error.statusCode) ||
     useGet(getRef(errorViews), HttpStatus.INTERNAL_SERVER_ERROR)
 ))
+
+// todo: (?)
+console.log(props.error)
 </script>
 
 <template>
 <widget-wrapper-app :layout="Layout.ERROR">
     <ui-page>
         <component :is="errorView" />
-
-        <pre
-            v-html="error"
-            hidden
-        />
     </ui-page>
 </widget-wrapper-app>
 </template>

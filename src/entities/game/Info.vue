@@ -72,10 +72,11 @@ let sellRoute = computed((): Route => (
 </template>
 
 <style lang="sass" scoped>
-.vxp-card
+.vxp-card-vars
     --vxp-card-body-v-padding: theme("spacing.12")
     --vxp-card-body-h-padding: theme("spacing.10")
 
+.vxp-card
     @apply border-solid-secondary rounded-5
     @apply backdrop-blur-16
 </style>

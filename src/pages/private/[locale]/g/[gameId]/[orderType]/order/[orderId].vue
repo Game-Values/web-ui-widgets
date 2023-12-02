@@ -37,5 +37,11 @@ await orderFacade.bootstrap()
             // todo: chat
         </v-column>
     </v-row>
+
+    <v-row>
+        <v-column>
+            <app-faq />
+        </v-column>
+    </v-row>
 </ui-page>
 </template>
