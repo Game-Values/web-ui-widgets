@@ -48,7 +48,7 @@ let registrationPayload: ComputedRef<BodyCreateUserProfileApiV1UsersPostRaw> = (
             prop="full_name"
             required
         >
-            <v-input placeholder="Fullname" />
+            <v-input placeholder="Nickname" />
         </v-form-item>
 
         <v-form-item

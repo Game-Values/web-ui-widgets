@@ -12,11 +12,11 @@ let { userController } = useControllers()
         <user-profile-avatar premium />
     </v-form-item>
 
-    <v-form-item
-        label="Fullname"
-        prop="full_name"
-    >
-        <v-input />
+    <v-form-item label="Nickname">
+        <v-input
+            :value="storeClient.meStore.me.full_name"
+            disabled
+        />
     </v-form-item>
 
     <v-form-item
