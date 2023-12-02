@@ -5,7 +5,7 @@ import { Container } from "brandi"
 
 import { Adapters, Clients, Controllers, Facades, Modals, Services } from "~/helpers"
 
-let setup: () => void = clientOnlyOnce((): void => {
+let setup: () => void = onceClientOnly((): void => {
     let container: Container = new Container()
     let tokens: Map<string, Token<any>> = new Map()
 

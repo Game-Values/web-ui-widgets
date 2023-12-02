@@ -9,22 +9,22 @@ interface Statistic {
 
 let statistics: Statistic[] = [
     {
-        count: 123456,
+        count: 0,
         icon: "inbox-stack",
         label: "goods",
     },
     {
-        count: 123456,
+        count: 0,
         icon: "credit-card",
         label: "deals",
     },
     {
-        count: 123456,
+        count: 0,
         icon: "user",
         label: "online",
     },
     {
-        count: 123456,
+        count: 0,
         icon: "users",
         label: "users",
     },

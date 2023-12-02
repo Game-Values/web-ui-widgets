@@ -14,7 +14,13 @@ export class GameController {
     }
 
     public async fetchGames(): Promise<void> {
-        let gamesRaw: GameRaw[] = await this._gameService.fetchGames()
+        // todo: (?)
+        let gamesRawPromise: GameRaw[][] = await Promise.all([
+            this._gameService.fetchGames({ page: 0 }),
+            this._gameService.fetchGames({ page: 1 }),
+        ])
+
+        let gamesRaw: GameRaw[] = useFlatten(gamesRawPromise)
         this._storeClient.gamesStore.setGamesRaw(gamesRaw)
     }
 }
