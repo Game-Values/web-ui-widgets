@@ -14,15 +14,11 @@ defineSlots<{
 </script>
 
 <template>
-<widget-provider-setup>
-    <widget-provider-auth>
-        <widget-provider-config>
-            <nuxt-layout :name="layout">
-                <slot />
-            </nuxt-layout>
+<widget-provider-config>
+    <nuxt-layout :name="layout">
+        <slot />
+    </nuxt-layout>
 
-            <widget-provider-modal />
-        </widget-provider-config>
-    </widget-provider-auth>
-</widget-provider-setup>
+    <widget-provider-modal />
+</widget-provider-config>
 </template>

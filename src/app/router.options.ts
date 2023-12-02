@@ -16,8 +16,6 @@ export default <RouterConfig> {
         return routes.map((route: RouteRecordRaw): RouteRecordRaw => {
             let isPrivate: boolean = (route.name as RouteName).startsWith(PRIVATE_PREFIX)
             let routePrefix: string = isPrivate ? PRIVATE_PREFIX : PUBLIC_PREFIX
-
-            let routeName: string = (route.name as string).replace(`${routePrefix}-`, "")
             let routePath: string = route.path.replace(`/${routePrefix}`, "")
             let routeChildren: RouteRecordRaw[] = route.children?.length ? mapRoutes(route.children) : []
 
@@ -26,7 +24,6 @@ export default <RouterConfig> {
                 meta: {
                     auth: isPrivate,
                 },
-                name: routeName,
                 path: routePath,
             })
         })

@@ -1,4 +1,25 @@
-export default defineNuxtRouteMiddleware((): void => {
-    // todo: auth middleware
-    // todo: to be need global (?)
+import type { RouteLocationNormalized } from "vue-router"
+
+import { HttpStatus } from "~/enums"
+
+let auth: () => Promise<boolean> = clientOnlyOnce(async (): Promise<boolean> => {
+    let { cookieClient, storeClient } = useClients()
+    let { authController, userController } = useControllers()
+
+    if (cookieClient.accessToken)
+        await userController.fetchUser()
+
+    if (!storeClient.meStore.authenticated)
+        await authController.logout()
+
+    return storeClient.meStore.authenticated
+})
+
+export default defineNuxtRouteMiddleware(async (to: RouteLocationNormalized): Promise<void> => {
+    let authenticated: boolean = await auth()
+
+    if (to.meta.auth && !authenticated)
+        throw abortNavigation({
+            statusCode: HttpStatus.NOT_FOUND,
+        })
 })
