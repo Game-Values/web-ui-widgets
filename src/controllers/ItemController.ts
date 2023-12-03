@@ -10,12 +10,12 @@ export class ItemController {
 
     public async createItem(): Promise<void> {
         await this._itemService.createItem(
-            this._storeClient.saleStore.saleItem,
+            this._storeClient.saleStore.sale,
         )
     }
 
     public async fetchGameItems(gameId: string): Promise<void> {
         let itemsRaw: ItemRaw[] = await this._itemService.fetchItems({ gid: gameId })
-        this._storeClient.itemsGameStore.setItemsRaw(itemsRaw)
+        this._storeClient.itemsStore.setItemsRaw(itemsRaw)
     }
 }

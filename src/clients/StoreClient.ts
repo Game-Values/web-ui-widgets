@@ -21,13 +21,8 @@ export class StoreClient {
     }
 
     @Memoize()
-    public get itemsGameStore(): ItemsStore.Store {
-        return useItemsStore("itemsGameStore")
-    }
-
-    @Memoize()
-    public get itemsStore(): GameStore.Store {
-        return useGameStore()
+    public get itemsStore(): ItemsStore.Store {
+        return useItemsStore()
     }
 
     @Memoize()

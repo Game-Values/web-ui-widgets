@@ -1,31 +1,29 @@
 <script lang="ts" setup>
-import { RouteName } from "~/enums"
+// import { RouteName } from "~/enums"
+//
+// let { t: $t } = useI18n({
+//     useScope: "global",
+// })
+//
+// let { t } = useI18n({
+//     useScope: "local",
+// })
 
-let { t: $t } = useI18n({
-    useScope: "global",
-})
+let { routerClient } = useClients()
 
-let { t } = useI18n({
-    useScope: "local",
-})
-
-let router = useRouter()
-
-let routesI18n = computed((): Record<RouteName, string> => (
-    {
-        [RouteName.GAME]: t("Game"),
-        [RouteName.MAIN]: t("Homepage"),
-        [RouteName.GAME_ITEM_ORDER]: $t("template.Deal", {
-            orderId: useRoute().params.orderId,
-        }),
-    }
-))
+// let routesI18n = computed((): Record<RouteName, string> => (
+//     {
+//         [RouteName.GAME]: t("Game"),
+//         [RouteName.MAIN]: t("Homepage"),
+//         [RouteName.GAME_ITEM_ORDER]: $t("template.Deal", routerClient.getRouteParams(RouteName.GAME_ITEM_ORDER)),
+//     }
+// ))
 </script>
 
 <template>
-<v-breadcrumb :router="router">
+<v-breadcrumb :router="routerClient.router">
     <template #item="{ option }">
-        {{ useGet(routesI18n, option.name as RouteName) }}
+        {{ option.name }}
     </template>
 </v-breadcrumb>
 </template>

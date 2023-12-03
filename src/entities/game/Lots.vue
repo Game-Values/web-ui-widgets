@@ -5,7 +5,7 @@ let { t } = useI18n({
 
 let { storeClient } = useClients()
 
-let { items } = storeToRefs(storeClient.itemsGameStore)
+let { items } = storeToRefs(storeClient.itemsStore)
 </script>
 
 <template>

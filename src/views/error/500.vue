@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-let mainRoute = useMainRoute()
+let { routerClient } = useClients()
 </script>
 
 <template>
@@ -19,7 +19,7 @@ let mainRoute = useMainRoute()
         }"
     >
         <ui-button-link
-            :to="mainRoute"
+            :to="routerClient.getRoute(routerClient.routeNames.MAIN)"
             type="primary"
         >
             Home

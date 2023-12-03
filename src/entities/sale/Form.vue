@@ -1,5 +1,5 @@
 <script setup lang="ts">
-let { storeClient } = useClients()
+let { routerClient, storeClient } = useClients()
 let { itemController } = useControllers()
 
 let { game } = storeToRefs(storeClient.gameStore)
@@ -7,7 +7,7 @@ let { games } = storeToRefs(storeClient.gamesStore)
 </script>
 
 <template>
-<v-form :model="storeClient.saleStore.saleForm">
+<v-form :model="storeClient.saleStore.saleRaw">
     <template v-if="game">
         <v-form-item
             label="Game"
@@ -20,9 +20,11 @@ let { games } = storeToRefs(storeClient.gamesStore)
                 }"
                 :options="games.items"
                 @select="(
-                    useRouter().push(
-                        useSaleRoute({
-                            gameId: $event,
+                    routerClient.router.push(
+                        routerClient.getRoute(routerClient.routeNames.ACCOUNT_SALE, {
+                            query: {
+                                gameId: $event,
+                            },
                         }),
                     )
                 )"

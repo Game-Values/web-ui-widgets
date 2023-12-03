@@ -4,12 +4,13 @@ import type { Token } from "brandi"
 import { token } from "brandi"
 
 import { DIAbstract } from "~/abstract"
-import { CookieClient, HttpClient, StoreClient } from "~/clients"
+import { CookieClient, HttpClient, RouterClient, StoreClient } from "~/clients"
 import { AdapterToken, ClientToken } from "~/enums"
 
 interface ClientsTokens {
     [ClientToken.COOKIE]: Token<CookieClient>
     [ClientToken.HTTP]: Token<HttpClient>
+    [ClientToken.ROUTER]: Token<RouterClient>
     [ClientToken.STORE]: Token<StoreClient>
 }
 
@@ -17,6 +18,7 @@ export class Clients extends DIAbstract<ClientsTokens> {
     protected __tokens: ClientsTokens = {
         [ClientToken.COOKIE]: token<CookieClient>(ClientToken.COOKIE),
         [ClientToken.HTTP]: token<HttpClient>(ClientToken.HTTP),
+        [ClientToken.ROUTER]: token<RouterClient>(ClientToken.ROUTER),
         [ClientToken.STORE]: token<StoreClient>(ClientToken.STORE),
     }
 
@@ -24,6 +26,7 @@ export class Clients extends DIAbstract<ClientsTokens> {
         return [
             [this.__tokens[ClientToken.COOKIE], CookieClient],
             [this.__tokens[ClientToken.HTTP], HttpClient],
+            [this.__tokens[ClientToken.ROUTER], RouterClient],
             [this.__tokens[ClientToken.STORE], StoreClient],
         ]
     }
@@ -45,6 +48,11 @@ export class Clients extends DIAbstract<ClientsTokens> {
     @Memoize()
     public get httpClient(): HttpClient {
         return this.__getInjection(this.__tokens[ClientToken.HTTP])
+    }
+
+    @Memoize()
+    public get routerClient(): RouterClient {
+        return this.__getInjection(this.__tokens[ClientToken.ROUTER])
     }
 
     @Memoize()

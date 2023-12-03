@@ -1,9 +1,13 @@
+<script lang="ts" setup>
+let { routerClient } = useClients()
+</script>
+
 <template>
 <v-space
     size="large"
     vertical
 >
-    <ui-link :to="useMainRoute().fullPath">
+    <ui-link :to="routerClient.getRoute(routerClient.routeNames.MAIN)">
         <ui-icon
             custom="logo-uncolored"
             height="40"

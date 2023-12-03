@@ -1,17 +1,16 @@
 import type { ItemType, Layout, Locale, PaymentType, RouteName } from "~/enums"
+import type { ComputedRef, MaybeRef } from "vue"
 import type { Route as _Route } from "vue-i18n-routing"
 import type { RouteLocation } from "vue-router"
 
 import "vue-router"
 
 export type Route = (
-    _Route |
-    (
-        RouteLocation & {
-            href: string
-        }
-    ) |
-    undefined
+    _Route &
+    RouteLocation &
+    {
+        href: string
+    }
 )
 
 declare module "vue-router" {
@@ -22,7 +21,10 @@ declare module "vue-router" {
 
     interface RouteMeta {
         auth: boolean
-        layout: Layout
+        layout: (
+            ComputedRef<Layout> |
+            MaybeRef<Layout>
+        )
     }
 
     interface RouteParams {

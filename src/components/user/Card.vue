@@ -12,7 +12,7 @@ defineProps<{
         size="large"
         no-wrap
     >
-        <user-profile-avatar :premium="Boolean(useRoute().params.userId % 2)" />
+        <user-profile-avatar premium />
 
         <v-space
             size="large"

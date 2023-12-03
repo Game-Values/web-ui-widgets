@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-let { storeClient } = useClients()
+let { routerClient, storeClient } = useClients()
 let { loginModal, registrationModal } = useModals()
-let { fullPath: mainRoutePath } = useMainRoute()
 
 let { authenticated } = storeToRefs(storeClient.userMeStore)
 </script>
@@ -21,7 +20,7 @@ let { authenticated } = storeToRefs(storeClient.userMeStore)
                 :sm="8"
                 :xs="12"
             >
-                <ui-link :to="mainRoutePath">
+                <ui-link :to="routerClient.getRoute(routerClient.routeNames.MAIN)">
                     <ui-icon
                         custom="logo"
                         height="40"
@@ -134,8 +133,8 @@ let { authenticated } = storeToRefs(storeClient.userMeStore)
                     <template v-else>
                         <v-button
                             text
-                            type="primary"
                             @click="loginModal.show()"
+                            type="primary"
                         >
                             <v-title :level="6">
                                 Log In
@@ -144,8 +143,8 @@ let { authenticated } = storeToRefs(storeClient.userMeStore)
 
                         <v-button
                             text
-                            type="primary"
                             @click="registrationModal.show()"
+                            type="primary"
                         >
                             <v-title :level="6">
                                 Sign up
@@ -176,10 +175,10 @@ let { authenticated } = storeToRefs(storeClient.userMeStore)
                 :lg="0"
                 :md="10"
                 :sm="4"
-                :xs="5"
                 :use-flex="{
                     justify: 'end',
                 }"
+                :xs="5"
             >
                 <header-mobile-menu />
             </v-column>

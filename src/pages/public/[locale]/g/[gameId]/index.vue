@@ -1,17 +1,12 @@
 <script lang="ts" setup>
 import { Layout } from "~/enums"
 
-// todo: typing
+// todo: from facades or etc
 definePageMeta({
     layout: Layout.GAME,
 })
 
-let { storeClient } = useClients()
 let { gameFacade } = useFacades()
-
-// todo: mv to facade or stay here or utils like disposeStores (?)
-storeClient.gameStore.$dispose()
-storeClient.itemsGameStore.$dispose()
 
 await gameFacade.bootstrap()
 </script>

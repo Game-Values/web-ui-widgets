@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+let { routerClient } = useClients()
 let { orderFacade } = useFacades()
 
 await orderFacade.bootstrap()
@@ -19,7 +20,7 @@ await orderFacade.bootstrap()
                     >
                         <!-- todo: from OrderModel -->
                         <template #orderId>
-                            {{ useRoute().params.orderId }}
+                            {{ routerClient.getRouteParam("orderId") }}
                         </template>
                     </i18n-t>
                 </v-title>

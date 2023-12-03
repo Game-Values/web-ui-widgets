@@ -10,21 +10,25 @@ export let useSaleStore: (storeId?: string) => SaleStore.Store = createStore<
     SaleStore.Actions
 >("saleStore", {
     getters: {
-        saleItem(): Item {
-            return createModel(Item, this.saleForm)
+        sale(): Item {
+            return createModel(Item, this.saleRaw)
         },
     },
 
-    state: (): SaleStore.State => ({
-        saleForm: {
-            attributes: {
-                description: "",
-                price: 0,
-                server: "",
-                type: useGet(useRoute().query, "itemType", ""),
+    state: (): SaleStore.State => {
+        let { routerClient } = useClients()
+
+        return {
+            saleRaw: {
+                attributes: {
+                    description: "",
+                    price: 0,
+                    server: "",
+                    type: routerClient.getRouteQuery("itemType"),
+                },
+                gid: routerClient.getRouteQuery("gameId"),
+                name: "",
             },
-            gid: useGet(useRoute().query, "gameId", ""),
-            name: "",
-        },
-    }),
+        }
+    },
 })

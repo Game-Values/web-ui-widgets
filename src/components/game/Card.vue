@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import type { Game } from "~/dto"
 
+let { routerClient } = useClients()
+
 defineProps<{
     game: Game
     liked: boolean
@@ -15,7 +17,7 @@ defineProps<{
     :id="game.id"
 >
     <ui-link
-        :to="useGameRoute(game.id)"
+        :to="routerClient.getRoute(routerClient.routeNames.GAME)"
         class="relative fit"
     >
         <v-space vertical>

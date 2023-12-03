@@ -6,6 +6,7 @@ export enum AdapterToken {
 export enum ClientToken {
     COOKIE = "CookieClient",
     HTTP = "HttpClient",
+    ROUTER = "RouterToken",
     STORE = "StoreToken",
 }
 

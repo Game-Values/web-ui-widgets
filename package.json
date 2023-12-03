@@ -47,7 +47,7 @@
         "@nuxtjs/web-vitals": "^0.2.6",
         "@pinia/nuxt": "^0.5.1",
         "@rushstack/eslint-patch": "^1.6.0",
-        "@types/node": "^20.10.1",
+        "@types/node": "^20.10.2",
         "@types/reflect-metadata": "^0.1.0",
         "@typescript-eslint/eslint-plugin": "^6.13.1",
         "@typescript-eslint/parser": "^6.13.1",
@@ -59,8 +59,8 @@
         "@vexip-ui/stylelint-config": "^0.6.0",
         "@vue/eslint-config-typescript": "^12.0.0",
         "@vueuse/nuxt": "^10.6.1",
-        "browserslist": "^4.22.1",
-        "eslint": "^8.54.0",
+        "browserslist": "^4.22.2",
+        "eslint": "^8.55.0",
         "eslint-config-standard": "^17.1.0",
         "eslint-plugin-import": "^2.29.0",
         "eslint-plugin-n": "^16.3.1",
@@ -90,7 +90,7 @@
         "vue-eslint-parser": "^9.3.2"
     },
     "dependencies": {
-        "@tanstack/vue-query": "^5.12.0",
+        "@tanstack/vue-query": "^5.12.2",
         "@vueuse/components": "^10.6.1",
         "brandi": "^5.0.0",
         "class-transformer": "^0.5.1",

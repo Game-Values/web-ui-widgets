@@ -1,9 +1,5 @@
 <script lang="ts" setup>
-import {useSettingsRoute} from "~/composables/useRouter";
-
-let accountRoute = useAccountRoute()
-let settingsRoute = useSettingsRoute()
-
+let { routerClient } = useClients()
 let { authController } = useControllers()
 </script>
 
@@ -27,11 +23,23 @@ let { authController } = useControllers()
                 Favorites
             </v-dropdown-item>
 
-            <v-dropdown-item @select="navigateTo(accountRoute)">
-                Profile
+            <v-dropdown-item
+                @select="
+                    navigateTo(
+                        routerClient.getRoute(routerClient.routeNames.ACCOUNT),
+                    )
+                "
+            >
+                Account
             </v-dropdown-item>
 
-            <v-dropdown-item @select="navigateTo(settingsRoute)">
+            <v-dropdown-item
+                @select="
+                    navigateTo(
+                        routerClient.getRoute(routerClient.routeNames.ACCOUNT_SETTINGS),
+                    )
+                "
+            >
                 Settings
             </v-dropdown-item>
 

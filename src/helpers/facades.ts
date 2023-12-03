@@ -4,7 +4,7 @@ import type { Token } from "brandi"
 import { token } from "brandi"
 
 import { DIAbstract } from "~/abstract"
-import { ControllerToken, FacadeToken } from "~/enums"
+import { ClientToken, ControllerToken, FacadeToken } from "~/enums"
 import { GameFacade, MainFacade, OrderFacade, SaleFacade } from "~/facades"
 
 interface FacadesTokens {
@@ -39,6 +39,8 @@ export class Facades extends DIAbstract<FacadesTokens> {
             ],
             [
                 GameFacade,
+                this.__getToken(ClientToken.ROUTER),
+                this.__getToken(ClientToken.STORE),
                 this.__getToken(ControllerToken.GAME),
                 this.__getToken(ControllerToken.ITEM),
             ],

@@ -9,7 +9,7 @@ import type { ItemType, OrderStep } from "~/enums"
 import type {
     _ActionsTree,
     _GettersTree,
-    _StoreWithState,
+    Store as _Store,
     StateTree,
     StoreActions,
 } from "pinia"
@@ -19,7 +19,7 @@ export type DefineStore<
     State extends StateTree,
     Getters extends _GettersTree<State>,
     Actions extends _ActionsTree,
-> = _StoreWithState<
+> = _Store<
     Id,
     State,
     Getters,
@@ -124,7 +124,7 @@ export namespace SaleStore {
     export type Id = "saleStore"
 
     export type State = {
-        saleForm: Pick<Item, (
+        saleRaw: Pick<Item, (
             "attributes" |
             "gid" |
             "name"
@@ -132,7 +132,7 @@ export namespace SaleStore {
     }
 
     export type Getters = {
-        saleItem: () => Item
+        sale: () => Item
     }
 
     export type Actions = StoreActions<never>
