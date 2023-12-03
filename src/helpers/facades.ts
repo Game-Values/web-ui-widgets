@@ -5,13 +5,14 @@ import { token } from "brandi"
 
 import { DIAbstract } from "~/abstract"
 import { ClientToken, ControllerToken, FacadeToken } from "~/enums"
-import { GameFacade, MainFacade, OrderFacade, SaleFacade } from "~/facades"
+import { GameFacade, MainFacade, OrderFacade, SaleFacade, UserFacade } from "~/facades"
 
 interface FacadesTokens {
     [FacadeToken.GAME]: Token<GameFacade>
     [FacadeToken.MAIN]: Token<MainFacade>
     [FacadeToken.ORDER]: Token<OrderFacade>
     [FacadeToken.SALE]: Token<SaleFacade>
+    [FacadeToken.USER]: Token<UserFacade>
 }
 
 export class Facades extends DIAbstract<FacadesTokens> {
@@ -20,6 +21,7 @@ export class Facades extends DIAbstract<FacadesTokens> {
         [FacadeToken.MAIN]: token<MainFacade>(FacadeToken.MAIN),
         [FacadeToken.ORDER]: token<OrderFacade>(FacadeToken.ORDER),
         [FacadeToken.SALE]: token<SaleFacade>(FacadeToken.SALE),
+        [FacadeToken.USER]: token<UserFacade>(FacadeToken.USER),
     }
 
     protected get __bindings(): Binding[] {
@@ -28,6 +30,7 @@ export class Facades extends DIAbstract<FacadesTokens> {
             [this.__tokens[FacadeToken.GAME], GameFacade],
             [this.__tokens[FacadeToken.ORDER], OrderFacade],
             [this.__tokens[FacadeToken.SALE], SaleFacade],
+            [this.__tokens[FacadeToken.USER], UserFacade],
         ]
     }
 
@@ -46,12 +49,22 @@ export class Facades extends DIAbstract<FacadesTokens> {
             ],
             [
                 OrderFacade,
-                this.__getToken(ControllerToken.ORDER),
+                this.__getToken(ClientToken.ROUTER),
+                this.__getToken(ClientToken.STORE),
+                this.__getToken(ControllerToken.GAME),
+                this.__getToken(ControllerToken.ITEM),
             ],
             [
-                // todo: SaleController & SaleService (?)
                 SaleFacade,
+                this.__getToken(ClientToken.ROUTER),
+                this.__getToken(ClientToken.STORE),
                 this.__getToken(ControllerToken.GAME),
+            ],
+            [
+                UserFacade,
+                this.__getToken(ClientToken.ROUTER),
+                this.__getToken(ClientToken.STORE),
+                this.__getToken(ControllerToken.USER),
             ],
         ]
     }
@@ -74,5 +87,10 @@ export class Facades extends DIAbstract<FacadesTokens> {
     @Memoize()
     public get saleFacade(): SaleFacade {
         return this.__getInjection(this.__tokens[FacadeToken.SALE])
+    }
+
+    @Memoize()
+    public get userFacade(): UserFacade {
+        return this.__getInjection(this.__tokens[FacadeToken.USER])
     }
 }

@@ -13,11 +13,11 @@ export class ItemService {
         return data
     }
 
-    // public async fetchItem(payload: ReadAllItemsApiV1ItemsAllGetParamsRaw): Promise<ItemRaw[]> {
-    //     // let { data }: HttpResponse<ItemRaw[]> = await this._apiAdapter
-    //     //
-    //     // return data
-    // }
+    public async fetchItem(itemId: string): Promise<ItemRaw> {
+        let { data }: HttpResponse<ItemRaw> = await this._apiAdapter.readItemApiV1ItemsItemsItemIdGet(itemId)
+
+        return data
+    }
 
     public async fetchItems(payload: ReadAllItemsApiV1ItemsAllGetParamsRaw): Promise<ItemRaw[]> {
         let { data }: HttpResponse<ItemRaw[]> = await this._apiAdapter.readAllItemsApiV1ItemsAllGet(payload)

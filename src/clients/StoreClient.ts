@@ -2,6 +2,7 @@ import type {
     GamesStore,
     GameStore,
     ItemsStore,
+    ItemStore,
     OrderStore,
     SaleStore,
     SettingsStore,
@@ -15,14 +16,22 @@ export class StoreClient {
         return useGamesStore()
     }
 
+    // todo: factory (?)
     @Memoize()
     public get gameStore(): GameStore.Store {
         return useGameStore()
     }
 
+    // todo: factory
     @Memoize()
     public get itemsStore(): ItemsStore.Store {
         return useItemsStore()
+    }
+
+    // todo: factory
+    @Memoize()
+    public get itemStore(): ItemStore.Store {
+        return useItemStore()
     }
 
     @Memoize()
@@ -40,11 +49,13 @@ export class StoreClient {
         return useSettingsStore()
     }
 
+    // todo: factory from userStore
     @Memoize()
     public get userMeStore(): UserStore.Store {
         return useUserStore("userMeStore")
     }
 
+    // todo: factory
     @Memoize()
     public get userStore(): UserStore.Store {
         return useUserStore()

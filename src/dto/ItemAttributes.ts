@@ -3,9 +3,8 @@ import { ItemType } from "~/enums"
 export class ItemAttributes {
     @Expose()
     @IsDefined()
-    @IsString()
-    @IsNotEmpty()
-    declare public count: string
+    @IsNumber()
+    declare public count: number
 
     @Expose()
     @IsDefined()

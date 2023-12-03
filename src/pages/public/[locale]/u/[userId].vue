@@ -1,7 +1,10 @@
 <script lang="ts" setup>
-// let { userFacade } = useFacades()
-//
-// await userFacade.bootstrap()
+let { storeClient } = useClients()
+let { userFacade } = useFacades()
+
+let { user } = storeToRefs(storeClient.userStore)
+
+await userFacade.bootstrap()
 </script>
 
 <template>
@@ -10,9 +13,7 @@
         <v-column :lg="14">
             <v-row>
                 <v-column>
-                    <user-card
-
-                    />
+                    <user-card :user="user" />
                 </v-column>
 
                 <v-column>

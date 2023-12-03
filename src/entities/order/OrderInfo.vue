@@ -1,5 +1,9 @@
 <script lang="ts" setup>
 useI18n()
+
+let { storeClient } = useClients()
+
+let { item } = storeToRefs(storeClient.itemStore)
 </script>
 
 <template>
@@ -21,7 +25,7 @@ useI18n()
             </v-title>
 
             <v-text>
-                Very long server name
+                {{ item.attributes.server }}
             </v-text>
         </v-space>
     </v-column>
@@ -36,14 +40,11 @@ useI18n()
                 class="uppercase"
                 thin
             >
-                <i18n-t
-                    keypath="game.Availability"
-                    scope="global"
-                />
+                In Stock
             </v-title>
 
             <v-text>
-                120
+                {{ item.attributes.count }}
             </v-text>
         </v-space>
     </v-column>
@@ -58,14 +59,11 @@ useI18n()
                 class="uppercase"
                 thin
             >
-                <i18n-t
-                    keypath="label.Currency"
-                    scope="global"
-                />
+                Type
             </v-title>
 
             <v-text>
-                Gold
+                {{ item.attributes.type }}
             </v-text>
         </v-space>
     </v-column>
@@ -87,7 +85,7 @@ useI18n()
             </v-title>
 
             <v-text>
-                20,22
+                {{ item.attributes.price }}
             </v-text>
         </v-space>
     </v-column>

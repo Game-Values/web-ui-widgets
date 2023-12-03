@@ -14,7 +14,6 @@ export enum ControllerToken {
     AUTH = "AuthController",
     GAME = "GameController",
     ITEM = "ItemController",
-    ORDER = "OrderController",
     USER = "UserController",
 }
 
@@ -23,6 +22,7 @@ export enum FacadeToken {
     MAIN = "MainFacade",
     ORDER = "OrderFacade",
     SALE = "SaleFacade",
+    USER = "UserFacade",
 }
 
 export enum ModalToken {

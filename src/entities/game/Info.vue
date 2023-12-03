@@ -1,19 +1,9 @@
 <script lang="ts" setup>
-import type { Route } from "~/types"
-
 useI18n()
 
 let { routerClient, storeClient } = useClients()
 
 let { game } = storeToRefs(storeClient.gameStore)
-
-let accountSaleRoute = computed((): Route => (
-    routerClient.getRoute(routerClient.routeNames.ACCOUNT_SALE, {
-        params: {
-            gameId: useGet(getRef(game), "id"),
-        },
-    })
-))
 </script>
 
 <template>
@@ -60,7 +50,13 @@ let accountSaleRoute = computed((): Route => (
                     </v-button>
 
                     <ui-button-link
-                        :to="accountSaleRoute"
+                        :to="
+                            routerClient.getRoute(routerClient.routeNames.ACCOUNT_SALE, {
+                                query: {
+                                    gameId: game.id,
+                                },
+                            })
+                        "
                         block
                         type="primary"
                     >

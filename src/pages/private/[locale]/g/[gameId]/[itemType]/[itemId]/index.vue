@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-let { routerClient } = useClients()
 let { orderFacade } = useFacades()
 
 await orderFacade.bootstrap()

@@ -5,7 +5,8 @@ import type { RouteLocation } from "vue-router"
 <template>
 <widget-wrapper-app>
     <ui-content>
-        <app-breadcrumbs />
+        // todo: breadcrumbs
+        <!-- <app-breadcrumbs />-->
     </ui-content>
 
     <nuxt-page

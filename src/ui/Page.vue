@@ -34,6 +34,10 @@ defineSlots<{
         @screen at-xs
             @apply py-6
 
+        @apply [&+*]:(pt-0)
+
+        @apply first:pt-10
+
         + *
             @apply pt-0
 

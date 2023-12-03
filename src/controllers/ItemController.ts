@@ -18,4 +18,9 @@ export class ItemController {
         let itemsRaw: ItemRaw[] = await this._itemService.fetchItems({ gid: gameId })
         this._storeClient.itemsStore.setItemsRaw(itemsRaw)
     }
+
+    public async fetchItem(itemId: string): Promise<void> {
+        let itemRaw: ItemRaw = await this._itemService.fetchItem(itemId)
+        this._storeClient.itemStore.setItemRaw(itemRaw)
+    }
 }

@@ -19,8 +19,8 @@ export class UserController {
     }
 
     public async fetchUser(userId: string): Promise<void> {
-        // let userRaw: UserRaw = await this._userService.fetchUser(userId)
-        // this._storeClient.userStore.setUserRaw(userRaw)
+        let userRaw: UserRaw = await this._userService.fetchUser(userId)
+        this._storeClient.userStore.setUserRaw(userRaw)
     }
 
     public async likeGameMe(gameId: string): Promise<void> {

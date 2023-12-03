@@ -6,6 +6,7 @@ let { t } = useI18n({
 })
 
 let { storeClient } = useClients()
+let { loginModal } = useModals()
 
 let { items } = storeToRefs(storeClient.itemsStore)
 </script>
@@ -40,14 +41,27 @@ let { items } = storeToRefs(storeClient.itemsStore)
             size="small"
             vertical
         >
-            <ui-link
-                :to="row.itemRoute"
-                type="primary"
-            >
-                <v-title :level="6">
-                    {{ row.name }}
-                </v-title>
-            </ui-link>
+            <widget-wrapper-auth-only>
+                <ui-link
+                    :to="row.itemRoute"
+                    type="primary"
+                >
+                    <v-title :level="6">
+                        {{ row.name }}
+                    </v-title>
+                </ui-link>
+            </widget-wrapper-auth-only>
+
+            <widget-wrapper-unauth-only>
+                <v-button
+                    text
+                    @click="loginModal.show()"
+                >
+                    <v-title :level="6">
+                        {{ row.name }}
+                    </v-title>
+                </v-button>
+            </widget-wrapper-unauth-only>
 
             <v-text>
                 {{ row.attributesDescription }}

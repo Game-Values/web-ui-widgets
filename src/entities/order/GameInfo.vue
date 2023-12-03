@@ -1,7 +1,13 @@
+<script lang="ts" setup>
+let { storeClient } = useClients()
+
+let { game } = storeToRefs(storeClient.gameStore)
+</script>
+
 <template>
 <v-space vertical>
     <v-title :level="3">
-        Gold ArcheAge: Unchained
+        {{ game.name }}
     </v-title>
 
     <v-text>

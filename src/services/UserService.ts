@@ -18,11 +18,9 @@ export class UserService {
     }
 
     public async fetchUser(userId: string): Promise<UserRaw> {
-        // this._apiAdapter.user
+        let { data }: HttpResponse<UserRaw> = await this._apiAdapter.readUserApiV1UsersUsersUserIdGet(userId)
 
-        // let { data }: HttpResponse<UserRaw> = await this._apiAdapter.readUserApiV1UsersGet()
-        //
-        // return data
+        return data
     }
 
     public async likeGameMe(payload: string): Promise<void> {
