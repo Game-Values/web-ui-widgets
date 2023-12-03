@@ -10,15 +10,14 @@ await mainFacade.bootstrap()
 <ui-page>
     <v-row>
         <v-column
-            :lg="18"
+            :lg="20"
             :xs="24"
         >
             <entity-main-slider />
         </v-column>
 
         <v-column
-            :lg="5"
-            :offset="lg ? 1 : 0"
+            :lg="4"
             :use-flex="{
                 justify: 'end',
             }"

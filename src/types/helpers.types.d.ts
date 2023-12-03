@@ -13,3 +13,9 @@ export type Module<T> = {
 export type Nullable<T> = null | T
 
 export type ValueOf<T> = T[keyof T]
+
+// todo: rest
+export type CombineKeys<
+    K_1 extends string,
+    K_2 extends string,
+> = `${K_1}${Capitalize<K_2>}`

@@ -5,6 +5,12 @@ export class ItemAttributes {
     @IsDefined()
     @IsString()
     @IsNotEmpty()
+    declare public count: string
+
+    @Expose()
+    @IsDefined()
+    @IsString()
+    @IsNotEmpty()
     declare public description: string
 
     @Expose()

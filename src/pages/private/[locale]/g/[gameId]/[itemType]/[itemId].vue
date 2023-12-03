@@ -17,12 +17,7 @@ await orderFacade.bootstrap()
                     <i18n-t
                         keypath="template.Deal"
                         scope="global"
-                    >
-                        <!-- todo: from OrderModel -->
-                        <template #orderId>
-                            {{ routerClient.getRouteParam("orderId") }}
-                        </template>
-                    </i18n-t>
+                    />
                 </v-title>
 
                 <entity-order-steps />

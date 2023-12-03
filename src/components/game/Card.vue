@@ -17,7 +17,13 @@ defineProps<{
     :id="game.id"
 >
     <ui-link
-        :to="routerClient.getRoute(routerClient.routeNames.GAME)"
+        :to="
+            routerClient.getRoute(routerClient.routeNames.GAME, {
+                params: {
+                    gameId: game.id,
+                },
+            })
+        "
         class="relative fit"
     >
         <v-space vertical>

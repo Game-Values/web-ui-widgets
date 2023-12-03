@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import type { Item } from "~/dto"
+
 let { t } = useI18n({
     useScope: "local",
 })
@@ -9,58 +11,62 @@ let { items } = storeToRefs(storeClient.itemsStore)
 </script>
 
 <template>
-<v-table :data="items.items">
+<v-table :data="items.lotsTableData">
     <v-table-column
-        #default="{ row }"
+        #default="{ row }: { row: Item }"
         :name="t('Seller')"
         :width="250"
         id-key="owner_id"
     >
         <v-space
             align="center"
-            size="large"
             no-wrap
+            size="large"
         >
             <user-lot-avatar online />
 
-            <!-- :to="useUserRoute(row.owner_id)" -->
-            <ui-link>
+            <ui-link :to="row.userRoute">
                 Seller profile
             </ui-link>
         </v-space>
     </v-table-column>
 
     <v-table-column
-        #default="{ row }"
+        #default="{ row }: { row: Item }"
         :name="t('Description')"
-        id-key="attributes.description"
+        id-key="name"
     >
-        {{ row.attributes?.description || "Empty" }}
+        <v-space
+            size="small"
+            vertical
+        >
+            <ui-link
+                :to="row.itemRoute"
+                type="primary"
+            >
+                <v-title :level="6">
+                    {{ row.name }}
+                </v-title>
+            </ui-link>
+
+            <v-text>
+                {{ row.attributesDescription }}
+            </v-text>
+        </v-space>
     </v-table-column>
 
     <v-table-column
-        #default="{ row }"
-        :name="$t('game.Server')"
-        id-key="attributes.server"
-    >
-        {{ row.attributes?.server || "Empty" }}
-    </v-table-column>
+        :width="150"
+        id-key="attributesCount"
+        name="In Stock"
+    />
 
     <v-table-column
-        #default="{ row }"
-        :name="$t('game.Availability')"
-        id-key="attributes.count"
-    >
-        {{ row.attributes?.count || 0 }}
-    </v-table-column>
-
-    <v-table-column
-        #default="{ row }"
-        :name="$t('Price')"
-        id-key="attributes.price"
-    >
-        {{ row.attributes?.price || 0 }} $
-    </v-table-column>
+        :formatter="formatPrice"
+        :name="t('Price')"
+        :width="150"
+        id-key="attributesPrice"
+    />
 </v-table>
 </template>
 

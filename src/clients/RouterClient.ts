@@ -7,9 +7,11 @@ export class RouterClient {
     public readonly routeNames: Record<keyof typeof RouteName, RouteName> = {
         ACCOUNT: RouteName.ACCOUNT,
         ACCOUNT_SALE: RouteName.ACCOUNT_SALE,
+        ACCOUNT_SALE_EDIT: RouteName.ACCOUNT_SALE_EDIT,
         ACCOUNT_SETTINGS: RouteName.ACCOUNT_SETTINGS,
         GAME: RouteName.GAME,
-        GAME_ITEM_ORDER: RouteName.ACCOUNT_SALE,
+        GAME_ITEM: RouteName.GAME_ITEM,
+        GAME_ITEM_ORDER: RouteName.GAME_ITEM_ORDER,
         MAIN: RouteName.MAIN,
         USER: RouteName.USER,
     }
@@ -18,12 +20,21 @@ export class RouterClient {
         return {
             [this.routeNames.ACCOUNT]: {},
             [this.routeNames.ACCOUNT_SALE]: {},
+            [this.routeNames.ACCOUNT_SALE_EDIT]: {
+                itemId: this.route.params.itemId,
+            },
             [this.routeNames.ACCOUNT_SETTINGS]: {},
             [this.routeNames.GAME]: {
                 gameId: this.route.params.gameId,
             },
+            [this.routeNames.GAME_ITEM]: {
+                gameId: this.route.params.gameId,
+                itemType: this.route.params.itemType,
+            },
             [this.routeNames.GAME_ITEM_ORDER]: {
-                orderId: this.route.params.orderId,
+                gameId: this.route.params.gameId,
+                itemId: this.route.params.itemId,
+                itemType: this.route.params.itemType,
             },
             [this.routeNames.MAIN]: {},
             [this.routeNames.USER]: {},

@@ -37,7 +37,7 @@
     },
 
     "template": {
-        "Deal": "Handeln #{orderId}",
+        "Deal": "Handeln #",
         "Place an order for": "Eine Bestellung für {price} aufgeben",
         "Your order for": "Ihre Bestellung für {price}",
         "Transfer the item to the username": "Übertragen Sie den Artikel an den Benutzernamen {username}"
