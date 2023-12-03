@@ -1,6 +1,5 @@
+import type { ItemRaw } from "#schema/data-contracts"
 import type { SaleStore } from "~/types"
-import type { UnwrapRef } from "vue"
-import type { ComputedRef, LocationQuery } from "vue-router"
 
 import { Item } from "~/dto"
 import { createModel, createStore } from "~/factories"
@@ -11,22 +10,32 @@ export let useSaleStore: (storeId?: string) => SaleStore.Store = createStore<
     SaleStore.Getters,
     SaleStore.Actions
 >("saleStore", {
+    actions: {
+        setSaleItemRaw(saleItemRaw: ItemRaw): void {
+            this.saleItemRaw = saleItemRaw
+        },
+
+        updateSaleItemRaw(saleItemRaw: ItemRaw): void {
+            useMerge(this.saleItemRaw, saleItemRaw)
+        },
+    },
+
     getters: {
-        sale(): Item {
-            return createModel(Item, this.saleRaw)
+        saleItem(): Item {
+            return createModel(Item, this.saleItemRaw)
         },
     },
 
     state: (): SaleStore.State => ({
-        saleRaw: {
+        saleItemRaw: {
             attributes: {
                 description: "",
-                price: 0,
+                price: "",
                 server: "",
                 type: "",
             },
             gid: "",
             name: "",
-        }
+        },
     }),
 })

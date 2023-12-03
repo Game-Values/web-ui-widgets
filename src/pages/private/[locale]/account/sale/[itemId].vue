@@ -1,5 +1,41 @@
+<script setup lang="ts">
+// todo: view
+
+let { saleFacade } = useFacades()
+
+await saleFacade.bootstrap()
+</script>
+
 <template>
-<div>
-    Edit item
-</div>
+<ui-page>
+    <v-row>
+        <v-column>
+            <v-title :level="1">
+                Edit Item
+            </v-title>
+        </v-column>
+
+        <v-column
+            :lg="10"
+            :md="12"
+            :xs="24"
+        >
+            <entity-sale-form />
+        </v-column>
+
+        <v-column
+            :lg="10"
+            :md="12"
+            :xs="24"
+        >
+            <entity-sale-upload />
+        </v-column>
+    </v-row>
+
+    <v-row>
+        <v-column>
+            <app-faq />
+        </v-column>
+    </v-row>
+</ui-page>
 </template>

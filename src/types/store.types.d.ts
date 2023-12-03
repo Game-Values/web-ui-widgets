@@ -124,18 +124,17 @@ export namespace SaleStore {
     export type Id = "saleStore"
 
     export type State = {
-        saleRaw: Pick<Item, (
-            "attributes" |
-            "gid" |
-            "name"
-        )>
+        saleItemRaw: ItemRaw
     }
 
     export type Getters = {
-        sale: () => Item
+        saleItem: () => Item
     }
 
-    export type Actions = StoreActions<never>
+    export type Actions = {
+        setSaleItemRaw: (saleItemRaw: ItemRaw) => void
+        updateSaleItemRaw: (saleItemRaw: Partial<ItemRaw>) => void
+    }
 
     export type Store = DefineStore<Id, State, Getters, Actions>
 }

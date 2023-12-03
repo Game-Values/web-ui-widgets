@@ -84,10 +84,10 @@ let { authController } = useControllers()
             </v-dropdown-item>
 
             <v-dropdown-item
-                @select="(
+                @select="
                     authController.logout()
                         .then((): void => reloadNuxtApp())
-                )"
+                "
             >
                 <v-text type="error">
                     Log Out

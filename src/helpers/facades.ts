@@ -56,9 +56,9 @@ export class Facades extends DIAbstract<FacadesTokens> {
             ],
             [
                 SaleFacade,
-                this.__getToken(ClientToken.ROUTER),
                 this.__getToken(ClientToken.STORE),
                 this.__getToken(ControllerToken.GAME),
+                this.__getToken(ControllerToken.SALE),
             ],
             [
                 UserFacade,

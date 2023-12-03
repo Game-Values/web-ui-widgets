@@ -84,10 +84,10 @@ let registrationPayload: ComputedRef<BodyCreateUserProfileApiV1UsersPostRaw> = (
             <v-form-submit
                 :disabled="!formModel.agreeWithPolicies"
                 block
-                @submit="(
+                @submit="
                     authController.registration(registrationPayload)
                         .then((): void => reloadNuxtApp())
-                )"
+                "
             >
                 Registration
             </v-form-submit>

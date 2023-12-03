@@ -47,10 +47,10 @@ let formModel: UnwrapRef<BodyLoginWithOauth2ApiV1LoginOauthPostRaw> = reactive({
                 justify="space-between"
             >
                 <v-form-submit
-                    @submit="(
+                    @submit="
                         authController.login(formModel)
                             .then((): void => reloadNuxtApp())
-                    )"
+                    "
                 >
                     Sign In
                 </v-form-submit>
