@@ -1,9 +1,3 @@
-<script lang="ts" setup>
-let { orderFacade } = useFacades()
-
-await orderFacade.bootstrap()
-</script>
-
 <template>
 <ui-page>
     <v-row>

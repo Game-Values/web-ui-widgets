@@ -1,3 +1,9 @@
+export enum RouteLayout {
+    DEFAULT = "default",
+    ERROR = "error",
+    GAME = "game",
+}
+
 export enum RouteName {
     ACCOUNT = "private-locale-account",
     ACCOUNT_SALE = "private-locale-account-sale",

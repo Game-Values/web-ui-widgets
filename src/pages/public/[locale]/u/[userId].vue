@@ -1,10 +1,7 @@
 <script lang="ts" setup>
 let { storeClient } = useClients()
-let { userFacade } = useFacades()
 
 let { user } = storeToRefs(storeClient.userStore)
-
-await userFacade.bootstrap()
 </script>
 
 <template>

@@ -1,9 +1,5 @@
 <script setup lang="ts">
 // todo: view
-
-let { saleFacade } = useFacades()
-
-await saleFacade.bootstrap()
 </script>
 
 <template>

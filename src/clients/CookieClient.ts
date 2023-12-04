@@ -10,8 +10,8 @@ export class CookieClient {
             return getRef(useCookie(HttpCookie.ACCESS_TOKEN))
     }
 
-    public set accessToken(val: null | string) {
-        setRef(useCookie(HttpCookie.ACCESS_TOKEN), val)
+    public set accessToken(accessToken: null | string) {
+        setRef(useCookie(HttpCookie.ACCESS_TOKEN), accessToken)
     }
 
     public get parsedCookie(): Record<HttpCookie, any> {
@@ -25,8 +25,8 @@ export class CookieClient {
             return getRef(useCookie(HttpCookie.REFRESH_TOKEN))
     }
 
-    public set refreshToken(val: null | string) {
-        setRef(useCookie(HttpCookie.REFRESH_TOKEN), val)
+    public set refreshToken(refreshToken: null | string) {
+        setRef(useCookie(HttpCookie.REFRESH_TOKEN), refreshToken)
     }
 
     public get requestCookie(): string {
@@ -40,7 +40,7 @@ export class CookieClient {
             return getRef(useCookie(HttpCookie.TOKEN_TYPE))
     }
 
-    public set tokenType(val: null | string) {
-        setRef(useCookie(HttpCookie.TOKEN_TYPE), val)
+    public set tokenType(tokenType: null | string) {
+        setRef(useCookie(HttpCookie.TOKEN_TYPE), tokenType)
     }
 }

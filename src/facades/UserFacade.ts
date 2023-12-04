@@ -10,8 +10,14 @@ export class UserFacade implements FacadeAbstract {
     ) {}
 
     public async bootstrap(): Promise<void> {
-        this._storeClient.userStore.$dispose()
+        await Promise.all([
+            this._userController.fetchUser(this._routerClient.getRouteParam("userId")),
+        ])
+    }
 
-        await this._userController.fetchUser(this._routerClient.getRouteParam("userId"))
+    public async dispose(): Promise<void> {
+        await Promise.all([
+            this._storeClient.userStore.$dispose(),
+        ])
     }
 }

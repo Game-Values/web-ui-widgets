@@ -12,7 +12,7 @@ export function onClientOnly<T = any>(callback: () => T, fallback?: () => T): T 
     return isClient() ? callback() : fallback?.()
 }
 
-export function onceClientOnly(fn: Callable): Callable {
+export function onceClientOnly(fn: Callable<any>): Callable<any> {
     if (isClient())
         return useOnce(fn)
 

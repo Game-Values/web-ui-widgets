@@ -1,11 +1,3 @@
-<script lang="ts" setup>
-let { lg } = useBreakpoints()
-
-let { mainFacade } = useFacades()
-
-await mainFacade.bootstrap()
-</script>
-
 <template>
 <ui-page>
     <v-row>
@@ -24,6 +16,13 @@ await mainFacade.bootstrap()
             :xs="24"
             class="lg:(mb-10 self-center)"
         >
+            <v-space
+                class="
+                    lg:(flex)
+                    xs:(hidden)
+                "
+            />
+
             <entity-main-statistics />
         </v-column>
     </v-row>

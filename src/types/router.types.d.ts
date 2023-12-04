@@ -1,4 +1,4 @@
-import type { ItemType, Layout, Locale, PaymentType, RouteName } from "~/enums"
+import type { ItemType, Locale, PaymentType, RouteLayout, RouteName } from "~/enums"
 import type { ComputedRef, MaybeRef } from "vue"
 import type { Route as _Route } from "vue-i18n-routing"
 import type { RouteLocation } from "vue-router"
@@ -22,8 +22,8 @@ declare module "vue-router" {
     interface RouteMeta {
         auth: boolean
         layout: (
-            ComputedRef<Layout> |
-            MaybeRef<Layout>
+            ComputedRef<RouteLayout> |
+            MaybeRef<RouteLayout>
         )
     }
 

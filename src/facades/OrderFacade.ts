@@ -11,12 +11,16 @@ export class OrderFacade implements FacadeAbstract {
     ) {}
 
     public async bootstrap(): Promise<void> {
-        this._storeClient.gameStore.$dispose()
-        this._storeClient.orderStore.$dispose()
-
         await Promise.all([
             this._gameController.fetchGame(this._routerClient.getRouteParam("gameId")),
             this._itemController.fetchItem(this._routerClient.getRouteParam("itemId")),
+        ])
+    }
+
+    public async dispose(): Promise<void> {
+        await Promise.all([
+            this._storeClient.gameStore.$dispose(),
+            this._storeClient.orderStore.$dispose(),
         ])
     }
 }

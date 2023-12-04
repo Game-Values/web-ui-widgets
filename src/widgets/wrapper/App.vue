@@ -2,10 +2,10 @@
 import type { ScopedProps } from "~/types"
 import type { VNode } from "vue"
 
-import { Layout } from "~/enums"
+import { RouteLayout } from "~/enums"
 
 defineProps<{
-    layout?: Layout
+    layout?: RouteLayout
 }>()
 
 defineSlots<{

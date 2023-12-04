@@ -11,14 +11,16 @@ export class GameFacade implements FacadeAbstract {
     ) {}
 
     public async bootstrap(): Promise<void> {
-        let gameId: string = this._routerClient.getRouteParam("gameId")
-
-        this._storeClient.gameStore.$dispose()
-        this._storeClient.itemsStore.$dispose()
-
         await Promise.all([
-            this._gameController.fetchGame(gameId),
-            this._itemController.fetchGameItems(gameId),
+            this._gameController.fetchGame(this._routerClient.getRouteParam("gameId")),
+            this._itemController.fetchGameItems(this._routerClient.getRouteParam("gameId")),
+        ])
+    }
+
+    public async dispose(): Promise<void> {
+        await Promise.all([
+            this._storeClient.gameStore.$dispose(),
+            this._storeClient.itemsStore.$dispose(),
         ])
     }
 }

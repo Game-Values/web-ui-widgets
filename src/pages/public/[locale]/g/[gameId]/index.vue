@@ -1,16 +1,3 @@
-<script lang="ts" setup>
-import { Layout } from "~/enums"
-
-// todo: from facades or etc
-definePageMeta({
-    layout: Layout.GAME,
-})
-
-let { gameFacade } = useFacades()
-
-await gameFacade.bootstrap()
-</script>
-
 <template>
 <ui-page>
     <v-row align="middle">
