@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-let { routerClient, storeClient } = useClients()
+let { storeClient } = useClients()
 let { loginModal, registrationModal } = useModals()
 
 let { authenticated } = storeToRefs(storeClient.userMeStore)
@@ -8,59 +8,55 @@ let { authenticated } = storeToRefs(storeClient.userMeStore)
 <template>
 <header class="relative z-1">
     <ui-content>
-        <v-row
-            align="middle"
-            style="
-                --vxp-row-v-gap: 0;
-            "
-        >
+        <v-row align="middle">
             <v-column
-                :lg="5"
+                :lg="4"
                 :md="6"
                 :sm="8"
                 :xs="12"
             >
-                <ui-link :to="routerClient.getRoute(routerClient.routeNames.MAIN)">
-                    <ui-icon
-                        custom="logo"
-                        height="40"
-                        width="158"
-                    />
-                </ui-link>
+                <app-logo />
             </v-column>
 
             <v-column
                 :lg="8"
-                :md="8"
+                :md="16"
                 :sm="12"
                 :xs="0"
             >
-                <!-- todo: component & i18n -->
-                <v-input
+                <!-- todo: wrapper or component breakpoint-only -->
+                <div
                     class="
-                        lg:(max-w-39rem)
-                        sm:(flex!)
-                        xs:(hidden!)
+                        w-full
+                        sm:(block)
+                        xs:(hidden)
                     "
-                    clearable
-                    placeholder="Search"
                 >
-                    <template #suffix>
-                        <ui-icon
-                            heroicons="magnifying-glass"
-                            size="18"
-                        />
-                    </template>
-                </v-input>
+                    <!-- todo: component & i18n -->
+                    <v-input
+                        clearable
+                        placeholder="Search"
+                    >
+                        <template #suffix>
+                            <ui-icon
+                                heroicons="magnifying-glass"
+                                size="18"
+                            />
+                        </template>
+                    </v-input>
+                </div>
             </v-column>
 
             <v-column
                 :lg="7"
                 :span="0"
+                :use-flex="{
+                    justify: 'center',
+                }"
             >
                 <!-- todo: component & i18n -->
                 <nav>
-                    <v-space>
+                    <v-space size="large">
                         <ui-link>
                             <v-title :level="6">
                                 Blog
@@ -89,7 +85,7 @@ let { authenticated } = storeToRefs(storeClient.userMeStore)
             </v-column>
 
             <v-column
-                :lg="4"
+                :lg="5"
                 :span="0"
                 :use-flex="{
                     align: 'end',
@@ -102,6 +98,7 @@ let { authenticated } = storeToRefs(storeClient.userMeStore)
                         lg:(flex)
                     "
                     justify="end"
+                    no-wrap
                     size="large"
                 >
                     <!-- todo: component -->
@@ -173,8 +170,7 @@ let { authenticated } = storeToRefs(storeClient.userMeStore)
 
             <v-column
                 :lg="0"
-                :md="10"
-                :sm="4"
+                :sm="2"
                 :use-flex="{
                     justify: 'end',
                 }"

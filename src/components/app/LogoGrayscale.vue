@@ -1,0 +1,9 @@
+<template>
+<app-logo>
+    <ui-icon
+        custom="logo-uncolored"
+        height="40"
+        width="158"
+    />
+</app-logo>
+</template>
