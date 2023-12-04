@@ -73,6 +73,7 @@ let { items } = storeToRefs(storeClient.itemsStore)
         :width="150"
         id-key="attributesCount"
         name="In Stock"
+        sorter
     />
 
     <v-table-column
@@ -80,6 +81,7 @@ let { items } = storeToRefs(storeClient.itemsStore)
         :name="t('Price')"
         :width="150"
         id-key="attributesPrice"
+        sorter
     />
 </v-table>
 </template>
