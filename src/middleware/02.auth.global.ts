@@ -6,9 +6,14 @@ let auth: () => Promise<boolean> = onceClientOnly(async (): Promise<boolean> => 
     let { cookieClient, storeClient } = useClients()
     let { authController, userController } = useControllers()
 
-    if (cookieClient.accessToken)
+    if (cookieClient.accessToken) {
+        // todo:
+        if (isClient())
+            await authController.refreshToken()
         await userController.fetchMe()
+    }
 
+    // todo:
     if (!storeClient.userMeStore.authenticated)
         await authController.logout()
 

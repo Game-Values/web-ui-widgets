@@ -33,8 +33,14 @@ export class AuthController {
         this._setCookies(tokenRaw)
     }
 
+    // todo: (?)
     public async logout(): Promise<void> {
         this._clearCookies()
+    }
+
+    public async refreshToken(): Promise<void> {
+        // let tokenRaw: TokenRaw = await this._authService.refreshToken()
+        // this._setCookies(tokenRaw)
     }
 
     public async registration(payload: BodyCreateUserProfileApiV1UsersPostRaw): Promise<void> {
