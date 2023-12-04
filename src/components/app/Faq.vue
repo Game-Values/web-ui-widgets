@@ -1,11 +1,16 @@
 <script setup lang="ts">
-import type { ComputedRef, UnwrapRef } from "vue"
+import type { ScopedProps } from "~/types"
+import type { ComputedRef, UnwrapRef, VNode } from "vue"
 
 import { Breakpoint } from "~~/common/enums"
 
 interface FaqForm {
     email: string
 }
+
+defineSlots<{
+    default: (scopedProps: ScopedProps) => VNode
+}>()
 
 let breakpoint = useBreakpoint()
 
@@ -25,15 +30,17 @@ let faqForm: UnwrapRef<FaqForm> = reactive({
 
 <template>
 <ui-overlay
-    :height="faqHeight"
-    class="
+    :class="`
         bg-[url(/images/faq.png)]
         bg-no-repeat
-        bg-cover
-        bg-right
+        bg-[length:calc(100%-${pxToRem(faqHeight)})]
         border-solid-secondary
         rounded-5
-    "
+    `"
+    :height="faqHeight"
+    :style="{
+        backgroundPosition: `100% -${pxToRem(faqHeight)}`,
+    }"
 >
     <template #overlay>
         <slot>
