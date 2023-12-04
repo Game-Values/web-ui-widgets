@@ -51,6 +51,15 @@ export class SaleController {
         if (itemId)
             await this._itemController.fetchItem(itemId)
 
-        this._storeClient.saleStore.setSaleItemRaw(this._storeClient.itemStore.itemRaw)
+        this._storeClient.saleStore.setSaleItemRaw(
+            useMerge(this._storeClient.itemStore.itemRaw, {
+                attributes: {
+                    type: (
+                        this._routerClient.getRouteQuery("itemType") ||
+                        this._storeClient.itemStore.item.attributes.type
+                    ),
+                },
+            }),
+        )
     }
 }

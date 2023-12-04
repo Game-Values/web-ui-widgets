@@ -11,6 +11,7 @@ export default defineNuxtRouteMiddleware(async (to: RouteLocationNormalized): Pr
             let routeFacade: Nullable<FacadeAbstract> = (
                 routerClient.getRouteFacade(routerClient.route.name as RouteName)
             )
+            // todo: try / catch / etc
             if (routeFacade) {
                 await routeFacade.dispose()
                 await routeFacade.bootstrap()

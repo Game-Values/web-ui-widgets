@@ -133,8 +133,8 @@ export class RouterClient {
         return useGet(this.route.query, routeQuery, "") as T
     }
 
-    public async routeMiddleware(routeMiddleware: (next: NavigationGuardNext) => Promise<void>): Promise<void> {
-        await routeMiddleware(
+    public async routeMiddleware(middleware: (next: NavigationGuardNext) => Promise<void>): Promise<void> {
+        await middleware(
             async (to: RouteLocationNormalized, cb: Callable<Promise<void>>): Promise<void> => {
                 Object.defineProperty(this, "route", {
                     configurable: true,

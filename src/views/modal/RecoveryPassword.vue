@@ -14,7 +14,10 @@ let formModel: UnwrapRef<FormModel> = reactive({
 
 <template>
 <v-modal v-model:active="recoveryPasswordModal.active">
-    <v-form :model="formModel">
+    <v-form
+        :model="formModel"
+        all-required
+    >
         <v-form-item>
             <v-title
                 :level="3"
@@ -31,10 +34,7 @@ let formModel: UnwrapRef<FormModel> = reactive({
             </v-text>
         </v-form-item>
 
-        <v-form-item
-            prop="email"
-            required
-        >
+        <v-form-item prop="email">
             <v-input placeholder="Email" />
         </v-form-item>
 

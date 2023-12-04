@@ -34,7 +34,10 @@ let registrationPayload: ComputedRef<BodyCreateUserProfileApiV1UsersPostRaw> = (
 
 <template>
 <v-modal v-model:active="registrationModal.active">
-    <v-form :model="formModel">
+    <v-form
+        :model="formModel"
+        all-required
+    >
         <v-form-item>
             <v-title
                 :level="3"
@@ -44,24 +47,15 @@ let registrationPayload: ComputedRef<BodyCreateUserProfileApiV1UsersPostRaw> = (
             </v-title>
         </v-form-item>
 
-        <v-form-item
-            prop="full_name"
-            required
-        >
+        <v-form-item prop="full_name">
             <v-input placeholder="Nickname" />
         </v-form-item>
 
-        <v-form-item
-            prop="email"
-            required
-        >
+        <v-form-item prop="email">
             <v-input placeholder="Email" />
         </v-form-item>
 
-        <v-form-item
-            prop="password"
-            required
-        >
+        <v-form-item prop="password">
             <v-input
                 placeholder="Password"
                 plain-password
@@ -69,10 +63,7 @@ let registrationPayload: ComputedRef<BodyCreateUserProfileApiV1UsersPostRaw> = (
             />
         </v-form-item>
 
-        <v-form-item
-            prop="repeatPassword"
-            required
-        >
+        <v-form-item prop="repeatPassword">
             <v-input
                 placeholder="Repeat password"
                 plain-password
@@ -93,10 +84,7 @@ let registrationPayload: ComputedRef<BodyCreateUserProfileApiV1UsersPostRaw> = (
             </v-form-submit>
         </v-form-item>
 
-        <v-form-item
-            prop="sendNotifications"
-            required
-        >
+        <v-form-item prop="sendNotifications">
             <v-checkbox>
                 <v-text disabled>
                     I want to receive notifications about promotions and offers by email
@@ -104,10 +92,7 @@ let registrationPayload: ComputedRef<BodyCreateUserProfileApiV1UsersPostRaw> = (
             </v-checkbox>
         </v-form-item>
 
-        <v-form-item
-            prop="agreeWithPolicies"
-            required
-        >
+        <v-form-item prop="agreeWithPolicies">
             <v-checkbox>
                 <v-text disabled>
                     By registering, ou agree to the

@@ -38,9 +38,9 @@ async function handleSelectItemType(itemType: ItemType): Promise<void> {
 async function handleSaleItem(): Promise<void> {
     await saleController.createSaleItem()
     await navigateTo(
-        routerClient.getRoute(routerClient.routeNames.ACCOUNT_SALE_EDIT, {
+        routerClient.getRoute(routerClient.routeNames.GAME, {
             params: {
-                itemId: useGet(getRef(saleItem), "id"),
+                gameId: useGet(getRef(saleItem), "gid"),
             },
         }),
     )
@@ -59,7 +59,10 @@ async function handleDeleteItem(): Promise<void> {
 </script>
 
 <template>
-<v-form :model="storeClient.saleStore.saleItemRaw">
+<v-form
+    :model="storeClient.saleStore.saleItemRaw"
+    all-required
+>
     <v-form-item
         label="Game"
         prop="gid"

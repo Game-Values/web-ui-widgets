@@ -14,7 +14,10 @@ let formModel: UnwrapRef<BodyLoginWithOauth2ApiV1LoginOauthPostRaw> = reactive({
 
 <template>
 <v-modal v-model:active="loginModal.active">
-    <v-form :model="formModel">
+    <v-form
+        :model="formModel"
+        all-required
+    >
         <v-form-item>
             <v-title
                 :level="3"
@@ -24,17 +27,11 @@ let formModel: UnwrapRef<BodyLoginWithOauth2ApiV1LoginOauthPostRaw> = reactive({
             </v-title>
         </v-form-item>
 
-        <v-form-item
-            prop="username"
-            required
-        >
+        <v-form-item prop="username">
             <v-input placeholder="Email" />
         </v-form-item>
 
-        <v-form-item
-            prop="password"
-            required
-        >
+        <v-form-item prop="password">
             <v-input
                 placeholder="Password"
                 plain-password
@@ -43,9 +40,7 @@ let formModel: UnwrapRef<BodyLoginWithOauth2ApiV1LoginOauthPostRaw> = reactive({
         </v-form-item>
 
         <v-form-item>
-            <v-space
-                justify="space-between"
-            >
+            <v-space justify="space-between">
                 <v-form-submit
                     @submit="
                         authController.login(formModel)
