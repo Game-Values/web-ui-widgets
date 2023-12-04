@@ -57,6 +57,9 @@ await setLocale(DEFAULT_LOCALE)
         select: {
             transfer: true,
         },
+        table: {
+            highlight: true,
+        },
     }"
 >
     <slot />
