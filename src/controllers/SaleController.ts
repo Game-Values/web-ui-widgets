@@ -31,18 +31,9 @@ export class SaleController {
     }
 
     public async fetchSaleGame(): Promise<void> {
-        let gameId: string = (
-            this._storeClient.saleStore.saleItem.gid ||
-            this._routerClient.getRouteQuery("gameId")
-        )
-        if (gameId)
-            await this._gameController.fetchGame(gameId)
-
+        await this._gameController.fetchGame(this._routerClient.getRouteParam("gameId"))
         this._storeClient.saleStore.updateSaleItemRaw({
-            gid: (
-                this._storeClient.gameStore.game.id ||
-                gameId
-            ),
+            gid: this._storeClient.gameStore.game.id,
         })
     }
 
@@ -54,10 +45,7 @@ export class SaleController {
         this._storeClient.saleStore.setSaleItemRaw(
             useMerge(this._storeClient.itemStore.itemRaw, {
                 attributes: {
-                    type: (
-                        this._routerClient.getRouteQuery("itemType") ||
-                        this._storeClient.itemStore.item.attributes.type
-                    ),
+                    type: this._routerClient.getRouteParam("itemType"),
                 },
             }),
         )

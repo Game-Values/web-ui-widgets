@@ -43,7 +43,11 @@ let { items } = storeToRefs(storeClient.itemsStore)
         >
             <widget-wrapper-auth-only>
                 <ui-link
-                    :to="row.itemRoute"
+                    :to="
+                        row.isUserMeItem
+                            ? row.editRoute
+                            : row.buyRoute
+                    "
                     type="primary"
                 >
                     <v-title :level="6">

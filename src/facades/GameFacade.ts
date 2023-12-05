@@ -1,11 +1,10 @@
 import type { FacadeAbstract } from "~/abstract"
-import type { RouterClient, StoreClient } from "~/clients"
+import type { RouterClient } from "~/clients"
 import type { GameController, ItemController } from "~/controllers"
 
 export class GameFacade implements FacadeAbstract {
     public constructor(
         private _routerClient: RouterClient,
-        private _storeClient: StoreClient,
         private _gameController: GameController,
         private _itemController: ItemController,
     ) {}
@@ -14,13 +13,6 @@ export class GameFacade implements FacadeAbstract {
         await Promise.all([
             this._gameController.fetchGame(this._routerClient.getRouteParam("gameId")),
             this._itemController.fetchGameItems(this._routerClient.getRouteParam("gameId")),
-        ])
-    }
-
-    public async dispose(): Promise<void> {
-        await Promise.all([
-            this._storeClient.gameStore.$dispose(),
-            this._storeClient.itemsStore.$dispose(),
         ])
     }
 }

@@ -16,7 +16,7 @@
             :md="12"
             :xs="24"
         >
-            <entity-sale-form />
+            <entity-sell-form />
         </v-column>
 
         <v-column
@@ -24,7 +24,7 @@
             :md="12"
             :xs="24"
         >
-            <entity-sale-upload />
+            <entity-sell-upload />
         </v-column>
     </v-row>
 

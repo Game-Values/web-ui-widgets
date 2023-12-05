@@ -4,9 +4,11 @@ import { CollectionAbstract } from "~/abstract"
 import { LikedGame } from "~/dto/LikedGame"
 
 export class LikedGames extends CollectionAbstract<LikedGame, LikedGameRaw> {
-    protected __Model: typeof LikedGame = LikedGame
+    protected get __Model(): typeof LikedGame {
+        return LikedGame
+    }
 
     public get likedIds(): string[] {
-        return useMap(this.items, "gid")
+        return useMap(this, "gid")
     }
 }

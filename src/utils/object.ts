@@ -8,6 +8,7 @@ export function assignDeepKeysAsCamelCase<
 
     useForEach(deepKeys, (key: string): T => (
         Object.defineProperty(target, useCamelCase(key), {
+            configurable: true,
             get: (): ValueOf<V> => useGet(target, key),
         })
     ))

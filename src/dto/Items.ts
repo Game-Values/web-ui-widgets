@@ -14,10 +14,12 @@ type LotsTableData = (
 )
 
 export class Items extends CollectionAbstract<Item, ItemRaw> {
-    protected __Model: typeof Item = Item
+    protected get __Model(): typeof Item {
+        return Item
+    }
 
     public get lotsTableData(): LotsTableData[] {
-        return useMap<Item, LotsTableData>(this.items, (item: Item): LotsTableData => {
+        return useMap<Item, LotsTableData>(this, (item: Item): LotsTableData => {
             let deepKeys: string[] = useMap(useKeys(item.attributes), (
                 (key: string): string => `attributes.${key}`
             ))

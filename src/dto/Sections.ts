@@ -2,5 +2,18 @@ import { CollectionAbstract } from "~/abstract"
 import { Section } from "~/dto/Section"
 
 export class Sections extends CollectionAbstract<Section, Section> {
-    protected __Model: typeof Section = Section
+    protected get __Model(): typeof Section {
+        return Section
+    }
+
+    public get active(): Section {
+        let { routerClient } = useClients()
+
+        if (routerClient.getRouteParam("itemType"))
+            return useFind<Section>(this, {
+                type: routerClient.getRouteParam("itemType"),
+            })!
+
+        return useFirst<Section>(this)!
+    }
 }

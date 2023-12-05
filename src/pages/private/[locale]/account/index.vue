@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import type { RouteLocation } from "vue-router"
+
 let { storeClient } = useClients()
 
 let { user } = storeToRefs(storeClient.userMeStore)
@@ -14,7 +16,8 @@ let { user } = storeToRefs(storeClient.userMeStore)
                 </v-column>
 
                 <v-column>
-                    <entity-account-tabs />
+                    <app-router-view />
+<!--                    <entity-account-tabs />-->
                 </v-column>
             </v-row>
         </v-column>

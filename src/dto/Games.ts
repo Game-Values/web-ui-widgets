@@ -2,30 +2,25 @@ import type { GameRaw } from "#schema/data-contracts"
 
 import { CollectionAbstract } from "~/abstract"
 import { Game } from "~/dto/Game"
+import { createCollection } from "~/factories"
 
 export class Games extends CollectionAbstract<Game, GameRaw> {
-    protected __Model: typeof Game = Game
-
-    // Sort games based on their names
-    private get _sortedItems(): Game[] {
-        return this.items.sort((a: Game, b: Game): number => (
-            a.name.localeCompare(b.name)
-        ))
+    protected get __Model(): typeof Game {
+        return Game
     }
 
-    // Group games by the first character of their names
     public get groupedGames(): Map<string, Games> {
-        let groupedGames: Map<string, Games> = new Map()
+        let sortedGames: Game[] = useSortBy(this, ["name"])!
 
-        this._sortedItems.forEach((game: Game): void => {
+        return useReduce(sortedGames, (result: Map<string, Games>, game: Game): Map<string, Games> => {
             let firstChar: string = game.name.charAt(0)
 
-            if (!groupedGames.has(firstChar))
-                groupedGames.set(firstChar, new Games([]))
+            if (!result.get(firstChar))
+                result.set(firstChar, createCollection(Games))
 
-            groupedGames.get(firstChar)!.add(game)
-        })
+            result.get(firstChar)!.push(game)
 
-        return groupedGames
+            return result
+        }, new Map())
     }
 }

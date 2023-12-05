@@ -150,7 +150,7 @@
 .vxp-tag-vars
     --vxp-tag-v-padding: theme("spacing.2")
     --vxp-tag-h-padding: theme("spacing.6")
-    --vxp-tag-bg-color: transparent
+    --vxp-tag-bg-color: theme("colors.white-02")
 
     &.vxp-tag--circle
         --vxp-tag-radius: theme("spacing.10")
@@ -158,6 +158,9 @@
         &.vxp-tag--small
             --vxp-tag-v-padding: 0
             --vxp-tag-h-padding: theme("spacing.1")
+
+    &.vxp-tag--primary
+        --vxp-tag-bg-color: theme("colors.primary")
 
 .vxp-text-vars
     --vxp-text-color: inherit

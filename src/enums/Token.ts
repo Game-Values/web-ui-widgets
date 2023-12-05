@@ -19,9 +19,9 @@ export enum ControllerToken {
 }
 
 export enum FacadeToken {
+    BUY = "BuyFacade",
     GAME = "GameFacade",
     MAIN = "MainFacade",
-    ORDER = "OrderFacade",
     SALE = "SaleFacade",
     USER = "UserFacade",
 }

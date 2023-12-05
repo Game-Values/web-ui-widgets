@@ -14,6 +14,7 @@ let props = defineProps<Props>()
 let errorViews = computed((): Record<number, AsyncComponent> => (
     {
         [HttpStatus.INTERNAL_SERVER_ERROR]: defineAsyncComponent((): Promise<Component> => import("~/views/error/500.vue")),
+        [HttpStatus.NOT_FOUND]: defineAsyncComponent((): Promise<Component> => import("~/views/error/404.vue")),
     }
 ))
 
@@ -23,7 +24,7 @@ let errorView = computed((): AsyncComponent => (
 ))
 
 // todo: logger (?)
-// console.log(props.error)
+console.log(props.error)
 </script>
 
 <template>

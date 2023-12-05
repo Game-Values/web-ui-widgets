@@ -3,92 +3,79 @@ import type { Callable, Nullable, Route } from "~/types"
 import type {
     LocationQuery,
     LocationQueryValue,
-    NavigationGuardNext,
     RouteLocationNormalized,
     RouteMeta,
     RouteParams,
     Router,
 } from "vue-router"
 
+import { helpers } from "@typed-router"
+
 import { RouteLayout, RouteName } from "~/enums"
 
 export class RouterClient {
-    private _next: Nullable<RouteLocationNormalized>
-
-    private _to: Nullable<RouteLocationNormalized>
-
-    public readonly routeNames: Record<keyof typeof RouteName, RouteName> = {
-        ACCOUNT: RouteName.ACCOUNT,
-        ACCOUNT_SALE: RouteName.ACCOUNT_SALE,
-        ACCOUNT_SALE_EDIT: RouteName.ACCOUNT_SALE_EDIT,
-        ACCOUNT_SETTINGS: RouteName.ACCOUNT_SETTINGS,
-        GAME: RouteName.GAME,
-        GAME_ITEM: RouteName.GAME_ITEM,
-        GAME_ITEM_ORDER: RouteName.GAME_ITEM_ORDER,
-        MAIN: RouteName.MAIN,
-        USER: RouteName.USER,
-    }
+    public readonly routeNames: Record<keyof typeof RouteName, RouteName> = (
+        useReduce(RouteName, (
+            result: Record<keyof typeof RouteName, RouteName>,
+            val: RouteName,
+            key: keyof typeof RouteName,
+        ): Record<keyof typeof RouteName, RouteName> => useSet(result, key, val), {})
+    )
 
     @Memoize()
-    private get _routeFacades(): Record<RouteName, Nullable<FacadeAbstract>> {
+    private get _routeFacades(): Record<keyof typeof RouteName, FacadeAbstract> {
         let {
             gameFacade,
             mainFacade,
-            orderFacade,
+            buyFacade,
             saleFacade,
             userFacade,
         } = useFacades()
 
         return {
-            [this.routeNames.ACCOUNT]: null,
-            [this.routeNames.ACCOUNT_SALE]: saleFacade,
-            [this.routeNames.ACCOUNT_SALE_EDIT]: saleFacade,
-            [this.routeNames.ACCOUNT_SETTINGS]: null,
-            [this.routeNames.GAME]: gameFacade,
-            [this.routeNames.GAME_ITEM]: null,
-            [this.routeNames.GAME_ITEM_ORDER]: orderFacade,
-            [this.routeNames.MAIN]: mainFacade,
-            [this.routeNames.USER]: userFacade,
-        } as Record<RouteName, Nullable<FacadeAbstract>>
+            [this.routeNames.PRIVATE_GAME_ITEM_BUY]: buyFacade,
+            [this.routeNames.PRIVATE_GAME_ITEM_SELL]: saleFacade,
+            [this.routeNames.PRIVATE_GAME_ITEM_SELL_EDIT]: saleFacade,
+
+            // [this.routeNames.ACCOUNT]: null,
+            // [this.routeNames.ACCOUNT_SALE]: saleFacade,
+            // [this.routeNames.ACCOUNT_SALE_EDIT]: saleFacade,
+            // [this.routeNames.ACCOUNT_SETTINGS]: null,
+            [this.routeNames.PUBLIC_GAME]: gameFacade,
+            // [this.routeNames.GAME_ITEM]: null,
+            // [this.routeNames.GAME_ITEM_ORDER]: orderFacade,
+            [this.routeNames.PUBLIC_MAIN]: mainFacade,
+            // [this.routeNames.USER]: userFacade,
+        }
     }
 
     @Memoize()
-    private get _routeLayouts(): Record<RouteName, RouteLayout> {
+    private get _routeLayouts(): Record<keyof typeof RouteName, RouteLayout> {
         return {
-            [this.routeNames.ACCOUNT]: RouteLayout.DEFAULT,
-            [this.routeNames.ACCOUNT_SALE]: RouteLayout.DEFAULT,
-            [this.routeNames.ACCOUNT_SALE_EDIT]: RouteLayout.DEFAULT,
-            [this.routeNames.ACCOUNT_SETTINGS]: RouteLayout.DEFAULT,
-            [this.routeNames.GAME]: RouteLayout.GAME,
-            [this.routeNames.GAME_ITEM]: RouteLayout.GAME,
-            [this.routeNames.GAME_ITEM_ORDER]: RouteLayout.GAME,
-            [this.routeNames.MAIN]: RouteLayout.DEFAULT,
-            [this.routeNames.USER]: RouteLayout.DEFAULT,
-        } as Record<RouteName, RouteLayout>
+            [this.routeNames.PUBLIC_GAME]: RouteLayout.GAME,
+        }
     }
 
-    private get _routeParams(): Record<RouteName, RouteParams> {
+    private get _routeParams(): Record<keyof typeof RouteName, RouteParams> {
         return {
-            [this.routeNames.ACCOUNT]: {},
-            [this.routeNames.ACCOUNT_SALE]: {},
-            [this.routeNames.ACCOUNT_SALE_EDIT]: {
-                itemId: this.route.params.itemId,
-            },
-            [this.routeNames.ACCOUNT_SETTINGS]: {},
-            [this.routeNames.GAME]: {
-                gameId: this.route.params.gameId,
-            },
-            [this.routeNames.GAME_ITEM]: {
-                gameId: this.route.params.gameId,
-                itemType: this.route.params.itemType,
-            },
-            [this.routeNames.GAME_ITEM_ORDER]: {
-                gameId: this.route.params.gameId,
-                itemId: this.route.params.itemId,
-                itemType: this.route.params.itemType,
-            },
-            [this.routeNames.MAIN]: {},
-            [this.routeNames.USER]: {},
+            [this.routeNames.PRIVATE_GAME_ITEM_BUY]: (
+                usePick(this.route.params, [
+                    "gameId",
+                    "itemId",
+                    "itemType",
+                ])
+            ),
+            [this.routeNames.PRIVATE_GAME_ITEM_SELL_EDIT]: (
+                usePick(this.route.params, [
+                    "itemId",
+                ])
+            ),
+            [this.routeNames.PUBLIC_GAME]: (
+                usePick(this.route.params, [
+                    "gameId",
+                    "itemType",
+                ])
+            ),
         } as Record<RouteName, RouteParams>
     }
 
@@ -101,16 +88,16 @@ export class RouterClient {
             )>
         >,
     ): Route {
-        return useLocaleRoute()(
+        return helpers.route(
             useMerge({
                 name: routeName,
                 params: this.getRouteParams(routeName),
             }, routeOptions),
-        ) as Route
+        )
     }
 
     public getRouteFacade<T = FacadeAbstract>(routeName: RouteName): Nullable<T> {
-        return useGet(this._routeFacades, routeName, null) as Nullable<T>
+        return useGet(this._routeFacades, routeName, null)
     }
 
     public getRouteLayout(routeName: RouteName): RouteLayout {
@@ -133,7 +120,15 @@ export class RouterClient {
         return useGet(this.route.query, routeQuery, "") as T
     }
 
-    public async routeMiddleware(middleware: (next: NavigationGuardNext) => Promise<void>): Promise<void> {
+    public isRouteNameEqual(routeName: RouteName): boolean {
+        return isEqual(routeName, this.route.name)
+    }
+
+    public async routeMiddleware(
+        middleware: (
+            next: (to: RouteLocationNormalized, cb: Callable<Promise<void>>) => Promise<void>,
+        ) => Promise<void>,
+    ): Promise<void> {
         await middleware(
             async (to: RouteLocationNormalized, cb: Callable<Promise<void>>): Promise<void> => {
                 Object.defineProperty(this, "route", {

@@ -25,11 +25,11 @@ export class ModalController {
         this.active = true
     }
 
-    get active(): boolean {
+    public get active(): boolean {
         return getRef(this._active)
     }
 
-    set active(val: boolean) {
+    public set active(val: boolean) {
         setRef(this._active, val)
     }
 }

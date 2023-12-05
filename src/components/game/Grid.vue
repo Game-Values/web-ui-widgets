@@ -26,7 +26,7 @@ let gridColumns = computed((): number => (
     class="flex-1"
 >
     <v-cell
-        v-for="game in games.items"
+        v-for="game in games"
         :key="game.name"
         :width="1"
     >

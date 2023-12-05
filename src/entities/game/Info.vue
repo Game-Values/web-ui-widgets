@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 useI18n()
 
-let { routerClient, storeClient } = useClients()
+let { storeClient } = useClients()
 
 let { game } = storeToRefs(storeClient.gameStore)
 </script>
@@ -50,13 +50,7 @@ let { game } = storeToRefs(storeClient.gameStore)
                     </v-button>
 
                     <ui-button-link
-                        :to="
-                            routerClient.getRoute(routerClient.routeNames.ACCOUNT_SALE, {
-                                query: {
-                                    gameId: game.id,
-                                },
-                            })
-                        "
+                        :to="game.attributes.sections.active.sellRoute"
                         type="primary"
                         block
                     >

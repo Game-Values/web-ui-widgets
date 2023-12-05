@@ -6,9 +6,15 @@ let { game } = storeToRefs(storeClient.gameStore)
 
 <template>
 <v-space>
-    <v-tag
-        v-for="section in game.attributes.sections.items"
+    <ui-tag-link
+        v-for="section in game.attributes.sections"
         :key="section.name"
+        :type="(
+            section.isActive
+                ? 'primary'
+                : 'default'
+        )"
+        :to="section.gameRoute"
         circle
     >
         <v-space>
@@ -19,13 +25,13 @@ let { game } = storeToRefs(storeClient.gameStore)
             <v-text
                 class="
                     bg-secondary
-                    px-3
+                    px-2
                     rounded-12
                 "
             >
                 {{ section.count }}
             </v-text>
         </v-space>
-    </v-tag>
+    </ui-tag-link>
 </v-space>
 </template>

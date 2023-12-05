@@ -4,16 +4,17 @@
         "baseUrl": "./src",
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "strict": true,
+        "verbatimModuleSyntax": false,
         "types": [
             "@nuxt/types",
             "@pinia/nuxt",
             "@types/node",
             "reflect-metadata",
-            "swiper/vue"
+            "swiper/vue",
+            "vite/client"
         ],
         "typeRoots": [
             "src/types"
-        ],
+        ]
     }
 }

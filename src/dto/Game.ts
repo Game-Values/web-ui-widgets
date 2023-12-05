@@ -1,40 +1,36 @@
 import type { GameRaw } from "#schema/data-contracts"
+import type { Route } from "~/types"
 
 import { GameAttributes } from "~/dto/GameAttributes"
 
 export class Game implements GameRaw {
     @Expose()
     @Type((): typeof GameAttributes => GameAttributes)
-    @IsDefined()
-    @IsInstance(GameAttributes)
     declare public attributes: GameAttributes
 
     @Expose()
-    @IsDefined()
-    @IsString()
-    @IsNotEmpty()
     declare public created: string
 
     @Expose()
-    @IsDefined()
-    @IsString()
-    @IsNotEmpty()
     declare public id: string
 
     @Expose()
-    @IsDefined()
-    @IsBoolean()
     declare public is_active: boolean
 
     @Expose()
-    @IsDefined()
-    @IsString()
-    @IsNotEmpty()
     declare public modified: string
 
     @Expose()
-    @IsDefined()
-    @IsString()
-    @IsNotEmpty()
     declare public name: string
+
+    public get route(): Route {
+        let { routerClient } = useClients()
+
+        return routerClient.getRoute(routerClient.routeNames.PUBLIC_GAME, {
+            params: {
+                gameId: this.id,
+                itemType: this.attributes.sections.active.name,
+            },
+        })
+    }
 }

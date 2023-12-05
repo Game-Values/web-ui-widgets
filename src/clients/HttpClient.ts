@@ -20,11 +20,15 @@ export class HttpClient {
         data: AsyncData<T, E>,
         error: AsyncData<T, E>,
     }> {
-        let { data, error }: AsyncData<T, E> = await useAsyncData<T, E>(hash(requestParams), (
+        let key: string = hash(requestParams)
+        let request: () => Promise<T> = (
             (): Promise<T> => this._httpAdapter.request<T, E>(
                 this._resolveRequestParams(requestParams),
             )
-        ))
+        )
+
+        // todo: vue-query with progress
+        let { data, error }: AsyncData<T, E> = await useAsyncData<T, E>(key, request)
 
         return {
             data: getRef(data),

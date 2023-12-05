@@ -2,6 +2,9 @@ import type { NuxtConfig } from "@nuxt/schema"
 
 import { env } from "node:process"
 
+// todo:
+// import { default as browserslist } from "browserslist"
+// import { browserslistToTargets } from "lightningcss"
 import { default as dynamicImport } from "vite-plugin-dynamic-import"
 import { default as inheritAttrs } from "vite-plugin-vue-setup-inherit-attrs"
 
@@ -127,22 +130,7 @@ let nuxtConfig: NuxtConfig = {
                     "Expose",
                     "Transform",
                     "Type",
-                ],
-            },
-            {
-                from: "class-validator",
-                imports: [
-                    "IsArray",
-                    "IsBoolean",
-                    "IsCurrency",
-                    "IsDefined",
-                    "IsEmail",
-                    "IsEnum",
-                    "IsInstance",
-                    "IsNotEmpty",
-                    "IsNumber",
-                    "IsNumberString",
-                    "IsString",
+                    "plainToInstance",
                 ],
             },
             {
@@ -154,109 +142,101 @@ let nuxtConfig: NuxtConfig = {
         ],
     },
 
-    modules: ((): any[] => {
-        // todo: typing
-        let modules: any[] = [
-            "@hebilicious/vue-query-nuxt",
-            "@nuxt/image",
-            "@unocss/nuxt",
+    modules: [
+        "@hebilicious/vue-query-nuxt",
+        "@nuxt/image",
+        "@unocss/nuxt",
 
-            "nuxt-lazy-load",
-            "nuxt-lodash",
-            "nuxt-swiper",
+        "nuxt-lazy-load",
+        "nuxt-lodash",
+        "nuxt-swiper",
 
-            // todo: need to enable after fixes
-            // ["@nuxtjs/eslint-module", {
-            //     failOnError: isProduction(),
-            // }],
+        // todo: need to enable after fixes
+        // ["@nuxtjs/eslint-module", {
+        //     failOnError: isProduction(),
+        // }],
 
-            ["@nuxtjs/google-fonts", {
-                base64: true,
-                display: "swap",
-                families: {
-                    Montserrat: {
-                        wght: [
-                            400,
-                            500,
-                            600,
-                            700,
-                        ],
-                    },
+        ["@nuxtjs/google-fonts", {
+            base64: true,
+            display: "swap",
+            families: {
+                Montserrat: {
+                    wght: [
+                        400,
+                        500,
+                        600,
+                        700,
+                    ],
                 },
-                overwriting: true,
-                preload: true,
-            }],
+            },
+            overwriting: true,
+            preload: true,
+        }],
 
-            ["@nuxtjs/i18n", {
-                debug: isDebug(),
-                defaultLocale: getLocale(),
-                langDir: "locales",
-                lazy: true,
-                locales: [
-                    {
-                        code: Locale.DE,
-                        file: {
-                            cache: true,
-                            path: `${LocaleISO.DE}.json`,
-                        },
-                        iso: LocaleISO.DE,
+        ["@nuxtjs/i18n", {
+            debug: isDebug(),
+            defaultLocale: getLocale(),
+            langDir: "locales",
+            lazy: true,
+            locales: [
+                {
+                    code: Locale.DE,
+                    file: {
+                        cache: true,
+                        path: `${LocaleISO.DE}.json`,
                     },
-                    {
-                        code: Locale.EN,
-                        file: {
-                            cache: true,
-                            path: `${LocaleISO.EN}.json`,
-                        },
-                        iso: LocaleISO.EN,
+                    iso: LocaleISO.DE,
+                },
+                {
+                    code: Locale.EN,
+                    file: {
+                        cache: true,
+                        path: `${LocaleISO.EN}.json`,
                     },
-                ],
-                strategy: "no_prefix",
-                vueI18n: "i18n.config.ts",
-            }],
+                    iso: LocaleISO.EN,
+                },
+            ],
+            strategy: "no_prefix",
+            vueI18n: "i18n.config.ts",
+        }],
 
-            ["@nuxtjs/web-vitals", {
-                debug: isDebug(),
-                provider: "log",
-            }],
+        ["@nuxtjs/web-vitals", {
+            debug: isDebug(),
+            provider: "log",
+        }],
 
-            ["@vexip-ui/nuxt", {
-                importStyle: false,
-                resolveIcon: false,
-            }],
+        ["@vexip-ui/nuxt", {
+            importStyle: false,
+            resolveIcon: false,
+        }],
 
-            ["@vueuse/nuxt", {
-                ssrHandlers: true,
-            }],
+        ["@vueuse/nuxt", {
+            ssrHandlers: true,
+        }],
 
-            ["nuxt-delay-hydration", {
-                debug: isDebug(),
-                mode: "mount",
-            }],
+        ["nuxt-delay-hydration", {
+            debug: isDebug(),
+            mode: "mount",
+        }],
 
-            ["nuxt-seo-experiments", {
-                debug: isDebug(),
-            }],
+        ["nuxt-seo-experiments", {
+            debug: isDebug(),
+        }],
 
-            ["nuxt-viewport", {
-                breakpoints: BREAKPOINTS,
-            }],
+        ["nuxt-typed-router", {
+            plugin: true,
+        }],
 
-            ["@pinia/nuxt", {
-                storesDirs: [
-                    "src/stores/**",
-                ],
-            }],
-        ]
+        ["nuxt-viewport", {
+            breakpoints: BREAKPOINTS,
+        }],
 
-        if (isProduction())
-            modules.push(
-                ["@nuxtjs/partytown", {
-                    debug: isDebug(),
-                }],
-            )
-
-        return modules
-    })(),
+        ["@pinia/nuxt", {
+            storesDirs: [
+                "src/stores/**",
+            ],
+        }],
+    ],
 
     nitro: {
         esbuild: {
@@ -299,11 +279,15 @@ let nuxtConfig: NuxtConfig = {
     vite: {
         build: {
             cssCodeSplit: true,
-            cssMinify: "esbuild",
+            cssMinify: "esbuild", // todo: "lightningcss",
             minify: "esbuild",
             modulePreload: true,
         },
         css: {
+            // todo:
+            // lightningcss: {
+            //     target: browserslistToTargets(browserslist(">= 0.25%")),
+            // },
             preprocessorOptions: {
                 sass: {
                     additionalData: (code: string): string => `
@@ -341,6 +325,8 @@ let nuxtConfig: NuxtConfig = {
                     },
                 },
             },
+            // todo:
+            // transformer: "lightningcss",
         },
         devBundler: "vite-node",
         esbuild: {
@@ -382,5 +368,12 @@ let nuxtConfig: NuxtConfig = {
         runtimeCompiler: true,
     },
 }
+
+if (isProduction())
+    nuxtConfig.modules!.push(
+        ["@nuxtjs/partytown", {
+            debug: isDebug(),
+        }],
+    )
 
 export default defineNuxtConfig(nuxtConfig)

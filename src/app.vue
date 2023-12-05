@@ -1,7 +1,3 @@
-<script lang="ts" setup>
-import type { RouteLocation } from "vue-router"
-</script>
-
 <template>
 <widget-wrapper-app>
     <ui-content>
@@ -9,9 +5,6 @@ import type { RouteLocation } from "vue-router"
         <!-- <app-breadcrumbs />-->
     </ui-content>
 
-    <nuxt-page
-        :id="($route.name as string)"
-        :page-key="(route: RouteLocation) => route.fullPath"
-    />
+    <app-router-view />
 </widget-wrapper-app>
 </template>

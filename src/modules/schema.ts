@@ -18,6 +18,11 @@ export default defineNuxtModule({
         if (!env.OPENAPI_URL)
             throw Error("<process.env.OPENAPI_URL> is not defined")
 
+        await rm(__schema, {
+            force: true,
+            recursive: true,
+        })
+
         await generateTemplates({
             modular: true,
             output: __templates,
@@ -42,14 +47,8 @@ export default defineNuxtModule({
             singleHttpClient: true,
             sortTypes: true,
             templates: __templates,
-            toJS: true,
             unwrapResponseData: true,
             url: env.OPENAPI_URL,
-        })
-
-        await rm(__templates, {
-            force: true,
-            recursive: true,
         })
     },
 })

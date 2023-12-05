@@ -26,7 +26,7 @@ let { authController } = useControllers()
             <v-dropdown-item
                 @select="
                     navigateTo(
-                        routerClient.getRoute(routerClient.routeNames.ACCOUNT),
+                        routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT),
                     )
                 "
             >
@@ -36,7 +36,7 @@ let { authController } = useControllers()
             <v-dropdown-item
                 @select="
                     navigateTo(
-                        routerClient.getRoute(routerClient.routeNames.ACCOUNT_SETTINGS),
+                        routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_SETTINGS),
                     )
                 "
             >

@@ -9,52 +9,53 @@ interface ItemRaw extends Omit<_ItemRaw, "attributes"> {
 
 export class Item implements ItemRaw {
     @Expose()
-    @Transform(({ value }: { value: _ItemRaw["attributes"] }): _ItemRaw["attributes"] => ({ ...value }))
     @Type((): typeof ItemAttributes => ItemAttributes)
-    @IsDefined()
-    @IsInstance(ItemAttributes)
     declare public attributes: ItemAttributes
 
     @Expose()
-    @IsDefined()
-    @IsString()
-    @IsNotEmpty()
     declare public created: string
 
     @Expose()
-    @IsDefined()
-    @IsString()
-    @IsNotEmpty()
     declare public gid: string
 
     @Expose()
-    @IsDefined()
-    @IsString()
-    @IsNotEmpty()
     declare public id: string
 
     @Expose()
-    @IsDefined()
-    @IsBoolean()
     declare public is_active: boolean
 
     @Expose()
-    @IsDefined()
-    @IsString()
-    @IsNotEmpty()
     declare public modified: string
 
     @Expose()
-    @IsDefined()
-    @IsString()
-    @IsNotEmpty()
     declare public name: string
 
     @Expose()
-    @IsDefined()
-    @IsString()
-    @IsNotEmpty()
     declare public owner_id: string
+
+    public get buyRoute(): Route {
+        let { routerClient } = useClients()
+
+        return routerClient.getRoute(routerClient.routeNames.PRIVATE_GAME_ITEM_BUY, {
+            params: {
+                gameId: this.gid,
+                itemId: this.id,
+                itemType: this.attributes.type,
+            },
+        })
+    }
+
+    public get editRoute(): Route {
+        let { routerClient } = useClients()
+
+        return routerClient.getRoute(routerClient.routeNames.PRIVATE_GAME_ITEM_SELL_EDIT, {
+            params: {
+                gameId: this.gid,
+                itemId: this.id,
+                itemType: this.attributes.type,
+            },
+        })
+    }
 
     @Memoize()
     public get isUserMeItem(): boolean {
@@ -66,20 +67,12 @@ export class Item implements ItemRaw {
         )
     }
 
-    public get itemRoute(): Route {
+    public get sellRoute(): Route {
         let { routerClient } = useClients()
 
-        if (this.isUserMeItem)
-            return routerClient.getRoute(routerClient.routeNames.ACCOUNT_SALE_EDIT, {
-                params: {
-                    itemId: this.id,
-                },
-            })
-
-        return routerClient.getRoute(routerClient.routeNames.GAME_ITEM_ORDER, {
+        return routerClient.getRoute(routerClient.routeNames.PRIVATE_GAME_ITEM_SELL, {
             params: {
                 gameId: this.gid,
-                itemId: this.id,
                 itemType: this.attributes.type,
             },
         })
@@ -89,9 +82,9 @@ export class Item implements ItemRaw {
         let { routerClient } = useClients()
 
         if (this.isUserMeItem)
-            return routerClient.getRoute(routerClient.routeNames.ACCOUNT)
+            return routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT)
 
-        return routerClient.getRoute(routerClient.routeNames.USER, {
+        return routerClient.getRoute(routerClient.routeNames.PUBLIC_USER, {
             params: {
                 userId: this.owner_id,
             },
