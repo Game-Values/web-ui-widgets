@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import type { ComputedRef } from "vue"
-
 const TRUSPILOT_MAX_SCORE: number = 5
 
 defineProps<{

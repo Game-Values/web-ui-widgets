@@ -78,7 +78,7 @@ let purchasesData = [
         />
 
         <v-table-column
-            #default="{ row, rowIndex }"
+            v-slot="{ row, rowIndex }"
             :width="150"
             id-key="Buyer"
             name="Buyer"
@@ -135,7 +135,7 @@ let purchasesData = [
         />
 
         <v-table-column
-            #default="{ row, rowIndex }"
+            v-slot="{ row, rowIndex }"
             :width="150"
             id-key="Buyer"
             name="Buyer"

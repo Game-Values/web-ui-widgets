@@ -23,9 +23,9 @@ export function useBreakpoints(): Record<Breakpoint, ComputedRef<boolean>> {
     let { match } = useViewport()
 
     return {
-        lg: computed(() => match(Breakpoint.LG)),
-        md: computed(() => match(Breakpoint.MD)),
-        sm: computed(() => match(Breakpoint.SM)),
-        xs: computed(() => match(Breakpoint.XS)),
+        lg: computed((): boolean => match(Breakpoint.LG)),
+        md: computed((): boolean => match(Breakpoint.MD)),
+        sm: computed((): boolean => match(Breakpoint.SM)),
+        xs: computed((): boolean => match(Breakpoint.XS)),
     }
 }

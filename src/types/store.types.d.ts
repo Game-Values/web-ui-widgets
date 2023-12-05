@@ -102,9 +102,9 @@ export namespace OrderStore {
     export type Id = "orderStore"
 
     export type State = {
+        itemType: ItemType // todo
         orderStep: OrderStep
         orderSteps: OrderStep[]
-        itemType: ItemType // todo
     }
 
     export type Getters = {

@@ -1,14 +1,25 @@
 import type { Theme } from "@unocss/preset-uno"
+import type { H3Error } from "h3"
+import type { Ref } from "vue"
 import type { RouteMeta } from "vue-router"
 
 import "@nuxt/schema"
 
+export interface NuxtError<T = any> extends H3Error {
+    data: T
+    description: string
+    message: string
+    statusCode: number
+    statusMessage: string
+    url: string
+}
+
 declare module "@nuxt/schema" {
-    interface RuntimeConfig {
+    export interface RuntimeConfig {
         public: PublicRuntimeConfig
     }
 
-    interface PublicRuntimeConfig {
+    export interface PublicRuntimeConfig {
         apiURL: string
         baseURL: string
         theme: Theme
@@ -16,5 +27,9 @@ declare module "@nuxt/schema" {
 }
 
 declare module "nuxt/dist/pages/runtime/composables" {
-    type PageMeta = RouteMeta
+    export type PageMeta = RouteMeta
+
+    export let useError: () => Ref<NuxtError>
+
+    export { NuxtError }
 }

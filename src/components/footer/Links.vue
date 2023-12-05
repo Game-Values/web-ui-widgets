@@ -4,10 +4,10 @@ import type { I18nScope } from "vue-i18n"
 import { Breakpoint } from "~/enums"
 
 interface FooterLink {
+    children: Omit<FooterLink, "children">[]
     i18n: string
     i18nScope?: I18nScope
     to: string // todo: route
-    children: Omit<FooterLink, "children">[]
 }
 
 useI18n()
@@ -17,8 +17,6 @@ let breakpoint = useBreakpoint()
 let footerLinks = computed((): FooterLink[] => (
     [
         {
-            i18n: "Trade",
-            to: "javascript:void(0)",
             children: [
                 {
                     i18n: "label.Promotions",
@@ -40,10 +38,10 @@ let footerLinks = computed((): FooterLink[] => (
                     to: "javascript:void(0)",
                 },
             ],
+            i18n: "Trade",
+            to: "javascript:void(0)",
         },
         {
-            i18n: "Company",
-            to: "javascript:void(0)",
             children: [
                 {
                     i18n: "About",
@@ -59,10 +57,10 @@ let footerLinks = computed((): FooterLink[] => (
                     to: "javascript:void(0)",
                 },
             ],
+            i18n: "Company",
+            to: "javascript:void(0)",
         },
         {
-            i18n: "Help",
-            to: "javascript:void(0)",
             children: [
                 {
                     i18n: "Feedback",
@@ -73,6 +71,8 @@ let footerLinks = computed((): FooterLink[] => (
                     to: "javascript:void(0)",
                 },
             ],
+            i18n: "Help",
+            to: "javascript:void(0)",
         },
     ]
 ))
@@ -96,8 +96,8 @@ let footerLinksOffset = computed((): number => (
         vertical
     >
         <v-title
-            :level="6"
             :color="useTheme('colors.secondary')"
+            :level="6"
             :size="useFirst(useTheme('fontSize.sm'))"
         >
             <i18n-t

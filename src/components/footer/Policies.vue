@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-interface PlicyLink {
+interface PolicyLink {
     i18n: string
     to: string // todo: route
 }
@@ -10,7 +10,7 @@ let { locale } = useI18n()
 
 let breakpoints = useBreakpoints()
 
-let policyLinks = computed((): PlicyLink[] => (
+let policyLinks = computed((): PolicyLink[] => (
     [
         {
             i18n: "Privacy Policy",
@@ -27,7 +27,7 @@ let policyLinks = computed((): PlicyLink[] => (
     ]
 ))
 
-let isVerticalSpacing = computed(() => (
+let isVerticalSpacing = computed((): boolean => (
     getRef(breakpoints.sm) ||
     getRef(breakpoints.xs)
 ))
@@ -58,7 +58,8 @@ let isVerticalSpacing = computed(() => (
             gap-3
             lg:(flex-col)
             xs:(flex)
-        ">
+        "
+    >
         <li
             v-for="policyLink in policyLinks"
             :key="policyLink.i18n"

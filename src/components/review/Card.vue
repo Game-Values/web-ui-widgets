@@ -47,11 +47,11 @@ defineProps<{
             >
                 <!-- todo: provide color size etc -->
                 <v-time-ago
-                    :datetime="addDays(Date.now(), -3)"
                     :style="`
                         color: ${useTheme('colors.white-12')};
                         font-size: 12px;
                     `"
+                    :datetime="addDays(Date.now(), -3)"
                     title
                 />
 

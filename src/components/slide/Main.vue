@@ -42,7 +42,6 @@ let titleLevel: ComputedRef<number> = computed((): number => (
 
 <template>
 <ui-overlay
-    :height="slideHeight"
     :style="{
         backgroundImage: `url(${src})`,
     }"
@@ -51,6 +50,7 @@ let titleLevel: ComputedRef<number> = computed((): number => (
         bg-cover
         bg-right
     "
+    :height="slideHeight"
 >
     <template #overlay>
         <slot>
@@ -85,9 +85,9 @@ let titleLevel: ComputedRef<number> = computed((): number => (
 
                 <v-button
                     v-if="action"
-                    block
                     class="sm:(max-w-18rem)"
                     type="primary"
+                    block
                     @click="action.handler()"
                 >
                     {{ action.label }}

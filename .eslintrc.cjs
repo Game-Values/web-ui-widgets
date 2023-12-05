@@ -120,6 +120,40 @@ module.exports = (() => (
                 ],
             }],
 
+            "perfectionist/sort-vue-attributes": ["error", {
+                "custom-groups": {
+                    binding: [
+                        "v-bind",
+                        "v-for",
+                        "v-model",
+                        "v-html",
+                        "v-slot",
+                    ],
+                    condition: [
+                        "v-if*",
+                        "v-else*",
+                    ],
+                    event: [
+                        "@*",
+                        "on*",
+                    ],
+                    important: [
+                        ":key",
+                    ],
+                },
+                groups: [
+                    "condition",
+                    "binding",
+                    "important",
+                    "multiline",
+                    "unknown",
+                    "shorthand",
+                    "event",
+                ],
+                order: "asc",
+                type: "natural"
+            }],
+
             "space-before-function-paren": ["error", {
                 anonymous: "always",
                 named: "never",
@@ -184,6 +218,7 @@ module.exports = (() => (
                 },
             ],
 
+            "vue/attributes-order": "off",
             "vue/multi-word-component-names": "off",
             "vue/no-v-html": "off",
             "vue/no-v-text-v-html-on-component": "off",

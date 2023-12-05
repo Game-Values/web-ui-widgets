@@ -17,7 +17,6 @@ await setLocale(DEFAULT_LOCALE)
 
 <template>
 <v-config-provider
-    :locale="useGet(VEXIP_LOCALE, DEFAULT_LOCALE_ISO)()"
     :props="{
         avatar: {
             circle: true,
@@ -61,6 +60,7 @@ await setLocale(DEFAULT_LOCALE)
             highlight: true,
         },
     }"
+    :locale="useGet(VEXIP_LOCALE, DEFAULT_LOCALE_ISO)()"
 >
     <slot />
 </v-config-provider>

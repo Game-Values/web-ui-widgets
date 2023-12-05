@@ -14,15 +14,15 @@ let { items } = storeToRefs(storeClient.itemsStore)
 <template>
 <v-table :data="items.lotsTableData">
     <v-table-column
-        #default="{ row }: { row: Item }"
+        v-slot="{ row }: { row: Item }"
         :name="t('Seller')"
         :width="250"
         id-key="owner_id"
     >
         <v-space
             align="center"
-            no-wrap
             size="large"
+            no-wrap
         >
             <user-lot-avatar online />
 
@@ -33,7 +33,7 @@ let { items } = storeToRefs(storeClient.itemsStore)
     </v-table-column>
 
     <v-table-column
-        #default="{ row }: { row: Item }"
+        v-slot="{ row }: { row: Item }"
         :name="t('Description')"
         id-key="name"
     >

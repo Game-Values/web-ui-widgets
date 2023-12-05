@@ -9,10 +9,10 @@
         </v-column>
 
         <v-column
-            :lg="4"
             :use-flex="{
                 justify: 'end',
             }"
+            :lg="4"
             :xs="24"
             class="lg:(mb-10 self-center)"
         >

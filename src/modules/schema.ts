@@ -2,13 +2,13 @@ import { rm } from "node:fs/promises"
 import { join } from "node:path"
 import { cwd, env } from "node:process"
 
-import { generateApi, generateTemplates } from "swagger-typescript-api"
 import { defineNuxtModule } from "@nuxt/kit"
+import { generateApi, generateTemplates } from "swagger-typescript-api"
 
 export default defineNuxtModule({
     meta: {
-        name: "schema",
         configKey: "schema",
+        name: "schema",
     },
 
     setup: async (): Promise<void> => {

@@ -18,11 +18,10 @@ let accountViews = computed((): Record<AccountTab, AsyncComponent> => (
     }
 ))
 
+getRef(accountViews, getRef(accountTab))
+
 let accountView = computed((): AsyncComponent => (
-    useGet(
-        getRef(accountViews),
-        getRef(accountTab),
-    )
+    getRef(accountViews, getRef(accountTab))
 ))
 </script>
 

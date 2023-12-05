@@ -1,8 +1,8 @@
 export enum SocialType {
-    VK = "VK",
-    INSTAGRAM = "INSTAGRAM",
-    YOUTUBE = "YOUTUBE",
-    TWITCH = "TWITCH",
     FACEBOOK = "FACEBOOK",
+    INSTAGRAM = "INSTAGRAM",
     TELEGRAM = "TELEGRAM",
+    TWITCH = "TWITCH",
+    VK = "VK",
+    YOUTUBE = "YOUTUBE",
 }

@@ -116,7 +116,9 @@ let nuxtConfig: NuxtConfig = {
             {
                 from: "@vueuse/core",
                 imports: [
-                    // todo: added here & rm from code
+                    "promiseTimeout",
+                    "useCurrentElement",
+                    "useMouseInElement",
                 ],
             },
             {
@@ -356,10 +358,10 @@ let nuxtConfig: NuxtConfig = {
                 },
             },
         },
-        // experimental: {
-        //     hmrPartialAccept: isDevelopment(),
-        //     importGlobRestoreExtension: true,
-        // },
+        experimental: {
+            hmrPartialAccept: isDevelopment(),
+            importGlobRestoreExtension: true,
+        },
         plugins: [
             dynamicImport(),
             inheritAttrs(),

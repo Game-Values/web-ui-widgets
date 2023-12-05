@@ -18,12 +18,12 @@ let errorViews = computed((): Record<number, AsyncComponent> => (
 ))
 
 let errorView = computed((): AsyncComponent => (
-    useGet(getRef(errorViews), props.error.statusCode) ||
-    useGet(getRef(errorViews), HttpStatus.INTERNAL_SERVER_ERROR)
+    getRef(errorViews, props.error.statusCode) ||
+    getRef(errorViews, HttpStatus.INTERNAL_SERVER_ERROR)
 ))
 
-// todo: (?)
-console.log(props.error)
+// todo: logger (?)
+// console.log(props.error)
 </script>
 
 <template>

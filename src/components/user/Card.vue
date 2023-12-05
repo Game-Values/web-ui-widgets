@@ -10,8 +10,8 @@ defineProps<{
 <v-card>
     <v-space
         class="[&>*:nth-child(2)]:(flex-1)"
-        no-wrap
         size="large"
+        no-wrap
     >
         <user-profile-avatar premium />
 

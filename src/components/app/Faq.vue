@@ -37,10 +37,10 @@ let faqForm: UnwrapRef<FaqForm> = reactive({
         border-solid-secondary
         rounded-5
     `"
-    :height="faqHeight"
     :style="{
         backgroundPosition: `100% -${pxToRem(faqHeight)}`,
     }"
+    :height="faqHeight"
 >
     <template #overlay>
         <slot>

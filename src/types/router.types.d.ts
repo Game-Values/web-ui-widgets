@@ -14,12 +14,12 @@ export type Route = (
 )
 
 declare module "vue-router" {
-    interface LocationQuery {
+    export interface LocationQuery {
         gameId: string
         itemType: ItemType
     }
 
-    interface RouteMeta {
+    export interface RouteMeta {
         auth: boolean
         layout: (
             ComputedRef<RouteLayout> |
@@ -27,7 +27,7 @@ declare module "vue-router" {
         )
     }
 
-    interface RouteParams {
+    export interface RouteParams {
         gameId: string
         itemId: string
         itemType: ItemType
@@ -36,7 +36,7 @@ declare module "vue-router" {
         userId: string
     }
 
-    interface RouteRecordRaw {
+    export interface RouteRecordRaw {
         name: RouteName
     }
 }

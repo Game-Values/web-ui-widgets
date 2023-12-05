@@ -57,8 +57,8 @@ let { game } = storeToRefs(storeClient.gameStore)
                                 },
                             })
                         "
-                        block
                         type="primary"
+                        block
                     >
                         <i18n-t keypath="Sell" />
                     </ui-button-link>

@@ -11,13 +11,13 @@ defineEmits<{
 
 <template>
 <v-space
-    align="center"
     class="
         px-7
         py-5
         bg-white-02
         rounded-3
     "
+    align="center"
     justify="space-between"
 >
     <v-text disabled>

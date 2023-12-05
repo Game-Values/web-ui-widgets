@@ -32,12 +32,12 @@ export let useOrderStore: (storeId?: string) => OrderStore.Store = createStore<
     },
 
     state: (): OrderStore.State => ({
+        itemType: ItemType.GOLD,
         orderStep: OrderStep.CHOOSE_DEAL,
         orderSteps: [
             OrderStep.CHOOSE_DEAL,
             OrderStep.CONFIRM_ORDER,
             OrderStep.CONFIRM_RECEIPT,
         ],
-        itemType: ItemType.GOLD,
     }),
 })

@@ -34,8 +34,8 @@ let { authenticated } = storeToRefs(storeClient.userMeStore)
                 >
                     <!-- todo: component & i18n -->
                     <v-input
-                        clearable
                         placeholder="Search"
+                        clearable
                     >
                         <template #suffix>
                             <ui-icon
@@ -48,11 +48,11 @@ let { authenticated } = storeToRefs(storeClient.userMeStore)
             </v-column>
 
             <v-column
-                :lg="7"
-                :span="0"
                 :use-flex="{
                     justify: 'center',
                 }"
+                :lg="7"
+                :span="0"
             >
                 <!-- todo: component & i18n -->
                 <nav>
@@ -85,11 +85,11 @@ let { authenticated } = storeToRefs(storeClient.userMeStore)
             </v-column>
 
             <v-column
-                :lg="5"
-                :span="0"
                 :use-flex="{
                     align: 'end',
                 }"
+                :lg="5"
+                :span="0"
             >
                 <!-- todo: component & i18n -->
                 <v-space
@@ -98,8 +98,8 @@ let { authenticated } = storeToRefs(storeClient.userMeStore)
                         lg:(flex)
                     "
                     justify="end"
-                    no-wrap
                     size="large"
+                    no-wrap
                 >
                     <!-- todo: component -->
                     <template v-if="authenticated">
@@ -129,9 +129,9 @@ let { authenticated } = storeToRefs(storeClient.userMeStore)
 
                     <template v-else>
                         <v-button
+                            type="primary"
                             text
                             @click="loginModal.show()"
-                            type="primary"
                         >
                             <v-title :level="6">
                                 Log In
@@ -139,9 +139,9 @@ let { authenticated } = storeToRefs(storeClient.userMeStore)
                         </v-button>
 
                         <v-button
+                            type="primary"
                             text
                             @click="registrationModal.show()"
-                            type="primary"
                         >
                             <v-title :level="6">
                                 Sign up
@@ -169,11 +169,11 @@ let { authenticated } = storeToRefs(storeClient.userMeStore)
             </v-column>
 
             <v-column
-                :lg="0"
-                :sm="2"
                 :use-flex="{
                     justify: 'end',
                 }"
+                :lg="0"
+                :sm="2"
                 :xs="5"
             >
                 <header-mobile-menu />

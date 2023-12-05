@@ -3,8 +3,6 @@ import type { ScopedProps } from "~/types"
 import type { ButtonProps } from "vexip-ui"
 import type { VNode } from "vue"
 
-import { promiseTimeout } from "@vueuse/core"
-
 import { DEFAULT_TIMEOUT } from "~/consts"
 
 let props = defineProps<(

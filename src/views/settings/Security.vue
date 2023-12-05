@@ -26,8 +26,8 @@ let { userController } = useControllers()
                 >
                     <v-input
                         placeholder="Password"
-                        plain-password
                         type="password"
+                        plain-password
                     />
                 </v-form-item>
 
@@ -37,8 +37,8 @@ let { userController } = useControllers()
                 >
                     <v-input
                         placeholder="Password"
-                        plain-password
                         type="password"
+                        plain-password
                     />
                 </v-form-item>
 
@@ -48,8 +48,8 @@ let { userController } = useControllers()
                 >
                     <v-input
                         placeholder="Password"
-                        plain-password
                         type="password"
+                        plain-password
                     />
                 </v-form-item>
 
@@ -83,7 +83,8 @@ let { userController } = useControllers()
 
                 <v-form-item>
                     <v-text disabled>
-                        Bind your phone number and any changes to personal data will be available via a special code from Telegram.
+                        Bind your phone number and any changes to personal data
+                        will be available via a special code from Telegram.
                     </v-text>
                 </v-form-item>
 
@@ -127,5 +128,3 @@ let { userController } = useControllers()
     </v-column>
 </v-row>
 </template>
-<script setup lang="ts">
-</script>

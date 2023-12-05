@@ -35,39 +35,6 @@ let theme: Theme = {
         ))
     },
 
-    get height(): Theme["height"] {
-        return assign(
-            getNumericSpacing(),
-
-            {
-                "avatar-large": get(sizes, "$avatar-size-large"),
-                "avatar-small": get(sizes, "$avatar-size-small"),
-                button: get(sizes, "$button-height"),
-                "button-small": get(sizes, "$button-height-small"),
-                dot: get(sizes, "$dot-size"),
-                input: get(sizes, "$input-height"),
-                switch: get(sizes, "$switch-height"),
-            },
-        )
-    },
-
-    get width(): Theme["width"] {
-        return assign(getNumericSpacing(), (
-            {
-                "avatar-large": get(sizes, "$avatar-size-large"),
-                "avatar-small": get(sizes, "$avatar-size-small"),
-                dot: get(sizes, "$dot-size"),
-                layout: get(sizes, "$layout-width"),
-            }
-        ))
-    },
-
-    backgroundImage: {
-        "game-card-gradient": `
-            linear-gradient(180deg, ${get(colors, "$color-accent-medium")} 0%, ${get(colors, "$color-accent-medium-light")} 100%)
-        `,
-    },
-
     breakpoints: {
         [Breakpoint.LG]: get(breakpoints, "$breakpoint-lg"),
         [Breakpoint.MD]: get(breakpoints, "$breakpoint-md"),
@@ -155,11 +122,38 @@ let theme: Theme = {
         ],
     },
 
+    get height(): Theme["height"] {
+        return assign(
+            getNumericSpacing(),
+
+            {
+                "avatar-large": get(sizes, "$avatar-size-large"),
+                "avatar-small": get(sizes, "$avatar-size-small"),
+                button: get(sizes, "$button-height"),
+                "button-small": get(sizes, "$button-height-small"),
+                dot: get(sizes, "$dot-size"),
+                input: get(sizes, "$input-height"),
+                switch: get(sizes, "$switch-height"),
+            },
+        )
+    },
+
     lineHeight: {
         normal: get(typography, "$line-height-normal"),
     },
 
     spacing: getNumericSpacing(),
+
+    get width(): Theme["width"] {
+        return assign(getNumericSpacing(), (
+            {
+                "avatar-large": get(sizes, "$avatar-size-large"),
+                "avatar-small": get(sizes, "$avatar-size-small"),
+                dot: get(sizes, "$dot-size"),
+                layout: get(sizes, "$layout-width"),
+            }
+        ))
+    },
 }
 
 function extractSassVars(filename: string): Record<string, string> {
@@ -177,30 +171,9 @@ function extractSassVars(filename: string): Record<string, string> {
     }, {})
 }
 
-function reductionSizeToBreakpoints(
-    name: string,
-    themeKey: string,
-): Record<string, string> {
-    return Object.values(Breakpoint).reduce((
-        (result: Record<string, string>, breakpoint: Breakpoint): Record<string, string> => (
-            assign(result, {
-                [`${name}-${breakpoint}`]: get(sizes, `$${name}-${themeKey}-${breakpoint}`),
-            })
-        )
-    ), {})
-}
-
 function getNumericSpacing(): Theme["spacing"] {
     return {
         1: get(spaces, "$space-1"),
-        2: get(spaces, "$space-2"),
-        3: get(spaces, "$space-3"),
-        4: get(spaces, "$space-4"),
-        5: get(spaces, "$space-5"),
-        6: get(spaces, "$space-6"),
-        7: get(spaces, "$space-7"),
-        8: get(spaces, "$space-8"),
-        9: get(spaces, "$space-9"),
         10: get(spaces, "$space-10"),
         11: get(spaces, "$space-11"),
         12: get(spaces, "$space-12"),
@@ -210,6 +183,14 @@ function getNumericSpacing(): Theme["spacing"] {
         16: get(spaces, "$space-16"),
         17: get(spaces, "$space-17"),
         18: get(spaces, "$space-18"),
+        2: get(spaces, "$space-2"),
+        3: get(spaces, "$space-3"),
+        4: get(spaces, "$space-4"),
+        5: get(spaces, "$space-5"),
+        6: get(spaces, "$space-6"),
+        7: get(spaces, "$space-7"),
+        8: get(spaces, "$space-8"),
+        9: get(spaces, "$space-9"),
     }
 }
 

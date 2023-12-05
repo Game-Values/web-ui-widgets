@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { ScopedProps } from "~/types"
-import type { VNode } from "vue"
+import type { NuxtError, ScopedProps } from "~/types"
+import type { Ref, VNode } from "vue"
 
 import { HttpStatus } from "~/enums"
 
@@ -9,7 +9,8 @@ defineSlots<{
 }>()
 
 let errorCode = computed((): number => (
-    useGet(getRef(useError()), "statusCode", HttpStatus.INTERNAL_SERVER_ERROR)
+    getRef(useError() as Ref<NuxtError>, "statusCode") ||
+    HttpStatus.INTERNAL_SERVER_ERROR
 ))
 </script>
 

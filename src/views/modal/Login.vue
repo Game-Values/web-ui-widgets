@@ -34,8 +34,8 @@ let formModel: UnwrapRef<BodyLoginWithOauth2ApiV1LoginOauthPostRaw> = reactive({
         <v-form-item prop="password">
             <v-input
                 placeholder="Password"
-                plain-password
                 type="password"
+                plain-password
             />
         </v-form-item>
 
@@ -51,8 +51,8 @@ let formModel: UnwrapRef<BodyLoginWithOauth2ApiV1LoginOauthPostRaw> = reactive({
                 </v-form-submit>
 
                 <v-button
-                    text
                     type="primary"
+                    text
                     @click="recoveryPasswordModal.show()"
                 >
                     Forgot Password?
@@ -71,8 +71,8 @@ let formModel: UnwrapRef<BodyLoginWithOauth2ApiV1LoginOauthPostRaw> = reactive({
                 </v-text>
 
                 <v-button
-                    text
                     type="primary"
+                    text
                     @click="registrationModal.show()"
                 >
                     Sign Up

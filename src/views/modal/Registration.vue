@@ -58,16 +58,16 @@ let registrationPayload: ComputedRef<BodyCreateUserProfileApiV1UsersPostRaw> = (
         <v-form-item prop="password">
             <v-input
                 placeholder="Password"
-                plain-password
                 type="password"
+                plain-password
             />
         </v-form-item>
 
         <v-form-item prop="repeatPassword">
             <v-input
                 placeholder="Repeat password"
-                plain-password
                 type="password"
+                plain-password
             />
         </v-form-item>
 
@@ -128,8 +128,8 @@ let registrationPayload: ComputedRef<BodyCreateUserProfileApiV1UsersPostRaw> = (
                 </v-text>
 
                 <v-button
-                    text
                     type="primary"
+                    text
                     @click="loginModal.show()"
                 >
                     Log In

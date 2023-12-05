@@ -6,7 +6,7 @@ let trustpilotScore = ref(4.5)
 
 let breakpoint = useBreakpoint()
 
-let colsOrder = computed(() => (
+let colsOrder = computed((): Record<string, number> => (
     {
         copyright: useGet({
             [Breakpoint.LG]: 1,
@@ -22,20 +22,6 @@ let colsOrder = computed(() => (
             [Breakpoint.XS]: 1,
         }, getRef(breakpoint)),
 
-        policies: useGet({
-            [Breakpoint.LG]: 3,
-            [Breakpoint.MD]: 5,
-            [Breakpoint.SM]: 6,
-            [Breakpoint.XS]: 1,
-        }, getRef(breakpoint)),
-
-        trustpilot: useGet({
-            [Breakpoint.LG]: 4,
-            [Breakpoint.MD]: 3,
-            [Breakpoint.SM]: 3,
-            [Breakpoint.XS]: 1,
-        }, getRef(breakpoint)),
-
         payments: useGet({
             [Breakpoint.LG]: 5,
             [Breakpoint.MD]: 4,
@@ -43,10 +29,24 @@ let colsOrder = computed(() => (
             [Breakpoint.XS]: 1,
         }, getRef(breakpoint)),
 
+        policies: useGet({
+            [Breakpoint.LG]: 3,
+            [Breakpoint.MD]: 5,
+            [Breakpoint.SM]: 6,
+            [Breakpoint.XS]: 1,
+        }, getRef(breakpoint)),
+
         socials: useGet({
             [Breakpoint.LG]: 6,
             [Breakpoint.MD]: 6,
             [Breakpoint.SM]: 5,
+            [Breakpoint.XS]: 1,
+        }, getRef(breakpoint)),
+
+        trustpilot: useGet({
+            [Breakpoint.LG]: 4,
+            [Breakpoint.MD]: 3,
+            [Breakpoint.SM]: 3,
             [Breakpoint.XS]: 1,
         }, getRef(breakpoint)),
     }
@@ -63,57 +63,57 @@ let colsOrder = computed(() => (
             ]"
         >
             <v-column
-                :lg="6"
-                :md="8"
-                :sm="8"
-                :xs="24"
-                :order="colsOrder.copyright"
                 class="
                     md:(justify-start)
                     xs:(justify-center)
                 "
+                :lg="6"
+                :md="8"
+                :order="colsOrder.copyright"
+                :sm="8"
+                :xs="24"
             >
                 <footer-copyright />
             </v-column>
 
             <v-column
-                :lg="6"
-                :md="8"
-                :sm="8"
-                :xs="24"
-                :order="colsOrder.links"
                 class="
                     md:(justify-start)
                     xs:(justify-center)
                 "
+                :lg="6"
+                :md="8"
+                :order="colsOrder.links"
+                :sm="8"
+                :xs="24"
             >
                 <footer-links />
             </v-column>
 
             <v-column
-                :lg="6"
-                :md="12"
-                :sm="24"
-                :xs="24"
-                :order="colsOrder.policies"
                 class="
                     md:(justify-start)
                     xs:(justify-center)
                 "
+                :lg="6"
+                :md="12"
+                :order="colsOrder.policies"
+                :sm="24"
+                :xs="24"
             >
                 <footer-policies />
             </v-column>
 
             <v-column
-                :lg="6"
-                :md="8"
-                :sm="8"
-                :xs="24"
-                :order="colsOrder.trustpilot"
                 class="
                     md:(justify-start)
                     xs:(justify-center)
                 "
+                :lg="6"
+                :md="8"
+                :order="colsOrder.trustpilot"
+                :sm="8"
+                :xs="24"
             >
                 <footer-trustpilot
                     :reviews="trustpilotReviews"
@@ -122,29 +122,29 @@ let colsOrder = computed(() => (
             </v-column>
 
             <v-column
-                :lg="12"
-                :md="24"
-                :sm="24"
-                :xs="24"
-                :order="colsOrder.payments"
                 class="
                     md:(justify-start)
                     xs:(justify-center)
                 "
+                :lg="12"
+                :md="24"
+                :order="colsOrder.payments"
+                :sm="24"
+                :xs="24"
             >
                 <footer-payments />
             </v-column>
 
             <v-column
-                :lg="12"
-                :md="12"
-                :sm="24"
-                :xs="24"
-                :order="colsOrder.socials"
                 class="
                     md:(justify-start)
                     xs:(justify-center)
                 "
+                :lg="12"
+                :md="12"
+                :order="colsOrder.socials"
+                :sm="24"
+                :xs="24"
             >
                 <footer-socials />
             </v-column>

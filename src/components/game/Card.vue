@@ -51,15 +51,15 @@ defineProps<{
 
         <v-tag
             v-if="game.attributes.lots"
-            :color="useTheme('colors.secondary')"
-            size="small"
-            circle
             class="
                 absolute!
                 top-2.5
                 right-2.5
                 text-sm
             "
+            :color="useTheme('colors.secondary')"
+            size="small"
+            circle
         >
             {{ game.attributes.lots }}
         </v-tag>

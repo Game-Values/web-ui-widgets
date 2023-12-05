@@ -10,11 +10,11 @@ interface Payment {
 }
 
 let payments: Record<PaymentType, Payment> = {
-    [PaymentType.VISA]: {
-        icon: PaymentType.VISA,
+    [PaymentType.BINANCE]: {
+        icon: PaymentType.BINANCE,
         size: [
-            77,
-            28,
+            39,
+            36,
         ],
     },
     [PaymentType.MASTER_CARD]: {
@@ -24,18 +24,18 @@ let payments: Record<PaymentType, Payment> = {
             36,
         ],
     },
-    [PaymentType.BINANCE]: {
-        icon: PaymentType.BINANCE,
-        size: [
-            39,
-            36,
-        ],
-    },
     [PaymentType.PAY_PAL]: {
         icon: PaymentType.PAY_PAL,
         size: [
             30,
             30,
+        ],
+    },
+    [PaymentType.VISA]: {
+        icon: PaymentType.VISA,
+        size: [
+            77,
+            28,
         ],
     },
     [PaymentType.WEB_MONEY]: {

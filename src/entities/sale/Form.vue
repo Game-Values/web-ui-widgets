@@ -40,7 +40,7 @@ async function handleSaleItem(): Promise<void> {
     await navigateTo(
         routerClient.getRoute(routerClient.routeNames.GAME, {
             params: {
-                gameId: useGet(getRef(saleItem), "gid"),
+                gameId: getRef(saleItem, "gid"),
             },
         }),
     )
@@ -51,7 +51,7 @@ async function handleDeleteItem(): Promise<void> {
     await navigateTo(
         routerClient.getRoute(routerClient.routeNames.GAME, {
             params: {
-                gameId: useGet(getRef(saleItem), "gid"),
+                gameId: getRef(saleItem, "gid"),
             },
         }),
     )

@@ -1,9 +1,7 @@
 <script lang="ts" setup>
 import type { UseMouseInElementReturn } from "@vueuse/core"
-import type { Nullable } from "~/types"
-import type { VNode } from "vue"
-
-import { useCurrentElement, useMouseInElement, useRafFn } from "@vueuse/core"
+import type { Nullable, ScopedProps } from "~/types"
+import type { Ref, VNode } from "vue"
 
 defineProps<{
     height?: number | string
@@ -12,7 +10,7 @@ defineProps<{
 }>()
 
 defineSlots<{
-    default: () => VNode
+    default: (scopedProps: ScopedProps) => VNode
 }>()
 
 let rootRef: Nullable<HTMLDivElement>
@@ -24,17 +22,13 @@ onMounted((): void => {
 })
 
 function whenMouseEnter(): void {
-    setRef(mouseState, (
-        useMouseInElement(getRef(rootRef), {
-            handleOutside: false,
-            resetOnTouchEnds: true,
-            initialValue: getRef(rootRef)?.getBoundingClientRect(),
-        })
-    ))
-}
+    let useMouseInElementReturn: UseMouseInElementReturn = useMouseInElement(rootRef, {
+        handleOutside: false,
+        initialValue: getRef(rootRef)?.getBoundingClientRect(),
+        resetOnTouchEnds: true,
+    })
 
-function whenMouseLeave(): void {
-    setRef(mouseState, null)
+    setRef(mouseState, useMouseInElementReturn)
 }
 </script>
 
@@ -42,7 +36,7 @@ function whenMouseLeave(): void {
 <div
     class="relative"
     @mouseenter="whenMouseEnter"
-    @mouseleave="whenMouseLeave"
+    @mouseleave="mouseState = null"
 >
     <slot />
 

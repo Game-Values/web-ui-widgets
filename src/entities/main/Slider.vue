@@ -43,13 +43,13 @@ let sliderAction = computed((): (
         SwiperNavigation,
         SwiperPagination,
     ]"
-    :slides-per-view="1"
-    a11y
     class="
         md:(mb-4rem)
         xs:(mb-6rem)
     "
+    :slides-per-view="1"
     effect="creative"
+    a11y
     loop
     navigation
     pagination

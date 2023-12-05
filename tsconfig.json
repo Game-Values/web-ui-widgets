@@ -13,7 +13,7 @@
             "swiper/vue"
         ],
         "typeRoots": [
-            "types"
+            "src/types"
         ],
     }
 }

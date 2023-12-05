@@ -26,10 +26,10 @@ async function handleLikeGameMe(): Promise<void> {
 <button-action
     v-bind="$attrs"
     :action="handleLikeGameMe"
-    circle
     size="small"
-    text
     type="info"
+    circle
+    text
 >
     <template #icon>
         <ui-icon

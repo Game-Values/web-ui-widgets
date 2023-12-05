@@ -1,6 +1,7 @@
 {
     "name": "web-ui-widgets",
-    "main": "index.ts",
+    "main": "index",
+    "types": "dist/index",
     "type": "module",
     "version": "1.0.0",
     "license": "// todo",

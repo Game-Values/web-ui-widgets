@@ -16,18 +16,18 @@
         vertical
     >
         <settings-notification-switch
+            :model-value="true"
             notification="Purchases and sales"
-            :model-value="true"
         />
 
         <settings-notification-switch
+            :model-value="true"
             notification="Chat Messages"
-            :model-value="true"
         />
 
         <settings-notification-switch
-            notification="Mailing GameValues"
             :model-value="true"
+            notification="Mailing GameValues"
         />
     </v-space>
 </v-space>

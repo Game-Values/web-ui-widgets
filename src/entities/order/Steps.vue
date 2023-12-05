@@ -11,7 +11,6 @@ let { orderStepIndex, orderSteps } = storeToRefs(storeClient.orderStore)
     <v-timeline-item
         v-for="(_orderStep, i) in orderSteps"
         :key="_orderStep"
-        :label="_orderStep"
         :style="{
             '--vxp-timeline-pointer-size': useTheme('spacing.13'),
             '--vxp-timeline-line-color': (
@@ -20,6 +19,7 @@ let { orderStepIndex, orderSteps } = storeToRefs(storeClient.orderStore)
                     : useTheme('colors.secondary')
             ),
         }"
+        :label="_orderStep"
     >
         <v-text strong>
             <i18n-t :keypath="_orderStep" />

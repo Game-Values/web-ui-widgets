@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import type { WritableComputedRef } from "vue"
+
 let props = defineProps<{
     modelValue: boolean
 }>()
@@ -12,9 +14,9 @@ let { loginModal, registrationModal } = useModals()
 
 let { authenticated } = storeToRefs(storeClient.userMeStore)
 
-let active = computed({
-    get: () => props.modelValue,
-    set: (modelValue: number) => emit("update:model-value", modelValue),
+let active: WritableComputedRef<boolean> = computed({
+    get: (): boolean => props.modelValue,
+    set: (modelValue: boolean): void => emit("update:model-value", modelValue),
 })
 </script>
 
@@ -65,8 +67,8 @@ let active = computed({
         <template v-else>
             <v-space size="large">
                 <v-button
-                    text
                     type="primary"
+                    text
                     @click="loginModal.show()"
                 >
                     <v-title :level="6">
@@ -75,8 +77,8 @@ let active = computed({
                 </v-button>
 
                 <v-button
-                    text
                     type="primary"
+                    text
                     @click="registrationModal.show()"
                 >
                     <v-title :level="6">
