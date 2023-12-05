@@ -9,6 +9,7 @@ interface ItemRaw extends Omit<_ItemRaw, "attributes"> {
 
 export class Item implements ItemRaw {
     @Expose()
+    @Transform(({ value }: { value: _ItemRaw["attributes"] }): _ItemRaw["attributes"] => ({ ...value }))
     @Type((): typeof ItemAttributes => ItemAttributes)
     @IsDefined()
     @IsInstance(ItemAttributes)
