@@ -5,15 +5,15 @@ useI18n()
 <template>
 <v-row>
     <v-column>
-        <entity-order-confirm-receipt-info />
+        <entity-buy-confirm-receipt-info />
     </v-column>
 
     <v-column>
-        <entity-order-info />
+        <entity-buy-info />
     </v-column>
 
     <v-column>
-        <entity-order-confirm-receipt-form />
+        <entity-buy-confirm-receipt-form />
     </v-column>
 </v-row>
 </template>

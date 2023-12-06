@@ -75,7 +75,7 @@ module.exports = (() => (
             }],
 
             "max-len": ["error", {
-                code: 120,
+                code: 150,
                 tabWidth: 4,
                 ignoreComments: true,
                 ignoreRegExpLiterals: true,
@@ -139,6 +139,7 @@ module.exports = (() => (
                     ],
                     important: [
                         ":key",
+                        ":is",
                     ],
                 },
                 groups: [

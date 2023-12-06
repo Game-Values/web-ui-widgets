@@ -1,19 +1,15 @@
-<script lang="ts" setup>
-useI18n()
-</script>
-
 <template>
 <v-row>
     <v-column>
-        <entity-order-info />
+        <entity-buy-info />
     </v-column>
 
     <v-column>
-        <entity-order-confirm-order-info />
+        <entity-buy-confirm-order-info />
     </v-column>
 
     <v-column>
-        <entity-order-confirm-order-form />
+        <entity-buy-confirm-order-form />
     </v-column>
 </v-row>
 </template>

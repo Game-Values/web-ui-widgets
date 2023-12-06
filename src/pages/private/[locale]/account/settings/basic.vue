@@ -1,4 +1,10 @@
 <script lang="ts" setup>
+definePageMeta({
+    seo: {
+        title: "Basic settings",
+    },
+})
+
 let { storeClient } = useClients()
 let { userController } = useControllers()
 </script>

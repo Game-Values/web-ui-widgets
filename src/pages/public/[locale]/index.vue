@@ -1,3 +1,9 @@
+<script lang="ts" setup>
+let { mainFacade } = useFacades()
+
+await mainFacade.bootstrap()
+</script>
+
 <template>
 <ui-page>
     <v-row>

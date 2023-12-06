@@ -1,8 +1,11 @@
+// todo: mv all ()=><T> to Callable<T>
 export type Callable<T = void> = () => T
 
 export type Keyable<K extends string, V = any> = {
     [key: K]: V
 }
+
+export type Lazy<T = void> = Callable<Promise<T>>
 
 export type MaybeCallable<T> = Callable<T> | T
 

@@ -1,19 +1,13 @@
 <script lang="ts" setup>
-import type { Route } from "~/types"
+import { RouteLayout } from "~/enums"
 
-let { routerClient, storeClient } = useClients()
+definePageMeta({
+    layout: RouteLayout.GAME,
+})
 
-// let route: Route = routerClient.getRoute(routerClient.routeNames.PUBLIC_GAME, {
-//     params: {
-//         itemType: (
-//             useGet(useFirst(storeClient.gameStore.game.attributes.sections), "name")
-//         ),
-//     },
-// })
-//
-// await navigateTo(route, {
-//     replace: true,
-// })
+let { gameFacade } = useFacades()
+
+await gameFacade.bootstrap()
 </script>
 
 <template>

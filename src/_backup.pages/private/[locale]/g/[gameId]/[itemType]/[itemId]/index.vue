@@ -13,9 +13,9 @@
                     />
                 </v-title>
 
-                <entity-order-steps />
+                <entity-buy-steps />
 
-                <entity-order-view />
+                <entity-buy-view />
             </v-space>
         </v-column>
 

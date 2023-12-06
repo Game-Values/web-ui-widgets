@@ -4,7 +4,8 @@ import type {
     ItemsStore,
     ItemStore,
     OrderStore,
-    SaleStore,
+    SellStore,
+    SeoStore,
     SettingsStore,
     UserStore,
 } from "~/types"
@@ -40,8 +41,13 @@ export class StoreClient {
     }
 
     @Memoize()
-    public get saleStore(): SaleStore.Store {
-        return useSaleStore()
+    public get sellStore(): SellStore.Store {
+        return useSellStore()
+    }
+
+    @Memoize()
+    public get seoStore(): SeoStore.Store {
+        return useSeoStore()
     }
 
     @Memoize()

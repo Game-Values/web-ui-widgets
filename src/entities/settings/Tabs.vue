@@ -9,10 +9,10 @@ let settingsTab = ref(SettingsTab.BASIC)
 
 let settingsViews = computed((): Record<SettingsTab, AsyncComponent> => (
     {
-        [SettingsTab.BASIC]: defineAsyncComponent((): Promise<Component> => import("~/views/settings/Basic.vue")),
-        [SettingsTab.NOTIFICATIONS]: defineAsyncComponent((): Promise<Component> => import("~/views/settings/Notifications.vue")),
-        [SettingsTab.REFERRAL]: defineAsyncComponent((): Promise<Component> => import("~/views/settings/Referral.vue")),
-        [SettingsTab.SECURITY]: defineAsyncComponent((): Promise<Component> => import("~/views/settings/Security.vue")),
+        [SettingsTab.BASIC]: defineAsyncComponent((): Promise<Component> => import("~/pages/private/[locale]/account/settings/basic.vue")),
+        [SettingsTab.NOTIFICATIONS]: defineAsyncComponent((): Promise<Component> => import("~/pages/private/[locale]/account/settings/notifications.vue")),
+        [SettingsTab.REFERRAL]: defineAsyncComponent((): Promise<Component> => import("~/pages/private/[locale]/account/settings/referral.vue")),
+        [SettingsTab.SECURITY]: defineAsyncComponent((): Promise<Component> => import("~/pages/private/[locale]/account/settings/security.vue")),
     }
 ))
 

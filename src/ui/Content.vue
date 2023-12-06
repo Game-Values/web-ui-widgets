@@ -25,4 +25,10 @@ defineSlots<{
 <style lang="sass" scoped>
 .content
     @apply px-8 py-6
+
+    .content
+        @apply p-0
+
+        :deep(> *)
+            @apply first:pt-0
 </style>

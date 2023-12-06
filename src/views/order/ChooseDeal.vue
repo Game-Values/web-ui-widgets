@@ -1,19 +1,19 @@
 <template>
 <v-row>
     <v-column>
-        <entity-order-choose-deal-slider />
+        <entity-buy-choose-deal-slider />
     </v-column>
 
     <v-column>
-        <entity-order-game-info />
+        <entity-buy-game-info />
     </v-column>
 
     <v-column>
-        <entity-order-info />
+        <entity-buy-info />
     </v-column>
 
     <v-column>
-        <entity-order-choose-deal-form />
+        <entity-buy-choose-deal-form />
     </v-column>
 </v-row>
 </template>

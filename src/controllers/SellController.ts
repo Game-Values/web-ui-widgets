@@ -3,7 +3,7 @@ import type { ItemRaw } from "#schema/data-contracts"
 import type { GameController, ItemController } from "~/controllers"
 import type { ItemService } from "~/services"
 
-export class SaleController {
+export class SellController {
     public constructor(
         private _itemService: ItemService,
         private _routerClient: RouterClient,
@@ -12,37 +12,37 @@ export class SaleController {
         private _itemController: ItemController,
     ) {}
 
-    public async createSaleItem(): Promise<void> {
-        let itemRaw: ItemRaw = await this._itemService.createItem(this._storeClient.saleStore.saleItem)
-        this._storeClient.saleStore.setSaleItemRaw(itemRaw)
+    public async createSellItem(): Promise<void> {
+        let itemRaw: ItemRaw = await this._itemService.createItem(this._storeClient.sellStore.sellItem)
+        this._storeClient.sellStore.setSellItemRaw(itemRaw)
     }
 
-    public async deleteSaleItem(): Promise<void> {
+    public async deleteSellItem(): Promise<void> {
         await this._itemService.deleteItem(this._routerClient.getRouteParam("itemId"))
-        this._storeClient.saleStore.$dispose()
+        this._storeClient.sellStore.$dispose()
     }
 
-    public async editSaleItem(): Promise<void> {
+    public async editSellItem(): Promise<void> {
         let itemRaw: ItemRaw = await this._itemService.editItem(
             this._routerClient.getRouteParam("itemId"),
-            this._storeClient.saleStore.saleItem,
+            this._storeClient.sellStore.sellItem,
         )
-        this._storeClient.saleStore.setSaleItemRaw(itemRaw)
+        this._storeClient.sellStore.setSellItemRaw(itemRaw)
     }
 
     public async fetchSaleGame(): Promise<void> {
         await this._gameController.fetchGame(this._routerClient.getRouteParam("gameId"))
-        this._storeClient.saleStore.updateSaleItemRaw({
+        this._storeClient.sellStore.updateSellItemRaw({
             gid: this._storeClient.gameStore.game.id,
         })
     }
 
-    public async fetchSaleItem(): Promise<void> {
+    public async fetchSellItem(): Promise<void> {
         let itemId: string = this._routerClient.getRouteParam("itemId")
         if (itemId)
             await this._itemController.fetchItem(itemId)
 
-        this._storeClient.saleStore.setSaleItemRaw(
+        this._storeClient.sellStore.setSellItemRaw(
             useMerge(this._storeClient.itemStore.itemRaw, {
                 attributes: {
                     type: this._routerClient.getRouteParam("itemType"),

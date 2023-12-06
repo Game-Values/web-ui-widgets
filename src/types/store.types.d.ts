@@ -4,8 +4,21 @@ import type {
     UserRaw,
     UserUpdateRaw,
 } from "#schema/data-contracts"
-import type { Game, Games, Item, Items, User } from "~/dto"
-import type { ItemType, OrderStep } from "~/enums"
+import type {
+    Game,
+    Games,
+    Item,
+    Items,
+    Seo,
+    User,
+} from "~/dto"
+import type {
+    ItemType,
+    OrderStep,
+} from "~/enums"
+import type {
+    SeoRaw,
+} from "~/types"
 import type {
     _ActionsTree,
     _GettersTree,
@@ -120,20 +133,38 @@ export namespace OrderStore {
     export type Store = DefineStore<Id, State, Getters, Actions>
 }
 
-export namespace SaleStore {
-    export type Id = "saleStore"
+export namespace SellStore {
+    export type Id = "sellStore"
 
     export type State = {
-        saleItemRaw: ItemRaw
+        sellItemRaw: ItemRaw
     }
 
     export type Getters = {
-        saleItem: () => Item
+        sellItem: () => Item
     }
 
     export type Actions = {
-        setSaleItemRaw: (saleItemRaw: ItemRaw) => void
-        updateSaleItemRaw: (saleItemRaw: Partial<ItemRaw>) => void
+        setSellItemRaw: (sellItemRaw: ItemRaw) => void
+        updateSellItemRaw: (sellItemRaw: Partial<ItemRaw>) => void
+    }
+
+    export type Store = DefineStore<Id, State, Getters, Actions>
+}
+
+export namespace SeoStore {
+    export type Id = "seoStore"
+
+    export type State = {
+        seoRaw: SeoRaw
+    }
+
+    export type Getters = {
+        seo: () => Seo
+    }
+
+    export type Actions = {
+        setSeoRaw: (seoRaw: SeoRaw) => void
     }
 
     export type Store = DefineStore<Id, State, Getters, Actions>

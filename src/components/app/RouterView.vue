@@ -24,10 +24,8 @@ let pageKey = computed((): string => (
 </script>
 
 <template>
-<keep-alive>
-    <nuxt-page
-        :id="pageId"
-        :page-key="pageKey"
-    />
-</keep-alive>
+<nuxt-page
+    :id="pageId"
+    :page-key="pageKey"
+/>
 </template>

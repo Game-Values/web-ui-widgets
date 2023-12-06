@@ -23,6 +23,10 @@ export class Game implements GameRaw {
     @Expose()
     declare public name: string
 
+    public get image(): string {
+        return `/images/${useKebabCase(this.name)}.png`
+    }
+
     public get route(): Route {
         let { routerClient } = useClients()
 

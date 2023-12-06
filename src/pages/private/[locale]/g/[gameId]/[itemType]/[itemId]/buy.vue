@@ -1,3 +1,9 @@
+<script lang="ts" setup>
+let { buyFacade } = useFacades()
+
+await buyFacade.bootstrap()
+</script>
+
 <template>
 <ui-page>
     <v-row>
@@ -13,9 +19,9 @@
                     />
                 </v-title>
 
-                <entity-order-steps />
+                <entity-buy-steps />
 
-                <entity-order-view />
+                <entity-buy-view />
             </v-space>
         </v-column>
 

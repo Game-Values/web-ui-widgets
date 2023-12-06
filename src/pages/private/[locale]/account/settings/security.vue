@@ -1,11 +1,17 @@
 <script lang="ts" setup>
+// todo: mv to components / entities
+
+definePageMeta({
+    seo: {
+        title: "Security",
+    },
+})
+
 let { storeClient } = useClients()
 let { userController } = useControllers()
 </script>
 
 <template>
-<!-- todo: mv to components / entities -->
-
 <v-row>
     <v-column :span="12">
         <v-space

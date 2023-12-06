@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { ScopedProps } from "~/types"
+import type { Lazy, ScopedProps } from "~/types"
 import type { ButtonProps } from "vexip-ui"
 import type { VNode } from "vue"
 
@@ -7,7 +7,7 @@ import { DEFAULT_TIMEOUT } from "~/consts"
 
 let props = defineProps<(
     ButtonProps & {
-        action: () => Promise<any>
+        action: Lazy<unknown>
     }
 )>()
 

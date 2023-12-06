@@ -1,3 +1,11 @@
+<script lang="ts" setup>
+definePageMeta({
+    seo: {
+        title: "Referral program",
+    },
+})
+</script>
+
 <template>
 <v-row>
     <v-column>

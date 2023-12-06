@@ -1,30 +1,24 @@
 <script lang="ts" setup>
-import type { RouteLocation } from "vue-router"
+import { RouteLayout } from "~/enums"
 
-let { storeClient } = useClients()
+definePageMeta({
+    layout: RouteLayout.ACCOUNT,
+})
 
-let { user } = storeToRefs(storeClient.userMeStore)
+let { routerClient } = useClients()
 </script>
 
 <template>
 <ui-page>
-    <v-row>
-        <v-column :lg="18">
-            <v-row>
-                <v-column>
-                    <user-card :user="user" />
-                </v-column>
-
-                <v-column>
-                    <app-router-view />
-<!--                    <entity-account-tabs />-->
-                </v-column>
-            </v-row>
-        </v-column>
-
-        <v-column :lg="6">
-            <entity-account-statistic />
-        </v-column>
-    </v-row>
+    <app-router-tabs
+        :routes="[
+            routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_BALANCE),
+            routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_SALES),
+            routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_PURCHASES),
+            routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_ITEMS),
+            routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_REVIEWS),
+            routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_SUBSCRIPTION),
+        ]"
+    />
 </ui-page>
 </template>

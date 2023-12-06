@@ -1,17 +1,17 @@
 import type { FacadeAbstract } from "~/abstract"
-import type { GameController, SaleController } from "~/controllers"
+import type { GameController, SellController } from "~/controllers"
 
-export class SaleFacade implements FacadeAbstract {
+export class SellFacade implements FacadeAbstract {
     public constructor(
         private _gameController: GameController,
-        private _saleController: SaleController,
+        private _sellController: SellController,
     ) {}
 
     public async bootstrap(): Promise<void> {
-        await this._saleController.fetchSaleItem()
+        await this._sellController.fetchSellItem()
         await Promise.all([
             this._gameController.fetchGames(),
-            this._saleController.fetchSaleGame(),
+            this._sellController.fetchSaleGame(),
         ])
     }
 }

@@ -14,7 +14,7 @@ export enum ControllerToken {
     AUTH = "AuthController",
     GAME = "GameController",
     ITEM = "ItemController",
-    SALE = "SaleController",
+    SELL = "SellController",
     USER = "UserController",
 }
 
@@ -22,7 +22,7 @@ export enum FacadeToken {
     BUY = "BuyFacade",
     GAME = "GameFacade",
     MAIN = "MainFacade",
-    SALE = "SaleFacade",
+    SELL = "SellFacade",
     USER = "UserFacade",
 }
 

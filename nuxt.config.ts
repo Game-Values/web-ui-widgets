@@ -108,15 +108,6 @@ let nuxtConfig: NuxtConfig = {
     imports: {
         presets: [
             {
-                from: "pinia",
-                imports: [
-                    "mapActions",
-                    "mapState",
-                    "mapStores",
-                    "mapWritableState",
-                ],
-            },
-            {
                 from: "@vueuse/core",
                 imports: [
                     "promiseTimeout",
@@ -137,6 +128,15 @@ let nuxtConfig: NuxtConfig = {
                 from: "lodash-decorators",
                 imports: [
                     "Memoize",
+                ],
+            },
+            {
+                from: "pinia",
+                imports: [
+                    "mapActions",
+                    "mapState",
+                    "mapStores",
+                    "mapWritableState",
                 ],
             },
         ],
@@ -344,10 +344,10 @@ let nuxtConfig: NuxtConfig = {
                 },
             },
         },
-        experimental: {
-            hmrPartialAccept: isDevelopment(),
-            importGlobRestoreExtension: true,
-        },
+        // experimental: {
+        //     hmrPartialAccept: isDevelopment(),
+        //     importGlobRestoreExtension: true,
+        // },
         plugins: [
             dynamicImport(),
             inheritAttrs(),

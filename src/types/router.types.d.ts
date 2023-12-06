@@ -1,5 +1,6 @@
 import type { RoutesNamesList, TypedRouteFromName } from "@typed-router"
 import type { ItemType, Locale, PaymentType, RouteLayout, RouteName } from "~/enums"
+import type { SeoRaw } from "~/types"
 import type { ComputedRef, MaybeRef } from "vue"
 import type { RouteLocation } from "vue-router"
 
@@ -11,16 +12,22 @@ export type Route = (
 )
 
 declare module "vue-router" {
+    interface _RouteLocationBase {
+        name: RouteName
+    }
+
     export interface LocationQuery {
         // todo: (?)
     }
 
     export interface RouteMeta {
+        active: boolean
         auth: boolean
         layout: (
             ComputedRef<RouteLayout> |
             MaybeRef<RouteLayout>
         )
+        seo: SeoRaw
     }
 
     export interface RouteParams {
@@ -30,9 +37,5 @@ declare module "vue-router" {
         locale: Locale
         paymentType: PaymentType
         userId: string
-    }
-
-    export interface RouteRecordRaw {
-        name: RouteName
     }
 }

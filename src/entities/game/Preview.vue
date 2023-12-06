@@ -6,7 +6,7 @@ let { game } = storeToRefs(storeClient.gameStore)
 
 <template>
 <ui-image
-    :src="`/images/${useKebabCase(game.name)}.png`"
+    :src="game.image"
     height="500"
 />
 </template>

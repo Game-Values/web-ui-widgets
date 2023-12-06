@@ -20,5 +20,7 @@ defineSlots<{
     </nuxt-layout>
 
     <widget-provider-modal />
+
+    <widget-provider-seo />
 </widget-provider-config>
 </template>

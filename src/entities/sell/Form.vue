@@ -1,19 +1,19 @@
 <script setup lang="ts">
 let { routerClient, storeClient } = useClients()
-let { gameController, saleController } = useControllers()
+let { gameController, sellController } = useControllers()
 
 let { game } = storeToRefs(storeClient.gameStore)
 let { games } = storeToRefs(storeClient.gamesStore)
 
-async function handleSaleItem(): Promise<void> {
-    await saleController.createSaleItem()
+async function handleSellItem(): Promise<void> {
+    await sellController.createSellItem()
     await navigateTo(
         getRef(game, "route"),
     )
 }
 
 async function handleDeleteItem(): Promise<void> {
-    await saleController.deleteSaleItem()
+    await sellController.deleteSellItem()
     await navigateTo(
         getRef(game, "route"),
     )
@@ -22,7 +22,7 @@ async function handleDeleteItem(): Promise<void> {
 
 <template>
 <v-form
-    :model="storeClient.saleStore.saleItemRaw"
+    :model="storeClient.sellStore.sellItemRaw"
     all-required
 >
     <v-form-item
@@ -98,7 +98,7 @@ async function handleDeleteItem(): Promise<void> {
             <template v-if="routerClient.isRouteNameEqual(routerClient.routeNames.PRIVATE_GAME_ITEM_SELL)">
                 <v-form-submit
                     block
-                    @submit="handleSaleItem()"
+                    @submit="handleSellItem()"
                 >
                     Sell
                 </v-form-submit>
@@ -108,7 +108,7 @@ async function handleDeleteItem(): Promise<void> {
                 <v-space justify="space-between">
                     <v-form-submit
                         type="success"
-                        @click="saleController.editSaleItem()"
+                        @click="sellController.editSellItem()"
                     >
                         Edit
                     </v-form-submit>

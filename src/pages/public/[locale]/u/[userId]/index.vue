@@ -1,7 +1,5 @@
 <script lang="ts" setup>
-import type { RouteLocation } from "vue-router"
-
-let { storeClient } = useClients()
+let { routerClient, storeClient } = useClients()
 
 let { user } = storeToRefs(storeClient.userStore)
 </script>
@@ -16,8 +14,12 @@ let { user } = storeToRefs(storeClient.userStore)
                 </v-column>
 
                 <v-column>
-                    <app-router-view />
-<!--                    <entity-profile-tabs />-->
+                    <app-router-tabs
+                        :routes="[
+                            routerClient.getRoute(routerClient.routeNames.PUBLIC_USER_STOREFRONT),
+                            routerClient.getRoute(routerClient.routeNames.PUBLIC_USER_REVIEWS),
+                        ]"
+                    />
                 </v-column>
             </v-row>
         </v-column>

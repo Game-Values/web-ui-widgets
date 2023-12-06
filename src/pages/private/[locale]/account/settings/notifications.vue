@@ -1,3 +1,11 @@
+<script lang="ts" setup>
+definePageMeta({
+    seo: {
+        title: "Notifications",
+    },
+})
+</script>
+
 <template>
 <v-space
     size="large"

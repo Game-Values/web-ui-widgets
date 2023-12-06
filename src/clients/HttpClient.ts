@@ -1,5 +1,6 @@
 import type { FullRequestParams } from "#schema/http-client"
 import type { HttpAdapter } from "~/adapters"
+import type { Lazy } from "~/types"
 import type { AsyncData } from "nuxt/dist/app"
 
 import { default as hash } from "hash-sum"
@@ -21,7 +22,7 @@ export class HttpClient {
         error: AsyncData<T, E>,
     }> {
         let key: string = hash(requestParams)
-        let request: () => Promise<T> = (
+        let request: Lazy<T> = (
             (): Promise<T> => this._httpAdapter.request<T, E>(
                 this._resolveRequestParams(requestParams),
             )

@@ -1,5 +1,9 @@
 <script setup lang="ts">
 // todo: view
+
+let { sellFacade } = useFacades()
+
+await sellFacade.bootstrap()
 </script>
 
 <template>
@@ -7,7 +11,7 @@
     <v-row>
         <v-column>
             <v-title :level="1">
-                Edit Item
+                Sell Item
             </v-title>
         </v-column>
 
