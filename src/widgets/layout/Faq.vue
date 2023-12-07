@@ -23,10 +23,10 @@ let { routerClient } = useClients()
                 <app-router-navs
                     :routes="[
                         useAssign(routerClient.getRoute(routerClient.routeNames.PUBLIC_FAQ_GENERAL), {
-                            heroicons: 'currency-dollar-solid',
+                            heroicons: 'chat-bubble-oval-left-ellipsis-solid',
                         }),
                         useAssign(routerClient.getRoute(routerClient.routeNames.PUBLIC_FAQ_SELLERS), {
-                            heroicons: 'chat-bubble-oval-left-ellipsis-solid',
+                            heroicons: 'currency-dollar-solid',
                         }),
                         useAssign(routerClient.getRoute(routerClient.routeNames.PUBLIC_FAQ_TECHNICAL), {
                             heroicons: 'cog-8-tooth-solid',
