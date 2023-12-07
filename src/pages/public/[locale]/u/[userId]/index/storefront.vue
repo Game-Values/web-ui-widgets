@@ -59,12 +59,12 @@ let lotsData = [
 </script>
 
 <template>
-<v-collapse>
+<game-collapse>
     <game-collapse-lot
         v-for="n in 5"
         :key="n"
         :game="game"
         :lots="lotsData"
     />
-</v-collapse>
+</game-collapse>
 </template>

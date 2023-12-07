@@ -1,14 +1,16 @@
 <script lang="ts" setup>
+import type { ValueOfArray } from "~/types"
 import type { IconProps } from "vexip-ui"
 import type { VNode } from "vue"
 
-import "~/consts/icons"
+import { HEROICONS } from "~/consts"
 
 defineProps<(
     IconProps & {
         custom?: string
         height?: number | string
-        heroicons?: string
+        heroicons?: ValueOfArray<typeof HEROICONS>
+        solid?: boolean
         width?: number | string
     }
 )>()
@@ -25,6 +27,7 @@ defineSlots<{
             'custom',
             'heroicons',
             'icon',
+            'solid',
         ])
     )"
     :style="{
@@ -36,7 +39,7 @@ defineSlots<{
 >
     <i
         v-if="heroicons"
-        :class="`i-heroicons:${heroicons}`"
+        :class="`i-heroicons:${heroicons}${solid ? '-solid' : ''}`"
     />
 
     <i

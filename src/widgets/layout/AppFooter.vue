@@ -54,7 +54,15 @@ let colsOrder = computed((): Record<string, number> => (
 </script>
 
 <template>
-<footer class="relative z-1 py-10 bg-grey-extra-dark">
+<footer
+    class="
+        relative
+        z-1
+        mt-auto
+        py-10
+        bg-grey-extra-dark
+    "
+>
     <ui-content>
         <v-row
             :gap="[

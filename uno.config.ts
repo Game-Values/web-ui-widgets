@@ -133,6 +133,7 @@ let theme: Theme = {
                 "button-small": get(sizes, "$button-height-small"),
                 dot: get(sizes, "$dot-size"),
                 input: get(sizes, "$input-height"),
+                "route-nav-button": get(sizes, "$route-nav-button-size"),
                 switch: get(sizes, "$switch-height"),
             },
         )
@@ -151,6 +152,7 @@ let theme: Theme = {
                 "avatar-small": get(sizes, "$avatar-size-small"),
                 dot: get(sizes, "$dot-size"),
                 layout: get(sizes, "$layout-width"),
+                "route-nav-button": get(sizes, "$route-nav-button-size"),
             }
         ))
     },

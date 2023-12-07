@@ -1,4 +1,5 @@
 export * from "~/facades/BuyFacade"
+export * from "~/facades/FavoritesFacade"
 export * from "~/facades/GameFacade"
 export * from "~/facades/MainFacade"
 export * from "~/facades/SellFacade"

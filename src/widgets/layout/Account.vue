@@ -6,7 +6,7 @@ defineSlots<{
     default: (scopedProps: ScopedProps) => VNode
 }>()
 
-let { storeClient } = useClients()
+let { routerClient, storeClient } = useClients()
 
 let { user: me } = storeToRefs(storeClient.userMeStore)
 let { user } = storeToRefs(storeClient.userStore)
@@ -26,6 +26,19 @@ let { user } = storeToRefs(storeClient.userStore)
                         <widget-wrapper-unauth-only>
                             <user-card :user="user" />
                         </widget-wrapper-unauth-only>
+                    </v-column>
+
+                    <v-column>
+                        <app-router-tabs
+                            :routes="[
+                                routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_BALANCE),
+                                routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_SALES),
+                                routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_PURCHASES),
+                                routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_ITEMS),
+                                routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_REVIEWS),
+                                routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_SUBSCRIPTION),
+                            ]"
+                        />
                     </v-column>
 
                     <v-column>

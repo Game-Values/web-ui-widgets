@@ -55,8 +55,9 @@ let active: WritableComputedRef<boolean> = computed({
 
                 <ui-link>
                     <ui-icon
-                        heroicons="heart-solid"
+                        heroicons="heart"
                         size="24"
+                        solid
                     />
                 </ui-link>
 

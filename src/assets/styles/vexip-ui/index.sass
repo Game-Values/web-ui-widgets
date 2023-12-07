@@ -55,11 +55,12 @@
     --vxp-card-body-h-padding: 0
 
 .vxp-collapse-vars
-    --vxp-collapse-content-h-padding: 0
+    --vxp-collapse-content-v-padding: theme("spacing.9")
+    --vxp-collapse-content-h-padding: theme("spacing.9")
     --vxp-collapse-header-bg-color: theme("colors.white-02")
     --vxp-collapse-divider: theme("spacing.5") solid transparent
     --vxp-collapse-border: 0
-    --vxp-collapse-radius: theme("spacing.7")
+    --vxp-collapse-radius: theme("spacing.5")
 
 .vxp-divider-vars
     --vxp-divider-text-color: inherit
@@ -238,14 +239,18 @@
         @apply text-level-3
 
     &__header
-        @apply p-2
-        @apply rounded-7
+        @apply p-9
+        @apply rounded-5
+        @apply text-level-4 font-semibold
 
     &__body
         @apply p-0
 
     &__panel
         @apply w-full
+
+    &--arrow-right .vxp-collapse__arrow
+        @apply start-[calc(100%-#{spaces.$space-9})]
 
 .vxp-column
     > .vxp-row
@@ -264,6 +269,8 @@
             @apply after:(w-[calc(100%-#{spaces.$space-10}*2)])
 
 .vxp-form
+    @apply w-full
+
     &__item
         @apply mb-7
 
@@ -280,6 +287,9 @@
 .vxp-layout
     @apply screen
 
+    &__section
+        @apply flex-col flex-1
+
 .vxp-modal
     &__close
         @apply relative bottom-3 left-3
@@ -288,6 +298,9 @@
     &__wrapper
         @apply border-solid-secondary
         @apply backdrop-blur-16
+
+.vxp-row
+    @apply max-w-full
 
 .vxp-space
     @apply w-full

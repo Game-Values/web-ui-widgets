@@ -82,13 +82,13 @@ let lotsData = [
         </v-space>
     </v-title>
 
-    <v-collapse>
+    <game-collapse>
         <game-collapse-lot
             v-for="n in 5"
             :key="n"
             :game="game"
             :lots="lotsData"
         />
-    </v-collapse>
+    </game-collapse>
 </v-space>
 </template>

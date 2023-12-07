@@ -7,27 +7,20 @@ defineProps<{
 </script>
 
 <template>
-<v-space
-    size="large"
-    vertical
->
-    <v-button-group size="small">
-        <ui-button-link
-            v-for="route in routes"
-            :key="route.name"
-            :type="
-                route.meta.active
-                    ? 'primary'
-                    : 'default'
-            "
-            :to="route"
-        >
-            {{ route.meta.seo.title }}
-        </ui-button-link>
-    </v-button-group>
-
-    <app-router-view />
-</v-space>
+<v-button-group size="small">
+    <ui-button-link
+        v-for="route in routes"
+        :key="route.name"
+        :type="
+            route.meta.active
+                ? 'primary'
+                : 'default'
+        "
+        :to="route"
+    >
+        {{ route.meta.seo.title }}
+    </ui-button-link>
+</v-button-group>
 </template>
 
 <style lang="sass" scoped>

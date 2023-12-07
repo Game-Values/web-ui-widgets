@@ -12,6 +12,7 @@ let orderSlides: string[] = (
     ]"
     :slides-per-view="2.5"
     :space-between="remToNumber(useTheme('spacing.9'))"
+    :width="600"
     navigation
 >
     <swiper-slide
@@ -31,7 +32,6 @@ let orderSlides: string[] = (
     --swiper-navigation-size: theme("spacing.8")
 
     @apply mx-0
-    @apply w-[60rem]
 
     :deep(.swiper-button-next),
     :deep(.swiper-button-prev)

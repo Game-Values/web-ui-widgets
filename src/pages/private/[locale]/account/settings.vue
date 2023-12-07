@@ -2,21 +2,12 @@
 import { RouteLayout } from "~/enums"
 
 definePageMeta({
-    layout: RouteLayout.ACCOUNT,
+    layout: RouteLayout.ACCOUNT_SETTINGS,
 })
-
-let { routerClient } = useClients()
 </script>
 
 <template>
 <ui-page>
-    <app-router-tabs
-        :routes="[
-            routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_SETTINGS_BASIC),
-            routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_SETTINGS_NOTIFICATIONS),
-            routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_SETTINGS_REFERRAL),
-            routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_SETTINGS_SECURITY),
-        ]"
-    />
+    <app-router-view />
 </ui-page>
 </template>

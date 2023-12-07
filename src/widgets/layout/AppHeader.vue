@@ -119,8 +119,9 @@ let { authenticated } = storeToRefs(storeClient.userMeStore)
 
                         <ui-link>
                             <ui-icon
-                                heroicons="heart-solid"
+                                heroicons="heart"
                                 size="24"
+                                solid
                             />
                         </ui-link>
 
