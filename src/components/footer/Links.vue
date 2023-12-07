@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import type { Route } from "~/types"
 import type { I18nScope } from "vue-i18n"
 
 import { Breakpoint } from "~/enums"
@@ -7,12 +8,14 @@ interface FooterLink {
     children: Omit<FooterLink, "children">[]
     i18n: string
     i18nScope?: I18nScope
-    to: string // todo: route
+    to?: Route
 }
 
 useI18n()
 
 let breakpoint = useBreakpoint()
+
+let { routerClient } = useClients()
 
 let footerLinks = computed((): FooterLink[] => (
     [
@@ -21,58 +24,47 @@ let footerLinks = computed((): FooterLink[] => (
                 {
                     i18n: "label.Promotions",
                     i18nScope: "global",
-                    to: "javascript:void(0)",
                 },
                 {
                     i18n: "label.AI Assistant",
                     i18nScope: "global",
-                    to: "javascript:void(0)",
                 },
                 {
                     i18n: "Games",
-                    to: "javascript:void(0)",
                 },
                 {
                     i18n: "label.Top-10",
                     i18nScope: "global",
-                    to: "javascript:void(0)",
                 },
             ],
             i18n: "Trade",
-            to: "javascript:void(0)",
         },
         {
             children: [
                 {
                     i18n: "About",
-                    to: "javascript:void(0)",
                 },
                 {
                     i18n: "label.Blog",
                     i18nScope: "global",
-                    to: "javascript:void(0)",
                 },
                 {
                     i18n: "Job",
-                    to: "javascript:void(0)",
                 },
             ],
             i18n: "Company",
-            to: "javascript:void(0)",
         },
         {
             children: [
                 {
                     i18n: "Feedback",
-                    to: "javascript:void(0)",
                 },
                 {
                     i18n: "Help",
-                    to: "javascript:void(0)",
+                    to: routerClient.getRoute(routerClient.routeNames.PUBLIC_FAQ_GENERAL),
                 },
             ],
             i18n: "Help",
-            to: "javascript:void(0)",
         },
     ]
 ))
@@ -111,7 +103,7 @@ let footerLinksOffset = computed((): number => (
                 v-for="footerLinkChild in footerLink.children"
                 :key="footerLinkChild.i18n"
             >
-                <ui-link>
+                <ui-link :to="footerLinkChild.to">
                     <i18n-t
                         :keypath="footerLinkChild.i18n"
                         :scope="footerLinkChild.i18nScope"

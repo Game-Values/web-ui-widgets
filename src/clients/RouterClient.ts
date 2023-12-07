@@ -1,4 +1,4 @@
-import type { TypedLocaleRoute, TypedRoute, TypedRouter } from "@typed-router"
+import type { TypedRoute, TypedRouter } from "@typed-router"
 import type { Facades } from "~/helpers"
 import type { Nullable, Route } from "~/types"
 import type { RouteMeta, RouteParams } from "vue-router"
