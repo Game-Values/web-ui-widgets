@@ -20,7 +20,6 @@ defineProps<{
     <swiper-slide
         v-for="route in routes"
         :key="route.name"
-        class="w-route-nav-button"
     >
         <ui-button-link
             :type="
@@ -67,10 +66,13 @@ defineProps<{
         --vxp-button-bg-color: theme("colors.white-02")
         --vxp-button-color: theme("colors.secondary")
 
-.vxp-button
+:deep(.vxp-button)
     @apply w-route-nav-button
     @apply whitespace-normal
 
 :deep(.vxp-linker)
     @apply items-start
+
+:deep(.swiper-slide)
+    @apply w-route-nav-button
 </style>
