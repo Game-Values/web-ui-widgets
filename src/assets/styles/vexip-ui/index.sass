@@ -200,6 +200,21 @@
     --vxp-title-font-weight-thin: 400
     --vxp-title-color: inherit
 
+    &.vxp-title--error
+        --vxp-title-color: theme("colors.error")
+
+    &.vxp-title--info
+        --vxp-title-color: theme("colors.info")
+
+    &.vxp-title--primary
+        --vxp-title-color: theme("colors.primary")
+
+    &.vxp-title--success
+        --vxp-title-color: theme("colors.success")
+
+    &.vxp-title--warning
+        --vxp-title-color: theme("colors.warning")
+
 .vxp-textarea-vars
     --vxp-textarea-min-height: theme("spacing.15")
 
@@ -329,6 +344,10 @@
 .vxp-title
     @apply m-0
     @apply w-full
+
+.vxp-ul
+    @apply flex-col
+    @apply gap-4
 
 .vxp-upload
     @apply text-secondary

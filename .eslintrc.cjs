@@ -127,6 +127,7 @@ module.exports = (() => (
                         "v-for",
                         "v-model",
                         "v-html",
+                        "v-text",
                         "v-slot",
                     ],
                     condition: [

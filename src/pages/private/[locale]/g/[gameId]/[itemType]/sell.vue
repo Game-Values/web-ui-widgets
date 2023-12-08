@@ -33,8 +33,22 @@ await sellFacade.bootstrap()
     </v-row>
 
     <v-row>
-        <v-column>
-            <faq-form />
+        <v-column
+            :lg="14"
+            :md="12"
+            :xs="24"
+        >
+            <faq-collapse>
+                <entity-sell-faq />
+            </faq-collapse>
+        </v-column>
+
+        <v-column
+            :lg="10"
+            :md="12"
+            :xs="24"
+        >
+            <faq-form :height="575" />
         </v-column>
     </v-row>
 </ui-page>

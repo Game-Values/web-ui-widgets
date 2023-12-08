@@ -30,14 +30,16 @@ let faqHeight: ComputedRef<number> = computed((): number => (
 let faqForm: UnwrapRef<FaqForm> = reactive({
     email: "",
 })
+
+// todo: faq style image
+// bg-[url(/images/faq.png)]
+// bg-no-repeat
+// bg-[length:calc(100%-${pxToRem(faqHeight)})]
 </script>
 
 <template>
 <ui-overlay
     :class="`
-        bg-[url(/images/faq.png)]
-        bg-no-repeat
-        bg-[length:calc(100%-${pxToRem(faqHeight)})]
         border-solid-secondary
         rounded-5
     `"
