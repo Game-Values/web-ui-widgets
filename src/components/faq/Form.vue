@@ -8,6 +8,10 @@ interface FaqForm {
     email: string
 }
 
+defineProps<{
+    height?: number | string
+}>()
+
 defineSlots<{
     default: (scopedProps: ScopedProps) => VNode
 }>()
@@ -37,10 +41,13 @@ let faqForm: UnwrapRef<FaqForm> = reactive({
         border-solid-secondary
         rounded-5
     `"
+    :height="(
+        height ||
+        faqHeight
+    )"
     :style="{
         backgroundPosition: `100% -${pxToRem(faqHeight)}`,
     }"
-    :height="faqHeight"
 >
     <template #overlay>
         <slot>
@@ -49,7 +56,6 @@ let faqForm: UnwrapRef<FaqForm> = reactive({
                     md:(fit p-15)
                     xs:(p-12)
                 "
-                justify="center"
                 size="large"
                 vertical
             >

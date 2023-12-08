@@ -34,7 +34,7 @@ await sellFacade.bootstrap()
 
     <v-row>
         <v-column>
-            <app-faq />
+            <faq-form />
         </v-column>
     </v-row>
 </ui-page>

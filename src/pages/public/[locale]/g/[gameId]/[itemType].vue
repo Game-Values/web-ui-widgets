@@ -43,8 +43,22 @@ await gameFacade.bootstrap()
     </v-row>
 
     <v-row>
-        <v-column>
-            <app-faq />
+        <v-column
+            :lg="14"
+            :md="12"
+            :xs="24"
+        >
+            <faq-collapse>
+                <entity-game-faq />
+            </faq-collapse>
+        </v-column>
+
+        <v-column
+            :lg="10"
+            :md="12"
+            :xs="24"
+        >
+            <faq-form :height="575" />
         </v-column>
     </v-row>
 </ui-page>

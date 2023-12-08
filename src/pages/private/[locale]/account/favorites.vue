@@ -21,7 +21,7 @@ await favoritesFacade.bootstrap()
         </v-column>
 
         <v-column>
-            <app-faq />
+            <faq-form />
         </v-column>
     </v-row>
 </ui-page>

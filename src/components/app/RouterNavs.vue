@@ -15,7 +15,6 @@ defineProps<{
 <swiper
     :space-between="remToNumber(useTheme('spacing.5'))"
     slides-per-view="auto"
-    css-mode
 >
     <swiper-slide
         v-for="route in routes"
