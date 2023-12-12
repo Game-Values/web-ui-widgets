@@ -36,7 +36,7 @@ export class Item implements ItemRaw {
     public get buyRoute(): Route {
         let { routerClient } = useClients()
 
-        return routerClient.getRoute(routerClient.routeNames.PRIVATE_GAME_ITEM_BUY, {
+        return routerClient.getRoute(routerClient.routeNames.PUBLIC_GAME_ITEM_BUY, {
             params: {
                 gameId: this.gid,
                 itemId: this.id,
