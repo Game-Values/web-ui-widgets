@@ -101,7 +101,7 @@ async function handleDeleteItem(): Promise<void> {
             </v-text>
         </v-form-item>
 
-        <v-form-item>
+        <v-form-item action>
             <template
                 v-if="(
                     routerClient.isRouteNameEqual(routerClient.routeNames.PRIVATE_ACCOUNT_SELL) ||

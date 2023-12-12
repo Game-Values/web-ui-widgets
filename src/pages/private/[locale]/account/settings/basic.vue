@@ -53,7 +53,7 @@ let { userController } = useControllers()
         </v-space>
     </v-form-item>
 
-    <v-form-item>
+    <v-form-item action>
         <v-form-submit
             block
             @submit="userController.updateMe()"

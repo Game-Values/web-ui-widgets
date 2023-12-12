@@ -8,6 +8,7 @@ import type {
     SeoStore,
     SettingsStore,
     UserStore,
+    WithdrawStore,
 } from "~/types"
 
 // todo: stores typing
@@ -65,5 +66,10 @@ export class StoreClient {
     @Memoize()
     public get userStore(): UserStore.Store {
         return useUserStore()
+    }
+
+    @Memoize()
+    public get withdrawStore(): WithdrawStore.Store {
+        return useWithdrawStore()
     }
 }

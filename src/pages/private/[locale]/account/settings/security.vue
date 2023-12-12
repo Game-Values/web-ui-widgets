@@ -59,7 +59,7 @@ let { userController } = useControllers()
                     />
                 </v-form-item>
 
-                <v-form-item>
+                <v-form-item action>
                     <v-form-submit
                         block
                         @submit="userController.updateMe()"
@@ -122,7 +122,7 @@ let { userController } = useControllers()
                     </v-input>
                 </v-form-item>
 
-                <v-form-item>
+                <v-form-item action>
                     <v-form-submit
                         block
                     >

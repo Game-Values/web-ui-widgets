@@ -24,6 +24,7 @@ export enum RouteName {
     PRIVATE_ACCOUNT_SETTINGS_REFERRAL = routesNames.privateLocaleAccountSettings.localeAccountSettingsReferral,
     PRIVATE_ACCOUNT_SETTINGS_SECURITY = routesNames.privateLocaleAccountSettings.localeAccountSettingsSecurity,
     PRIVATE_ACCOUNT_SUBSCRIPTION = routesNames.privateLocaleAccount.localeAccountIndexSubscription,
+    PRIVATE_ACCOUNT_WITHDRAW = routesNames.privateLocaleAccountWithdraw,
 
     PRIVATE_GAME_ITEM_SELL = routesNames.privateLocaleGGameIdItemTypeSell,
     PRIVATE_GAME_ITEM_SELL_EDIT = routesNames.privateLocaleGGameIdItemTypeItemIdEdit,

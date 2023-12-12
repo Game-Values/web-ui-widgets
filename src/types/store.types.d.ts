@@ -18,6 +18,7 @@ import type {
 } from "~/enums"
 import type {
     SeoRaw,
+    WithdrawRaw,
 } from "~/types"
 import type {
     _ActionsTree,
@@ -204,6 +205,24 @@ export namespace UserStore {
 
     export type Actions = {
         setUserRaw: (userRaw: UserRaw) => void
+    }
+
+    export type Store = DefineStore<Id, State, Getters, Actions>
+}
+
+export namespace WithdrawStore {
+    export type Id = "withdrawStore"
+
+    export type State = {
+        withdrawRaw: WithdrawRaw
+    }
+
+    export type Getters = {
+        // todo:
+    }
+
+    export type Actions = {
+        // todo:
     }
 
     export type Store = DefineStore<Id, State, Getters, Actions>

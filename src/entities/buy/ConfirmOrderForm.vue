@@ -18,7 +18,10 @@ let formModel: UnwrapRef<FormModel> = reactive({
 <v-form v-model="formModel">
     <v-form-item>
         <v-space>
-            <v-form-item pure>
+            <v-form-item
+                action
+                pure
+            >
                 <!-- todo: native submit -->
                 <v-form-submit
                     block

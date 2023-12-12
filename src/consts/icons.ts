@@ -15,6 +15,7 @@ export const HEROICONS: (`i-heroicons:${string}`)[] = [
     "i-heroicons:heart",
     "i-heroicons:heart-solid",
     "i-heroicons:inbox-stack",
+    "i-heroicons:information-circle",
     "i-heroicons:information-circle-solid",
     "i-heroicons:magnifying-glass",
     "i-heroicons:shopping-cart",

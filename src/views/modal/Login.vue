@@ -39,7 +39,7 @@ let formModel: UnwrapRef<BodyLoginWithOauth2ApiV1LoginOauthPostRaw> = reactive({
             />
         </v-form-item>
 
-        <v-form-item>
+        <v-form-item action>
             <v-space justify="space-between">
                 <v-form-submit
                     @submit="

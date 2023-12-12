@@ -5,6 +5,8 @@ definePageMeta({
     },
 })
 
+let { routerClient } = useClients()
+
 // todo: from api
 // let balanceData = [
 //     {
@@ -50,29 +52,29 @@ definePageMeta({
     size="large"
     vertical
 >
-    <v-text>
-        Balance
+    <v-text disabled>
+        Available for withdrawal
     </v-text>
-<!--    <v-text disabled>-->
-<!--        Available for withdrawal-->
-<!--    </v-text>-->
 
-<!--    <v-title-->
-<!--        :level="1"-->
-<!--    >-->
-<!--        <v-space-->
-<!--            align="center"-->
-<!--            size="large"-->
-<!--        >-->
-<!--            <v-text>-->
-<!--                17 240 $-->
-<!--            </v-text>-->
+    <v-title
+        :level="1"
+    >
+        <v-space
+            align="center"
+            size="large"
+        >
+            <v-text>
+                {{ formatPrice(100) }}
+            </v-text>
 
-<!--            <v-button type="primary">-->
-<!--                Withdraw-->
-<!--            </v-button>-->
-<!--        </v-space>-->
-<!--    </v-title>-->
+            <ui-button-link
+                :to="routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_WITHDRAW)"
+                type="primary"
+            >
+                Withdraw
+            </ui-button-link>
+        </v-space>
+    </v-title>
 
 <!--    <v-title :level="3">-->
 <!--        Transactions-->

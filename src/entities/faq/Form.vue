@@ -34,7 +34,7 @@ let faqForm: UnwrapRef<FaqForm> = reactive({
             />
         </v-form-item>
 
-        <v-form-item>
+        <v-form-item action>
             <v-form-submit block>
                 Send
             </v-form-submit>

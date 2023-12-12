@@ -71,7 +71,7 @@ let registrationPayload: ComputedRef<BodyCreateUserProfileApiV1UsersPostRaw> = (
             />
         </v-form-item>
 
-        <v-form-item>
+        <v-form-item action>
             <v-form-submit
                 :disabled="!formModel.agreeWithPolicies"
                 block

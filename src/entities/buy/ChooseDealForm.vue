@@ -52,7 +52,7 @@ let formModel: UnwrapRef<FormModel> = reactive({
         </v-select>
     </v-form-item>
 
-    <v-form-item>
+    <v-form-item action>
         <!-- todo: native submit -->
         <v-form-submit
             block
