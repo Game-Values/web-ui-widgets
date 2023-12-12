@@ -49,13 +49,13 @@ let { game } = storeToRefs(storeClient.gameStore)
                         <i18n-t keypath="Add Section" />
                     </v-button>
 
-                    <ui-button-link
+                    <ui-link-button
                         :to="game.attributes.sections.active.sellRoute"
                         type="primary"
                         block
                     >
                         <i18n-t keypath="Sell" />
-                    </ui-button-link>
+                    </ui-link-button>
                 </v-space>
             </widget-wrapper-auth-only>
         </v-column>

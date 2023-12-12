@@ -6,7 +6,7 @@ let { game } = storeToRefs(storeClient.gameStore)
 
 <template>
 <v-space>
-    <ui-tag-link
+    <ui-link-tag
         v-for="section in game.attributes.sections"
         :key="section.name"
         :type="(
@@ -32,6 +32,6 @@ let { game } = storeToRefs(storeClient.gameStore)
                 {{ section.count }}
             </v-text>
         </v-space>
-    </ui-tag-link>
+    </ui-link-tag>
 </v-space>
 </template>

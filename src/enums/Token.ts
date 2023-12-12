@@ -10,6 +10,10 @@ export enum ClientToken {
     STORE = "StoreToken",
 }
 
+export enum ConfirmToken {
+    DELETED_LOT = "DeletedLotConfirm",
+}
+
 export enum ControllerToken {
     AUTH = "AuthController",
     GAME = "GameController",
@@ -41,4 +45,9 @@ export enum ServiceToken {
     ITEM = "ItemService",
     ORDER = "OrderService",
     USER = "UserService",
+}
+
+export enum ToastToken {
+    CREATED_LOT = "CreatedLotToast",
+    DELETED_LOT = "DeletedLotToast",
 }

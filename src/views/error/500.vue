@@ -18,12 +18,12 @@ let { routerClient } = useClients()
             justify: 'center',
         }"
     >
-        <ui-button-link
+        <ui-link-button
             :to="routerClient.getRoute(routerClient.routeNames.PUBLIC_MAIN)"
             type="primary"
         >
             Home
-        </ui-button-link>
+        </ui-link-button>
     </v-column>
 </v-row>
 </template>

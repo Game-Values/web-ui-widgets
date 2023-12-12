@@ -3,19 +3,22 @@ import type { Token } from "brandi"
 
 import { Container } from "brandi"
 
-import { Adapters, Clients, Controllers, Facades, Modals, Services } from "~/helpers"
+import { Adapters, Clients, Confirms, Controllers, Facades, Modals, Services, Toasts } from "~/helpers"
 
 let setup: () => void = onceClientOnly((): void => {
     let container: Container = new Container()
     let tokens: Map<string, Token<any>> = new Map()
 
+    // todo: (?)
     let dis: Record<string, DIAbstract> = {
         adapters: new Adapters(container, tokens),
         clients: new Clients(container, tokens),
+        confirms: new Confirms(container, tokens),
         controllers: new Controllers(container, tokens),
         facades: new Facades(container, tokens),
         modals: new Modals(container, tokens),
         services: new Services(container, tokens),
+        toasts: new Toasts(container, tokens),
     }
 
     useAssign(useContext(), dis)
@@ -24,6 +27,4 @@ let setup: () => void = onceClientOnly((): void => {
     useForEach(dis, (di: DIAbstract): void => di.inject())
 })
 
-export default defineNuxtRouteMiddleware((): void => (
-    setup()
-))
+export default defineNuxtRouteMiddleware(setup)

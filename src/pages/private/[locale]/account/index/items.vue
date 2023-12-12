@@ -25,12 +25,12 @@ let { items } = storeToRefs(storeClient.itemsStore)
                 Lots
             </v-text>
 
-            <ui-button-link
+            <ui-link-button
                 :to="routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_SELL)"
                 type="primary"
             >
                 Sell
-            </ui-button-link>
+            </ui-link-button>
         </v-space>
     </v-title>
 

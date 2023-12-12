@@ -8,7 +8,7 @@ defineProps<{
 
 <template>
 <v-button-group size="small">
-    <ui-button-link
+    <ui-link-button
         v-for="route in routes"
         :key="route.name"
         :type="
@@ -19,7 +19,7 @@ defineProps<{
         :to="route"
     >
         {{ route.meta.seo.title }}
-    </ui-button-link>
+    </ui-link-button>
 </v-button-group>
 </template>
 

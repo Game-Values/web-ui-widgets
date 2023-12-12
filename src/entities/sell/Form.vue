@@ -1,6 +1,8 @@
 <script setup lang="ts">
 let { routerClient, storeClient } = useClients()
+let { deletedLotConfirm } = useConfirms()
 let { gameController, sellController } = useControllers()
+let { createdLotToast, deletedLotToast } = useToasts()
 
 let { game } = storeToRefs(storeClient.gameStore)
 let { games } = storeToRefs(storeClient.gamesStore)
@@ -8,16 +10,29 @@ let { sellItem } = storeToRefs(storeClient.sellStore)
 
 async function handleSellItem(): Promise<void> {
     await sellController.createSellItem()
-    await navigateTo(
-        getRef(game, "route"),
-    )
+    await createdLotToast.open({
+        toast: {
+            onClose: async (): Promise<void> => {
+                await navigateTo(getRef(game, "route"))
+            },
+        },
+    })
 }
 
 async function handleDeleteItem(): Promise<void> {
+    let isConfirm: boolean = await deletedLotConfirm.confirm()
+
+    if (!isConfirm)
+        return
+
     await sellController.deleteSellItem()
-    await navigateTo(
-        getRef(game, "route"),
-    )
+    await deletedLotToast.open({
+        toast: {
+            onClose: async (): Promise<void> => {
+                await navigateTo(getRef(game, "route"))
+            },
+        },
+    })
 }
 </script>
 

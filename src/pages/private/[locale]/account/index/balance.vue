@@ -67,12 +67,12 @@ let { routerClient } = useClients()
                 {{ formatPrice(100) }}
             </v-text>
 
-            <ui-button-link
+            <ui-link-button
                 :to="routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_WITHDRAW)"
                 type="primary"
             >
                 Withdraw
-            </ui-button-link>
+            </ui-link-button>
         </v-space>
     </v-title>
 

@@ -19,20 +19,20 @@ let { authController } = useControllers()
                 Messages
             </v-dropdown-item>
 
-            <ui-dropdown-item-link
+            <ui-link-dropdown-item
                 :to="routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_FAVORITES)"
                 divided
             >
                 Favorites
-            </ui-dropdown-item-link>
+            </ui-link-dropdown-item>
 
-            <ui-dropdown-item-link :to="routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT)">
+            <ui-link-dropdown-item :to="routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT)">
                 Account
-            </ui-dropdown-item-link>
+            </ui-link-dropdown-item>
 
-            <ui-dropdown-item-link :to="routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_SETTINGS)">
+            <ui-link-dropdown-item :to="routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_SETTINGS)">
                 Settings
-            </ui-dropdown-item-link>
+            </ui-link-dropdown-item>
 
             <v-dropdown-item>
                 <v-space justify="space-between">
@@ -66,9 +66,9 @@ let { authController } = useControllers()
                 Referral program
             </v-dropdown-item>
 
-            <ui-dropdown-item-link :to="routerClient.getRoute(routerClient.routeNames.PUBLIC_FAQ)">
+            <ui-link-dropdown-item :to="routerClient.getRoute(routerClient.routeNames.PUBLIC_FAQ)">
                 Help
-            </ui-dropdown-item-link>
+            </ui-link-dropdown-item>
 
             <v-dropdown-item divided>
                 Feedback

@@ -129,6 +129,7 @@ module.exports = (() => (
                         "v-html",
                         "v-text",
                         "v-slot",
+                        "v-*",
                     ],
                     condition: [
                         "v-if*",

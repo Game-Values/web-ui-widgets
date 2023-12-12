@@ -5,11 +5,7 @@ import { token } from "brandi"
 
 import { DIAbstract } from "~/abstract"
 import { ModalToken } from "~/enums"
-import {
-    LoginModal,
-    RecoveryPasswordModal,
-    RegistrationModal,
-} from "~/modals"
+import { LoginModal, RecoveryPasswordModal, RegistrationModal } from "~/modals"
 
 interface ModalsTokens {
     [ModalToken.AUTH_LOGIN]: Token<LoginModal>

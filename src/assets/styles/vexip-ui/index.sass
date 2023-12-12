@@ -186,8 +186,8 @@
     &.vxp-text--warning
         --vxp-text-color: theme("colors.warning")
 
-.vxp-time-ago
-    @apply text-inherit font-size-inherit normal-nums
+.vxp-textarea-vars
+    --vxp-textarea-min-height: theme("spacing.15")
 
 .vxp-title-vars
     --vxp-title-font-size-level-1: #{typography.$font-size-level-1}
@@ -215,8 +215,11 @@
     &.vxp-title--warning
         --vxp-title-color: theme("colors.warning")
 
-.vxp-textarea-vars
-    --vxp-textarea-min-height: theme("spacing.15")
+.vxp-toast-vars
+    --vxp-toast-v-padding: theme("spacing.18")
+    --vxp-toast-h-padding: theme("spacing.13")
+    --vxp-toast-max-width: 40rem
+    --vxp-toast-bg-color: theme("colors.white-02")
 
 .vxp-upload-vars
     --vxp-upload-cloud-color: theme("colors.secondary")
@@ -273,6 +276,16 @@
 
         &.vxp-form
             @apply w-full
+
+.vxp-confirm
+    .vxp-modal__wrapper
+        @apply bg-dark
+
+        // todo: @apply
+        box-shadow: 0 0.8rem 1.6rem 0 #{rgba(colors.$color-black, 0.36)}
+
+    .vxp-modal__content
+        @apply px-13 py-18
 
 .vxp-dropdown
     &__item
@@ -344,9 +357,19 @@
 .vxp-text
     @apply font-size-inherit
 
+.vxp-time-ago
+    @apply text-inherit font-size-inherit normal-nums
+
 .vxp-title
     @apply m-0
     @apply w-full
+
+.vxp-toast
+    &__wrapper
+        @apply bg-dark
+
+        // todo: @apply
+        box-shadow: 0 0.8rem 1.6rem 0 #{rgba(colors.$color-black, 0.36)}
 
 .vxp-ul
     @apply flex-col

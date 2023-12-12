@@ -20,7 +20,7 @@ defineProps<{
         v-for="route in routes"
         :key="route.name"
     >
-        <ui-button-link
+        <ui-link-button
             :type="
                 route.meta.active
                     ? 'primary'
@@ -48,7 +48,7 @@ defineProps<{
                     {{ route.meta.seo.title }}
                 </v-title>
             </v-space>
-        </ui-button-link>
+        </ui-link-button>
     </swiper-slide>
 </swiper>
 </template>
