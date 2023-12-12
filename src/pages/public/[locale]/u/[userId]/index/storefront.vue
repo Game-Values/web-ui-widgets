@@ -12,12 +12,8 @@ let { items } = storeToRefs(storeClient.itemsStore)
 </script>
 
 <template>
-<game-collapse>
-    <game-collapse-lot
-        v-for="[gameId, lots] in items.groupedLots"
-        :key="gameId"
-        :game="games.getById(gameId)"
-        :lots="lots.lotsTableData"
-    />
-</game-collapse>
+<user-lots
+    :games="games"
+    :items="items"
+/>
 </template>

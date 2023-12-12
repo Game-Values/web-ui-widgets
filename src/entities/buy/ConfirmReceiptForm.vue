@@ -43,9 +43,9 @@ let formModel: UnwrapRef<FormModel> = reactive({
     </v-form-item>
 
     <v-form-item>
-        <ui-form-description>
+        <v-text disabled>
             {{ $t(`order["Do not press the button if you haven't checked the receipt of the item, even if the seller has requested it"]`) }}
-        </ui-form-description>
+        </v-text>
     </v-form-item>
 </v-form>
 </template>

@@ -4,6 +4,7 @@ let { gameController, sellController } = useControllers()
 
 let { game } = storeToRefs(storeClient.gameStore)
 let { games } = storeToRefs(storeClient.gamesStore)
+let { sellItem } = storeToRefs(storeClient.sellStore)
 
 async function handleSellItem(): Promise<void> {
     await sellController.createSellItem()
@@ -94,8 +95,19 @@ async function handleDeleteItem(): Promise<void> {
             </v-number-input>
         </v-form-item>
 
+        <v-form-item v-if="sellItem.attributes.price">
+            <v-text disabled>
+                With the GameValues fee, the cost would be {{ formatPrice(sellItem.attributes.price) }}
+            </v-text>
+        </v-form-item>
+
         <v-form-item>
-            <template v-if="routerClient.isRouteNameEqual(routerClient.routeNames.PRIVATE_GAME_ITEM_SELL)">
+            <template
+                v-if="(
+                    routerClient.isRouteNameEqual(routerClient.routeNames.PRIVATE_ACCOUNT_SELL) ||
+                    routerClient.isRouteNameEqual(routerClient.routeNames.PRIVATE_GAME_ITEM_SELL)
+                )"
+            >
                 <v-form-submit
                     block
                     @submit="handleSellItem()"

@@ -4,6 +4,10 @@ import { RouteLayout } from "~/enums"
 definePageMeta({
     layout: RouteLayout.ACCOUNT,
 })
+
+let { userMeFacade } = useFacades()
+
+await userMeFacade.bootstrap()
 </script>
 
 <template>

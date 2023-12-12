@@ -70,12 +70,12 @@ let formModel: UnwrapRef<FormModel> = reactive({
     </v-form-item>
 
     <v-form-item>
-        <ui-form-description>
+        <v-text disabled>
             <i18n-t
                 keypath="order.The seller will not receive payment until you confirm that they have fulfilled all obligations"
                 scope="global"
             />
-        </ui-form-description>
+        </v-text>
     </v-form-item>
 </v-form>
 </template>

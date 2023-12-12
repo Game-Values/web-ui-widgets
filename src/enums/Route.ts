@@ -17,6 +17,7 @@ export enum RouteName {
     PRIVATE_ACCOUNT_PURCHASES = routesNames.privateLocaleAccount.localeAccountIndexPurchases,
     PRIVATE_ACCOUNT_REVIEWS = routesNames.privateLocaleAccount.localeAccountIndexReviews,
     PRIVATE_ACCOUNT_SALES = routesNames.privateLocaleAccount.localeAccountIndexSales,
+    PRIVATE_ACCOUNT_SELL = routesNames.privateLocaleAccountSell,
     PRIVATE_ACCOUNT_SETTINGS = routesNames.privateLocaleAccountSettings.localeAccountSettingsBasic,
     PRIVATE_ACCOUNT_SETTINGS_BASIC = routesNames.privateLocaleAccountSettings.localeAccountSettingsBasic,
     PRIVATE_ACCOUNT_SETTINGS_NOTIFICATIONS = routesNames.privateLocaleAccountSettings.localeAccountSettingsNotifications,

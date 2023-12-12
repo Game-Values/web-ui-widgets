@@ -25,6 +25,7 @@ export enum FacadeToken {
     MAIN = "MainFacade",
     SELL = "SellFacade",
     USER = "UserFacade",
+    USER_ME = "UserMeFacade",
 }
 
 export enum ModalToken {
