@@ -29,16 +29,27 @@ let { user } = storeToRefs(storeClient.userStore)
                     </v-column>
 
                     <v-column>
-                        <app-router-tabs
-                            :routes="[
-                                routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_BALANCE),
-                                routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_SALES),
-                                routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_PURCHASES),
-                                routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_ITEMS),
-                                routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_REVIEWS),
-                                routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_SUBSCRIPTION),
-                            ]"
-                        />
+                        <widget-wrapper-auth-only>
+                            <app-router-tabs
+                                :routes="[
+                                    routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_BALANCE),
+                                    routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_SALES),
+                                    routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_PURCHASES),
+                                    routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_ITEMS),
+                                    routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_REVIEWS),
+                                    routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_SUBSCRIPTION),
+                                ]"
+                            />
+                        </widget-wrapper-auth-only>
+
+                        <widget-wrapper-unauth-only>
+                            <app-router-tabs
+                                :routes="[
+                                    routerClient.getRoute(routerClient.routeNames.PUBLIC_USER_STOREFRONT),
+                                    routerClient.getRoute(routerClient.routeNames.PUBLIC_USER_REVIEWS),
+                                ]"
+                            />
+                        </widget-wrapper-unauth-only>
                     </v-column>
 
                     <v-column>

@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import type { Game } from "~/dto"
+import type { Game, Item } from "~/dto"
+import type { LotsTable } from "~/types"
 
 defineProps<{
     game: Game
-    lots: any[]
+    lots: LotsTable[]
 }>()
 
 useI18n()
@@ -47,23 +48,49 @@ useI18n()
     <!-- todo: component (?) -->
     <v-table :data="lots">
         <v-table-column
-            id-key="Server"
+            id-key="attributesServer"
             name="Server"
         />
 
         <v-table-column
-            id-key="Description"
-            name="Description"
-        />
+            v-slot="{ row }: { row: Item }"
+            id-key="name"
+            name="Item"
+        >
+            <v-space
+                size="small"
+                vertical
+            >
+                <ui-link
+                    :to="
+                        row.isUserMeItem
+                            ? row.editRoute
+                            : row.buyRoute
+                    "
+                    type="primary"
+                >
+                    <v-title :level="6">
+                        {{ row.name }}
+                    </v-title>
+                </ui-link>
+
+                <v-text disabled>
+                    {{ row.attributesDescription }}
+                </v-text>
+            </v-space>
+        </v-table-column>
 
         <v-table-column
-            id-key="Amount"
-            name="Amount"
+            :width="150"
+            id-key="attributesCount"
+            name="In Stock"
             sorter
         />
 
         <v-table-column
-            id-key="Price"
+            :formatter="formatPrice"
+            :width="150"
+            id-key="attributesPrice"
             name="Price"
             sorter
         />

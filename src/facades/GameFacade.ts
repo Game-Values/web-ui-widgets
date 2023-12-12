@@ -12,7 +12,9 @@ export class GameFacade implements FacadeAbstract {
     public async bootstrap(): Promise<void> {
         await Promise.all([
             this._gameController.fetchGame(this._routerClient.getRouteParam("gameId")),
-            this._itemController.fetchGameItems(this._routerClient.getRouteParam("gameId")),
+            this._itemController.fetchItems({
+                gid: this._routerClient.getRouteParam("gameId"),
+            }),
         ])
     }
 }
