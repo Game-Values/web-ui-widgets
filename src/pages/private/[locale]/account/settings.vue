@@ -2,7 +2,7 @@
 import { RouteLayout } from "~/enums"
 
 definePageMeta({
-    layout: RouteLayout.ACCOUNT_SETTINGS,
+    layout: RouteLayout.ACCOUNT_ME_SETTINGS,
 })
 </script>
 

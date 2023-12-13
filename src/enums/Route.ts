@@ -1,8 +1,9 @@
 import { routesNames } from "@typed-router"
 
 export enum RouteLayout {
-    ACCOUNT = "account",
-    ACCOUNT_SETTINGS = "account-settings",
+    ACCOUNT_ME = "account-me",
+    ACCOUNT_ME_SETTINGS = "account-me-settings",
+    ACCOUNT_USER = "account-user",
     DEFAULT = "default",
     ERROR = "error",
     FAQ = "faq",

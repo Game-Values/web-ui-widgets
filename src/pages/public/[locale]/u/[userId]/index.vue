@@ -2,7 +2,7 @@
 import { RouteLayout } from "~/enums"
 
 definePageMeta({
-    layout: RouteLayout.ACCOUNT,
+    layout: RouteLayout.ACCOUNT_USER,
 })
 
 let { userFacade } = useFacades()

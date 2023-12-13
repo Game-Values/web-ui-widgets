@@ -8,7 +8,7 @@ defineSlots<{
 </script>
 
 <template>
-<widget-layout-account-settings>
+<widget-layout-account-me-settings>
     <slot />
-</widget-layout-account-settings>
+</widget-layout-account-me-settings>
 </template>
