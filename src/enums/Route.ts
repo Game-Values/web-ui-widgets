@@ -8,6 +8,7 @@ export enum RouteLayout {
     ERROR = "error",
     FAQ = "faq",
     GAME = "game",
+    POLICY = "policy",
 }
 
 export enum RouteName {
@@ -46,6 +47,11 @@ export enum RouteName {
     PUBLIC_GAME_ITEM_BUY = routesNames.publicLocaleGGameIdItemTypeItemIdBuy,
 
     PUBLIC_MAIN = routesNames.publicLocale,
+
+    PUBLIC_POLICY = routesNames.publicLocalePolicy.localePolicyAgreement,
+    PUBLIC_POLICY_AGREEMENT = routesNames.publicLocalePolicy.localePolicyAgreement,
+    PUBLIC_POLICY_LICENSE = routesNames.publicLocalePolicy.localePolicyLicense,
+    PUBLIC_POLICY_PRIVACY = routesNames.publicLocalePolicy.localePolicyPrivacy,
 
     PUBLIC_USER = routesNames.publicLocaleUUserId.localeUUserIdIndexStorefront,
     PUBLIC_USER_REVIEWS = routesNames.publicLocaleUUserId.localeUUserIdIndexReviews,

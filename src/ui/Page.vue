@@ -23,20 +23,20 @@ defineSlots<{
 .content
     :deep(> *)
         @screen at-lg
-            @apply py-18
+            @apply my-18
 
         @screen at-md
-            @apply py-14
+            @apply my-14
 
         @screen at-sm
-            @apply py-10
+            @apply my-10
 
         @screen at-xs
-            @apply py-6
+            @apply my-6
 
-        @apply [&+*]:(pt-0)
+        @apply [&+*]:(mt-0)
 
-        @apply first:pt-10
+        @apply first:mt-10
 
         + *
             @apply pt-0

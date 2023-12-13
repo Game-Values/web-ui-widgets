@@ -30,5 +30,5 @@ defineSlots<{
         @apply p-0
 
         :deep(> *)
-            @apply first:pt-0
+            @apply first:mt-0
 </style>

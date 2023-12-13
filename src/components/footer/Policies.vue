@@ -6,23 +6,24 @@ interface PolicyLink {
 
 useI18n()
 
-let { locale } = useI18n()
-
 let breakpoints = useBreakpoints()
+
+let { routerClient } = useClients()
+let { locale } = useI18n()
 
 let policyLinks = computed((): PolicyLink[] => (
     [
         {
             i18n: "Privacy Policy",
-            to: "javascript:void(0)",
+            to: routerClient.getRoute(routerClient.routeNames.PUBLIC_POLICY_PRIVACY),
         },
         {
             i18n: "End-User License Agreement",
-            to: "javascript:void(0)",
+            to: routerClient.getRoute(routerClient.routeNames.PUBLIC_POLICY_LICENSE),
         },
         {
             i18n: "Agency Agreement",
-            to: "javascript:void(0)",
+            to: routerClient.getRoute(routerClient.routeNames.PUBLIC_POLICY_AGREEMENT),
         },
     ]
 ))
@@ -64,7 +65,7 @@ let isVerticalSpacing = computed((): boolean => (
             v-for="policyLink in policyLinks"
             :key="policyLink.i18n"
         >
-            <ui-link>
+            <ui-link :to="policyLink.to">
                 <i18n-t :keypath="policyLink.i18n" />
             </ui-link>
         </li>

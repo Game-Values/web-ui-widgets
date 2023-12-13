@@ -65,6 +65,9 @@
     --vxp-collapse-border: 0
     --vxp-collapse-radius: theme("spacing.5")
 
+    &.vxp-collapse--ghost
+        --vxp-collapse-header-bg-color: transparent
+
 .vxp-divider-vars
     --vxp-divider-text-color: inherit
     --vxp-divider-text-size-primary: inherit
@@ -264,6 +267,9 @@
         @apply rounded-5
         @apply text-level-4 text-left font-semibold
 
+        .vxp-collapse--ghost &
+            @apply bg-transparent
+
     &__body
         @apply p-0
 
@@ -275,7 +281,7 @@
 
 .vxp-column
     > .vxp-row
-        @apply w-auto min-w-full max-w-[calc(100%+var(--vxp-row-h-gap))]
+        @apply w-[calc(100%+var(--vxp-row-h-gap)*2)] max-w-none
 
         &.vxp-form
             @apply w-full
@@ -299,6 +305,9 @@
 
 .vxp-form
     @apply w-full
+
+    &.vxp-row
+        @apply w-[calc(100%+var(--vxp-row-h-gap))] max-w-none
 
     &__item
         @apply mb-7

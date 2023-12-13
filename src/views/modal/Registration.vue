@@ -116,19 +116,28 @@ async function handleRegistration(): Promise<void> {
                 <v-text disabled>
                     By registering, ou agree to the
 
-                    <ui-link type="primary">
+                    <ui-link
+                        :to="routerClient.getRoute(routerClient.routeNames.PUBLIC_POLICY_LICENSE)"
+                        type="primary"
+                    >
                         License Agreement
                     </ui-link>
 
                     ,
 
-                    <ui-link type="primary">
+                    <ui-link
+                        :to="routerClient.getRoute(routerClient.routeNames.PUBLIC_POLICY_PRIVACY)"
+                        type="primary"
+                    >
                         Privacy Policy
                     </ui-link>
 
                     and
 
-                    <ui-link type="primary">
+                    <ui-link
+                        :to="routerClient.getRoute(routerClient.routeNames.PUBLIC_POLICY_AGREEMENT)"
+                        type="primary"
+                    >
                         Agency Agreement
                     </ui-link>
                 </v-text>

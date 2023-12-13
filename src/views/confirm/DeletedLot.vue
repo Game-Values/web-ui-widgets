@@ -31,7 +31,7 @@ defineProps<{
         >
             <ui-icon
                 color="negative-medium"
-                heroicons="hand-thumb-down"
+                heroicons="hand-thumb-down-solid"
                 size="50"
             />
         </ui-confirm-button>
@@ -42,7 +42,7 @@ defineProps<{
         >
             <ui-icon
                 color="positive-light"
-                heroicons="hand-thumb-up"
+                heroicons="hand-thumb-up-solid"
                 size="50"
             />
         </ui-confirm-button>

@@ -11,9 +11,9 @@ let { routerClient } = useClients()
 let seo = computed((): Seo => (
     createModel<Seo, SeoRaw>(Seo, (
         routerClient.getRouteMeta<SeoRaw>("seo", {
-            description: "",
+            description: "Game Values",
             image: "",
-            title: "",
+            title: "Game Values",
         })
     ))
 ))

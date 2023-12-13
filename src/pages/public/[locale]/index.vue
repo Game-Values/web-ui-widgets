@@ -22,14 +22,7 @@ await mainFacade.bootstrap()
             :xs="24"
             class="lg:(mb-10 self-center)"
         >
-            <v-space
-                class="
-                    lg:(flex)
-                    xs:(hidden)
-                "
-            />
-
-            <entity-main-statistics />
+            <entity-main-statistics class="lg:(ml-4)" />
         </v-column>
     </v-row>
 

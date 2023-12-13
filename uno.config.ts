@@ -74,6 +74,7 @@ let theme: Theme = {
         "white-02": get(colors, "$color-white-02"),
         "white-12": get(colors, "$color-white-12"),
         "white-6": get(colors, "$color-white-6"),
+        "white-9": get(colors, "$color-white-9"),
         yellow: get(colors, "$color-yellow"),
     },
 
