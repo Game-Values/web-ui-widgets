@@ -19,37 +19,37 @@ let { user } = storeToRefs(storeClient.userStore)
             <v-column :lg="18">
                 <v-row>
                     <v-column>
-                        <widget-wrapper-auth-only>
-                            <user-card :user="me" />
-                        </widget-wrapper-auth-only>
-
-                        <widget-wrapper-unauth-only>
-                            <user-card :user="user" />
-                        </widget-wrapper-unauth-only>
+                        <user-card
+                            :user="(
+                                isAuthenticated()
+                                    ? me
+                                    : user
+                            )"
+                        />
                     </v-column>
 
                     <v-column>
-                        <widget-wrapper-auth-only>
-                            <app-router-tabs
-                                :routes="[
-                                    routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_BALANCE),
-                                    routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_SALES),
-                                    routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_PURCHASES),
-                                    routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_ITEMS),
-                                    routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_REVIEWS),
-                                    routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_SUBSCRIPTION),
-                                ]"
-                            />
-                        </widget-wrapper-auth-only>
-
-                        <widget-wrapper-unauth-only>
-                            <app-router-tabs
-                                :routes="[
-                                    routerClient.getRoute(routerClient.routeNames.PUBLIC_USER_STOREFRONT),
-                                    routerClient.getRoute(routerClient.routeNames.PUBLIC_USER_REVIEWS),
-                                ]"
-                            />
-                        </widget-wrapper-unauth-only>
+                        <app-router-tabs
+                            :routes="(
+                                isAuthenticated()
+                                    ? (
+                                        [
+                                            routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_BALANCE),
+                                            routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_SALES),
+                                            routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_PURCHASES),
+                                            routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_ITEMS),
+                                            routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_REVIEWS),
+                                            routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_SUBSCRIPTION),
+                                        ]
+                                    )
+                                    : (
+                                        [
+                                            routerClient.getRoute(routerClient.routeNames.PUBLIC_USER_STOREFRONT),
+                                            routerClient.getRoute(routerClient.routeNames.PUBLIC_USER_REVIEWS),
+                                        ]
+                                    )
+                            )"
+                        />
                     </v-column>
 
                     <v-column>

@@ -1,8 +1,5 @@
 <script lang="ts" setup>
-let { storeClient } = useClients()
 let { loginModal, registrationModal } = useModals()
-
-let { authenticated } = storeToRefs(storeClient.userMeStore)
 </script>
 
 <template>
@@ -102,7 +99,7 @@ let { authenticated } = storeToRefs(storeClient.userMeStore)
                     no-wrap
                 >
                     <!-- todo: component -->
-                    <template v-if="authenticated">
+                    <template v-if="isAuthenticated()">
                         <ui-link>
                             <ui-icon
                                 heroicons="shopping-cart"

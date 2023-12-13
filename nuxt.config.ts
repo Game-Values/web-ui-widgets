@@ -24,6 +24,13 @@ let nuxtConfig: NuxtConfig = {
     app: {
         head: {
             charset: "utf-8",
+            link: [
+                {
+                    href: "favicon/favicon.ico",
+                    rel: "icon",
+                    type: "image/x-icon",
+                },
+            ],
             viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0",
         },
         layoutTransition: true,

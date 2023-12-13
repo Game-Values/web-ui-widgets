@@ -23,9 +23,10 @@ let { game } = storeToRefs(storeClient.gameStore)
                 {{ game.name }}
             </v-title>
 
-            <widget-wrapper-auth-only>
-                <widget-action-like-game :game="game" />
-            </widget-wrapper-auth-only>
+            <widget-action-like-game
+                v-if="isAuthenticated()"
+                :game="game"
+            />
         </v-column>
 
         <v-column class="text-lg">
@@ -41,23 +42,24 @@ let { game } = storeToRefs(storeClient.gameStore)
         <v-column
             :md="6"
         >
-            <widget-wrapper-auth-only>
-                <v-space vertical>
-                    <v-button
-                        block
-                    >
-                        <i18n-t keypath="Add Section" />
-                    </v-button>
+            <v-space
+                v-if="isAuthenticated()"
+                vertical
+            >
+                <v-button
+                    block
+                >
+                    <i18n-t keypath="Add Section" />
+                </v-button>
 
-                    <ui-link-button
-                        :to="game.attributes.sections.active.sellRoute"
-                        type="primary"
-                        block
-                    >
-                        <i18n-t keypath="Sell" />
-                    </ui-link-button>
-                </v-space>
-            </widget-wrapper-auth-only>
+                <ui-link-button
+                    :to="game.attributes.sections.active.sellRoute"
+                    type="primary"
+                    block
+                >
+                    <i18n-t keypath="Sell" />
+                </ui-link-button>
+            </v-space>
         </v-column>
     </v-row>
 </v-card>

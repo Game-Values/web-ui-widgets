@@ -199,7 +199,6 @@ export namespace UserStore {
     }
 
     export type Getters = {
-        authenticated: () => boolean
         user: () => User
     }
 

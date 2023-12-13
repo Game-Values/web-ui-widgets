@@ -62,8 +62,8 @@ export class Item implements ItemRaw {
         let { storeClient } = useClients()
 
         return (
-            storeClient.userMeStore.authenticated &&
-            storeClient.userMeStore.user.id === this.owner_id
+            storeClient.userMeStore.user.id === this.owner_id &&
+            isAuthenticated()
         )
     }
 

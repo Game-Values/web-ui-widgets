@@ -18,12 +18,6 @@ export let useUserStore: (storeId?: string) => UserStore.Store = createStore<
     },
 
     getters: {
-        authenticated(): boolean {
-            return Boolean(
-                useGet(this.userRaw, "id"),
-            )
-        },
-
         user(): User {
             return createModel(User, this.userRaw)
         },

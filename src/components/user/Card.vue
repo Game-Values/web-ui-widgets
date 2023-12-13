@@ -58,11 +58,9 @@ defineProps<{
                 Brief profile description, seller or store information in 2-3 lines
             </v-text>
 
-            <widget-wrapper-unauth-only>
-                <v-button>
-                    Send Message
-                </v-button>
-            </widget-wrapper-unauth-only>
+            <v-button v-if="isUnauthenticated()">
+                Send Message
+            </v-button>
         </v-space>
 
         <ui-icon

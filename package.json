@@ -96,10 +96,13 @@
         "@vueuse/components": "^10.7.0",
         "brandi": "^5.0.0",
         "class-transformer": "^0.5.1",
+        "consola": "^3.2.3",
         "cookie-es": "^1.0.0",
         "hash-sum": "^2.0.0",
         "http-status": "^1.7.3",
         "lodash-decorators": "^6.0.1",
+        "pino": "^8.17.0",
+        "pino-pretty": "^10.2.3",
         "reflect-metadata": "^0.1.14"
     }
 }

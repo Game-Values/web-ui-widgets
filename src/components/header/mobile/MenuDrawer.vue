@@ -9,10 +9,7 @@ let emit = defineEmits<{
     (e: "update:model-value", modelValue: boolean): void
 }>()
 
-let { storeClient } = useClients()
 let { loginModal, registrationModal } = useModals()
-
-let { authenticated } = storeToRefs(storeClient.userMeStore)
 
 let active: WritableComputedRef<boolean> = computed({
     get: (): boolean => props.modelValue,
@@ -37,7 +34,7 @@ let active: WritableComputedRef<boolean> = computed({
 
     <!-- todo: component -->
     <template #title>
-        <template v-if="authenticated">
+        <template v-if="isAuthenticated()">
             <v-space size="large">
                 <ui-link>
                     <ui-icon

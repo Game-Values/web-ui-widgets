@@ -2,24 +2,20 @@
 import type { Callable } from "~/types"
 
 let { registrationModal } = useModals()
-let { storeClient } = useClients()
-
-let { authenticated } = storeToRefs(storeClient.userMeStore)
 
 let sliderAction = computed((): (
     {
         handler: Callable
         label: string
     } | undefined
-) => {
-    if (getRef(authenticated))
-        return undefined
-
-    return {
-        handler: (): void => registrationModal.show(),
-        label: "Try",
-    }
-})
+) => (
+    isAuthenticated()
+        ? undefined
+        : {
+            handler: (): void => registrationModal.show(),
+            label: "Try",
+        }
+))
 </script>
 
 <template>

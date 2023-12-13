@@ -23,8 +23,7 @@ let errorView = computed((): AsyncComponent => (
     getRef(errorViews, HttpStatus.INTERNAL_SERVER_ERROR)
 ))
 
-// todo: logger (?)
-console.log(props.error)
+onMounted((): void => useLogger().error(props.error))
 </script>
 
 <template>
