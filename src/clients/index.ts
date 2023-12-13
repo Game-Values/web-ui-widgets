@@ -1,3 +1,4 @@
+export * from "~/clients/ChatClient"
 export * from "~/clients/CookieClient"
 export * from "~/clients/HttpClient"
 export * from "~/clients/RouterClient"

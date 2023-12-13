@@ -31,6 +31,11 @@ let nuxtConfig: NuxtConfig = {
                     type: "image/x-icon",
                 },
             ],
+            script: [
+                {
+                    innerHTML: "window.global ||= window",
+                },
+            ],
             viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0",
         },
         layoutTransition: true,
@@ -274,6 +279,7 @@ let nuxtConfig: NuxtConfig = {
     runtimeConfig: {
         public: {
             apiURL: env.API_URL,
+            matrixURL: env.MATRIX_URL,
             theme: uno.theme,
         },
     },

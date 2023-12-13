@@ -22,6 +22,7 @@ declare module "@nuxt/schema" {
     export interface PublicRuntimeConfig {
         apiURL: string
         baseURL: string
+        matrixURL: string
         theme: Theme
     }
 }

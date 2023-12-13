@@ -3,7 +3,7 @@ import type { AsyncComponent } from "~/types"
 import type { H3Error } from "h3"
 import type { Component } from "vue"
 
-import { HttpStatus, RouteLayout } from "~/enums"
+import { HttpStatus } from "~/enums"
 
 interface Props {
     error: H3Error
@@ -27,9 +27,9 @@ onMounted((): void => useLogger().error(props.error))
 </script>
 
 <template>
-<widget-wrapper-app :layout="RouteLayout.ERROR">
+<widget-wrapper-error>
     <ui-page>
         <component :is="errorView" />
     </ui-page>
-</widget-wrapper-app>
+</widget-wrapper-error>
 </template>

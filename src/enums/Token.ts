@@ -4,6 +4,7 @@ export enum AdapterToken {
 }
 
 export enum ClientToken {
+    CHAT = "ChatClient",
     COOKIE = "CookieClient",
     HTTP = "HttpClient",
     ROUTER = "RouterToken",
