@@ -26,7 +26,7 @@ let nuxtConfig: NuxtConfig = {
             charset: "utf-8",
             link: [
                 {
-                    href: "favicon/favicon.ico",
+                    href: "/favicon/favicon.ico",
                     rel: "icon",
                     type: "image/x-icon",
                 },
