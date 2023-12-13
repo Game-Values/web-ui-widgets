@@ -9,8 +9,10 @@ interface FormModel extends BodyCreateUserProfileApiV1UsersPostRaw {
     sendNotifications: boolean
 }
 
+let { routerClient } = useClients()
 let { authController } = useControllers()
 let { loginModal, registrationModal } = useModals()
+let { userRegisteredToast } = useToasts()
 
 let formModel: UnwrapRef<FormModel> = reactive({
     agreeWithPolicies: true,
@@ -30,6 +32,26 @@ let registrationPayload: ComputedRef<BodyCreateUserProfileApiV1UsersPostRaw> = (
         ])
     ))
 )
+
+async function handleRegistration(): Promise<void> {
+    await authController.registration(getRef(registrationPayload))
+    await userRegisteredToast.open({
+        toast: {
+            onClose: async (): Promise<void> => {
+                await authController.login({
+                    password: getRef(registrationPayload, "password"),
+                    username: getRef(registrationPayload, "email"),
+                })
+
+                await navigateTo(routerClient.getRoute(routerClient.routeNames.PUBLIC_MAIN), {
+                    open: {
+                        target: "_self",
+                    },
+                })
+            },
+        },
+    })
+}
 </script>
 
 <template>
@@ -75,10 +97,7 @@ let registrationPayload: ComputedRef<BodyCreateUserProfileApiV1UsersPostRaw> = (
             <v-form-submit
                 :disabled="!formModel.agreeWithPolicies"
                 block
-                @submit="
-                    authController.registration(registrationPayload)
-                        .then((): void => reloadNuxtApp())
-                "
+                @submit="handleRegistration()"
             >
                 Registration
             </v-form-submit>

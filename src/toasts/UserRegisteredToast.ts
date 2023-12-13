@@ -4,12 +4,12 @@ import type { Component } from "vue"
 
 import { ToastAbstract } from "~/abstract"
 
-export class DeletedLotToast extends ToastAbstract {
+export class UserRegisteredToast extends ToastAbstract {
     protected __component: AsyncComponent = defineAsyncComponent(
-        (): Promise<Component> => import("~/views/toast/DeletedLot.vue"),
+        (): Promise<Component> => import("~/views/toast/UserRegistered.vue"),
     )
 
     protected __options: ToastOptions = {
-        type: "warning",
+        type: "success",
     }
 }

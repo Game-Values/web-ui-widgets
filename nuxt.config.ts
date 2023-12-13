@@ -26,7 +26,6 @@ let nuxtConfig: NuxtConfig = {
             charset: "utf-8",
             viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0",
         },
-        keepalive: true,
         layoutTransition: true,
         pageTransition: true,
         rootId: name,

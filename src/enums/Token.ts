@@ -50,4 +50,5 @@ export enum ServiceToken {
 export enum ToastToken {
     CREATED_LOT = "CreatedLotToast",
     DELETED_LOT = "DeletedLotToast",
+    USER_REGISTERED = "UserRegisteredToast",
 }

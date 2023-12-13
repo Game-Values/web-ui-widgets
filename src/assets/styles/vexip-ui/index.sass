@@ -5,6 +5,9 @@
 @use "../vars/spaces"
 @use "../vars/typography"
 
+\:root
+    --vxp-modal-s-color: 0 0.05rem 0.5rem 0 rgba(61, 152, 255, 0.20)
+
 .vxp-avatar-vars
     &.vxp-avatar--large
         --vxp-avatar-size: #{sizes.$avatar-size-large}
@@ -280,9 +283,7 @@
 .vxp-confirm
     .vxp-modal__wrapper
         @apply bg-dark
-
-        // todo: @apply
-        box-shadow: 0 0.8rem 1.6rem 0 #{rgba(colors.$color-black, 0.36)}
+        @apply shadow-[var(--vxp-modal-s-color)]
 
     .vxp-modal__content
         @apply px-13 py-18
@@ -365,11 +366,12 @@
     @apply w-full
 
 .vxp-toast
+    &__mask
+        @apply bg-black/80
+
     &__wrapper
         @apply bg-dark
-
-        // todo: @apply
-        box-shadow: 0 0.8rem 1.6rem 0 #{rgba(colors.$color-black, 0.36)}
+        @apply shadow-[var(--vxp-modal-s-color)]
 
 .vxp-ul
     @apply flex-col

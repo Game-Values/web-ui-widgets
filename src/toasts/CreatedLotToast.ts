@@ -3,7 +3,6 @@ import type { ToastOptions } from "vexip-ui"
 import type { Component } from "vue"
 
 import { ToastAbstract } from "~/abstract"
-import { TOAST_DURATION } from "~/consts"
 
 export class CreatedLotToast extends ToastAbstract {
     protected __component: AsyncComponent = defineAsyncComponent(
@@ -11,8 +10,6 @@ export class CreatedLotToast extends ToastAbstract {
     )
 
     protected __options: ToastOptions = {
-        closable: true,
-        duration: TOAST_DURATION,
         type: "success",
     }
 }
