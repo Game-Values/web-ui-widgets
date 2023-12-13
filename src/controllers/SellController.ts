@@ -42,12 +42,10 @@ export class SellController {
         if (itemId)
             await this._itemController.fetchItem(itemId)
 
-        this._storeClient.sellStore.setSellItemRaw(
-            useMerge(this._storeClient.itemStore.itemRaw, {
-                attributes: {
-                    type: this._routerClient.getRouteParam("itemType"),
-                },
-            }),
-        )
+        this._storeClient.sellStore.updateSellItemRaw({
+            attributes: {
+                type: this._routerClient.getRouteParam("itemType"),
+            },
+        })
     }
 }
