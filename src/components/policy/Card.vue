@@ -21,4 +21,19 @@ defineSlots<{
 :deep(.vxp-card__content)
     @apply px-13 py-9
     @apply text-white-9
+
+:deep(.vxp-blockquote)
+    @apply ms-14
+
+:deep(.vxp-ol),
+:deep(.vxp-ul)
+    @apply ms-12
+
+:deep(dl)
+    dd
+        @apply ms-12
+
+        > .vxp-ol,
+        > .vxp-ul
+            @apply ms-0
 </style>
