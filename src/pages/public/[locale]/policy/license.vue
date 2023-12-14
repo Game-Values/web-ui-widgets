@@ -10,14 +10,14 @@ definePageMeta({
 <policy-card>
     <v-text>
         This User Agreement (hereinafter - Agreement) is a license agreement and regulates the relations on the use of
-        computer programs - the website available on the Internet at https://gamevalues.com (hereinafter - Site) on the terms
+        computer programs - the website available on the Internet at https://game-values.com (hereinafter - Site) on the terms
         of a simple non-exclusive license between the Limited Liability Company "BITS CONSULTING" (OGRN 1217700304458, INN
         7751200542), hereinafter referred to as "Licensor" and the natural person, using the Site for the placement of ads for
         property and property rights in the virtual space.
         The Site is a service that allows the Seller and the Buyer (hereinafter referred to as the Users) to buy and sell Virtual
         Assets. All transactions are performed directly between Users. The Licensor itself is not a party to any transactions carried
         out by its Users, but only acts as an arbitrator in resolving disputes and as an agent on behalf of the Buyer to ensure
-        secure transactions. The terms of the agency agreement can be found by the Buyer at https://gamevalues.com
+        secure transactions. The terms of the agency agreement can be found by the Buyer at https://game-values.com
         This Agreement is an offer in accordance with Article 438 of the Civil Code of the Russian Federation. The Agreement is
         valid in electronic form and does not require signing in the form of a single paper document.
     </v-text>
@@ -35,7 +35,7 @@ definePageMeta({
             1.4. Users - individuals over 18 years of age, acting as Sellers and/or Buyers when using the Site.
             1.5. Virtual property - property, property rights in the virtual environment of
             the Internet (game money, coins, accounts, game items, chests, etc.).
-            1.6. Website is an Internet service located on the Internet at: https:/gamevalues.com, which is a
+            1.6. Website is an Internet service located on the Internet at: https:/game-values.com, which is a
             set of software and hardware that allows Users to carry out between each other secure transactions
             for the purchase and sale of Virtual property.
             1.7. Registration - actions of Users to create a Personal account on the Site according to the
@@ -48,7 +48,7 @@ definePageMeta({
 
         <v-collapse-panel title="2. GENERAL PROVISIONS">
             2.1. The current version of the Agreement is always available on the Internet at:
-            https://gamevalues.com
+            https://game-values.com
             2.2. User completes the registration procedure and puts the symbol «» in the field "I have read and
             agree with the User Agreement" means his consent to enter into the Agreement (Acceptance of the
             Agreement). In this case, the written form of the contract is considered to be complied with.
@@ -76,7 +76,7 @@ definePageMeta({
             the time period expected by the User.
             2.8. Communication with the Licensor on the operation of the Site, as well as on any other issues
             related to the performance of the obligations of the parties under the Agreement, is carried out by
-            e-mail hello@gamevalues.com.
+            e-mail hello@game-values.com.
         </v-collapse-panel>
 
         <v-collapse-panel title="3. SUBJECT MATTER">
@@ -105,7 +105,7 @@ definePageMeta({
             and may not violate the requirements of the law, the terms and conditions of other transactions
             entered into by Licensor, and the rights of third parties.
             3.8. If there are technical problems on the User's equipment when using the Site, the User shall
-            notify the Licensor by email at hello@gamevalues.com. The message must contain a detailed
+            notify the Licensor by email at hello@game-values.com. The message must contain a detailed
             description of the problem, screenshots of the User's monitor displaying the problem, data about
             the operating system, hardware and software versions (including type and version of Internet
             browser) with which the User accesses the Site. Licensor within two (2) working days at the latest
@@ -201,7 +201,7 @@ definePageMeta({
             recovery within the period defined in the Privacy Policy, unless in accordance with the laws of
             the Russian Federation the Licensor is obliged to store the data for a longer period of time.
             promptly provide the User with basic technical support regarding the use of the Site by e-mail
-            at hello@gamevalues.com;
+            at hello@game-values.com;
             perform other duties stipulated by this Agreement.
             6.2. The user undertakes to:
             make payment of the license fee in accordance with the procedure set forth in this
@@ -286,7 +286,7 @@ definePageMeta({
 
         <v-collapse-panel title="8. THE PROCEDURE FOR TRANSACTIONS ON THE PURCHASE/SALE OF VIRTUAL PROPERTY">
             8.1. The User undertakes to conduct transactions only through the Site in accordance with the
-            Agreement, the Trading Rules posted at https://gamevalues.com, and within that technical
+            Agreement, the Trading Rules posted at https://game-values.com, and within that technical
             functionality and taking into account the technical limitations of the Site. Violation of any of the
             terms of the Trading Rules is a violation of this Agreement.
             8.2. The User undertakes to refrain from selling the same Virtual Property, as well as the same
@@ -300,7 +300,7 @@ definePageMeta({
             8.6. By agreeing with the terms and conditions set forth in the advertisement, the Buyer instructs
             the Licensor to enter into a transaction on his behalf and at his expense with the author of the
             relevant advertisement for the sale of Virtual Property in the manner and on the terms set forth in
-            the offer to conclude the Agency Agreement, available at: https://gamevalues.com.
+            the offer to conclude the Agency Agreement, available at: https://game-values.com.
             8.7. The User agrees that given that all the registered Users of the Website have accepted this
             Agreement, as well as the Agency Agreement, issuing a power of attorney in the framework of the
             Agency Agreement is not required, because the Licensor's authority is clear from the environment,
@@ -399,8 +399,8 @@ definePageMeta({
             12.1. Any notices under the Agreement may be sent by one party to the other party:
             to the User's email address specified upon Registration, or to the User's email address
             specified later in myAlpari (in case the User's email address was subsequently changed by the
-            User), from the Licensor's email address (from any mailbox with the domain name @gamevalues.com), if the recipient is the User;
-            to the e-mail address of the Licensor (hello@gamevalues.com) from the e-mail address of
+            User), from the Licensor's email address (from any mailbox with the domain name @game-values.com), if the recipient is the User;
+            to the e-mail address of the Licensor (hello@game-values.com) from the e-mail address of
             the User specified during Registration, if the recipient is the Licensor.;
             by mail with return receipt or by courier with delivery confirmation.
             12.2. Notice/request/letter is deemed to have been received by the addressee:
@@ -437,15 +437,15 @@ definePageMeta({
 
         <v-collapse-panel title="15. REFUND POLICY">
             15.1. There are no refunds when We terminate Your use of and registration with the Website or freeze
-            any transactions if You violate these Terms or any other GameValues policies.
-            15.2. GameValues does not assume any liability and does not refund with regard to any transactions
+            any transactions if You violate these Terms or any other game-values policies.
+            15.2. game-values does not assume any liability and does not refund with regard to any transactions
             on purchase, sale or exchange of In-game items on the Website.
             15.3. Before making any transaction on deposit or withdrawal You should review the Payment
             processor’s refund policy which shall apply to all payments through such Payment processor.
             15.4. Any fees and transaction commissions paid by the Users are non-refundable and nonreturnable.
             Due to the commission being non-refundable and non-returnable, a User is not entitled
-            to claim any compensation from GameValues.
-            15.5. If a User’s Account is terminated or suspended by GameValues, any balance on said Account may be forfeited.
+            to claim any compensation from game-values.
+            15.5. If a User’s Account is terminated or suspended by game-values, any balance on said Account may be forfeited.
         </v-collapse-panel>
 
         <v-collapse-panel title="16. ADDRESS AND BANK DETAILS OF THE LICENSOR">
@@ -453,8 +453,8 @@ definePageMeta({
             INN 7751200542
             OGRN 1217700304458
             Legal address: 124 sq. 2 Chechersky proezd, bld. 77, Moscow, 117042.
-            gamevalues.com
-            hello@gamevalues.com
+            game-values.com
+            hello@game-values.com
         </v-collapse-panel>
     </v-collapse>
 </policy-card>

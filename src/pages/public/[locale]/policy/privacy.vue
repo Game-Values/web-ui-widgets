@@ -32,13 +32,22 @@ definePageMeta({
                     </address>
 
                     ("Company", ",Game Values",) undertakes to protect Personal
-                    Data collected or received from visitors ("Visitors",) to gamevalues.com website (",Site",) and other
-                    interactive means used, which have a link to this Privacy Policy. It also describes how we use
-                    Personal Information collected when you register as a User ("User"). In this Privacy Policy ("Policy"),
-                    we explain how your personal data, namely any information relating to a directly or indirectly
-                    identified or identifiable individual (the "Personal Data Subject") that we may hold about you
-                    ("Personal Data") is collected, used, stored, transferred, disclosed and deleted (referred to as
-                    "processing" below).
+                    Data collected or received from visitors ("Visitors",) to
+
+                    <ui-link
+                        href="https://game-values.com/"
+                        target="_blank"
+                        type="primary"
+                    >
+                        game-values.com
+                    </ui-link>
+
+                    website (",Site",) and other interactive means used, which have a link to this Privacy Policy.
+                    It also describes how we use Personal Information collected when you register as a User ("User")
+                    In this Privacy Policy ("Policy"), we explain how your personal data, namely any information relating
+                    to a directly or indirectly identified or identifiable individual (the "Personal Data Subject")
+                    that we may hold about you ("Personal Data") is collected, used, stored, transferred, disclosed
+                    and deleted (referred to as "processing" below).
                 </v-text>
 
                 <v-text>
@@ -850,10 +859,10 @@ definePageMeta({
                     information we have about you, or to exercise your rights, you can contact us at
 
                     <ui-link
-                        href="mailto:hello@gamevalues.com"
+                        href="mailto:hello@game-values.com"
                         type="primary"
                     >
-                        hello@gamevalues.com
+                        hello@game-values.com
                     </ui-link>.
                 </v-text>
             </v-space>

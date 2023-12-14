@@ -42,3 +42,25 @@ dl
 
 ol
     @apply list-decimal
+
+    counter-reset: item
+
+    > li
+        @apply ms-0 ps-2
+
+        counter-increment: item
+
+    ol
+        @apply list-none
+
+        > li
+            @apply relative
+
+            &:before
+                @apply absolute right-full
+
+                content: counters(item, ".")
+
+ul
+    > li
+        @apply ms-0 ps-1

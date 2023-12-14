@@ -23,17 +23,22 @@ defineSlots<{
     @apply text-white-9
 
 :deep(.vxp-blockquote)
-    @apply ms-14
+    @apply ms-12
 
 :deep(.vxp-ol),
 :deep(.vxp-ul)
-    @apply ms-12
+    @apply ms-15
 
 :deep(dl)
     dd
-        @apply ms-12
+        @apply ms-15
 
         > .vxp-ol,
         > .vxp-ul
             @apply ms-0
+
+:deep(ol)
+    dd,
+    ol
+        @apply ms-9\!
 </style>

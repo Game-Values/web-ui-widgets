@@ -340,6 +340,13 @@
         @apply border-solid-secondary
         @apply backdrop-blur-16
 
+.vxp-ol
+    @apply flex-col
+    @apply gap-4
+
+    > li
+        @apply ms-0 ps-2
+
 .vxp-row
     @apply max-w-full
 
@@ -385,10 +392,12 @@
         @apply bg-dark
         @apply shadow-[var(--vxp-modal-s-color)]
 
-.vxp-ol,
 .vxp-ul
     @apply flex-col
     @apply gap-4
+
+    > li
+        @apply ms-0 ps-1
 
 .vxp-upload
     @apply text-secondary
