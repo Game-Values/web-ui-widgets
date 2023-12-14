@@ -10,7 +10,7 @@ definePageMeta({
 <policy-card>
     <v-collapse ghost>
         <v-collapse-panel
-            title="INTRODUCTION"
+            title="1. INTRODUCTION"
             expanded
         >
             Welcome to Game Values Privacy Policy! Here we explain what data we collect when you access and
@@ -20,7 +20,7 @@ definePageMeta({
             sections.
             BITS CONSULTING LLC (INN 7751200542 OGRN 1217700304458, legal address: 117042, Moscow,
             Chechersky proezd, 124 k. 2, sq. 77) ("Company", ",Game Values",) undertakes to protect Personal
-            Data collected or received from visitors ("Visitors",) to the gamevalues.com website (",Site",) and other
+            Data collected or received from visitors ("Visitors",) to gamevalues.com website (",Site",) and other
             interactive means used, which have a link to this Privacy Policy. It also describes how we use
             Personal Information collected when you register as a User ("User"). In this Privacy Policy ("Policy"),
             we explain how your personal data, namely any information relating to a directly or indirectly
@@ -49,7 +49,7 @@ definePageMeta({
             your rights by email and/or posting on our Site.
         </v-collapse-panel>
 
-        <v-collapse-panel title="WHAT PERSONAL DATA DO WE COLLECT AND WHY?">
+        <v-collapse-panel title="2. WHAT PERSONAL DATA DO WE COLLECT AND WHY?">
             With regard to each of your visits to the Site, BITS CONSULTING LLC will automatically collect the
             following Personal Data:
             Technical information, including the Internet Protocol (IP) address used to connect your
@@ -90,7 +90,7 @@ definePageMeta({
             phone number.
         </v-collapse-panel>
 
-        <v-collapse-panel title="REGISTRATION OF THE USER'S PERSONAL ACCOUNT USING SOCIAL NETWORKS">
+        <v-collapse-panel title="3. REGISTRATION OF THE USER'S PERSONAL ACCOUNT USING SOCIAL NETWORKS">
             In order to optimize the Site and interaction with the User, the Site has the right to collect the data
             about the User specified in this section from social networks:
             facebook.com;
@@ -125,7 +125,7 @@ definePageMeta({
             User email.
         </v-collapse-panel>
 
-        <v-collapse-panel title="ON WHAT BASIS DO WE USE YOUR PERSONAL INFORMATION?">
+        <v-collapse-panel title="4. ON WHAT BASIS DO WE USE YOUR PERSONAL INFORMATION?">
             Enforcing contract terms: As required to enter into and perform a contract with you (Agency
             Agreement), for example, if you make a purchase. This would include accepting payments, making
             payments, communicating with you, providing services to Users.
@@ -148,7 +148,7 @@ definePageMeta({
             any time by clicking on the links in the emails we send you.
         </v-collapse-panel>
 
-        <v-collapse-panel title="WHO WILL WE GIVE YOUR PERSONAL INFORMATION TO?">
+        <v-collapse-panel title="5. WHO WILL WE GIVE YOUR PERSONAL INFORMATION TO?">
             We do not share our Users' Personal Information with third parties, except as described in this
             Policy. So, in order to provide you with quality services, we share your Personal Data with the
             following partners:
@@ -178,13 +178,13 @@ definePageMeta({
             Russian Federation
         </v-collapse-panel>
 
-        <v-collapse-panel title="WHERE DO WE KEEP YOUR PERSONAL DATA?">
+        <v-collapse-panel title="6. WHERE DO WE KEEP YOUR PERSONAL DATA?">
             When collecting your Personal Data, "BITS CONSULTING" LLC provides recording, systematization,
             accumulation, storage, clarification (updating, changing), extraction of your Personal Data using
             databases located in the Russian Federation.
         </v-collapse-panel>
 
-        <v-collapse-panel title="WHAT COOKIES DO WE USE ON OUR SITE?">
+        <v-collapse-panel title="7. WHAT COOKIES DO WE USE ON OUR SITE?">
             Our Sites use cookies (small files placed on a website user's hard drive) to distinguish you from other
             Users of the Site. This helps us provide you with a high-quality experience when you browse the Site
             and also allows us to improve our Site. We use cookies to analyze the flow of information; customize
@@ -221,7 +221,7 @@ definePageMeta({
             (http://www.allaboutcookies.org/).
         </v-collapse-panel>
 
-        <v-collapse-panel title="HOW LONG DO WE KEEP YOUR PERSONAL INFORMATION?">
+        <v-collapse-panel title="8. HOW LONG DO WE KEEP YOUR PERSONAL INFORMATION?">
             Personal Data that we process for any purpose shall not be retained longer than is necessary for
             that purpose. The Company will retain your Personal Data for the duration of your contractual
             relationship with the Company and, to the extent permitted, after the termination of that
@@ -252,7 +252,7 @@ definePageMeta({
             consent was previously obtained.
         </v-collapse-panel>
 
-        <v-collapse-panel title="YOUR RIGHTS">
+        <v-collapse-panel title="9. YOUR RIGHTS">
             Here we have summarized the basic rights that you have under the Federal Law "On Personal Data".
             Users (subjects of personal data) have the right to:
             decide to provide their Personal Data to the operator of Personal Data;
@@ -288,7 +288,7 @@ definePageMeta({
             team.
         </v-collapse-panel>
 
-        <v-collapse-panel title="PRIVACY POLICY">
+        <v-collapse-panel title="10. PRIVACY POLICY">
             BITS CONSULTING LLC uses a wide range of data security measures to maintain the confidentiality
             and integrity of your personal information. However, given the nature of the Internet, we would like
             to draw your attention to the fact that there may be security weaknesses in the transmission of data
@@ -316,7 +316,7 @@ definePageMeta({
             protection of personal data information systems.
         </v-collapse-panel>
 
-        <v-collapse-panel title="PRIVACY POLICY UPDATES">
+        <v-collapse-panel title="11. PRIVACY POLICY UPDATES">
             This Policy may be revised, changed, updated and/or amended at any time without prior notice at
             the sole discretion of BITS CONSULTING LLC. When we do, we will post a notice on the home page
             of our Site, and we will also update the update date at the top of this page. We encourage our Users
@@ -329,10 +329,10 @@ definePageMeta({
             the amendments.
         </v-collapse-panel>
 
-        <v-collapse-panel title="HOW TO CONTACT US">
+        <v-collapse-panel title="12. HOW TO CONTACT US">
             If you have any comments or questions about our Privacy Policy, if you would like to update the
             information we have about you, or to exercise your rights, you can contact us at
-            hello@thegamevalues.com.
+            hello@gamevalues.com.
         </v-collapse-panel>
     </v-collapse>
 </policy-card>

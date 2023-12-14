@@ -8,7 +8,7 @@ defineSlots<{
 </script>
 
 <template>
-<v-card class="">
+<v-card>
     <slot />
 </v-card>
 </template>
@@ -20,5 +20,5 @@ defineSlots<{
 
 :deep(.vxp-card__content)
     @apply px-13 py-9
-    @apply text-sm text-white-9
+    @apply text-white-9
 </style>

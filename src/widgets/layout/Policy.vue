@@ -34,15 +34,7 @@ let { routerClient } = useClients()
                                 {{ useGet(routerClient.getRouteMeta("seo"), "title") }}
                             </v-title>
 
-                            <v-button>
-                                <v-space align="center">
-                                    <ui-icon heroicons="arrow-down-tray" />
-
-                                    <v-text>
-                                        Save PDF
-                                    </v-text>
-                                </v-space>
-                            </v-button>
+                            <widget-action-save-policy-pdf />
                         </v-space>
                     </v-column>
 
