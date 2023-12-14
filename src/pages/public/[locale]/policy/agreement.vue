@@ -19,31 +19,13 @@ definePageMeta({
                 (INN 7751200542 OGRN 1217700304458, registered address: 117042, Moscow, Chechersky Proezd, 124 sq. 2, bld. 77),
             </address>
 
-            hereinafter referred to as "Agent" and
-
-            <ui-link
-                href="https://game-values.com/"
-                target="_blank"
-                type="primary"
-            >
-                game-values.com
-            </ui-link>,
-
-            Website User, hereinafter referred to as "Buyer", hereinafter jointly referred to as ",Parties" and
-            separately as "Party", have concluded this Agreement (hereinafter referred to as "Agreement") on the following.
+            hereinafter referred to as "Agent" and <app-sitelink />, Website User, hereinafter referred to as "Buyer",
+            hereinafter jointly referred to as ",Parties" and separately as "Party",
+            have concluded this Agreement (hereinafter referred to as "Agreement") on the following.
         </v-text>
 
         <v-text>
-            The text of this Agreement, permanently posted on the Internet at
-
-            <ui-link
-                href="https://game-values.com/"
-                target="_blank"
-                type="primary"
-            >
-                https://game-values.com/
-            </ui-link>,
-
+            The text of this Agreement, permanently posted on the Internet at <app-sitelink />,
             contains all the essential terms of the Agreement and is an offer by BITS CONSULTING Limited Liability Company
             to conclude the Agreement with a third party, which is a natural person, on the terms specified in the text of the Agreement.
             Thus, the text of this Agreement is a public offer in accordance with paragraph 2 of Article 437 of the Civil Code
@@ -549,20 +531,9 @@ definePageMeta({
                     Legal address: 124 sq. 2 Chechersky proezd, bld. 77, Moscow, 117042.
                 </address>
 
-                <ui-link
-                    href="https://game-values.com/"
-                    target="_blank"
-                    type="primary"
-                >
-                    game-values.com
-                </ui-link>
+                <app-sitelink />
 
-                <ui-link
-                    href="mailto:hello@game-values.com"
-                    type="primary"
-                >
-                    hello@game-values.com
-                </ui-link>
+                <app-mailto />
             </v-space>
         </v-collapse-panel>
     </v-collapse>

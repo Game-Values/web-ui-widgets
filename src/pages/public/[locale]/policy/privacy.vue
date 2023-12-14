@@ -32,16 +32,7 @@ definePageMeta({
                     </address>
 
                     ("Company", ",Game Values",) undertakes to protect Personal
-                    Data collected or received from visitors ("Visitors",) to
-
-                    <ui-link
-                        href="https://game-values.com/"
-                        target="_blank"
-                        type="primary"
-                    >
-                        game-values.com
-                    </ui-link>
-
+                    Data collected or received from visitors ("Visitors",) to <app-sitelink />
                     website (",Site",) and other interactive means used, which have a link to this Privacy Policy.
                     It also describes how we use Personal Information collected when you register as a User ("User")
                     In this Privacy Policy ("Policy"), we explain how your personal data, namely any information relating
@@ -856,14 +847,7 @@ definePageMeta({
             >
                 <v-text>
                     If you have any comments or questions about our Privacy Policy, if you would like to update the
-                    information we have about you, or to exercise your rights, you can contact us at
-
-                    <ui-link
-                        href="mailto:hello@game-values.com"
-                        type="primary"
-                    >
-                        hello@game-values.com
-                    </ui-link>.
+                    information we have about you, or to exercise your rights, you can contact us at <app-mailto />.
                 </v-text>
             </v-space>
         </v-collapse-panel>
