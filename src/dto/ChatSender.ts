@@ -19,8 +19,10 @@ export class ChatSender implements ChatSenderRaw {
     declare public name: string
 
     public get displayName(): string {
-        return this.name
-            .replace(/^@/, "")
-            .replace(new RegExp(`:${useRuntimeConfig().public.matrixChatName}$`), "")
+        return useLowerCase(
+            this.name
+                .replace(/^@/, "")
+                .replace(new RegExp(`:${useRuntimeConfig().public.matrixChatName}$`), ""),
+        )
     }
 }
