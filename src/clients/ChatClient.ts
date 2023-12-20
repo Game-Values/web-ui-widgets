@@ -18,7 +18,7 @@ export class ChatClient extends MatrixClient {
             userId: (
                 isAuthenticated()
                     ? _storeClient.userMeStore.user.chatId
-                    : `@${useLowerCase(useRuntimeConfig().public.matrixChatGuestName)}:${useRuntimeConfig().public.matrixChatName}`
+                    : `@${useRuntimeConfig().public.matrixChatGuestName}:${useRuntimeConfig().public.matrixChatName}`
             ),
         }
 

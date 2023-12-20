@@ -370,6 +370,11 @@ let nuxtConfig: NuxtConfig = {
             inheritAttrs(),
             injectReflectMetadata(),
         ],
+        resolve: {
+            alias: {
+                crypto: "rollup-plugin-node-polyfills/polyfills/empty",
+            },
+        },
         server: {
             preTransformRequests: true,
         },
