@@ -1,3 +1,7 @@
+export * from "~/dto/ChatRoom"
+export * from "~/dto/ChatEvent"
+export * from "~/dto/ChatEvents"
+export * from "~/dto/ChatRooms"
 export * from "~/dto/GameAttributes"
 export * from "~/dto/Game"
 export * from "~/dto/Games"

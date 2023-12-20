@@ -4,11 +4,12 @@ import type { Token } from "brandi"
 import { token } from "brandi"
 
 import { DIAbstract } from "~/abstract"
-import { AuthController, GameController, ItemController, SellController, UserController } from "~/controllers"
+import { AuthController, ChatController, GameController, ItemController, SellController, UserController } from "~/controllers"
 import { ClientToken, ControllerToken, ServiceToken } from "~/enums"
 
 interface ControllersTokens {
     [ControllerToken.AUTH]: Token<AuthController>
+    [ControllerToken.CHAT]: Token<ChatController>
     [ControllerToken.GAME]: Token<GameController>
     [ControllerToken.ITEM]: Token<ItemController>
     [ControllerToken.SELL]: Token<SellController>
@@ -18,6 +19,7 @@ interface ControllersTokens {
 export class Controllers extends DIAbstract<ControllersTokens> {
     protected __tokens: ControllersTokens = {
         [ControllerToken.AUTH]: token<AuthController>(ControllerToken.AUTH),
+        [ControllerToken.CHAT]: token<ChatController>(ControllerToken.CHAT),
         [ControllerToken.GAME]: token<GameController>(ControllerToken.GAME),
         [ControllerToken.ITEM]: token<ItemController>(ControllerToken.GAME),
         [ControllerToken.SELL]: token<SellController>(ControllerToken.SELL),
@@ -27,6 +29,7 @@ export class Controllers extends DIAbstract<ControllersTokens> {
     protected get __bindings(): Binding[] {
         return [
             [this.__tokens[ControllerToken.AUTH], AuthController],
+            [this.__tokens[ControllerToken.CHAT], ChatController],
             [this.__tokens[ControllerToken.GAME], GameController],
             [this.__tokens[ControllerToken.ITEM], ItemController],
             [this.__tokens[ControllerToken.SELL], SellController],
@@ -40,6 +43,11 @@ export class Controllers extends DIAbstract<ControllersTokens> {
                 AuthController,
                 this.__getToken(ServiceToken.AUTH),
                 this.__getToken(ClientToken.COOKIE),
+            ],
+            [
+                ChatController,
+                this.__getToken(ServiceToken.CHAT),
+                this.__getToken(ClientToken.STORE),
             ],
             [
                 GameController,
@@ -70,6 +78,11 @@ export class Controllers extends DIAbstract<ControllersTokens> {
     @Memoize()
     public get authController(): AuthController {
         return this.__getInjection(this.__tokens[ControllerToken.AUTH])
+    }
+
+    @Memoize()
+    public get chatController(): ChatController {
+        return this.__getInjection(this.__tokens[ControllerToken.CHAT])
     }
 
     @Memoize()

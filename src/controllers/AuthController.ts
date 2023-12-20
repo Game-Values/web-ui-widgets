@@ -14,18 +14,24 @@ export class AuthController {
 
     private _clearCookies(): void {
         this._cookieClient.accessToken = null
-        this._cookieClient.refreshToken = null
         this._cookieClient.tokenType = null
+
+        if (this._cookieClient.chatToken)
+            this._cookieClient.chatToken = null
+
+        if (this._cookieClient.refreshToken)
+            this._cookieClient.refreshToken = null
     }
 
     private _setCookies(tokenRaw: TokenRaw): void {
         this._cookieClient.accessToken = tokenRaw.access_token
+        this._cookieClient.tokenType = tokenRaw.token_type
+
+        if (tokenRaw.chat_token)
+            this._cookieClient.chatToken = tokenRaw.chat_token
 
         if (tokenRaw.refresh_token)
             this._cookieClient.refreshToken = tokenRaw.refresh_token
-
-        if (tokenRaw.token_type)
-            this._cookieClient.tokenType = tokenRaw.token_type
     }
 
     public async login(payload: BodyLoginWithOauth2ApiV1LoginOauthPostRaw): Promise<void> {

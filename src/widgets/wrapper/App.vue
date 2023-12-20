@@ -10,17 +10,15 @@ defineSlots<{
 <template>
 <widget-provider-setup>
     <widget-provider-auth>
-        <widget-provider-chat>
-            <widget-provider-config>
-                <nuxt-layout>
-                    <slot />
-                </nuxt-layout>
+        <widget-provider-config>
+            <nuxt-layout>
+                <slot />
+            </nuxt-layout>
 
-                <widget-provider-modal />
+            <widget-provider-modal />
 
-                <widget-provider-seo />
-            </widget-provider-config>
-        </widget-provider-chat>
+            <widget-provider-seo />
+        </widget-provider-config>
     </widget-provider-auth>
 </widget-provider-setup>
 </template>

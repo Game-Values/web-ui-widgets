@@ -14,7 +14,7 @@ export abstract class CollectionAbstract<
     }
 
     public getById(id: string): T | undefined {
-        return this.find((item: T): boolean => useGet(item, "id") === id)
+        return useFind<T>(this, ["id", id])
     }
 
     protected abstract get __Model(): ClassConstructor<T>

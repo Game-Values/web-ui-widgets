@@ -1,32 +1,9 @@
-import type {
-    GameRaw,
-    ItemRaw,
-    UserRaw,
-    UserUpdateRaw,
-} from "#schema/data-contracts"
-import type {
-    Game,
-    Games,
-    Item,
-    Items,
-    Seo,
-    User,
-} from "~/dto"
-import type {
-    ItemType,
-    OrderStep,
-} from "~/enums"
-import type {
-    SeoRaw,
-    WithdrawRaw,
-} from "~/types"
-import type {
-    _ActionsTree,
-    _GettersTree,
-    Store as _Store,
-    StateTree,
-    StoreActions,
-} from "pinia"
+import type { GameRaw, ItemRaw, UserRaw, UserUpdateRaw } from "#schema/data-contracts"
+import type { ChatEvents, ChatRooms, Game, Games, Item, Items, Seo, User } from "~/dto"
+import type { ItemType, OrderStep } from "~/enums"
+import type { SeoRaw, WithdrawRaw } from "~/types"
+import type { IPublicRoomsChunkRoom, MatrixEvent } from "matrix-js-sdk"
+import type { _ActionsTree, _GettersTree, Store as _Store, StateTree, StoreActions } from "pinia"
 
 export type DefineStore<
     Id extends string,
@@ -39,6 +16,27 @@ export type DefineStore<
     Getters,
     Actions
 >
+
+export namespace ChatStore {
+    export type Id = "chatStore"
+
+    export type State = {
+        chatEventsRaw: MatrixEvent[]
+        chatRoomsRaw: IPublicRoomsChunkRoom[]
+    }
+
+    export type Getters = {
+        chatRoomEvents: () => ChatEvents
+        chatRooms: () => ChatRooms
+    }
+
+    export type Actions = {
+        addChatEventRaw: (chatEventRaw: MatrixEvent) => void
+        setChatRoomsRaw: (chatRoomsRaw: IPublicRoomsChunkRoom[]) => void
+    }
+
+    export type Store = DefineStore<Id, State, Getters, Actions>
+}
 
 export namespace GamesStore {
     export type Id = "gamesStore"

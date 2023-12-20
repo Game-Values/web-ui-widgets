@@ -32,4 +32,8 @@ export class User implements UserRaw {
 
     @Expose()
     declare public totp: boolean
+
+    public get chatId(): string {
+        return `@${this.full_name}:${useRuntimeConfig().public.matrixChatName}`
+    }
 }

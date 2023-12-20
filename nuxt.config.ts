@@ -124,6 +124,7 @@ let nuxtConfig: NuxtConfig = {
                     "promiseTimeout",
                     "useCurrentElement",
                     "useMouseInElement",
+                    "useMutationObserver",
                 ],
             },
             {
@@ -279,6 +280,8 @@ let nuxtConfig: NuxtConfig = {
     runtimeConfig: {
         public: {
             apiURL: env.API_URL,
+            matrixChatName: env.MATRIX_CHAT_NAME,
+            matrixMainRoomId: env.MATRIX_MAIN_ROOM_ID,
             matrixURL: env.MATRIX_URL,
             theme: uno.theme,
         },

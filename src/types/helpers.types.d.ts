@@ -19,6 +19,8 @@ export type ValueOf<T> = T[keyof T]
 
 export type ValueOfArray<T, K = number> = T[K]
 
+export type Undefinable<T> = T | undefined
+
 // todo: rest
 export type CombineKeys<
     K_1 extends string,

@@ -12,12 +12,11 @@ export class ChatClient extends MatrixClient {
             baseUrl: useRuntimeConfig().public.matrixURL,
         }
 
-        // if (isAuthenticated())
-        //     useAssign(createOptions, {
-        //         accessToken: _cookieClient.accessToken,
-        //         refreshToken: _cookieClient.accessToken,
-        //         userId: `@${_storeClient.userMeStore.user.id}:matrix.org`,
-        //     })
+        if (isAuthenticated())
+            useAssign(createOptions, {
+                accessToken: _cookieClient.chatToken,
+                userId: _storeClient.userMeStore.user.chatId,
+            })
 
         super(createOptions)
     }

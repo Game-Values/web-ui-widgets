@@ -22,6 +22,8 @@ declare module "@nuxt/schema" {
     export interface PublicRuntimeConfig {
         apiURL: string
         baseURL: string
+        matrixChatName: string
+        matrixMainRoomId: string
         matrixURL: string
         theme: Theme
     }

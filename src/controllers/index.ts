@@ -1,4 +1,5 @@
 export * from "~/controllers/AuthController"
+export * from "~/controllers/ChatController"
 export * from "~/controllers/GameController"
 export * from "~/controllers/ItemController"
 export * from "~/controllers/ModalController"

@@ -28,17 +28,17 @@ await mainFacade.bootstrap()
 
     <v-row>
         <v-column
-            :lg="18"
+            :lg="14"
             :span="24"
         >
             <entity-main-games />
         </v-column>
 
         <v-column
-            :lg="6"
+            :lg="10"
             :span="0"
         >
-            // TODO: Chat
+            <widget-chat-main />
         </v-column>
     </v-row>
 

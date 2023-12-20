@@ -1,4 +1,5 @@
 import type {
+    ChatStore,
     GamesStore,
     GameStore,
     ItemsStore,
@@ -13,6 +14,11 @@ import type {
 
 // todo: stores typing
 export class StoreClient {
+    @Memoize()
+    public get chatStore(): ChatStore.Store {
+        return useChatStore()
+    }
+
     @Memoize()
     public get gamesStore(): GamesStore.Store {
         return useGamesStore()

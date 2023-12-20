@@ -129,15 +129,14 @@ module.exports = (() => (
                         "v-html",
                         "v-text",
                         "v-slot",
-                        "v-*",
                     ],
                     condition: [
-                        "v-if*",
-                        "v-else*",
+                        "v-if",
+                        "v-else",
+                        "v-else-if",
                     ],
                     event: [
                         "@*",
-                        "on*",
                     ],
                     important: [
                         ":key",
