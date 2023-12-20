@@ -47,7 +47,6 @@ export class Controllers extends DIAbstract<ControllersTokens> {
             [
                 ChatController,
                 this.__getToken(ServiceToken.CHAT),
-                this.__getToken(ClientToken.STORE),
             ],
             [
                 GameController,

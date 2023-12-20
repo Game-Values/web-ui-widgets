@@ -4,7 +4,6 @@ import type { ChatService } from "~/services"
 export class ChatController {
     public constructor(
         private _chatService: ChatService,
-        private _storeClient: StoreClient,
     ) {}
 
     public async fetchChatRooms(): Promise<void> {

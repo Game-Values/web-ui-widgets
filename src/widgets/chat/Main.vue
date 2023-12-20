@@ -1,15 +1,17 @@
 <script lang="ts" setup>
 import type { ChatEvent } from "~/dto"
+import type { Nullable, Undefinable } from "~/types"
 import type { NativeScrollExposed } from "vexip-ui"
+import type { Ref } from "vue"
 
-import { DEBOUNCE_TIMEOUT, DEFAULT_TIMEOUT } from "~/consts"
+import { DEBOUNCE_TIMEOUT } from "~/consts"
 
 let { storeClient } = useClients()
 let { chatController } = useControllers()
 
 let { chatRoomEvents, chatRooms } = storeToRefs(storeClient.chatStore)
 
-let refNativeScroll: NativeScrollExposed
+let refNativeScroll: Ref<Nullable<NativeScrollExposed>> = ref(null)
 let chatEvents = computed((): ChatEvent[] => (
     getRef(chatRoomEvents).getRoomEvents(getRef(chatRooms, "mainRoom").id)
 ))
@@ -18,20 +20,24 @@ let sendRoomMessage = useDebounce(async (message: string): Promise<void> => {
     await chatController.sendRoomMessage(getRef(chatRooms, "mainRoom").id, message)
 }, DEBOUNCE_TIMEOUT)
 
-onMounted((): Promise<void> => (
-    useNextTick((): void => {
-        if (refNativeScroll?.content)
-            useMutationObserver(refNativeScroll.content, (): Promise<void> => (
-                useNextTick(async (): Promise<void> => {
-                    await promiseTimeout(DEFAULT_TIMEOUT)
-                    await refNativeScroll.refresh()
+let updateRoom = useDebounce(async (): Promise<void> => {
+    await getRef(refNativeScroll as Ref<NativeScrollExposed>, "refresh")()
 
-                    if (refNativeScroll.content?.lastElementChild)
-                        await refNativeScroll.scrollToElement(refNativeScroll.content.lastElementChild)
-                })
-            ), { childList: true, subtree: true })
-    })
-))
+    let lastScrollItem: Undefinable<Nullable<Element>> = (
+        getRef(refNativeScroll as Ref<NativeScrollExposed>, "content")?.lastElementChild
+    )
+
+    if (lastScrollItem)
+        await getRef(refNativeScroll as Ref<NativeScrollExposed>, "scrollToElement")(lastScrollItem)
+}, DEBOUNCE_TIMEOUT)
+
+let { stop } = useMutationObserver(refNativeScroll, updateRoom, {
+    childList: true,
+    subtree: true,
+})
+
+onMounted((): Undefinable<Promise<void>> => updateRoom())
+onUnmounted((): void => stop())
 </script>
 
 <template>
