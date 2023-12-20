@@ -12,7 +12,7 @@ export class MainFacade implements FacadeAbstract {
             this._gameController.fetchGames(),
         ]
 
-        if (isAuthenticated() && isClient())
+        if (isClient())
             promises.push(
                 this._chatController.fetchChatRooms(),
                 this._chatController.startChat(),

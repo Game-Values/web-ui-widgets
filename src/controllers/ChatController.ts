@@ -1,4 +1,3 @@
-import type { StoreClient } from "#build/clients"
 import type { ChatService } from "~/services"
 
 export class ChatController {

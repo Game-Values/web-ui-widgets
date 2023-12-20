@@ -8,6 +8,7 @@ import { DEBOUNCE_TIMEOUT } from "~/consts"
 
 let { storeClient } = useClients()
 let { chatController } = useControllers()
+let { loginModal, registrationModal } = useModals()
 
 let { chatRoomEvents, chatRooms } = storeToRefs(storeClient.chatStore)
 
@@ -88,10 +89,60 @@ onUnmounted((): void => stop())
                     </v-space>
                 </v-native-scroll>
 
-                <chat-send-message @message="sendRoomMessage($event)" />
+                <chat-send-message
+                    v-if="isAuthenticated()"
+                    @message="sendRoomMessage($event)"
+                />
+
+                <v-space
+                    v-else
+                    class="
+                        p-3
+                        rounded-5
+                        bg-secondary
+                    "
+                    align="center"
+                    justify="center"
+                >
+                    <v-button
+                        type="primary"
+                        text
+                        @click="loginModal.show()"
+                    >
+                        Log in
+                    </v-button>
+
+                    <v-text>
+                        or
+                    </v-text>
+
+                    <v-button
+                        type="primary"
+                        text
+                        @click="registrationModal.show()"
+                    >
+                        Sign up
+                    </v-button>
+                </v-space>
             </v-space>
         </v-collapse-panel>
     </v-collapse>
+
+    <template #fallback>
+        <v-skeleton-group
+            activated
+        >
+            <v-space vertical>
+                <v-skeleton height="75" />
+
+                <v-skeleton
+                    v-for="i in 5"
+                    :key="i"
+                    height="50"
+                />
+            </v-space>
+        </v-skeleton-group>
+    </template>
 </lazy-client-only>
 </template>
 

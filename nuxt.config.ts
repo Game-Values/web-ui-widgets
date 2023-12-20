@@ -280,6 +280,8 @@ let nuxtConfig: NuxtConfig = {
     runtimeConfig: {
         public: {
             apiURL: env.API_URL,
+            matrixChatGuestName: env.MATRIX_CHAT_GUEST_NAME,
+            matrixChatGuestToken: env.MATRIX_CHAT_GUEST_TOKEN,
             matrixChatName: env.MATRIX_CHAT_NAME,
             matrixMainRoomId: env.MATRIX_MAIN_ROOM_ID,
             matrixURL: env.MATRIX_URL,

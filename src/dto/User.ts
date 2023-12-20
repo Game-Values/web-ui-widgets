@@ -34,6 +34,6 @@ export class User implements UserRaw {
     declare public totp: boolean
 
     public get chatId(): string {
-        return `@${this.full_name}:${useRuntimeConfig().public.matrixChatName}`
+        return `@${useLowerCase(this.full_name)}:${useRuntimeConfig().public.matrixChatName}`
     }
 }

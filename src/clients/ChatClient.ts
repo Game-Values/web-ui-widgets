@@ -9,14 +9,18 @@ export class ChatClient extends MatrixClient {
         private _storeClient: StoreClient,
     ) {
         let createOptions: ICreateClientOpts = {
+            accessToken: (
+                isAuthenticated()
+                    ? _cookieClient.chatToken
+                    : useRuntimeConfig().public.matrixChatGuestToken
+            ),
             baseUrl: useRuntimeConfig().public.matrixURL,
+            userId: (
+                isAuthenticated()
+                    ? _storeClient.userMeStore.user.chatId
+                    : `@${useLowerCase(useRuntimeConfig().public.matrixChatGuestName)}:${useRuntimeConfig().public.matrixChatName}`
+            ),
         }
-
-        if (isAuthenticated())
-            useAssign(createOptions, {
-                accessToken: _cookieClient.chatToken,
-                userId: _storeClient.userMeStore.user.chatId,
-            })
 
         super(createOptions)
     }
