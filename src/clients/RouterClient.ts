@@ -1,7 +1,7 @@
 import type { TypedRoute, TypedRouter } from "@typed-router"
 import type { Facades } from "~/helpers"
 import type { Nullable, Route } from "~/types"
-import type { RouteMeta, RouteParams } from "vue-router"
+import type { LocationQuery, RouteMeta, RouteParams } from "vue-router"
 
 import { helpers } from "@typed-router"
 
@@ -62,6 +62,10 @@ export class RouterClient {
 
     public getRouteParams(routeName: RouteName): RouteParams {
         return useGet(this._routeParams, routeName, {})
+    }
+
+    public getRouteQuery<T = string>(routeQuery: keyof LocationQuery): T {
+        return useGet(this.route.query, routeQuery, "") as T
     }
 
     public isRouteNameEqual(routeName: RouteName): boolean {

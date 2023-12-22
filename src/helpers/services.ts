@@ -5,11 +5,12 @@ import { token } from "brandi"
 
 import { DIAbstract } from "~/abstract"
 import { AdapterToken, ClientToken, ServiceToken } from "~/enums"
-import { AuthService, ChatService, GameService, ItemService, OrderService, UserService } from "~/services"
+import { AuthService, ChatService, FacetService, GameService, ItemService, OrderService, UserService } from "~/services"
 
 interface ServiceTokens {
     [ServiceToken.AUTH]: Token<AuthService>
     [ServiceToken.CHAT]: Token<ChatService>
+    [ServiceToken.FACET]: Token<FacetService>
     [ServiceToken.GAME]: Token<GameService>
     [ServiceToken.ITEM]: Token<ItemService>
     [ServiceToken.ORDER]: Token<OrderService>
@@ -20,6 +21,7 @@ export class Services extends DIAbstract<ServiceTokens> {
     protected __tokens: ServiceTokens = {
         [ServiceToken.AUTH]: token<AuthService>(ServiceToken.AUTH),
         [ServiceToken.CHAT]: token<ChatService>(ServiceToken.CHAT),
+        [ServiceToken.FACET]: token<FacetService>(ServiceToken.FACET),
         [ServiceToken.GAME]: token<GameService>(ServiceToken.GAME),
         [ServiceToken.ITEM]: token<ItemService>(ServiceToken.ITEM),
         [ServiceToken.ORDER]: token<OrderService>(ServiceToken.ORDER),
@@ -30,6 +32,7 @@ export class Services extends DIAbstract<ServiceTokens> {
         return [
             [this.__tokens[ServiceToken.AUTH], AuthService],
             [this.__tokens[ServiceToken.CHAT], ChatService],
+            [this.__tokens[ServiceToken.FACET], FacetService],
             [this.__tokens[ServiceToken.GAME], GameService],
             [this.__tokens[ServiceToken.ITEM], ItemService],
             [this.__tokens[ServiceToken.ORDER], OrderService],
@@ -48,6 +51,10 @@ export class Services extends DIAbstract<ServiceTokens> {
                 // todo: ChatAdapter or ChatClient (?)
                 this.__getToken(ClientToken.CHAT),
                 this.__getToken(ClientToken.STORE),
+            ],
+            [
+                FacetService,
+                this.__getToken(AdapterToken.API),
             ],
             [
                 GameService,

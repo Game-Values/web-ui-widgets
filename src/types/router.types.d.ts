@@ -17,7 +17,13 @@ declare module "vue-router" {
     }
 
     export interface LocationQuery {
-        // todo: (?)
+        count: string
+        description: string
+        price: string
+        price_from: string
+        price_till: string
+        server: string
+        type: ItemType
     }
 
     export interface RouteMeta {

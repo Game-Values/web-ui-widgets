@@ -18,6 +18,7 @@ export enum ConfirmToken {
 export enum ControllerToken {
     AUTH = "AuthController",
     CHAT = "ChatController",
+    FACET = "FacetController",
     GAME = "GameController",
     ITEM = "ItemController",
     SELL = "SellController",
@@ -44,6 +45,7 @@ export enum ModalToken {
 export enum ServiceToken {
     AUTH = "AuthService",
     CHAT = "ChatService",
+    FACET = "FacetService",
     GAME = "GameService",
     ITEM = "ItemService",
     ORDER = "OrderService",

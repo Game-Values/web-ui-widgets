@@ -1,8 +1,5 @@
 <script lang="ts" setup>
 import type { ChatEvent } from "~/dto"
-import type { Nullable, Undefinable } from "~/types"
-import type { NativeScrollExposed } from "vexip-ui"
-import type { Ref } from "vue"
 
 import { DEBOUNCE_TIMEOUT } from "~/consts"
 
@@ -12,7 +9,6 @@ let { loginModal, registrationModal } = useModals()
 
 let { chatRoomEvents, chatRooms } = storeToRefs(storeClient.chatStore)
 
-let refNativeScroll: Ref<Nullable<NativeScrollExposed>> = ref(null)
 let chatEvents = computed((): ChatEvent[] => (
     getRef(chatRoomEvents).getRoomEvents(getRef(chatRooms, "mainRoom").id)
 ))
@@ -20,25 +16,6 @@ let chatEvents = computed((): ChatEvent[] => (
 let sendRoomMessage = useDebounce(async (message: string): Promise<void> => {
     await chatController.sendRoomMessage(getRef(chatRooms, "mainRoom").id, message)
 }, DEBOUNCE_TIMEOUT)
-
-let updateRoom = useDebounce(async (): Promise<void> => {
-    await getRef(refNativeScroll as Ref<NativeScrollExposed>, "refresh")()
-
-    let lastScrollItem: Undefinable<Nullable<Element>> = (
-        getRef(refNativeScroll as Ref<NativeScrollExposed>, "content")?.lastElementChild
-    )
-
-    if (lastScrollItem)
-        await getRef(refNativeScroll as Ref<NativeScrollExposed>, "scrollToElement")(lastScrollItem)
-}, DEBOUNCE_TIMEOUT)
-
-let { stop } = useMutationObserver(refNativeScroll, updateRoom, {
-    childList: true,
-    subtree: true,
-})
-
-onMounted((): Undefinable<Promise<void>> => updateRoom())
-onUnmounted((): void => stop())
 </script>
 
 <template>
@@ -55,7 +32,6 @@ onUnmounted((): void => stop())
                 <v-native-scroll
                     class="w-full"
                     height="600"
-                    ref="refNativeScroll"
                     scroll-tag="ul"
                     use-y-bar
                 >

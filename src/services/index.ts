@@ -1,5 +1,6 @@
 export * from "~/services/AuthService"
 export * from "~/services/ChatService"
+export * from "~/services/FacetService"
 export * from "~/services/GameService"
 export * from "~/services/ItemService"
 export * from "~/services/OrderService"

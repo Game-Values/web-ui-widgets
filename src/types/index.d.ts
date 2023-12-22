@@ -1,6 +1,7 @@
 export * from "~/types/context.types"
 export * from "~/types/di.types"
 export * from "~/types/env.types"
+export * from "~/types/facet.types"
 export * from "~/types/game.types"
 export * from "~/types/hash-sum.types"
 export * from "~/types/helpers.types"

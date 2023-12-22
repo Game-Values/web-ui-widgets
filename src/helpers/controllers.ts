@@ -4,12 +4,13 @@ import type { Token } from "brandi"
 import { token } from "brandi"
 
 import { DIAbstract } from "~/abstract"
-import { AuthController, ChatController, GameController, ItemController, SellController, UserController } from "~/controllers"
+import { AuthController, ChatController, FacetController, GameController, ItemController, SellController, UserController } from "~/controllers"
 import { ClientToken, ControllerToken, ServiceToken } from "~/enums"
 
 interface ControllersTokens {
     [ControllerToken.AUTH]: Token<AuthController>
     [ControllerToken.CHAT]: Token<ChatController>
+    [ControllerToken.FACET]: Token<FacetController>
     [ControllerToken.GAME]: Token<GameController>
     [ControllerToken.ITEM]: Token<ItemController>
     [ControllerToken.SELL]: Token<SellController>
@@ -20,6 +21,7 @@ export class Controllers extends DIAbstract<ControllersTokens> {
     protected __tokens: ControllersTokens = {
         [ControllerToken.AUTH]: token<AuthController>(ControllerToken.AUTH),
         [ControllerToken.CHAT]: token<ChatController>(ControllerToken.CHAT),
+        [ControllerToken.FACET]: token<FacetController>(ControllerToken.FACET),
         [ControllerToken.GAME]: token<GameController>(ControllerToken.GAME),
         [ControllerToken.ITEM]: token<ItemController>(ControllerToken.GAME),
         [ControllerToken.SELL]: token<SellController>(ControllerToken.SELL),
@@ -30,6 +32,7 @@ export class Controllers extends DIAbstract<ControllersTokens> {
         return [
             [this.__tokens[ControllerToken.AUTH], AuthController],
             [this.__tokens[ControllerToken.CHAT], ChatController],
+            [this.__tokens[ControllerToken.FACET], FacetController],
             [this.__tokens[ControllerToken.GAME], GameController],
             [this.__tokens[ControllerToken.ITEM], ItemController],
             [this.__tokens[ControllerToken.SELL], SellController],
@@ -47,6 +50,11 @@ export class Controllers extends DIAbstract<ControllersTokens> {
             [
                 ChatController,
                 this.__getToken(ServiceToken.CHAT),
+            ],
+            [
+                FacetController,
+                this.__getToken(ServiceToken.FACET),
+                this.__getToken(ClientToken.STORE),
             ],
             [
                 GameController,
@@ -82,6 +90,11 @@ export class Controllers extends DIAbstract<ControllersTokens> {
     @Memoize()
     public get chatController(): ChatController {
         return this.__getInjection(this.__tokens[ControllerToken.CHAT])
+    }
+
+    @Memoize()
+    public get facetController(): FacetController {
+        return this.__getInjection(this.__tokens[ControllerToken.FACET])
     }
 
     @Memoize()
