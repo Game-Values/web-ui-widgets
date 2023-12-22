@@ -31,7 +31,7 @@ await gameFacade.bootstrap()
             :lg="6"
             :md="12"
         >
-            // todo: filters
+            <entity-game-filters />
         </v-column>
 
         <v-column

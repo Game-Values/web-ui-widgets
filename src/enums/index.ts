@@ -1,6 +1,7 @@
 export * from "~~/common/enums"
 
 export * from "~/enums/Facet"
+export * from "~/enums/Filter"
 export * from "~/enums/Http"
 export * from "~/enums/Item"
 export * from "~/enums/Order"

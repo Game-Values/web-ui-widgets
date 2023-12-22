@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import type { FacetQuery } from "~/types"
-
 import { DEBOUNCE_TIMEOUT } from "~/consts"
 import { Facet } from "~/enums"
 
@@ -9,29 +7,25 @@ let { t } = useI18n({
 })
 
 let { routerClient } = useClients()
-let { facetController, itemController } = useControllers()
 
 let handleSearch = useDebounce((search: string): void => {
-    let facetQuery: FacetQuery = useFacetQuery({
-        [Facet.DESCRIPTION]: search,
-    })
-
-    if (isEmpty(facetQuery))
-        itemController.fetchItems({
-            gid: routerClient.getRouteParam("gameId"),
-        })
-    else
-        facetController.search(
-            useFacetQuery({
+    navigateTo(
+        {
+            query: useFacetQuery({
                 [Facet.DESCRIPTION]: search,
             }),
-        )
+        },
+        {
+            replace: true,
+        },
+    )
 }, DEBOUNCE_TIMEOUT)
 </script>
 
 <template>
 <v-input
     :placeholder="t('Search by description')"
+    :value="routerClient.getRouteQuery('description')"
     clearable
     @input="handleSearch($event)"
 >
