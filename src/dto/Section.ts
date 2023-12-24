@@ -12,7 +12,7 @@ export class Section {
     public get gameRoute(): Route {
         let { routerClient } = useClients()
 
-        return routerClient.getRoute(routerClient.routeNames.PUBLIC_GAME, {
+        return routerClient.getRoute(routerClient.routeNames.GAME, {
             params: {
                 gameSection: this.type,
             },
@@ -28,7 +28,7 @@ export class Section {
     public get sellRoute(): Route {
         let { routerClient } = useClients()
 
-        return routerClient.getRoute(routerClient.routeNames.PRIVATE_GAME_ITEM_SELL, {
+        return routerClient.getRoute(routerClient.routeNames.GAME_ITEM_SELL, {
             params: {
                 gameSection: this.type,
             },

@@ -45,7 +45,7 @@ async function handleRegistration(): Promise<void> {
                     username: getRef(registrationPayload, "email"),
                 })
 
-                await navigateTo(routerClient.getRoute(routerClient.routeNames.PUBLIC_MAIN), {
+                await navigateTo(routerClient.getRoute(routerClient.routeNames.MAIN), {
                     open: {
                         target: "_self",
                     },
@@ -119,7 +119,7 @@ async function handleRegistration(): Promise<void> {
                     By registering, ou agree to the
 
                     <ui-link
-                        :to="routerClient.getRoute(routerClient.routeNames.PUBLIC_POLICY_LICENSE)"
+                        :to="routerClient.getRoute(routerClient.routeNames.POLICY_LICENSE)"
                         type="primary"
                     >
                         License Agreement
@@ -128,7 +128,7 @@ async function handleRegistration(): Promise<void> {
                     ,
 
                     <ui-link
-                        :to="routerClient.getRoute(routerClient.routeNames.PUBLIC_POLICY_PRIVACY)"
+                        :to="routerClient.getRoute(routerClient.routeNames.POLICY_PRIVACY)"
                         type="primary"
                     >
                         Privacy Policy
@@ -137,7 +137,7 @@ async function handleRegistration(): Promise<void> {
                     and
 
                     <ui-link
-                        :to="routerClient.getRoute(routerClient.routeNames.PUBLIC_POLICY_AGREEMENT)"
+                        :to="routerClient.getRoute(routerClient.routeNames.POLICY_AGREEMENT)"
                         type="primary"
                     >
                         Agency Agreement

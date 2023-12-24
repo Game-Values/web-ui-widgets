@@ -11,7 +11,7 @@ defineSlots<{
 
 <template>
 <ui-link
-    :to="routerClient.getRoute(routerClient.routeNames.PUBLIC_MAIN)"
+    :to="routerClient.getRoute(routerClient.routeNames.MAIN)"
     class="relative bottom-0.5rem"
 >
     <slot>

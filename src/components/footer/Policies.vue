@@ -15,15 +15,15 @@ let policyLinks = computed((): PolicyLink[] => (
     [
         {
             i18n: "Privacy Policy",
-            to: routerClient.getRoute(routerClient.routeNames.PUBLIC_POLICY_PRIVACY),
+            to: routerClient.getRoute(routerClient.routeNames.POLICY_PRIVACY),
         },
         {
             i18n: "End-User License Agreement",
-            to: routerClient.getRoute(routerClient.routeNames.PUBLIC_POLICY_LICENSE),
+            to: routerClient.getRoute(routerClient.routeNames.POLICY_LICENSE),
         },
         {
             i18n: "Agency Agreement",
-            to: routerClient.getRoute(routerClient.routeNames.PUBLIC_POLICY_AGREEMENT),
+            to: routerClient.getRoute(routerClient.routeNames.POLICY_AGREEMENT),
         },
     ]
 ))

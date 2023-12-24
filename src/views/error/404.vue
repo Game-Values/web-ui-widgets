@@ -19,7 +19,7 @@ let { routerClient } = useClients()
         }"
     >
         <ui-link-button
-            :to="routerClient.getRoute(routerClient.routeNames.PUBLIC_MAIN)"
+            :to="routerClient.getRoute(routerClient.routeNames.MAIN)"
             type="primary"
         >
             Home

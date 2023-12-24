@@ -8,7 +8,17 @@ defineSlots<{
 </script>
 
 <template>
-<widget-layout-app>
-    <slot />
-</widget-layout-app>
+<v-layout>
+    <template #header>
+        <widget-app-header />
+    </template>
+
+    <template #default>
+        <slot />
+    </template>
+
+    <template #footer>
+        <widget-app-footer />
+    </template>
+</v-layout>
 </template>

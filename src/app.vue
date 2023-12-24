@@ -1,5 +1,15 @@
 <template>
-<widget-wrapper-app>
-    <app-router-view />
-</widget-wrapper-app>
+<widget-provider-setup>
+    <widget-provider-auth>
+        <widget-provider-config>
+            <nuxt-layout>
+                <nuxt-page />
+            </nuxt-layout>
+
+            <widget-provider-modal />
+
+            <widget-provider-seo />
+        </widget-provider-config>
+    </widget-provider-auth>
+</widget-provider-setup>
 </template>

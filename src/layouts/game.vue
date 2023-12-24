@@ -8,7 +8,19 @@ defineSlots<{
 </script>
 
 <template>
-<widget-layout-game>
-    <slot />
-</widget-layout-game>
+<v-layout>
+    <template #header>
+        <widget-app-header />
+    </template>
+
+    <template #default>
+        <entity-game-preview />
+
+        <slot />
+    </template>
+
+    <template #footer>
+        <widget-app-footer />
+    </template>
+</v-layout>
 </template>

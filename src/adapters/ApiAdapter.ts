@@ -11,12 +11,8 @@ export class ApiAdapter extends Api {
     }
 
     public async fetchJSON<T>(filename: string): Promise<T> {
-        try {
-            let { default: json }: Module<T> = await import(`~/json/${filename}.json`)
+        let { default: json }: Module<T> = await import(`~/json/${filename}.json`)
 
-            return json
-        } catch {
-            return {} as T
-        }
+        return json
     }
 }

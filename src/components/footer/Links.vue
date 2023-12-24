@@ -61,7 +61,7 @@ let footerLinks = computed((): FooterLink[] => (
                 },
                 {
                     i18n: "Help",
-                    to: routerClient.getRoute(routerClient.routeNames.PUBLIC_FAQ_GENERAL),
+                    to: routerClient.getRoute(routerClient.routeNames.FAQ_GENERAL),
                 },
             ],
             i18n: "Help",

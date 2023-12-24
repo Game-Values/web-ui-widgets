@@ -34,7 +34,7 @@ export class Game implements GameRaw {
     public get route(): Route {
         let { routerClient } = useClients()
 
-        return routerClient.getRoute(routerClient.routeNames.PUBLIC_GAME, {
+        return routerClient.getRoute(routerClient.routeNames.GAME, {
             params: {
                 gameId: this.id,
             },

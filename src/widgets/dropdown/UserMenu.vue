@@ -20,17 +20,17 @@ let { authController } = useControllers()
             </v-dropdown-item>
 
             <ui-link-dropdown-item
-                :to="routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_FAVORITES)"
+                :to="routerClient.getRoute(routerClient.routeNames.ACCOUNT_FAVORITES)"
                 divided
             >
                 Favorites
             </ui-link-dropdown-item>
 
-            <ui-link-dropdown-item :to="routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT)">
+            <ui-link-dropdown-item :to="routerClient.getRoute(routerClient.routeNames.ACCOUNT)">
                 Account
             </ui-link-dropdown-item>
 
-            <ui-link-dropdown-item :to="routerClient.getRoute(routerClient.routeNames.PRIVATE_ACCOUNT_SETTINGS)">
+            <ui-link-dropdown-item :to="routerClient.getRoute(routerClient.routeNames.ACCOUNT_SETTINGS)">
                 Settings
             </ui-link-dropdown-item>
 
@@ -66,7 +66,7 @@ let { authController } = useControllers()
                 Referral program
             </v-dropdown-item>
 
-            <ui-link-dropdown-item :to="routerClient.getRoute(routerClient.routeNames.PUBLIC_FAQ)">
+            <ui-link-dropdown-item :to="routerClient.getRoute(routerClient.routeNames.FAQ)">
                 Help
             </ui-link-dropdown-item>
 

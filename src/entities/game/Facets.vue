@@ -11,7 +11,7 @@ let { gameSectionsRaw } = storeToRefs(storeClient.gameStore)
         v-for="(_, gameSection) in gameSectionsRaw"
         :key="gameSection"
         :to="
-            routerClient.getRoute(routerClient.routeNames.PUBLIC_GAME, {
+            routerClient.getRoute(routerClient.routeNames.GAME, {
                 params: {
                     gameSection,
                 },

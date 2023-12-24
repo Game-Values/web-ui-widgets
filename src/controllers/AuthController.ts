@@ -44,11 +44,6 @@ export class AuthController {
         this._clearCookies()
     }
 
-    public async refreshToken(): Promise<void> {
-        let tokenRaw: TokenRaw = await this._apiAdapter.refreshTokenApiV1LoginRefreshPost()
-        this._setCookies(tokenRaw)
-    }
-
     public async registration(payload: BodyCreateUserProfileApiV1UsersPostRaw): Promise<void> {
         await this._apiAdapter.createUserProfileApiV1UsersPost(payload)
     }
