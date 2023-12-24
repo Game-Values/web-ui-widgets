@@ -5,9 +5,6 @@ import type { AsyncData } from "nuxt/dist/app"
 import type { FetchError } from "ofetch"
 
 import { default as hash } from "hash-sum"
-import { Notice } from "vexip-ui"
-
-import { HttpStatus } from "~/enums"
 
 export class HttpClient {
     public constructor(
@@ -34,29 +31,11 @@ export class HttpClient {
 
         // todo: vue-query with progress
         let { data, error }: AsyncData<T, E> = await useAsyncData<T, E>(key, request)
-        let response: {
-            data: T,
-            error: E,
-        } = {
-            data: getRef(data),
-            error: getRef(error),
-        }
 
-        if (response.error) {
-            let errorMessage: object | string = useGet(response.error.cause, "error", (
-                response.error.stack ||
-                response.error.message
-            ))
-
-            Notice.error({
-                background: true,
-                content: JSON.stringify(errorMessage, null, 4),
-                title: (response.error.statusCode || HttpStatus.INTERNAL_SERVER_ERROR).toString(),
-            })
-
-            return Promise.reject(response)
-        }
-
-        return Promise.resolve(response)
+        return (
+            getRef(error)
+                ? Promise.reject(getRef(error))
+                : Promise.resolve(getRef(data))
+        )
     }
 }

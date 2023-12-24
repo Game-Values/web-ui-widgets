@@ -1,6 +1,6 @@
 export enum ItemType {
-    ACCOUNTS = "accounts",
-    GOLD = "gold",
-    ITEMS = "items",
-    SERVICES = "services",
+    ACCOUNTS = "Accounts",
+    GOLD = "Gold",
+    ITEMS = "Items",
+    SERVICES = "Services",
 }

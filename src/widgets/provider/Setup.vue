@@ -7,7 +7,7 @@ import type { VNode } from "vue"
 import { Container } from "brandi"
 import { createConsola } from "consola"
 
-import { Adapters, Clients, Confirms, Controllers, Facades, Modals, Services, Toasts } from "~/helpers"
+import { Adapters, Clients, Confirms, Controllers, Facades, Modals, Toasts } from "~/helpers"
 
 defineSlots<{
     default: (scopedProps: ScopedProps) => VNode
@@ -24,7 +24,6 @@ let dis: Record<string, DIAbstract> = {
     controllers: new Controllers(container, tokens),
     facades: new Facades(container, tokens),
     modals: new Modals(container, tokens),
-    services: new Services(container, tokens),
     toasts: new Toasts(container, tokens),
 }
 

@@ -1,3 +1,5 @@
+export type Arrayable<T = any> = T | T[]
+
 // todo: mv all ()=><T> to Callable<T>
 export type Callable<T = void> = () => T
 

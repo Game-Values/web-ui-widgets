@@ -3,12 +3,12 @@ import type {
     BodyLoginWithOauth2ApiV1LoginOauthPostRaw,
     TokenRaw,
 } from "#schema/data-contracts"
+import type { ApiAdapter } from "~/adapters"
 import type { CookieClient } from "~/clients"
-import type { AuthService } from "~/services"
 
 export class AuthController {
     public constructor(
-        private _authService: AuthService,
+        private _apiAdapter: ApiAdapter,
         private _cookieClient: CookieClient,
     ) {}
 
@@ -35,7 +35,7 @@ export class AuthController {
     }
 
     public async login(payload: BodyLoginWithOauth2ApiV1LoginOauthPostRaw): Promise<void> {
-        let tokenRaw: TokenRaw = await this._authService.login(payload)
+        let tokenRaw: TokenRaw = await this._apiAdapter.loginWithOauth2ApiV1LoginOauthPost(payload)
         this._setCookies(tokenRaw)
     }
 
@@ -45,11 +45,11 @@ export class AuthController {
     }
 
     public async refreshToken(): Promise<void> {
-        // let tokenRaw: TokenRaw = await this._authService.refreshToken()
-        // this._setCookies(tokenRaw)
+        let tokenRaw: TokenRaw = await this._apiAdapter.refreshTokenApiV1LoginRefreshPost()
+        this._setCookies(tokenRaw)
     }
 
     public async registration(payload: BodyCreateUserProfileApiV1UsersPostRaw): Promise<void> {
-        await this._authService.registration(payload)
+        await this._apiAdapter.createUserProfileApiV1UsersPost(payload)
     }
 }

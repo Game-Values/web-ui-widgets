@@ -1,7 +1,25 @@
-import type { SeoRaw, SeoStore } from "~/types"
+import type { DefineStore, SeoRaw } from "~/types"
 
 import { Seo } from "~/dto"
 import { createModel, createStore } from "~/factories"
+
+export namespace SeoStore {
+    export type Id = "seoStore"
+
+    export type State = {
+        seoRaw: SeoRaw
+    }
+
+    export type Getters = {
+        seo: () => Seo
+    }
+
+    export type Actions = {
+        setSeoRaw: (seoRaw: SeoRaw) => void
+    }
+
+    export type Store = DefineStore<Id, State, Getters, Actions>
+}
 
 export let useSeoStore: (storeId?: string) => SeoStore.Store = createStore<
     SeoStore.Id,

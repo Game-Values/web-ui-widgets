@@ -113,7 +113,7 @@ let nuxtConfig: NuxtConfig = {
         treeshakeClientOnly: true,
         typescriptBundlerResolution: true,
         viewTransition: true,
-        // watcher: "parcel",
+        watcher: "parcel",
     },
 
     imports: {
@@ -361,10 +361,10 @@ let nuxtConfig: NuxtConfig = {
                 },
             },
         },
-        // experimental: {
-        //     hmrPartialAccept: isDevelopment(),
-        //     importGlobRestoreExtension: true,
-        // },
+        experimental: {
+            hmrPartialAccept: isDevelopment(),
+            importGlobRestoreExtension: true,
+        },
         plugins: [
             dynamicImport(),
             inheritAttrs(),

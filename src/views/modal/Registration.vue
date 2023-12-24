@@ -35,6 +35,8 @@ let registrationPayload: ComputedRef<BodyCreateUserProfileApiV1UsersPostRaw> = (
 
 async function handleRegistration(): Promise<void> {
     await authController.registration(getRef(registrationPayload))
+
+    // todo: mv to controller
     await userRegisteredToast.open({
         toast: {
             onClose: async (): Promise<void> => {

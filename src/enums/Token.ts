@@ -36,20 +36,9 @@ export enum FacadeToken {
 }
 
 export enum ModalToken {
-    // AUTH_CHANGE_PASSWORD = "AuthChangePasswordModal",
     AUTH_LOGIN = "AuthLoginModal",
     AUTH_RECOVERY_PASSWORD = "AuthRecoveryPasswordModal",
     AUTH_REGISTRATION = "AuthRegistrationModal",
-}
-
-export enum ServiceToken {
-    AUTH = "AuthService",
-    CHAT = "ChatService",
-    FACET = "FacetService",
-    GAME = "GameService",
-    ITEM = "ItemService",
-    ORDER = "OrderService",
-    USER = "UserService",
 }
 
 export enum ToastToken {

@@ -2,11 +2,11 @@ import type {
     FacetedSearchApiV1ItemsSearchPostDataRaw,
     FacetedSearchApiV1ItemsSearchPostPayloadRaw,
 } from "#schema/data-contracts"
-import type { Facet, ItemType } from "~/enums"
+import type { Facet, Item } from "~/enums"
 
 export interface FacetQuery extends FacetedSearchApiV1ItemsSearchPostPayloadRaw {
     [key: Facet]: (
-        ItemType |
+        Item |
         string
     )
 }

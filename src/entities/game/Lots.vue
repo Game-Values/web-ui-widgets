@@ -7,11 +7,11 @@ let { t } = useI18n({
 
 let { storeClient } = useClients()
 
-let { items } = storeToRefs(storeClient.itemsStore)
+let { searchResults } = storeToRefs(storeClient.facetsStore)
 </script>
 
 <template>
-<v-table :data="items.lotsTableData">
+<v-table :data="searchResults.lotsTableData">
     <v-table-column
         v-slot="{ row }: { row: Item }"
         :name="t('Seller')"

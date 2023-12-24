@@ -1,6 +1,24 @@
-import type { WithdrawStore } from "~/types"
+import type { DefineStore, WithdrawRaw } from "~/types"
 
 import { createStore } from "~/factories"
+
+export namespace WithdrawStore {
+    export type Id = "withdrawStore"
+
+    export type State = {
+        withdrawRaw: WithdrawRaw
+    }
+
+    export type Getters = {
+        // todo:
+    }
+
+    export type Actions = {
+        // todo:
+    }
+
+    export type Store = DefineStore<Id, State, Getters, Actions>
+}
 
 export let useWithdrawStore: (storeId?: string) => WithdrawStore.Store = createStore<
     WithdrawStore.Id,

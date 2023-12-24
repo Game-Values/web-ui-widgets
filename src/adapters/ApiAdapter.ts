@@ -1,4 +1,11 @@
+import type { HttpClient } from "~/clients"
+
 import { Api } from "#schema/Api"
 
-// todo: change returns types from <{ data, error }> to <data> when success & <error> when fail
-export class ApiAdapter extends Api {}
+export class ApiAdapter extends Api {
+    public constructor(
+        private _httpClient: HttpClient,
+    ) {
+        super(_httpClient as never)
+    }
+}

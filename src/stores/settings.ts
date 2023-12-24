@@ -1,7 +1,28 @@
 import type { UserUpdateRaw } from "#schema/data-contracts"
-import type { SettingsStore } from "~/types"
+import type { DefineStore } from "~/types"
+import type { StoreActions } from "pinia"
 
 import { createStore } from "~/factories"
+
+export namespace SettingsStore {
+    export type Id = "settingsStore"
+
+    export type State = {
+        settingsRaw: UserUpdateRaw & {
+            oldPassword: string
+            password: string
+            repeatPassword: string
+        }
+    }
+
+    export type Getters = {
+        settings: () => UserUpdateRaw
+    }
+
+    export type Actions = StoreActions<never>
+
+    export type Store = DefineStore<Id, State, Getters, Actions>
+}
 
 // todo: composable store
 export let useSettingsStore: (storeId?: string) => SettingsStore.Store = createStore<

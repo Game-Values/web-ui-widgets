@@ -5,7 +5,7 @@ import { token } from "brandi"
 
 import { DIAbstract } from "~/abstract"
 import { AuthController, ChatController, FacetController, GameController, ItemController, SellController, UserController } from "~/controllers"
-import { ClientToken, ControllerToken, ServiceToken } from "~/enums"
+import { AdapterToken, ClientToken, ControllerToken } from "~/enums"
 
 interface ControllersTokens {
     [ControllerToken.AUTH]: Token<AuthController>
@@ -44,31 +44,31 @@ export class Controllers extends DIAbstract<ControllersTokens> {
         return [
             [
                 AuthController,
-                this.__getToken(ServiceToken.AUTH),
+                this.__getToken(AdapterToken.API),
                 this.__getToken(ClientToken.COOKIE),
             ],
             [
                 ChatController,
-                this.__getToken(ServiceToken.CHAT),
+                this.__getToken(AdapterToken.API),
             ],
             [
                 FacetController,
-                this.__getToken(ServiceToken.FACET),
+                this.__getToken(AdapterToken.API),
                 this.__getToken(ClientToken.STORE),
             ],
             [
                 GameController,
-                this.__getToken(ServiceToken.GAME),
+                this.__getToken(AdapterToken.API),
                 this.__getToken(ClientToken.STORE),
             ],
             [
                 ItemController,
-                this.__getToken(ServiceToken.ITEM),
+                this.__getToken(AdapterToken.API),
                 this.__getToken(ClientToken.STORE),
             ],
             [
                 SellController,
-                this.__getToken(ServiceToken.ITEM),
+                this.__getToken(AdapterToken.API),
                 this.__getToken(ClientToken.ROUTER),
                 this.__getToken(ClientToken.STORE),
                 this.__getToken(ControllerToken.GAME),
@@ -76,7 +76,7 @@ export class Controllers extends DIAbstract<ControllersTokens> {
             ],
             [
                 UserController,
-                this.__getToken(ServiceToken.USER),
+                this.__getToken(AdapterToken.API),
                 this.__getToken(ClientToken.STORE),
             ],
         ]

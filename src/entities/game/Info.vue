@@ -36,7 +36,7 @@ let { game } = storeToRefs(storeClient.gameStore)
         <v-column
             :md="18"
         >
-            <entity-game-sections />
+            <entity-game-facets />
         </v-column>
 
         <v-column

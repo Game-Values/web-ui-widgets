@@ -1,16 +1,15 @@
-import type {
-    ChatStore,
-    GamesStore,
-    GameStore,
-    ItemsStore,
-    ItemStore,
-    OrderStore,
-    SellStore,
-    SeoStore,
-    SettingsStore,
-    UserStore,
-    WithdrawStore,
-} from "~/types"
+import type { ChatStore } from "~/stores/chat"
+import type { FacetsStore } from "~/stores/facets"
+import type { GameStore } from "~/stores/game"
+import type { GamesStore } from "~/stores/games"
+import type { ItemStore } from "~/stores/item"
+import type { ItemsStore } from "~/stores/items"
+import type { OrderStore } from "~/stores/order"
+import type { SellStore } from "~/stores/sell"
+import type { SeoStore } from "~/stores/seo"
+import type { SettingsStore } from "~/stores/settings"
+import type { UserStore } from "~/stores/user"
+import type { WithdrawStore } from "~/stores/withdraw"
 
 // todo: stores typing
 export class StoreClient {
@@ -40,6 +39,11 @@ export class StoreClient {
     @Memoize()
     public get itemStore(): ItemStore.Store {
         return useItemStore()
+    }
+
+    @Memoize()
+    public get facetsStore(): FacetsStore.Store {
+        return useFacetsStore()
     }
 
     @Memoize()

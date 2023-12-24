@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { RouteLayout } from "~/enums"
+import { Facet, FilterType, RouteLayout } from "~/enums"
 
 definePageMeta({
     layout: RouteLayout.GAME,
@@ -18,7 +18,10 @@ await gameFacade.bootstrap()
         </v-column>
 
         <v-column :lg="12">
-            <entity-game-search />
+            <entity-game-filter
+                :facet="Facet.DESCRIPTION"
+                :filter="FilterType.SEARCH"
+            />
         </v-column>
 
         <v-column :lg="12">

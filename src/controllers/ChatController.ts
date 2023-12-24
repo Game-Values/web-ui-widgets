@@ -1,8 +1,6 @@
-import type { ChatService } from "~/services"
-
 export class ChatController {
     public constructor(
-        private _chatService: ChatService,
+
     ) {}
 
     public async fetchChatRooms(): Promise<void> {
