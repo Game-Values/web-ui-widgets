@@ -15,34 +15,37 @@ export class GameFacade implements FacadeAbstract {
     public async bootstrap(): Promise<void> {
         this._storeClient.facetsStore.$reset()
 
-        let promises: Promise<void>[] = [
-            this._gameController.fetchGame(this._routerClient.getRouteParam("gameId")),
-            this._facetController.fetchFacets(this._routerClient.getRouteParam("gameId")),
-        ]
+        let gameId: string = this._routerClient.getRouteParam("gameId")
+        let gameSection: string = this._routerClient.getRouteParam("gameSection")
 
-        await Promise.all(promises)
+        await Promise.all([
+            this._gameController.fetchGame(gameId),
+            this._facetController.fetchFacets(gameId),
+        ])
+
         await this._gameController.fetchGameSections()
 
-        if (
-            !this._routerClient.getRouteParam("gameSection") &&
-            useFirst(useKeys(this._storeClient.gameStore.gameSectionsRaw))
-        )
-            await navigateTo(
-                {
-                    params: {
-                        gameSection: useFirst(useKeys(this._storeClient.gameStore.gameSectionsRaw)),
-                    },
-                },
-                {
-                    replace: true,
-                },
-            )
+        await navigateTo({
+            replace: true,
+            params: {
+                gameSection: (
+                    gameSection ||
+                    useFirst(
+                        useKeys(this._storeClient.gameStore.gameSectionsRaw),
+                    )
+                )
+            },
+        })
 
-        if (this._routerClient.getRouteParam("gameSection"))
-            await this._facetController.searchFacets(this._routerClient.getRouteParam("gameId"), (
-                useFacetQuery({
-                    [Facet.TYPE]: this._routerClient.getRouteParam("gameSection"),
-                })
-            ))
+        await this._facetController.searchFacets(gameId, (
+            useFacetQuery({
+                [Facet.TYPE]: (
+                    gameSection ||
+                    useFirst(
+                        useKeys(this._storeClient.gameStore.gameSectionsRaw),
+                    )
+                ),
+            })
+        ))
     }
 }

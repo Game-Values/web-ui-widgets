@@ -5,17 +5,6 @@ let { routerClient, storeClient } = useClients()
 
 let { game } = storeToRefs(storeClient.gameStore)
 let { facets } = storeToRefs(storeClient.facetsStore)
-
-async function resetFilters(): Promise<void> {
-    await navigateTo(
-        {
-            query: useOmit(routerClient.route.query, useKeys(useFacetQuery())),
-        },
-        {
-            replace: true,
-        },
-    )
-}
 </script>
 
 <template>
@@ -82,7 +71,15 @@ async function resetFilters(): Promise<void> {
             <v-form-item>
                 <v-form-reset
                     block
-                    @reset="resetFilters()"
+                    @reset="
+                        navigateTo({
+                            query: useOmit(
+                                routerClient.route.query,
+                                useKeys(useFacetQuery()),
+                            ),
+                            replace: true,
+                        })
+                    "
                 >
                     Reset
                 </v-form-reset>

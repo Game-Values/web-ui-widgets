@@ -42,14 +42,10 @@ let handleFilter = useDebounce(async (val: Arrayable<number | string>): Promise<
     else
         useSet(facetQuery, props.facet, val)
 
-    await navigateTo(
-        {
-            query: useFacetQuery(facetQuery),
-        },
-        {
-            replace: true,
-        },
-    )
+    await navigateTo({
+        query: useFacetQuery(facetQuery),
+        replace: true,
+    })
 }, DEBOUNCE_TIMEOUT)
 </script>
 

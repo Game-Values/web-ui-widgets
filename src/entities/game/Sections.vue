@@ -3,12 +3,14 @@ let { routerClient, storeClient } = useClients()
 
 // todo: model or collection
 let { gameSectionsRaw } = storeToRefs(storeClient.gameStore)
+
+let currentGameSection = computed((): string => routerClient.getRouteParam('gameSection'))
 </script>
 
 <template>
 <v-space>
     <ui-link-tag
-        v-for="(_, gameSection) in gameSectionsRaw"
+        v-for="(_, gameSection, i) in gameSectionsRaw"
         :key="gameSection"
         :to="
             routerClient.getRoute(routerClient.routeNames.GAME, {
