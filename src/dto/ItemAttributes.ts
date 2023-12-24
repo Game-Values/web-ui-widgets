@@ -1,4 +1,4 @@
-import { ItemType } from "~/enums"
+import { GameSection } from "~/enums"
 
 export class ItemAttributes {
     @Expose()
@@ -14,6 +14,6 @@ export class ItemAttributes {
     declare public server: string
 
     @Expose()
-    @Type((): typeof ItemType => ItemType)
-    declare public type: ItemType
+    @Type((): typeof GameSection => GameSection)
+    declare public type: GameSection
 }

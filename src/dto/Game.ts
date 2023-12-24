@@ -27,13 +27,16 @@ export class Game implements GameRaw {
         return `/images/${useKebabCase(this.name)}.png`
     }
 
+    public get jsonFilename(): string {
+        return useKebabCase(this.name)
+    }
+
     public get route(): Route {
         let { routerClient } = useClients()
 
         return routerClient.getRoute(routerClient.routeNames.PUBLIC_GAME, {
             params: {
                 gameId: this.id,
-                itemType: this.attributes.sections.active.name,
             },
         })
     }

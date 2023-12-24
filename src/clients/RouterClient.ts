@@ -15,12 +15,12 @@ export class RouterClient {
             },
             [this.routeNames.PUBLIC_GAME]: {
                 gameId: this.getRouteParam("gameId"),
-                itemType: this.getRouteParam("itemType"),
+                gameSection: this.getRouteParam("gameSection"),
             },
             [this.routeNames.PUBLIC_GAME_ITEM_BUY]: {
                 gameId: this.getRouteParam("gameId"),
+                gameSection: this.getRouteParam("gameSection"),
                 itemId: this.getRouteParam("itemId"),
-                itemType: this.getRouteParam("itemType"),
             },
         }
     }

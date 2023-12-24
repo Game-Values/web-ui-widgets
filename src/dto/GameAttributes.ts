@@ -9,6 +9,7 @@ export class GameAttributes {
     @Expose()
     declare public lots: string
 
+    // todo: rm
     @Expose()
     @Transform(({ value }: { value: Section[] }): Sections => new Sections(value))
     declare public sections: Sections

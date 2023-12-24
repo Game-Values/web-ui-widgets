@@ -1,13 +1,13 @@
 import type { DefineStore } from "~/types"
 
-import { ItemType, OrderStep } from "~/enums"
+import { GameSection, OrderStep } from "~/enums"
 import { createStore } from "~/factories"
 
 export namespace OrderStore {
     export type Id = "orderStore"
 
     export type State = {
-        itemType: ItemType // todo
+        gameSection: GameSection // todo
         orderStep: OrderStep
         orderSteps: OrderStep[]
     }
@@ -54,7 +54,7 @@ export let useOrderStore: (storeId?: string) => OrderStore.Store = createStore<
     },
 
     state: (): OrderStore.State => ({
-        itemType: ItemType.GOLD,
+        gameSection: GameSection.GOLD,
         orderStep: OrderStep.CHOOSE_DEAL,
         orderSteps: [
             OrderStep.CHOOSE_DEAL,

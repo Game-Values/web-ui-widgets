@@ -9,9 +9,9 @@ export class Sections extends CollectionAbstract<Section, Section> {
     public get active(): Section {
         let { routerClient } = useClients()
 
-        if (routerClient.getRouteParam("itemType"))
+        if (routerClient.getRouteParam("gameSection"))
             return useFind<Section>(this, {
-                type: routerClient.getRouteParam("itemType"),
+                type: routerClient.getRouteParam("gameSection"),
             })!
 
         return useFirst<Section>(this)!

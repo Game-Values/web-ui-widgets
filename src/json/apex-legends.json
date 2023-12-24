@@ -1,0 +1,143 @@
+{
+    "Accounts": {
+        "Platform": {
+            "type": "radio",
+            "buckets": [
+                "PC",
+                "PS",
+                "Xbox"
+            ]
+        },
+        "Rank": {
+            "type": "checkbox",
+            "buckets": [
+                "Rookie",
+                "Bronze",
+                "Silver",
+                "Gold",
+                "Platinum",
+                "Diamond",
+                "Master",
+                "Apex Predator",
+                "No rank"
+            ]
+        },
+        "Level": {
+            "type": "minmax"
+        }
+    },
+    "Coins": {
+        "Platform": {
+            "type": "radio",
+            "buckets": [
+                "PC",
+                "PS",
+                "Xbox"
+            ]
+        },
+        "Coins": {
+            "type": "checkbox",
+            "buckets": [
+                "90 Coins",
+                "280 Coins",
+                "500 Coins",
+                "1000 Coins",
+                "1050 Coins",
+                "2100 Coins",
+                "2150 Coins",
+                "4350 Coins",
+                "5650 Coins",
+                "6700 Coins",
+                "11500 Coins",
+                "12300 Coins",
+                "Different amount"
+            ]
+        },
+        "Top Up options": {
+            "type": "checkbox",
+            "buckets": [
+                "Digital code",
+                "By logging in to the account"
+            ]
+        }
+    },
+    "Top Up": {
+        "Platform": {
+            "type": "radio",
+            "buckets": [
+                "PC",
+                "PS",
+                "Xbox"
+            ]
+        }
+    },
+    "Boosting": {
+        "Platform": {
+            "type": "radio",
+            "buckets": [
+                "PC",
+                "PS",
+                "Xbox"
+            ]
+        },
+        "Boosting type": {
+            "type": "checkbox",
+            "buckets": [
+                "Rank boosting",
+                "Wins boosting",
+                "Kills boosting",
+                "Level boosting"
+            ]
+        },
+        "Range": {
+            "type": "subsection",
+            "section": "Boosting type.Rank boosting",
+            "children": [
+                {
+                    "type": "select",
+                    "buckets": [
+                        "Rookie - Bronze",
+                        "Bronze - Silver (price per 1 rank)",
+                        "Silver - Gold (price per 1 rank)",
+                        "Gold - Platinum (price per 1 rank)",
+                        "Platinum - Diamond (price per 1 rank)",
+                        "Diamond - Master (price per 1 rank)",
+                        "Master - Apex Predator"
+                    ]
+                }
+            ]
+        }
+    },
+    "Achievements": {
+        "Platform": {
+            "type": "radio",
+            "buckets": [
+                "PC",
+                "PS",
+                "Xbox"
+            ]
+        }
+    },
+    "Coaching": {
+        "Platform": {
+            "type": "radio",
+            "buckets": [
+                "PC",
+                "PS",
+                "Xbox"
+            ]
+        }
+    },
+    "Twitch Drops": {},
+    "Other": {
+        "Platform": {
+            "type": "radio",
+            "buckets": [
+                "PC",
+                "PS",
+                "Xbox"
+            ]
+        }
+    },
+    "Prime Gaming": {}
+}

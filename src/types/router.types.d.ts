@@ -1,5 +1,5 @@
 import type { RoutesNamesList, TypedRouteFromName } from "@typed-router"
-import type { ItemType, Locale, PaymentType, RouteLayout, RouteName } from "~/enums"
+import type { GameSection, Locale, PaymentType, RouteLayout, RouteName } from "~/enums"
 import type { SeoRaw } from "~/types"
 import type { ComputedRef, MaybeRef } from "vue"
 import type { RouteLocation } from "vue-router"
@@ -23,7 +23,7 @@ declare module "vue-router" {
         price_from: string
         price_till: string
         server: string
-        type: ItemType
+        type: GameSection
     }
 
     export interface RouteMeta {
@@ -38,8 +38,8 @@ declare module "vue-router" {
 
     export interface RouteParams {
         gameId: string
+        gameSection: GameSection
         itemId: string
-        itemType: ItemType
         locale: Locale
         paymentType: PaymentType
         userId: string

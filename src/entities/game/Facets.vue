@@ -1,23 +1,24 @@
 <script lang="ts" setup>
 let { routerClient, storeClient } = useClients()
 
-let { facets } = storeToRefs(storeClient.facetsStore)
+// todo: model or collection
+let { gameSectionsRaw } = storeToRefs(storeClient.gameStore)
 </script>
 
 <template>
 <v-space>
     <ui-link-tag
-        v-for="(count, facet) in facets"
-        :key="facet"
+        v-for="(_, gameSection) in gameSectionsRaw"
+        :key="gameSection"
         :to="
             routerClient.getRoute(routerClient.routeNames.PUBLIC_GAME, {
                 params: {
-                    itemType: facet,
+                    gameSection,
                 },
             })
         "
         :type="(
-            facet === routerClient.getRouteParam('itemType')
+            gameSection === routerClient.getRouteParam('gameSection')
                 ? 'primary'
                 : 'default'
         )"
@@ -25,7 +26,7 @@ let { facets } = storeToRefs(storeClient.facetsStore)
     >
         <v-space>
             <v-text>
-                {{ facet }}
+                {{ gameSection }}
             </v-text>
 
             <v-text
@@ -35,7 +36,7 @@ let { facets } = storeToRefs(storeClient.facetsStore)
                     rounded-12
                 "
             >
-                {{ count || 0 }}
+                {{ storeClient.facetsStore.getFacetsCount(gameSection) }}
             </v-text>
         </v-space>
     </ui-link-tag>

@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import type { Undefinable } from "~/types"
+
 import { Facet, FilterType, RouteLayout } from "~/enums"
 
 definePageMeta({

@@ -1,4 +1,4 @@
-import type { ItemType } from "~/enums"
+import type { GameSection } from "~/enums"
 import type { Route } from "~/types"
 
 export class Section {
@@ -14,7 +14,7 @@ export class Section {
 
         return routerClient.getRoute(routerClient.routeNames.PUBLIC_GAME, {
             params: {
-                itemType: this.type,
+                gameSection: this.type,
             },
         })
     }
@@ -22,7 +22,7 @@ export class Section {
     public get isActive(): boolean {
         let { routerClient } = useClients()
 
-        return routerClient.getRouteParam<ItemType>("itemType") === this.type
+        return routerClient.getRouteParam<GameSection>("gameSection") === this.type
     }
 
     public get sellRoute(): Route {
@@ -30,12 +30,12 @@ export class Section {
 
         return routerClient.getRoute(routerClient.routeNames.PRIVATE_GAME_ITEM_SELL, {
             params: {
-                itemType: this.type,
+                gameSection: this.type,
             },
         })
     }
 
-    public get type(): ItemType {
-        return this.name as ItemType
+    public get type(): GameSection {
+        return this.name as GameSection
     }
 }

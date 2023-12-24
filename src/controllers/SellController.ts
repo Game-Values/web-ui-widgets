@@ -44,7 +44,7 @@ export class SellController {
 
         this._storeClient.sellStore.updateSellItemRaw({
             attributes: {
-                type: this._routerClient.getRouteParam("itemType"),
+                type: this._routerClient.getRouteParam("gameSection"),
             },
         })
     }

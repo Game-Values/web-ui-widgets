@@ -40,7 +40,7 @@ export class Item implements ItemRaw {
             params: {
                 gameId: this.gid,
                 itemId: this.id,
-                itemType: this.attributes.type,
+                gameSection: this.attributes.type,
             },
         })
     }
@@ -52,7 +52,7 @@ export class Item implements ItemRaw {
             params: {
                 gameId: this.gid,
                 itemId: this.id,
-                itemType: this.attributes.type,
+                gameSection: this.attributes.type,
             },
         })
     }
@@ -73,7 +73,7 @@ export class Item implements ItemRaw {
         return routerClient.getRoute(routerClient.routeNames.PRIVATE_GAME_ITEM_SELL, {
             params: {
                 gameId: this.gid,
-                itemType: this.attributes.type,
+                gameSection: this.attributes.type,
             },
         })
     }

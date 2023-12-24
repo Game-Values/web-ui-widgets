@@ -29,7 +29,7 @@ async function resetFilters(): Promise<void> {
         </v-title>
 
         <v-form
-            v-if="useGet(facets, routerClient.getRouteParam('itemType'))"
+            v-if="useGet(facets, routerClient.getRouteParam('gameSection'))"
             :gap="[
                 remToNumber(useTheme('spacing.9')),
                 remToNumber(useTheme('spacing.9')),

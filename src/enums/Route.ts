@@ -28,8 +28,8 @@ export enum RouteName {
     PRIVATE_ACCOUNT_SUBSCRIPTION = routesNames.privateLocaleAccount.localeAccountIndexSubscription,
     PRIVATE_ACCOUNT_WITHDRAW = routesNames.privateLocaleAccountWithdraw,
 
-    PRIVATE_GAME_ITEM_SELL = routesNames.privateLocaleGGameIdItemTypeSell,
-    PRIVATE_GAME_ITEM_SELL_EDIT = routesNames.privateLocaleGGameIdItemTypeItemIdEdit,
+    PRIVATE_GAME_ITEM_SELL = routesNames.publicLocaleGGameIdGameSectionSell,
+    PRIVATE_GAME_ITEM_SELL_EDIT = routesNames.publicLocaleGGameIdGameSectionItemIdEdit,
 
     PUBLIC_FAQ = routesNames.publicLocaleFaq.localeFaqGeneral,
     PUBLIC_FAQ_ACCOUNT = routesNames.publicLocaleFaq.localeFaqAccount,
@@ -43,8 +43,8 @@ export enum RouteName {
     PUBLIC_FAQ_SELLERS = routesNames.publicLocaleFaq.localeFaqSellers,
     PUBLIC_FAQ_TECHNICAL = routesNames.publicLocaleFaq.localeFaqTechnical,
 
-    PUBLIC_GAME = routesNames.publicLocaleGGameIdItemType,
-    PUBLIC_GAME_ITEM_BUY = routesNames.publicLocaleGGameIdItemTypeItemIdBuy,
+    PUBLIC_GAME = routesNames.publicLocaleGGameIdGameSection,
+    PUBLIC_GAME_ITEM_BUY = routesNames.publicLocaleGGameIdGameSectionItemIdBuy,
 
     PUBLIC_MAIN = routesNames.publicLocale,
 

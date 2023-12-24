@@ -14,6 +14,7 @@ export namespace FacetsStore {
 
     export type Getters = {
         facets: () => Facets
+        getFacetsCount: () => (facet: string) => number
         searchResults: () => Items
     }
 
@@ -44,6 +45,12 @@ export let useFacetsStore: (storeId?: string) => FacetsStore.Store = createStore
     getters: {
         facets(): Facets {
             return createModel(Facets, this.facetsRaw)
+        },
+
+        getFacetsCount(): (facet: string) => number {
+            return (facet: string): number => (
+                useGet(this.facets, facet, 0)
+            )
         },
 
         searchResults(): Items {
