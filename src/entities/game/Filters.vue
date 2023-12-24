@@ -4,6 +4,7 @@ import { Facet, FilterType } from "~/enums"
 let { routerClient, storeClient } = useClients()
 
 let { game } = storeToRefs(storeClient.gameStore)
+let { searchResults } = storeToRefs(storeClient.facetsStore)
 
 async function resetFilters(): Promise<void> {
     await navigateTo(
@@ -28,12 +29,13 @@ async function resetFilters(): Promise<void> {
         </v-title>
 
         <v-form
+            v-if="searchResults.length"
             :gap="[
                 remToNumber(useTheme('spacing.9')),
                 remToNumber(useTheme('spacing.9')),
             ]"
         >
-            <v-form-item>
+            <v-form-item v-if="game.attributes.servers?.length">
                 <v-space
                     size="large"
                     vertical
@@ -46,7 +48,6 @@ async function resetFilters(): Promise<void> {
                     </v-title>
 
                     <entity-game-filter
-                        v-if="game.attributes.servers?.length"
                         :facet="Facet.SERVER"
                         :filter="FilterType.RADIO"
                         :items="game.attributes.servers"

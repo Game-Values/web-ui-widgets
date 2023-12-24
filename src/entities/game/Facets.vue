@@ -35,7 +35,7 @@ let { facets } = storeToRefs(storeClient.facetsStore)
                     rounded-12
                 "
             >
-                {{ count }}
+                {{ count || 0 }}
             </v-text>
         </v-space>
     </ui-link-tag>
