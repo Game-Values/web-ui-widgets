@@ -1,6 +1,6 @@
 import type { Section } from "~/dto/Section"
 
-import { Sections } from "~/dto/Sections"
+import { GameSections } from "~/dto/GameSections"
 
 export class GameAttributes {
     @Expose()
@@ -9,10 +9,9 @@ export class GameAttributes {
     @Expose()
     declare public lots: string
 
-    // todo: rm
     @Expose()
-    @Transform(({ value }: { value: Section[] }): Sections => new Sections(value))
-    declare public sections: Sections
+    @Transform(({ value }: { value: Section[] }): GameSections => new GameSections(value))
+    declare public sections: GameSections
 
     @Expose()
     declare public servers: string[]

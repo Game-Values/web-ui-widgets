@@ -33,19 +33,15 @@ let { game } = storeToRefs(storeClient.gameStore)
             <v-text v-html="game.attributes.description" />
         </v-column>
 
-        <v-column
-            :md="18"
-        >
+        <v-column>
             <entity-game-sections />
         </v-column>
 
         <v-column
+            v-if="isAuthenticated()"
             :md="6"
         >
-            <v-space
-                v-if="isAuthenticated()"
-                vertical
-            >
+            <v-space vertical>
                 <v-button
                     block
                 >

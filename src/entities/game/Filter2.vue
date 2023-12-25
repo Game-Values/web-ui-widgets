@@ -1,31 +1,24 @@
 <script lang="ts" setup>
 import type { GameSubsection } from "~/dto"
+import type { Facet } from "~/enums"
 import type { Arrayable, AsyncComponent, FacetQuery } from "~/types"
 import type { Component } from "vue"
 
 import { DEBOUNCE_TIMEOUT } from "~/consts"
-import { Facet, FilterType } from "~/enums"
+import { FilterType } from "~/enums"
 
 let props = defineProps<{
-    facet: Facet
     subsection: GameSubsection
 }>()
 
 let { routerClient } = useClients()
-let { facetController } = useControllers()
-
-let filterFacet = computed((): Facet => (
-    props.facet ||
-    props.subsection.name
-))
 
 let filterViews = computed((): Record<FilterType, AsyncComponent> => (
     {
         [FilterType.CHECKBOX]: defineAsyncComponent((): Promise<Component> => import("~/views/filter/Checkbox.vue")),
-        [FilterType.FROM_TO]: defineAsyncComponent((): Promise<Component> => import("~/views/filter/FromTo.vue")),
         [FilterType.RADIO]: defineAsyncComponent((): Promise<Component> => import("~/views/filter/Radio.vue")),
         [FilterType.SEARCH]: defineAsyncComponent((): Promise<Component> => import("~/views/filter/Search.vue")),
-        [FilterType.SELECT]: defineAsyncComponent((): Promise<Component> => import("~/views/filter/Select.vue")),
+        [FilterType.SLIDER]: defineAsyncComponent((): Promise<Component> => import("~/views/filter/Slider.vue")),
     }
 ))
 
@@ -37,36 +30,31 @@ let filterView = computed((): AsyncComponent => (
 ))
 
 let handleFilter = useDebounce(async (val: Arrayable<number | string>): Promise<void> => {
-    let facetQuery: FacetQuery = {
-        [getRef(filterFacet)]: (
-            isArray(val)
-                ? val.join(",")
-                : val
-        ),
-    }
+    let facetQuery: FacetQuery = {}
+
+    if (isArray(props.facet))
+        useForEach(props.facet, (facet: Facet, i: number): FacetQuery => (
+            useSet(facetQuery, facet, useGet(val, i))
+        ))
+    else
+        useSet(facetQuery, props.facet, val)
 
     await navigateTo({
         query: useFacetQuery(facetQuery),
         replace: true,
     })
-
-    await facetController.searchFacets(routerClient.getRouteParam("gameId"), (
-        useFacetQuery({
-            [Facet.TYPE]: routerClient.getRouteParam("gameSection"),
-        })
-    ))
 }, DEBOUNCE_TIMEOUT)
 </script>
 
 <template>
 <component
-    v-bind="subsection"
     :is="filterView"
     :value="(
-        subsection.type.includes(FilterType.CHECKBOX)
-            ? routerClient.getRouteQuery(filterFacet).split(',')
-            : routerClient.getRouteQuery(filterFacet)
+        isArray(facet)
+            ? useMap(facet, (facetItem: Facet) => routerClient.getRouteQuery(facetItem))
+            : routerClient.getRouteQuery(facet)
     )"
+    :items="items"
     @change="handleFilter"
 />
 </template>

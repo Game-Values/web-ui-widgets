@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 defineProps<{
-    items: string[] // todo (?) mb {<key>:<val>}[]
-    value: number | string
+    buckets: string[]
+    value: string
 }>()
 
 defineEmits<{
-    (e: "change", modelValue: number | string): void
+    (e: "change", modelValue: string): void
 }>()
 </script>
 
@@ -16,10 +16,10 @@ defineEmits<{
     @change="$emit('change', $event)"
 >
     <v-radio
-        v-for="item in items"
-        :key="item"
-        :label="item"
-        :value="item"
+        v-for="bucket in buckets"
+        :key="bucket"
+        :label="bucket"
+        :value="bucket"
     />
 </v-radio-group>
 </template>

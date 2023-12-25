@@ -14,37 +14,18 @@ export class GameFacade implements FacadeAbstract {
 
     public async bootstrap(): Promise<void> {
         this._storeClient.facetsStore.$reset()
-
-        let gameId: string = this._routerClient.getRouteParam("gameId")
-        let gameSection: string = this._routerClient.getRouteParam("gameSection")
+        this._storeClient.itemsStore.$reset()
 
         await Promise.all([
-            this._gameController.fetchGame(gameId),
-            this._facetController.fetchFacets(gameId),
+            this._gameController.fetchGame(this._routerClient.getRouteParam("gameId")),
+            this._facetController.fetchFacets(this._routerClient.getRouteParam("gameId")),
         ])
 
         await this._gameController.fetchGameSections()
 
-        await navigateTo({
-            replace: true,
-            params: {
-                gameSection: (
-                    gameSection ||
-                    useFirst(
-                        useKeys(this._storeClient.gameStore.gameSectionsRaw),
-                    )
-                )
-            },
-        })
-
-        await this._facetController.searchFacets(gameId, (
+        await this._facetController.searchFacets(this._storeClient.gameStore.game.id, (
             useFacetQuery({
-                [Facet.TYPE]: (
-                    gameSection ||
-                    useFirst(
-                        useKeys(this._storeClient.gameStore.gameSectionsRaw),
-                    )
-                ),
+                [Facet.TYPE]: this._storeClient.gameStore.game.attributes.sections.active.name,
             })
         ))
     }

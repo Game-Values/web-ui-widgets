@@ -1,8 +1,10 @@
 import type { GameRaw } from "#schema/data-contracts"
+import type { Section } from "~/dto"
 import type { GameSection } from "~/enums"
 import type { DefineStore, GameSectionsRaw } from "~/types"
+import type { ComputedRef, Ref } from "vue"
 
-import { Game, GameSubsection } from "~/dto"
+import { Game } from "~/dto"
 import { createModel, createStore } from "~/factories"
 
 export namespace GameStore {
@@ -15,7 +17,6 @@ export namespace GameStore {
 
     export type Getters = {
         game: () => Game
-        getGameSection: () => (section: GameSection) => GameSubsection
     }
 
     export type Actions = {
@@ -31,31 +32,42 @@ export let useGameStore: (storeId?: string) => GameStore.Store = createStore<
     GameStore.State,
     GameStore.Getters,
     GameStore.Actions
->("gameStore", {
-    actions: {
-        setGameRaw(gameRaw: GameRaw): void {
-            this.gameRaw = gameRaw
-        },
+>("gameStore", () => {
+    let { storeClient } = useClients()
 
-        setGameSectionsRaw(gameSectionsRaw: GameSectionsRaw): void {
-            this.gameSectionsRaw = gameSectionsRaw
-        },
-    },
+    let { facets } = storeToRefs(storeClient.facetsStore)
 
-    getters: {
-        game(): Game {
-            return createModel(Game, this.gameRaw)
-        },
+    let gameRaw: Ref<GameRaw> = ref(Object.create(null))
+    let gameSectionsRaw: Ref<GameSectionsRaw> = ref(Object.create(null))
 
-        getGameSection(): (section: GameSection) => GameSubsection {
-            return (section: GameSection): GameSubsection => (
-                createModel(GameSubsection, useGet(this.gameSectionsRaw, section, {}))
-            )
-        },
-    },
+    let game: ComputedRef<Game> = computed((): Game => (
+        createModel(Game, (
+            useMerge(getRef(gameRaw), {
+                attributes: {
+                    sections: useMap(useKeys(getRef(facets)), (gameSection: GameSection): Pick<Section, "count" | "name"> => (
+                        {
+                            count: storeClient.facetsStore.getFacetsCount(gameSection),
+                            name: gameSection,
+                        }
+                    )),
+                },
+            })
+        ))
+    ))
 
-    state: (): GameStore.State => ({
-        gameRaw: {},
-        gameSectionsRaw: {} as never,
-    }),
+    function setGameRaw(_gameRaw: GameRaw): void {
+        setRef(gameRaw, _gameRaw)
+    }
+
+    function setGameSectionsRaw(_gameSectionsRaw: GameSectionsRaw): void {
+        setRef(gameSectionsRaw, _gameSectionsRaw)
+    }
+
+    return {
+        game,
+        gameRaw,
+        gameSectionsRaw,
+        setGameRaw,
+        setGameSectionsRaw,
+    }
 })

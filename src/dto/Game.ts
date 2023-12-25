@@ -37,6 +37,7 @@ export class Game implements GameRaw {
         return routerClient.getRoute(routerClient.routeNames.GAME, {
             params: {
                 gameId: this.id,
+                gameSection: this.attributes.sections.active.name,
             },
         })
     }

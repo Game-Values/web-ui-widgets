@@ -2,11 +2,11 @@ import { FilterType, GameSection, GameSubsection } from "~/enums"
 
 export type GameSectionsRaw = Record<GameSection, GameSubsectionsRaw>
 
-export type GameSubsectionsRaw = Record<GameSubsection, GameSubsections>
+export type GameSubsectionsRaw = Record<GameSubsection, GameSubsectionRaw>
 
-export interface GameSubsections {
+export interface GameSubsectionRaw {
     buckets: string[]
-    children: GameSubsections[]
+    children: GameSubsectionRaw[]
     section: `${GameSubsection}.${string}`
     type: FilterType
 }

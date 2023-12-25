@@ -1,21 +1,6 @@
-<script lang="ts" setup>
-defineProps<{
-    value: number | string
-}>()
-
-defineEmits<{
-    (e: "change", modelValue: string): void
-}>()
-
-let { t } = useI18n({
-    useScope: "local",
-})
-</script>
-
 <template>
 <v-input
-    :placeholder="t('Search by description')"
-    :value="value"
+    placeholder="Search by description"
     clearable
     @input="$emit('change', $event)"
 >
@@ -27,10 +12,3 @@ let { t } = useI18n({
     </template>
 </v-input>
 </template>
-
-<i18n lang="yaml">
-de:
-    Search by description: Suche nach Beschreibung
-en:
-    Search by description: Search by description
-</i18n>

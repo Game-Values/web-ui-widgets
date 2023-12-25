@@ -23,7 +23,7 @@
             ]
         },
         "Level": {
-            "type": "minmax"
+            "type": "from_to"
         }
     },
     "Coins": {

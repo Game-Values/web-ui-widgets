@@ -1,19 +1,25 @@
 <script lang="ts" setup>
-import { Facet } from "~/enums"
-
 defineProps<{
-    facet: Facet
-    items: string[] // todo (?) mb {<key>:<val>}[]
+    buckets: string[]
+    value: string[]
+}>()
+
+defineEmits<{
+    (e: "change", modelValue: string): void
 }>()
 </script>
 
 <template>
-<v-checkbox-group vertical>
+<v-checkbox-group
+    :value="value"
+    vertical
+    @change="$emit('change', $event)"
+>
     <v-checkbox
-        v-for="item in items"
-        :key="item"
-        :label="item"
-        :value="item"
+        v-for="bucket in buckets"
+        :key="bucket"
+        :label="bucket"
+        :value="bucket"
     />
 </v-checkbox-group>
 </template>

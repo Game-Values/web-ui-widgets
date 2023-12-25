@@ -41,6 +41,11 @@ let errorView = computed((): AsyncComponent => (
                 />
 
                 <component :is="errorView" />
+
+                <div
+                    v-html="error.stack"
+                    hidden
+                />
             </nuxt-layout>
 
             <widget-provider-modal />

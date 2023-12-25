@@ -7,7 +7,7 @@ export class Section {
 
     // todo: rename to type
     @Expose()
-    declare public name: string
+    declare public name: GameSection
 
     public get gameRoute(): Route {
         let { routerClient } = useClients()

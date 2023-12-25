@@ -1,6 +1,7 @@
 export enum FilterType {
     CHECKBOX = "checkbox",
+    FROM_TO = "from_to",
     RADIO = "radio",
     SEARCH = "search",
-    SLIDER = "slider",
+    SELECT = "select",
 }

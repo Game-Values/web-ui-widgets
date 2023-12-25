@@ -1,5 +1,7 @@
 <script lang="ts" setup>
+import { GameSubsection } from "~/dto"
 import { Facet, FilterType, RouteLayout } from "~/enums"
+import { createModel } from "~/factories"
 
 definePageMeta({
     layout: RouteLayout.GAME,
@@ -19,8 +21,12 @@ await gameFacade.bootstrap()
 
         <v-column :lg="12">
             <entity-game-filter
+                :subsection="
+                    createModel(GameSubsection, {
+                        type: FilterType.SEARCH,
+                    })
+                "
                 :facet="Facet.DESCRIPTION"
-                :filter="FilterType.SEARCH"
             />
         </v-column>
 
@@ -34,7 +40,9 @@ await gameFacade.bootstrap()
             :lg="6"
             :md="12"
         >
-            <entity-game-filters />
+            <lazy-client-only>
+                <entity-game-filters />
+            </lazy-client-only>
         </v-column>
 
         <v-column

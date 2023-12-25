@@ -1,90 +1,95 @@
 <script lang="ts" setup>
+import type { GameSection, GameSubsection } from "~/enums"
+import type { GameSubsectionRaw } from "~/types"
+import type { ComputedRef } from "vue"
+
+import { GameSubsections } from "~/dto"
 import { Facet, FilterType } from "~/enums"
+import { createCollection } from "~/factories"
 
 let { routerClient, storeClient } = useClients()
 
-let { game } = storeToRefs(storeClient.gameStore)
-let { facets } = storeToRefs(storeClient.facetsStore)
+let { gameSectionsRaw } = storeToRefs(storeClient.gameStore)
+
+let gameSubsections: ComputedRef<GameSubsections> = computed((): GameSubsections => {
+    return createCollection(GameSubsections, (
+        useMap(
+            useEntries(
+                getRef(gameSectionsRaw, routerClient.getRouteParam("gameSection") as GameSection),
+            ),
+            ([key, val]: [key: string, val: GameSubsectionRaw]): GameSubsectionRaw => (
+                useAssign(val, {
+                    name: key,
+                })
+            ),
+        )
+    ))
+})
+
+function isShowSubsectionChild(section: `${GameSubsection}.${string}`): boolean {
+    let [key, val]: string[] = section.split(".")
+
+    return routerClient.getRouteQuery(key).includes(val)
+}
 </script>
 
 <template>
 <v-card>
     <v-space
-        size="large"
+        :size="remToNumber(useTheme('spacing.9'))"
         vertical
     >
         <v-title :level="4">
             Filters
         </v-title>
 
-        <v-form
-            v-if="useGet(facets, routerClient.getRouteParam('gameSection'))"
-            :gap="[
-                remToNumber(useTheme('spacing.9')),
-                remToNumber(useTheme('spacing.9')),
-            ]"
+        <v-space
+            v-for="gameSubsection in gameSubsections"
+            :key="gameSubsection.name"
+            size="large"
+            vertical
         >
-            <v-form-item v-if="game.attributes.servers?.length">
+            <template
+                v-if="(
+                    gameSubsection.section &&
+                    isShowSubsectionChild(gameSubsection.section)
+                )"
+            >
+                <v-title
+                    :level="6"
+                    class="capitalize"
+                >
+                    {{ gameSubsection.name }}
+                </v-title>
+
+                <!-- todo: recursive component -->
                 <v-space
+                    v-for="gameSubsectionChild in gameSubsection.children"
+                    :key="gameSubsectionChild.name"
                     size="large"
                     vertical
                 >
-                    <v-title
-                        :level="6"
-                        class="capitalize"
-                    >
-                        {{ Facet.SERVER }}
-                    </v-title>
-
                     <entity-game-filter
-                        :facet="Facet.SERVER"
-                        :filter="FilterType.RADIO"
-                        :items="game.attributes.servers"
+                        :facet="gameSubsection.name"
+                        :subsection="gameSubsectionChild"
                     />
                 </v-space>
-            </v-form-item>
+            </template>
 
-            <v-form-item>
-                <v-space
-                    size="large"
-                    vertical
+            <template v-if="!gameSubsection.section">
+                <v-title
+                    :level="6"
+                    class="capitalize"
                 >
-                    <v-title
-                        :level="6"
-                        class="capitalize"
-                    >
-                        {{ Facet.PRICE }}
-                    </v-title>
+                    {{ gameSubsection.name }}
+                </v-title>
 
-                    <entity-game-filter
-                        :facet="[
-                            Facet.PRICE_FROM,
-                            Facet.PRICE_TILL,
-                        ]"
-                        :filter="FilterType.SLIDER"
-                        :max="10000"
-                        :min="0"
-                    />
-                </v-space>
-            </v-form-item>
-
-            <v-form-item>
-                <v-form-reset
-                    block
-                    @reset="
-                        navigateTo({
-                            query: useOmit(
-                                routerClient.route.query,
-                                useKeys(useFacetQuery()),
-                            ),
-                            replace: true,
-                        })
-                    "
-                >
-                    Reset
-                </v-form-reset>
-            </v-form-item>
-        </v-form>
+                <entity-game-filter
+                    :facet="gameSubsection.name"
+                    :subsection="gameSubsection"
+                />
+            </template>
+        </v-space>
     </v-space>
 </v-card>
 </template>
