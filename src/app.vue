@@ -6,6 +6,8 @@
                 <nuxt-page />
             </nuxt-layout>
 
+            <widget-provider-chat />
+
             <widget-provider-modal />
 
             <widget-provider-seo />
@@ -13,3 +15,5 @@
     </widget-provider-auth>
 </widget-provider-setup>
 </template>
+<script setup lang="ts">
+</script>

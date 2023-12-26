@@ -3,7 +3,7 @@ import type { ChatEvent } from "~/dto"
 
 import { DEBOUNCE_TIMEOUT } from "~/consts"
 
-let { storeClient } = useClients()
+let { cookieClient, storeClient } = useClients()
 let { chatController } = useControllers()
 let { loginModal, registrationModal } = useModals()
 
@@ -66,7 +66,7 @@ let sendRoomMessage = useDebounce(async (message: string): Promise<void> => {
                 </v-native-scroll>
 
                 <chat-send-message
-                    v-if="isAuthenticated()"
+                    v-if="isAuthenticated() && cookieClient.chatToken"
                     @message="sendRoomMessage($event)"
                 />
 
