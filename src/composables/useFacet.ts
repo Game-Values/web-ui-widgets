@@ -11,7 +11,10 @@ export function useFacetQuery(facetQuery?: Partial<FacetQuery>): FacetQuery {
 
     let _facetQuery: FacetQuery = useReduce(entries, (result: FacetQuery, [, facet]: [string, Facet]): FacetQuery => (
         useAssign(result, {
-            [facet]: routerClient.getRouteQuery(facet),
+            [facet]: (
+                routerClient.getRouteQuery(facet) &&
+                JSON.parse(routerClient.getRouteQuery(facet))
+            ),
         })
     ), {})
 

@@ -38,11 +38,7 @@ let filterView = computed((): AsyncComponent => (
 
 let handleFilter = useDebounce(async (val: Arrayable<number | string>): Promise<void> => {
     let facetQuery: FacetQuery = {
-        [getRef(filterFacet)]: (
-            isArray(val)
-                ? val.join(",")
-                : val
-        ),
+        [getRef(filterFacet)]: JSON.stringify(val),
     }
 
     await navigateTo({
@@ -63,9 +59,8 @@ let handleFilter = useDebounce(async (val: Arrayable<number | string>): Promise<
     v-bind="subsection"
     :is="filterView"
     :value="(
-        subsection.type.includes(FilterType.CHECKBOX)
-            ? routerClient.getRouteQuery(filterFacet).split(',')
-            : routerClient.getRouteQuery(filterFacet)
+        routerClient.getRouteQuery(filterFacet) &&
+        JSON.parse(routerClient.getRouteQuery(filterFacet))
     )"
     @change="handleFilter"
 />

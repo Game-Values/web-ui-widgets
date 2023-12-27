@@ -1,7 +1,10 @@
 import type { ChatClient, StoreClient } from "~/clients"
+import type { Callable } from "~/types"
 import type { MatrixEvent } from "matrix-js-sdk"
 
 import { EventType, MsgType, RoomEvent } from "matrix-js-sdk"
+
+let tid = null
 
 export class ChatController {
     public constructor(
@@ -32,7 +35,22 @@ export class ChatController {
         })
     }
 
+    public async startChat(): Promise<void> {
+        await Promise.all([
+            this.fetchChatRooms(),
+            this.subscribeChat(),
+        ])
+
+        await this._chatClient.startClient({
+            lazyLoadMembers: true,
+            threadSupport: true,
+        })
+    }
+
     public async subscribeChat(): Promise<void> {
-        this._chatClient.on(RoomEvent.Timeline, this._roomTimelineHandler)
+        let subscriber: Callable = useBind(this._roomTimelineHandler, this)
+
+        this._chatClient.off(RoomEvent.Timeline, subscriber)
+        this._chatClient.on(RoomEvent.Timeline, subscriber)
     }
 }

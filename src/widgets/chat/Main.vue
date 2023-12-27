@@ -37,7 +37,7 @@ let sendRoomMessage = useDebounce(async (message: string): Promise<void> => {
                 >
                     <v-space
                         v-for="chatEvent in chatEvents"
-                        :key="chatEvent.event.event_id"
+                        :key="chatEvent.getId()"
                         class="p-5 virtual-list__item"
                         tag="li"
                         vertical
@@ -48,19 +48,19 @@ let sendRoomMessage = useDebounce(async (message: string): Promise<void> => {
                                     <user-chat-avatar />
 
                                     <v-text>
-                                        {{ chatEvent.sender.displayName }}
+                                        {{ chatEvent.username }}
                                     </v-text>
                                 </v-space>
                             </v-title>
 
                             <v-time-ago
-                                :datetime="chatEvent.event.origin_server_ts"
+                                :datetime="chatEvent.getDate()"
                                 class="text-sm text-white-6"
                             />
                         </v-space>
 
                         <v-text>
-                            {{ chatEvent.event.content.body }}
+                            {{ chatEvent.content }}
                         </v-text>
                     </v-space>
                 </v-native-scroll>

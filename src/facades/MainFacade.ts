@@ -12,14 +12,10 @@ export class MainFacade implements FacadeAbstract {
             this._gameController.fetchGames(),
         ]
 
-        /*
         if (isClient())
             promises.push(
-                this._chatController.fetchChatRooms(),
                 this._chatController.startChat(),
-                this._chatController.subscribeChat(),
             )
-         */
 
         await Promise.all(promises)
     }
