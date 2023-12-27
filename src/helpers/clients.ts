@@ -39,7 +39,6 @@ export class Clients extends DIAbstract<ClientsTokens> {
             [
                 ChatClient,
                 this.__getToken(ClientToken.COOKIE),
-                this.__getToken(ClientToken.STORE),
             ],
             [
                 HttpClient,

@@ -27,6 +27,17 @@ export class CookieClient {
         setRef(useCookie(HttpCookie.CHAT_TOKEN), chatToken)
     }
 
+    public get chatUid(): Undefinable<string> {
+        if (isServer())
+            return useGet(this.parsedCookie, HttpCookie.CHAT_UID)
+        else
+            return getRef(useCookie(HttpCookie.CHAT_UID))
+    }
+
+    public set chatUid(chatUid: Nullable<string>) {
+        setRef(useCookie(HttpCookie.CHAT_UID), chatUid)
+    }
+
     public get parsedCookie(): Record<HttpCookie, any> {
         return parse(this.requestCookie)
     }

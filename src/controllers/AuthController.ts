@@ -30,6 +30,9 @@ export class AuthController {
         if (tokenRaw.chat_token)
             this._cookieClient.chatToken = tokenRaw.chat_token
 
+        if (tokenRaw.chat_uid)
+            this._cookieClient.chatUid = tokenRaw.chat_uid
+
         if (tokenRaw.refresh_token)
             this._cookieClient.refreshToken = tokenRaw.refresh_token
     }

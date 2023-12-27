@@ -4,8 +4,6 @@ import type { MatrixEvent } from "matrix-js-sdk"
 
 import { EventType, MsgType, RoomEvent } from "matrix-js-sdk"
 
-let tid = null
-
 export class ChatController {
     public constructor(
         private _chatClient: ChatClient,
