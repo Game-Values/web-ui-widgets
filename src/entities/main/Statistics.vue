@@ -11,7 +11,7 @@ let statistics: Statistic[] = [
     {
         count: 0,
         icon: "inbox-stack",
-        label: "goods",
+        label: "lots",
     },
     {
         count: 0,
@@ -59,7 +59,11 @@ let statistics: Statistic[] = [
                     {{ formatNumbers(statistic.count) }}
                 </v-title>
 
-                <v-text :size="useFirst(useTheme('fontSize.sm'))">
+                <v-text
+                    :size="useFirst(useTheme('fontSize.sm'))"
+                    class="whitespace-nowrap"
+                    disabled
+                >
                     <i18n-t :keypath="statistic.label" />
                 </v-text>
             </v-space>
@@ -70,12 +74,12 @@ let statistics: Statistic[] = [
 
 <i18n lang="yaml">
 de:
-    goods: Anzahl von Waren
+    lots: Anzahl von Waren
     deals: Anzahl von Geschäften
     online: online
     users: alle
 en:
-    goods: number of goods
+    lots: number of lots
     deals: amount of deals
     online: online
     users: all

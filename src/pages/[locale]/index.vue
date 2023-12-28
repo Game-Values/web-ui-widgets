@@ -22,20 +22,20 @@ await mainFacade.bootstrap()
             :xs="24"
             class="lg:(mb-10 self-center)"
         >
-            <entity-main-statistics class="lg:(ml-4)" />
+            <entity-main-statistics class="lg:(ml-8)" />
         </v-column>
     </v-row>
 
     <v-row>
         <v-column
-            :lg="16"
+            :lg="14"
             :span="24"
         >
             <entity-main-games />
         </v-column>
 
         <v-column
-            :lg="8"
+            :lg="10"
             :span="0"
         >
             <widget-chat-main />
