@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+let { routerClient } = useClients()
 let { loginModal, registrationModal } = useModals()
 </script>
 
@@ -100,7 +101,7 @@ let { loginModal, registrationModal } = useModals()
                 >
                     <!-- todo: component -->
                     <template v-if="isAuthenticated()">
-                        <ui-link>
+                        <ui-link :to="routerClient.getRoute(routerClient.routeNames.STORE)">
                             <ui-icon
                                 heroicons="shopping-cart"
                                 size="24"

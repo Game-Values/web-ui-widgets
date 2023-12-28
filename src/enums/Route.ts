@@ -50,6 +50,10 @@ export enum RouteName {
     POLICY_LICENSE = routesNames.localePolicy.policyLicense,
     POLICY_PRIVACY = routesNames.localePolicy.policyPrivacy,
 
+    STORE = routesNames.localeStore.storeSales,
+    STORE_PURCHASES = routesNames.localeStore.storePurchases,
+    STORE_SALES = routesNames.localeStore.storeSales,
+
     USER = routesNames.localeUUserId.uUserIdIndexStorefront,
     USER_REVIEWS = routesNames.localeUUserId.uUserIdIndexReviews,
     USER_STOREFRONT = routesNames.localeUUserId.uUserIdIndexStorefront,
