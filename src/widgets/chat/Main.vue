@@ -1,13 +1,16 @@
 <script lang="ts" setup>
 import type { ChatEvent } from "~/dto"
+import type { NativeScrollExposed } from "vexip-ui"
 
-import { DEBOUNCE_TIMEOUT } from "~/consts"
+import { DEBOUNCE_TIMEOUT, DEFAULT_TIMEOUT } from "~/consts"
 
 let { cookieClient, storeClient } = useClients()
 let { chatController } = useControllers()
 let { loginModal, registrationModal } = useModals()
 
 let { chatRoomEvents, chatRooms } = storeToRefs(storeClient.chatStore)
+
+let refNativeScroll: NativeScrollExposed
 
 let chatEvents = computed((): ChatEvent[] => (
     getRef(chatRoomEvents).getRoomEvents(getRef(chatRooms, "mainRoom").id)
@@ -16,6 +19,21 @@ let chatEvents = computed((): ChatEvent[] => (
 let sendRoomMessage = useDebounce(async (message: string): Promise<void> => {
     await chatController.sendRoomMessage(getRef(chatRooms, "mainRoom").id, message)
 }, DEBOUNCE_TIMEOUT)
+
+onMounted((): Promise<void> => (
+    useNextTick((): void => {
+        if (refNativeScroll?.content)
+            useMutationObserver(refNativeScroll.content, (): Promise<void> => (
+                useNextTick(async (): Promise<void> => {
+                    await promiseTimeout(DEFAULT_TIMEOUT)
+                    await refNativeScroll.refresh()
+
+                    if (refNativeScroll.content instanceof HTMLUListElement)
+                        await refNativeScroll.scrollTo(0, refNativeScroll.content.scrollHeight, 0)
+                })
+            ), { childList: true, subtree: true })
+    })
+))
 </script>
 
 <template>
@@ -32,6 +50,7 @@ let sendRoomMessage = useDebounce(async (message: string): Promise<void> => {
                 <v-native-scroll
                     class="w-full"
                     height="600"
+                    ref="refNativeScroll"
                     scroll-tag="ul"
                     use-y-bar
                 >
@@ -42,7 +61,10 @@ let sendRoomMessage = useDebounce(async (message: string): Promise<void> => {
                         tag="li"
                         vertical
                     >
-                        <v-space justify="space-between">
+                        <v-space
+                            size="large"
+                            justify="space-between"
+                        >
                             <v-title :level="6">
                                 <v-space align="center">
                                     <user-chat-avatar />

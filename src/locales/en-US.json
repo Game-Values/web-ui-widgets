@@ -37,7 +37,7 @@
     },
 
     "template": {
-        "Deal": "Deal #",
+        "Deal": "Deal #{deal}",
         "Place an order for": "Place an order for {price}",
         "Your order for": "Your order for {price}",
         "Transfer the item to the username": "Transfer the item to the username {username}"

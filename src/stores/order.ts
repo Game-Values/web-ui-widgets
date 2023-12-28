@@ -1,3 +1,4 @@
+import type { CreateOrderApiV1OrderPostDataRaw } from "#schema/data-contracts"
 import type { DefineStore } from "~/types"
 
 import { GameSection, OrderStep } from "~/enums"
@@ -8,6 +9,7 @@ export namespace OrderStore {
 
     export type State = {
         gameSection: GameSection // todo
+        orderRaw: CreateOrderApiV1OrderPostDataRaw
         orderStep: OrderStep
         orderSteps: OrderStep[]
     }
@@ -19,6 +21,7 @@ export namespace OrderStore {
     export type Actions = {
         nextOrderStep: () => void
         prevOrderStep: () => void
+        setOrderRaw: (orderRaw: CreateOrderApiV1OrderPostDataRaw) => void
         setOrderStep: (orderStep: OrderStep) => void
     }
 
@@ -42,6 +45,10 @@ export let useOrderStore: (storeId?: string) => OrderStore.Store = createStore<
                 this.orderStep = useGet(this.orderSteps, this.orderStepIndex - 1)
         },
 
+        setOrderRaw(orderRaw: CreateOrderApiV1OrderPostDataRaw): void {
+            this.orderRaw = orderRaw
+        },
+
         setOrderStep(orderStep: OrderStep): void {
             this.orderStep = orderStep
         },
@@ -54,7 +61,8 @@ export let useOrderStore: (storeId?: string) => OrderStore.Store = createStore<
     },
 
     state: (): OrderStore.State => ({
-        gameSection: GameSection.GOLD,
+        gameSection: GameSection.ACCOUNTS,
+        orderRaw: {},
         orderStep: OrderStep.CHOOSE_DEAL,
         orderSteps: [
             OrderStep.CHOOSE_DEAL,

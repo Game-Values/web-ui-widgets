@@ -21,6 +21,7 @@ export enum ControllerToken {
     FACET = "FacetController",
     GAME = "GameController",
     ITEM = "ItemController",
+    ORDER = "OrderController",
     SELL = "SellController",
     USER = "UserController",
 }

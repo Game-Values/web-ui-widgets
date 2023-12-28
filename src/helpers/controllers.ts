@@ -4,7 +4,7 @@ import type { Token } from "brandi"
 import { token } from "brandi"
 
 import { DIAbstract } from "~/abstract"
-import { AuthController, ChatController, FacetController, GameController, ItemController, SellController, UserController } from "~/controllers"
+import { AuthController, ChatController, FacetController, GameController, ItemController, OrderController, SellController, UserController } from "~/controllers"
 import { AdapterToken, ClientToken, ControllerToken } from "~/enums"
 
 interface ControllersTokens {
@@ -13,6 +13,7 @@ interface ControllersTokens {
     [ControllerToken.FACET]: Token<FacetController>
     [ControllerToken.GAME]: Token<GameController>
     [ControllerToken.ITEM]: Token<ItemController>
+    [ControllerToken.ORDER]: Token<OrderController>
     [ControllerToken.SELL]: Token<SellController>
     [ControllerToken.USER]: Token<UserController>
 }
@@ -24,6 +25,7 @@ export class Controllers extends DIAbstract<ControllersTokens> {
         [ControllerToken.FACET]: token<FacetController>(ControllerToken.FACET),
         [ControllerToken.GAME]: token<GameController>(ControllerToken.GAME),
         [ControllerToken.ITEM]: token<ItemController>(ControllerToken.GAME),
+        [ControllerToken.ORDER]: token<OrderController>(ControllerToken.ORDER),
         [ControllerToken.SELL]: token<SellController>(ControllerToken.SELL),
         [ControllerToken.USER]: token<UserController>(ControllerToken.USER),
     }
@@ -35,6 +37,7 @@ export class Controllers extends DIAbstract<ControllersTokens> {
             [this.__tokens[ControllerToken.FACET], FacetController],
             [this.__tokens[ControllerToken.GAME], GameController],
             [this.__tokens[ControllerToken.ITEM], ItemController],
+            [this.__tokens[ControllerToken.ORDER], OrderController],
             [this.__tokens[ControllerToken.SELL], SellController],
             [this.__tokens[ControllerToken.USER], UserController],
         ]
@@ -64,6 +67,11 @@ export class Controllers extends DIAbstract<ControllersTokens> {
             ],
             [
                 ItemController,
+                this.__getToken(AdapterToken.API),
+                this.__getToken(ClientToken.STORE),
+            ],
+            [
+                OrderController,
                 this.__getToken(AdapterToken.API),
                 this.__getToken(ClientToken.STORE),
             ],
@@ -106,6 +114,11 @@ export class Controllers extends DIAbstract<ControllersTokens> {
     @Memoize()
     public get itemController(): ItemController {
         return this.__getInjection(this.__tokens[ControllerToken.ITEM])
+    }
+
+    @Memoize()
+    public get orderController(): OrderController {
+        return this.__getInjection(this.__tokens[ControllerToken.ORDER])
     }
 
     @Memoize()

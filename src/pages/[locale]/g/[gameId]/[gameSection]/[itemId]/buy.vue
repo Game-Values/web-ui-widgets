@@ -1,5 +1,8 @@
 <script lang="ts" setup>
+let { storeClient } = useClients()
 let { buyFacade } = useFacades()
+
+let { item } = storeToRefs(storeClient.itemStore)
 
 await buyFacade.bootstrap()
 </script>
@@ -11,12 +14,19 @@ await buyFacade.bootstrap()
             :md="14"
             :xs="24"
         >
-            <v-space vertical>
+            <v-space
+                :size="remToNumber(useTheme('spacing.10'))"
+                vertical
+            >
                 <v-title :level="1">
                     <i18n-t
                         keypath="template.Deal"
                         scope="global"
-                    />
+                    >
+                        <template #deal>
+                            {{ item.id }}
+                        </template>
+                    </i18n-t>
                 </v-title>
 
                 <entity-buy-steps />

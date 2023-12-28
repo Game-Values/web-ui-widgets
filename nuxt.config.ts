@@ -371,6 +371,7 @@ let nuxtConfig: NuxtConfig = {
         resolve: {
             alias: {
                 crypto: "rollup-plugin-node-polyfills/polyfills/empty",
+                fs: "rollup-plugin-node-polyfills/polyfills/empty",
             },
         },
         server: {

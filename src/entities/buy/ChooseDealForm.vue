@@ -6,17 +6,31 @@ interface FormModel {
 }
 
 let { storeClient } = useClients()
+let { orderController } = useControllers()
+
+let { item } = storeToRefs(storeClient.itemStore)
 
 let formModel: UnwrapRef<FormModel> = reactive({
-    // todo: store (?)
+    comment: "",
+    count: 0,
+    filter1: "",
+    filter2: "",
 })
 </script>
 
 <template>
-<v-form v-model="formModel">
+<v-form :model="formModel">
     <v-form-item :label="$t('order.Specify the quantity')">
-        <v-form-item pure>
-            <v-input :placeholder="$t('order.I will pay')" />
+        <v-form-item
+            prop="count"
+            pure
+            required
+        >
+            <v-number-input
+                :max="item.attributes.count"
+                :min="1"
+                :placeholder="$t('order.I will pay')"
+            />
         </v-form-item>
 
         <ui-icon
@@ -25,47 +39,43 @@ let formModel: UnwrapRef<FormModel> = reactive({
             size="24"
         />
 
-        <v-form-item pure>
+        <v-form-item
+            prop="filter1"
+            pure
+        >
             <v-input :placeholder="$t('order.Other filter')" />
         </v-form-item>
     </v-form-item>
 
-    <v-form-item :label="$t('order.Specify the quantity')">
+    <v-form-item
+        :label="$t('order.Specify the quantity')"
+        prop="filter2"
+    >
         <v-input :placeholder="$t('order.Other filter')" />
     </v-form-item>
 
-    <v-form-item :label="$t('order.Order comment')">
+    <v-form-item
+        :label="$t('order.Order comment')"
+        prop="comment"
+    >
         <v-textarea
             :placeholder="$t('order[\'Specify the method of item transfer (e.g., your in-game username)\']')"
         />
-    </v-form-item>
-
-    <v-form-item :label="$t('order.Payment method')">
-        <v-select :placeholder="$t('order.With a credit card on the website')">
-            <template #prefix>
-                <ui-icon
-                    color="positive-light"
-                    heroicons="credit-card"
-                    size="24"
-                />
-            </template>
-        </v-select>
     </v-form-item>
 
     <v-form-item action>
         <!-- todo: native submit -->
         <v-form-submit
             block
-            @click="storeClient.orderStore.nextOrderStep"
+            @submit="
+                orderController.createOrder({
+                    attributes: formModel,
+                    game_id: item.id,
+                    owner_id: item.owner_id,
+                })
+            "
         >
-            <i18n-t
-                keypath="template.Place an order for"
-                scope="global"
-            >
-                <template #price>
-                    $1234
-                </template>
-            </i18n-t>
+            Create order
         </v-form-submit>
     </v-form-item>
 

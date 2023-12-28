@@ -85,7 +85,7 @@ let { item } = storeToRefs(storeClient.itemStore)
             </v-title>
 
             <v-text>
-                {{ item.attributes.price }}
+                {{ formatPrice(item.attributes.price) }}
             </v-text>
         </v-space>
     </v-column>
