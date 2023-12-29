@@ -8,9 +8,11 @@
 .nitro
 .output
 .env
+.env.local
 .env.*.local
 
 *.log*
 
+dist
 node_modules
 schema

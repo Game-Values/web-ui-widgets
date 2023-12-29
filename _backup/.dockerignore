@@ -3,14 +3,17 @@
 .idea
 
 .eslintcache
-.http
+.git
+.gitignore
 .nuxt
 .nitro
 .output
 .env
+.env.local
 .env.*.local
 
 *.log*
 
+dist
 node_modules
 schema
