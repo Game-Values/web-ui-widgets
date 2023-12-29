@@ -44,7 +44,7 @@ let { item } = storeToRefs(storeClient.itemStore)
             </v-title>
 
             <v-text>
-                {{ item.attributes.count }}
+                {{ item.attributes.amount }}
             </v-text>
         </v-space>
     </v-column>

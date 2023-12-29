@@ -1,8 +1,12 @@
 <script lang="ts" setup>
+import type { Nullable } from "~/types"
 import type { UnwrapRef } from "vue"
 
+import { OrderCurrencyRaw } from "#schema/data-contracts"
+
 interface FormModel {
-    // todo
+    amount: Nullable<number>
+    currency: OrderCurrencyRaw,
 }
 
 let { storeClient } = useClients()
@@ -10,24 +14,19 @@ let { orderController } = useControllers()
 
 let { item } = storeToRefs(storeClient.itemStore)
 
-let formModel: UnwrapRef<FormModel> = reactive({
-    comment: "",
-    count: 0,
-    filter1: "",
-    filter2: "",
-})
+let formModel: UnwrapRef<FormModel> = reactive({ ...getRef(item, "attributes") })
 </script>
 
 <template>
 <v-form :model="formModel">
     <v-form-item :label="$t('order.Specify the quantity')">
         <v-form-item
-            prop="count"
+            prop="amount"
             pure
             required
         >
             <v-number-input
-                :max="item.attributes.count"
+                :max="item.attributes.amount"
                 :min="1"
                 :placeholder="$t('order.I will pay')"
             />
@@ -40,23 +39,25 @@ let formModel: UnwrapRef<FormModel> = reactive({
         />
 
         <v-form-item
-            prop="filter1"
+            prop="amount"
             pure
         >
-            <v-input :placeholder="$t('order.Other filter')" />
+            <v-number-input
+                :max="item.attributes.amount"
+                :min="1"
+                placeholder="I will receive"
+            />
         </v-form-item>
     </v-form-item>
 
     <v-form-item
         :label="$t('order.Specify the quantity')"
-        prop="filter2"
     >
         <v-input :placeholder="$t('order.Other filter')" />
     </v-form-item>
 
     <v-form-item
         :label="$t('order.Order comment')"
-        prop="comment"
     >
         <v-textarea
             :placeholder="$t('order[\'Specify the method of item transfer (e.g., your in-game username)\']')"
@@ -69,7 +70,11 @@ let formModel: UnwrapRef<FormModel> = reactive({
             block
             @submit="
                 orderController.createOrder({
-                    attributes: formModel,
+                    attributes: {
+                        amount: formModel.amount!,
+                        currency: formModel.currency,
+                        price: formModel.amount! * item.attributes.price,
+                    },
                     game_id: item.id,
                     owner_id: item.owner_id,
                 })

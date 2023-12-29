@@ -82,7 +82,7 @@ useI18n()
 
         <v-table-column
             :width="150"
-            id-key="attributesCount"
+            id-key="attributesAmount"
             name="In Stock"
             sorter
         />

@@ -24,6 +24,7 @@ export class Items extends CollectionAbstract<Item, ItemRaw> {
     }
 
     public get lotsTableData(): LotsTable[] {
+        console.log(this)
         return useMap<Item, LotsTable>(this, (item: Item): LotsTable => {
             let deepKeys: string[] = useMap(useKeys(item.attributes), (
                 (key: string): string => `attributes.${key}`

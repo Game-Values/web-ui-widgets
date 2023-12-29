@@ -94,7 +94,7 @@ async function handleDeleteItem(): Promise<void> {
 
         <v-form-item
             label="Item count"
-            prop="attributes.count"
+            prop="attributes.amount"
         >
             <v-number-input />
         </v-form-item>

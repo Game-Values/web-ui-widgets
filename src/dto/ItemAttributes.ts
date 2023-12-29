@@ -1,8 +1,12 @@
-import { GameSection } from "~/enums"
+import type { OrderCurrencyRaw } from "#schema/data-contracts"
+import type { GameSection } from "~/enums"
 
 export class ItemAttributes {
     @Expose()
-    declare public count: number
+    declare public amount: number
+
+    @Expose()
+    declare public currency: OrderCurrencyRaw
 
     @Expose()
     declare public description: string
@@ -14,6 +18,5 @@ export class ItemAttributes {
     declare public server: string
 
     @Expose()
-    @Type((): typeof GameSection => GameSection)
     declare public type: GameSection
 }
