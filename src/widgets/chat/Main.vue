@@ -62,8 +62,8 @@ onMounted((): Promise<void> => (
                         vertical
                     >
                         <v-space
-                            size="large"
                             justify="space-between"
+                            size="large"
                         >
                             <v-title :level="6">
                                 <v-space align="center">
@@ -81,7 +81,7 @@ onMounted((): Promise<void> => (
                             />
                         </v-space>
 
-                        <v-text>
+                        <v-text disabled>
                             {{ chatEvent.content }}
                         </v-text>
                     </v-space>

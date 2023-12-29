@@ -21,8 +21,9 @@ defineProps<{
         rounded-3
         transition-colors
         group-hover:(bg-secondary)
-        group-[.liked]:(bg-gradient-to-b from-accent-medium from-0% to-accent-medium-light to-100%)
-        hover-group-[.liked]:(bg-accent-medium)!
+        group-[.liked]:(bg-accent-medium)
+        group-[.liked:hover]:(bg-gradient-to-b from-accent-medium from-0% to-accent-medium-light to-100%)
+        hover-group-[.liked]:(bg-accent-medium)
     "
 >
     <ui-icon :custom="useKebabCase(game.name)" />
