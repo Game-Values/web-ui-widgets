@@ -1,27 +1,29 @@
-import type { CreateOrderApiV1OrderPostDataRaw } from "#schema/data-contracts"
+import type { OrderInDBRaw } from "#schema/data-contracts"
 import type { DefineStore } from "~/types"
 
+import { Order } from "~/dto"
 import { GameSection, OrderStep } from "~/enums"
-import { createStore } from "~/factories"
+import { createModel, createStore } from "~/factories"
 
 export namespace OrderStore {
     export type Id = "orderStore"
 
     export type State = {
         gameSection: GameSection // todo
-        orderRaw: CreateOrderApiV1OrderPostDataRaw
+        orderRaw: OrderInDBRaw
         orderStep: OrderStep
         orderSteps: OrderStep[]
     }
 
     export type Getters = {
+        order: () => Order
         orderStepIndex: () => number
     }
 
     export type Actions = {
         nextOrderStep: () => void
         prevOrderStep: () => void
-        setOrderRaw: (orderRaw: CreateOrderApiV1OrderPostDataRaw) => void
+        setOrderRaw: (orderRaw: OrderInDBRaw) => void
         setOrderStep: (orderStep: OrderStep) => void
     }
 
@@ -45,7 +47,7 @@ export let useOrderStore: (storeId?: string) => OrderStore.Store = createStore<
                 this.orderStep = useGet(this.orderSteps, this.orderStepIndex - 1)
         },
 
-        setOrderRaw(orderRaw: CreateOrderApiV1OrderPostDataRaw): void {
+        setOrderRaw(orderRaw: OrderInDBRaw): void {
             this.orderRaw = orderRaw
         },
 
@@ -55,6 +57,10 @@ export let useOrderStore: (storeId?: string) => OrderStore.Store = createStore<
     },
 
     getters: {
+        order(): Order {
+            return createModel(Order, this.orderRaw)
+        },
+
         orderStepIndex(): number {
             return this.orderSteps.indexOf(this.orderStep)
         },

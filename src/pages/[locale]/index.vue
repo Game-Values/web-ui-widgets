@@ -12,7 +12,7 @@ await mainFacade.bootstrap()
     }"
     height="500"
 >
-    <ui-image src="/images/bg-main.jpg" />
+    <ui-image src="/images/bg-main.png" />
 
     <template #overlay>
         <div

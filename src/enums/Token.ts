@@ -31,6 +31,7 @@ export enum FacadeToken {
     FAVORITES = "FavoritesFacade",
     GAME = "GameFacade",
     MAIN = "MainFacade",
+    ORDER = "OrderFacade",
     SELL = "SellFacade",
     USER = "UserFacade",
     USER_ME = "UserMeFacade",

@@ -16,6 +16,18 @@ let formModel: UnwrapRef<FormModel> = reactive({
 
 <template>
 <v-form v-model="formModel">
+    <v-form-item label="Payment method">
+        <v-select placeholder="With a credit card on the website">
+            <template #prefix>
+                <ui-icon
+                    color="positive-light"
+                    heroicons="credit-card"
+                    size="24"
+                />
+            </template>
+        </v-select>
+    </v-form-item>
+
     <v-form-item>
         <v-space>
             <v-form-item
@@ -25,7 +37,6 @@ let formModel: UnwrapRef<FormModel> = reactive({
                 <!-- todo: native submit -->
                 <v-form-submit
                     block
-                    @click="storeClient.orderStore.nextOrderStep"
                 >
                     <i18n-t
                         keypath="label.Pay"
@@ -38,7 +49,6 @@ let formModel: UnwrapRef<FormModel> = reactive({
                 <!-- todo: native reset -->
                 <v-form-reset
                     block
-                    @click="storeClient.orderStore.prevOrderStep"
                 >
                     <i18n-t
                         keypath="order.Cancel the order"

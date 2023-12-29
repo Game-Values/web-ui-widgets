@@ -41,6 +41,7 @@ declare module "vue-router" {
         gameSection: GameSection
         itemId: string
         locale: Locale
+        orderId: string
         paymentType: PaymentType
         userId: string
     }
