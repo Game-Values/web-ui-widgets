@@ -1,7 +1,7 @@
 import type { ChatStore } from "~/stores/chat"
 import type { FacetsStore } from "~/stores/facets"
 import type { GameStore } from "~/stores/game"
-import type { GamesStore } from "~/stores/games"
+import type { GamesStore } from "~/stores/game"
 import type { ItemStore } from "~/stores/item"
 import type { ItemsStore } from "~/stores/items"
 import type { OrderStore } from "~/stores/order"

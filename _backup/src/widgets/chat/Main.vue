@@ -2,7 +2,7 @@
 import type { ChatEvent } from "~/dto"
 import type { NativeScrollExposed } from "vexip-ui"
 
-import { DEBOUNCE_TIMEOUT, DEFAULT_TIMEOUT } from "~/consts"
+import { DEBOUNCE_TIMEOUT, DEFAULT_TIMEOUT } from "~/enums"
 
 let { cookieClient, storeClient } = useClients()
 let { chatController } = useControllers()

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 let { storeClient } = useClients()
 
-// todo: model or collection
+// todo: lib or collection
 let { game } = storeToRefs(storeClient.gameStore)
 </script>
 

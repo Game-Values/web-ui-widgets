@@ -1,0 +1,14 @@
+.DS_Store
+.cache
+.idea
+
+.eslintcache
+.http
+.nuxt
+.nitro
+.output
+
+*.log*
+
+node_modules
+schema

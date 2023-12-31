@@ -1,6 +1,6 @@
-export * from "~~/common/consts"
+export * from "~~/common/enums"
 
-export * from "~/consts/duration"
-export * from "~/consts/icons"
-export * from "~/consts/locale"
-export * from "~/consts/timeout"
+export * from "~/enums/duration"
+export * from "~/enums/icons"
+export * from "~/enums/locale"
+export * from "~/enums/timeout"

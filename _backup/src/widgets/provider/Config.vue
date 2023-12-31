@@ -2,7 +2,7 @@
 import type { ScopedProps } from "~/types"
 import type { VNode } from "vue"
 
-import { DEFAULT_LOCALE, DEFAULT_LOCALE_ISO, VEXIP_LOCALE } from "~/consts"
+import { DEFAULT_LOCALE, DEFAULT_LOCALE_ISO, VEXIP_LOCALE } from "~/enums"
 
 const DEFAULT_GAP: number[] = Array(2).fill(remToNumber(useTheme("spacing.9")))
 

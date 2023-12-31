@@ -4,7 +4,7 @@ import type { Component, ComponentCustomProps } from "vue"
 
 import { Toast } from "vexip-ui"
 
-import { TOAST_DURATION } from "~/consts"
+import { TOAST_DURATION } from "~/enums"
 
 interface ToastOpenOptions {
     props?: ComponentCustomProps

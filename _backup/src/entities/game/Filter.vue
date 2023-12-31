@@ -3,7 +3,7 @@ import type { GameSubsection } from "~/dto"
 import type { Arrayable, AsyncComponent, FacetQuery } from "~/types"
 import type { Component } from "vue"
 
-import { DEBOUNCE_TIMEOUT } from "~/consts"
+import { DEBOUNCE_TIMEOUT } from "~/enums"
 import { Facet, FilterType } from "~/enums"
 
 let props = defineProps<{

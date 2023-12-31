@@ -1,7 +1,7 @@
 import type { Locale } from "~/enums"
 import type { SeoOgLocale, SeoRaw } from "~/types"
 
-import { LOCALES } from "~/consts"
+import { LOCALES } from "~/enums"
 
 export class Seo implements SeoRaw {
     @Expose()

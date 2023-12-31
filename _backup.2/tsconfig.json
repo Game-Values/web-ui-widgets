@@ -1,0 +1,14 @@
+{
+    "extends": "./.nuxt/tsconfig.json",
+    "compilerOptions": {
+        "typeRoots": [
+            "src/shared/model/types"
+        ],
+        "types": [
+            "@nuxt/types",
+            "@pinia/nuxt",
+            "@types/node",
+            "vite/client"
+        ]
+    }
+}

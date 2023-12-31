@@ -3,7 +3,7 @@ import type { ValueOfArray } from "~/types"
 import type { IconProps } from "vexip-ui"
 import type { VNode } from "vue"
 
-import { HEROICONS } from "~/consts"
+import { HEROICONS } from "~/enums"
 
 defineProps<(
     IconProps & {
@@ -33,8 +33,8 @@ defineSlots<{
     :style="{
         color: color ? useTheme(`colors.${color}`) : 'currentColor',
         fontSize: size ? pxToRem(size) : 'inherit',
-        height: height ? pxToRem(height) : 'var(--vpx-icon-height)',
-        width: width ? pxToRem(width) : 'var(--vpx-icon-width)',
+        height: height ? pxToRem(height) : 'var(--vpx-icons-height)',
+        width: width ? pxToRem(width) : 'var(--vpx-icons-width)',
     }"
 >
     <i

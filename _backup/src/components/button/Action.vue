@@ -3,7 +3,7 @@ import type { Lazy, ScopedProps } from "~/types"
 import type { ButtonProps } from "vexip-ui"
 import type { VNode } from "vue"
 
-import { DEFAULT_TIMEOUT } from "~/consts"
+import { DEFAULT_TIMEOUT } from "~/enums"
 
 let props = defineProps<(
     ButtonProps & {

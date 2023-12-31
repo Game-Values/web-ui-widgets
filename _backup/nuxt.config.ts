@@ -28,7 +28,7 @@ let nuxtConfig: NuxtConfig = {
                 {
                     href: "/favicon/favicon.ico",
                     rel: "icon",
-                    type: "image/x-icon",
+                    type: "image/x-icons",
                 },
             ],
             script: [

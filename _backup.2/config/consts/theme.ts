@@ -1,0 +1,16 @@
+export const THEME_COLORS: Record<string, `#${string}`> = {
+    accent: "#3478F6",
+    black: "#000000",
+    blue: "#1894D0",
+    error: "#D8222F",
+    grey: "#D9D9D9",
+    info: "#3D98FF",
+    negative: "#D8222F",
+    pink: "#8B5CF6",
+    positive: "#219653",
+    primary: "#3478F6",
+    success: "#3BCF5E",
+    yellow: "#FDBA0A",
+    warning: "#FF9500",
+    white: "#FFFFFF",
+}

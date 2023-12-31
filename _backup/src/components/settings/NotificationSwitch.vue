@@ -26,7 +26,7 @@ defineEmits<{
 
     <v-switch
         :value="modelValue"
-        @update:value="$emit('update:model-value', $event)"
+        @update:value="$emit('update:lib-value', $event)"
     />
 </v-space>
 </template>

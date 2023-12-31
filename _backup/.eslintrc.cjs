@@ -125,7 +125,7 @@ module.exports = (() => (
                     binding: [
                         "v-bind",
                         "v-for",
-                        "v-model",
+                        "v-lib",
                         "v-html",
                         "v-text",
                         "v-slot",

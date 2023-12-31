@@ -23,7 +23,7 @@ let active: WritableComputedRef<boolean> = computed({
     v-model:active="active"
     width="100%"
     closable
-    @close="$emit('update:model-value', false)"
+    @close="$emit('update:lib-value', false)"
 >
     <template #close>
         <ui-icon

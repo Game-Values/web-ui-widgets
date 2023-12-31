@@ -1,0 +1,16 @@
+.DS_Store
+.cache
+.idea
+
+.eslintcache
+.git
+.gitignore
+.nuxt
+.nitro
+.output
+
+*.log*
+
+dist
+node_modules
+schema
