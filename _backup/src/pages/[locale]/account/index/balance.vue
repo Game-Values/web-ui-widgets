@@ -7,7 +7,7 @@ definePageMeta({
 
 let { routerClient } = useClients()
 
-// todo: from api
+// todo: from httpInstance
 // let balanceData = [
 //     {
 //         Amount: "+17 240 $",

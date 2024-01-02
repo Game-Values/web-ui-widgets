@@ -1,2 +1,2 @@
-export * from "~/shared/api/http"
-export * from "~/shared/api/api"
+export * from "~/shared/httpInstance/http"
+export * from "~/shared/httpInstance/httpInstance"

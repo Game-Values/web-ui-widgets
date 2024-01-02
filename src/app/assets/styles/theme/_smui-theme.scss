@@ -1,0 +1,9 @@
+@use "sass:map";
+
+@use "@material/theme/index" as theme with (
+    $primary: #3478F6,
+    $secondary: #353536,
+    $surface: #1B1B1C,
+    $background: #1B1B1C,
+    $error: #D8222F,
+);

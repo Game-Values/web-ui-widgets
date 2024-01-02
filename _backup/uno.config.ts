@@ -152,7 +152,7 @@ let theme: Theme = {
                 "avatar-large": get(sizes, "$avatar-size-large"),
                 "avatar-small": get(sizes, "$avatar-size-small"),
                 dot: get(sizes, "$dot-size"),
-                layout: get(sizes, "$layouts-width"),
+                layout: get(sizes, "$header-width"),
                 "route-nav-button": get(sizes, "$route-nav-button-size"),
             }
         ))

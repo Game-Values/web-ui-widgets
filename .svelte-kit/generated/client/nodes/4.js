@@ -1,0 +1,1 @@
+export { default as component } from "../../../../src/app/providers/routes/[locale]/(app)/ai/+page.svelte";

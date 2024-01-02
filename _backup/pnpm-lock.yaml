@@ -1798,7 +1798,7 @@ packages:
     transitivePeerDependencies:
       - '@unocss/webpack'
       - '@vue/compiler-core'
-      - '@vue/composition-api'
+      - '@vue/composition-httpInstance'
       - async-validator
       - axios
       - change-case
@@ -2262,7 +2262,7 @@ packages:
       - '@planetscale/database'
       - '@upstash/redis'
       - '@vercel/kv'
-      - '@vue/composition-api'
+      - '@vue/composition-httpInstance'
       - idb-keyval
       - petite-vue-i18n
       - rollup
@@ -2468,7 +2468,7 @@ packages:
       '@nuxt/kit': 3.9.0
       pinia: 2.1.7(typescript@5.3.3)(vue@3.3.13)
     transitivePeerDependencies:
-      - '@vue/composition-api'
+      - '@vue/composition-httpInstance'
       - rollup
       - supports-color
       - typescript
@@ -4181,7 +4181,7 @@ packages:
       '@vueuse/shared': 10.7.1(vue@3.3.13)
       vue-demi: 0.14.6(vue@3.3.13)
     transitivePeerDependencies:
-      - '@vue/composition-api'
+      - '@vue/composition-httpInstance'
       - vue
     dev: false
 
@@ -4193,7 +4193,7 @@ packages:
       '@vueuse/shared': 10.7.1(vue@3.3.13)
       vue-demi: 0.14.6(vue@3.3.13)
     transitivePeerDependencies:
-      - '@vue/composition-api'
+      - '@vue/composition-httpInstance'
       - vue
 
   /@vueuse/integrations@10.7.1(focus-trap@7.5.4)(vue@3.3.13):
@@ -4242,7 +4242,7 @@ packages:
       focus-trap: 7.5.4
       vue-demi: 0.14.6(vue@3.3.13)
     transitivePeerDependencies:
-      - '@vue/composition-api'
+      - '@vue/composition-httpInstance'
       - vue
     dev: true
 
@@ -4261,7 +4261,7 @@ packages:
       nuxt: 3.9.0(@types/node@20.10.5)(eslint@8.56.0)(lightningcss@1.22.1)(sass@1.69.5)(stylelint@15.11.0)(typescript@5.3.3)(vite@5.0.0-beta.20)
       vue-demi: 0.14.6(vue@3.3.13)
     transitivePeerDependencies:
-      - '@vue/composition-api'
+      - '@vue/composition-httpInstance'
       - rollup
       - supports-color
       - vue
@@ -4272,7 +4272,7 @@ packages:
     dependencies:
       vue-demi: 0.14.6(vue@3.3.13)
     transitivePeerDependencies:
-      - '@vue/composition-api'
+      - '@vue/composition-httpInstance'
       - vue
 
   /@webassemblyjs/ast@1.11.6:
@@ -9026,7 +9026,7 @@ packages:
       - '@nuxt/devtools'
       - '@unocss/webpack'
       - '@vue/compiler-core'
-      - '@vue/composition-api'
+      - '@vue/composition-httpInstance'
       - async-validator
       - axios
       - change-case
@@ -9079,7 +9079,7 @@ packages:
       - '@nuxt/devtools'
       - '@unocss/webpack'
       - '@vue/compiler-core'
-      - '@vue/composition-api'
+      - '@vue/composition-httpInstance'
       - async-validator
       - axios
       - change-case
@@ -9136,7 +9136,7 @@ packages:
       ua-parser-js: 1.0.37
       vue-demi: 0.14.6(vue@3.3.13)
     transitivePeerDependencies:
-      - '@vue/composition-api'
+      - '@vue/composition-httpInstance'
       - rollup
       - supports-color
       - vue

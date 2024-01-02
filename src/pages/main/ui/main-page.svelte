@@ -1,0 +1,22 @@
+<script lang="ts">
+import type { IMainPageData } from "~/pages/main"
+
+import LayoutGrid, { Cell } from "@smui/layout-grid"
+
+import { Content } from "~/shared/ui"
+import { GameGroup } from "~/widgets/game"
+
+export let data: IMainPageData
+</script>
+
+<Content>
+    <LayoutGrid>
+        <Cell spanDevices={{ desktop: 8, tablet: 12, phone: 12 }}>
+            <GameGroup games={data.games} />
+        </Cell>
+
+        <Cell spanDevices={{ desktop: 4, tablet: 0, phone: 0 }}>
+            chat
+        </Cell>
+    </LayoutGrid>
+</Content>

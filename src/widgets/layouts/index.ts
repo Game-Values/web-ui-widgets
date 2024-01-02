@@ -1,1 +1,1 @@
-export * from "$widgets/layouts/ui"
+export * from "~/widgets/layouts/ui"

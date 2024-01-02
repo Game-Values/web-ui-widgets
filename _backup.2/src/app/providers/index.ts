@@ -1,1 +1,1 @@
-export * from "~/app/providers/layouts"
+export * from "~/app/providers/header"

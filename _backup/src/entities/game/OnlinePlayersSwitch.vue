@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-// todo: from api
+// todo: from httpInstance
 
 useI18n()
 

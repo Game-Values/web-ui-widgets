@@ -3,7 +3,7 @@ import type { IGame } from "~/entities/game"
 import type { UnwrapRef } from "vue"
 
 import { useMeModel } from "~/entities/me"
-import { api } from "~/shared/api"
+import { api } from "~/shared/httpInstance"
 import { refreshObject } from "~/shared/lib"
 
 export let useGameModel = defineStore("gameModel", () => {

@@ -1,0 +1,29 @@
+\:root
+    --mdc-theme-primary: #3478F6
+    --mdc-typography-button-font-size: 1.0625rem
+    --mdc-typography-button-font-weight: 600
+    --mdc-typography-button-letter-spacing: normal
+    --mdc-typography-button-text-transform: none
+    --mdc-typography-font-family: Montserrat
+    --mdc-shape-small: 0.5rem
+    --mdc-text-button-container-height: 3rem
+
+.mdc-card
+    @apply shadow-none
+
+    &__actions
+        @apply px-0
+
+.mdc-icon-button svg
+    @apply w-1em h-1em
+
+.mdc-text-field .mdc-floating-label--float-above
+    @apply top-[calc(50%-0.25rem)]
+
+.mdc-text-field--outlined
+    @apply h-12
+
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing
+    @apply border-white/12 bg-white/12

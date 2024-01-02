@@ -1,77 +1,55 @@
-import type { Module } from "~/shared/model"
-
-import { basename } from "node:path"
-
-import { FileSystemIconLoader } from "@iconify/utils/lib/loader/node-loaders"
-import { defineConfig, presetIcons, presetUno, transformerDirectives, transformerVariantGroup } from "unocss"
-import { optimize } from "svgo"
-import { glob } from "fast-glob"
-
-import { THEME_COLORS } from "./config/consts"
-import type {IconifyJSON} from "@iconify/types";
+import extractorSvelte from "@unocss/extractor-svelte"
+import { defineConfig, presetWebFonts, presetUno, transformerDirectives, transformerVariantGroup } from "unocss"
 
 export default defineConfig({
-    content: {
-        inline: [
-            async (): Promise<string> => (
-                JSON.stringify(
-                    await glob("src/assets/icons/*.svg").then(icons => (
-                        icons.map(filepath => `i-custom:${basename(filepath, ".svg")}`)
-                    ))
-                )
-            ),
-        ],
-    },
-
-    presets: [
-        presetIcons({
-            collections: {
-                base: FileSystemIconLoader("assets/icons/base"),
-                custom: FileSystemIconLoader("assets/icons/custom"),
-                game: FileSystemIconLoader("assets/icons/game"),
-                heroicon: (): Promise<IconifyJSON> => (
-                    import("@iconify-json/heroicons/icons.json")
-                        .then((module: Module<IconifyJSON>): IconifyJSON => module.default)
-                ),
-            },
-            customizations: {
-                transform: (svg: string): string => {
-                    let { data } = optimize(svg, {
-                        plugins: [
-                            "removeDimensions",
-                        ],
-                    })
-
-                    return data
-                },
-            },
-            extraProperties: {
-                height: "inherit",
-                width: "inherit",
-            },
-        }),
-        presetUno(),
+    extractors: [
+        extractorSvelte(),
     ],
 
-    shortcuts: {
-        "align-center": "flex items-center",
-    },
+	presets: [
+		presetUno(),
+		presetWebFonts({
+			provider: "bunny",
+			fonts: {
+				base: "Montserrat:400,500,600,700",
+			},
+		}),
+	],
 
-    theme: {
-        colors: THEME_COLORS,
+	shortcuts: {
+
+	},
+
+	theme: {
+        colors: {
+            primary: "#3478F6",
+            secondary: "#353536",
+            surface: "#1B1B1C",
+            background: "#1B1B1C",
+            error: "#D8222F",
+        },
+
         fontFamily: {
             montserrat: "Montserrat",
         },
+
         fontSize: {
+            "level-1": ["2.25rem", "1.5em"],
+            "level-2": ["1.875rem", "1.5em"],
+            "level-3": ["1.5rem", "1.5em"],
+            "level-4": ["1.0625rem", "1.5em"],
+            "level-5": ["1.0625rem", "1.5em"],
+            "level-6": ["1rem", "1.5em"],
             normal: "1rem",
         },
+
         lineHeight: {
             normal: "1.5em",
         },
-    },
+	},
 
-    transformers: [
-        transformerDirectives(),
-        transformerVariantGroup(),
-    ],
+	transformers: [
+		transformerDirectives(),
+		transformerVariantGroup(),
+	],
 })

@@ -5,7 +5,7 @@ definePageMeta({
     },
 })
 
-// todo: from api
+// todo: from httpInstance
 // let salesData = [
 //     {
 //         Amount: "+17 240 $",
