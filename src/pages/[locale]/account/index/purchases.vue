@@ -1,49 +1,18 @@
 <script lang="ts" setup>
+import type { Order } from "~/dto"
+
 definePageMeta({
     seo: {
         title: "Purchases",
     },
 })
 
-// todo: from api
-// let purchasesData = [
-//     {
-//         Amount: "+17 240 $",
-//         Buyer: { name: "12345678" },
-//         Date: "08.08.23, 11:44",
-//         Game: "ArcheAge",
-//         Id: "1",
-//         Item: "A golden sword of destiny",
-//         Status: "Ordered",
-//     },
-//     {
-//         Amount: "+17 240 $",
-//         Buyer: { name: "12345678" },
-//         Date: "08.08.23, 11:44",
-//         Game: "ArcheAge",
-//         Id: "1",
-//         Item: "A golden sword of destiny",
-//         Status: "Ordered",
-//     },
-//     {
-//         Amount: "+17 240 $",
-//         Buyer: { name: "12345678" },
-//         Date: "08.08.23, 11:44",
-//         Game: "ArcheAge",
-//         Id: "1",
-//         Item: "A golden sword of destiny",
-//         Status: "Ordered",
-//     },
-//     {
-//         Amount: "+17 240 $",
-//         Buyer: { name: "12345678" },
-//         Date: "08.08.23, 11:44",
-//         Game: "ArcheAge",
-//         Id: "1",
-//         Item: "A golden sword of destiny",
-//         Status: "Ordered",
-//     },
-// ]
+let { routerClient, storeClient } = useClients()
+let { orderController } = useControllers()
+
+let { userOrders } = storeToRefs(storeClient.userMeStore)
+
+await orderController.fetchMeOrder()
 </script>
 
 <template>
@@ -51,121 +20,49 @@ definePageMeta({
     size="large"
     vertical
 >
-    <v-text>
-        Purchases
-    </v-text>
-<!--    <v-title :level="3">-->
-<!--        Current Purchases-->
-<!--    </v-title>-->
+    <v-title :level="3">
+        Current Purchases
+    </v-title>
 
-<!--    <v-table :data="purchasesData">-->
-<!--        <v-table-column-->
-<!--            :width="100"-->
-<!--            id-key="Id"-->
-<!--            name="Id"-->
-<!--        />-->
+    <v-table :data="userOrders.tableData">
+        <v-table-column
+            v-slot="{ row }: { row: Order }"
+            id-key="id"
+            name="#"
+        >
+            <ui-link
+                :to="routerClient.getRoute(routerClient.routeNames.ORDER, {
+                    params: {
+                        orderId: row.id,
+                    },
+                })"
+            >
+                {{ row.id }}
+            </ui-link>
+        </v-table-column>
 
-<!--        <v-table-column-->
-<!--            id-key="Date"-->
-<!--            name="Date"-->
-<!--        />-->
+        <v-table-column
+            v-slot="{ row }: { row: Order }"
+            id-key="created"
+            name="Date"
+        >
+            {{ formatDate(row.created, "MM.dd.yyyy k:m") }}
+        </v-table-column>
 
-<!--        <v-table-column-->
-<!--            id-key="Game"-->
-<!--            name="Game"-->
-<!--        />-->
+        <v-table-column
+            id-key="game_id"
+            name="Game"
+        />
 
-<!--        <v-table-column-->
-<!--            id-key="Item"-->
-<!--            name="Item"-->
-<!--        />-->
+        <v-table-column
+            id-key="attributesAmount"
+            name="Amount"
+        />
 
-<!--        <v-table-column-->
-<!--            :width="150"-->
-<!--            id-key="Amount"-->
-<!--            name="Amount"-->
-<!--        />-->
-
-<!--        <v-table-column-->
-<!--            v-slot="{ row, rowIndex }"-->
-<!--            :width="150"-->
-<!--            id-key="Buyer"-->
-<!--            name="Buyer"-->
-<!--        >-->
-<!--            <v-space-->
-<!--                align="center"-->
-<!--                size="large"-->
-<!--                no-wrap-->
-<!--            >-->
-<!--                <user-lot-avatar :online="Boolean(rowIndex % 2)" />-->
-
-<!--                <v-title :level="6">-->
-<!--                    {{ row.Buyer.name }}-->
-<!--                </v-title>-->
-<!--            </v-space>-->
-<!--        </v-table-column>-->
-
-<!--        <v-table-column-->
-<!--            id-key="Status"-->
-<!--            name="Status"-->
-<!--        />-->
-<!--    </v-table>-->
-
-<!--    <v-title :level="3">-->
-<!--        Purchase Archive-->
-<!--    </v-title>-->
-
-<!--    <v-table :data="purchasesData">-->
-<!--        <v-table-column-->
-<!--            :width="100"-->
-<!--            id-key="Id"-->
-<!--            name="Id"-->
-<!--        />-->
-
-<!--        <v-table-column-->
-<!--            id-key="Date"-->
-<!--            name="Date"-->
-<!--        />-->
-
-<!--        <v-table-column-->
-<!--            id-key="Game"-->
-<!--            name="Game"-->
-<!--        />-->
-
-<!--        <v-table-column-->
-<!--            id-key="Item"-->
-<!--            name="Item"-->
-<!--        />-->
-
-<!--        <v-table-column-->
-<!--            :width="150"-->
-<!--            id-key="Amount"-->
-<!--            name="Amount"-->
-<!--        />-->
-
-<!--        <v-table-column-->
-<!--            v-slot="{ row, rowIndex }"-->
-<!--            :width="150"-->
-<!--            id-key="Buyer"-->
-<!--            name="Buyer"-->
-<!--        >-->
-<!--            <v-space-->
-<!--                align="center"-->
-<!--                size="large"-->
-<!--                no-wrap-->
-<!--            >-->
-<!--                <user-lot-avatar :online="Boolean(rowIndex % 2)" />-->
-
-<!--                <v-title :level="6">-->
-<!--                    {{ row.Buyer.name }}-->
-<!--                </v-title>-->
-<!--            </v-space>-->
-<!--        </v-table-column>-->
-
-<!--        <v-table-column-->
-<!--            id-key="Status"-->
-<!--            name="Status"-->
-<!--        />-->
-<!--    </v-table>-->
+        <v-table-column
+            id-key="attributesPrice"
+            name="Price"
+        />
+    </v-table>
 </v-space>
 </template>

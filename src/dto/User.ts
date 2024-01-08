@@ -6,6 +6,9 @@ import { createCollection } from "~/factories"
 
 export class User implements UserRaw {
     @Expose()
+    declare public chat_id: string
+
+    @Expose()
     declare public email: string
 
     @Expose()

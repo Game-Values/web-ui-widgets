@@ -13,72 +13,72 @@ import type { WithdrawStore } from "~/stores/withdraw"
 
 // todo: stores typing
 export class StoreClient {
-    @Memoize()
+    // @Memoize()
     public get chatStore(): ChatStore.Store {
         return useChatStore()
     }
 
-    @Memoize()
+    // @Memoize()
     public get gamesStore(): GamesStore.Store {
         return useGamesStore()
     }
 
     // todo: factory (?)
-    @Memoize()
+    // @Memoize()
     public get gameStore(): GameStore.Store {
         return useGameStore()
     }
 
     // todo: factory
-    @Memoize()
+    // @Memoize()
     public get itemsStore(): ItemsStore.Store {
         return useItemsStore()
     }
 
     // todo: factory
-    @Memoize()
+    // @Memoize()
     public get itemStore(): ItemStore.Store {
         return useItemStore()
     }
 
-    @Memoize()
+    // @Memoize()
     public get facetsStore(): FacetsStore.Store {
         return useFacetsStore()
     }
 
-    @Memoize()
+    // @Memoize()
     public get orderStore(): OrderStore.Store {
         return useOrderStore()
     }
 
-    @Memoize()
+    // @Memoize()
     public get sellStore(): SellStore.Store {
         return useSellStore()
     }
 
-    @Memoize()
+    // @Memoize()
     public get seoStore(): SeoStore.Store {
         return useSeoStore()
     }
 
-    @Memoize()
+    // @Memoize()
     public get settingsStore(): SettingsStore.Store {
         return useSettingsStore()
     }
 
     // todo: factory from userStore
-    @Memoize()
+    // @Memoize()
     public get userMeStore(): UserStore.Store {
         return useUserStore("userMeStore")
     }
 
     // todo: factory
-    @Memoize()
+    // @Memoize()
     public get userStore(): UserStore.Store {
         return useUserStore()
     }
 
-    @Memoize()
+    // @Memoize()
     public get withdrawStore(): WithdrawStore.Store {
         return useWithdrawStore()
     }

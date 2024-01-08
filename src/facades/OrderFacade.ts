@@ -1,6 +1,6 @@
 import type { FacadeAbstract } from "~/abstract"
 import type { ChatClient, RouterClient, StoreClient } from "~/clients"
-import type { OrderController, UserController } from "~/controllers"
+import type { ChatController, OrderController, UserController } from "~/controllers"
 
 import { OrderStep } from "~/enums"
 
@@ -23,6 +23,7 @@ export class OrderFacade implements FacadeAbstract {
 
         if (isClient()) {
             await this._userController.fetchUser(this._storeClient.orderStore.order.owner_id)
+            return
 
             let asyncFilter = async (arr, predicate) => {
                 const results = await Promise.all(arr.map(predicate));
@@ -30,6 +31,8 @@ export class OrderFacade implements FacadeAbstract {
             }
 
             let getDirectRoomId = async (user_id: string) => {
+                console.log(await this._chatClient.getJoinedRooms())
+
                 const { joined_rooms: rooms } = await this._chatClient.getJoinedRooms()
                 const invitedDMRooms = await asyncFilter(rooms, async room => {
                     let { joined } = await this._chatClient.getJoinedRoomMembers(room)

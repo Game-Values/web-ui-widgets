@@ -14,7 +14,7 @@ defineProps<{
             v-for="[gameId, lots] in items.groupedLots"
             :key="gameId"
             :game="games.getById(gameId)"
-            :lots="lots.lotsTableData"
+            :lots="lots.tableData"
         />
     </template>
 

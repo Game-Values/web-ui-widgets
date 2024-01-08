@@ -23,7 +23,7 @@ export class Items extends CollectionAbstract<Item, ItemRaw> {
         }, new Map())
     }
 
-    public get lotsTableData(): LotsTable[] {
+    public get tableData(): LotsTable[] {
         return useMap<Item, LotsTable>(this, (item: Item): LotsTable => {
             let deepKeys: string[] = useMap(useKeys(item.attributes), (
                 (key: string): string => `attributes.${key}`

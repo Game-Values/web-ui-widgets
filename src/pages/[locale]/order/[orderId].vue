@@ -40,6 +40,13 @@ await orderFacade.bootstrap()
                 <entity-buy-view />
             </v-space>
         </v-column>
+
+        <v-column
+            :md="10"
+            :xs="0"
+        >
+            <widget-chat-order />
+        </v-column>
     </v-row>
 
     <v-row>

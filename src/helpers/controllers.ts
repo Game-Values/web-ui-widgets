@@ -73,7 +73,9 @@ export class Controllers extends DIAbstract<ControllersTokens> {
             [
                 OrderController,
                 this.__getToken(AdapterToken.API),
+                this.__getToken(ClientToken.CHAT),
                 this.__getToken(ClientToken.STORE),
+                this.__getToken(ControllerToken.USER),
             ],
             [
                 SellController,

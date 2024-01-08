@@ -2,22 +2,46 @@
 import type { UnwrapRef } from "vue"
 
 interface FormModel {
-    // todo
+    paymentType: string
 }
 
 useI18n()
 
 let { storeClient } = useClients()
+let { orderController } = useControllers()
+
+let { order } = storeToRefs(storeClient.orderStore)
 
 let formModel: UnwrapRef<FormModel> = reactive({
-    // todo: store (?)
+    paymentType: "",
 })
+
+async function handlePay(): Promise<void> {
+    await orderController.createPayment({
+        desc: getRef(order, "attributes").description || `Order #${getRef(order, "id")}`,
+        paymentType: formModel.paymentType,
+        sum: getRef(order, "attributes").price,
+    })
+}
 </script>
 
 <template>
-<v-form v-model="formModel">
-    <v-form-item label="Payment method">
-        <v-select placeholder="With a credit card on the website">
+<v-form
+    :model="formModel"
+    all-required
+>
+    <v-form-item
+        label="Payment method"
+        prop="paymentType"
+    >
+        <v-select
+            :options="[
+                'card',
+                'webmoney',
+                'paypal',
+            ]"
+            placeholder="Select payment"
+        >
             <template #prefix>
                 <ui-icon
                     color="positive-light"
@@ -37,6 +61,7 @@ let formModel: UnwrapRef<FormModel> = reactive({
                 <!-- todo: native submit -->
                 <v-form-submit
                     block
+                    @submit="handlePay()"
                 >
                     <i18n-t
                         keypath="label.Pay"

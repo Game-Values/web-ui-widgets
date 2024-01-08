@@ -8,3 +8,11 @@ export type LotsTable = (
         ValueOf<ItemAttributes>
     >
 )
+
+export type OrdersTable = (
+    Omit<Item, "attributes"> &
+    Record<
+        CombineKeys<"attributes", keyof ItemAttributes>,
+        ValueOf<ItemAttributes>
+    >
+)
