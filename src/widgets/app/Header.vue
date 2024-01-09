@@ -108,7 +108,7 @@ let { loginModal, registrationModal } = useModals()
                             />
                         </ui-link>
 
-                        <ui-link>
+                        <ui-link :to="routerClient.getRoute(routerClient.routeNames.MESSAGES)">
                             <ui-icon
                                 heroicons="envelope"
                                 size="24"

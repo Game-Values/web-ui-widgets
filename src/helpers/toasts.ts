@@ -5,11 +5,13 @@ import { token } from "brandi"
 
 import { DIAbstract } from "~/abstract"
 import { ToastToken } from "~/enums"
-import { CreatedLotToast, DeletedLotToast, UserRegisteredToast } from "~/toasts"
+import { CreatedLotToast, DeletedLotToast, OrderCancelledToast, OrderCompletedToast, UserRegisteredToast } from "~/toasts"
 
 interface ToastsTokens {
     [ToastToken.CREATED_LOT]: Token<CreatedLotToast>
     [ToastToken.DELETED_LOT]: Token<DeletedLotToast>
+    [ToastToken.ORDER_CANCELLED]: Token<OrderCancelledToast>
+    [ToastToken.ORDER_COMPLETED]: Token<OrderCompletedToast>
     [ToastToken.USER_REGISTERED]: Token<UserRegisteredToast>
 }
 
@@ -17,6 +19,8 @@ export class Toasts extends DIAbstract<ToastsTokens> {
     protected __tokens: ToastsTokens = {
         [ToastToken.CREATED_LOT]: token<CreatedLotToast>(ToastToken.CREATED_LOT),
         [ToastToken.DELETED_LOT]: token<DeletedLotToast>(ToastToken.DELETED_LOT),
+        [ToastToken.ORDER_CANCELLED]: token<OrderCancelledToast>(ToastToken.ORDER_CANCELLED),
+        [ToastToken.ORDER_COMPLETED]: token<OrderCompletedToast>(ToastToken.ORDER_COMPLETED),
         [ToastToken.USER_REGISTERED]: token<UserRegisteredToast>(ToastToken.USER_REGISTERED),
     }
 
@@ -24,6 +28,8 @@ export class Toasts extends DIAbstract<ToastsTokens> {
         return [
             [this.__tokens[ToastToken.CREATED_LOT], CreatedLotToast],
             [this.__tokens[ToastToken.DELETED_LOT], DeletedLotToast],
+            [this.__tokens[ToastToken.ORDER_CANCELLED], OrderCancelledToast],
+            [this.__tokens[ToastToken.ORDER_COMPLETED], OrderCompletedToast],
             [this.__tokens[ToastToken.USER_REGISTERED], UserRegisteredToast],
         ]
     }
@@ -42,6 +48,16 @@ export class Toasts extends DIAbstract<ToastsTokens> {
     @Memoize()
     public get deletedLotToast(): DeletedLotToast {
         return this.__getInjection(this.__tokens[ToastToken.DELETED_LOT])
+    }
+
+    @Memoize()
+    public get orderCancelledToast(): OrderCancelledToast {
+        return this.__getInjection(this.__tokens[ToastToken.ORDER_CANCELLED])
+    }
+
+    @Memoize()
+    public get orderCompletedToast(): OrderCompletedToast {
+        return this.__getInjection(this.__tokens[ToastToken.ORDER_COMPLETED])
     }
 
     @Memoize()

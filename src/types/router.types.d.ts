@@ -24,6 +24,10 @@ declare module "vue-router" {
         price_till: string
         server: string
         type: GameSection
+
+        // todo: rm
+        order_id: string
+        owner_id: string
     }
 
     export interface RouteMeta {

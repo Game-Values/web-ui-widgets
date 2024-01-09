@@ -21,7 +21,6 @@ async function createOrder(): Promise<void> {
         attributes: {
             amount: formModel.amount!,
             currency: getRef(item, "attributes").currency,
-            item_id: getRef(item, "id"),
             price: formModel.amount! * getRef(item, "attributes").price,
         },
         game_id: routerClient.getRouteParam("gameId"),

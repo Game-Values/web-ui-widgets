@@ -12,7 +12,7 @@ let { orderController } = useControllers()
 
 let { userOrders } = storeToRefs(storeClient.userMeStore)
 
-await orderController.fetchMeOrder()
+await orderController.fetchMeOrders()
 </script>
 
 <template>

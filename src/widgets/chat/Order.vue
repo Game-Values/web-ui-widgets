@@ -23,10 +23,34 @@ onMounted(async (): Promise<void> => {
 
 <template>
 <lazy-client-only>
-    chat
+    <v-space
+        size="large"
+        vertical
+    >
+        <pre>
+            {{ chatSyncState }}
+        </pre>
 
-    <pre>
-        {{ chatSyncState }}
-    </pre>
+        <v-native-scroll
+            class="w-full"
+            height="600"
+            ref="refNativeScroll"
+            scroll-tag="ul"
+            use-y-bar
+        >
+            <v-space
+                class="p-5 virtual-list__item"
+                tag="li"
+                vertical
+            >
+                <v-space
+                    justify="space-between"
+                    size="large"
+                >
+
+                </v-space>
+            </v-space>
+        </v-native-scroll>
+    </v-space>
 </lazy-client-only>
 </template>

@@ -45,6 +45,8 @@ export enum RouteName {
 
     MAIN = routesNames.locale,
 
+    MESSAGES = routesNames.localeMessages,
+
     ORDER = routesNames.localeOrderOrderId,
 
     POLICY = routesNames.localePolicy.policyAgreement,

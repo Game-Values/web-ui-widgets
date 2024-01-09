@@ -46,5 +46,7 @@ export enum ModalToken {
 export enum ToastToken {
     CREATED_LOT = "CreatedLotToast",
     DELETED_LOT = "DeletedLotToast",
+    ORDER_CANCELLED = "OrderCancelledToast",
+    ORDER_COMPLETED = "OrderCompletedToast",
     USER_REGISTERED = "UserRegisteredToast",
 }

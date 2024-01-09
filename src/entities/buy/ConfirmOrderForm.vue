@@ -9,11 +9,12 @@ useI18n()
 
 let { storeClient } = useClients()
 let { orderController } = useControllers()
+let { orderCancelledToast, orderCompletedToast } = useToasts()
 
 let { order } = storeToRefs(storeClient.orderStore)
 
 let formModel: UnwrapRef<FormModel> = reactive({
-    paymentType: "",
+    paymentType: "card",
 })
 
 async function handlePay(): Promise<void> {
@@ -22,6 +23,8 @@ async function handlePay(): Promise<void> {
         paymentType: formModel.paymentType,
         sum: getRef(order, "attributes").price,
     })
+
+    await orderCompletedToast.open()
 }
 </script>
 
@@ -74,6 +77,7 @@ async function handlePay(): Promise<void> {
                 <!-- todo: native reset -->
                 <v-form-reset
                     block
+                    @reset="orderCancelledToast.open()"
                 >
                     <i18n-t
                         keypath="order.Cancel the order"
