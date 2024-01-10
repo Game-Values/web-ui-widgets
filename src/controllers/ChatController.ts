@@ -1,8 +1,8 @@
 import type { ChatClient, StoreClient } from "~/clients"
-import type { Callable } from "~/types"
-import type { MatrixEvent, RoomMember } from "matrix-js-sdk"
+import type { Nullable } from "~/types"
+import type { MatrixEvent, Room, RoomMember } from "matrix-js-sdk"
 
-import { EventType, MsgType, RoomEvent, RoomMemberEvent } from "matrix-js-sdk"
+import { EventType, MsgType, Preset, RoomEvent, RoomMemberEvent } from "matrix-js-sdk"
 
 export class ChatController {
     public constructor(
@@ -36,25 +36,11 @@ export class ChatController {
     }
 
     private async _roomMembershipHandler(event: MatrixEvent, member: RoomMember): Promise<void> {
-        if (member.userId === this._storeClient.userMeStore.user.chat_id)
-            switch (member.membership) {
-                case "join":
-                    return
-                    break
-
-                case "invite":
-                    return
-                    await this._chatClient.joinRoom(member.roomId)
-                    break
-
-                case "leave":
-                    return
-                    await this._chatClient.leave(member.roomId)
-                    break
-
-                default:
-                    break
-            }
+        if (
+            member.membership === "invite" &&
+            member.userId === this._storeClient.userMeStore.user.chat_id
+        )
+            await this._chatClient.joinRoom(member.roomId)
     }
 
     private _roomTimelineHandler(event: MatrixEvent): void {
@@ -70,6 +56,27 @@ export class ChatController {
     private async _syncChat(): Promise<void> {
         let chatState = await this._chatClient.syncClient()
         this._storeClient.chatStore.setChatSyncState(chatState)
+    }
+
+    public async createDirectRoom(roomName: string, directMember: string): Promise<void> {
+        let res: { room_id: string }
+        try {
+            res = await this._chatClient.getRoomIdForAlias(`#${roomName}:${useRuntimeConfig().public.matrixChatName}`)
+        } catch {
+            res = await this._chatClient.createRoom({
+                invite: [
+                    directMember,
+                ],
+                is_direct: true,
+                name: roomName,
+                preset: Preset.TrustedPrivateChat,
+                room_alias_name: roomName,
+            })
+        }
+
+        let directRoom: Nullable<Room> = this._chatClient.getRoom(res.room_id)
+        if (directRoom)
+            this._storeClient.chatStore.addChatDirectRoom(directRoom)
     }
 
     public async sendRoomMessage(roomId: string, message: string): Promise<void> {
@@ -92,6 +99,10 @@ export class ChatController {
             )
 
         await Promise.all(promises)
-        await this._chatClient.startClient()
+        await this._chatClient.startClient({
+            initialSyncLimit: 10,
+            pollTimeout: 60000,
+            threadSupport: true,
+        })
     }
 }

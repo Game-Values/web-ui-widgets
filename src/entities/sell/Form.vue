@@ -131,7 +131,7 @@ async function handleDeleteItem(): Promise<void> {
                 </v-form-submit>
             </template>
 
-            <template v-else-if="routerClient.isRouteNameEqual(routerClient.routeNames.GAME_ITEM_SELL_EDIT)">
+            <template v-else-if="routerClient.isRouteNameEqual(routerClient.routeNames.USER_ITEM_EDIT)">
                 <v-space justify="space-between">
                     <v-form-submit
                         type="success"

@@ -1,6 +1,8 @@
 <script lang="ts" setup>
-let { routerClient } = useClients()
+let { storeClient, routerClient } = useClients()
 let { loginModal, registrationModal } = useModals()
+
+let { user } = storeToRefs(storeClient.userMeStore)
 </script>
 
 <template>
@@ -108,7 +110,13 @@ let { loginModal, registrationModal } = useModals()
                             />
                         </ui-link>
 
-                        <ui-link :to="routerClient.getRoute(routerClient.routeNames.MESSAGES)">
+                        <ui-link
+                            :to="routerClient.getRoute(routerClient.routeNames.USER_MESSAGES, {
+                                params: {
+                                    userId: user.id,
+                                },
+                            })"
+                        >
                             <ui-icon
                                 heroicons="envelope"
                                 size="24"

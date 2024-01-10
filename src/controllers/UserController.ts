@@ -21,6 +21,7 @@ export class UserController {
     public async fetchUser(userId: string): Promise<void> {
         let userRaw: UserRaw = await this._apiAdapter.readUserApiV1UsersUsersUserIdGet(userId)
         this._storeClient.userStore.setUserRaw(userRaw)
+        console.log(1, userRaw)
     }
 
     public async likeGameMe(gameId: string): Promise<void> {

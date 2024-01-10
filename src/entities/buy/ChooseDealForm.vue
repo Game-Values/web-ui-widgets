@@ -28,7 +28,7 @@ async function createOrder(): Promise<void> {
     })
 
     await navigateTo(
-        routerClient.getRoute(routerClient.routeNames.ORDER, {
+        routerClient.getRoute(routerClient.routeNames.USER_ORDER, {
             params: {
                 orderId: getRef(order, "id"),
             },

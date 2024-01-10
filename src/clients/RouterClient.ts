@@ -10,14 +10,14 @@ import { RouteName } from "~/enums"
 export class RouterClient {
     private get _routeParams(): Record<keyof typeof RouteName, RouteParams> {
         return {
-            [this.routeNames.GAME_ITEM_SELL_EDIT]: {
+            [this.routeNames.USER_ITEM_EDIT]: {
                 itemId: this.getRouteParam("itemId"),
             },
             [this.routeNames.GAME]: {
                 gameId: this.getRouteParam("gameId"),
                 gameSection: this.getRouteParam("gameSection"),
             },
-            [this.routeNames.GAME_ITEM_BUY]: {
+            [this.routeNames.USER_ITEM_BUY]: {
                 gameId: this.getRouteParam("gameId"),
                 gameSection: this.getRouteParam("gameSection"),
                 itemId: this.getRouteParam("itemId"),

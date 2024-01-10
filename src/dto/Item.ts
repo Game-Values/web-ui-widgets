@@ -36,11 +36,12 @@ export class Item implements ItemRaw {
     public get buyRoute(): Route {
         let { routerClient } = useClients()
 
-        return routerClient.getRoute(routerClient.routeNames.GAME_ITEM_BUY, {
+        return routerClient.getRoute(routerClient.routeNames.USER_ITEM_BUY, {
             params: {
                 gameId: this.gid,
-                itemId: this.id,
                 gameSection: this.attributes.type,
+                itemId: this.id,
+                userId: this.owner_id,
             },
         })
     }
@@ -48,11 +49,12 @@ export class Item implements ItemRaw {
     public get editRoute(): Route {
         let { routerClient } = useClients()
 
-        return routerClient.getRoute(routerClient.routeNames.GAME_ITEM_SELL_EDIT, {
+        return routerClient.getRoute(routerClient.routeNames.USER_ITEM_EDIT, {
             params: {
                 gameId: this.gid,
-                itemId: this.id,
                 gameSection: this.attributes.type,
+                itemId: this.id,
+                userId: this.owner_id,
             },
         })
     }

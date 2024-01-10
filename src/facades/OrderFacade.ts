@@ -22,8 +22,8 @@ export class OrderFacade implements FacadeAbstract {
         ])
 
         if (isClient()) {
-            await this._userController.fetchUser(this._storeClient.orderStore.order.owner_id)
             return
+            await this._userController.fetchUser(this._storeClient.orderStore.order.owner_id)
 
             let asyncFilter = async (arr, predicate) => {
                 const results = await Promise.all(arr.map(predicate));

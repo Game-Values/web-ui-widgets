@@ -39,15 +39,9 @@ export enum RouteName {
     FAQ_TECHNICAL = routesNames.localeFaq.faqTechnical,
 
     GAME = routesNames.localeGGameIdGameSection,
-    GAME_ITEM_BUY = routesNames.localeGGameIdGameSectionItemIdBuy,
     GAME_ITEM_SELL = routesNames.localeGGameIdGameSectionSell,
-    GAME_ITEM_SELL_EDIT = routesNames.localeGGameIdGameSectionItemIdEdit,
 
     MAIN = routesNames.locale,
-
-    MESSAGES = routesNames.localeMessages,
-
-    ORDER = routesNames.localeOrderOrderId,
 
     POLICY = routesNames.localePolicy.policyAgreement,
     POLICY_AGREEMENT = routesNames.localePolicy.policyAgreement,
@@ -59,6 +53,10 @@ export enum RouteName {
     STORE_SALES = routesNames.localeStore.storeSales,
 
     USER = routesNames.localeUUserId.uUserIdIndexStorefront,
+    USER_ITEM_BUY = routesNames.localeUUserIdGGameIdGameSectionItemIdBuy,
+    USER_ITEM_EDIT = routesNames.localeUUserIdGGameIdGameSectionItemIdEdit,
+    USER_MESSAGES = routesNames.localeUUserIdMessages,
+    USER_ORDER = routesNames.localeUUserIdOOrderId,
     USER_REVIEWS = routesNames.localeUUserId.uUserIdIndexReviews,
     USER_STOREFRONT = routesNames.localeUUserId.uUserIdIndexStorefront,
 }

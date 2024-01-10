@@ -1,5 +1,5 @@
 import type { DefineStore } from "~/types"
-import type { IJoinedRoom, IPublicRoomsChunkRoom, MatrixEvent } from "matrix-js-sdk"
+import type { IJoinedRoom, IPublicRoomsChunkRoom, MatrixEvent, Room } from "matrix-js-sdk"
 
 import { ChatEvents, ChatRooms } from "~/dto"
 import { createCollection, createStore } from "~/factories"
@@ -8,6 +8,7 @@ export namespace ChatStore {
     export type Id = "chatStore"
 
     export type State = {
+        chatDirectRooms: Room[]
         chatEventsRaw: MatrixEvent[]
         chatJoinedRoomsIds: string[]
         chatRoomsRaw: IPublicRoomsChunkRoom[]
@@ -21,6 +22,7 @@ export namespace ChatStore {
     }
 
     export type Actions = {
+        addChatDirectRoom: (directRoom: Room) => void
         addChatEventRaw: (chatEventRaw: MatrixEvent) => void
         setChatJoinedRoomsIds: (chatRoomsIds: string[]) => void
         setChatRoomsRaw: (chatRoomsRaw: IPublicRoomsChunkRoom[]) => void
@@ -37,6 +39,10 @@ export let useChatStore: (storeId?: string) => ChatStore.Store = createStore<
     ChatStore.Actions
 >("chatStore", {
     actions: {
+        addChatDirectRoom(directRoom: Room): void {
+            this.chatDirectRooms.push(directRoom)
+        },
+
         addChatEventRaw(chatEventRaw: MatrixEvent): void {
             this.chatEventsRaw.push(chatEventRaw)
         },
@@ -78,6 +84,7 @@ export let useChatStore: (storeId?: string) => ChatStore.Store = createStore<
     },
 
     state: (): ChatStore.State => ({
+        chatDirectRooms: [],
         chatEventsRaw: [],
         chatJoinedRoomsIds: [],
         chatRoomsRaw: [],

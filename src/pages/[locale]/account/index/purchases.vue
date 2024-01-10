@@ -10,7 +10,7 @@ definePageMeta({
 let { routerClient, storeClient } = useClients()
 let { orderController } = useControllers()
 
-let { userOrders } = storeToRefs(storeClient.userMeStore)
+let { user, userOrders } = storeToRefs(storeClient.userMeStore)
 
 await orderController.fetchMeOrders()
 </script>
@@ -31,9 +31,10 @@ await orderController.fetchMeOrders()
             name="#"
         >
             <ui-link
-                :to="routerClient.getRoute(routerClient.routeNames.ORDER, {
+                :to="routerClient.getRoute(routerClient.routeNames.USER_ORDER, {
                     params: {
                         orderId: row.id,
+                        userId: user.id,
                     },
                 })"
             >
