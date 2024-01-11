@@ -20,7 +20,10 @@
         "Inventory": {
             "type": "radio",
             "buckets": [
-                "Yes",
+                {
+                    "info": "In this category, the approximate total value <br>of the Steam account's inventory is indicated. <br>It includes the valuation of all items available in<br> the player's inventory across all games, <br>including skins, equipment, tools, <br>and other game assets. <br>The value is determined based <br>on the current market prices for<br> these items on the Steam<br> Community Market or through other<br> valuation services.",
+                    "label": "Yes"
+                },
                 "No",
                 "Trade ban"
             ]
@@ -151,7 +154,10 @@
         "Linked Payment Methods": {
             "type": "radio",
             "buckets": [
-                "Yes",
+                {
+                    "info": "This section should contain information <br>about the payment methods that were used <br>or linked to the Steam account. <br>Please obtain detailed information <br>from the seller before purchasing the account.",
+                    "label": "Yes"
+                },
                 "No"
             ]
         },
