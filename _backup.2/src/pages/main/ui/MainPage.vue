@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useGamesModel } from "~/entities/game"
-import { GameGroupWidget } from "~/widgets/game"
+import { useGamesModel } from "~/entities/lot"
+import { GameGroupWidget } from "~/widgets/lot"
 
 let gamesModel = useGamesModel()
 

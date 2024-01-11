@@ -4,13 +4,13 @@ import TopAppBar from "@smui/top-app-bar"
 
 import { AuthLoginButton, AuthSignupButton } from "~/entities/auth"
 import { HeaderLinks, HeaderLogo } from "~/entities/header"
-import { LotAutocomplete } from "~/features/lot"
+import { HeaderAutocomplete } from "~/features/header"
 import { Content } from "~/shared/ui"
 </script>
 
 <TopAppBar
     variant="static"
-    class="bg-transparent"
+    class="bg-transparent bg-gradient-to-b from-black from-0%"
 >
     <Content>
         <LayoutGrid>
@@ -25,7 +25,7 @@ import { Content } from "~/shared/ui"
                 align="middle"
                 spanDevices={{ desktop: 4, tablet: 0, phone: 0 }}
             >
-                <LotAutocomplete />
+                <HeaderAutocomplete />
             </Cell>
 
             <Cell

@@ -1,1 +1,1 @@
-export * from "~/features/lot/search"
+export * from "~/features/header/search"

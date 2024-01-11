@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import type { IGame } from "~/entities/game"
+import type { IGame } from "~/entities/lot"
 
-import { GameCardEntity, GameIconEntity, GameTitleEntity } from "~/entities/game"
-import { ToggleLikeGameFeature } from "~/features/game"
+import { GameCardEntity, GameIconEntity, GameTitleEntity } from "~/entities/lot"
+import { ToggleLikeGameFeature } from "~/features/lot"
 
 defineProps<{
     game: IGame

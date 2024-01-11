@@ -1,9 +1,11 @@
 @use "sass:map";
 
+@use "color-palette";
+
 @use "@material/theme/index" as theme with (
-    $primary: #3478F6,
-    $secondary: #353536,
-    $surface: #1B1B1C,
-    $background: #1B1B1C,
-    $error: #D8222F,
+    $primary: color-palette.$primary,
+    $secondary: color-palette.$secondary,
+    $surface: color-palette.$grey-dark,
+    $background: color-palette.$grey-dark,
+    $error: color-palette.$error,
 );

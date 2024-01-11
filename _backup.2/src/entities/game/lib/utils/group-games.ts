@@ -1,4 +1,4 @@
-import type { IGame, TGroupedGames } from "~/entities/game"
+import type { IGame, TGroupedGames } from "~/entities/lot"
 
 export function groupGames(games: IGame[]): TGroupedGames {
     let sortedGames: IGame[] = useSortBy(games, "name")

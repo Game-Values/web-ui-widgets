@@ -20,7 +20,7 @@ export let games: IGame[]
             <InnerGrid>
                 {#each gamesGroup as game}
                     <Cell spanDevices={{ desktop: 3, tablet: 4, phone: 6 }}>
-                        <GameCard game={game} />
+                        <GameCard {game} />
                     </Cell>
                 {/each}
             </InnerGrid>

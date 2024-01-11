@@ -1,5 +1,5 @@
 import type { IGameRaw, IReadAllGamesApiV1GamesGetParamsRaw } from "@/schema/data-contracts"
-import type { IGame } from "~/entities/game"
+import type { IGame } from "~/entities/lot"
 import type { UnwrapRef } from "vue"
 
 import { api } from "~/shared/httpInstance"

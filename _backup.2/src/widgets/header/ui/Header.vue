@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { HeaderLogoEntity } from "~/entities/header"
-import { LotSearchFeature } from "~/features/lot"
+import { LotSearchFeature } from "~/features/header"
 </script>
 
 <template>

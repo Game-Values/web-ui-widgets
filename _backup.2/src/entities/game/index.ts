@@ -1,3 +1,3 @@
-export * from "~/entities/game/lib"
-export * from "~/entities/game/model"
-export * from "~/entities/game/ui"
+export * from "~/entities/lot/lib"
+export * from "~/entities/lot/model"
+export * from "~/entities/lot/ui"

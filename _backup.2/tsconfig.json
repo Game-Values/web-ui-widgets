@@ -9,6 +9,13 @@
             "@pinia/nuxt",
             "@types/node",
             "vite/client"
-        ]
+        ],
+      "lib": [
+        "decorators",
+        "dom",
+        "es5",
+        "scripthost",
+        "es2015.collection"
+      ]
     }
 }

@@ -1,0 +1,46 @@
+@use "@material/button/mixins" as button
+
+.mdc-button
+    --mdc-filled-button-container-height: 3.125rem
+    --mdc-filled-button-label-text-size: 1.0625rem
+    --mdc-filled-button-label-text-weight: 600
+
+    --mdc-text-button-container-height: 3rem
+
+    --mdc-outlined-button-container-height: 3rem
+    --mdc-outlined-button-label-text-color: currentColor
+
+    --mdc-typography-button-font-size: 1.0625rem
+    --mdc-typography-button-font-weight: 600
+    --mdc-typography-button-letter-spacing: normal
+    --mdc-typography-button-text-transform: none
+    --mdc-typography-font-family: Montserrat
+
+    @apply px-4 py-3.5
+
+
+.button-default,
+.button-link
+    &.mdc-button
+        @include button.ink-color(#FFFFFF)
+
+    &.mdc-button--unelevated,
+    &.mdc-button--raised
+        @include button.filled-accessible(#FFFFFF)
+
+    &.mdc-button--outlined
+        @include button.outline-color(#FFFFFF)
+        @include button.ink-color(#FFFFFF)
+
+    @include button.ripple-states(#FFFFFF)
+
+.button-link
+    &.mdc-button
+        @apply p-0
+        @apply min-w-auto h-auto
+        @apply justify-start
+
+        &:hover
+            @include button.ink-color(#3478F6)
+
+    @include button.ripple-states(transparent)

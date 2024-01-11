@@ -6,7 +6,7 @@ import { headerLinks } from "~/entities/header"
 
 {#each headerLinks as headerLink}
     <Button
-        class="text-normal font-bold button-default"
+        class="text-normal font-bold button-link"
         href={headerLink.url}
     >
         {headerLink.label}

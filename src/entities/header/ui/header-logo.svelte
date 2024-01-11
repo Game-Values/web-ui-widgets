@@ -5,9 +5,9 @@ import IconLogo from "~icons/custom/logo"
 </script>
 
 <Button
-    class="relative bottom-1"
+    class="relative bottom-1 button-link"
     color="secondary"
-    href="/en"
+    href="/"
 >
     <IconLogo
         width="9.725rem"

@@ -1,5 +1,5 @@
 import type { IGameRaw } from "@/schema/data-contracts"
-import type { IGame } from "~/entities/game"
+import type { IGame } from "~/entities/lot"
 import type { UnwrapRef } from "vue"
 
 import { useMeModel } from "~/entities/me"

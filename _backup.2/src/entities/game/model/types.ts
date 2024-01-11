@@ -7,5 +7,5 @@ export interface IGame extends Required<IGameRaw> {
 }
 
 export interface IGameAttributes {
-
+    description: string
 }

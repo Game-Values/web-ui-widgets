@@ -2,7 +2,8 @@
 import type { IGame } from "~/entities/game"
 
 import Card, { Actions, ActionIcons, Media, PrimaryAction } from "@smui/card"
-import IconButton, { Icon } from "@smui/icon-button";
+import Button from "@smui/button"
+import IconButton from "@smui/icon-button";
 import { Image } from "@smui/image-list"
 import { kebabCase } from "lodash-es"
 
@@ -15,15 +16,25 @@ export let game: IGame
 <Card>
     <Media class="bg-white/2 border border-solid border-white/15 rounded-xl">
         <PrimaryAction>
-            {#await asyncComponent(`/src/app/assets/icons/game/${kebabCase(game.name)}.svg`) then src}
-                <Image src={src} />
-            {/await}
+            <Button
+                class="h-full button-default"
+                href="/g/{game.id}"
+            >
+                {#await asyncComponent(`/src/app/assets/icons/game/${kebabCase(game.name)}.svg`) then src}
+                    <Image {src} />
+                {/await}
+            </Button>
         </PrimaryAction>
     </Media>
 
     <Actions>
         <h4>
-            {game.name}
+            <Button
+                class="button-link"
+                href="/g/{game.id}"
+            >
+                {game.name}
+            </Button>
         </h4>
 
         <ActionIcons>

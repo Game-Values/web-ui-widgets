@@ -1,6 +1,6 @@
 import { resolve } from "node:path";
 
-import adapter from "@sveltejs/adapter-auto";
+import adapter from "@sveltejs/adapter-node";
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
 import dynamicImportVars from "@rollup/plugin-dynamic-import-vars"
 
@@ -20,7 +20,7 @@ const config = {
 
 		files: {
 			appTemplate: resolve("src/app/app.html"),
-			assets: resolve("src/app/static"),
+			assets: resolve("static"),
 			errorTemplate: resolve("src/app/error.html"),
 			lib: resolve("src/app/lib"),
 			routes: resolve("src/app/providers/routes"),

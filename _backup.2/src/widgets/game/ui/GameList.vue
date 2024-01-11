@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { IGame } from "~/entities/game"
+import type { IGame } from "~/entities/lot"
 
-import { GameCardWidget } from "~/widgets/game"
+import { GameCardWidget } from "~/widgets/lot"
 
 defineProps<{
     games: IGame[]

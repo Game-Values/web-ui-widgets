@@ -3,18 +3,18 @@ import type { HeaderLink } from "~/entities/header"
 export let headerLinks: HeaderLink[] = [
     {
         label: "Blog",
-        url: "/en/blog",
+        url: "/blog",
     },
     {
         label: "Promotions",
-        url: "/en/promotions",
+        url: "/promotions",
     },
     {
         label: "TOP-10",
-        url: "/en/top",
+        url: "/top",
     },
     {
         label: "AI Assistant",
-        url: "/en/ai",
+        url: "/ai",
     },
 ]

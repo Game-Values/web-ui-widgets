@@ -6,5 +6,5 @@ import Button from "@smui/button"
     class="text-normal font-bold"
     variant="text"
 >
-    Log In
+    Sign up
 </Button>

@@ -1,1 +1,1 @@
-export { default as LotSearchFeature } from "~/features/lot/search/ui/LotSearch.vue"
+export { default as LotSearchFeature } from "~/features/header/search/ui/LotSearch.vue"

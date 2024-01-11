@@ -28,7 +28,7 @@ export default defineConfig({
             collections: {
                 base: FileSystemIconLoader("assets/icons/base"),
                 custom: FileSystemIconLoader("assets/icons/custom"),
-                game: FileSystemIconLoader("assets/icons/game"),
+                game: FileSystemIconLoader("assets/icons/lot"),
                 heroicon: (): Promise<IconifyJSON> => (
                     import("@iconify-json/heroicons/icons.json")
                         .then((module: Module<IconifyJSON>): IconifyJSON => module.default)

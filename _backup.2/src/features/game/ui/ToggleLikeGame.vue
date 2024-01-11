@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { IGame } from "~/entities/game"
+import type { IGame } from "~/entities/lot"
 
-import { useGameModel } from "~/entities/game"
+import { useGameModel } from "~/entities/lot"
 
 let props = defineProps<{
     game: IGame

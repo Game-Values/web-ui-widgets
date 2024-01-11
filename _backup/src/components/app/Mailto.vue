@@ -5,7 +5,7 @@ import type { VNode } from "vue"
 withDefaults(defineProps<{
     email?: string
 }>(), {
-    email: "hello@game-values.com",
+    email: "hello@lot-values.com",
 })
 
 defineSlots<{

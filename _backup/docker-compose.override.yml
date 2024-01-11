@@ -7,7 +7,7 @@ services:
       - "443:443"
     command:
       - --accesslog
-      - --certificatesresolvers.default.acme.email=tech@game-values.com
+      - --certificatesresolvers.default.acme.email=tech@lot-values.com
       - --certificatesresolvers.default.acme.httpchallenge.entrypoint=web
       - --certificatesresolvers.default.acme.storage=/app/acme.json
       - --entrypoints.web.address=:80

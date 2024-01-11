@@ -1,1 +1,1 @@
-export * from "~/entities/game/lib/utils/group-games"
+export * from "~/entities/lot/lib/utils/group-games"

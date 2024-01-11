@@ -1,1 +1,1 @@
-export * from "~/entities/game/lib/enums/gameicon"
+export * from "~/entities/lot/lib/enums/gameicon"

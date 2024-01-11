@@ -25,7 +25,7 @@ export class BuyFacade implements FacadeAbstract {
         if (isClient()) {
             let { room_id } = await this._chatClient.createRoom({
                 invite: [
-                    this._storeClient.itemStore.item.owner_id,
+                    this._storeClient.itemStore.header.owner_id,
                 ],
                 is_direct: true,
                 preset: "trusted_private_chat",
