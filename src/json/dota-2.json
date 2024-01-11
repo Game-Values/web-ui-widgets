@@ -1,0 +1,191 @@
+{
+    "Accounts": {
+        "Account type": {
+            "type": "radio",
+            "buckets": [
+                "Rated",
+                "TBD",
+                "Without access to ranked matches"
+            ]
+        },
+        "MMR": {
+            "type": "from_to"
+        },
+        "Behavior score": {
+            "type": "from_to"
+        },
+        "Number of hours": {
+            "type": "from_to"
+        },
+        "Inventory": {
+            "type": "radio",
+            "buckets": [
+                "Yes",
+                "No",
+                "Trade ban"
+            ]
+        },
+        "Inventory value": {
+            "type": "subsection",
+            "section": "Inventory.Yes",
+            "children": [
+                {
+                    "type": "from_to"
+                }
+            ]
+        },
+        "Rank": {
+            "type": "select",
+            "buckets": [
+                "Herald",
+                "Guardian",
+                "Crusader",
+                "Archon",
+                "Legend",
+                "Ancient",
+                "Divine",
+                "Immortal (Placed)",
+                "Top 1000 (Immortal)",
+                "Top 100 (Immortal)",
+                "Top 10 (Immortal)",
+                "Top 1 (Immortal)"
+            ]
+        },
+        "Dota 2 Plus": {
+            "type": "radio",
+            "buckets": [
+                "Yes",
+                "No"
+            ]
+        },
+        "Number of Wins": {
+            "type": "from_to"
+        },
+        "Number of Losses": {
+            "type": "from_to"
+        },
+        "Date of Registration": {
+            "type": "select",
+            "buckets": [
+                "2002",
+                "2003",
+                "2004",
+                "2005",
+                "2006",
+                "2007",
+                "2008",
+                "2009",
+                "2010",
+                "2011",
+                "2012",
+                "2013",
+                "2014",
+                "2015",
+                "2016",
+                "2017",
+                "2018",
+                "2019",
+                "2020",
+                "2021",
+                "2022",
+                "2023",
+                "2024"
+            ]
+        },
+        "Region": {
+            "type": "checkbox",
+            "buckets": [
+                "Argentina",
+                "Brazil",
+                "China TC Guangdong",
+                "China TC Shanghai",
+                "China TC Wuhan",
+                "China TC Zhejiang",
+                "China UC",
+                "China UC 2",
+                "Dubai",
+                "Europe East",
+                "Europe West",
+                "India",
+                "Japan",
+                "Peru",
+                "Russia",
+                "South Africa",
+                "Southeast Asia (SE Asia)",
+                "US East",
+                "US West"
+            ]
+        },
+        "VAC ban": {
+            "type": "radio",
+            "buckets": [
+                "Yes",
+                "No"
+            ]
+        },
+        "First steam verification e-mail": {
+            "type": "radio",
+            "buckets": [
+                "Yes",
+                "No"
+            ]
+        },
+        "Steam guard": {
+            "type": "radio",
+            "buckets": [
+                "Yes",
+                "No"
+            ]
+        },
+        "Number of account owners": {
+            "type": "select",
+            "buckets": [
+                "I'm the first owner",
+                "I don't know",
+                "2",
+                "3",
+                "4",
+                "5+"
+            ]
+        },
+        "Linked Payment Methods": {
+            "type": "radio",
+            "buckets": [
+                "Yes",
+                "No"
+            ]
+        },
+        "Linked Payment Methods Value": {
+            "type": "subsection",
+            "section": "Linked Payment Methods.Yes",
+            "children": [
+                {
+                    "type": "select",
+                    "buckets": [
+                        "Credit/Debit Cards",
+                        "PayPal",
+                        "Steam Wallet",
+                        "Bank Transfer/Electronic Funds Transfer",
+                        "Payment Cards and Prepaid Cards",
+                        "Qiwi Wallet",
+                        "WebMoney",
+                        "Yandex.Money (YooMoney)",
+                        "Steam Codes and Gift Cards",
+                        "Mobile Payment",
+                        "Skrill",
+                        "Alipay",
+                        "iDeal",
+                        "Sofort"
+                    ]
+                }
+            ]
+        },
+        "Linked Phone Status": {
+            "type": "radio",
+            "buckets": [
+                "Yes",
+                "No"
+            ]
+        }
+    }
+}

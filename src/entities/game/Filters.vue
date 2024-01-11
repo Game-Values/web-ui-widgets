@@ -4,7 +4,6 @@ import type { GameSubsectionRaw } from "~/types"
 import type { ComputedRef } from "vue"
 
 import { GameSubsections } from "~/dto"
-import { Facet, FilterType } from "~/enums"
 import { createCollection } from "~/factories"
 
 let { routerClient, storeClient } = useClients()

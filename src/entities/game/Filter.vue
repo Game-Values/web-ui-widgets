@@ -37,20 +37,7 @@ let filterView = computed((): AsyncComponent => (
 ))
 
 let handleFilter = useDebounce(async (val: Arrayable<number | string>): Promise<void> => {
-    let facetQuery: FacetQuery = {
-        [getRef(filterFacet)]: JSON.stringify(val),
-    }
-
-    await navigateTo({
-        query: useFacetQuery(facetQuery),
-        replace: true,
-    })
-
-    await facetController.searchFacets(routerClient.getRouteParam("gameId"), (
-        useFacetQuery({
-            [Facet.TYPE]: routerClient.getRouteParam("gameSection"),
-        })
-    ))
+    console.log(val)
 }, DEBOUNCE_TIMEOUT)
 </script>
 
