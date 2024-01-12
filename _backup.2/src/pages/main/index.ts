@@ -1,1 +1,1 @@
-export { default as MainPage } from "~/pages/main/ui/MainPage.vue"
+export { default as MainPage } from "~/slider/main/ui/MainPage.vue"

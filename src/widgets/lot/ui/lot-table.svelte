@@ -1,20 +1,3 @@
-<script lang="ts">
-import type { IItemRaw } from "~/shared/api"
-
-import DataTable, { Head, Body, Row, Cell } from "@smui/data-table"
-import Button from "@smui/button"
-import LinearProgress from "@smui/linear-progress"
-
-import IconHandThumbUp from "~icons/heroicons/hand-thumb-up"
-import IconArrowSmallUp from "~icons/heroicons/arrow-small-up"
-
-import { isLotsSearching } from "~/entities/lot"
-import { UserAvatar } from "~/entities/user"
-import { formatPrice } from "~/shared/lib"
-
-export let lots: IItemRaw[] = []
-</script>
-
 <DataTable>
     <Head>
         <Row>
@@ -115,3 +98,20 @@ export let lots: IItemRaw[] = []
         slot="progress"
     />
 </DataTable>
+
+<script lang="ts">
+import type { IItemRaw } from "~/shared/api"
+
+import DataTable, { Head, Body, Row, Cell } from "@smui/data-table"
+import Button from "@smui/button"
+import LinearProgress from "@smui/linear-progress"
+
+import IconHandThumbUp from "~icons/heroicons/hand-thumb-up"
+import IconArrowSmallUp from "~icons/heroicons/arrow-small-up"
+
+import { isLotsSearching } from "~/entities/lot"
+import { UserAvatar } from "~/entities/user"
+import { formatPrice } from "~/shared/lib"
+
+export let lots: IItemRaw[] = []
+</script>

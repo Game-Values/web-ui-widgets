@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { MainPage } from "~/pages/main"
+import { MainPage } from "~/slider/main"
 
 definePageMeta({
     alias: "/:locale",

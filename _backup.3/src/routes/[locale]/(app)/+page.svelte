@@ -1,5 +1,5 @@
 <script lang="ts">
-import { MainPage } from "~/pages/main"
+import { MainPage } from "~/slider/main"
 </script>
 
 <MainPage>

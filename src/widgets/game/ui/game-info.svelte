@@ -1,13 +1,3 @@
-<script lang="ts">
-import type { IGame } from "~/entities/game"
-
-import Paper, { Title, Subtitle, Content } from "@smui/paper"
-
-import { GameSections } from "~/features/game"
-
-export let game: IGame
-</script>
-
 <Paper
     class="
         px-8 py-10
@@ -29,3 +19,13 @@ export let game: IGame
         <GameSections {game} />
     </Content>
 </Paper>
+
+<script lang="ts">
+import type { IGame } from "~/entities/game"
+
+import Paper, { Title, Subtitle, Content } from "@smui/paper"
+
+import { GameSections } from "~/features/game"
+
+export let game: IGame
+</script>

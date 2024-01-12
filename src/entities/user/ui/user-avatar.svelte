@@ -1,9 +1,3 @@
-<script lang="ts">
-import Badge from "@smui-extra/badge"
-import Fab from "@smui/fab"
-import { Image } from "@smui/image-list"
-</script>
-
 <Fab>
     <Image
         src="/images/user-dummy-avatar.png"
@@ -16,3 +10,9 @@ import { Image } from "@smui/image-list"
         position="inset"
     />
 </Fab>
+
+<script lang="ts">
+import Badge from "@smui-extra/badge"
+import Fab from "@smui/fab"
+import { Image } from "@smui/image-list"
+</script>

@@ -1,3 +1,20 @@
+<Set
+    let:chip
+    bind:selected
+    chips={game.attributes.sections}
+    choice
+>
+    <Chip {chip} on:click={() => whenGameSectionChanged(chip)}>
+        <Text>
+            {chip.name}
+        </Text>
+
+        <Badge class="min-w-6 min-h-6">
+            {chip.count}
+        </Badge>
+    </Chip>
+</Set>
+
 <script lang="ts">
 import type { IGame, IGameSection } from "~/entities/game"
 
@@ -28,20 +45,3 @@ export {
     game,
 }
 </script>
-
-<Set
-    let:chip
-    bind:selected
-    chips={game.attributes.sections}
-    choice
->
-    <Chip {chip} on:click={() => whenGameSectionChanged(chip)}>
-        <Text>
-            {chip.name}
-        </Text>
-
-        <Badge class="min-w-6 min-h-6">
-            {chip.count}
-        </Badge>
-    </Chip>
-</Set>

@@ -1,9 +1,3 @@
-<script lang="ts">
-import Button from "@smui/button"
-
-import { headerLinks } from "~/entities/header"
-</script>
-
 {#each headerLinks as headerLink}
     <Button
         class="text-normal font-bold button-link"
@@ -12,3 +6,9 @@ import { headerLinks } from "~/entities/header"
         {headerLink.label}
     </Button>
 {/each}
+
+<script lang="ts">
+import Button from "@smui/button"
+
+import { headerLinks } from "~/entities/header"
+</script>

@@ -1,19 +1,3 @@
-<script lang="ts">
-import type { IGamePageData } from "~/pages/game"
-
-import LayoutGrid, { InnerGrid, Cell } from "@smui/layout-grid"
-import { onDestroy } from "svelte"
-
-import { lotsSearch } from "~/entities/lot"
-import { LotOnlinePlayersToggle, LotSearch } from "~/features/lot"
-import { Content } from "~/shared/ui"
-import { GameInfo, GameLots, GamePreview } from "~/widgets/game"
-
-onDestroy(() => lotsSearch.set(Object.create(null)))
-
-export let data: IGamePageData
-</script>
-
 <GamePreview game={data.game} />
 
 <Content>
@@ -45,5 +29,33 @@ export let data: IGamePageData
                 </Cell>
             </InnerGrid>
         </Cell>
+
+        <Cell span={12}>
+            <InnerGrid>
+                <Cell span={7}>
+                    <GameFaq />
+                </Cell>
+
+                <Cell span={5}>
+                    faq form
+                </Cell>
+            </InnerGrid>
+        </Cell>
     </LayoutGrid>
 </Content>
+
+<script lang="ts">
+import type { IGamePageData } from "~/pages/game"
+
+import LayoutGrid, { InnerGrid, Cell } from "@smui/layout-grid"
+import { onDestroy } from "svelte"
+
+import { lotsSearch } from "~/entities/lot"
+import { LotOnlinePlayersToggle, LotSearch } from "~/features/lot"
+import { Content } from "~/shared/ui"
+import { GameFaq, GameInfo, GameLots, GamePreview } from "~/widgets/game"
+
+onDestroy(() => lotsSearch.set(Object.create(null)))
+
+export let data: IGamePageData
+</script>

@@ -1,9 +1,3 @@
-<script lang="ts">
-import Button from "@smui/button"
-
-import IconLogo from "~icons/custom/logo"
-</script>
-
 <Button
     class="relative bottom-1 button-link"
     color="secondary"
@@ -14,3 +8,9 @@ import IconLogo from "~icons/custom/logo"
         height="2.5rem"
     />
 </Button>
+
+<script lang="ts">
+import Button from "@smui/button"
+
+import IconLogo from "~icons/custom/logo"
+</script>

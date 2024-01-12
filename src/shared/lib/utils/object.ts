@@ -4,7 +4,9 @@ export function cleanObject<T extends object>(target: T, predicate: (value: any)
     return pickBy(target, predicate) as T
 }
 
-export function refreshObject<T extends object>(target: T, newObj: T): void {
+export function refreshObject<T extends object>(target: T, newObj: T): T {
     omit(target, keys(target))
     assign(target, newObj)
+
+    return target
 }

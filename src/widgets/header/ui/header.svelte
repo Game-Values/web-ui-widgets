@@ -1,16 +1,6 @@
-<script lang="ts">
-import LayoutGrid, { Cell } from "@smui/layout-grid"
-import TopAppBar from "@smui/top-app-bar"
-
-import { AuthLoginButton, AuthSignupButton } from "~/entities/auth"
-import { HeaderLinks, HeaderLogo } from "~/entities/header"
-import { HeaderAutocomplete } from "~/features/header"
-import { Content } from "~/shared/ui"
-</script>
-
 <TopAppBar
     variant="static"
-    class="bg-transparent bg-gradient-to-b from-black from-0%"
+    class="bg-transparent"
 >
     <Content>
         <LayoutGrid>
@@ -48,3 +38,13 @@ import { Content } from "~/shared/ui"
         </LayoutGrid>
     </Content>
 </TopAppBar>
+
+<script lang="ts">
+import LayoutGrid, { Cell } from "@smui/layout-grid"
+import TopAppBar from "@smui/top-app-bar"
+
+import { AuthLoginButton, AuthSignupButton } from "~/entities/auth"
+import { HeaderLinks, HeaderLogo } from "~/entities/header"
+import { HeaderAutocomplete } from "~/features/header"
+import { Content } from "~/shared/ui"
+</script>

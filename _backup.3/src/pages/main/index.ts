@@ -1,1 +1,1 @@
-export * from "~/pages/main/ui"
+export * from "~/slider/main/ui"
