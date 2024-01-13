@@ -3,14 +3,28 @@
     bind:selected
     chips={game.attributes.sections}
     choice
+    on:select={() => console.log(123)}
 >
-    <Chip {chip} on:click={() => whenGameSectionChanged(chip)}>
+    <Chip
+        {chip}
+        on:click={() => whenGameSectionChanged(chip)}
+    >
         <Text>
             {chip.name}
         </Text>
 
-        <Badge class="min-w-6 min-h-6">
-            {chip.count}
+        <Badge
+            align="middle-end"
+            class="
+                static
+                -ml-2 mr-1.5 px-1.5
+                min-w-6 min-h-6
+            "
+            color="secondary"
+        >
+            <small class="text-white/70">
+                {chip.count}
+            </small>
         </Badge>
     </Chip>
 </Set>
@@ -45,3 +59,8 @@ export {
     game,
 }
 </script>
+
+<style lang="sass">
+.smui-badge
+    @apply hidden
+</style>

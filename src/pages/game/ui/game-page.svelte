@@ -33,7 +33,7 @@
         <Cell span={12}>
             <InnerGrid>
                 <Cell span={7}>
-                    <GameFaq />
+                    <LazyGameFaq />
                 </Cell>
 
                 <Cell span={5}>
@@ -53,7 +53,8 @@ import { onDestroy } from "svelte"
 import { lotsSearch } from "~/entities/lot"
 import { LotOnlinePlayersToggle, LotSearch } from "~/features/lot"
 import { Content } from "~/shared/ui"
-import { GameFaq, GameInfo, GameLots, GamePreview } from "~/widgets/game"
+import { GameInfo, GameLots, GamePreview, LazyGameFaq } from "~/widgets/game"
+
 
 onDestroy(() => lotsSearch.set(Object.create(null)))
 

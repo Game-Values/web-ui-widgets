@@ -1,6 +1,6 @@
-import type { Callable } from "~/shared/model"
+import type { TCallable } from "~/shared/model"
 
 export interface SlideAction {
-    handler: Callable
+    handler: TCallable
     label: string
 }

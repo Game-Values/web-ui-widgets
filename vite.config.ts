@@ -1,7 +1,4 @@
-import type { IconifyJSON } from "@iconify/types"
-import type { Module } from "~/shared/model"
 import type { ConfigEnv } from "vite"
-import type { GenerateApiParamsFromUrl } from "swagger-typescript-api"
 
 import { cwd } from "node:process"
 import { resolve } from "node:path"
@@ -30,29 +27,27 @@ export default function({ mode }: ConfigEnv) {
         },
 
         plugins: [
-            vitePluginSwaggerTypescriptApi(
-                <GenerateApiParamsFromUrl>{
-                    addReadonly: true,
-                    enumNamesAsValues: true,
-                    extractEnums: true,
-                    extractRequestBody: true,
-                    extractRequestParams: true,
-                    extractResponseBody: true,
-                    extractResponseError: true,
-                    generateClient: true,
-                    generateResponses: true,
-                    generateRouteTypes: true,
-                    name: "schema.ts",
-                    output: resolve("src/shared/api"),
-                    patch: true,
-                    singleHttpClient: true,
-                    sortTypes: true,
-                    typePrefix: "I",
-                    typeSuffix: "Raw",
-                    unwrapResponseData: true,
-                    url: env.VITE_OPENAPI_URL,
-                }
-            ),
+            vitePluginSwaggerTypescriptApi({
+                addReadonly: true,
+                enumNamesAsValues: true,
+                extractEnums: true,
+                extractRequestBody: true,
+                extractRequestParams: true,
+                extractResponseBody: true,
+                extractResponseError: true,
+                generateClient: true,
+                generateResponses: true,
+                generateRouteTypes: true,
+                name: "schema.ts",
+                output: resolve("src/shared/api"),
+                patch: true,
+                singleHttpClient: true,
+                sortTypes: true,
+                typePrefix: "I",
+                typeSuffix: "Raw",
+                unwrapResponseData: true,
+                url: get(env, "VITE_OPENAPI_URL", ""),
+            }),
             sveltekit(),
             unocss(),
             purgeCss(),
@@ -64,13 +59,15 @@ export default function({ mode }: ConfigEnv) {
                     game: FileSystemIconLoader("src/app/assets/icons/lot"),
                 },
                 transform: (svg: string): string => (
-                    optimize(svg, {
-                        plugins: [
-                            "removeDimensions",
-                            "removeScriptElement",
-                            "removeStyleElement",
-                        ],
-                    }).data
+                    get((
+                        optimize(svg, {
+                            plugins: [
+                                "removeDimensions",
+                                "removeScriptElement",
+                                "removeStyleElement",
+                            ],
+                        })
+                    ), "data", "")
                 ),
             }),
         ],

@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs"
 
 import extractorSvelte from "@unocss/extractor-svelte"
+import presetAutoprefixer from "unocss-preset-autoprefixer"
 import { defineConfig, presetWebFonts, presetUno, transformerDirectives, transformerVariantGroup } from "unocss"
 import { assign, get, reduce, set } from "lodash-es"
 
@@ -26,13 +27,14 @@ export default defineConfig({
     ],
 
 	presets: [
-		presetUno(),
+        presetUno(),
 		presetWebFonts({
 			provider: "bunny",
 			fonts: {
 				base: "Montserrat:400,500,600,700",
 			},
 		}),
+        presetAutoprefixer(),
 	],
 
 	theme: {

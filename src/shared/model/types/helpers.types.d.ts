@@ -1,7 +1,7 @@
-export type Callable<T = void> = () => T
+export type TCallable<T = void> = (...rest: any[]) => T
 
-export type CallableLazy<T = void> = Callable<Promise<T>>
+export type TCallableLazy<T = void> = TCallable<Promise<T>>
 
-export type Module<T> = {
+export type TModule<T> = {
     default: T
 }

@@ -1,3 +1,5 @@
+export * from "~/widgets/game/ui/lazy"
+
 export { default as GameFaq } from "~/widgets/game/ui/game-faq.svelte"
 export { default as GameGroup } from "~/widgets/game/ui/game-group.svelte"
 export { default as GameInfo } from "~/widgets/game/ui/game-info.svelte"
