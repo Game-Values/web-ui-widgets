@@ -22,9 +22,13 @@ export class GameController {
     }
 
     public async fetchGameSections(): Promise<void> {
-        let sectionsRaw: GameSectionsRaw = (
-            await this._apiAdapter.fetchJSON<GameSectionsRaw>(this._storeClient.gameStore.game.jsonFilename)
-        )
-        this._storeClient.gameStore.setGameSectionsRaw(sectionsRaw)
+        try {
+            let sectionsRaw: GameSectionsRaw = (
+                await this._apiAdapter.fetchJSON<GameSectionsRaw>(this._storeClient.gameStore.game.jsonFilename)
+            )
+            this._storeClient.gameStore.setGameSectionsRaw(sectionsRaw)
+        } catch {
+            this._storeClient.gameStore.setGameSectionsRaw(Object.create(null))
+        }
     }
 }

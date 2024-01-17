@@ -18,14 +18,17 @@ export class GameFacade implements FacadeAbstract {
 
         await Promise.all([
             this._gameController.fetchGame(this._routerClient.getRouteParam("gameId")),
-            // this._facetController.fetchFacets(this._routerClient.getRouteParam("gameId")),
+            this._facetController.fetchFacets(this._routerClient.getRouteParam("gameId")),
         ])
 
         await this._gameController.fetchGameSections()
 
         await this._facetController.searchFacets(this._storeClient.gameStore.game.id, (
             useFacetQuery({
-                [Facet.TYPE]: this._routerClient.getRouteParam("gameSection"),
+                [Facet.TYPE]: (
+                    this._storeClient.gameStore.game.attributes.sections.active?.name ||
+                    useFirst(useKeys(this._storeClient.gameStore.gameSectionsRaw))
+                ),
             })
         ))
     }
