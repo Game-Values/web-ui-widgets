@@ -8,7 +8,7 @@ import type { OrderStore } from "~/stores/order"
 import type { SellStore } from "~/stores/sell"
 import type { SeoStore } from "~/stores/seo"
 import type { SettingsStore } from "~/stores/settings"
-import type { UserStore } from "~/stores/user"
+import type { UserStore } from "~/stores/profile"
 import type { WithdrawStore } from "~/stores/withdraw"
 
 // todo: stores typing

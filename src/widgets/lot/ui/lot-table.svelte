@@ -26,15 +26,18 @@
                     <div class="flex gap-x-4">
                         <Button
                             class="mb-auto button-link"
-                            href="/"
+                            href="/u/{lot.owner_id}"
                         >
-                            <UserAvatar />
+                            <UserAvatar
+                                online={true}
+                                size={45}
+                            />
                         </Button>
 
                         <div class="flex flex-col gap-y-1">
                             <Button
                                 class="button-link"
-                                href="/"
+                                href="/u/{lot.owner_id}"
                             >
                                 Username
                             </Button>

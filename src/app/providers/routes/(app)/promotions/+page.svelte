@@ -1,3 +1,0 @@
-<div>
-    Promotions Page
-</div>

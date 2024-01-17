@@ -25,6 +25,6 @@ export const HEROICONS: (`i-heroicons:${string}`)[] = [
     "i-heroicons:paper-clip",
     "i-heroicons:shopping-cart",
     "i-heroicons:x-mark",
-    "i-heroicons:user",
+    "i-heroicons:profile",
     "i-heroicons:users",
 ]

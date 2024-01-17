@@ -99,7 +99,7 @@ definePageMeta({
 <!--                size="large"-->
 <!--                no-wrap-->
 <!--            >-->
-<!--                <user-header-avatar :online="Boolean(rowIndex % 2)" />-->
+<!--                <profile-header-avatar :online="Boolean(rowIndex % 2)" />-->
 
 <!--                <v-title :level="6">-->
 <!--                    {{ row.Buyer.name }}-->
@@ -156,7 +156,7 @@ definePageMeta({
 <!--                size="large"-->
 <!--                no-wrap-->
 <!--            >-->
-<!--                <user-header-avatar :online="Boolean(rowIndex % 2)" />-->
+<!--                <profile-header-avatar :online="Boolean(rowIndex % 2)" />-->
 
 <!--                <v-title :level="6">-->
 <!--                    {{ row.Buyer.name }}-->

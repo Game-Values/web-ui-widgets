@@ -11,5 +11,5 @@
 <script lang="ts">
 import Button from "@smui/button"
 
-    import IconLogoGrayscale from "~icons/custom/logo-grayscale"
+import IconLogoGrayscale from "~icons/custom/logo-grayscale"
 </script>

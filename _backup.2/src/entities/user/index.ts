@@ -1,1 +1,1 @@
-export * from "~/entities/user/model"
+export * from "~/entities/profile/model"
