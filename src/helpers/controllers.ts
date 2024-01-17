@@ -94,42 +94,42 @@ export class Controllers extends DIAbstract<ControllersTokens> {
         ]
     }
 
-    @Memoize()
+    // @Memoize()
     public get authController(): AuthController {
         return this.__getInjection(this.__tokens[ControllerToken.AUTH])
     }
 
-    @Memoize()
+    // @Memoize()
     public get chatController(): ChatController {
         return this.__getInjection(this.__tokens[ControllerToken.CHAT])
     }
 
-    @Memoize()
+    // @Memoize()
     public get facetController(): FacetController {
         return this.__getInjection(this.__tokens[ControllerToken.FACET])
     }
 
-    @Memoize()
+    // @Memoize()
     public get gameController(): GameController {
         return this.__getInjection(this.__tokens[ControllerToken.GAME])
     }
 
-    @Memoize()
+    // @Memoize()
     public get itemController(): ItemController {
         return this.__getInjection(this.__tokens[ControllerToken.ITEM])
     }
 
-    @Memoize()
+    // @Memoize()
     public get orderController(): OrderController {
         return this.__getInjection(this.__tokens[ControllerToken.ORDER])
     }
 
-    @Memoize()
+    // @Memoize()
     public get sellController(): SellController {
         return this.__getInjection(this.__tokens[ControllerToken.SELL])
     }
 
-    @Memoize()
+    // @Memoize()
     public get userController(): UserController {
         return this.__getInjection(this.__tokens[ControllerToken.USER])
     }

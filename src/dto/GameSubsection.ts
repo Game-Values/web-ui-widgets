@@ -9,6 +9,9 @@ export class GameSubsection implements GameSubsectionRaw {
     declare public children: GameSubsectionRaw[]
 
     @Expose()
+    declare public info: string
+
+    @Expose()
     declare public name: _GameSubsection
 
     @Expose()

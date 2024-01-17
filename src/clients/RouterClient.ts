@@ -77,12 +77,12 @@ export class RouterClient {
         return useRoute()
     }
 
-    @Memoize()
+    // @Memoize()
     public get routeFacades(): Facades {
         return useFacades()
     }
 
-    @Memoize()
+    // @Memoize()
     public get routeNames(): Record<keyof typeof RouteName, RouteName> {
         return useReduce(RouteName, (
             result: Record<keyof typeof RouteName, RouteName>,
@@ -91,7 +91,7 @@ export class RouterClient {
         ): Record<keyof typeof RouteName, RouteName> => useSet(result, key, val), {})
     }
 
-    @Memoize()
+    // @Memoize()
     public get router(): TypedRouter {
         return useRouter()
     }

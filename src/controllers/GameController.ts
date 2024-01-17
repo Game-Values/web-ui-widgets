@@ -1,6 +1,6 @@
-import type { StoreClient } from "~/clients"
 import type { GameRaw } from "#schema/data-contracts"
 import type { ApiAdapter } from "~/adapters"
+import type { StoreClient } from "~/clients"
 import type { GameSectionsRaw } from "~/types"
 
 export class GameController {

@@ -59,7 +59,7 @@ export class Item implements ItemRaw {
         })
     }
 
-    @Memoize()
+    // @Memoize()
     public get isUserMeItem(): boolean {
         let { storeClient } = useClients()
 

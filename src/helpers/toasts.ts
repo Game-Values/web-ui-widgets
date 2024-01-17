@@ -40,27 +40,27 @@ export class Toasts extends DIAbstract<ToastsTokens> {
         ]
     }
 
-    @Memoize()
+    // @Memoize()
     public get createdLotToast(): CreatedLotToast {
         return this.__getInjection(this.__tokens[ToastToken.CREATED_LOT])
     }
 
-    @Memoize()
+    // @Memoize()
     public get deletedLotToast(): DeletedLotToast {
         return this.__getInjection(this.__tokens[ToastToken.DELETED_LOT])
     }
 
-    @Memoize()
+    // @Memoize()
     public get orderCancelledToast(): OrderCancelledToast {
         return this.__getInjection(this.__tokens[ToastToken.ORDER_CANCELLED])
     }
 
-    @Memoize()
+    // @Memoize()
     public get orderCompletedToast(): OrderCompletedToast {
         return this.__getInjection(this.__tokens[ToastToken.ORDER_COMPLETED])
     }
 
-    @Memoize()
+    // @Memoize()
     public get userRegisteredToast(): UserRegisteredToast {
         return this.__getInjection(this.__tokens[ToastToken.USER_REGISTERED])
     }

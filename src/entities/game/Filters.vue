@@ -56,9 +56,20 @@ function isShowSubsectionChild(section: `${GameSubsection}.${string}`): boolean 
             >
                 <v-title
                     :level="6"
-                    class="capitalize"
+                    class="flex items-center gap-8px capitalize"
                 >
                     {{ gameSubsection.name }}
+
+                    <v-tooltip v-if="gameSubsection.info">
+                        <template #trigger>
+                            <ui-icon
+                                heroicons="information-circle"
+                                size="18"
+                            />
+                        </template>
+
+                        <v-text v-html="gameSubsection.info" />
+                    </v-tooltip>
                 </v-title>
 
                 <!-- todo: recursive component -->
@@ -78,9 +89,20 @@ function isShowSubsectionChild(section: `${GameSubsection}.${string}`): boolean 
             <template v-if="!gameSubsection.section">
                 <v-title
                     :level="6"
-                    class="capitalize"
+                    class="flex items-center gap-8px capitalize"
                 >
                     {{ gameSubsection.name }}
+
+                    <v-tooltip v-if="gameSubsection.info">
+                        <template #trigger>
+                            <ui-icon
+                                heroicons="information-circle"
+                                size="18"
+                            />
+                        </template>
+
+                        <v-text v-html="gameSubsection.info" />
+                    </v-tooltip>
                 </v-title>
 
                 <entity-game-filter

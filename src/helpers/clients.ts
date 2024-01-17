@@ -47,27 +47,27 @@ export class Clients extends DIAbstract<ClientsTokens> {
         ]
     }
 
-    @Memoize()
+    // @Memoize()
     public get chatClient(): ChatClient {
         return this.__getInjection(this.__tokens[ClientToken.CHAT])
     }
 
-    @Memoize()
+    // @Memoize()
     public get cookieClient(): CookieClient {
         return this.__getInjection(this.__tokens[ClientToken.COOKIE])
     }
 
-    @Memoize()
+    // @Memoize()
     public get httpClient(): HttpClient {
         return this.__getInjection(this.__tokens[ClientToken.HTTP])
     }
 
-    @Memoize()
+    // @Memoize()
     public get routerClient(): RouterClient {
         return this.__getInjection(this.__tokens[ClientToken.ROUTER])
     }
 
-    @Memoize()
+    // @Memoize()
     public get storeClient(): StoreClient {
         return this.__getInjection(this.__tokens[ClientToken.STORE])
     }

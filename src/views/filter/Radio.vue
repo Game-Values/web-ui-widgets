@@ -46,3 +46,8 @@ defineEmits<{
     </template>
 </v-radio-group>
 </template>
+
+<style lang="sass" scoped>
+.vxp-radio-group :deep(.vxp-radio__label)
+    @apply whitespace-normal
+</style>
