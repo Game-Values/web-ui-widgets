@@ -4,4 +4,5 @@ export enum FilterType {
     RADIO = "radio",
     SEARCH = "search",
     SELECT = "select",
+    SUBSECTION = "subsection",
 }

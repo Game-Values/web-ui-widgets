@@ -1,6 +1,6 @@
-import type { RouterClient, StoreClient } from "~/clients"
 import type { ItemRaw } from "#schema/data-contracts"
 import type { ApiAdapter } from "~/adapters"
+import type { RouterClient, StoreClient } from "~/clients"
 import type { GameController, ItemController } from "~/controllers"
 
 export class SellController {
@@ -13,7 +13,14 @@ export class SellController {
     ) {}
 
     public async createSellItem(): Promise<void> {
-        let itemRaw: ItemRaw = await this._apiAdapter.createItemApiV1ItemsItemPost(this._storeClient.sellStore.sellItem as never)
+        let sellItem = useMerge(
+            this._storeClient.sellStore.sellItem,
+            this._storeClient.sellStore.sellItemRaw,
+        )
+
+        sellItem.attributes = cleanObject(sellItem.attributes)
+
+        let itemRaw: ItemRaw = await this._apiAdapter.createItemApiV1ItemsItemPost(sellItem)
         this._storeClient.sellStore.setSellItemRaw(itemRaw)
     }
 
@@ -23,9 +30,16 @@ export class SellController {
     }
 
     public async editSellItem(): Promise<void> {
+        let sellItem = useMerge(
+            this._storeClient.sellStore.sellItem,
+            this._storeClient.sellStore.sellItemRaw,
+        )
+
+        sellItem.attributes = cleanObject(sellItem.attributes)
+
         let itemRaw: ItemRaw = await this._apiAdapter.updateItemApiV1ItemsItemItemIdPut(
             this._routerClient.getRouteParam("itemId"),
-            this._storeClient.sellStore.sellItem as never,
+            sellItem,
         )
         this._storeClient.sellStore.setSellItemRaw(itemRaw)
     }

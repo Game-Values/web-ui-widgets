@@ -13,9 +13,12 @@ export class SellFacade implements FacadeAbstract {
         this._storeClient.sellStore.$reset()
 
         await this._sellController.fetchSellItem()
+
         await Promise.all([
             this._gameController.fetchGames(),
             this._sellController.fetchSaleGame(),
         ])
+
+        await this._gameController.fetchGameSections()
     }
 }
