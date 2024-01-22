@@ -49,7 +49,11 @@ await gameFacade.bootstrap()
             :lg="18"
             :md="24"
         >
-            <entity-game-lots />
+            <v-space vertical>
+                <entity-game-selected-filters />
+
+                <entity-game-lots />
+            </v-space>
         </v-column>
     </v-row>
 

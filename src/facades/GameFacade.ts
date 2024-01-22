@@ -23,13 +23,11 @@ export class GameFacade implements FacadeAbstract {
 
         await this._gameController.fetchGameSections()
 
-        await this._facetController.searchFacets(this._storeClient.gameStore.game.id, (
-            useFacetQuery({
-                [Facet.TYPE]: (
-                    this._storeClient.gameStore.game.attributes.sections.active?.name ||
-                    useFirst(useKeys(this._storeClient.gameStore.gameSectionsRaw))
-                ),
-            })
-        ))
+        await this._facetController.searchFacets(this._storeClient.gameStore.game.id, {
+            [Facet.TYPE]: (
+                this._storeClient.gameStore.game.attributes.sections.active?.name ||
+                useFirst(useKeys(this._storeClient.gameStore.gameSectionsRaw))
+            ),
+        })
     }
 }

@@ -7,6 +7,8 @@ defineProps<{
 defineEmits<{
     (e: "change", modelValue: string): void
 }>()
+
+let maxCount = ref(4)
 </script>
 
 <template>
@@ -15,34 +17,58 @@ defineEmits<{
     vertical
     @change="$emit('change', $event)"
 >
-    <template
-        v-for="bucket in buckets"
-        :key="bucket.value || bucket.label || bucket"
+    <v-overflow
+        :items="buckets"
+        :max-count="maxCount"
+        class="flex-col"
     >
-        <v-checkbox
-            :label="bucket.label || bucket"
-            :value="bucket.value || bucket.label || bucket"
-        >
-            <v-space
-                align="center"
-                size="small"
+        <template #default="{ item: bucket }">
+            <v-checkbox
+                :label="bucket.label || bucket"
+                :value="bucket.value || bucket.label || bucket"
             >
-                <v-text>
-                    {{ bucket.label || bucket }}
-                </v-text>
+                <v-space
+                    align="center"
+                    size="small"
+                >
+                    <v-text>
+                        {{ bucket.label || bucket }}
+                    </v-text>
 
-                <v-tooltip v-if="bucket.info">
-                    <template #trigger>
-                        <ui-icon
-                            heroicons="information-circle"
-                            size="18"
-                        />
-                    </template>
+                    <v-tooltip v-if="bucket.info">
+                        <template #trigger>
+                            <ui-icon
+                                heroicons="information-circle"
+                                size="18"
+                            />
+                        </template>
 
-                    <v-text v-html="bucket.info" />
-                </v-tooltip>
-            </v-space>
-        </v-checkbox>
-    </template>
+                        <v-text v-html="bucket.info" />
+                    </v-tooltip>
+                </v-space>
+            </v-checkbox>
+        </template>
+    </v-overflow>
+
+    <v-button
+        v-if="buckets.length > maxCount"
+        type="primary"
+        text
+        @click="(
+            maxCount === buckets.length
+                ? maxCount = 4
+                : maxCount = buckets.length
+        )"
+    >
+        <v-space size="small">
+            <v-text thin>
+                Show more
+            </v-text>
+
+            <v-text strong>
+                ({{ buckets.length - maxCount }})
+            </v-text>
+        </v-space>
+    </v-button>
 </v-checkbox-group>
 </template>
