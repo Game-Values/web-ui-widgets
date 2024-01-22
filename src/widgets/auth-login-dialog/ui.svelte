@@ -1,13 +1,13 @@
 <script lang="ts">
 import type { IToken } from "~/shared/model"
 
-import { authByOauth2Form, AuthLoginForm, closeAuthModal, isAuthModalOpen, setAuthCookies } from "~/entities/auth"
+import { authByOauth2Form, AuthLoginForm, closeAuthLoginModal, isAuthLoginModalOpen, setAuthCookies } from "~/entities/auth"
 import { AuthByOauth2 } from "~/features/auth"
 import { Dialog } from "~/shared/ui"
 
 function whenAuthSuccess(authToken: IToken): void {
     setAuthCookies(authToken)
-    closeAuthModal()
+    closeAuthLoginModal()
     location.reload()
 }
 </script>
@@ -15,7 +15,7 @@ function whenAuthSuccess(authToken: IToken): void {
 <Dialog
     title="Log In"
     width="26rem"
-    bind:open={$isAuthModalOpen}
+    bind:open={$isAuthLoginModalOpen}
 >
     <svelte:fragment slot="content">
         <AuthLoginForm>

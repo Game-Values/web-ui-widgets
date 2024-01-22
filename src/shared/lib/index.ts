@@ -1,2 +1,2 @@
-export * from "~/shared/lib/enums"
-export * from "~/shared/lib/utils"
+export * from "$lib/enums"
+export * from "$lib/utils"

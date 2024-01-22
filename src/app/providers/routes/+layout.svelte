@@ -7,10 +7,11 @@ import "~/app/assets/styles/index.scss"
 import { Footer } from "~/app/layouts/footer"
 import { Header } from "~/app/layouts/header"
 import { AuthOnly, authToken } from "~/entities/auth"
-import { asyncComponent } from "~/shared/lib"
+import { asyncComponent } from "$lib"
 import { ClientOnly } from "~/shared/ui"
 
-let AuthDialog: TCallableLazy<ConstructorOfATypedSvelteComponent> = asyncComponent("~/widgets/auth-dialog/ui.svelte")
+let AuthLoginDialog: TCallableLazy<ConstructorOfATypedSvelteComponent> = asyncComponent("~/widgets/auth-login-dialog/ui.svelte")
+let AuthSignupDialog: TCallableLazy<ConstructorOfATypedSvelteComponent> = asyncComponent("~/widgets/auth-signup-dialog/ui.svelte")
 
 let data: App.Locals
 authToken.set(data.authToken)
@@ -31,7 +32,9 @@ export {
 
     <AuthOnly>
         <svelte:fragment slot="fallback">
-            <ClientOnly component={AuthDialog} />
+            <ClientOnly component={AuthLoginDialog} />
+
+            <ClientOnly component={AuthSignupDialog} />
         </svelte:fragment>
     </AuthOnly>
 </section>

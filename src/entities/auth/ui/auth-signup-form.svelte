@@ -1,5 +1,6 @@
 <script lang="ts">
 import Button from "@smui/button"
+import Checkbox from "@smui/checkbox"
 import Textfield from "@smui/textfield"
 
 import { authSignupForm } from "~/entities/auth"
@@ -45,7 +46,51 @@ import { Form, FormField, PasswordField } from "~/shared/ui"
         <slot name="signup" />
     </FormField>
 
-    <FormField>
-        
+    <FormField smui>
+        <Checkbox
+            bind:checked={$authSignupForm.sendNotifications}
+        />
+
+        <svelte:fragment slot="label">
+            <small>
+                I want to receive notifications about promotions and offers by email
+            </small>
+        </svelte:fragment>
+    </FormField>
+
+    <FormField smui>
+        <Checkbox
+            bind:checked={$authSignupForm.agreeWithPolicies}
+        />
+
+        <svelte:fragment slot="label">
+            <small>
+                By registering, ou agree to the
+
+                <Button
+                    class="font-size-inherit font-normal button-link"
+                    href="/"
+                    variant="text"
+                >
+                    License Agreement
+                </Button>,
+
+                <Button
+                    class="font-size-inherit font-normal button-link"
+                    href="/"
+                    variant="text"
+                >
+                    Privacy Policy
+                </Button> and
+
+                <Button
+                    class="font-size-inherit font-normal button-link"
+                    href="/"
+                    variant="text"
+                >
+                    Agency Agreement
+                </Button>
+            </small>
+        </svelte:fragment>
     </FormField>
 </Form>

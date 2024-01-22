@@ -4,7 +4,7 @@ import type { TCallableLazy } from "~/shared/model"
 import { omit } from "lodash-es"
 import { onDestroy, onMount } from "svelte"
 
-import { onElementVisible } from "~/shared/lib"
+import { onElementVisible } from "$lib"
 
 let component: TCallableLazy<ConstructorOfATypedSvelteComponent>
 

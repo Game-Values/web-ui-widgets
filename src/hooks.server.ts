@@ -1,4 +1,4 @@
-import { HttpCookie } from "~/shared/lib"
+import { HttpCookie } from "$lib"
 
 export async function handle({ event, resolve }): Promise<Response> {
     event.locals.authToken = {

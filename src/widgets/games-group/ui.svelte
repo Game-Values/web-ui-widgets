@@ -3,6 +3,7 @@ import type { IGame } from "~/shared/model"
 
 import { Cell, InnerGrid } from "@smui/layout-grid"
 
+import { AuthOnly } from "~/entities/auth"
 import { GameCard } from "~/entities/game"
 import { GameToggleLike } from "~/features/game"
 import { groupGames } from "~/widgets/games-group"
@@ -24,7 +25,9 @@ export let games: IGame[]
                     <Cell spanDevices={{ desktop: 3, phone: 6, tablet: 4 }}>
                         <GameCard {game}>
                             <svelte:fragment slot="toggle-like">
-                                <GameToggleLike {game} />
+                                <AuthOnly>
+                                    <GameToggleLike {game} />
+                                </AuthOnly>
                             </svelte:fragment>
                         </GameCard>
                     </Cell>

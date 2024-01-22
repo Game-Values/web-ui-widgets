@@ -6,7 +6,7 @@ import Card, { ActionIcons, Actions, Media, PrimaryAction } from "@smui/card"
 import { Image } from "@smui/image-list"
 import { kebabCase } from "lodash-es"
 
-import { asyncModule } from "~/shared/lib"
+import { asyncModule } from "$lib"
 
 function asyncGameIconSrc(gameName: string): Promise<string> {
     return asyncModule(`~/app/assets/icons/game/${kebabCase(gameName)}.svg`)
