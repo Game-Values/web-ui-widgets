@@ -1,10 +1,10 @@
-import type { IGame } from "~/entities/game"
-import type { IMainPageData } from "~/pages/main"
+import type { IGamesListPageData } from "~/pages/games-list"
+import type { IGame } from "~/shared/model"
 
-import { fetchGames } from "~/entities/game"
+import { getGamesList } from "~/entities/game"
 
-export async function load(): Promise<IMainPageData> {
-    let games: IGame[] = await fetchGames()
+export async function load(): Promise<IGamesListPageData> {
+    let games: IGame[] = await getGamesList()
 
     return {
         games,

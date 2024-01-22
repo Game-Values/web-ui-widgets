@@ -1,12 +1,13 @@
-import type { Handle } from "@sveltejs/kit";
+import { HttpCookie } from "~/shared/lib"
 
-export const handle: Handle = ({ event, resolve }) => (
-	resolve(event, {
-		transformPageChunk: ({ html }) => (
-			html.replace(
-				"%unocss-svelte-scoped.global%",
-				"unocss_svelte_scoped_global_styles",
-			)
-		)
-	})
-)
+export async function handle({ event, resolve }): Promise<Response> {
+    event.locals.authToken = {
+        access_token: event.cookies.get(HttpCookie.ACCESS_TOKEN) || "",
+        chat_token: event.cookies.get(HttpCookie.CHAT_TOKEN) || "",
+        chat_uid: event.cookies.get(HttpCookie.CHAT_UID) || "",
+        refresh_token: event.cookies.get(HttpCookie.REFRESH_TOKEN) || "",
+        token_type: event.cookies.get(HttpCookie.TOKEN_TYPE) || "",
+    }
+
+    return resolve(event)
+}

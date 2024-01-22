@@ -1,10 +1,10 @@
-import type { IGame } from "~/entities/game"
-import type { IGamePageData } from "~/pages/game"
+import type { IGameDetailsPageData } from "~/pages/game-details"
+import type { IGame } from "~/shared/model"
 
-import { fetchGame } from "~/entities/game"
+import { getGameById } from "~/entities/game"
 
-export async function load({ params }): Promise<IGamePageData> {
-    let game: IGame = await fetchGame(params.gameId)
+export async function load({ params }): Promise<IGameDetailsPageData> {
+    let game: IGame = await getGameById(params.gameId)
 
     return {
         game,

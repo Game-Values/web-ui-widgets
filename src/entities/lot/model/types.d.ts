@@ -1,4 +1,8 @@
-import type { IFacetsResult } from "~/entities/facets"
-import type { IItemRaw } from "~/shared/api"
+import type { SvelteComponent } from "svelte"
+import type { SvelteHTMLElements } from "svelte/elements"
 
-export type TLotsSearch = IFacetsResult<IItemRaw[]>
+export interface ILotStats {
+    count: number
+    icon: typeof SvelteComponent<SvelteHTMLElements["svg"]>
+    label: string
+}

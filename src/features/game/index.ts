@@ -1,1 +1,1 @@
-export * from "~/features/game/ui"
+export * from "~/features/game/game-like-toggle"

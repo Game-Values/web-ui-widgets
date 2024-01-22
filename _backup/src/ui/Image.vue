@@ -41,7 +41,7 @@ defineSlots<{
 //     if (isNumber(props.height))
 //         useMerge(options.modifiers!, usePick(props, "height"))
 
-//     return image.getSizes(props.src, options)
+//     return image.getSizes(props.src.backup, options)
 // })
 
 // let imageProps = computed((): ImageProps => (

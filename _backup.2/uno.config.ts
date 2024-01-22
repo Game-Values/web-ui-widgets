@@ -15,7 +15,7 @@ export default defineConfig({
         inline: [
             async (): Promise<string> => (
                 JSON.stringify(
-                    await glob("src/assets/icons/*.svg").then(icons => (
+                    await glob("src.backup/assets/icons/*.svg").then(icons => (
                         icons.map(filepath => `i-custom:${basename(filepath, ".svg")}`)
                     ))
                 )
@@ -26,7 +26,7 @@ export default defineConfig({
     presets: [
         presetIcons({
             collections: {
-                base: FileSystemIconLoader("assets/icons/base"),
+                base: FileSystemIconLoader("assets/icons/common"),
                 custom: FileSystemIconLoader("assets/icons/custom"),
                 game: FileSystemIconLoader("assets/icons/lot"),
                 heroicon: (): Promise<IconifyJSON> => (

@@ -7,7 +7,7 @@ import vuetify, { transformAssetUrls } from "vite-plugin-vuetify"
 export default defineNuxtConfig({
     alias: {
         "@": "..",
-        "~": "../src",
+        "~": "../src.backup",
     },
 
     app: {
@@ -55,7 +55,7 @@ export default defineNuxtConfig({
                     vuetify({
                         autoImport: true,
                         styles: {
-                            configFile: "src/app/styles/vuetify.scss",
+                            configFile: "src.backup/app/styles/vuetify.scss",
                         },
                     })
                 )

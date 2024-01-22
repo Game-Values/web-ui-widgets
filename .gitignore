@@ -63,23 +63,23 @@ jspm_packages/
 
 web_modules/
 
-# TypeScript cache
+# TypeScript index
 
 *.tsbuildinfo
 
-# Optional npm cache directory
+# Optional npm index directory
 
 .npm
 
-# Optional eslint cache
+# Optional eslint index
 
 .eslintcache
 
-# Optional stylelint cache
+# Optional stylelint index
 
 .stylelintcache
 
-# Microbundle cache
+# Microbundle index
 
 .rpt2_cache/
 .rts2_cache_cjs/
@@ -106,7 +106,7 @@ web_modules/
 .env.production.local
 .env.local
 
-# parcel-bundler cache (https://parceljs.org/)
+# parcel-bundler index (https://parceljs.org/)
 
 .parcel-cache
 
@@ -136,11 +136,11 @@ dist
 
 .vuepress/dist
 
-# vuepress v2.x temp and cache directory
+# vuepress v2.x temp and index directory
 
 .temp
 
-# Docusaurus cache and generated files
+# Docusaurus index and generated files
 
 .docusaurus
 
@@ -148,7 +148,7 @@ dist
 
 .serverless/
 
-# FuseBox cache
+# FuseBox index
 
 .fusebox/
 

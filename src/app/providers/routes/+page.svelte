@@ -1,9 +1,9 @@
-<MainPage {data} />
-
 <script lang="ts">
-import type { IMainPageData } from "~/pages/main"
+import type { IGamesListPageData } from "~/pages/games-list"
 
-import { MainPage } from "~/pages/main"
+import { GamesListPage } from "~/pages/games-list"
 
-export let data: IMainPageData
+export let data: IGamesListPageData
 </script>
+
+<GamesListPage pageData={data} />

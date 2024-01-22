@@ -1,4 +1,4 @@
-export type TCallable<T = void> = (...rest: any[]) => T
+export type TCallable<T = void> = (...rest: unknown[]) => T
 
 export type TCallableLazy<T = void> = TCallable<Promise<T>>
 

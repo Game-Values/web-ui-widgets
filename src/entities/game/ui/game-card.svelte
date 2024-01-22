@@ -1,3 +1,20 @@
+<script lang="ts">
+import type { IGame } from "~/shared/model"
+
+import Button from "@smui/button"
+import Card, { ActionIcons, Actions, Media, PrimaryAction } from "@smui/card"
+import { Image } from "@smui/image-list"
+import { kebabCase } from "lodash-es"
+
+import { asyncModule } from "~/shared/lib"
+
+function asyncGameIconSrc(gameName: string): Promise<string> {
+    return asyncModule(`~/app/assets/icons/game/${kebabCase(gameName)}.svg`)
+}
+
+export let game: IGame
+</script>
+
 <Card>
     <Media class="bg-white/2 border border-solid border-white/15 rounded-xl">
         <PrimaryAction>
@@ -5,8 +22,11 @@
                 class="h-full button-default"
                 href="/g/{game.id}"
             >
-                {#await asyncModule(`~/app/assets/icons/game/${kebabCase(game.name)}.svg`) then src}
-                    <Image {src} />
+                {#await asyncGameIconSrc(game.name) then src}
+                    <Image
+                        class="h-36"
+                        {src}
+                    />
                 {/await}
             </Button>
         </PrimaryAction>
@@ -23,32 +43,7 @@
         </h4>
 
         <ActionIcons>
-            <IconButton
-                class="
-                    relative left-2.5
-                    p-0
-                    text-black
-                    icon-button-primary
-                "
-                size="button"
-            >
-                <IconHeart class="text-1.25rem" />
-            </IconButton>
+            <slot name="toggle-like" />
         </ActionIcons>
     </Actions>
 </Card>
-
-<script lang="ts">
-import type { IGame } from "~/entities/game"
-
-import Card, { Actions, ActionIcons, Media, PrimaryAction } from "@smui/card"
-import Button from "@smui/button"
-import IconButton from "@smui/icon-button";
-import { Image } from "@smui/image-list"
-import { kebabCase } from "lodash-es"
-
-import { asyncModule } from "~/shared/lib"
-import IconHeart from "~icons/heroicons/heart"
-
-export let game: IGame
-</script>

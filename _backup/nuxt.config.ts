@@ -243,7 +243,7 @@ let nuxtConfig: NuxtConfig = {
 
         ["@pinia/nuxt", {
             storesDirs: [
-                "src/stores/**",
+                "src.backup/stores/**",
             ],
         }],
     ],

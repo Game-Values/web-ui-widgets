@@ -1,18 +1,6 @@
-import type { GameSection } from "~/entities/game"
-import type { IGameRaw } from "~/shared/api"
+import type { TCallable } from "~/shared/model"
 
-export type TGroupedGames = Map<string, IGame[]>
-
-export interface IGame extends Required<IGameRaw> {
-    attributes: IGameAttributes
-}
-
-export interface IGameAttributes {
-    description: string
-    sections: IGameSection[]
-}
-
-export interface IGameSection {
-    count: number
-    name: GameSection
+export interface IGameSlideAction {
+    handler: TCallable
+    label: string
 }

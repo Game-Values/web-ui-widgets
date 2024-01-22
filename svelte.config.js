@@ -1,35 +1,35 @@
-import { resolve } from "node:path";
+import { resolve } from "node:path"
 
-import adapter from "@sveltejs/adapter-node";
-import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
 import dynamicImportVars from "@rollup/plugin-dynamic-import-vars"
+import adapter from "@sveltejs/adapter-node"
+import { vitePreprocess } from "@sveltejs/vite-plugin-svelte"
 
 /** @type {import("@sveltejs/kit").Config} */
 const config = {
-	extensions: [
-		".svelte",
-	],
+    extensions: [
+        ".svelte",
+    ],
 
-	kit: {
-		adapter: adapter(),
+    kit: {
+        adapter: adapter(),
 
-		alias: {
-			"@/*": resolve("*"),
-			"~/*": resolve("src/*"),
-		},
+        alias: {
+            "@/*": resolve("*"),
+            "~/*": resolve("src/*"),
+        },
 
-		files: {
-			appTemplate: resolve("src/app/app.html"),
-			assets: resolve("static"),
-			errorTemplate: resolve("src/app/error.html"),
-			lib: resolve("src/app/lib"),
-			routes: resolve("src/app/providers/routes"),
-		},
-	},
+        files: {
+            appTemplate: resolve("src/app.html"),
+            assets: resolve("static"),
+            errorTemplate: resolve("src/error.html"),
+            lib: resolve("src/shared/lib"),
+            routes: resolve("src/app/providers/routes"),
+        },
+    },
 
-	preprocess: [
-		vitePreprocess(),
-	],
+    preprocess: [
+        vitePreprocess(),
+    ],
 
     vite: {
         plugins: [
@@ -39,8 +39,8 @@ const config = {
         ],
     },
 
-	vitePlugin: {
-		inspector: true,
-	},
-};
-export default config;
+    vitePlugin: {
+        inspector: true,
+    },
+}
+export default config

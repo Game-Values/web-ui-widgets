@@ -1,11 +1,11 @@
 import { readFileSync } from "node:fs"
 
 import extractorSvelte from "@unocss/extractor-svelte"
-import presetAutoprefixer from "unocss-preset-autoprefixer"
-import { defineConfig, presetWebFonts, presetUno, transformerDirectives, transformerVariantGroup } from "unocss"
 import { assign, get, reduce, set } from "lodash-es"
+import { defineConfig, presetUno, presetWebFonts, transformerDirectives, transformerVariantGroup } from "unocss"
+import presetAutoprefixer from "unocss-preset-autoprefixer"
 
-let colorPalette: Record<string, string> = extractSassVars("src/app/assets/styles/theme/_color-palette.scss")
+let colorPalette: Record<string, string> = extractSassVars("src/app/assets/styles/_color-palette.scss")
 
 function extractSassVars(filepath: string): Record<string, string> {
     let content: string = readFileSync(filepath, "utf-8")
@@ -29,10 +29,10 @@ export default defineConfig({
 	presets: [
         presetUno(),
 		presetWebFonts({
-			provider: "bunny",
 			fonts: {
 				base: "Montserrat:400,500,600,700",
 			},
+			provider: "bunny",
 		}),
         presetAutoprefixer(),
 	],

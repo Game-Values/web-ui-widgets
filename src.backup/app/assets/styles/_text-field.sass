@@ -1,0 +1,16 @@
+.mdc-text-field
+    &--outlined
+        @apply h-12
+        @apply bg-white/12
+        @apply rounded-[var(--mdc-shape-small)]
+
+        &:not(.mdc-text-field--disabled)
+            .mdc-notched-outline
+                &__leading,
+                &__notch,
+                &__trailing
+                    @apply border-white/12 bg-white/0.12
+
+    .mdc-floating-label
+        &--float-above
+            @apply top-[calc(50%-0.25rem)]
