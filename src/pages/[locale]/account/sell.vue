@@ -54,7 +54,16 @@ await sellFacade.bootstrap()
             :md="12"
             :xs="24"
         >
-            <faq-form :height="575" />
+            <faq-form
+                class="
+                    bg-[url(/images/faq.png)]
+                    bg-no-repeat
+                "
+                style="
+                    background-position: center 25%;
+                "
+                :height="575"
+            />
         </v-column>
     </v-row>
 </ui-page>

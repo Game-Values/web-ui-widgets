@@ -65,7 +65,13 @@ await mainFacade.bootstrap()
 
     <v-row>
         <v-column>
-            <faq-form />
+            <faq-form
+                class="
+                    bg-[url(/images/faq.png)]
+                    bg-no-repeat
+                    bg-right-center
+                "
+            />
         </v-column>
     </v-row>
 </ui-page>

@@ -7,7 +7,7 @@ import type { VNode } from "vue"
 
 defineProps<Omit<LinkerProps, "to"> & {
     href?: string
-    to?: Route
+    to?: Route | string
 }>()
 
 defineSlots<{

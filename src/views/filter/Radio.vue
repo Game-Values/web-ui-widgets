@@ -35,7 +35,10 @@ let maxCount = ref(4)
                         {{ bucket.label || bucket }}
                     </v-text>
 
-                    <v-tooltip v-if="bucket.info">
+                    <v-tooltip
+                        v-if="bucket.info"
+                        placement="right-start"
+                    >
                         <template #trigger>
                             <ui-icon
                                 heroicons="information-circle"

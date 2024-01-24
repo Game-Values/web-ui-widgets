@@ -64,7 +64,10 @@ function isShowSubsectionChild(section: `${GameSubsection}.${string}`): boolean 
                     >
                         {{ gameSubsection.name }}
 
-                        <v-tooltip v-if="gameSubsection.info">
+                        <v-tooltip
+                            v-if="gameSubsection.info"
+                            placement="right-start"
+                        >
                             <template #trigger>
                                 <ui-icon
                                     heroicons="information-circle"
@@ -97,7 +100,10 @@ function isShowSubsectionChild(section: `${GameSubsection}.${string}`): boolean 
                     >
                         {{ gameSubsection.name }}
 
-                        <v-tooltip v-if="gameSubsection.info">
+                        <v-tooltip
+                            v-if="gameSubsection.info"
+                            placement="right-start"
+                        >
                             <template #trigger>
                                 <ui-icon
                                     heroicons="information-circle"

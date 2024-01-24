@@ -33,7 +33,9 @@ let { game } = storeToRefs(storeClient.gameStore)
             <v-text v-html="game.attributes.description" />
         </v-column>
 
-        <v-column>
+        <v-column
+            :md="18"
+        >
             <entity-game-sections />
         </v-column>
 
@@ -49,7 +51,7 @@ let { game } = storeToRefs(storeClient.gameStore)
                 </v-button>
 
                 <ui-link-button
-                    :to="game.attributes.sections.active.sellRoute"
+                    :to="game.attributes.sections.active?.sellRoute"
                     type="primary"
                     block
                 >

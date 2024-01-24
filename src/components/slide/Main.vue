@@ -10,6 +10,10 @@ defineProps<{
         label: string
     }
     src: string
+    tag?: {
+        color: "error" | "success" | "warning"
+        label: string
+    }
     text?: string
     title?: string
 }>()
@@ -64,6 +68,16 @@ let titleLevel: ComputedRef<number> = computed((): number => (
                 size="large"
                 vertical
             >
+                <v-tag
+                    v-if="tag"
+                    :type="tag.color"
+                    style="--vxp-tag-bg-color: var(--vxp-tag-d-color);"
+                >
+                    <v-text strong>
+                        {{ tag.label }}
+                    </v-text>
+                </v-tag>
+
                 <v-title
                     v-if="title || $slots.title"
                     :level="titleLevel"

@@ -57,25 +57,25 @@ let { user } = storeToRefs(storeClient.userMeStore)
                 <!-- todo: component & i18n -->
                 <nav>
                     <v-space size="large">
-                        <ui-link>
+                        <ui-link to="/en/blog">
                             <v-title :level="6">
                                 Blog
                             </v-title>
                         </ui-link>
 
-                        <ui-link>
+                        <ui-link to="/en/promotions">
                             <v-title :level="6">
                                 Promotions
                             </v-title>
                         </ui-link>
 
-                        <ui-link>
+                        <ui-link to="/en/top">
                             <v-title :level="6">
                                 TOP-10
                             </v-title>
                         </ui-link>
 
-                        <ui-link>
+                        <ui-link to="/en/ai">
                             <v-title :level="6">
                                 AI Assistant
                             </v-title>
