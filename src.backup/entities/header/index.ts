@@ -1,2 +1,2 @@
-export * from "~/entities/header/model"
+export * from "~/entities/header/core"
 export * from "~/entities/header/ui"

@@ -75,8 +75,8 @@ let nuxtConfig: NuxtConfig = {
     ],
 
     css: [
-        "@/assets/styles/vexip-ui/index.sass",
-        "@/assets/styles/index.sass",
+        "@/assets/styles/vexip-ui/index.scss",
+        "@/assets/styles/index.scss",
     ],
 
     debug: isDebug(),

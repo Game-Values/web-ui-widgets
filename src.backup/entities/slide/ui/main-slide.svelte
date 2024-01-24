@@ -40,7 +40,7 @@
 </div>
 
 <script lang="ts">
-import type { SlideAction } from "~/entities/slide/model"
+import type { SlideAction } from "~/entities/slide/core"
 
 import Button from "@smui/button"
 import { isEmpty } from "lodash-es"

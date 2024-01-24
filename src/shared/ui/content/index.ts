@@ -1,1 +1,1 @@
-export { default as Content } from "~/shared/ui/content/content.svelte"
+export { default as Content } from "$ui/content/content.svelte"

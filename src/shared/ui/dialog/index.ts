@@ -1,1 +1,1 @@
-export { default as Dialog } from "~/shared/ui/dialog/dialog.svelte"
+export { default as Dialog } from "$ui/dialog/dialog.svelte"

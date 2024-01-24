@@ -4,15 +4,17 @@
   "type": "module",
   "scripts": {
     "build": "npx vite build",
-    "todo:check": "nxp run-s -ln check:*",
-    "todo:check:lint": "npx eslint .",
-    "todo:check:svelte": "nxp svelte-kit sync && nxp svelte-check --tsconfig tsconfig.json",
-    "todo:check:prettier": "nxp prettier --check",
+    "check": "nxp run-p -ln check:*",
+    "check:lint": "npx eslint .",
+    "check:svelte": "nxp svelte-kit sync && nxp svelte-check --tsconfig tsconfig.json",
+    "check:prettier": "nxp prettier --check",
     "dev": "npx vite dev",
-    "todo:format": "npx prettier --write ..",
+    "format": "nxp run-s -ln format:*",
+    "format:lint": "npx eslint . --fix",
+    "format:prettier": "npx prettier --write ..",
     "preinstall": "npx only-allow bun",
     "postinstall": "npx run-s -ln prepare",
-    "prepare": "npx smui-theme compile static/styles/app.css -i src/app/assets/styles"
+    "prepare": "npx smui-theme compile static/styles/app.css -i src/app/assets/styles/theme"
   },
   "dependencies": {
     "http-status": "^1.7.3",
@@ -46,7 +48,6 @@
     "@smui/switch": "^7.0.0-beta.16",
     "@smui/textfield": "^7.0.0-beta.16",
     "@smui/top-app-bar": "^7.0.0-beta.16",
-    "@sveltejs/adapter-node": "^2.1.1",
     "@sveltejs/kit": "^2.0.6",
     "@sveltejs/vite-plugin-svelte": "^3.0.1",
     "@types/bun": "latest",
@@ -71,6 +72,7 @@
     "sharp": "^0.33.2",
     "smui-theme": "^7.0.0-beta.16",
     "svelte": "^4.2.9",
+    "svelte-adapter-bun": "^0.5.1",
     "svelte-check": "^3.6.2",
     "svgo": "^3.2.0",
     "typescript": "^5.3.3",
@@ -79,7 +81,6 @@
     "unplugin-icons": "^0.18.1",
     "vite": "^5.0.10",
     "vite-plugin-image-optimizer": "^1.1.7",
-    "vite-plugin-swagger-typescript-api": "^1.0.0",
     "vite-plugin-tailwind-purgecss": "^0.2.0"
   },
   "peerDependencies": {

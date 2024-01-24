@@ -1,8 +1,8 @@
 import { resolve } from "node:path"
 
 import dynamicImportVars from "@rollup/plugin-dynamic-import-vars"
-import adapter from "@sveltejs/adapter-node"
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte"
+import adapter from "svelte-adapter-bun"
 
 /** @type {import("@sveltejs/kit").Config} */
 const config = {
@@ -11,11 +11,21 @@ const config = {
     ],
 
     kit: {
-        adapter: adapter(),
+        adapter: adapter({
+            envPrefix: "VITE_",
+            precompress: {
+                brotli: true,
+                gzip: true,
+            },
+        }),
 
         alias: {
             "@/*": resolve("*"),
             "~/*": resolve("src/*"),
+            $api: resolve("src/shared/api"),
+            $model: resolve("src/shared/model"),
+            $types: resolve("src/shared/types"),
+            $ui: resolve("src/shared/ui"),
         },
 
         files: {
@@ -23,7 +33,7 @@ const config = {
             assets: resolve("static"),
             errorTemplate: resolve("src/error.html"),
             lib: resolve("src/shared/lib"),
-            routes: resolve("src/app/providers/routes"),
+            routes: resolve("routes"),
         },
     },
 

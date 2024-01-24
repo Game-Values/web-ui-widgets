@@ -19,7 +19,7 @@
 </LazyClientOnly>
 
 <script lang="ts">
-import type { SlideAction } from "~/entities/slide/model"
+import type { SlideAction } from "~/entities/slide/core"
 import type { TCallableLazy } from "~/shared/model"
 
 import { asyncModule } from "~/shared/lib"

@@ -831,11 +831,11 @@ export interface IWebTokenRaw {
 
 export namespace Api {
 	/**
-	 * @description First step of a 'magic link' login. Check if the user exists and generate a magic link. Generates two short-duration jwt tokens, one for validation, one for email.
-	 * @tags login
+	 * @description First step of a 'magic link' signin. Check if the user exists and generate a magic link. Generates two short-duration jwt tokens, one for validation, one for email.
+	 * @tags signin
 	 * @name LoginWithMagicLinkApiV1LoginMagicEmailPost
 	 * @summary Login With Magic Link
-	 * @request POST:/api/v1/login/magic/{email}
+	 * @request POST:/api/v1/signin/magic/{email}
 	 * @response `200` `ILoginWithMagicLinkApiV1LoginMagicEmailPostDataRaw` Successful Response
 	 * @response `422` `IHTTPValidationErrorRaw` Validation Error
 	 */
@@ -850,11 +850,11 @@ export namespace Api {
 		export type ResponseBody = ILoginWithMagicLinkApiV1LoginMagicEmailPostDataRaw
 	}
 	/**
-	 * @description Second step of a 'magic link' login.
-	 * @tags login
+	 * @description Second step of a 'magic link' signin.
+	 * @tags signin
 	 * @name ValidateMagicLinkApiV1LoginClaimPost
 	 * @summary Validate Magic Link
-	 * @request POST:/api/v1/login/claim
+	 * @request POST:/api/v1/signin/claim
 	 * @secure
 	 * @response `200` `IValidateMagicLinkApiV1LoginClaimPostDataRaw` Successful Response
 	 * @response `422` `IHTTPValidationErrorRaw` Validation Error
@@ -867,11 +867,11 @@ export namespace Api {
 		export type ResponseBody = IValidateMagicLinkApiV1LoginClaimPostDataRaw
 	}
 	/**
-	 * @description First step with OAuth2 compatible token login, get an access token for future requests. The chat_token is used to authenticate with the chat server. In case if the chat server is not available, the user can still login, but will not be able to use the chat and chat_token will be empty.
-	 * @tags login
+	 * @description First step with OAuth2 compatible token signin, get an access token for future requests. The chat_token is used to authenticate with the chat server. In case if the chat server is not available, the user can still signin, but will not be able to use the chat and chat_token will be empty.
+	 * @tags signin
 	 * @name LoginWithOauth2ApiV1LoginOauthPost
 	 * @summary Login With Oauth2
-	 * @request POST:/api/v1/login/oauth
+	 * @request POST:/api/v1/signin/oauth
 	 * @response `200` `ILoginWithOauth2ApiV1LoginOauthPostDataRaw` Successful Response
 	 * @response `422` `IHTTPValidationErrorRaw` Validation Error
 	 */
@@ -884,10 +884,10 @@ export namespace Api {
 	}
 	/**
 	 * @description For validation of token before enabling TOTP.
-	 * @tags login
+	 * @tags signin
 	 * @name EnableTotpAuthenticationApiV1LoginTotpPut
 	 * @summary Enable Totp Authentication
-	 * @request PUT:/api/v1/login/totp
+	 * @request PUT:/api/v1/signin/totp
 	 * @secure
 	 * @response `200` `IEnableTotpAuthenticationApiV1LoginTotpPutDataRaw` Successful Response
 	 * @response `422` `IHTTPValidationErrorRaw` Validation Error
@@ -901,10 +901,10 @@ export namespace Api {
 	}
 	/**
 	 * @description Final validation step, using TOTP.
-	 * @tags login
+	 * @tags signin
 	 * @name LoginWithTotpApiV1LoginTotpPost
 	 * @summary Login With Totp
-	 * @request POST:/api/v1/login/totp
+	 * @request POST:/api/v1/signin/totp
 	 * @secure
 	 * @response `200` `ILoginWithTotpApiV1LoginTotpPostDataRaw` Successful Response
 	 * @response `422` `IHTTPValidationErrorRaw` Validation Error
@@ -918,10 +918,10 @@ export namespace Api {
 	}
 	/**
 	 * @description Disable TOTP.
-	 * @tags login
+	 * @tags signin
 	 * @name DisableTotpAuthenticationApiV1LoginTotpDelete
 	 * @summary Disable Totp Authentication
-	 * @request DELETE:/api/v1/login/totp
+	 * @request DELETE:/api/v1/signin/totp
 	 * @secure
 	 * @response `200` `IDisableTotpAuthenticationApiV1LoginTotpDeleteDataRaw` Successful Response
 	 * @response `422` `IHTTPValidationErrorRaw` Validation Error
@@ -935,10 +935,10 @@ export namespace Api {
 	}
 	/**
 	 * @description Refresh tokens for future requests
-	 * @tags login
+	 * @tags signin
 	 * @name RefreshTokenApiV1LoginRefreshPost
 	 * @summary Refresh Token
-	 * @request POST:/api/v1/login/refresh
+	 * @request POST:/api/v1/signin/refresh
 	 * @secure
 	 * @response `200` `IRefreshTokenApiV1LoginRefreshPostDataRaw` Successful Response
 	 */
@@ -951,10 +951,10 @@ export namespace Api {
 	}
 	/**
 	 * @description Revoke a refresh token
-	 * @tags login
+	 * @tags signin
 	 * @name RevokeTokenApiV1LoginRevokePost
 	 * @summary Revoke Token
-	 * @request POST:/api/v1/login/revoke
+	 * @request POST:/api/v1/signin/revoke
 	 * @secure
 	 * @response `200` `IRevokeTokenApiV1LoginRevokePostDataRaw` Successful Response
 	 */
@@ -967,10 +967,10 @@ export namespace Api {
 	}
 	/**
 	 * @description Password Recovery
-	 * @tags login
+	 * @tags signin
 	 * @name RecoverPasswordApiV1LoginRecoverEmailPost
 	 * @summary Recover Password
-	 * @request POST:/api/v1/login/recover/{email}
+	 * @request POST:/api/v1/signin/recover/{email}
 	 * @response `200` `IRecoverPasswordApiV1LoginRecoverEmailPostDataRaw` Successful Response
 	 * @response `422` `IHTTPValidationErrorRaw` Validation Error
 	 */
@@ -986,10 +986,10 @@ export namespace Api {
 	}
 	/**
 	 * @description Reset password
-	 * @tags login
+	 * @tags signin
 	 * @name ResetPasswordApiV1LoginResetPost
 	 * @summary Reset Password
-	 * @request POST:/api/v1/login/reset
+	 * @request POST:/api/v1/signin/reset
 	 * @secure
 	 * @response `200` `IResetPasswordApiV1LoginResetPostDataRaw` Successful Response
 	 * @response `422` `IHTTPValidationErrorRaw` Validation Error
@@ -1912,12 +1912,12 @@ export class Api<SecurityDataType extends unknown> {
 
 	api = {
 		/**
-		 * @description First step of a 'magic link' login. Check if the user exists and generate a magic link. Generates two short-duration jwt tokens, one for validation, one for email.
+		 * @description First step of a 'magic link' signin. Check if the user exists and generate a magic link. Generates two short-duration jwt tokens, one for validation, one for email.
 		 *
-		 * @tags login
+		 * @tags signin
 		 * @name LoginWithMagicLinkApiV1LoginMagicEmailPost
 		 * @summary Login With Magic Link
-		 * @request POST:/api/v1/login/magic/{email}
+		 * @request POST:/api/v1/signin/magic/{email}
 		 * @response `200` `ILoginWithMagicLinkApiV1LoginMagicEmailPostDataRaw` Successful Response
 		 * @response `422` `IHTTPValidationErrorRaw` Validation Error
 		 */
@@ -1932,12 +1932,12 @@ export class Api<SecurityDataType extends unknown> {
 			}),
 
 		/**
-		 * @description Second step of a 'magic link' login.
+		 * @description Second step of a 'magic link' signin.
 		 *
-		 * @tags login
+		 * @tags signin
 		 * @name ValidateMagicLinkApiV1LoginClaimPost
 		 * @summary Validate Magic Link
-		 * @request POST:/api/v1/login/claim
+		 * @request POST:/api/v1/signin/claim
 		 * @secure
 		 * @response `200` `IValidateMagicLinkApiV1LoginClaimPostDataRaw` Successful Response
 		 * @response `422` `IHTTPValidationErrorRaw` Validation Error
@@ -1956,12 +1956,12 @@ export class Api<SecurityDataType extends unknown> {
 			}),
 
 		/**
-		 * @description First step with OAuth2 compatible token login, get an access token for future requests. The chat_token is used to authenticate with the chat server. In case if the chat server is not available, the user can still login, but will not be able to use the chat and chat_token will be empty.
+		 * @description First step with OAuth2 compatible token signin, get an access token for future requests. The chat_token is used to authenticate with the chat server. In case if the chat server is not available, the user can still signin, but will not be able to use the chat and chat_token will be empty.
 		 *
-		 * @tags login
+		 * @tags signin
 		 * @name LoginWithOauth2ApiV1LoginOauthPost
 		 * @summary Login With Oauth2
-		 * @request POST:/api/v1/login/oauth
+		 * @request POST:/api/v1/signin/oauth
 		 * @response `200` `ILoginWithOauth2ApiV1LoginOauthPostDataRaw` Successful Response
 		 * @response `422` `IHTTPValidationErrorRaw` Validation Error
 		 */
@@ -1980,10 +1980,10 @@ export class Api<SecurityDataType extends unknown> {
 		/**
 		 * @description For validation of token before enabling TOTP.
 		 *
-		 * @tags login
+		 * @tags signin
 		 * @name EnableTotpAuthenticationApiV1LoginTotpPut
 		 * @summary Enable Totp Authentication
-		 * @request PUT:/api/v1/login/totp
+		 * @request PUT:/api/v1/signin/totp
 		 * @secure
 		 * @response `200` `IEnableTotpAuthenticationApiV1LoginTotpPutDataRaw` Successful Response
 		 * @response `422` `IHTTPValidationErrorRaw` Validation Error
@@ -2004,10 +2004,10 @@ export class Api<SecurityDataType extends unknown> {
 		/**
 		 * @description Final validation step, using TOTP.
 		 *
-		 * @tags login
+		 * @tags signin
 		 * @name LoginWithTotpApiV1LoginTotpPost
 		 * @summary Login With Totp
-		 * @request POST:/api/v1/login/totp
+		 * @request POST:/api/v1/signin/totp
 		 * @secure
 		 * @response `200` `ILoginWithTotpApiV1LoginTotpPostDataRaw` Successful Response
 		 * @response `422` `IHTTPValidationErrorRaw` Validation Error
@@ -2025,10 +2025,10 @@ export class Api<SecurityDataType extends unknown> {
 		/**
 		 * @description Disable TOTP.
 		 *
-		 * @tags login
+		 * @tags signin
 		 * @name DisableTotpAuthenticationApiV1LoginTotpDelete
 		 * @summary Disable Totp Authentication
-		 * @request DELETE:/api/v1/login/totp
+		 * @request DELETE:/api/v1/signin/totp
 		 * @secure
 		 * @response `200` `IDisableTotpAuthenticationApiV1LoginTotpDeleteDataRaw` Successful Response
 		 * @response `422` `IHTTPValidationErrorRaw` Validation Error
@@ -2049,10 +2049,10 @@ export class Api<SecurityDataType extends unknown> {
 		/**
 		 * @description Refresh tokens for future requests
 		 *
-		 * @tags login
+		 * @tags signin
 		 * @name RefreshTokenApiV1LoginRefreshPost
 		 * @summary Refresh Token
-		 * @request POST:/api/v1/login/refresh
+		 * @request POST:/api/v1/signin/refresh
 		 * @secure
 		 * @response `200` `IRefreshTokenApiV1LoginRefreshPostDataRaw` Successful Response
 		 */
@@ -2067,10 +2067,10 @@ export class Api<SecurityDataType extends unknown> {
 		/**
 		 * @description Revoke a refresh token
 		 *
-		 * @tags login
+		 * @tags signin
 		 * @name RevokeTokenApiV1LoginRevokePost
 		 * @summary Revoke Token
-		 * @request POST:/api/v1/login/revoke
+		 * @request POST:/api/v1/signin/revoke
 		 * @secure
 		 * @response `200` `IRevokeTokenApiV1LoginRevokePostDataRaw` Successful Response
 		 */
@@ -2085,10 +2085,10 @@ export class Api<SecurityDataType extends unknown> {
 		/**
 		 * @description Password Recovery
 		 *
-		 * @tags login
+		 * @tags signin
 		 * @name RecoverPasswordApiV1LoginRecoverEmailPost
 		 * @summary Recover Password
-		 * @request POST:/api/v1/login/recover/{email}
+		 * @request POST:/api/v1/signin/recover/{email}
 		 * @response `200` `IRecoverPasswordApiV1LoginRecoverEmailPostDataRaw` Successful Response
 		 * @response `422` `IHTTPValidationErrorRaw` Validation Error
 		 */
@@ -2105,10 +2105,10 @@ export class Api<SecurityDataType extends unknown> {
 		/**
 		 * @description Reset password
 		 *
-		 * @tags login
+		 * @tags signin
 		 * @name ResetPasswordApiV1LoginResetPost
 		 * @summary Reset Password
-		 * @request POST:/api/v1/login/reset
+		 * @request POST:/api/v1/signin/reset
 		 * @secure
 		 * @response `200` `IResetPasswordApiV1LoginResetPostDataRaw` Successful Response
 		 * @response `422` `IHTTPValidationErrorRaw` Validation Error

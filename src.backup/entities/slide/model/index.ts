@@ -1,1 +1,1 @@
-export type * from "~/entities/slide/model/types"
+export type * from "~/entities/slide/core/types"

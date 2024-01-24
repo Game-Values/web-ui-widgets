@@ -1,0 +1,75 @@
+html,
+body {
+    @apply h-full;
+}
+
+html {
+    @apply scroll-smooth;
+}
+
+body {
+    @apply m-0;
+    @apply bg-background;
+    @apply text-normal text-white font-montserrat antialiased;
+
+    > #app {
+        @apply h-full;
+        @apply contents;
+    }
+}
+
+b,
+strong {
+    @apply font-semibold;
+}
+
+small {
+    @apply text-0.75rem
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    @apply m-0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    @apply font-bold;
+}
+
+h5,
+h6 {
+    @apply font-semibold;
+}
+
+@for $i from 1 through 6 {
+    h#{$i} {
+        @apply text-level-#{$i};
+    }
+}
+
+::-webkit-scrollbar {
+    @apply w-2 h-2
+    @apply bg-transparent;
+
+    &-track {
+        @apply bg-transparent;
+        @apply rounded-md;
+    }
+
+    &-thumb {
+        @apply bg-primary;
+        @apply rounded-md;
+    }
+
+    &-corner {
+        @apply bg-white;
+    }
+}

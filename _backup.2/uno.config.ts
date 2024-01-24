@@ -1,4 +1,4 @@
-import type { Module } from "~/shared/model"
+import type { Module } from "~/shared/core"
 
 import { basename } from "node:path"
 

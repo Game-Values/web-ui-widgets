@@ -1,0 +1,30 @@
+.mdc-text-field {
+    @apply w-full;
+
+    &--outlined {
+        @apply h-12;
+        @apply bg-white/12;
+        @apply rounded-[var(--mdc-shape-small)];
+
+        &:not(.mdc-text-field--disabled) {
+            .mdc-notched-outline {
+                &__leading,
+                &__notch,
+                &__trailing {
+                    @apply border-white/12 bg-white/0.12;
+                }
+            }
+        }
+    }
+
+    .mdc-floating-label {
+        &--float-above {
+            @apply top-[calc(50%-0.25rem)];
+        }
+    }
+
+    .mdc-icon-button {
+        @apply h-0;
+        @apply self-center;
+    }
+}

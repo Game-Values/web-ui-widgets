@@ -15,7 +15,7 @@
 </Content>
 
 <script lang="ts">
-import game-detailstype { IMainPageData } from "~/pages/main"
+import game-detailstype { IMainPageData } from "~/routes/main"
 
 import LayoutGrid, { Cell } from "@smui/layout-grid"
 

@@ -1,3 +1,3 @@
-export type * from "~/entities/user/model/types"
+export type * from "~/entities/user/core/types"
 
-export * from "~/entities/user/model/store"
+export * from "~/entities/user/core/store"

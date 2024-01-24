@@ -1,4 +1,5 @@
 /** @type { import("eslint").Linter.Config } */
+const { resolve } = require("node:path")
 module.exports = {
     root: true,
 
@@ -33,6 +34,7 @@ module.exports = {
     rules: {
         "@typescript-eslint/no-confusing-void-expression": "off",
 
+        "camelcase": "off",
         "no-return-assign": "off",
 
         "import/extensions": ["off", {
@@ -96,8 +98,12 @@ module.exports = {
                 "svelte",
 
                 [
+                    "$api",
                     "$app",
                     "$lib",
+                    "$model",
+                    "$types",
+                    "$ui",
                     "parent",
                     "siblings",
                     "index",
@@ -105,8 +111,12 @@ module.exports = {
             ],
             "custom-groups": {
                 value: {
+                    "$api": "$api",
                     "$app": "$app/**",
                     "$lib": "$lib",
+                    "$model": "$model",
+                    "$types": "$types",
+                    "$ui": "$ui",
                     "virtual:icons": "virtual:icons/**",
                 },
             },

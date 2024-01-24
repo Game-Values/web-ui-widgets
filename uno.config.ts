@@ -5,7 +5,7 @@ import { assign, get, reduce, set } from "lodash-es"
 import { defineConfig, presetUno, presetWebFonts, transformerDirectives, transformerVariantGroup } from "unocss"
 import presetAutoprefixer from "unocss-preset-autoprefixer"
 
-let colorPalette: Record<string, string> = extractSassVars("src/app/assets/styles/_color-palette.scss")
+let colorPalette: Record<string, string> = extractSassVars("src/app/assets/styles/theme/_color-palette.scss")
 
 function extractSassVars(filepath: string): Record<string, string> {
     let content: string = readFileSync(filepath, "utf-8")

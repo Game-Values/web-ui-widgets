@@ -1,1 +1,1 @@
-export * from "~/entities/me/model/store"
+export * from "~/entities/me/core/store"

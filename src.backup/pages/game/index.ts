@@ -1,2 +1,2 @@
-export * from "~/pages/game/model"
+export * from "~/pages/game/core"
 export * from "~/pages/game/ui"

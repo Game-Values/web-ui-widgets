@@ -1,2 +1,2 @@
-export * from "~/entities/lot/model/stores/lot"
-export * from "~/entities/lot/model/stores/game"
+export * from "~/entities/lot/core/stores/lot"
+export * from "~/entities/lot/core/stores/game"

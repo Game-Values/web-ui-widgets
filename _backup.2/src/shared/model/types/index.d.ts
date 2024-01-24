@@ -1,3 +1,3 @@
-export * from "~/shared/model/types/env"
-export * from "~/shared/model/types/helpers.types"
-export * from "~/shared/model/types/nuxt.types"
+export * from "~/shared/core/types/env"
+export * from "~/shared/core/types/helpers.types"
+export * from "~/shared/core/types/nuxt.types"

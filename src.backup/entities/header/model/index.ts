@@ -1,3 +1,3 @@
-export type * from "~/entities/header/model/types"
+export type * from "~/entities/header/core/types"
 
-export * from "~/entities/header/model/header-links"
+export * from "~/entities/header/core/header-links"

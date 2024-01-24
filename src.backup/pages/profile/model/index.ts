@@ -1,1 +1,1 @@
-export type * from "~/pages/profile/model/types"
+export type * from "~/pages/profile/core/types"

@@ -1,0 +1,5 @@
+export { default as HeaderAuth } from "~/widgets/header/ui/header-auth.svelte"
+export { default as HeaderLinks } from "~/widgets/header/ui/header-links.svelte"
+export { default as HeaderLogo } from "~/widgets/header/ui/header-logo.svelte"
+export { default as HeaderMenu } from "~/widgets/header/ui/header-menu.svelte"
+export { default as Header } from "~/widgets/header/ui/header.svelte"

@@ -1,1 +1,1 @@
-export * from "~/entities/facets/model"
+export * from "~/entities/facets/core"

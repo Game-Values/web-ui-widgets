@@ -13,7 +13,7 @@ let { loginModal, registrationModal } = useModals()
 
 let active: WritableComputedRef<boolean> = computed({
     get: (): boolean => props.modelValue,
-    set: (modelValue: boolean): void => emit("update:model-value", modelValue),
+    set: (modelValue: boolean): void => emit("update:core-value", modelValue),
 })
 </script>
 

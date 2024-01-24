@@ -19,4 +19,4 @@ WORKDIR /frontend
 
 COPY --from=builder /frontend/.output /frontend
 
-CMD node server/index.mjs
+CMD node server/index.ts

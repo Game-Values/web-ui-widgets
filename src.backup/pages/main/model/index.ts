@@ -1,1 +1,1 @@
-export type * from "~/pages/main/model/types"
+export type * from "~/pages/main/core/types"

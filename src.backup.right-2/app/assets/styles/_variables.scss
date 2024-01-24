@@ -1,0 +1,15 @@
+@use "color-palette";
+
+:root {
+    --mdc-theme-primary: #{color-palette.$primary};
+    --mdc-theme-secondary: #{color-palette.$secondary};
+    --mdc-theme-surface: #{color-palette.$grey-dark};
+    --mdc-theme-background: #{color-palette.$grey-dark};
+    --mdc-theme-error: #{color-palette.$error};
+
+    --mdc-typography-font-family: Montserrat;
+
+    --mdc-shape-small: 0.5rem;
+    --mdc-shape-medium: 0.75rem;
+    --mdc-shape-large: 1rem;
+}

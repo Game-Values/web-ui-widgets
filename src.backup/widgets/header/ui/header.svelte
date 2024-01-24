@@ -31,7 +31,9 @@
                 class="flex justify-end gap-x-4"
                 spanDevices={{ desktop: 2, tablet: 0, phone: 0 }}
             >
-                <AuthLoginButton />
+                <AuthLoginButton
+                    on:click={e => console.log(123, e)}
+                />
 
                 <AuthSignupButton />
             </Cell>

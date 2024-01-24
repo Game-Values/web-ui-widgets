@@ -1,1 +1,1 @@
-export * from "~/entities/filters/model"
+export * from "~/entities/filters/core"

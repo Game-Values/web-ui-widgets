@@ -1,6 +1,6 @@
 import type { Ref } from "vue"
 
-// todo: dynamic modal loading, not via provider
+// todo: dynamic dialog loading, not via provider
 export class ModalController {
     private _active: Ref<boolean> = ref(false)
 

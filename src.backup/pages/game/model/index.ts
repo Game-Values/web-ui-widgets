@@ -1,1 +1,1 @@
-export type * from "~/pages/game/model/types"
+export type * from "~/pages/game/core/types"

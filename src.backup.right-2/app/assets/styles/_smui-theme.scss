@@ -1,0 +1,9 @@
+@use "color-palette";
+
+@use "@material/theme" as theme with (
+    $primary: color-palette.$primary,
+    $secondary: color-palette.$secondary,
+    $surface: color-palette.$grey-dark,
+    $background: color-palette.$grey-dark,
+    $error: color-palette.$error,
+);

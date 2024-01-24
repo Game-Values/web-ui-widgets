@@ -1,1 +1,1 @@
-export * from "~/shared/model/types"
+export * from "~/shared/core/types"
