@@ -35,7 +35,7 @@
     "devDependencies": {
         "@hebilicious/vue-query-nuxt": "^0.2.1",
         "@iconify-json/heroicons": "^1.1.19",
-        "@iconify/utils": "^2.1.16",
+        "@iconify/utils": "^2.1.19",
         "@logux/eslint-config": "^52.0.2",
         "@nuxt/image": "^1.3.0",
         "@nuxt/kit": "^3.9.3",
@@ -47,11 +47,11 @@
         "@nuxtjs/stylelint-module": "^5.1.0",
         "@nuxtjs/web-vitals": "^0.2.6",
         "@pinia/nuxt": "^0.5.1",
-        "@rushstack/eslint-patch": "^1.7.0",
+        "@rushstack/eslint-patch": "^1.7.2",
         "@types/hash-sum": "^1.0.2",
-        "@types/node": "^20.11.5",
-        "@typescript-eslint/eslint-plugin": "^6.19.0",
-        "@typescript-eslint/parser": "^6.19.0",
+        "@types/node": "^20.11.7",
+        "@typescript-eslint/eslint-plugin": "^6.19.1",
+        "@typescript-eslint/parser": "^6.19.1",
         "@unocss/eslint-plugin": "^0.57.7",
         "@unocss/nuxt": "^0.57.7",
         "@unocss/reset": "^0.57.7",
@@ -79,7 +79,7 @@
         "nuxt-seo-experiments": "^3.1.9",
         "nuxt-swiper": "^1.2.2",
         "nuxt-typed-router": "^3.5.1",
-        "nuxt-viewport": "^2.1.2",
+        "nuxt-viewport": "^2.1.4",
         "rollup-plugin-node-polyfills": "^0.2.1",
         "sass": "^1.70.0",
         "stylelint": "^15.11.0",
@@ -89,7 +89,7 @@
         "unocss-preset-autoprefixer": "^0.0.7",
         "vite-plugin-dynamic-import": "^1.5.0",
         "vite-plugin-vue-setup-inherit-attrs": "^1.0.8",
-        "vue-eslint-parser": "^9.4.1"
+        "vue-eslint-parser": "^9.4.2"
     },
     "dependencies": {
         "@tanstack/vue-query": "^5.17.19",
