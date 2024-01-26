@@ -1,3 +1,16 @@
 .mdc-form-field {
     @apply w-full;
+
+    > .mdc-text-field {
+        @apply pr-[max(1rem,var(--mdc-shape-small,0.25rem))]
+        @apply pl-[max(1rem,calc(var(--mdc-shape-small,0.25rem)+var(--mdc-shape-small,0.25rem)))]
+    }
+
+    > label[for^=SMUI-form-field] {
+        @apply empty:(hidden)
+    }
+
+    + .mdc-form-field {
+        @apply mt-6;
+    }
 }

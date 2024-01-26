@@ -1,4 +1,8 @@
+import type { RouteLink } from "$lib"
+import type { SvelteComponent } from "svelte"
+
 export type HeaderLink = {
-    label: string
-    url: string
+    Icon?: typeof SvelteComponent
+    label?: string
+    url: RouteLink
 }

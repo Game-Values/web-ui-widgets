@@ -23,6 +23,7 @@ const config = {
             "@/*": resolve("*"),
             "~/*": resolve("src/*"),
             $api: resolve("src/shared/api"),
+            $config: resolve("src/shared/config"),
             $model: resolve("src/shared/model"),
             $types: resolve("src/shared/types"),
             $ui: resolve("src/shared/ui"),

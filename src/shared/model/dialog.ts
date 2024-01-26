@@ -1,73 +1,40 @@
-import type { Dialog } from "$lib"
-import type { TCallableLazy } from "$types"
-import type { ComponentProps, SvelteComponent } from "svelte"
-import type { Writable } from "svelte/store"
+import type { DialogName } from "$lib"
+import type { Page } from "@sveltejs/kit"
+import type { Readable } from "svelte/store"
 
-import { get, writable } from "svelte/store"
+import { derived } from "svelte/store"
 
-import { asyncModule } from "$lib"
-import { Dialog as DialogWrapper } from "$ui"
+import { replaceState } from "$app/navigation"
+import { page } from "$app/stores"
 
 type IDialog = {
-    dialog: SvelteComponent,
-    wrapper: SvelteComponent,
+    closeDialog(): void
+    isDialogOpen: Readable<(dialog: DialogName) => boolean>
+    openDialog(dialog: DialogName): void
 }
 
-interface SvelteComponentConstructor {
-    new (componentConfig: {
-        props?: ComponentProps<SvelteComponent>
-        target: Element,
-    }): SvelteComponent
+let isDialogOpen: Readable<(dialog: DialogName) => boolean> = (
+    derived(page, ($page: Page): (dialog: DialogName) => boolean => (
+        (dialog: DialogName): boolean => $page.state.dialog === dialog
+    ))
+)
+
+function closeDialog(): void {
+    replaceState("", {
+        dialog: undefined,
+    })
 }
 
-let dialoguesComponents: Map<Dialog, SvelteComponentConstructor> = (
-    new Map<Dialog, SvelteComponentConstructor>()
-)
+function openDialog(dialog: DialogName): void {
+    replaceState("", {
+        dialog,
+    })
+}
 
-let dialogues: Map<Dialog, IDialog> = (
-    new Map<Dialog, IDialog>()
-)
-
-async function resolveDialogComponent(dialog: Dialog): Promise<SvelteComponentConstructor> {
-    if (!dialoguesComponents.get(dialog)) {
-        let DialogComponent: SvelteComponentConstructor = (
-            await asyncModule<SvelteComponentConstructor>(`~/widgets/dialog/ui/${dialog}.svelte`)
-        )
-
-        dialoguesComponents.set(dialog, DialogComponent)
+export function useDialog(): IDialog {
+    return {
+        closeDialog,
+        isDialogOpen,
+        openDialog,
     }
-
-    return dialoguesComponents.get(dialog)!
-}
-
-export async function openDialog(
-    dialog: Dialog,
-    props: ComponentProps<SvelteComponent> = {},
-): Promise<void> {
-    let DialogComponent: SvelteComponentConstructor = await resolveDialogComponent(dialog)
-
-    let dialogWrapper: SvelteComponent = new DialogWrapper({
-        props: {
-            open: true,
-        },
-        target: document.body,
-    })
-
-    let dialogComponent: SvelteComponent = new DialogComponent({
-        props,
-        target: document.body.lastElementChild!,
-    })
-
-    dialogues.set(dialog, {
-        dialog: dialogWrapper,
-        wrapper: dialogComponent,
-    })
-
-    console.log(dialogues.get(dialog))
-}
-
-export function closeDialog(dialog: Dialog): void {
-    dialogues.get(dialog)?.dialog.$destroy()
-    dialogues.get(dialog)?.wrapper.$destroy()
-    dialogues.delete(dialog)
 }

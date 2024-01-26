@@ -1,1 +1,1 @@
-export * from "~/shared/config/get-env-var"
+export * from "../../../src/shared/config/env"

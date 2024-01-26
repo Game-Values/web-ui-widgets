@@ -1,20 +1,36 @@
 <script lang="ts">
+import type { DialogName } from "$lib"
+
 import Dialog, { Actions, Content, Header, Title } from "@smui/dialog"
 import IconButton from "@smui/icon-button"
 
 import IconXMark from "virtual:icons/heroicons/x-mark"
 
-export let open: boolean = false
+import { useDialog } from "$model"
 
-export let title: string = ""
+let { closeDialog, isDialogOpen } = useDialog()
 
-export let width: string = "auto"
+let className: string = ""
+
+let name: DialogName
+
+let title: string = ""
+
+let width: string = "auto"
+
+export {
+    className as class,
+    name,
+    title,
+    width,
+}
 </script>
 
 <Dialog
+    open={$isDialogOpen(name)}
+    surface$class={className}
     surface$style="width: {width};"
-    bind:open={open}
-    on:SMUIDialog:closed={() => open = false}
+    on:SMUIDialog:closed={closeDialog}
 >
     <Header>
         <Title class="text-center text-level-3 font-bold">

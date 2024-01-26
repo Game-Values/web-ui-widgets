@@ -1,15 +1,24 @@
 <script lang="ts">
 import Button from "@smui/button"
 
-import { openAuthLoginModal } from "~/entities/auth"
+import { DialogName, forwardEvent } from "$lib"
+import { useDialog } from "$model"
 
-import { withForwardEvent } from "$lib"
+let { openDialog } = useDialog()
+
+let className: string = ""
+
+export {
+    className as class,
+}
 </script>
 
 <Button
-    class="text-normal text-nowrap font-bold"
+    class="text-normal text-nowrap font-bold {className}"
     variant="text"
-    on:click={withForwardEvent(openAuthLoginModal)}
+    on:click={forwardEvent(() => openDialog(DialogName.SIGN_IN))}
 >
-    Log In
+    <slot>
+        Sign In
+    </slot>
 </Button>

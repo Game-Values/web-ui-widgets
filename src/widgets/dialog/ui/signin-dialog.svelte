@@ -1,11 +1,16 @@
 <script lang="ts">
-import { Dialog } from "$ui"
+import { SigninByEmail } from "~/features/signin"
 
-export let open: boolean
+import { DialogName } from "$lib"
+import { Dialog } from "$ui"
 </script>
 
-<Dialog bind:open>
+<Dialog
+    name={DialogName.SIGN_IN}
+    title="Sign In"
+    width="26rem"
+>
     <svelte:fragment slot="content">
-        Signin dialog
+        <SigninByEmail />
     </svelte:fragment>
 </Dialog>

@@ -5,6 +5,7 @@
 
     .mdc-dialog__surface {
         @apply px-7 py-9;
+        @apply min-w-96;
         @apply gap-y-6;
         @apply bg-white/2;
         @apply shadow-[0_0.375rem_3.25rem_0_rgba(61,152,255,0.20)];

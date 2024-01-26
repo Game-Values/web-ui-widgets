@@ -100,6 +100,7 @@ module.exports = {
                 [
                     "$api",
                     "$app",
+                    "$config",
                     "$lib",
                     "$model",
                     "$types",
@@ -113,6 +114,7 @@ module.exports = {
                 value: {
                     "$api": "$api",
                     "$app": "$app/**",
+                    "$config": "$config",
                     "$lib": "$lib",
                     "$model": "$model",
                     "$types": "$types",
@@ -139,6 +141,7 @@ module.exports = {
                 parser: "@typescript-eslint/parser",
             },
             rules: {
+                "svelte/no-inline-styles": "off",
                 "svelte/no-unused-class-name": "off",
 
                 "svelte/html-self-closing": ["error", "all"],
@@ -148,6 +151,15 @@ module.exports = {
                     indent: 4,
                     indentScript: false,
                 }],
+            },
+        },
+        {
+            files: [
+                "+layout.server.ts",
+                "+page.server.ts",
+            ],
+            rules: {
+                "@typescript-eslint/explicit-function-return-type": "off",
             },
         },
     ],

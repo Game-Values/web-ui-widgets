@@ -1,10 +1,12 @@
 <script lang="ts">
 import LayoutGrid, { Cell } from "@smui/layout-grid"
 import TopAppBar from "@smui/top-app-bar"
+import Autocomplete from "@smui-extra/autocomplete"
 
-import { HeaderAuth, HeaderLinks, HeaderLogo, HeaderMenu } from "~/widgets/header"
+import { SessionOnly } from "~/entities/session"
+import { HeaderLinks, HeaderLogo, HeaderSession, HeaderSignin } from "~/widgets/header"
 
-import { Content } from "$ui"
+import { Content, SearchField } from "$ui"
 </script>
 
 <TopAppBar
@@ -24,7 +26,9 @@ import { Content } from "$ui"
                 align="middle"
                 spanDevices={{ desktop: 4, phone: 0, tablet: 0 }}
             >
-                Autocomplete
+                <Autocomplete>
+                    <SearchField />
+                </Autocomplete>
             </Cell>
 
             <Cell
@@ -39,9 +43,13 @@ import { Content } from "$ui"
                 align="middle"
                 spanDevices={{ desktop: 2, phone: 0, tablet: 0 }}
             >
-                <HeaderAuth />
+                <SessionOnly>
+                    <HeaderSession />
 
-                <HeaderMenu />
+                    <svelte:fragment slot="fallback">
+                        <HeaderSignin />
+                    </svelte:fragment>
+                </SessionOnly>
             </Cell>
         </LayoutGrid>
     </Content>

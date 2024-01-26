@@ -1,4 +1,5 @@
 @use "@material/button/mixins" as button;
+@use "../theme/color-palette";
 
 .mdc-button {
     --mdc-filled-button-container-height: 3.125rem;
@@ -19,21 +20,23 @@
 
 
 .button-default,
-.button-link {
-    @include button.ripple-states(#FFFFFF);
+.button-default.button-link {
+    &:not(&.button-link) {
+        @include button.ripple-states(color-palette.$white);
+    }
 
     &.mdc-button {
-        @include button.ink-color(#FFFFFF);
+        @include button.ink-color(color-palette.$white);
     }
 
     &.mdc-button--unelevated,
     &.mdc-button--raised {
-        @include button.filled-accessible(#FFFFFF);
+        @include button.filled-accessible(color-palette.$white);
     }
 
     &.mdc-button--outlined {
-        @include button.outline-color(#FFFFFF);
-        @include button.ink-color(#FFFFFF);
+        @include button.outline-color(color-palette.$white);
+        @include button.ink-color(color-palette.$white);
     }
 }
 
@@ -44,10 +47,21 @@
         @apply p-0;
         @apply min-w-auto h-auto;
         @apply justify-start;
+        @include button.ink-color(color-palette.$primary);
 
         &:hover {
-            @include button.ink-color(#3478F6);
+            @include button.ink-color(color-palette.$info);
         }
+    }
+
+    &.mdc-button--unelevated,
+    &.mdc-button--raised {
+        @include button.filled-accessible(color-palette.$primary);
+    }
+
+    &.mdc-button--outlined {
+        @include button.outline-color(color-palette.$primary);
+        @include button.ink-color(color-palette.$primary);
     }
 }
 

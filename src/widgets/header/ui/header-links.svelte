@@ -5,9 +5,9 @@ import { headerLinks } from "~/widgets/header"
 </script>
 
 <div class="flex justify-center gap-x-4">
-    {#each headerLinks as headerLink (headerLink.label)}
+    {#each headerLinks as headerLink (headerLink.url)}
         <Button
-            class="text-normal font-bold button-link"
+            class="text-normal font-bold button-default button-link"
             href={headerLink.url}
         >
             {headerLink.label}

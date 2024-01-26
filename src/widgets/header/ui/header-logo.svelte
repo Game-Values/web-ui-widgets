@@ -1,7 +1,7 @@
 <script lang="ts">
 import Button from "@smui/button"
 
-import IconLogo from "virtual:icons/custom/logo"
+import IconLogo from "virtual:icons/common/logo"
 </script>
 
 <Button

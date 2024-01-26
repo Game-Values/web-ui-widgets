@@ -1,20 +1,22 @@
 import type { HeaderLink } from "~/widgets/header"
 
+import { RouteLink } from "$lib"
+
 export let headerLinks: HeaderLink[] = [
     {
         label: "Blog",
-        url: "/blog",
+        url: RouteLink.BLOG,
     },
     {
         label: "Promotions",
-        url: "/promotions",
+        url: RouteLink.PROMOTIONS,
     },
     {
         label: "TOP-10",
-        url: "/top",
+        url: RouteLink.TOP_10,
     },
     {
         label: "AI Assistant",
-        url: "/ai",
+        url: RouteLink.AI_ASSISTANT,
     },
 ]
