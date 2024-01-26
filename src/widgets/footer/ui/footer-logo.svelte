@@ -1,7 +1,7 @@
 <script lang="ts">
 import Button from "@smui/button"
 
-import IconLogo from "virtual:icons/common/logo"
+import IconLogoGrayscale from "virtual:icons/common/logo-grayscale"
 
 import { RouteLink } from "$lib"
 </script>
@@ -11,7 +11,7 @@ import { RouteLink } from "$lib"
     color="secondary"
     href={RouteLink.HOME}
 >
-    <IconLogo
+    <IconLogoGrayscale
         height="2.5rem"
         width="9.725rem"
     />

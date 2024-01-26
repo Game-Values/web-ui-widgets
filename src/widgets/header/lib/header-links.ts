@@ -1,8 +1,8 @@
-import type { HeaderLink } from "~/widgets/header"
+import type { ILabelLink } from "$types"
 
 import { RouteLink } from "$lib"
 
-export let headerLinks: HeaderLink[] = [
+export let headerLinks: ILabelLink[] = [
     {
         label: "Blog",
         url: RouteLink.BLOG,

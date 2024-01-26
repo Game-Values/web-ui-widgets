@@ -1,2 +1,2 @@
-export * from "~/widgets/header/model"
+export * from "~/widgets/header/lib"
 export * from "~/widgets/header/ui"

@@ -12,7 +12,7 @@ type ISession = {
 }
 
 type ISessionPayload = {
-    user: IUser
+    user?: IUser
 }
 
 let user: Writable<IUser> = writable<IUser>(Object.create(null))
@@ -27,7 +27,8 @@ function logout(): void {
 }
 
 export function updateSession(sessionPayload: ISessionPayload): void {
-    user.set(sessionPayload.user)
+    if (sessionPayload.user)
+        user.set(sessionPayload.user)
 }
 
 export function useSession(): ISession {

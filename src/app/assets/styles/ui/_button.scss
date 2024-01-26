@@ -25,16 +25,18 @@
         @include button.ripple-states(color-palette.$white);
     }
 
-    &.mdc-button {
+    &.mdc-button:not(.smui-button--color-secondary) {
         @include button.ink-color(color-palette.$white);
     }
 
     &.mdc-button--unelevated,
     &.mdc-button--raised {
-        @include button.filled-accessible(color-palette.$white);
+        &:not(.smui-button--color-secondary) {
+            @include button.filled-accessible(color-palette.$white);
+        }
     }
 
-    &.mdc-button--outlined {
+    &.mdc-button--outlined:not(.smui-button--color-secondary) {
         @include button.outline-color(color-palette.$white);
         @include button.ink-color(color-palette.$white);
     }
@@ -47,21 +49,32 @@
         @apply p-0;
         @apply min-w-auto h-auto;
         @apply justify-start;
-        @include button.ink-color(color-palette.$primary);
 
-        &:hover {
-            @include button.ink-color(color-palette.$info);
+        &.smui-button--color-secondary:hover {
+            @include button.ink-color(rgba(color-palette.$primary, 0.6));
+        }
+
+        &:not(.smui-button--color-secondary) {
+            @include button.ink-color(color-palette.$primary);
+
+            &:hover {
+                @include button.ink-color(color-palette.$info);
+            }
         }
     }
 
     &.mdc-button--unelevated,
     &.mdc-button--raised {
-        @include button.filled-accessible(color-palette.$primary);
+        &:not(.smui-button--color-secondary) {
+            @include button.filled-accessible(color-palette.$primary);
+        }
     }
 
     &.mdc-button--outlined {
-        @include button.outline-color(color-palette.$primary);
-        @include button.ink-color(color-palette.$primary);
+        &:not(.smui-button--color-secondary) {
+            @include button.outline-color(color-palette.$primary);
+            @include button.ink-color(color-palette.$primary);
+        }
     }
 }
 

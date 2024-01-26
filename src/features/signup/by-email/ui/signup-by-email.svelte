@@ -77,7 +77,6 @@ let agreeWithPolicies: boolean = true
 
                 <Button
                     class="font-size-inherit font-normal button-link"
-                    href="/"
                     variant="text"
                 >
                     License Agreement
@@ -85,7 +84,6 @@ let agreeWithPolicies: boolean = true
 
                 <Button
                     class="font-size-inherit font-normal button-link"
-                    href="/"
                     variant="text"
                 >
                     Privacy Policy
@@ -93,7 +91,6 @@ let agreeWithPolicies: boolean = true
 
                 <Button
                     class="font-size-inherit font-normal button-link"
-                    href="/"
                     variant="text"
                 >
                     Agency Agreement
