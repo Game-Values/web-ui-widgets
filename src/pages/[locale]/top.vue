@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-let { routerClient, storeClient } = useClients()
-let { userMeFacade } = useFacades()
+import PremiumPlayersSwitch from "~/entities/game/PremiumPlayersSwitch.vue";
+
+let { routerClient } = useClients()
 </script>
 
 <template>
@@ -32,6 +33,31 @@ let { userMeFacade } = useFacades()
                 <v-title :level="1">
                     TOP-10
                 </v-title>
+            </v-column>
+
+            <v-column>
+                <v-row align="middle">
+                    <v-column
+                        :lg="6"
+                        :md="6"
+                        :sm="12"
+                        :xs="24"
+                    >
+                        <v-select
+                            :options="[]"
+                            placeholder="All games"
+                        />
+                    </v-column>
+
+                    <v-column
+                        :lg="6"
+                        :md="6"
+                        :sm="12"
+                        :xs="24"
+                    >
+                        <premium-players-switch />
+                    </v-column>
+                </v-row>
             </v-column>
 
             <v-column
