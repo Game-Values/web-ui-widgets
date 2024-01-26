@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-let { storeClient, routerClient } = useClients()
+let { routerClient, storeClient } = useClients()
 let { loginModal, registrationModal } = useModals()
 
 let { user } = storeToRefs(storeClient.userMeStore)
@@ -69,7 +69,7 @@ let { user } = storeToRefs(storeClient.userMeStore)
                             </v-title>
                         </ui-link>
 
-                        <ui-link to="/en/top">
+                        <ui-link :to="routerClient.getRoute(routerClient.routeNames.TOP_BUYERS)">
                             <v-title :level="6">
                                 TOP-10
                             </v-title>

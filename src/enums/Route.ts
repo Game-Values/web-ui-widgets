@@ -52,6 +52,10 @@ export enum RouteName {
     STORE_PURCHASES = routesNames.localeStore.storePurchases,
     STORE_SALES = routesNames.localeStore.storeSales,
 
+    TOP = routesNames.localeTop.topBuyers,
+    TOP_BUYERS = routesNames.localeTop.topBuyers,
+    TOP_SELLERS = routesNames.localeTop.topSellers,
+
     USER = routesNames.localeUUserId.uUserIdIndexStorefront,
     USER_ITEM_BUY = routesNames.localeUUserIdGGameIdGameSectionItemIdBuy,
     USER_ITEM_EDIT = routesNames.localeUUserIdGGameIdGameSectionItemIdEdit,

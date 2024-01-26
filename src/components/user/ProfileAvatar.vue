@@ -9,6 +9,7 @@ defineProps<{
     :class="{
         'vxp-avatar--premium': premium,
     }"
+    class="max-w-full max-h-full"
     size="large"
     src="/images/user-fake-avatar.png"
 />
