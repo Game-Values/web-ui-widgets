@@ -9,6 +9,7 @@ export namespace SellStore {
 
     export type State = {
         sellItemRaw: ItemRaw
+        sellStep: number
     }
 
     export type Getters = {
@@ -34,7 +35,7 @@ export let useSellStore: (storeId?: string) => SellStore.Store = createStore<
             this.sellItemRaw = sellItemRaw
         },
 
-        updateSellItemRaw(sellItemRaw: ItemRaw): void {
+        updateSellItemRaw(sellItemRaw: Partial<ItemRaw>): void {
             useMerge(this.sellItemRaw, sellItemRaw)
         },
     },
@@ -56,5 +57,6 @@ export let useSellStore: (storeId?: string) => SellStore.Store = createStore<
             gid: "",
             name: "",
         },
+        sellStep: 0,
     }),
 })

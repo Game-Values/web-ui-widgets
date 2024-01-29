@@ -8,7 +8,7 @@ let { createdLotToast, deletedLotToast } = useToasts()
 
 let { game, gameSectionsRaw } = storeToRefs(storeClient.gameStore)
 let { games } = storeToRefs(storeClient.gamesStore)
-let { sellItem } = storeToRefs(storeClient.sellStore)
+let { sellItem, sellStep } = storeToRefs(storeClient.sellStore)
 
 let gameAttributes = computed((): Record<string, any> => {
     let { type } = storeClient.sellStore.sellItemRaw.attributes
@@ -60,145 +60,224 @@ async function handleDeleteItem(): Promise<void> {
     :model="storeClient.sellStore.sellItemRaw"
     all-required
 >
-    <v-form-item
-        label="Game"
-        prop="gid"
-    >
-        <v-select
-            :key-config="{
-                label: 'name',
-                value: 'id',
-            }"
-            :options="games"
-            @select="handleSelectGame($event)"
-        />
-    </v-form-item>
-
-    <template v-if="!isEmpty(gameSectionsRaw)">
-        <v-form-item
-            label="Item type"
-            prop="attributes.type"
+    <v-collapse @change="sellStep = (useMax($event) - 1) || 0">
+        <v-collapse-panel
+            style="
+                --vxp-collapse-content-v-padding: 0;
+                --vxp-collapse-content-h-padding: 0;
+                --vxp-collapse-header-bg-color: transparent;
+            "
+            expanded
         >
-            <v-select :options="useKeys(gameSectionsRaw)" />
-        </v-form-item>
+            <template #title>
+                <v-title :level="1">
+                    Main Information
+                </v-title>
+            </template>
 
-        <template
-            v-for="({ buckets, children, section, type }, gameAttribute) in gameAttributes"
-            :key="gameAttribute"
-        >
             <v-form-item
-                v-if="!children"
-                :label="gameAttribute"
-                :prop="`attributes.${gameAttribute}`"
+                label="Game name"
+                prop="gid"
             >
                 <v-select
-                    v-if="[FilterType.CHECKBOX, FilterType.RADIO, FilterType.SELECT].includes(type)"
-                    :multiple="[FilterType.CHECKBOX, FilterType.SELECT].includes(type)"
-                    :options="useMap(buckets, bucket => (bucket.label || bucket).toString())"
-                />
-
-                <v-number-input
-                    v-else-if="type === FilterType.FROM_TO"
+                    :key-config="{
+                        label: 'name',
+                        value: 'id',
+                    }"
+                    :options="games"
+                    @select="handleSelectGame($event)"
                 />
             </v-form-item>
 
-            <template
-                v-else
-            >
+            <template v-if="!isEmpty(gameSectionsRaw)">
                 <v-form-item
-                    v-for="({ buckets, type }, i) in children"
-                    :key="i"
-                    :label="gameAttribute"
-                    :prop="`attributes.${gameAttribute}`"
+                    label="Category"
+                    prop="attributes.type"
                 >
-                    <v-select
-                        v-if="[FilterType.CHECKBOX, FilterType.RADIO, FilterType.SELECT].includes(type)"
-                        :multiple="[FilterType.CHECKBOX, FilterType.SELECT].includes(type)"
-                        :options="useMap(buckets, bucket => (bucket.label || bucket).toString())"
-                    />
+                    <v-select :options="useKeys(gameSectionsRaw)" />
+                </v-form-item>
+            </template>
 
-                    <v-number-input
-                        v-else-if="type === FilterType.FROM_TO"
+            <template v-if="storeClient.sellStore.sellItemRaw.attributes.type">
+                <v-form-item
+                    label="Item name"
+                    prop="name"
+                >
+                    <v-input />
+                </v-form-item>
+
+                <v-form-item
+                    label="Detailed Item Description, up to 5000 characters"
+                    prop="attributes.description"
+                >
+                    <v-textarea
+                        :max-length="5000"
+                        :rows="10"
                     />
                 </v-form-item>
             </template>
-        </template>
+        </v-collapse-panel>
 
-        <template
-            v-if="storeClient.sellStore.sellItemRaw.attributes.type"
+        <v-collapse-panel
+            style="
+                --vxp-collapse-content-v-padding: 0;
+                --vxp-collapse-content-h-padding: 0;
+                --vxp-collapse-header-bg-color: transparent;
+            "
         >
-            <v-form-item
-                label="Item name"
-                prop="name"
-            >
-                <v-input />
+            <template #title>
+                <v-title :level="1">
+                    Product Information
+                </v-title>
+            </template>
+
+            <v-form-item>
+                <v-upload
+                    list-type="thumbnail"
+                    allow-drag
+                    multiple
+                />
             </v-form-item>
 
-            <v-form-item
-                label="Item description"
-                prop="attributes.description"
-            >
-                <v-textarea />
-            </v-form-item>
-
-            <v-form-item
-                label="Item count"
-                prop="attributes.amount"
-            >
-                <v-number-input />
-            </v-form-item>
-
-            <v-form-item
-                label="Item price"
-                prop="attributes.price"
-            >
-                <v-number-input>
-                    <template #suffix>
-                        $
-                    </template>
-                </v-number-input>
-            </v-form-item>
-
-            <v-form-item v-if="sellItem.attributes.price">
-                <v-text disabled>
-                    With the GameValues fee, the cost would be {{ formatPrice(sellItem.attributes.price) }}
-                </v-text>
-            </v-form-item>
-
-            <v-form-item action>
+            <v-row>
                 <template
-                    v-if="(
-                        routerClient.isRouteNameEqual(routerClient.routeNames.ACCOUNT_SELL) ||
-                        routerClient.isRouteNameEqual(routerClient.routeNames.GAME_ITEM_SELL)
-                    )"
+                    v-for="({ buckets, children, type }, gameAttribute) in gameAttributes"
+                    :key="gameAttribute"
                 >
-                    <v-form-submit
-                        block
-                        @submit="handleSellItem()"
+                    <template v-if="children">
+                        <v-column
+                            v-for="({ buckets, type }, i) in children"
+                            :key="i"
+                            :lg="12"
+                            :md="12"
+                            :xs="24"
+                        >
+                            <v-form-item
+                                :label="gameAttribute"
+                                :prop="`attributes.${gameAttribute}`"
+                            >
+                                <v-select
+                                    v-if="[FilterType.CHECKBOX, FilterType.RADIO, FilterType.SELECT].includes(type)"
+                                    :multiple="[FilterType.CHECKBOX, FilterType.SELECT].includes(type)"
+                                    :options="useMap(buckets, bucket => (bucket.label || bucket).toString())"
+                                />
+
+                                <v-number-input
+                                    v-else-if="type === FilterType.FROM_TO"
+                                />
+                            </v-form-item>
+                        </v-column>
+                    </template>
+
+                    <template v-else>
+                        <v-column
+                            :lg="12"
+                            :md="12"
+                            :xs="24"
+                        >
+                            <v-form-item
+                                :label="gameAttribute"
+                                :prop="`attributes.${gameAttribute}`"
+                            >
+                                <v-select
+                                    v-if="[FilterType.CHECKBOX, FilterType.RADIO, FilterType.SELECT].includes(type)"
+                                    :multiple="[FilterType.CHECKBOX, FilterType.SELECT].includes(type)"
+                                    :options="useMap(buckets, bucket => (bucket.label || bucket).toString())"
+                                />
+
+                                <v-number-input
+                                    v-else-if="type === FilterType.FROM_TO"
+                                />
+                            </v-form-item>
+                        </v-column>
+                    </template>
+                </template>
+            </v-row>
+        </v-collapse-panel>
+
+        <v-collapse-panel
+            style="
+                --vxp-collapse-content-v-padding: 0;
+                --vxp-collapse-content-h-padding: 0;
+                --vxp-collapse-header-bg-color: transparent;
+            "
+        >
+            <template #title>
+                <v-title :level="1">
+                    Finance Information
+                </v-title>
+            </template>
+
+            <template v-if="storeClient.sellStore.sellItemRaw.attributes.type">
+                <v-space
+                    class="[&>*]:(flex-1)"
+                    no-wrap
+                >
+                    <v-form-item
+                        label="Item count"
+                        prop="attributes.amount"
                     >
-                        Sell
-                    </v-form-submit>
-                </template>
+                        <v-number-input />
+                    </v-form-item>
 
-                <template v-else-if="routerClient.isRouteNameEqual(routerClient.routeNames.USER_ITEM_EDIT)">
-                    <v-space justify="space-between">
+                    <v-form-item
+                        label="Item price"
+                        prop="attributes.price"
+                    >
+                        <v-number-input>
+                            <template #suffix>
+                                $
+                            </template>
+                        </v-number-input>
+                    </v-form-item>
+                </v-space>
+
+                <v-form-item v-if="sellItem.attributes.price">
+                    <v-text disabled>
+                        With the GameValues fee, the cost would be {{ formatPrice(sellItem.attributes.price) }}
+                    </v-text>
+                </v-form-item>
+
+                <v-form-item action>
+                    <template
+                        v-if="(
+                            routerClient.isRouteNameEqual(routerClient.routeNames.ACCOUNT_SELL) ||
+                            routerClient.isRouteNameEqual(routerClient.routeNames.GAME_ITEM_SELL)
+                        )"
+                    >
                         <v-form-submit
-                            type="success"
-                            @click="sellController.editSellItem()"
+                            block
+                            @submit="handleSellItem()"
                         >
-                            Edit
+                            Sell
                         </v-form-submit>
+                    </template>
 
-                        <v-form-reset
-                            type="error"
-                            @click="handleDeleteItem()"
-                        >
-                            Delete
-                        </v-form-reset>
-                    </v-space>
-                </template>
-            </v-form-item>
-        </template>
-    </template>
+                    <template v-else-if="routerClient.isRouteNameEqual(routerClient.routeNames.USER_ITEM_EDIT)">
+                        <v-space justify="space-between">
+                            <v-form-submit
+                                type="success"
+                                @click="sellController.editSellItem()"
+                            >
+                                Edit
+                            </v-form-submit>
+
+                            <v-form-reset
+                                type="error"
+                                @click="handleDeleteItem()"
+                            >
+                                Delete
+                            </v-form-reset>
+                        </v-space>
+                    </template>
+                </v-form-item>
+            </template>
+        </v-collapse-panel>
+    </v-collapse>
 </v-form>
 </template>
+
+<style lang="sass" scoped>
+.vxp-collapse :deep(.vxp-collapse__header)
+    @apply pl-0
+</style>
