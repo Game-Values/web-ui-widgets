@@ -1,54 +1,31 @@
 <script lang="ts">
 import { Cell } from "@smui/layout-grid"
 
+type ICellSpan = (
+    0 |
+    1 |
+    10 |
+    11 |
+    12 |
+    2 |
+    3 |
+    4 |
+    5 |
+    6 |
+    7 |
+    8 |
+    9
+)
+
 let align: "bottom" | "middle" | "top" = "top"
 
 let className: string = ""
 
-let desktop: (
-    1 |
-    10 |
-    11 |
-    12 |
-    2 |
-    3 |
-    4 |
-    5 |
-    6 |
-    7 |
-    8 |
-    9
-) = 12
+let desktop: ICellSpan = 12
 
-let mobile: (
-    1 |
-    10 |
-    11 |
-    12 |
-    2 |
-    3 |
-    4 |
-    5 |
-    6 |
-    7 |
-    8 |
-    9
-) = 12
+let mobile: ICellSpan = 12
 
-let tablet: (
-    1 |
-    10 |
-    11 |
-    12 |
-    2 |
-    3 |
-    4 |
-    5 |
-    6 |
-    7 |
-    8 |
-    9
-) = 12
+let tablet: ICellSpan = 12
 
 export {
     align,

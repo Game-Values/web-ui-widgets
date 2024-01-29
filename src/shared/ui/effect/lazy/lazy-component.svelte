@@ -18,12 +18,12 @@ onDestroy(cleanup)
 
 async function cleanup(): Promise<void> {
     if (!component)
-        return Promise.resolve()
+        return
 
     component.$destroy()
     component = null
 
-    return tick()
+    await tick()
 }
 
 async function load(): Promise<void> {
@@ -34,7 +34,7 @@ async function load(): Promise<void> {
     component = new ComponentConstructor({
         props: options.props || {},
         target: target!,
-    })
+    });
 }
 
 export {
@@ -43,4 +43,7 @@ export {
 }
 </script>
 
-<div bind:this={target} />
+<div
+    bind:this={target}
+    class="max-w-full"
+/>

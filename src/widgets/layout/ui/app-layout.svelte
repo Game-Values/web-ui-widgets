@@ -1,14 +1,13 @@
 <script lang="ts">
-import { Footer } from "~/widgets/footer"
-import { Header } from "~/widgets/header"
+import { FooterLayout, HeaderLayout } from "~/widgets/layout"
 </script>
 
 <section class="h-full flex flex-col">
-    <Header />
+    <HeaderLayout />
 
     <main class="flex-auto">
         <slot />
     </main>
 
-    <Footer />
+    <FooterLayout />
 </section>

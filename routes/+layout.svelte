@@ -5,7 +5,12 @@ import "uno.css"
 
 import "~/app/assets/styles/index.scss"
 import { AppLayout } from "~/widgets/layout"
-import { DialogProvider, PreviewProvider, SessionProvider } from "~/widgets/provider"
+import {
+    BreadcrumbProvider,
+    DialogProvider,
+    PreviewProvider,
+    SessionProvider,
+} from "~/widgets/provider"
 
 export let data: LayoutData
 </script>
@@ -14,6 +19,8 @@ export let data: LayoutData
     <PreviewProvider />
 
     <AppLayout>
+        <BreadcrumbProvider />
+
         <slot />
     </AppLayout>
 

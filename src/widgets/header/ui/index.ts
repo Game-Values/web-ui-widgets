@@ -1,7 +1,0 @@
-export { default as HeaderLinks } from "~/widgets/header/ui/header-links.svelte"
-export { default as HeaderLogo } from "~/widgets/header/ui/header-logo.svelte"
-export { default as HeaderSessionLinks } from "~/widgets/header/ui/header-session-links.svelte"
-export { default as HeaderSessionMenu } from "~/widgets/header/ui/header-session-menu.svelte"
-export { default as HeaderSession } from "~/widgets/header/ui/header-session.svelte"
-export { default as HeaderSignin } from "~/widgets/header/ui/header-signin.svelte"
-export { default as Header } from "~/widgets/header/ui/header.svelte"

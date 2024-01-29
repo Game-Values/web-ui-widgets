@@ -3,9 +3,10 @@ import type { PageData } from "$types"
 
 import { onDestroy, onMount } from "svelte"
 
+import { GamesListPage } from "~/pages/games-list"
+
 import { usePreview } from "$model/preview"
 import { LazyPromise } from "$ui/effect"
-import { Content } from "$ui/layout"
 
 let preview = usePreview("/images/common/preview.jpg")
 
@@ -16,13 +17,11 @@ onDestroy(preview.unset)
 export let data: PageData
 </script>
 
-<Content>
-    <LazyPromise promise={data.games}>
-        <svelte:fragment
-            slot="resolve"
-            let:value={games}
-        >
-
-        </svelte:fragment>
-    </LazyPromise>
-</Content>
+<LazyPromise promise={data.gamesPromise}>
+    <svelte:fragment
+        slot="resolve"
+        let:value={games}
+    >
+        <GamesListPage {games} />
+    </svelte:fragment>
+</LazyPromise>
