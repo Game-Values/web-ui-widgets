@@ -1,14 +1,14 @@
 <script lang="ts">
-import Button from "@smui/button"
-
-import { RouteExternal } from "$lib"
+import { RouteExternal } from "$lib/enums"
+import { Button } from "$ui/common"
 </script>
 
 <Button
-    class="text-sm font-normal button-default button-link"
+    class="text-sm font-normal"
+    color="secondary"
     href={RouteExternal.COPYRIGHT_LICENSE}
     target="_blank"
     variant="text"
 >
-    © 2023 GameValues
+    © {new Date().getFullYear()} GameValues
 </Button>

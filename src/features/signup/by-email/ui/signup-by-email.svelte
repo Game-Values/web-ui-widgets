@@ -1,12 +1,16 @@
 <script lang="ts">
-import Button from "@smui/button"
-import Checkbox from "@smui/checkbox"
-import Textfield from "@smui/textfield"
-
 import { SigninButton } from "~/entities/signin"
 import { useSignupByEmailForm } from "~/features/signup"
 
-import { Form, FormField, FormSubmit, PasswordField } from "$ui"
+import { Button } from "$ui/common"
+import {
+    Checkbox,
+    Form,
+    FormField,
+    FormSubmit,
+    PasswordInput,
+    TextInput,
+} from "$ui/data"
 
 let { data, form } = useSignupByEmailForm()
 
@@ -19,33 +23,31 @@ let agreeWithPolicies: boolean = true
 
 <Form {form}>
     <FormField>
-        <Textfield
+        <TextInput
             label="Nickname"
             required
-            variant="outlined"
             bind:value={$data.full_name}
         />
     </FormField>
 
     <FormField>
-        <Textfield
+        <TextInput
             label="Email"
             required
             type="email"
-            variant="outlined"
             bind:value={$data.email}
         />
     </FormField>
 
     <FormField>
-        <PasswordField
+        <PasswordInput
             required
             bind:value={$data.password}
         />
     </FormField>
 
     <FormField>
-        <PasswordField
+        <PasswordInput
             label="Repeat password"
             required
             bind:value={repeatPassword}
@@ -76,21 +78,21 @@ let agreeWithPolicies: boolean = true
                 By registering, you agree to the
 
                 <Button
-                    class="font-size-inherit font-normal button-link"
+                    class="font-size-inherit font-normal"
                     variant="text"
                 >
                     License Agreement
                 </Button>,
 
                 <Button
-                    class="font-size-inherit font-normal button-link"
+                    class="font-size-inherit font-normal"
                     variant="text"
                 >
                     Privacy Policy
                 </Button> and
 
                 <Button
-                    class="font-size-inherit font-normal button-link"
+                    class="font-size-inherit font-normal"
                     variant="text"
                 >
                     Agency Agreement
@@ -104,6 +106,6 @@ let agreeWithPolicies: boolean = true
             Already have an account on GameValues?
         </small>
 
-        <SigninButton class="text-sm font-normal button-link" />
+        <SigninButton class="text-sm font-normal" />
     </FormField>
 </Form>

@@ -2,7 +2,7 @@ import type { ServerLoadEvent } from "@sveltejs/kit"
 
 import { error } from "@sveltejs/kit"
 
-import { HttpStatus } from "$lib"
+import { HttpStatus } from "$lib/enums"
 
 /**
  * @throwable

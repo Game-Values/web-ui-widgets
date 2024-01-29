@@ -1,8 +1,8 @@
 <script lang="ts">
-import { Image } from "@smui/image-list"
-import Badge from "@smui-extra/badge"
-
-import { pxToRem } from "$lib"
+import { asyncComponent } from "$lib/helpers"
+import { pxToRem } from "$lib/utils"
+import { Image } from "$ui/data"
+import { LazyComponent } from "$ui/effect"
 
 let className: string = ""
 
@@ -32,10 +32,17 @@ export {
     />
 
     {#if online}
-        <Badge
-            class="min-w-2 min-h-2"
-            align="bottom-end"
-            position="inset"
+        <LazyComponent
+            options={
+                {
+                    props: {
+                        align: "bottom-end",
+                        class: "min-w-2 min-h-2",
+                        position: "inset",
+                    },
+                }
+            }
+            provider={asyncComponent("~/shared/ui/data/badge/badge.svelte")}
         />
     {/if}
 </div>

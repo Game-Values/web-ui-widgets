@@ -4,7 +4,7 @@ import IconCart from "virtual:icons/common/cart"
 import IconEnvelope from "virtual:icons/common/envelope"
 import IconHeart from "virtual:icons/common/heart"
 
-import { RouteLink } from "$lib"
+import { RouteLink } from "$lib/enums"
 
 export let headerUserLinks: IIconLink[] = [
     {

@@ -1,8 +1,7 @@
-import type { RouteExternal, RouteLink } from "$lib"
+import type { RouteExternal, RouteLink } from "$lib/enums"
 import type { SvelteComponent } from "svelte"
 
 export interface ILink {
-    title?: string
     url: RouteExternal | RouteLink
 }
 

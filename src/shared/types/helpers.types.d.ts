@@ -7,3 +7,5 @@ export type IModule<T> = {
 }
 
 export type INullable<T> = null | T
+
+export type IValueOf<T> = T[keyof T]

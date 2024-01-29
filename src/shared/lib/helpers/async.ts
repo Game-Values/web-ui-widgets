@@ -1,8 +1,8 @@
-import type { ICallableLazy, IModule } from "$types"
+import type { ICallableLazy, IModule, ISvelteComponentConstructor } from "$types"
 
-import { cache } from "$lib"
+import { cache } from "$lib/helpers"
 
-export function asyncComponent<T = ConstructorOfATypedSvelteComponent>(
+export function asyncComponent<T = ISvelteComponentConstructor>(
     filepath: string,
 ): ICallableLazy<T> {
     return function (): Promise<T> {

@@ -1,11 +1,11 @@
 import type { IBodyLoginWithOauth2ApiV1LoginOauthPost, IToken } from "$api"
-import type { Token } from "$lib"
+import type { Token } from "$lib/enums"
 import type { IForm } from "$types"
 
 import { createForm } from "felte"
 
 import { useApi } from "$api"
-import { useToken } from "$model"
+import { useToken } from "$model/token"
 
 export function useSigninByEmailForm(): IForm<IBodyLoginWithOauth2ApiV1LoginOauthPost> {
     return createForm<IBodyLoginWithOauth2ApiV1LoginOauthPost>({
@@ -17,7 +17,7 @@ export function useSigninByEmailForm(): IForm<IBodyLoginWithOauth2ApiV1LoginOaut
             useApi().loginWithOauth2ApiV1LoginOauthPost(formData)
         ),
         onSuccess: (res: unknown): void => {
-            useToken().setTokens(res as Record<Token, string>)
+            useToken().setAll(res as Record<Token, string>)
             location.reload()
         },
     })

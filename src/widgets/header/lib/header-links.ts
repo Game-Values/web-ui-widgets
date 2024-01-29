@@ -1,6 +1,6 @@
 import type { ILabelLink } from "$types"
 
-import { RouteLink } from "$lib"
+import { RouteLink } from "$lib/enums"
 
 export let headerLinks: ILabelLink[] = [
     {

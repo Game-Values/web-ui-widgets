@@ -1,90 +1,48 @@
 @use "@material/button/mixins" as button;
-@use "../theme/color-palette";
+@use "~/app/assets/styles/theme/color-palette";
 
 .mdc-button {
     --mdc-filled-button-container-height: 3.125rem;
     --mdc-filled-button-label-text-size: 1.0625rem;
     --mdc-filled-button-label-text-weight: 600;
 
-    --mdc-text-button-container-height: 3rem;
-
     --mdc-outlined-button-container-height: 3rem;
+
+    --mdc-protected-button-container-height: 3rem;
+
+    --mdc-text-button-container-height: 3rem;
 
     --mdc-typography-button-font-size: 1.0625rem;
     --mdc-typography-button-font-weight: 600;
     --mdc-typography-button-letter-spacing: normal;
     --mdc-typography-button-text-transform: none;
 
-    @apply px-7 py-3;
-}
+    @apply px-7;
 
+    &--active {
+        &.mdc-button--text:not(:disabled) {
+            @apply text-accent-extra-light;
 
-.button-default,
-.button-default.button-link {
-    &:not(&.button-link) {
-        @include button.ripple-states(color-palette.$white);
-    }
-
-    &.mdc-button:not(.smui-button--color-secondary) {
-        @include button.ink-color(color-palette.$white);
-    }
-
-    &.mdc-button--unelevated,
-    &.mdc-button--raised {
-        &:not(.smui-button--color-secondary) {
-            @include button.filled-accessible(color-palette.$white);
+            &.smui-button--color-secondary {
+                @apply text-primary;
+            }
         }
     }
 
-    &.mdc-button--outlined:not(.smui-button--color-secondary) {
-        @include button.outline-color(color-palette.$white);
-        @include button.ink-color(color-palette.$white);
-    }
-}
-
-.button-link {
-    @include button.ripple-states(transparent);
-
-    &.mdc-button {
+    &--text {
         @apply p-0;
-        @apply min-w-auto h-auto;
-        @apply justify-start;
+        @apply h-auto;
+        @apply hover:(text-accent-extra-light);
+        @include button.ripple-states(transparent);
 
-        &.smui-button--color-secondary:hover {
-            @include button.ink-color(rgba(color-palette.$primary, 0.6));
-        }
-
-        &:not(.smui-button--color-secondary) {
-            @include button.ink-color(color-palette.$primary);
-
-            &:hover {
-                @include button.ink-color(color-palette.$info);
-            }
+        &.smui-button--color-secondary:not(:disabled) {
+            @apply text-white;
+            @apply hover:(text-primary);
         }
     }
 
-    &.mdc-button--unelevated,
-    &.mdc-button--raised {
-        &:not(.smui-button--color-secondary) {
-            @include button.filled-accessible(color-palette.$primary);
-        }
-    }
-
-    &.mdc-button--outlined {
-        &:not(.smui-button--color-secondary) {
-            @include button.outline-color(color-palette.$primary);
-            @include button.ink-color(color-palette.$primary);
-        }
-    }
-}
-
-.smui-button {
-    &--color-secondary {
-        &.mdc-button--raised,
-        &.mdc-button--unelevated {
-            &:not(:disabled) {
-                @apply text-white;
-            }
-        }
+    &.smui-button--color-secondary.mdc-button--raised:not(:disabled),
+    &.smui-button--color-secondary.mdc-button--unelevated:not(:disabled) {
+        @apply text-white;
     }
 }

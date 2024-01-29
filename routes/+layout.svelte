@@ -4,29 +4,18 @@ import type { LayoutData } from "$types"
 import "uno.css"
 
 import "~/app/assets/styles/index.scss"
-import { Footer } from "~/widgets/footer"
-import { Header } from "~/widgets/header"
+import { AppLayout } from "~/widgets/layout"
+import { DialogProvider, PreviewProvider, SessionProvider } from "~/widgets/provider"
 
-import { asyncComponent } from "$lib"
-import { updateSession } from "$model"
-import { Lazy } from "$ui"
-
-let data: LayoutData
-updateSession(data.session)
-
-export {
-    data,
-}
+export let data: LayoutData
 </script>
 
-<section class="h-full flex flex-col">
-    <Header />
+<SessionProvider session={data.session}>
+    <PreviewProvider />
 
-    <main class="flex-auto">
+    <AppLayout>
         <slot />
-    </main>
+    </AppLayout>
 
-    <Footer />
-</section>
-
-<Lazy provider={asyncComponent("~/widgets/dialog/ui/dialog-provider.svelte")} />
+    <DialogProvider />
+</SessionProvider>

@@ -1459,7 +1459,7 @@ export namespace Api {
 		export type ResponseBody = IFacetedSearchApiV1ItemsSearchGameIdPostData
 	}
 	/**
-	 * @description Get a list of all available facet keys in the Item.attributes field.
+	 * @description Get a list of all available facet keys in the Item.attributes input.
 	 * @tags items
 	 * @name GetAvailableFacetsApiV1ItemsFacetsGameIdGet
 	 * @summary Get Available Facets
@@ -2583,7 +2583,7 @@ export class Api<SecurityDataType extends unknown> {
 			}),
 
 		/**
-		 * @description Get a list of all available facet keys in the Item.attributes field.
+		 * @description Get a list of all available facet keys in the Item.attributes input.
 		 *
 		 * @tags items
 		 * @name GetAvailableFacetsApiV1ItemsFacetsGameIdGet

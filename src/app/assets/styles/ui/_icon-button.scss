@@ -1,10 +1,6 @@
-@use "@material/icon-button/mixins" as icon-button;
-
 .mdc-icon-button {
-    &.icon-button-primary,
-    &.icon-button-primary:not(:disabled) {
-        @include icon-button.ink-color(#3478F6);
-        @include icon-button.disabled-ink-color(#3478F6);
+    &--active {
+        @apply text-primary;
     }
 
     svg {

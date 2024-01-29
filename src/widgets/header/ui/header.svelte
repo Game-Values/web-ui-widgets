@@ -1,47 +1,47 @@
 <script lang="ts">
-import LayoutGrid, { Cell } from "@smui/layout-grid"
-import TopAppBar from "@smui/top-app-bar"
-import Autocomplete from "@smui-extra/autocomplete"
-
 import { SessionOnly } from "~/entities/session"
 import { HeaderLinks, HeaderLogo, HeaderSession, HeaderSignin } from "~/widgets/header"
 
-import { Content, SearchField } from "$ui"
+import { Autocomplete } from "$ui/data"
+import { Content, Grid, GridCell, Header } from "$ui/layout"
 </script>
 
-<TopAppBar
-    class="bg-transparent"
-    variant="static"
->
+<Header class="bg-transparent">
     <Content>
-        <LayoutGrid>
-            <Cell
+        <Grid>
+            <GridCell
                 align="middle"
-                spanDevices={{ desktop: 2, phone: 0, tablet: 0 }}
+                desktop={2}
+                mobile={0}
+                tablet={0}
             >
                 <HeaderLogo />
-            </Cell>
+            </GridCell>
 
-            <Cell
+            <GridCell
                 align="middle"
-                spanDevices={{ desktop: 4, phone: 0, tablet: 0 }}
+                desktop={4}
+                mobile={0}
+                tablet={0}
             >
-                <Autocomplete>
-                    <SearchField />
-                </Autocomplete>
-            </Cell>
+                <Autocomplete />
+            </GridCell>
 
-            <Cell
+            <GridCell
                 align="middle"
-                spanDevices={{ desktop: 4, phone: 0, tablet: 0 }}
+                desktop={4}
+                mobile={0}
+                tablet={0}
             >
                 <HeaderLinks />
-            </Cell>
+            </GridCell>
 
-            <Cell
-                class="flex justify-end"
+            <GridCell
+                class="justify-end"
                 align="middle"
-                spanDevices={{ desktop: 2, phone: 0, tablet: 0 }}
+                desktop={2}
+                mobile={0}
+                tablet={0}
             >
                 <SessionOnly>
                     <HeaderSession />
@@ -50,7 +50,7 @@ import { Content, SearchField } from "$ui"
                         <HeaderSignin />
                     </svelte:fragment>
                 </SessionOnly>
-            </Cell>
-        </LayoutGrid>
+            </GridCell>
+        </Grid>
     </Content>
-</TopAppBar>
+</Header>

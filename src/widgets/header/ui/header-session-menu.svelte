@@ -1,27 +1,26 @@
 <script lang="ts">
-import Fab from "@smui/fab"
-import MenuSurface from "@smui/menu-surface"
-
 import { UserAvatar } from "~/entities/user"
 
-import { asyncComponent } from "$lib"
-import { Lazy } from "$ui"
+import { asyncComponent } from "$lib/helpers"
+import { FabButton } from "$ui/common"
+import { LazyComponent } from "$ui/effect"
+import { Menu } from "$ui/navigation"
 
-let menuSurface: MenuSurface
+let menu: Menu
 </script>
 
 <div class="flex">
-    <Fab
+    <FabButton
         mini
-        on:click={() => menuSurface.setOpen(true)}
+        on:click={menu.open}
     >
         <UserAvatar
             class="border-2 border-solid border-primary"
             size={40}
         />
-    </Fab>
+    </FabButton>
 
-    <MenuSurface bind:this={menuSurface}>
-        <Lazy provider={asyncComponent("~/entities/session/ui/session-user-menu.svelte")} />
-    </MenuSurface>
+    <Menu bind:this={menu}>
+        <LazyComponent provider={asyncComponent("~/entities/session/ui/session-user-menu.svelte")} />
+    </Menu>
 </div>

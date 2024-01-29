@@ -1,27 +1,24 @@
 <script lang="ts">
-import Textfield from "@smui/textfield"
-
-import { SignupButton } from "~/entities/signup"
 import { useSigninByEmailForm } from "~/features/signin"
 
-import { Form, FormField, FormSubmit, PasswordField } from "$ui"
+import { Button } from "$ui/common"
+import { Form, FormField, FormSubmit, PasswordInput, TextInput } from "$ui/data"
 
 let { data, form } = useSigninByEmailForm()
 </script>
 
 <Form {form}>
     <FormField>
-        <Textfield
+        <TextInput
             label="Email"
             required
             type="email"
-            variant="outlined"
             bind:value={$data.username}
         />
     </FormField>
 
     <FormField>
-        <PasswordField
+        <PasswordInput
             required
             bind:value={$data.password}
         />
@@ -32,8 +29,11 @@ let { data, form } = useSigninByEmailForm()
             Sign In
         </FormSubmit>
 
-        <SignupButton class="text-sm font-normal button-link">
+        <Button
+            class="text-sm font-normal"
+            variant="text"
+        >
             Forgot password?
-        </SignupButton>
+        </Button>
     </FormField>
 </Form>

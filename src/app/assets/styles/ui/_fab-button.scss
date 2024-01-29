@@ -1,0 +1,18 @@
+@use "@material/icon-button/mixins" as icon-button;
+
+.mdc-fab {
+    @apply hover:(text-accent-extra-light);
+
+    &--color-secondary {
+        --mdc-theme-on-secondary: theme("colors.white");
+
+        &:not(:disabled) {
+            @apply hover:(text-primary);
+
+            &.mdc-fab--active {
+                @apply text-primary;
+                @apply hover:(text-accent-extra-light);
+            }
+        }
+    }
+}

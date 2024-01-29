@@ -63,23 +63,23 @@ jspm_packages/
 
 web_modules/
 
-# TypeScript index
+# TypeScript index.ts
 
 *.tsbuildinfo
 
-# Optional npm index directory
+# Optional npm index.ts directory
 
 .npm
 
-# Optional eslint index
+# Optional eslint index.ts
 
 .eslintcache
 
-# Optional stylelint index
+# Optional stylelint index.ts
 
 .stylelintcache
 
-# Microbundle index
+# Microbundle index.ts
 
 .rpt2_cache/
 .rts2_cache_cjs/
@@ -106,7 +106,7 @@ web_modules/
 .env.production.local
 .env.local
 
-# parcel-bundler index (https://parceljs.org/)
+# parcel-bundler index.ts (https://parceljs.org/)
 
 .parcel-cache
 
@@ -136,11 +136,11 @@ dist
 
 .vuepress/dist
 
-# vuepress v2.x temp and index directory
+# vuepress v2.x temp and index.ts directory
 
 .temp
 
-# Docusaurus index and generated files
+# Docusaurus index.ts and generated files
 
 .docusaurus
 
@@ -148,7 +148,7 @@ dist
 
 .serverless/
 
-# FuseBox index
+# FuseBox index.ts
 
 .fusebox/
 

@@ -1,9 +1,9 @@
 <script lang="ts">
-import List, { Item, Separator, Text } from "@smui/list"
 import { setContext } from "svelte"
 
-import { RouteLink } from "$lib"
-import { useSession } from "$model"
+import { RouteLink } from "$lib/enums"
+import { useSession } from "$model/session"
+import { List, ListItem, ListItemSeparator } from "$ui/navigation"
 
 let { logout } = useSession()
 
@@ -12,83 +12,62 @@ setContext("SMUI:list:item:nav", true)
 </script>
 
 <List>
-    <Item href={RouteLink.CART}>
-        <Text>
-            Deals
-        </Text>
-    </Item>
+    <ListItem href={RouteLink.CART}>
+        Deals
+    </ListItem>
 
-    <Item href={RouteLink.MESSAGES}>
-        <Text>
-            Messages
-        </Text>
-    </Item>
+    <ListItem href={RouteLink.MESSAGES}>
+        Messages
+    </ListItem>
 
-    <Item href={RouteLink.FAVORITES}>
-        <Text>
-            Favorites
-        </Text>
-    </Item>
+    <ListItem href={RouteLink.FAVORITES}>
+        Favorites
+    </ListItem>
 
-    <Separator />
+    <ListItemSeparator />
 
-    <Item>
-        <Text>
-            Profile
-        </Text>
-    </Item>
+    <ListItem>
+        Profile
+    </ListItem>
 
-    <Item>
-        <Text>
-            Settings
-        </Text>
-    </Item>
+    <ListItem>
+        Settings
+    </ListItem>
 
-    <Item>
-        <Text>
-            Language
-        </Text>
-    </Item>
+    <ListItem>
+        Language
+    </ListItem>
 
-    <Item>
-        <Text>
-            Currency
-        </Text>
-    </Item>
+    <ListItem>
+        Currency
+    </ListItem>
 
-    <Separator />
+    <ListItemSeparator />
 
-    <Item>
-        <Text>
-            Seller's account
-        </Text>
-    </Item>
+    <ListItem>
+        Seller's account
+    </ListItem>
 
-    <Separator />
+    <ListItemSeparator />
 
-    <Item>
-        <Text>
-            Referral program
-        </Text>
-    </Item>
+    <ListItem>
+        Referral program
+    </ListItem>
 
-    <Item>
-        <Text>
-            Help
-        </Text>
-    </Item>
+    <ListItem>
+        Help
+    </ListItem>
 
-    <Item>
-        <Text>
-            Feedback
-        </Text>
-    </Item>
+    <ListItem>
+        Feedback
+    </ListItem>
 
-    <Separator />
+    <ListItemSeparator />
 
-    <Item on:SMUI:action={logout}>
-        <Text class="text-error">
-            Log Out
-        </Text>
-    </Item>
+    <ListItem
+        class="text-error"
+        on:click={logout}
+    >
+        Log Out
+    </ListItem>
 </List>

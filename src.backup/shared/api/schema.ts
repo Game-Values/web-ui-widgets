@@ -1437,11 +1437,11 @@ export namespace Api {
 		export type ResponseBody = IReadItemApiV1ItemsItemsItemIdGetDataRaw
 	}
 	/**
-	 * @description Faceted search-field for items. Allowed filter criteria are: - count - price - price_from - price_till - server - description - type
+	 * @description Faceted search-input for items. Allowed filter criteria are: - count - price - price_from - price_till - server - description - type
 	 * @tags items
 	 * @name FacetedSearchApiV1ItemsSearchGameIdPost
 	 * @summary Faceted Search
-	 * @request POST:/api/v1/items/search-field/{game_id}
+	 * @request POST:/api/v1/items/search-input/{game_id}
 	 * @response `200` `IFacetedSearchApiV1ItemsSearchGameIdPostDataRaw` Successful Response
 	 * @response `422` `IHTTPValidationErrorRaw` Validation Error
 	 */
@@ -1459,7 +1459,7 @@ export namespace Api {
 		export type ResponseBody = IFacetedSearchApiV1ItemsSearchGameIdPostDataRaw
 	}
 	/**
-	 * @description Get a list of all available facet keys in the Item.attributes field.
+	 * @description Get a list of all available facet keys in the Item.attributes input.
 	 * @tags items
 	 * @name GetAvailableFacetsApiV1ItemsFacetsGameIdGet
 	 * @summary Get Available Facets
@@ -2569,12 +2569,12 @@ export class Api<SecurityDataType extends unknown> {
 			}),
 
 		/**
-		 * @description Faceted search-field for items. Allowed filter criteria are: - count - price - price_from - price_till - server - description - type
+		 * @description Faceted search-input for items. Allowed filter criteria are: - count - price - price_from - price_till - server - description - type
 		 *
 		 * @tags items
 		 * @name FacetedSearchApiV1ItemsSearchGameIdPost
 		 * @summary Faceted Search
-		 * @request POST:/api/v1/items/search-field/{game_id}
+		 * @request POST:/api/v1/items/search-input/{game_id}
 		 * @response `200` `IFacetedSearchApiV1ItemsSearchGameIdPostDataRaw` Successful Response
 		 * @response `422` `IHTTPValidationErrorRaw` Validation Error
 		 */
@@ -2595,7 +2595,7 @@ export class Api<SecurityDataType extends unknown> {
 			}),
 
 		/**
-		 * @description Get a list of all available facet keys in the Item.attributes field.
+		 * @description Get a list of all available facet keys in the Item.attributes input.
 		 *
 		 * @tags items
 		 * @name GetAvailableFacetsApiV1ItemsFacetsGameIdGet

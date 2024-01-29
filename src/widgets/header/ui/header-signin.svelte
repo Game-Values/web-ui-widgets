@@ -3,7 +3,7 @@ import { SigninButton } from "~/entities/signin"
 import { SignupButton } from "~/entities/signup"
 </script>
 
-<div class="flex justify-center">
+<div class="flex justify-center gap-x-4">
     <SigninButton />
 
     <SignupButton />

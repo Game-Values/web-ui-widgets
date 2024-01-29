@@ -1,12 +1,8 @@
-declare module "@sveltejs/kit" {
-    import type { Api, IUser } from "$api"
-    import type { DialogName } from "$lib"
+import type { Api, IUser } from "$api"
+import type { DialogName } from "$lib/enums"
 
+declare global {
     namespace App {
-        export interface Error {
-
-        }
-
         export interface Locals {
             api: Api<unknown>["api"]
             session: {
@@ -14,16 +10,9 @@ declare module "@sveltejs/kit" {
             }
         }
 
-        export interface PageData {
-
-        }
-
         export interface PageState {
-            dialog: DialogName
-        }
-
-        export interface Platform {
-
+            dialog?: DialogName
+            preview?: string
         }
     }
 }

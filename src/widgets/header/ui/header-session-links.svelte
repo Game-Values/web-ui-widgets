@@ -1,13 +1,13 @@
 <script lang="ts">
-import IconButton from "@smui/button"
-
 import { headerUserLinks } from "~/widgets/header"
+
+import { IconButton } from "$ui/common"
 </script>
 
-<div class="flex gap-x-4">
+<div class="flex justify-center">
     {#each headerUserLinks as headerUserLink (headerUserLink.url)}
         <IconButton
-            class="button-default button-link"
+            color="secondary"
             href={headerUserLink.url}
         >
             <svelte:component this={headerUserLink.Icon} />

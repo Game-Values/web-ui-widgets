@@ -1,10 +1,8 @@
 <script lang="ts">
-import Button from "@smui/button"
-
-import { DialogName, forwardEvent } from "$lib"
-import { useDialog } from "$model"
-
-let { openDialog } = useDialog()
+import { DialogName } from "$lib/enums"
+import { forwardEvent } from "$lib/helpers"
+import { useDialog } from "$model/dialog"
+import { Button } from "$ui/common"
 
 let className: string = ""
 
@@ -14,9 +12,9 @@ export {
 </script>
 
 <Button
-    class="text-normal text-nowrap font-bold {className}"
+    class="{className}"
     variant="text"
-    on:click={forwardEvent(() => openDialog(DialogName.SIGN_IN))}
+    on:click={forwardEvent(useDialog(DialogName.SIGN_IN).open)}
 >
     <slot>
         Sign In

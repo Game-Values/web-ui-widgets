@@ -1,7 +1,4 @@
 <script lang="ts">
-import LayoutGrid, { Cell } from "@smui/layout-grid"
-import BottomAppBar from "@smui-extra/bottom-app-bar"
-
 import {
     FooterCopyright,
     FooterLogo,
@@ -10,42 +7,47 @@ import {
     FooterSocialLinks,
 } from "~/widgets/footer"
 
-import { Content } from "$ui"
+import { Content, Footer, Grid, GridCell } from "$ui/layout"
 </script>
 
-<footer class="pt-8 pb-16 bg-grey-extra-dark">
-    <BottomAppBar variant="static">
-        <Content>
-            <LayoutGrid>
-                <Cell
-                    class="flex flex-col gap-y-2"
-                    spanDevices={{ desktop: 6, phone: 12, tablet: 3 }}
-                >
-                    <FooterLogo />
+<Footer class="pt-8 pb-16 bg-grey-extra-dark">
+    <Content>
+        <Grid>
+            <GridCell
+                class="flex-col items-start gap-y-2"
+                desktop={6}
+                tablet={3}
+            >
+                <FooterLogo />
 
-                    <FooterCopyright />
-                </Cell>
+                <FooterCopyright />
+            </GridCell>
 
-                <Cell>
+            <GridCell>
 
-                </Cell>
+            </GridCell>
 
-                <Cell spanDevices={{ desktop: 6, phone: 12, tablet: 6 }}>
-                    <FooterPolicyLinks />
-                </Cell>
+            <GridCell
+                desktop={6}
+                tablet={6}
+            >
+                <FooterPolicyLinks />
+            </GridCell>
 
-                <Cell>
+            <GridCell>
 
-                </Cell>
+            </GridCell>
 
-                <Cell spanDevices={{ desktop: 6, phone: 12, tablet: 12 }}>
-                    <FooterPaymentMethods />
-                </Cell>
+            <GridCell desktop={6}>
+                <FooterPaymentMethods />
+            </GridCell>
 
-                <Cell spanDevices={{ desktop: 6, phone: 12, tablet: 6 }}>
-                    <FooterSocialLinks />
-                </Cell>
-            </LayoutGrid>
-        </Content>
-    </BottomAppBar>
-</footer>
+            <GridCell
+                desktop={6}
+                tablet={6}
+            >
+                <FooterSocialLinks />
+            </GridCell>
+        </Grid>
+    </Content>
+</Footer>

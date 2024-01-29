@@ -1,22 +1,22 @@
 <script lang="ts">
-import IconButton from "@smui/button"
-
 import { footerSocialLinks } from "~/widgets/footer"
+
+import { FabButton } from "$ui/common"
 </script>
 
 <div class="flex gap-x-4">
-    {#each footerSocialLinks as footerSocialLink (footerSocialLink.url)}
-        <IconButton
-            class="button-default button-link"
+    {#each footerSocialLinks as footerSocialLink, i (i)}
+        <FabButton
+            color="secondary"
             href={footerSocialLink.url}
+            mini
             target="_blank"
-            title={footerSocialLink.title}
         >
             <svelte:component
                 this={footerSocialLink.Icon}
                 height="40"
                 width="40"
             />
-        </IconButton>
+        </FabButton>
     {/each}
 </div>

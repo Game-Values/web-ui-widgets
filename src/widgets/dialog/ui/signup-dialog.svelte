@@ -1,15 +1,18 @@
 <script lang="ts">
 import { SignupByEmail } from "~/features/signup"
 
-import { DialogName } from "$lib"
-import { Dialog } from "$ui"
+import { DialogName } from "$lib/enums"
+import { useDialog } from "$model/dialog"
+import { Dialog } from "$ui/effect"
+
+let dialog = useDialog({
+    name: DialogName.SIGN_UP,
+    title: "Sign Up",
+    width: "26rem",
+})
 </script>
 
-<Dialog
-    name={DialogName.SIGN_UP}
-    title="Sign Up"
-    width="26rem"
->
+<Dialog {dialog}>
     <svelte:fragment slot="content">
         <SignupByEmail />
     </svelte:fragment>

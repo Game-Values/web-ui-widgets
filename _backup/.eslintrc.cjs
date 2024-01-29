@@ -103,7 +103,7 @@ module.exports = (() => (
                         "internal-type",
                         "parent-type",
                         "sibling-type",
-                        "index-type",
+                        "index.ts-type",
                     ],
 
                     "builtin",

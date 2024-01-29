@@ -4,8 +4,8 @@ import { merge } from "lodash-es"
 
 import { Api, HttpClient } from "$api"
 import { browser } from "$app/environment"
-import { API_URL } from "$config"
-import { cache } from "$lib"
+import { useEnv } from "$config/env"
+import { cache } from "$lib/helpers"
 
 function createApi(config?: ApiConfig): Api<unknown>["api"] {
     let defaultConfig: ApiConfig = {
@@ -13,7 +13,7 @@ function createApi(config?: ApiConfig): Api<unknown>["api"] {
             credentials: "include",
             format: "json",
         },
-        baseUrl: API_URL,
+        baseUrl: useEnv().API_URL,
     }
 
     let { api }: Api<unknown> = new Api<unknown>(
@@ -27,7 +27,7 @@ function createApi(config?: ApiConfig): Api<unknown>["api"] {
 
 export function useApi(config?: ApiConfig): Api<unknown>["api"] {
     if (browser) {
-        if (!cache.get("api"))
+        if (!cache.has("api"))
             cache.set("api", createApi(config))
 
         return cache.get("api") as Api<unknown>["api"]
