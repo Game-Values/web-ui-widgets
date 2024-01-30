@@ -2,7 +2,7 @@ import type { DialogName } from "$lib/enums"
 import type { Readable } from "svelte/store"
 
 export type IDialogOptions = {
-    name: DialogName
+    name: keyof typeof DialogName
     title?: string
     width?: string
 }

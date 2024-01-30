@@ -3,30 +3,24 @@ import type { ICallable } from "$types"
 
 import Card from "@smui/card"
 
-let background: boolean = false
-
-let border: boolean = false
-
 let className: string = ""
+
+let color: "primary" | "secondary" = "primary"
 
 let use: ICallable = (): void => {}
 
 export {
-    background,
-    border,
     className as class,
+    color,
     use,
 }
 </script>
 
 <Card
-    class={`
-        rounded-2xl
-        ${background ? "bg-white/2" : ""}
-        ${border ? "border border-solid border-secondary" : ""}
-        ${className}
-    `}
+    class={className}
+    {color}
     use={[use]}
+    variant="raised"
 >
     <slot />
 </Card>

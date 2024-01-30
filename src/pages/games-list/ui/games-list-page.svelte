@@ -1,6 +1,7 @@
 <script lang="ts">
 import type { IGame } from "$api"
 
+import { GamesGroup } from "~/widgets/game"
 import { LotsStats } from "~/widgets/lot"
 
 import { asyncComponent } from "$lib/helpers"
@@ -18,13 +19,6 @@ export let games: IGame[]
             tablet={8}
         >
             <LazyComponent
-                options={
-                    {
-                        props: {
-                            games,
-                        },
-                    }
-                }
                 provider={asyncComponent("~/widgets/game/ui/games-slider.svelte")}
             />
         </GridCell>
@@ -35,6 +29,23 @@ export let games: IGame[]
             tablet={4}
         >
             <LotsStats />
+        </GridCell>
+    </Grid>
+
+    <Grid>
+        <GridCell
+            desktop={8}
+            mobile={0}
+            tablet={8}
+        >
+            <GamesGroup {games} />
+        </GridCell>
+
+        <GridCell
+            desktop={4}
+            tablet={4}
+        >
+            // chat
         </GridCell>
     </Grid>
 </Content>

@@ -46,7 +46,6 @@ import { onDestroy, onMount } from "svelte"
 
 import { ActionSlide } from "~/entities/layout"
 
-import { DialogName } from "$lib/enums"
 import { useDialog } from "$model/dialog"
 import { useSession } from "$model/session"
 
@@ -57,14 +56,11 @@ let action: IActionSlide | undefined
 let swiperContainer: SwiperContainer | undefined
 
 onMount(() => {
-    if (!$isAuthenticated) {
-        let { open: openSignupDialog } = useDialog(DialogName.SIGN_UP)
-
+    if (!$isAuthenticated)
         action = {
-            handler: openSignupDialog,
+            handler: useDialog("SIGN_UP").open,
             label: "Try",
         }
-    }
 
     if (swiperContainer) {
         Object.assign(swiperContainer, swiperOptions)

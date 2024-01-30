@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { LayoutData } from "$types"
+import type { IAppLayoutData } from "~/widgets/layout"
 
 import "uno.css"
 
@@ -12,7 +12,7 @@ import {
     SessionProvider,
 } from "~/widgets/provider"
 
-export let data: LayoutData
+export let data: IAppLayoutData
 </script>
 
 <SessionProvider session={data.session}>

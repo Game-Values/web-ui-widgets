@@ -15,10 +15,10 @@ type ITokenProperties = Record<Token, ITokenProperty>
 
 type IUseToken = {
     cleanup(): void
-    get(key: Token): string | undefined
+    get(key: keyof typeof Token): string | undefined
     getAll(): Record<Token, string>
-    has(key: Token): boolean
-    set(key: Token, val: string): void
+    has(key: keyof typeof Token): boolean
+    set(key: keyof typeof Token, val: string): void
     setAll(tokens: Record<Token, string>): void
 }
 
@@ -73,13 +73,13 @@ export function useToken(event?: RequestEvent): IUseToken {
             ))
         },
 
-        get: (key: Token): string | undefined => token[key],
+        get: (key: keyof typeof Token): string | undefined => token[Token[key]],
 
         getAll: (): Record<Token, string> => ({ ...token }),
 
-        has: (key: Token): boolean => key in token,
+        has: (key: keyof typeof Token): boolean => Token[key] in token,
 
-        set: (key: Token, val: string): void => { token[key] = val },
+        set: (key: keyof typeof Token, val: string): void => { token[Token[key]] = val },
 
         setAll: (tokens: Record<Token, string>) => (
             Object.entries(tokens).forEach(([key, val]: string[]): void => {

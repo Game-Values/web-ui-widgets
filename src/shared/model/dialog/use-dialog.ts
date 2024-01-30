@@ -6,19 +6,25 @@ import { DialogName } from "$lib/enums"
 import { cache } from "$lib/helpers"
 import { useState } from "$model/state"
 
-function useDialog(dialogName: DialogName): Pick<IUseDialog, "close" | "open">
+function useDialog(
+    dialogName: keyof typeof DialogName,
+): Pick<IUseDialog, "close" | "open">
 
-function useDialog(options: IDialogOptions): IUseDialog
+function useDialog(
+    options: IDialogOptions,
+): IUseDialog
 
-function useDialog(dialogNameOrOptions: DialogName | IDialogOptions): IUseDialog {
+function useDialog(
+    dialogNameOrOptions: IDialogOptions | keyof typeof DialogName,
+): IUseDialog {
     let { state, update } = useState()
 
     let dialog: Partial<IUseDialog> = {
         close: (): void => update({ dialog: undefined }),
     }
 
-    if (Object.values(DialogName).includes(dialogNameOrOptions as DialogName)) {
-        let dialogName: DialogName = dialogNameOrOptions as DialogName
+    if (Object.keys(DialogName).includes(dialogNameOrOptions as string)) {
+        let dialogName: DialogName = DialogName[dialogNameOrOptions as keyof typeof DialogName]
         dialog.open = () => update({ dialog: dialogName })
     } else {
         let dialogOptions: IDialogOptions = dialogNameOrOptions as IDialogOptions
@@ -27,12 +33,12 @@ function useDialog(dialogNameOrOptions: DialogName | IDialogOptions): IUseDialog
             cache.set(dialogOptions.name, {
                 context: readable(dialogOptions),
                 opened: derived(state, ($state: App.PageState): boolean => (
-                    $state.dialog === dialogOptions.name
+                    $state.dialog === DialogName[dialogOptions.name]
                 )),
             })
 
         Object.assign(dialog, cache.get(dialogOptions.name), {
-            open: () => update({ dialog: dialogOptions.name }),
+            open: () => update({ dialog: DialogName[dialogOptions.name] }),
         })
     }
 

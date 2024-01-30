@@ -1,5 +1,4 @@
 <script lang="ts">
-import { DialogName } from "$lib/enums"
 import { forwardEvent } from "$lib/helpers"
 import { useDialog } from "$model/dialog"
 import { Button } from "$ui/common"
@@ -14,7 +13,7 @@ export {
 <Button
     class="{className}"
     variant="text"
-    on:click={forwardEvent(useDialog(DialogName.SIGN_UP).open)}
+    on:click={forwardEvent(useDialog("SIGN_UP").open)}
 >
     <slot>
         Sign Up

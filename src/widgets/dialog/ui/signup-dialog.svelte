@@ -1,12 +1,11 @@
 <script lang="ts">
 import { SignupByEmail } from "~/features/signup"
 
-import { DialogName } from "$lib/enums"
 import { useDialog } from "$model/dialog"
 import { Dialog } from "$ui/effect"
 
 let dialog = useDialog({
-    name: DialogName.SIGN_UP,
+    name: "SIGN_UP",
     title: "Sign Up",
     width: "26rem",
 })

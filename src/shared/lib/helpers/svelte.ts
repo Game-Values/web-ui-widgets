@@ -1,8 +1,10 @@
-import type { ICallable, ICallableLazy, INullable } from "$types"
+import type { ICallable, ICallableLazy, INullable, IRouteParams } from "$types"
 import type { EventDispatcher } from "svelte"
 
 import { createEventDispatcher } from "svelte"
 
+import { resolveRoute as _resolveRoute } from "$app/paths"
+import { RouteLink } from "$lib/enums"
 import { cleanObject } from "$lib/utils"
 
 export function forwardEvent(
@@ -28,6 +30,13 @@ export function forwardEvent(
     return function (e: CustomEvent): Promise<boolean | void> {
         return forward(e)
     }
+}
+
+export function resolveRoute(
+    routeLink: keyof typeof RouteLink,
+    routeParams: Partial<IRouteParams>,
+): string {
+    return _resolveRoute(RouteLink[routeLink], routeParams)
 }
 
 export function useBackgroundImage(

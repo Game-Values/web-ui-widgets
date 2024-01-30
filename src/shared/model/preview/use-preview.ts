@@ -16,10 +16,18 @@ let previewSrc: Readable<string | undefined> = derived(state, (
     ($state: App.PageState): string | undefined => $state.preview
 ))
 
+export function setPreview(preview: string): void {
+    update({ preview })
+}
+
+export function unsetPreview(): void {
+    update({ preview: undefined })
+}
+
 export function usePreview(preview: string): IUsePreview {
     return {
-        set: (): void => update({ preview }),
+        set: (): void => setPreview(preview),
         src: previewSrc,
-        unset: (): void => update({ preview: undefined }),
+        unset: unsetPreview,
     }
 }

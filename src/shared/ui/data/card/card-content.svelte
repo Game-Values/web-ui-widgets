@@ -1,35 +1,45 @@
 <script lang="ts">
-import { Content, PrimaryAction } from "@smui/card"
+import type { SvelteComponent } from "svelte"
+
+import { Content, Media, MediaContent, PrimaryAction } from "@smui/card"
 
 let action: boolean = false
 
-let background: boolean = false
-
-let border: boolean = false
-
 let className: string = ""
+
+let component: SvelteComponent | undefined = undefined
+
+let media: boolean = false
 
 export {
     action,
-    background,
-    border,
     className as class,
+    component,
+    media,
 }
 </script>
 
-<Content
-    class={`
-            rounded-xl
-            ${background ? "bg-white/2" : ""}
-            ${border ? "border border-solid border-secondary" : ""}
-            ${className}
-        `}
->
-    {#if action}
-        <PrimaryAction>
+{#if media}
+    <Media class={className}>
+        {#if action}
+            <PrimaryAction>
+                <slot />
+            </PrimaryAction>
+        {:else}
             <slot />
-        </PrimaryAction>
-    {:else}
-        <slot />
-    {/if}
-</Content>
+        {/if}
+    </Media>
+{:else}
+    <Content
+        class={className}
+        {component}
+    >
+        {#if action}
+            <PrimaryAction>
+                <slot />
+            </PrimaryAction>
+        {:else}
+            <slot />
+        {/if}
+    </Content>
+{/if}

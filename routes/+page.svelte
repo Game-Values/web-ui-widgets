@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { PageData } from "$types"
+import type { IGamesListPageData } from "~/pages/games-list"
 
 import { onDestroy, onMount } from "svelte"
 
@@ -14,14 +14,14 @@ onMount(preview.set)
 
 onDestroy(preview.unset)
 
-export let data: PageData
+export let data: IGamesListPageData
 </script>
 
 <LazyPromise promise={data.gamesPromise}>
     <svelte:fragment
         slot="resolve"
-        let:value={games}
+        let:value
     >
-        <GamesListPage {games} />
+        <GamesListPage games={value} />
     </svelte:fragment>
 </LazyPromise>

@@ -1,17 +1,17 @@
 import { pick, upperFirst } from "lodash-es"
 
 import { useApi } from "$api"
-import { HttpHeader, Token } from "$lib/enums"
+import { HttpHeader } from "$lib/enums"
 import { useToken } from "$model/token"
 
 export async function handle({ event, resolve }): Promise<Response> {
     let token = useToken(event)
-    let hasAccessToken: boolean = token.has(Token.ACCESS) && token.has(Token.TYPE)
+    let hasAccessToken: boolean = token.has("ACCESS") && token.has("TYPE")
 
     if (hasAccessToken)
         event.request.headers.set(
             HttpHeader.AUTHORIZATION,
-            `${upperFirst(token.get(Token.TYPE))} ${token.get(Token.ACCESS)}`,
+            `${upperFirst(token.get("TYPE"))} ${token.get("ACCESS")}`,
         )
 
     event.locals = {

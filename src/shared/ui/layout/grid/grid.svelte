@@ -3,20 +3,26 @@ import LayoutGrid, { InnerGrid } from "@smui/layout-grid"
 
 let className: string = ""
 
-let nested: boolean = false
+let fixed: boolean = false
+
+let inner: boolean = false
 
 export {
     className as class,
-    nested,
+    fixed,
+    inner,
 }
 </script>
 
-{#if nested}
+{#if inner}
     <InnerGrid class={className}>
         <slot />
     </InnerGrid>
 {:else}
-    <LayoutGrid class={className}>
+    <LayoutGrid
+        class={className}
+        fixedColumnWidth={fixed}
+    >
         <slot />
     </LayoutGrid>
 {/if}
