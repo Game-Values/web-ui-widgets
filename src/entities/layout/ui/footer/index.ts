@@ -1,0 +1,5 @@
+export { default as FooterCopyright } from "~/entities/layout/ui/footer/footer-copyright.svelte"
+export { default as FooterLogo } from "~/entities/layout/ui/footer/footer-logo.svelte"
+export { default as FooterPaymentMethods } from "~/entities/layout/ui/footer/footer-payment-methods.svelte"
+export { default as FooterPolicyLinks } from "~/entities/layout/ui/footer/footer-policy-links.svelte"
+export { default as FooterSocialLinks } from "~/entities/layout/ui/footer/footer-social-links.svelte"

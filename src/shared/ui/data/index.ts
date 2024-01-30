@@ -1,5 +1,6 @@
 export * from "$ui/data/autocomplete"
 export * from "$ui/data/badge"
+export * from "$ui/data/card"
 export * from "$ui/data/checkbox"
 export * from "$ui/data/form"
 export * from "$ui/data/image"

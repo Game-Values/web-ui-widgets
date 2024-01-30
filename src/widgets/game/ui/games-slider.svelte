@@ -39,15 +39,33 @@ let swiperOptions: SwiperOptions = {
 </script>
 
 <script lang="ts">
+import type { IActionSlide } from "~/entities/layout"
 import type { SwiperContainer } from "swiper/element"
 
 import { onDestroy, onMount } from "svelte"
 
 import { ActionSlide } from "~/entities/layout"
 
+import { DialogName } from "$lib/enums"
+import { useDialog } from "$model/dialog"
+import { useSession } from "$model/session"
+
+let { isAuthenticated } = useSession()
+
+let action: IActionSlide | undefined
+
 let swiperContainer: SwiperContainer | undefined
 
 onMount(() => {
+    if (!$isAuthenticated) {
+        let { open: openSignupDialog } = useDialog(DialogName.SIGN_UP)
+
+        action = {
+            handler: openSignupDialog,
+            label: "Try",
+        }
+    }
+
     if (swiperContainer) {
         Object.assign(swiperContainer, swiperOptions)
         swiperContainer.initialize()
@@ -71,6 +89,7 @@ onDestroy(() => {
 >
     <swiper-slide>
         <ActionSlide
+            {action}
             content="Invite friends and get bonuses"
             image="/images/slide/game-slide-1.png"
             title="Unlock the Power of Hassle-Free Trading"
@@ -79,6 +98,7 @@ onDestroy(() => {
 
     <swiper-slide>
         <ActionSlide
+            {action}
             image="/images/slide/game-slide-2.png"
             title="AI CoPilot for Gamers > [Loading______35%]"
         />

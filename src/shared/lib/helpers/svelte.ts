@@ -3,6 +3,8 @@ import type { EventDispatcher } from "svelte"
 
 import { createEventDispatcher } from "svelte"
 
+import { cleanObject } from "$lib/utils"
+
 export function forwardEvent(
     callback: INullable<ICallable | ICallableLazy> = null,
     eventName?: string,
@@ -25,5 +27,19 @@ export function forwardEvent(
 
     return function (e: CustomEvent): Promise<boolean | void> {
         return forward(e)
+    }
+}
+
+export function useBackgroundImage(
+    src: string,
+    style?: CSSStyleDeclaration,
+): ICallable {
+    return function (target: HTMLElement): void {
+        Object.assign(target.style, {
+            backgroundImage: `url(${src})`,
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+        }, cleanObject(style || {}))
     }
 }
