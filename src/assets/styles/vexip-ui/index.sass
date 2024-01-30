@@ -286,6 +286,12 @@
     &__panel
         @apply w-full
 
+        &--expanded > .vxp-collapse__header > .vxp-collapse__arrow
+            @apply rotate-90
+
+        .vxp-collapse__arrow
+            @apply -translate-x-2/4 -translate-y-2/4
+
     &--arrow-right .vxp-collapse__arrow
         @apply start-[calc(100%-#{spaces.$space-9})]
 

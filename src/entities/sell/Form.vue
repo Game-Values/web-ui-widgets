@@ -75,45 +75,53 @@ async function handleDeleteItem(): Promise<void> {
                 </v-title>
             </template>
 
-            <v-form-item
-                label="Game name"
-                prop="gid"
-            >
-                <v-select
-                    :key-config="{
-                        label: 'name',
-                        value: 'id',
-                    }"
-                    :options="games"
-                    @select="handleSelectGame($event)"
-                />
+            <v-form-item prop="gid">
+                <ui-float-label
+                    :value="storeClient.sellStore.sellItemRaw.gid"
+                    label="Game name"
+                >
+                    <v-select
+                        :key-config="{
+                            label: 'name',
+                            value: 'id',
+                        }"
+                        :options="useSortBy(games, ['name'])"
+                        @select="handleSelectGame($event)"
+                    />
+                </ui-float-label>
             </v-form-item>
 
             <template v-if="!isEmpty(gameSectionsRaw)">
-                <v-form-item
-                    label="Category"
-                    prop="attributes.type"
-                >
-                    <v-select :options="useKeys(gameSectionsRaw)" />
+                <v-form-item prop="attributes.type">
+                    <ui-float-label
+                        :value="storeClient.sellStore.sellItemRaw.attributes.type"
+                        label="Category"
+                    >
+                        <v-select :options="useKeys(gameSectionsRaw)" />
+                    </ui-float-label>
                 </v-form-item>
             </template>
 
             <template v-if="storeClient.sellStore.sellItemRaw.attributes.type">
-                <v-form-item
-                    label="Item name"
-                    prop="name"
-                >
-                    <v-input />
+                <v-form-item prop="name">
+                    <ui-float-label
+                        :value="storeClient.sellStore.sellItemRaw.name"
+                        label="Item name"
+                    >
+                        <v-input />
+                    </ui-float-label>
                 </v-form-item>
 
-                <v-form-item
-                    label="Detailed Item Description, up to 5000 characters"
-                    prop="attributes.description"
-                >
-                    <v-textarea
-                        :max-length="5000"
-                        :rows="10"
-                    />
+                <v-form-item prop="attributes.description">
+                    <ui-float-label
+                        :value="storeClient.sellStore.sellItemRaw.attributes.description"
+                        label="Detailed Item Description, up to 5000 characters"
+                    >
+                        <v-textarea
+                            :max-length="5000"
+                            :rows="10"
+                        />
+                    </ui-float-label>
                 </v-form-item>
             </template>
         </v-collapse-panel>
@@ -152,19 +160,21 @@ async function handleDeleteItem(): Promise<void> {
                             :md="12"
                             :xs="24"
                         >
-                            <v-form-item
-                                :label="gameAttribute"
-                                :prop="`attributes.${gameAttribute}`"
-                            >
-                                <v-select
-                                    v-if="[FilterType.CHECKBOX, FilterType.RADIO, FilterType.SELECT].includes(type)"
-                                    :multiple="[FilterType.CHECKBOX, FilterType.SELECT].includes(type)"
-                                    :options="useMap(buckets, bucket => (bucket.label || bucket).toString())"
-                                />
+                            <v-form-item :prop="`attributes.${gameAttribute}`">
+                                <ui-float-label
+                                    :label="gameAttribute"
+                                    :value="useGet(storeClient.sellStore.sellItemRaw, `attributes.${gameAttribute}`)"
+                                >
+                                    <v-select
+                                        v-if="[FilterType.CHECKBOX, FilterType.RADIO, FilterType.SELECT].includes(type)"
+                                        :multiple="[FilterType.CHECKBOX, FilterType.SELECT].includes(type)"
+                                        :options="useMap(buckets, bucket => (bucket.label || bucket).toString())"
+                                    />
 
-                                <v-number-input
-                                    v-else-if="type === FilterType.FROM_TO"
-                                />
+                                    <v-number-input
+                                        v-else-if="type === FilterType.FROM_TO"
+                                    />
+                                </ui-float-label>
                             </v-form-item>
                         </v-column>
                     </template>
@@ -175,19 +185,21 @@ async function handleDeleteItem(): Promise<void> {
                             :md="12"
                             :xs="24"
                         >
-                            <v-form-item
-                                :label="gameAttribute"
-                                :prop="`attributes.${gameAttribute}`"
-                            >
-                                <v-select
-                                    v-if="[FilterType.CHECKBOX, FilterType.RADIO, FilterType.SELECT].includes(type)"
-                                    :multiple="[FilterType.CHECKBOX, FilterType.SELECT].includes(type)"
-                                    :options="useMap(buckets, bucket => (bucket.label || bucket).toString())"
-                                />
+                            <v-form-item :prop="`attributes.${gameAttribute}`">
+                                <ui-float-label
+                                    :label="gameAttribute"
+                                    :value="useGet(storeClient.sellStore.sellItemRaw, `attributes.${gameAttribute}`)"
+                                >
+                                    <v-select
+                                        v-if="[FilterType.CHECKBOX, FilterType.RADIO, FilterType.SELECT].includes(type)"
+                                        :multiple="[FilterType.CHECKBOX, FilterType.SELECT].includes(type)"
+                                        :options="useMap(buckets, bucket => (bucket.label || bucket).toString())"
+                                    />
 
-                                <v-number-input
-                                    v-else-if="type === FilterType.FROM_TO"
-                                />
+                                    <v-number-input
+                                        v-else-if="type === FilterType.FROM_TO"
+                                    />
+                                </ui-float-label>
                             </v-form-item>
                         </v-column>
                     </template>
@@ -213,22 +225,26 @@ async function handleDeleteItem(): Promise<void> {
                     class="[&>*]:(flex-1)"
                     no-wrap
                 >
-                    <v-form-item
-                        label="Item count"
-                        prop="attributes.amount"
-                    >
-                        <v-number-input />
+                    <v-form-item prop="attributes.amount">
+                        <ui-float-label
+                            :value="storeClient.sellStore.sellItemRaw.attributes.amount"
+                            label="Item count"
+                        >
+                            <v-number-input />
+                        </ui-float-label>
                     </v-form-item>
 
-                    <v-form-item
-                        label="Item price"
-                        prop="attributes.price"
-                    >
-                        <v-number-input>
-                            <template #suffix>
-                                $
-                            </template>
-                        </v-number-input>
+                    <v-form-item prop="attributes.price">
+                        <ui-float-label
+                            :value="storeClient.sellStore.sellItemRaw.attributes.price"
+                            label="Item price"
+                        >
+                            <v-number-input>
+                                <template #suffix>
+                                    $
+                                </template>
+                            </v-number-input>
+                        </ui-float-label>
                     </v-form-item>
                 </v-space>
 

@@ -45,93 +45,43 @@
         <v-column :offset="1">
             <v-u-l>
                 <li>
-                    <v-highlight
-                        :key-words="[
-                            'Quick Sales',
-                        ]"
-                        content="Quick Sales Our way of selling is simple, so you can sell your gaming stuff fast to people who really want to buy."
-                    >
-                        <template #light="{ text }">
-                            <v-text
-                                type="success"
-                                strong
-                            >
-                                {{ text }}
-                            </v-text>
-                        </template>
-                    </v-highlight>
+                    <v-text strong>
+                        Quick Sales
+                    </v-text>
+
+                    Our way of selling is simple, so you can sell your gaming stuff fast to people who really want to buy.
                 </li>
 
                 <li>
-                    <v-highlight
-                        :key-words="[
-                            'Safe Trading',
-                        ]"
-                        content="Safe Trading Feel safe when you sell. We use strong safety steps to protect your sales."
-                    >
-                        <template #light="{ text }">
-                            <v-text
-                                type="success"
-                                strong
-                            >
-                                {{ text }}
-                            </v-text>
-                        </template>
-                    </v-highlight>
+                    <v-text strong>
+                        Safe Trading
+                    </v-text>
+
+                    Feel safe when you sell. We use strong safety steps to protect your sales.
                 </li>
 
                 <li>
-                    <v-highlight
-                        :key-words="[
-                            'Fair Prices',
-                        ]"
-                        content="Fair Prices You can make good money because we help you set prices that buyers like."
-                    >
-                        <template #light="{ text }">
-                            <v-text
-                                type="success"
-                                strong
-                            >
-                                {{ text }}
-                            </v-text>
-                        </template>
-                    </v-highlight>
+                    <v-text strong>
+                        Fair Prices
+                    </v-text>
+
+                    You can make good money because we help you set prices that buyers like.
                 </li>
 
                 <li>
-                    <v-highlight
-                        :key-words="[
-                            'Always Here to Help',
-                        ]"
-                        content="Always Here to Help Got questions? We're here to help, any day, any time."
-                    >
-                        <template #light="{ text }">
-                            <v-text
-                                type="success"
-                                strong
-                            >
-                                {{ text }}
-                            </v-text>
-                        </template>
-                    </v-highlight>
+                    <v-text strong>
+                        Always Here to Help
+                    </v-text>
+
+                    Got questions? We're here to help, any day, any time.
                 </li>
 
                 <li>
-                    <v-highlight
-                        :key-words="[
-                            'Worldwide Buyers',
-                        ]"
-                        content="Worldwide Buyers People from all over can see and buy what you're selling."
-                    >
-                        <template #light="{ text }">
-                            <v-text
-                                type="success"
-                                strong
-                            >
-                                {{ text }}
-                            </v-text>
-                        </template>
-                    </v-highlight>
+                    <v-text strong>
+                        Worldwide Buyers
+                    </v-text>
+
+                    People from all over can see and buy what you're selling.
                 </li>
             </v-u-l>
         </v-column>
