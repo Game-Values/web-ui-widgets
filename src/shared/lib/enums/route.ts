@@ -13,7 +13,7 @@ export enum RouteLink {
     BLOG = "/blog",
     CART = "/cart",
     FAVORITES = "/favorites",
-    GAME = "/g/[gameId]",
+    GAME = "/g/[gameId]/[[gameCategory]]",
     HOME = "/",
     MESSAGES = "/messages",
     PROMOTIONS = "/promo",

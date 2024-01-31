@@ -1,0 +1,26 @@
+<script lang="ts">
+import type { IGame } from "$api"
+
+import { Paper, PaperContent, PaperSubtitle, PaperTitle } from "$ui/common"
+import { Card, CardContent } from "$ui/data"
+
+export let game: IGame
+</script>
+
+<Card class="backdrop-blur-2xl card-border">
+    <CardContent>
+        <Paper>
+            <PaperTitle class="text-level-1">
+                {game.name}
+            </PaperTitle>
+
+            <PaperSubtitle>
+                {@html game.attributes.description}
+            </PaperSubtitle>
+
+            <PaperContent>
+                // sections
+            </PaperContent>
+        </Paper>
+    </CardContent>
+</Card>

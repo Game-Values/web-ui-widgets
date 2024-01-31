@@ -1,12 +1,13 @@
 .mdc-card {
     @apply w-full;
+    @apply bg-transparent;
+    @apply rounded-xl;
     @apply shadow-none;
 
     &__actions {
         @apply px-0;
         @apply items-start;
     }
-
 
     &.card-background,
     &.card-content-background .mdc-card__media,
@@ -18,7 +19,7 @@
     &.card-border,
     &.card-content-border .mdc-card__media,
     &.card-content-border .smui-paper__content {
-        @apply border-white/2 rounded-xl;
+        @apply border border-solid border-white/12;
     }
 
     &.card-shadow {
@@ -26,11 +27,15 @@
     }
 
     .mdc-card__media,
-    .smui-paper__content {
+    .smui-card__content {
         @apply w-inherit;
     }
 
-    .smui-paper__content {
-        @apply p-6;
+    .smui-card__content {
+        @apply p-8;
+
+        .smui-paper {
+            @apply p-0;
+        }
     }
 }

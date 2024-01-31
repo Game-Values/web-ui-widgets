@@ -3,5 +3,5 @@ import { Content } from "$ui/layout"
 </script>
 
 <Content>
-    <ul class="py-4" />
+    <ul class="py-14" />
 </Content>

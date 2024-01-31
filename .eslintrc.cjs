@@ -153,5 +153,13 @@ module.exports = {
                 }],
             },
         },
+        {
+            files: [
+                "**/entities/game/data/*/enums/categories.ts"
+            ],
+            rules: {
+                "perfectionist/sort-enums": "off",
+            },
+        },
     ],
 }

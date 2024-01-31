@@ -1,0 +1,52 @@
+@use "sass:color";
+@use "@material/switch" as switch;
+@use "../theme/color-palette";
+
+$base-color: color-palette.$positive-light;
+$on-base-color: color-palette.$positive;
+
+$inverse-color: color.scale($base-color, $lightness: 75%);
+$color-state-content: color.scale($base-color, $blackness: 50%);
+
+$disabled-base-color: color-palette.$positive-dark;
+$disabled-inverse-color: color.scale($disabled-base-color, $lightness: 75%);
+
+.mdc-switch {
+    --mdc-switch-track-width: 3rem;
+    --mdc-switch-track-height: 1.5rem;
+    --mdc-switch-track-shape: var(--mdc-shape-medium);
+
+    @apply m-3;
+
+    .mdc-switch__track,
+    .mdc-switch__track::before,
+    .mdc-switch__track::after, {
+        --mdc-switch-selected-track-color: #{color-palette.$secondary};
+        --mdc-switch-selected-hover-track-color: #{color-palette.$secondary};
+        --mdc-switch-selected-focus-track-color: #{color-palette.$secondary};
+        --mdc-switch-selected-pressed-track-color: #{color-palette.$secondary};
+        --mdc-switch-unselected-track-color: #{color-palette.$secondary};
+        --mdc-switch-unselected-hover-track-color: #{color-palette.$secondary};
+        --mdc-switch-unselected-focus-track-color: #{color-palette.$secondary};
+        --mdc-switch-unselected-pressed-track-color: #{color-palette.$secondary};
+    }
+
+    @include switch.theme(
+        (
+            selected-focus-handle-color: $color-state-content,
+            selected-focus-state-layer-color: $base-color,
+            selected-focus-track-color: $inverse-color,
+            selected-handle-color: $base-color,
+            selected-hover-handle-color: $color-state-content,
+            selected-hover-state-layer-color: $base-color,
+            selected-hover-track-color: $inverse-color,
+            selected-icon-color: $on-base-color,
+            selected-pressed-handle-color: $color-state-content,
+            selected-pressed-state-layer-color: $base-color,
+            selected-pressed-track-color: $inverse-color,
+            selected-track-color: $inverse-color,
+            disabled-selected-handle-color: $disabled-base-color,
+            disabled-selected-track-color: $disabled-inverse-color,
+        )
+    );
+}

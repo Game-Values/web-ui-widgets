@@ -20,8 +20,8 @@ export {
     </InnerGrid>
 {:else}
     <LayoutGrid
-        class={className}
         fixedColumnWidth={fixed}
+        innerGrid$class={className}
     >
         <slot />
     </LayoutGrid>

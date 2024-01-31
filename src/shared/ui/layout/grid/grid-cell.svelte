@@ -21,17 +21,20 @@ let align: "bottom" | "middle" | "top" = "top"
 
 let className: string = ""
 
-let desktop: ICellSpan = 12
+let desktop: ICellSpan | undefined = undefined
 
-let mobile: ICellSpan = 12
+let mobile: ICellSpan | undefined = undefined
 
-let tablet: ICellSpan = 12
+let span: ICellSpan = 12
+
+let tablet: ICellSpan | undefined = undefined
 
 export {
     align,
     className as class,
     desktop,
     mobile,
+    span,
     tablet,
 }
 </script>
@@ -41,9 +44,9 @@ export {
     {align}
     spanDevices={
         {
-            desktop,
-            phone: mobile,
-            tablet,
+            desktop: desktop || span,
+            phone: mobile || span,
+            tablet: tablet || span,
         }
     }
 >

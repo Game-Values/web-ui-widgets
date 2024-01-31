@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { IGame } from "$api"
 
-import { resolveGameIcon } from "~/entities/game"
+import { useGame } from "~/entities/game"
 
 import { resolveRoute } from "$lib/helpers"
 import { Button } from "$ui/common"
@@ -13,7 +13,7 @@ export let game: IGame
 
 <Card class="card-content-background card-content-border">
     <CardContent media>
-        <LazyPromise promise={resolveGameIcon(game)}>
+        <LazyPromise promise={useGame(game).fetchIcon()}>
             <svelte:fragment
                 slot="resolve"
                 let:value

@@ -7,5 +7,9 @@
 
     &__cell {
         @apply flex;
+
+        > .mdc-layout-grid__inner {
+            @apply w-full;
+        }
     }
 }
