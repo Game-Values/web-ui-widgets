@@ -179,7 +179,12 @@ async function handleDeleteItem(): Promise<void> {
                         </v-column>
                     </template>
 
-                    <template v-else>
+                    <template
+                        v-else-if="(
+                            [FilterType.CHECKBOX, FilterType.RADIO, FilterType.SELECT].includes(type) ||
+                            type === FilterType.FROM_TO
+                        )"
+                    >
                         <v-column
                             :lg="12"
                             :md="12"
@@ -194,6 +199,7 @@ async function handleDeleteItem(): Promise<void> {
                                         v-if="[FilterType.CHECKBOX, FilterType.RADIO, FilterType.SELECT].includes(type)"
                                         :multiple="[FilterType.CHECKBOX, FilterType.SELECT].includes(type)"
                                         :options="useMap(buckets, bucket => (bucket.label || bucket).toString())"
+                                        :value="useGet(storeClient.sellStore.sellItemRaw, `attributes.${gameAttribute}`, [])"
                                     />
 
                                     <v-number-input

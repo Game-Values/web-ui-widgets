@@ -153,8 +153,8 @@ let nuxtConfig: NuxtConfig = {
     },
 
     modules: [
-        "@hebilicious/vue-query-nuxt",
-        "@nuxt/image",
+        // "@hebilicious/vue-query-nuxt",
+        // "@nuxt/image",
         "@unocss/nuxt",
 
         "nuxt-lazy-load",
@@ -210,10 +210,10 @@ let nuxtConfig: NuxtConfig = {
             vueI18n: "i18n.config.ts",
         }],
 
-        ["@nuxtjs/web-vitals", {
-            debug: isDebug(),
-            provider: "log",
-        }],
+        // ["@nuxtjs/web-vitals", {
+        //     debug: isDebug(),
+        //     provider: "log",
+        // }],
 
         ["@vexip-ui/nuxt", {
             importStyle: false,
@@ -224,14 +224,14 @@ let nuxtConfig: NuxtConfig = {
             ssrHandlers: true,
         }],
 
-        ["nuxt-delay-hydration", {
-            debug: isDebug(),
-            mode: "mount",
-        }],
+        // ["nuxt-delay-hydration", {
+        //     debug: isDebug(),
+        //     mode: "mount",
+        // }],
 
-        ["nuxt-seo-experiments", {
-            debug: isDebug(),
-        }],
+        // ["nuxt-seo-experiments", {
+        //     debug: isDebug(),
+        // }],
 
         ["nuxt-typed-router", {
             plugin: true,

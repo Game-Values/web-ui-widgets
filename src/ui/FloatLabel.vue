@@ -6,12 +6,10 @@ defineProps<{
 </script>
 
 <template>
-<label>
+<label @click.prevent>
     <slot />
 
-    <span
-        :class="{ float: Boolean(value) }"
-    >
+    <span :class="{ float: Boolean(value) }">
         {{ label }}
     </span>
 </label>
