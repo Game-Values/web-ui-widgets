@@ -7,8 +7,8 @@ import { Card, CardContent } from "$ui/data"
 export let game: IGame
 </script>
 
-<Card class="backdrop-blur-2xl card-border">
-    <CardContent>
+<Card class="backdrop-blur-2xl">
+    <CardContent class="border border-solid border-white/12">
         <Paper>
             <PaperTitle class="text-level-1">
                 {game.name}

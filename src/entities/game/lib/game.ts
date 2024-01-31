@@ -9,13 +9,16 @@ type IGameCategoriesModule = {
     Categories: Record<string, string>
 }
 
-export function resolveGameCategories(game: IGame): Promise<string[]> {
+export async function resolveGameCategories(game: IGame): Promise<string[]> {
     let filepath: string = (
         `~/entities/game/data/${kebabCase(game.name)}/enums/categories.ts`
     )
 
-    return asyncModule<IGameCategoriesModule>(filepath)
-        .then((module: IGameCategoriesModule) => Object.values(module.Categories))
+    let module: IGameCategoriesModule = (
+        await asyncModule<IGameCategoriesModule>(filepath)
+    )
+
+    return Object.values(module.Categories)
 }
 
 export function resolveGameCategory(

@@ -5,7 +5,7 @@ import { merge } from "lodash-es"
 import { Api, HttpClient } from "$api"
 import { browser } from "$app/environment"
 import { useEnv } from "$config/env"
-import { cache } from "$lib/helpers"
+import { fromCacheSync } from "$lib/helpers"
 
 function createApi(config?: ApiConfig): Api<unknown>["api"] {
     let defaultConfig: ApiConfig = {
@@ -26,12 +26,9 @@ function createApi(config?: ApiConfig): Api<unknown>["api"] {
 }
 
 export function useApi(config?: ApiConfig): Api<unknown>["api"] {
-    if (browser) {
-        if (!cache.has("api"))
-            cache.set("api", createApi(config))
-
-        return cache.get("api") as Api<unknown>["api"]
-    }
-
-    return createApi(config)
+    return (
+        browser
+            ? fromCacheSync(useApi.name, () => createApi(config))
+            : createApi(config)
+    )
 }

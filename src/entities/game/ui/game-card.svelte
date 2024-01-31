@@ -11,15 +11,22 @@ import { LazyPromise } from "$ui/effect"
 export let game: IGame
 </script>
 
-<Card class="card-content-background card-content-border">
-    <CardContent media>
+<Card class="group">
+    <CardContent
+        class="
+            border border-solid border-white/15
+            group-hover:(border-[rgba(52,95,246,0.65)])
+            group-hover:(shadow-[0_0.375rem_3.25rem_0_rgba(61,152,255,0.20)])
+        "
+        media
+    >
         <LazyPromise promise={useGame(game).fetchIcon()}>
             <svelte:fragment
                 slot="resolve"
                 let:value
             >
                 <Button
-                    class="w-full h-auto"
+                    class="w-full h-auto bg-white/2!"
                     color="secondary"
                     href={resolveRoute("GAME", { gameId: game.id })}
                 >

@@ -3,7 +3,6 @@ import type { IDialogOptions, IUseDialog } from "$model/dialog"
 import { derived, readable } from "svelte/store"
 
 import { DialogName } from "$lib/enums"
-import { cache } from "$lib/helpers"
 import { useState } from "$model/state"
 
 function useDialog(
@@ -28,17 +27,12 @@ function useDialog(
         dialog.open = () => update({ dialog: dialogName })
     } else {
         let dialogOptions: IDialogOptions = dialogNameOrOptions as IDialogOptions
-
-        if (!cache.has(dialogOptions.name))
-            cache.set(dialogOptions.name, {
-                context: readable(dialogOptions),
-                opened: derived(state, ($state: App.PageState): boolean => (
-                    $state.dialog === DialogName[dialogOptions.name]
-                )),
-            })
-
-        Object.assign(dialog, cache.get(dialogOptions.name), {
+        Object.assign(dialog, {
+            context: readable(dialogOptions),
             open: () => update({ dialog: DialogName[dialogOptions.name] }),
+            opened: derived(state, ($state: App.PageState): boolean => (
+                $state.dialog === DialogName[dialogOptions.name]
+            )),
         })
     }
 
