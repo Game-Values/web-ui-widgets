@@ -2,6 +2,7 @@
 import type { IGame } from "$api"
 
 import { GameInfo } from "~/entities/game"
+import { GameSections } from "~/features/game"
 
 import { SearchInput, Switch } from "$ui/data"
 import { Content, Grid, GridCell } from "$ui/layout"
@@ -12,7 +13,11 @@ export let game: IGame
 <Content>
     <Grid class="gap-y-16">
         <GridCell>
-            <GameInfo {game} />
+            <GameInfo {game}>
+                <svelte:fragment slot="gameSections">
+                    <GameSections {game} />
+                </svelte:fragment>
+            </GameInfo>
         </GridCell>
 
         <GridCell desktop={6}>

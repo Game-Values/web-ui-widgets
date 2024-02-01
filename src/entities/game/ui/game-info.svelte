@@ -19,7 +19,7 @@ export let game: IGame
             </PaperSubtitle>
 
             <PaperContent>
-                // sections
+                <slot name="gameSections" />
             </PaperContent>
         </Paper>
     </CardContent>
