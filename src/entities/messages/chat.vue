@@ -44,7 +44,7 @@ let sendRoomMessage = useDebounce(async (message: string): Promise<void> => {
         >
             <v-native-scroll
                 class="w-full"
-                height="100%"
+                height="800"
                 ref="refNativeScroll"
                 scroll-tag="ul"
                 use-y-bar

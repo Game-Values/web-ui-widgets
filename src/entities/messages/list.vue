@@ -27,11 +27,17 @@ watch((): Record<string, IJoinedRoom> => getRef(chatJoinedRooms), (val: Record<s
         })
 
     let directRoomsIds: IRoomEvent[] = Object.entries(val)
-        .map(([, room]: [string, room: IJoinedRoom]): IRoomEvent => (
-            room.timeline.events.find((event: IRoomEvent): boolean => (
+        .map(([, room]: [string, room: IJoinedRoom]): IRoomEvent => {
+            let stateEvent: IRoomEvent = room.state.events.find((event: IRoomEvent): boolean => (
                 event.type === "m.room.name"
             ))!
-        ))
+
+            let timelineEvent: IRoomEvent = room.timeline.events.find((event: IRoomEvent): boolean => (
+                event.type === "m.room.name"
+            ))!
+
+            return stateEvent || timelineEvent
+        })
 
     let usersPromises: Promise<User>[] = useMap<any, Promise<User>>(directRoomsEvents, (roomEvent: IRoomEvent): Promise<User> => {
         let userId = (
