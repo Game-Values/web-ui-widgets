@@ -1,6 +1,7 @@
-import type { StoreClient } from "~/clients"
 import type { UserRaw } from "#schema/data-contracts"
 import type { ApiAdapter } from "~/adapters"
+import type { StoreClient } from "~/clients"
+import type { User } from "~/dto"
 
 export class UserController {
     public constructor(
@@ -13,14 +14,18 @@ export class UserController {
         await this.fetchMe()
     }
 
-    public async fetchMe(): Promise<void> {
+    public async fetchMe(): Promise<User> {
         let userRaw: UserRaw = await this._apiAdapter.readUserApiV1UsersGet()
         this._storeClient.userMeStore.setUserRaw(userRaw)
+
+        return this._storeClient.userMeStore.user
     }
 
-    public async fetchUser(userId: string): Promise<void> {
+    public async fetchUser(userId: string): Promise<User> {
         let userRaw: UserRaw = await this._apiAdapter.readUserApiV1UsersUsersUserIdGet(userId)
         this._storeClient.userStore.setUserRaw(userRaw)
+
+        return this._storeClient.userStore.user
     }
 
     public async likeGameMe(gameId: string): Promise<void> {

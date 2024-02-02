@@ -22,6 +22,7 @@ declare module "vue-router" {
         price: string
         price_from: string
         price_till: string
+        roomId: string
         server: string
         type: GameSection
 

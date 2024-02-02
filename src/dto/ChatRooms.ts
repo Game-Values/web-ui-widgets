@@ -11,4 +11,8 @@ export class ChatRooms extends CollectionAbstract<ChatRoom, IPublicRoomsChunkRoo
     public get mainRoom(): ChatRoom {
         return this.getById(useRuntimeConfig().public.matrixMainRoomId)!
     }
+
+    public get rooms(): ChatRoom[] {
+
+    }
 }

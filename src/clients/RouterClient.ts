@@ -65,6 +65,9 @@ export class RouterClient {
     }
 
     public getRouteQuery<T = string>(routeQuery: keyof LocationQuery): T {
+        if (isClient())
+            return (new URL(location.href).searchParams.get(routeQuery) || "") as T
+
         return useGet(this.route.query, routeQuery, "") as T
     }
 

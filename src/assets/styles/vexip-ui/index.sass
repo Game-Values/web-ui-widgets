@@ -54,6 +54,7 @@
 .vxp-card-vars
     --vxp-card-radius: theme("spacing.5")
     --vxp-card-border: 0
+    --vxp-card-divider: rgba(255, 255, 255, 0.02)
     --vxp-card-shadow: none
     --vxp-card-bg-color: transparent
     --vxp-card-b-color: transparent
@@ -108,6 +109,12 @@
 
 .vxp-masker-vars
     --vxp-masker-opacity: 80%
+
+.vxp-menu-vars
+    --vxp-menu-bg-color-hover: #1E1E1F
+    --vxp-menu-bg-color-selected: rgba(52, 120, 246, 0.2)
+    --vxp-menu-b-color: rgba(255, 255, 255, 0.02)
+    --vxp-menu-label-color-selected: inherit
 
 .vxp-modal-vars
     --vxp-modal-header-v-padding: theme("spacing.10")
@@ -343,6 +350,9 @@
 
     &__section
         @apply flex-col flex-1
+
+.vxp-menu
+    @apply after:(border-white/2)
 
 .vxp-modal
     &__close
