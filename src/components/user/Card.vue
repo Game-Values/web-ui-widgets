@@ -10,10 +10,19 @@ let { chatController } = useControllers()
 
 async function handleSendMessage(): Promise<void> {
     let roomId: string = `${storeClient.userMeStore.user.id}_${props.user.id}`
-    await chatController.createDirectRoom(roomId, props.user.chat_id)
+    await chatController.createDirectRoom(roomId, props.user.chat_id, {
+        creation_content: {
+            // recipient: props.user.id,
+            // sender: storeClient.userMeStore.user.id,
+
+            from: storeClient.userMeStore.user.id,
+            to: props.user.id,
+        },
+    })
     await navigateTo(
         routerClient.getRoute(routerClient.routeNames.USER_MESSAGES, {
             params: {
+                roomId,
                 userId: storeClient.userMeStore.user.id,
             },
         }),

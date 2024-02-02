@@ -48,6 +48,7 @@ declare module "vue-router" {
         locale: Locale
         orderId: string
         paymentType: PaymentType
+        roomId: string
         userId: string
     }
 }

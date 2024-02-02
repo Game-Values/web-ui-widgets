@@ -3,6 +3,7 @@ import type { Nullable } from "~/types"
 import type { MatrixEvent, Room, RoomMember } from "matrix-js-sdk"
 
 import { EventType, MsgType, Preset, RoomEvent, RoomMemberEvent } from "matrix-js-sdk"
+import {ICreateRoomOpts} from "matrix-js-sdk/src/@types/requests";
 
 export class ChatController {
     public constructor(
@@ -49,6 +50,7 @@ export class ChatController {
     }
 
     private async _subscribeChat(): Promise<void> {
+        this._chatClient.removeAllListeners()
         this._chatClient.on(RoomMemberEvent.Membership, useBind(this._roomMembershipHandler, this))
         this._chatClient.on(RoomEvent.Timeline, useBind(this._roomTimelineHandler, this))
     }
@@ -58,25 +60,26 @@ export class ChatController {
         this._storeClient.chatStore.setChatSyncState(chatState)
     }
 
-    public async createDirectRoom(roomName: string, directMember: string): Promise<void> {
+    public async createDirectRoom(roomName: string, directMember: string, roomOptions?: ICreateRoomOpts): Promise<void> {
         let res: { room_id: string }
         try {
-            res = await this._chatClient.getRoomIdForAlias(`#${roomName}:${useRuntimeConfig().public.matrixChatName}`)
+            res = await this._chatClient.createRoom(
+                useMerge({
+                    invite: [
+                        directMember,
+                    ],
+                    is_direct: true,
+                    name: roomName,
+                    preset: Preset.TrustedPrivateChat,
+                    room_alias_name: roomName,
+                }, roomOptions),
+            )
         } catch {
-            res = await this._chatClient.createRoom({
-                invite: [
-                    directMember,
-                ],
-                is_direct: true,
-                name: roomName,
-                preset: Preset.TrustedPrivateChat,
-                room_alias_name: roomName,
-            })
+            res = await this._chatClient.getRoomIdForAlias(`#${roomName}:${useRuntimeConfig().public.matrixChatName}`)
         }
 
-        let directRoom: Nullable<Room> = this._chatClient.getRoom(res.room_id)
-        if (directRoom)
-            this._storeClient.chatStore.addChatDirectRoom(directRoom)
+        await this._chatClient.joinRoom(res.room_id)
+            .then(useBind(this._storeClient.chatStore.addChatDirectRoom, this))
     }
 
     public async sendRoomMessage(roomId: string, message: string): Promise<void> {

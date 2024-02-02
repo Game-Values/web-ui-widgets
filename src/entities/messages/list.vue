@@ -3,42 +3,51 @@ import type { User } from "~/dto"
 import type { IJoinedRoom, IRoomEvent } from "matrix-js-sdk"
 import type { Ref } from "vue"
 
-let { storeClient } = useClients()
+let { routerClient, storeClient } = useClients()
 let { userController } = useControllers()
 
-let { chatJoinedRooms, chatRooms } = storeToRefs(storeClient.chatStore)
+let { chatJoinedRooms } = storeToRefs(storeClient.chatStore)
+let { user: me } = storeToRefs(storeClient.userMeStore)
 
-let directRooms = computed((): (IJoinedRoom & { id: string })[] => {
-    let mainRoomId: string = getRef(chatRooms, "mainRoom")
-        .id
-        .replace(`:${useRuntimeConfig().public.matrixChatName}`, "")
+let roomsIds: Ref<string[]> = ref([])
+let usersList: Ref<User[]> = ref([])
 
-    return useMap(useOmit(getRef(chatJoinedRooms), mainRoomId), (
-        (room: IJoinedRoom, roomId: string) => (
-            useAssign(room, { id: roomId })
+watch((): Record<string, IJoinedRoom> => getRef(chatJoinedRooms), (val: Record<string, IJoinedRoom>): void => {
+    let directRoomsEvents: IRoomEvent[] = Object.entries(val)
+        .map(([, room]: [string, room: IJoinedRoom]): IRoomEvent => {
+            let stateEvent: IRoomEvent = room.state.events.find((event: IRoomEvent): boolean => (
+                event.type === "m.room.create"
+            ))!
+
+            let timelineEvent: IRoomEvent = room.timeline.events.find((event: IRoomEvent): boolean => (
+                event.type === "m.room.create"
+            ))!
+
+            return stateEvent || timelineEvent
+        })
+
+    let directRoomsIds: IRoomEvent[] = Object.entries(val)
+        .map(([, room]: [string, room: IJoinedRoom]): IRoomEvent => (
+            room.timeline.events.find((event: IRoomEvent): boolean => (
+                event.type === "m.room.name"
+            ))!
+        ))
+
+    let usersPromises: Promise<User>[] = useMap<any, Promise<User>>(directRoomsEvents, (roomEvent: IRoomEvent): Promise<User> => {
+        let userId = (
+            roomEvent.content.from === getRef(me, "id")
+                ? roomEvent.content.to
+                : roomEvent.content.from
         )
-    ))
-})
 
-let users: Ref<User[]> = ref([])
+        return userController.fetchUser(userId)
+    })
 
-onMounted(async (): Promise<void> => (
-    setRef(users, (
-        await Promise.all(
-            useMap(getRef(directRooms), (room: IJoinedRoom): Promise<User> => {
-                let roomEvent: IRoomEvent = useFind(room.timeline.events, (
-                    (event: IRoomEvent): boolean => (
-                        event.type === "m.room.name"
-                    )
-                ))!
-
-                let userId: string = useLast(roomEvent.content.name.split("_"))!
-
-                return userController.fetchUser(userId)
-            })
-        )
-    ))
-))
+    Promise
+        .all(usersPromises)
+        .then((users: User[]): void => setRef(usersList, users))
+        .then((): void => setRef(roomsIds, useMap(directRoomsIds, "content.name")))
+}, { immediate: true })
 </script>
 
 <template>
@@ -58,11 +67,24 @@ onMounted(async (): Promise<void> => (
         </v-button>
     </template>
 
-    <v-menu class="h-full">
+    <v-menu
+        :active="routerClient.getRouteParam('roomId')"
+        class="h-full"
+    >
         <v-menu-item
-            v-for="user in users"
+            v-for="(user, i) in usersList"
             :key="user.id"
-            :label="user.id"
+            :label="roomsIds[i]"
+            @select="
+                navigateTo(
+                    routerClient.getRoute(routerClient.routeNames.USER_MESSAGES, {
+                        params: {
+                            roomId: roomsIds[i],
+                            userId: me.id,
+                        },
+                    }),
+                )
+            "
         >
             <template #icon>
                 <user-message-avatar online />

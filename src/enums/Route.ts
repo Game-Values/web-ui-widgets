@@ -59,7 +59,7 @@ export enum RouteName {
     USER = routesNames.localeUUserId.uUserIdIndexStorefront,
     USER_ITEM_BUY = routesNames.localeUUserIdGGameIdGameSectionItemIdBuy,
     USER_ITEM_EDIT = routesNames.localeUUserIdGGameIdGameSectionItemIdEdit,
-    USER_MESSAGES = routesNames.localeUUserIdMessages,
+    USER_MESSAGES = routesNames.localeUUserIdMessagesRoomId,
     USER_ORDER = routesNames.localeUUserIdOOrderId,
     USER_REVIEWS = routesNames.localeUUserId.uUserIdIndexReviews,
     USER_STOREFRONT = routesNames.localeUUserId.uUserIdIndexStorefront,

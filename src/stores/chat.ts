@@ -65,7 +65,10 @@ export let useChatStore: (storeId?: string) => ChatStore.Store = createStore<
             let chatJoinedRooms: Record<string, IJoinedRoom> = useGet(this.chatSyncState, "rooms.join", {})
 
             return useReduce(chatJoinedRooms, (result: Record<string, IJoinedRoom>, val: IJoinedRoom, key: string): Record<string, IJoinedRoom> => {
-                if (this.chatJoinedRoomsIds.includes(key))
+                if (
+                    key !== useRuntimeConfig().public.matrixMainRoomId &&
+                    this.chatJoinedRoomsIds.includes(key)
+                )
                     useAssign(result, {
                         [key.replace(`:${useRuntimeConfig().public.matrixChatName}`, "")]: val,
                     })
