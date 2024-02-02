@@ -12,9 +12,6 @@ import { assign, get } from "lodash-es"
 import { optimize } from "svgo"
 import { defineConfig, presetIcons, presetUno, transformerDirectives, transformerVariantGroup } from "unocss"
 
-// fixme: not work
-// import { default as presetAutoprefixer } from "unocss-preset-autoprefixer"
-
 import { Breakpoint } from "./common/enums"
 import { isDevelopment } from "./common/utils"
 
@@ -246,7 +243,6 @@ export default defineConfig({
             },
         }),
         presetUno(),
-        // presetAutoprefixer(),
     ],
 
     shortcuts: {
