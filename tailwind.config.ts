@@ -86,6 +86,10 @@ export default {
                 "secondary": "Inter",
             },
 
+            fontSize: {
+                "inherit": "inherit",
+            },
+
             textColor: {
                 "primary": "#FFFFFF",
                 "secondary": "rgba(255, 255, 255, 0.60)",

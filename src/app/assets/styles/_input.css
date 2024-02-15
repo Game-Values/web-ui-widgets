@@ -1,8 +1,12 @@
 .input {
-    @apply px-2;
+    @apply px-4;
     @apply w-full;
-    /*@apply w-full h-8;*/
     @apply bg-input;
+    @apply text-inherit;
+}
+
+.input-sm {
+    @apply px-3;
 }
 
 .input-bordered {

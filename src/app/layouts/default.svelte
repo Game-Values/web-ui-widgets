@@ -2,12 +2,9 @@
 import { Drawer } from "~/widgets/drawer"
 import { Footer } from "~/widgets/footer"
 import { Navbar } from "~/widgets/navbar"
-import { ModalProvider } from "~/widgets/provider"
+import { BackgroundImageProvider, ModalProvider } from "~/widgets/provider"
 
-import { page } from "$app/stores"
 import { Container } from "$ui/layout"
-
-$page.state.modal
 </script>
 
 <Container
@@ -18,7 +15,15 @@ $page.state.modal
     <Navbar />
 
     <Drawer>
-        <main class="min-h-full flex flex-col">
+        <main
+            class="
+                relative
+                min-h-full
+                flex flex-col
+            "
+        >
+            <BackgroundImageProvider />
+
             <div class="relative flex-auto">
                 <slot />
             </div>

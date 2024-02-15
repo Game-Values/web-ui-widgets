@@ -16,7 +16,7 @@ import { Container, Divider } from "$ui/layout"
 <Container
     class="
         navbar
-        relative z-10
+        relative z-20
         h-16
         px-4 py-2.5 gap-4
         flex items-center justify-between

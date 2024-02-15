@@ -9,21 +9,45 @@
  * PAGES
  */
 const PAGES = {
-  "/": `/`,
-  "/favorites": `/favorites`,
-  "/funds": `/funds`,
-  "/lots": `/lots`,
-  "/lots/create": `/lots/create`,
-  "/messages": `/messages`,
-  "/purchases": `/purchases`,
-  "/referral": `/referral`,
-  "/sales": `/sales`,
-  "/blog": `/blog`,
-  "/g/[gameId]": (params: { gameId: (string | number), gameSection?: (string | number) }) => {
-    return `/g/${params.gameId}${params?.gameSection ? `/${params?.gameSection}`: ''}`
+  "/": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: '/'}`
   },
-  "/promotions": `/promotions`,
-  "/top-10": `/top-10`
+  "/favorites": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/favorites`
+  },
+  "/funds": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/funds`
+  },
+  "/lots": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/lots`
+  },
+  "/lots/create": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/lots/create`
+  },
+  "/messages": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/messages`
+  },
+  "/purchases": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/purchases`
+  },
+  "/referral": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/referral`
+  },
+  "/sales": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/sales`
+  },
+  "/blog": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/blog`
+  },
+  "/g/[gameId]": (params: { gameId: (string | number), locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]), gameSection?: (Parameters<typeof import('../../params/gameSection.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/g/${params.gameId}${params?.gameSection ? `/${params?.gameSection}`: ''}`
+  },
+  "/promotions": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/promotions`
+  },
+  "/top-10": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/top-10`
+  }
 }
 
 /**
@@ -147,9 +171,9 @@ export function route<T extends keyof AllTypes>(key: T, ...params: any[]): strin
 * ```
 */
 export type KIT_ROUTES = {
-  PAGES: { '/': never, '/favorites': never, '/funds': never, '/lots': never, '/lots/create': never, '/messages': never, '/purchases': never, '/referral': never, '/sales': never, '/blog': never, '/g/[gameId]': 'gameId' | 'gameSection', '/promotions': never, '/top-10': never }
+  PAGES: { '/': 'locale', '/favorites': 'locale', '/funds': 'locale', '/lots': 'locale', '/lots/create': 'locale', '/messages': 'locale', '/purchases': 'locale', '/referral': 'locale', '/sales': 'locale', '/blog': 'locale', '/g/[gameId]': 'gameId' | 'locale' | 'gameSection', '/promotions': 'locale', '/top-10': 'locale' }
   SERVERS: Record<string, never>
   ACTIONS: Record<string, never>
   LINKS: Record<string, never>
-  Params: { gameId: never, gameSection: never }
+  Params: { locale: never, gameId: never, gameSection: never }
 }

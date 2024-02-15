@@ -1,5 +1,7 @@
+export * from "$model/use-background-image"
 export * from "$model/use-cache"
 export * from "$model/use-cookies"
 export * from "$model/use-modal"
+export * from "$model/use-page-state"
 export * from "$model/use-session"
 export * from "$model/use-storage"

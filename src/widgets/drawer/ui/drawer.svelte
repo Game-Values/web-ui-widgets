@@ -52,6 +52,7 @@ interface $$Slots {
 
 <style>
 .drawer-open > .drawer-side {
+    @apply z-10;
     @apply overflow-visible;
 }
 </style>

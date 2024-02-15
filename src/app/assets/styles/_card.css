@@ -1,3 +1,11 @@
+.card-bordered {
+    @apply border-white/[0.12];
+}
+
 .card-body {
+    --padding-card: 0;
+}
+
+.card-normal .card-body {
     --padding-card: 1rem;
 }

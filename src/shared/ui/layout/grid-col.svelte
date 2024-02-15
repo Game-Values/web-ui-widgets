@@ -1,6 +1,8 @@
 <script lang="ts">
 interface $$Props {
+    align?: "baseline" | "center" | "end" | "start"
     class?: string
+    justify?: "center" | "end" | "start"
     lg?: IGridColSpan
     md?: IGridColSpan
     sm?: IGridColSpan
@@ -14,7 +16,11 @@ interface $$Slots {
 
 type IGridColSpan = 1 | 10 | 11 | 12 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 
+let align: "baseline" | "center" | "end" | "start" = "baseline"
+
 let className: string = ""
+
+let justify: "center" | "end" | "start" = "start"
 
 let sm: IGridColSpan | undefined = undefined
 
@@ -27,7 +33,9 @@ let lg: IGridColSpan | undefined = undefined
 let xl: IGridColSpan | undefined = undefined
 
 export {
+    align,
     className as class,
+    justify,
     lg,
     md,
     sm,
@@ -37,7 +45,7 @@ export {
 </script>
 
 <div
-    class={className}
+    class="flex {className}"
 
     class:col-span-1={span === 1}
     class:col-span-10={span === 10}
@@ -51,6 +59,16 @@ export {
     class:col-span-7={span === 7}
     class:col-span-8={span === 8}
     class:col-span-9={span === 9}
+
+    class:items-baseline={align === "baseline"}
+    class:items-center={align === "center"}
+    class:items-end={align === "end"}
+    class:items-start={align === "start"}
+
+    class:justify-baseline={justify === "baseline"}
+    class:justify-center={justify === "center"}
+    class:justify-end={justify === "end"}
+    class:justify-start={justify === "start"}
 
     class:lg:col-span-1={lg === 1}
     class:lg:col-span-10={lg === 10}

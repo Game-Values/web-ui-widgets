@@ -1,10 +1,12 @@
 <script lang="ts">
-import { page } from "$app/stores"
+import { usePageState } from "$model"
 import { LazyComponent } from "$ui/actions"
+
+let { pageState } = usePageState()
 </script>
 
-{#if $page.state.modal}
+{#if $pageState.modal}
     <LazyComponent
-        src={`~/widgets/modal/ui/${$page.state.modal}-modal.svelte`}
+        src={`~/widgets/modal/ui/${$pageState.modal}-modal.svelte`}
     />
 {/if}

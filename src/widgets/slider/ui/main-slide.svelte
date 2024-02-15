@@ -35,7 +35,6 @@ export let title: string = ""
         <div class="hero-image hero-overlay overflow-hidden">
             <EnhancedImage
                 alt="main-slide"
-                sizes="min(1920px, 100dvw)"
                 src={image}
             />
         </div>

@@ -28,6 +28,7 @@ const config = {
 
         files: {
             lib: join("src", "shared", "lib"),
+            params: join("src", "app", "params"),
             routes: join("src", "app", "routes"),
         },
     },

@@ -23,16 +23,12 @@ let className: string = ""
 
 let lazy: boolean = true
 
-let sizes: string | undefined = undefined
+let sizes: string = "min(1920px, 100dvw)"
 
 let src: string
 
 $: enhancePromise = (
-    asyncModule<IEnhanced>(
-        sizes
-            ? `~/app/assets/${src}?enhanced&imgSizes=${sizes}`
-            : `~/app/assets/${src}?enhanced`,
-    )
+    asyncModule<IEnhanced>(`~/app/assets/${src}?enhanced&imgSizes=${sizes}`)
 )
 
 export {
@@ -51,11 +47,6 @@ export {
     <picture class={className}>
         {#if isString(value)}
             <img
-                class="
-                    w-full h-full max-w-full max-h-full
-                    aspect-auto
-                    object-cover
-                "
                 {alt}
                 loading={lazy ? "lazy" : "eager"}
                 src={value}
@@ -70,11 +61,6 @@ export {
             {/each}
 
             <img
-                class="
-                    w-full h-full max-w-full max-h-full
-                    aspect-auto
-                    object-cover
-                "
                 {alt}
                 height={value.img.h}
                 loading={lazy ? "lazy" : "eager"}
@@ -84,3 +70,15 @@ export {
         {/if}
     </picture>
 </LazyPromise>
+
+<style>
+picture {
+    @apply w-[var(--image-width,100%)] h-[var(--image-height,auto)];
+    @apply max-w-full max-h-full;
+}
+
+picture img {
+    @apply w-full h-full;
+    @apply aspect-auto object-cover;
+}
+</style>

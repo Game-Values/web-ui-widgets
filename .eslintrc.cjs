@@ -30,6 +30,7 @@ module.exports = {
                     indent: 4,
                     indentScript: false,
                 }],
+                "svelte/no-at-html-tags": "off",
                 "svelte/no-inline-styles": "off",
                 "svelte/no-unused-class-name": "off",
             },

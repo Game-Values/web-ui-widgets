@@ -2,7 +2,7 @@
 import type { IGame } from "$schema/api"
 
 import { AuthOnly } from "~/entities/auth"
-import { GameCard, groupGames } from "~/entities/game"
+import { GameGridCard, groupGames } from "~/entities/game"
 
 import { LazyComponent } from "$ui/actions"
 
@@ -29,8 +29,8 @@ export let games: IGame[]
         >
             {#each gamesGroup as game (game.id)}
                 <li>
-                    <GameCard {game}>
-                        <svelte:fragment slot="likeToggle">
+                    <GameGridCard {game}>
+                        <svelte:fragment slot="gameLikeToggle">
                             <AuthOnly>
                                 <LazyComponent
                                     props={{ game }}
@@ -38,7 +38,7 @@ export let games: IGame[]
                                 />
                             </AuthOnly>
                         </svelte:fragment>
-                    </GameCard>
+                    </GameGridCard>
                 </li>
             {/each}
         </ul>

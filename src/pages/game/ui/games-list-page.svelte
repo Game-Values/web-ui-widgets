@@ -1,25 +1,26 @@
 <script lang="ts">
 import type { IGame } from "$schema/api"
 
+import { onDestroy, onMount } from "svelte"
+
 import { GamesGroup } from "~/widgets/game"
 import { MainSlider } from "~/widgets/slider"
 
-import { EnhancedImage } from "$ui/data"
+import { useBackgroundImage } from "$model"
 import { Container, Grid, GridCol } from "$ui/layout"
 
 interface $$Props {
     games: IGame[]
 }
 
+let { setBackgroundImage, unsetBackgroundImage } = useBackgroundImage("images/bg/main-bg.png")
+
+onMount(setBackgroundImage)
+
+onDestroy(unsetBackgroundImage)
+
 export let games: IGame[]
 </script>
-
-<EnhancedImage
-    class="absolute left-0 top-0"
-    alt="bg-main"
-    sizes="min(1920px, 100dvw)"
-    src="images/bg/main-bg.png"
-/>
 
 <Container>
     <MainSlider />
