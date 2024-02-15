@@ -24,7 +24,7 @@ async function handlePay(): Promise<void> {
         sum: getRef(order, "attributes").price,
     })
 
-    await orderCompletedToast.open()
+    // await orderCompletedToast.open()
 }
 </script>
 

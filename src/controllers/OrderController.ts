@@ -1,4 +1,4 @@
-import type { OrderCreateRaw, OrderInDBRaw, PaymentErrorRaw, PaymentNewRaw, PaymentResponseRaw } from "#schema/data-contracts"
+import type { CreatePaymentApiV1FundsCreatePaymentPostDataRaw, OrderCreateRaw, OrderInDBRaw, PaymentNewRaw, PaymentResponseRaw } from "#schema/data-contracts"
 import type { ApiAdapter } from "~/adapters"
 import type { RouterClient, StoreClient } from "~/clients"
 import type { ChatController, UserController } from "~/controllers"
@@ -25,16 +25,13 @@ export class OrderController {
 
     // todo: mv (?)
     public async createPayment(payload: PaymentNewRaw): Promise<void> {
-        let res: PaymentErrorRaw | PaymentResponseRaw = (
+        let { redirectUrl }: PaymentResponseRaw = (
             await this._apiAdapter.createPaymentApiV1FundsCreatePaymentPost(payload)
-        )
+        ) as PaymentResponseRaw
 
-        // todo: (?)
-        return
-        if ((res as PaymentResponseRaw).redirectUrl)
-            navigateTo((res as PaymentResponseRaw).redirectUrl, {
-                external: true,
-            })
+        await navigateTo(redirectUrl, {
+            external: true,
+        })
     }
 
     public async fetchMeOrders(): Promise<void> {

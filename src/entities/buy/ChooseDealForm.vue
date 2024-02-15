@@ -46,8 +46,6 @@ async function createOrder(): Promise<void> {
             required
         >
             <v-number-input
-                :max="item.attributes.amount"
-                :min="1"
                 :placeholder="$t('order.I will pay')"
             />
         </v-form-item>
@@ -63,8 +61,6 @@ async function createOrder(): Promise<void> {
             pure
         >
             <v-number-input
-                :max="item.attributes.amount"
-                :min="1"
                 placeholder="I will receive"
             />
         </v-form-item>
