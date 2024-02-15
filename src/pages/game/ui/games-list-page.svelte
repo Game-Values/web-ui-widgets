@@ -4,7 +4,8 @@ import type { IGame } from "$schema/api"
 import { GamesGroup } from "~/widgets/game"
 import { MainSlider } from "~/widgets/slider"
 
-import { Container } from "$ui/layout"
+import { EnhancedImage } from "$ui/data"
+import { Container, Grid, GridCol } from "$ui/layout"
 
 interface $$Props {
     games: IGame[]
@@ -13,17 +14,23 @@ interface $$Props {
 export let games: IGame[]
 </script>
 
+<EnhancedImage
+    class="absolute left-0 top-0"
+    alt="bg-main"
+    sizes="min(1920px, 100dvw)"
+    src="images/bg/main-bg.png"
+/>
+
 <Container>
     <MainSlider />
 
-    <!-- todo: grid like this classes -->
-    <div class="grid grid-cols-12">
-        <div class="col-span-8">
+    <Grid>
+        <GridCol span={8}>
             <GamesGroup {games} />
-        </div>
+        </GridCol>
 
-        <div class="col-span-4">
+        <GridCol span={4}>
             // chat
-        </div>
-    </div>
+        </GridCol>
+    </Grid>
 </Container>

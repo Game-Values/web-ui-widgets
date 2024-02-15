@@ -18,12 +18,8 @@ function createApi(config?: ApiConfig): Api<unknown>["api"] {
 
     onClient((): void => {
         Object.assign(defaultConfig.baseApiParams!, {
-            headers: getSessionHeaders(),
+            headers: Object.fromEntries(getSessionHeaders().entries()),
         })
-
-        console.log(
-            window.headers = defaultConfig.baseApiParams?.headers
-        )
     })
 
     let { api }: Api<unknown> = new Api<unknown>(

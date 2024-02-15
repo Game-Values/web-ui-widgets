@@ -3,6 +3,7 @@ import type { IToken, IUser } from "$schema/api"
 import type { ISession, IValueOfEnum } from "$types"
 import type { Readable, Writable } from "svelte/store"
 
+import { merge } from "lodash-es"
 import { derived, get, writable } from "svelte/store"
 
 import { onClient } from "$lib/helpers"
@@ -14,6 +15,7 @@ type IUseSession = {
     login(token: IToken): void
     logout(): void
     setSession(session: ISession): void
+    updateSession(session: Partial<ISession>): void
     user: Readable<IUser>
 }
 
@@ -22,7 +24,7 @@ let session: Writable<ISession> = writable(Object.create(null))
 export function useSession(): IUseSession {
     let { deleteCookies, setCookie } = useCookies()
 
-    return {
+    let use: IUseSession = {
         authenticated: derived(session, ($session: ISession): boolean => "user" in $session),
 
         getSession: (): ISession => get(session),
@@ -41,6 +43,16 @@ export function useSession(): IUseSession {
 
         setSession: (newSession: ISession): void => session.set(newSession),
 
-        user: derived(session, ($session: ISession): IUser => $session.user || Object.create(null)),
+        updateSession: (updatedSession: Partial<ISession>): void => (
+            session.set(
+                merge(use.getSession(), updatedSession),
+            )
+        ),
+
+        user: derived(session, ($session: ISession): IUser => (
+            $session.user || Object.create(null)
+        )),
     }
+
+    return use
 }

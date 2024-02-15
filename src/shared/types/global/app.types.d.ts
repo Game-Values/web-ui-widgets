@@ -1,9 +1,9 @@
+import type { Api } from "$schema/api"
+import type { IModal, ISession } from "$types"
+
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
 declare global {
-    import type { Api, IUser } from "$schema/api"
-    import type { IModal, ISession } from "$types"
-
     namespace App {
         // interface Error {}
 
@@ -15,7 +15,9 @@ declare global {
         // interface PageData {}
 
         interface PageState {
+            backgroundImage?: string
             modal?: IModal
+            previewImage?: string
         }
 
         // interface Platform {}

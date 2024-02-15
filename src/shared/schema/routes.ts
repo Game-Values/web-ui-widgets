@@ -19,6 +19,9 @@ const PAGES = {
   "/referral": `/referral`,
   "/sales": `/sales`,
   "/blog": `/blog`,
+  "/g/[gameId]": (params: { gameId: (string | number), gameSection?: (string | number) }) => {
+    return `/g/${params.gameId}${params?.gameSection ? `/${params?.gameSection}`: ''}`
+  },
   "/promotions": `/promotions`,
   "/top-10": `/top-10`
 }
@@ -144,9 +147,9 @@ export function route<T extends keyof AllTypes>(key: T, ...params: any[]): strin
 * ```
 */
 export type KIT_ROUTES = {
-  PAGES: { '/': never, '/favorites': never, '/funds': never, '/lots': never, '/lots/create': never, '/messages': never, '/purchases': never, '/referral': never, '/sales': never, '/blog': never, '/promotions': never, '/top-10': never }
+  PAGES: { '/': never, '/favorites': never, '/funds': never, '/lots': never, '/lots/create': never, '/messages': never, '/purchases': never, '/referral': never, '/sales': never, '/blog': never, '/g/[gameId]': 'gameId' | 'gameSection', '/promotions': never, '/top-10': never }
   SERVERS: Record<string, never>
   ACTIONS: Record<string, never>
   LINKS: Record<string, never>
-  Params: Record<string, never>
+  Params: { gameId: never, gameSection: never }
 }

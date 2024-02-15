@@ -4,7 +4,10 @@ import { Footer } from "~/widgets/footer"
 import { Navbar } from "~/widgets/navbar"
 import { ModalProvider } from "~/widgets/provider"
 
+import { page } from "$app/stores"
 import { Container } from "$ui/layout"
+
+$page.state.modal
 </script>
 
 <Container
@@ -15,14 +18,8 @@ import { Container } from "$ui/layout"
     <Navbar />
 
     <Drawer>
-        <main
-            class="
-                px-6 py-10
-                min-h-full
-                flex flex-col
-            "
-        >
-            <div class="flex-auto">
+        <main class="min-h-full flex flex-col">
+            <div class="relative flex-auto">
                 <slot />
             </div>
 

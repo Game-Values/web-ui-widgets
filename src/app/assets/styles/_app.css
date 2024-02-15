@@ -36,7 +36,7 @@ h6 {
 }
 
 ::-webkit-scrollbar {
-    @apply w-2;
+    @apply w-2 h-2;
     @apply bg-white/[0.12];
     @apply rounded;
 }

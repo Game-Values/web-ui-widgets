@@ -6,6 +6,7 @@ import { LazyPromise } from "$ui/actions"
 
 interface $$Props {
     alt?: string
+    class?: string
     lazy?: boolean
     sizes?: string
     src: string
@@ -17,6 +18,8 @@ type IEnhanced = {
 }
 
 let alt: string = "enhanced-image"
+
+let className: string = ""
 
 let lazy: boolean = true
 
@@ -34,6 +37,7 @@ $: enhancePromise = (
 
 export {
     alt,
+    className as class,
     lazy,
     sizes,
     src,
@@ -44,7 +48,7 @@ export {
     promise={enhancePromise}
     let:value
 >
-    <picture>
+    <picture class={className}>
         {#if isString(value)}
             <img
                 class="

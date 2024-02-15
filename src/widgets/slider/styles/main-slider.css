@@ -15,7 +15,7 @@
 }
 
 :host .swiper-wrapper {
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
     border: 0.0625rem solid rgba(255, 255, 255, 0.12);
     border-radius: 1rem;
     overflow: hidden;

@@ -1,8 +1,10 @@
 import type { IGame, IUser, IUserLike } from "$schema/api"
 import type { Readable } from "svelte/store"
 
-import { includes, isString } from "lodash-es"
+import { isString } from "lodash-es"
 import { derived } from "svelte/store"
+
+import { mapGamesIds } from "~/entities/game"
 
 import { useApi } from "$api"
 import { useSession } from "$model"
@@ -27,9 +29,17 @@ export function useGame(gameOrGameId: IGame | string): IUseGame | Promise<IUseGa
     let gameId: string = (gameOrGameId as IGame).id || gameOrGameId as string
 
     let use: IUseGame = {
-        dislikeGame: (): Promise<IUserLike> => dislikeGameEndpointApiV1UsersDislikeGamePost(gameId),
-        liked: derived(user, ($user: IUser): boolean => includes($user.liked_games, gameId)),
-        likeGame: (): Promise<IUserLike> => likeGameEndpointApiV1UsersLikeGamePost(gameId),
+        dislikeGame: (): Promise<IUserLike> => (
+            dislikeGameEndpointApiV1UsersDislikeGamePost(gameId)
+        ),
+
+        liked: derived(user, ($user: IUser): boolean => (
+            mapGamesIds($user.liked_games || []).includes(gameId)
+        )),
+
+        likeGame: (): Promise<IUserLike> => (
+            likeGameEndpointApiV1UsersLikeGamePost(gameId)
+        ),
     }
 
     return (
