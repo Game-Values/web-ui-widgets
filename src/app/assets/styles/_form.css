@@ -1,0 +1,8 @@
+.form {
+    @apply gap-y-4;
+    @apply flex flex-col;
+}
+
+.form-control {
+    @apply w-full;
+}

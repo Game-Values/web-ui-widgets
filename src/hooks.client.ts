@@ -1,6 +1,6 @@
-import { register } from "swiper/element/bundle"
+import { withSwiper, withVitals } from "~/app/providers"
 
-import { vitals } from "~/app/providers/vitals"
-
-register()
-vitals()
+await Promise.all([
+    withSwiper(),
+    withVitals(),
+])

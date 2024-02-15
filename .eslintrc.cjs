@@ -1,7 +1,10 @@
 /** @type { import("eslint").Linter.Config } */
-const { resolve } = require("node:path")
 module.exports = {
-    root: true,
+    env: {
+        browser: true,
+        es2022: true,
+        node: true,
+    },
 
     extends: [
         "eslint:recommended",
@@ -11,75 +14,99 @@ module.exports = {
         "prettier",
     ],
 
+    overrides: [
+        {
+            files: [
+                "*.svelte",
+            ],
+            parser: "svelte-eslint-parser",
+            parserOptions: {
+                parser: "@typescript-eslint/parser",
+            },
+            rules: {
+                "svelte/html-self-closing": ["error", "all"],
+                "svelte/indent": ["error", {
+                    alignAttributesVertically: true,
+                    indent: 4,
+                    indentScript: false,
+                }],
+                "svelte/no-inline-styles": "off",
+                "svelte/no-unused-class-name": "off",
+            },
+        },
+    ],
+
     parser: "@typescript-eslint/parser",
+
+    parserOptions: {
+        ecmaVersion: 2020,
+        extraFileExtensions: [".svelte"],
+        sourceType: "module",
+    },
 
     plugins: [
         "@typescript-eslint",
     ],
 
-    parserOptions: {
-        sourceType: "module",
-        ecmaVersion: "latest",
-        extraFileExtensions: [
-            ".svelte",
-        ],
-    },
-
-    env: {
-        browser: true,
-        es2022: true,
-        node: true,
-    },
+    root: true,
 
     rules: {
         "@typescript-eslint/no-confusing-void-expression": "off",
-
-        "camelcase": "off",
-        "no-return-assign": "off",
-
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-unused-vars": ["error", {
+            varsIgnorePattern: "^\\$\\$",
+        }],
+        "arrow-parens": ["error", "as-needed"],
+        camelcase: "off",
+        "comma-dangle": ["error", "always-multiline"],
+        curly: ["error", "multi", "consistent"],
+        "eol-last": "error",
         "import/extensions": ["off", {
-            scss: "always",
+            css: "always",
             svelte: "always",
             ts: "never",
         }],
-
-        semi: "error",
-
-        curly: ["error", "multi", "consistent"],
         indent: ["error", 4, { SwitchCase: 1 }],
-        quotes: ["error", "double"],
-
-        "eol-last": "error",
         "key-spacing": "error",
-        "no-param-reassign": "error",
-        "no-multiple-empty-lines": "error",
-
-        "arrow-parens": ["error", "as-needed"],
-        "comma-dangle": ["error", "always-multiline"],
-        "object-curly-spacing": ["error", "always"],
-        "quote-props": ["error", "as-needed"],
-
         "max-len": ["error", {
             code: 100,
-            tabWidth: 4,
             ignoreComments: true,
             ignoreRegExpLiterals: true,
             ignoreStrings: true,
             ignoreTemplateLiterals: true,
             ignoreTrailingComments: true,
             ignoreUrls: true,
+            tabWidth: 4,
         }],
-
+        "no-multiple-empty-lines": "error",
+        "no-param-reassign": "error",
+        "no-return-assign": "off",
+        "object-curly-spacing": ["error", "always"],
         "operator-linebreak": ["error", "after", {
             overrides: {
-                "?": "before",
                 ":": "before",
+                "?": "before",
             },
         }],
-
         "perfectionist/sort-imports": ["error", {
-            type: "natural",
-            order: "asc",
+            "custom-groups": {
+                value: {
+                    assets: [
+                        "$assets/**",
+                        "virtual:icons/**",
+                    ],
+                    rootAlias: [
+                        "@/**",
+                    ],
+                    sharedAlias: [
+                        "$**",
+                        "$**/**",
+                    ],
+                    srcAlias: [
+                        "~/**",
+                    ],
+                },
+            },
             groups: [
                 [
                     "type",
@@ -93,74 +120,29 @@ module.exports = {
 
                 "builtin",
                 "external",
-                "virtual:icons",
                 "internal",
                 "svelte",
+                "rootAlias",
+                "srcAlias",
+                "sharedAlias",
+                "assets",
 
                 [
-                    "$api",
-                    "$app",
-                    "$config",
-                    "$lib",
-                    "$model",
-                    "$types",
-                    "$ui",
                     "parent",
                     "siblings",
                     "index",
                 ],
             ],
-            "custom-groups": {
-                value: {
-                    "$api": "$api",
-                    "$app": "$app/**",
-                    "$config": "$config",
-                    "$lib": "$lib",
-                    "$model": "$model",
-                    "$types": "$types",
-                    "$ui": "$ui",
-                    "virtual:icons": "virtual:icons/**",
-                },
-            },
+            order: "asc",
+            type: "natural",
         }],
-
+        "quote-props": ["error", "as-needed"],
+        quotes: ["error", "double"],
+        semi: ["error", "never"],
         "space-before-function-paren": ["error", {
             anonymous: "always",
-            named: "never",
             asyncArrow: "always",
+            named: "never",
         }],
     },
-
-    overrides: [
-        {
-            files: [
-                "*.svelte",
-            ],
-            parser: "svelte-eslint-parser",
-            parserOptions: {
-                parser: "@typescript-eslint/parser",
-            },
-            rules: {
-                "svelte/no-inline-styles": "off",
-                "svelte/no-unused-class-name": "off",
-
-                "svelte/html-self-closing": ["error", "all"],
-
-                "svelte/indent": ["error", {
-                    alignAttributesVertically: true,
-                    indent: 4,
-                    indentScript: false,
-                }],
-            },
-        },
-        {
-            files: [
-                "+layout.server.ts",
-                "+page.server.ts",
-            ],
-            rules: {
-                "@typescript-eslint/explicit-function-return-type": "off",
-            },
-        },
-    ],
 }

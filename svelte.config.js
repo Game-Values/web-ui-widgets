@@ -1,15 +1,10 @@
-import { resolve } from "node:path"
+import { join, resolve } from "node:path"
 
-import dynamicImportVars from "@rollup/plugin-dynamic-import-vars"
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte"
 import adapter from "svelte-adapter-bun"
 
 /** @type {import("@sveltejs/kit").Config} */
 const config = {
-    extensions: [
-        ".svelte",
-    ],
-
     kit: {
         adapter: adapter({
             envPrefix: "VITE_",
@@ -21,20 +16,19 @@ const config = {
 
         alias: {
             "@/*": resolve("*"),
-            "~/*": resolve("src/*"),
-            $api: resolve("src/shared/api"),
-            $config: resolve("src/shared/config"),
-            $model: resolve("src/shared/model"),
-            $types: resolve("src/shared/types"),
-            $ui: resolve("src/shared/ui"),
+            "~/*": resolve("src", "*"),
+            $api: resolve("src", "shared", "api"),
+            $assets: resolve("src", "app", "assets"),
+            $config: resolve("src", "shared", "config"),
+            $model: resolve("src", "shared", "model"),
+            $schema: resolve("src", "shared", "schema"),
+            $types: resolve("src", "shared", "types"),
+            $ui: resolve("src", "shared", "ui"),
         },
 
         files: {
-            appTemplate: resolve("src/app.html"),
-            assets: resolve("static"),
-            errorTemplate: resolve("src/error.html"),
-            lib: resolve("src/shared/lib"),
-            routes: resolve("routes"),
+            lib: join("src", "shared", "lib"),
+            routes: join("src", "app", "routes"),
         },
     },
 
@@ -42,16 +36,9 @@ const config = {
         vitePreprocess(),
     ],
 
-    vite: {
-        plugins: [
-            dynamicImportVars({
-                include: /src\/app\/icons/,
-            }),
-        ],
-    },
-
     vitePlugin: {
-        inspector: true,
+        emitCss: true,
     },
 }
+
 export default config

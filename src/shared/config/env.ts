@@ -1,14 +1,21 @@
-import { get } from "lodash-es"
+import type { IKeyOf } from "$types"
+
+const API_URL: string = getEnv("VITE_API_URL")
+
+const OPENAPI_URL: string = getEnv("VITE_OPENAPI_URL")
 
 /**
  * @throwable
  */
-function env(key: keyof ImportMetaEnv): string {
-    let envVar: string = get(import.meta.env, key, "")
+function getEnv(key: IKeyOf<ImportMetaEnv>): string {
+    let envVar: string | undefined = import.meta.env[key]
     if (!envVar)
         throw Error(`Env variable <${key}> is required`)
 
     return envVar
 }
 
-export const API_URL: string = env("VITE_API_URL")
+export {
+    API_URL,
+    OPENAPI_URL,
+}

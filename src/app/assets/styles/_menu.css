@@ -1,0 +1,20 @@
+.menu {
+    @apply p-4 gap-y-2;
+}
+
+.menu :where(li:not(.menu-title) > *:not(ul):not(details):not(.menu-title)),
+.menu :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
+    @apply px-3 py-1;
+}
+
+.menu li > *:not(ul):not(.menu-title):not(details):active,
+.menu li > *:not(ul):not(.menu-title):not(details).active,
+.menu li > details > summary:active {
+    @apply text-primary;
+    @apply bg-accent/[0.25];
+}
+
+.menu :where(.menu li:not(.menu-title):not(.disabled) > *:not(ul):not(details):not(.menu-title)):not(.active),
+.menu :where(.menu li:not(.menu-title):not(.disabled) > details > summary:not(.menu-title)):not(.active) {
+    @apply hover:bg-accent/[0.25];
+}

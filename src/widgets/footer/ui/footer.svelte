@@ -1,51 +1,19 @@
 <script lang="ts">
-import LayoutGrid, { Cell } from "@smui/layout-grid"
-import BottomAppBar from "@smui-extra/bottom-app-bar"
+import { Container } from "$ui/layout"
 
-import {
-    FooterCopyright,
-    FooterLogo,
-    FooterPaymentMethods,
-    FooterPolicyLinks,
-    FooterSocialLinks,
-} from "~/widgets/footer"
+interface $$Props {
+    class?: string
+}
 
-import { Content } from "$ui"
+let className: string = ""
+
+export {
+    className as class,
+}
 </script>
 
-<footer class="pt-8 pb-16 bg-grey-extra-dark">
-    <BottomAppBar variant="static">
-        <Content>
-            <LayoutGrid>
-                <Cell
-                    class="flex flex-col gap-y-2"
-                    spanDevices={{ desktop: 6, phone: 12, tablet: 3 }}
-                >
-                    <FooterLogo />
-
-                    <FooterCopyright />
-                </Cell>
-
-                <Cell>
-
-                </Cell>
-
-                <Cell spanDevices={{ desktop: 6, phone: 12, tablet: 6 }}>
-                    <FooterPolicyLinks />
-                </Cell>
-
-                <Cell>
-
-                </Cell>
-
-                <Cell spanDevices={{ desktop: 6, phone: 12, tablet: 12 }}>
-                    <FooterPaymentMethods />
-                </Cell>
-
-                <Cell spanDevices={{ desktop: 6, phone: 12, tablet: 6 }}>
-                    <FooterSocialLinks />
-                </Cell>
-            </LayoutGrid>
-        </Content>
-    </BottomAppBar>
+<footer class="footer {className}">
+    <Container>
+        footer
+    </Container>
 </footer>

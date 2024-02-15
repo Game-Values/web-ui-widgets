@@ -1,8 +1,8 @@
-import type { ICallableLazy, IModule } from "$types"
+import type { ICallableLazy, IModule, ISvelteComponentConstructor } from "$types"
 
-import { cache } from "$lib"
-
-export function asyncComponent<T = ConstructorOfATypedSvelteComponent>(
+export function asyncComponent<
+    T extends ConstructorOfATypedSvelteComponent = ISvelteComponentConstructor
+>(
     filepath: string,
 ): ICallableLazy<T> {
     return function (): Promise<T> {
@@ -10,13 +10,7 @@ export function asyncComponent<T = ConstructorOfATypedSvelteComponent>(
     }
 }
 
-export async function asyncModule<T = unknown>(
-    filepath: string,
-): Promise<T> {
-    if (!cache.has(filepath)) {
-        let module: IModule<T> = await import(/* @vite-ignore */ filepath.replace("~", "/src"))
-        cache.set(filepath, module.default || module)
-    }
-
-    return cache.get(filepath) as T
+export function asyncModule<T = unknown>(filepath: string): Promise<T> {
+    return import(/* @vite-ignore */ filepath.replace("~", "/src"))
+        .then((module: IModule<T>): T => module.default)
 }

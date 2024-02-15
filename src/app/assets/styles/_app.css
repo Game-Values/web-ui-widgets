@@ -1,0 +1,47 @@
+html,
+body {
+    @apply h-full;
+}
+
+html {
+    @apply scroll-smooth;
+}
+
+body {
+    @apply antialiased font-primary text-sm;
+}
+
+h1 {
+    @apply font-bold text-4xl;
+}
+
+h2 {
+    @apply font-bold text-3xl;
+}
+
+h3 {
+    @apply font-bold text-2xl;
+}
+
+h4 {
+    @apply font-bold text-lg;
+}
+
+h5 {
+    @apply font-bold text-base;
+}
+
+h6 {
+    @apply font-bold text-sm;
+}
+
+::-webkit-scrollbar {
+    @apply w-2;
+    @apply bg-white/[0.12];
+    @apply rounded;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-primary;
+    @apply rounded;
+}

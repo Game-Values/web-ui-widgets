@@ -1,24 +1,28 @@
+import type { IHeaders } from "$types"
+
 import { useApi } from "$api"
-import { Token } from "$lib"
-import { useToken } from "$model"
+import { getSessionHeaders } from "$lib/helpers"
+import { useSession } from "$model"
 
 export async function handle({ event, resolve }): Promise<Response> {
-    let { cleanupTokens, getHeaders, getToken } = useToken(event)
+    let { logout } = useSession()
+
+    let headers: IHeaders = getSessionHeaders(event)
 
     event.locals = {
         api: useApi({
             baseApiParams: {
-                headers: getHeaders(),
+                headers: headers.toJSON(),
             },
         }),
         session: Object.create(null),
     }
 
-    if (getToken(Token.ACCESS) && getToken(Token.TYPE))
+    if (headers.has("authorization"))
         try {
             event.locals.session.user = await event.locals.api.readUserApiV1UsersGet()
         } catch {
-            cleanupTokens()
+            logout()
         }
 
     return resolve(event)

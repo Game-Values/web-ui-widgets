@@ -1,11 +1,25 @@
-import type { ICallable, ICallableLazy } from "$types"
+import type { ICallable, ICallableLazy, IKeyOf, IRouteUrl } from "$types"
+import type { Page } from "@sveltejs/kit"
 import type { EventDispatcher } from "svelte"
+import type { Readable } from "svelte/store"
 
 import { createEventDispatcher } from "svelte"
+import { derived } from "svelte/store"
+
+import { page } from "$app/stores"
+import { route } from "$schema/routes"
+
+export let isActiveRoute: Readable<ICallable<boolean>> = (
+    derived(page, ($page: Page): ICallable<boolean> => (
+        (url: IRouteUrl, ...params: any[]): boolean => (
+            route(url as never, ...params as never) === $page.url.pathname
+        )
+    ))
+)
 
 export function forwardEvent(
     callback: ICallable | ICallableLazy = (e: CustomEvent): CustomEvent => e,
-    eventName?: string,
+    event?: IKeyOf<HTMLElementEventMap>,
 ): ICallable {
     let dispatch: EventDispatcher<Record<string, unknown>> = createEventDispatcher()
 
@@ -20,7 +34,7 @@ export function forwardEvent(
 
         await promise
 
-        return dispatch(eventName || e.type, e.detail)
+        return dispatch(event || e.type, e.detail)
     }
 
     return function (e: CustomEvent): Promise<boolean | void> {

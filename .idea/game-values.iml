@@ -6,7 +6,8 @@
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
       <excludeFolder url="file://$MODULE_DIR$/.output" />
-      <excludeFolder url="file://$MODULE_DIR$/_backup.3" />
+      <excludeFolder url="file://$MODULE_DIR$/.svelte-kit" />
+      <excludeFolder url="file://$MODULE_DIR$/backup/_backup.3" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
