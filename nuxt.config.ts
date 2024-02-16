@@ -28,15 +28,27 @@ let nuxtConfig: NuxtConfig = {
                     type: "image/x-icon",
                 },
             ],
+            meta: [
+                {
+                    content: "ec99da99",
+                    name: "enot",
+                },
+            ],
             noscript: [
                 {
                     children: `
-                        <!-- Yandex.Metrika counter --> <!-- prime:e770c054-->
+                        <!-- Yandex.Metrika counter -->
                         <img
                             src="https://mc.yandex.ru/watch/92093048"
                             style="position:absolute;left:-9999px;"
                             alt="Yandex.Metrika"
                         />
+                    `,
+                },
+                {
+                    children: `
+                        <!-- Prime.Payment -->
+                        <!-- prime:e770c054 -->
                     `,
                 },
             ],
