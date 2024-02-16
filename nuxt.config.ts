@@ -31,7 +31,7 @@ let nuxtConfig: NuxtConfig = {
             noscript: [
                 {
                     children: `
-                        <!-- Yandex.Metrika counter -->
+                        <!-- Yandex.Metrika counter --> <!-- prime:e770c054-->
                         <img
                             src="https://mc.yandex.ru/watch/92093048"
                             style="position:absolute;left:-9999px;"
