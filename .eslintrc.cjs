@@ -70,7 +70,7 @@ module.exports = {
         indent: ["error", 4, { SwitchCase: 1 }],
         "key-spacing": "error",
         "max-len": ["error", {
-            code: 100,
+            code: 120,
             ignoreComments: true,
             ignoreRegExpLiterals: true,
             ignoreStrings: true,

@@ -8,6 +8,7 @@ import { derived } from "svelte/store"
 import { getGameIcon, getGameImage, getGameSections, mapGamesIds } from "~/entities/game"
 
 import { useApi } from "$api"
+import { page } from "$app/stores"
 import { useSession } from "$model"
 
 type IUseGame = {
@@ -15,6 +16,7 @@ type IUseGame = {
     gameIcon: string
     gameImage: string
     gameLiked: Readable<boolean>
+    gameSection: Readable<string>
     gameSections: Record<string, ICallableLazy<IGameSection>>
     likeGame(): Promise<IUserLike>
 }
@@ -29,7 +31,7 @@ export function useGame(game: IGame): IUseGame {
 
     let gameId: string = (game.gid || game.id)!
 
-    return {
+    let use: IUseGame = {
         dislikeGame: (): Promise<IUserLike> => (
             dislikeGameEndpointApiV1UsersDislikeGamePost(gameId)
         ),
@@ -42,10 +44,16 @@ export function useGame(game: IGame): IUseGame {
             mapGamesIds($user.liked_games || []).includes(gameId)
         )),
 
+        gameSection: derived(page, ($page: App.Page): string => (
+            $page.params.gameSection || Object.keys(use.gameSections)[0]
+        )),
+
         gameSections: getGameSections(game),
 
         likeGame: (): Promise<IUserLike> => (
             likeGameEndpointApiV1UsersLikeGamePost(gameId)
         ),
     }
+
+    return use
 }

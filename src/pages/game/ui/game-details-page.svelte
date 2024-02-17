@@ -32,33 +32,31 @@ export {
 }
 </script>
 
-<Container>
-    <Grid>
-        <GridCol>
-            <GameInfo {game} />
-        </GridCol>
+<Grid>
+    <GridCol>
+        <GameInfo {game} />
+    </GridCol>
 
-        <GridCol
-            align="center"
-            span={6}
-        >
-            <SearchInput
-                class="w-full text-base"
-                placement="end"
-            />
-        </GridCol>
+    <GridCol
+        align="center"
+        span={6}
+    >
+        <SearchInput
+            class="w-full text-base"
+            placement="end"
+        />
+    </GridCol>
 
-        <GridCol
-            align="center"
-            span={6}
+    <GridCol
+        align="center"
+        span={6}
+    >
+        <Toggle
+            class="text-base"
+            checked
+            inputClass="toggle-success"
         >
-            <Toggle
-                class="text-base"
-                checked
-                inputClass="toggle-success"
-            >
-                Online Players Only
-            </Toggle>
-        </GridCol>
-    </Grid>
-</Container>
+            Online Players Only
+        </Toggle>
+    </GridCol>
+</Grid>

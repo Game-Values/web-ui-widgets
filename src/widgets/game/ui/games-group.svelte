@@ -10,10 +10,6 @@ interface $$Props {
     games: IGame[]
 }
 
-let gameLikeToggleFeatureSrc: string = (
-    "~/features/game/game-like-toggle/ui/game-like-toggle.svelte"
-)
-
 export let games: IGame[]
 </script>
 
@@ -33,8 +29,8 @@ export let games: IGame[]
                         <svelte:fragment slot="gameLikeToggle">
                             <AuthOnly>
                                 <LazyComponent
-                                    props={{ game }}
-                                    src={gameLikeToggleFeatureSrc}
+                                    props={{ class: "tooltip-bottom", game }}
+                                    src="~/features/game/game-like-toggle/ui/game-like-toggle.svelte"
                                 />
                             </AuthOnly>
                         </svelte:fragment>

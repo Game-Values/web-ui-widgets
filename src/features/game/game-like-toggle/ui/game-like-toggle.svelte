@@ -9,6 +9,13 @@ import { useSession } from "$model"
 import IconHeart from "virtual:icons/heroicons/heart"
 import IconHeartSolid from "virtual:icons/heroicons/heart-solid"
 
+interface $$Props {
+    class?: string
+    game: IGame
+}
+
+let className: string = ""
+
 let game: IGame
 
 let { dislikeGame, gameLiked, likeGame } = useGame(game)
@@ -30,13 +37,14 @@ async function gameLikeToggle(): Promise<void> {
 }
 
 export {
+    className as class,
     game,
 }
 </script>
 
 <label
-    class="btn btn-circle btn-ghost btn-sm swap swap-rotate"
-    data-tip=""
+    class="btn btn-circle btn-ghost btn-sm swap swap-rotate tooltip {className}"
+    data-tip={`${$gameLiked ? "Dislike" : "Like"} ${game.name}`}
 >
     <input
         checked={$gameLiked}
@@ -44,7 +52,19 @@ export {
         on:change={gameLikeToggle}
     />
 
-    <IconHeartSolid class="swap-on text-negative-light" />
+    <IconHeartSolid
+        class="
+            swap-on
+            absolute inset-0 translate-x-1/4 translate-y-1/4
+            text-negative-light
+        "
+    />
 
-    <IconHeart class="swap-off text-info" />
+    <IconHeart
+        class="
+            swap-off
+            absolute inset-0 translate-x-1/4 translate-y-1/4
+            text-info
+        "
+    />
 </label>

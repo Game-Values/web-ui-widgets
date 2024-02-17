@@ -1,22 +1,8 @@
-import type { ICallable, ICallableLazy, IKeyOf, IRouteUrl } from "$types"
-import type { Page } from "@sveltejs/kit"
+import type { ICallable, ICallableLazy, IKeyOf } from "$types"
 import type { EventDispatcher } from "svelte"
-import type { Readable } from "svelte/store"
 
 import { isFunction, isString } from "lodash-es"
 import { createEventDispatcher } from "svelte"
-import { derived } from "svelte/store"
-
-import { page } from "$app/stores"
-import { route } from "$schema/routes"
-
-export let isActiveRoute: Readable<ICallable<boolean>> = (
-    derived(page, ($page: Page): ICallable<boolean> => (
-        (url: IRouteUrl, ...params: any[]): boolean => (
-            route(url as never, ...params as never) === $page.url.pathname
-        )
-    ))
-)
 
 export function forwardEvent(event?: IKeyOf<HTMLElementEventMap>): ICallable
 export function forwardEvent(

@@ -29,6 +29,7 @@ onDestroy((): void => swiperContainer.swiper.destroy())
 
 <swiper-container
     bind:this={swiperContainer}
+    class="max-w-full"
     a11y={true}
     autoplay={
         {

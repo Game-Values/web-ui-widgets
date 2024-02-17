@@ -20,20 +20,19 @@ let className: string = ""
 
 let container: HTMLElement | undefined
 
-let promise: Promise<IntersectionObserver | undefined> | undefined
+let observer: IntersectionObserver | undefined
 
 let tag: IKeyOf<SvelteHTMLElements> = "div"
 
 onMount((): void => {
     if (container)
-        promise = onElementVisible(container)
+        observer = onElementVisible(container, (): void => {
+            container!.style.display = "contents"
+            observer?.disconnect()
+        })
 })
 
-onDestroy((): void => {
-    promise?.then((observer: IntersectionObserver | undefined): void => (
-        observer?.disconnect()
-    ))
-})
+onDestroy((): void => observer?.disconnect())
 
 export {
     className as class,
@@ -46,9 +45,5 @@ export {
     bind:this={container}
     class={className}
 >
-    {#if promise}
-        <LazyPromise {promise}>
-            <slot />
-        </LazyPromise>
-    {/if}
+    <slot />
 </svelte:element>

@@ -1,9 +1,9 @@
 <script lang="ts">
 import type { IRouteWithIcon, IRouteWithLabel } from "$types"
 
-import { isActiveRoute } from "$lib/helpers"
-import { useStorage } from "$model"
-import { route } from "$schema/routes"
+import { DrawerMenuItem } from "~/widgets/drawer"
+
+import { useRoute, useStorage } from "$model"
 import { Divider } from "$ui/layout"
 
 import IconArchiveDown from "virtual:icons/common/archive-down"
@@ -14,6 +14,10 @@ import IconSearchUser from "virtual:icons/common/search-user"
 import IconEnvelopeSolid from "virtual:icons/heroicons/envelope-solid"
 import IconHeartSolid from "virtual:icons/heroicons/heart-solid"
 import IconPlusCircle from "virtual:icons/heroicons/plus-circle"
+
+interface $$Slots {
+    default: { link: IDrawerLink }
+}
 
 let { storageValue: drawerOpened } = useStorage("drawer", true)
 
@@ -59,61 +63,45 @@ let links: IDrawerLink[] = [
         url: "/favorites",
     },
 ]
+
+let { route: lotsCreateRoute, routeActive: lotsCreateRouteActive } = useRoute("/lots/create")
 </script>
 
 <ul
     class="menu"
     class:w-80={$drawerOpened}
 >
-    <li class="flex-row justify-between">
-        <a
-            class="tooltip-right max-w-56 flex-1"
-            class:active={$isActiveRoute("/lots")}
-            class:tooltip={!$drawerOpened}
-            data-tip="My lots"
-            href={route("/lots")}
-        >
-            <IconCube class="text-info" />
-
-            {#if $drawerOpened}
-                My lots
-            {/if}
-        </a>
-
+    <DrawerMenuItem
+        class="flex-row justify-between"
+        link={
+            {
+                icon: IconCube,
+                iconClass: "text-info",
+                label: "My lots",
+                url: "/lots",
+            }
+        }
+    >
         {#if $drawerOpened}
             <a
                 class="tooltip tooltip-right text-secondary"
-                class:active={$isActiveRoute("/lots/create")}
+                class:active={$lotsCreateRouteActive}
                 data-tip="Create lot"
-                href={route("/lots/create")}
+                href={$lotsCreateRoute}
             >
                 <IconPlusCircle />
             </a>
         {/if}
-    </li>
+    </DrawerMenuItem>
 
     {#each links as link (link.label)}
-        <li>
-            <a
-                class="tooltip-right max-w-56"
-                class:active={$isActiveRoute(link.url)}
-                class:tooltip={!$drawerOpened}
-                data-tip={link.label}
-                href={route(link.url)}
-            >
-                <svelte:component
-                    this={link.icon}
-                    class={link.iconClass}
-                />
-
-                {#if $drawerOpened}
-                    {link.label}
-                {/if}
-            </a>
-        </li>
+        <slot {link} />
 
         {#if link.divider}
-            <Divider class="divider max-w-64 h-3 basis-px" tag="li" />
+            <Divider
+                class="divider max-w-64 h-3 basis-px"
+                tag="li"
+            />
         {/if}
     {/each}
 </ul>

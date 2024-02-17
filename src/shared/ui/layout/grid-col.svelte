@@ -1,8 +1,8 @@
 <script lang="ts">
 interface $$Props {
-    align?: "baseline" | "center" | "end" | "start"
+    align?: IGridColAlign
     class?: string
-    justify?: "center" | "end" | "start"
+    justify?: IGridColAlign
     lg?: IGridColSpan
     md?: IGridColSpan
     sm?: IGridColSpan
@@ -14,13 +14,15 @@ interface $$Slots {
     default: NonNullable<unknown>
 }
 
+type IGridColAlign = "center" | "end" | "start"
+
 type IGridColSpan = 1 | 10 | 11 | 12 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 
-let align: "baseline" | "center" | "end" | "start" = "baseline"
+let align: IGridColAlign = "start"
 
 let className: string = ""
 
-let justify: "center" | "end" | "start" = "start"
+let justify: IGridColAlign = "start"
 
 let sm: IGridColSpan | undefined = undefined
 
@@ -60,12 +62,10 @@ export {
     class:col-span-8={span === 8}
     class:col-span-9={span === 9}
 
-    class:items-baseline={align === "baseline"}
     class:items-center={align === "center"}
     class:items-end={align === "end"}
     class:items-start={align === "start"}
 
-    class:justify-baseline={justify === "baseline"}
     class:justify-center={justify === "center"}
     class:justify-end={justify === "end"}
     class:justify-start={justify === "start"}

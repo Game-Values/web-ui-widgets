@@ -3,7 +3,7 @@ import type { IGame } from "$schema/api"
 
 import { useGame } from "~/entities/game"
 
-import { route } from "$schema/routes"
+import { useRoute } from "$model"
 import { EnhancedImage } from "$ui/data"
 
 interface $$Props {
@@ -17,6 +17,7 @@ interface $$Slots {
 let game: IGame
 
 let { gameIcon, gameLiked } = useGame(game)
+let { route } = useRoute("/g/[gameId]", { gameId: game.id })
 
 export {
     game,
@@ -24,7 +25,7 @@ export {
 </script>
 
 <div class="card group">
-    <a href={route("/g/[gameId]", { gameId: game.id })}>
+    <a href={$route}>
         <figure
             class={`
                 h-40
@@ -52,7 +53,7 @@ export {
         <h2 class="card-title">
             <a
                 class="link link-hover"
-                href={route("/g/[gameId]", { gameId: game.id })}
+                href={$route}
             >
                 <small>
                     {game.name}

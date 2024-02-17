@@ -1,16 +1,16 @@
 <script lang="ts">
-import { usePageState } from "$model"
+import { useState } from "$model"
 import { EnhancedImage } from "$ui/data"
 
-let { pageState } = usePageState()
+let { state } = useState()
 </script>
 
-{#if $pageState.background}
+{#if $state.background}
     <EnhancedImage
-        --image-height={$pageState.background.height}
-        --image-width={$pageState.background.width}
+        --image-height={$state.background.height}
+        --image-width={$state.background.width}
         class="absolute z-0 left-0 top-0"
         alt="background-image"
-        src={$pageState.background.src}
+        src={$state.background.src}
     />
 {/if}

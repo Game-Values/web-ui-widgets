@@ -5,6 +5,7 @@ import {
     NavbarLogo,
     NavbarRegistrationButton,
     NavbarStats,
+    NavbarTab,
     NavbarTabs,
     NavbarUserMenu,
 } from "~/widgets/navbar"
@@ -18,33 +19,38 @@ import { Container, Divider } from "$ui/layout"
         navbar
         relative z-20
         h-16
-        px-4 py-2.5 gap-4
-        flex items-center justify-between
+        px-4 py-2.5 gap-x-4
+        flex items-center
         shadow-[0_0.25rem_1rem_0.25rem_rgba(0,0,0,0.60)]
     "
     fluid
     tag="nav"
 >
-    <NavbarLogo />
+    <NavbarLogo class="mr-auto" />
 
     <SearchInput
         class="max-w-96 flex-1"
         inputClass="input-sm"
     />
 
-    <NavbarTabs />
+    <NavbarTabs
+        class="mt-px"
+        let:tab
+    >
+        <NavbarTab {tab} />
+    </NavbarTabs>
 
     <Divider horizontal />
 
-    <NavbarStats />
+    <NavbarStats class="relative top-0.5" />
 
     <Divider horizontal />
 
     <AuthOnly>
-        <NavbarUserMenu />
+        <NavbarUserMenu class="ml-auto" />
 
         <svelte:fragment slot="fallback">
-            <div class="flex gap-x-2">
+            <div class="ml-auto flex gap-x-2">
                 <NavbarRegistrationButton />
 
                 <NavbarAuthButton />

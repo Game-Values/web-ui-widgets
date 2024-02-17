@@ -1,6 +1,6 @@
 <script lang="ts">
 import { AuthOnly } from "~/entities/auth"
-import { DrawerMenu, DrawerToggle } from "~/widgets/drawer"
+import { DrawerMenu, DrawerMenuItem, DrawerToggle } from "~/widgets/drawer"
 
 import { useSession } from "$model"
 import { Divider } from "$ui/layout"
@@ -42,7 +42,9 @@ let { authenticated } = useSession()
 
             <Divider />
 
-            <DrawerMenu />
+            <DrawerMenu let:link>
+                <DrawerMenuItem {link} />
+            </DrawerMenu>
         </aside>
     </AuthOnly>
 

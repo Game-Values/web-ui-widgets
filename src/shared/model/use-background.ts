@@ -1,4 +1,4 @@
-import { usePageState } from "$model"
+import { useState } from "$model"
 
 type IUseBackground = {
     setBackground(): void
@@ -6,15 +6,11 @@ type IUseBackground = {
 }
 
 export function useBackground(background: App.PageState["background"]): IUseBackground {
-    let { updatePageState } = usePageState()
+    let { updateState } = useState()
 
     return {
-        setBackground: (): void => (
-            updatePageState({ background })
-        ),
+        setBackground: (): void => updateState({ background }),
 
-        unsetBackground: (): void => (
-            updatePageState({ background: undefined })
-        ),
+        unsetBackground: (): void => updateState({ background: undefined }),
     }
 }

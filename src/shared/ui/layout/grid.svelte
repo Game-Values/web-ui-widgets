@@ -1,8 +1,16 @@
 <script lang="ts">
+import type { IKeyOf } from "$types"
+import type { SvelteHTMLElements } from "svelte/elements"
+
+import { cleanObject } from "$lib/utils"
+import { Container } from "$ui/layout"
+
 interface $$Props {
     class?: string
+    fluid?: boolean
     gap?: IGridGap
     subgrid?: boolean
+    tag?: IKeyOf<SvelteHTMLElements>
 }
 
 interface $$Slots {
@@ -15,26 +23,49 @@ let className: string = ""
 
 let gap: IGridGap = 6
 
+let fluid: boolean = false
+
 let subgrid: boolean = false
+
+let tag: IKeyOf<SvelteHTMLElements> = "section"
+
+$: gridClass = (
+    Object.keys(
+        cleanObject({
+            [className]: className,
+            "gap-0": gap === 0,
+            "gap-1": gap === 1,
+            "gap-2": gap === 2,
+            "gap-3": gap === 3,
+            "gap-4": gap === 4,
+            "gap-5": gap === 5,
+            "gap-6": gap === 6,
+            "grid grid-cols-12": "true",
+        }),
+    ).join(" ")
+)
 
 export {
     className as class,
+    fluid,
     gap,
+    subgrid,
 }
 </script>
 
-<div
-    class="grid grid-cols-12 {className}"
-
-    class:gap-0={gap === 0}
-    class:gap-1={gap === 1}
-    class:gap-2={gap === 2}
-    class:gap-3={gap === 3}
-    class:gap-4={gap === 4}
-    class:gap-5={gap === 5}
-    class:gap-6={gap === 6}
-
-    class:grid-cols-subgrid={subgrid}
->
-    <slot />
-</div>
+{#if subgrid}
+    <svelte:element
+        this={tag}
+        class={gridClass}
+    >
+        <slot />
+    </svelte:element>
+{:else}
+    <Container
+        class={gridClass}
+        {fluid}
+        {tag}
+    >
+        <slot />
+    </Container>
+{/if}

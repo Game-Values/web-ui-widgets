@@ -51,4 +51,7 @@ export {
 }
 </script>
 
-<div bind:this={target} />
+<div
+    bind:this={target}
+    class="contents"
+/>

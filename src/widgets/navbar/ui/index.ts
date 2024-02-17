@@ -2,6 +2,7 @@ export { default as NavbarAuthButton } from "~/widgets/navbar/ui/navbar-auth-but
 export { default as NavbarLogo } from "~/widgets/navbar/ui/navbar-logo.svelte"
 export { default as NavbarRegistrationButton } from "~/widgets/navbar/ui/navbar-registration-button.svelte"
 export { default as NavbarStats } from "~/widgets/navbar/ui/navbar-stats.svelte"
+export { default as NavbarTab } from "~/widgets/navbar/ui/navbar-tab.svelte"
 export { default as NavbarTabs } from "~/widgets/navbar/ui/navbar-tabs.svelte"
 export { default as NavbarUserMenu } from "~/widgets/navbar/ui/navbar-user-menu.svelte"
 export { default as Navbar } from "~/widgets/navbar/ui/navbar.svelte"

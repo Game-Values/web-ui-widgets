@@ -2,10 +2,20 @@
 import { useSession } from "$model"
 import { Avatar } from "$ui/data"
 
+interface $$Props {
+    class?: string
+}
+
+let className: string = ""
+
 let { logout, user } = useSession()
+
+export {
+    className as class,
+}
 </script>
 
-<details class="dropdown dropdown-end">
+<details class="dropdown dropdown-end {className}">
     <summary class="btn btn-link">
         <Avatar
             class="w-10 ring ring-accent"

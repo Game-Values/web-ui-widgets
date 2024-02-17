@@ -3,7 +3,7 @@ import type { Readable } from "svelte/store"
 
 import { derived } from "svelte/store"
 
-import { usePageState } from "$model"
+import { useState } from "$model"
 
 type IUseModal = {
     closeModal(): void
@@ -12,19 +12,13 @@ type IUseModal = {
 }
 
 export function useModal(modal: IModal): IUseModal {
-    let { pageState, updatePageState } = usePageState()
+    let { state, updateState } = useState()
 
     return {
-        closeModal: (): void => (
-            updatePageState({ modal: undefined })
-        ),
+        closeModal: (): void => updateState({ modal: undefined }),
 
-        modalOpened: derived(pageState, ($pageState: App.PageState): boolean => (
-            $pageState.modal === modal
-        )),
+        modalOpened: derived(state, ($state: App.PageState): boolean => $state.modal === modal),
 
-        openModal: (): void => (
-            updatePageState({ modal })
-        ),
+        openModal: (): void => updateState({ modal }),
     }
 }

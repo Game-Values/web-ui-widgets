@@ -17,7 +17,7 @@ export let game: IGame
 
 <div class="card card-bordered backdrop-blur-2xl">
     <div class="card-body p-8 gap-y-8">
-        <h1 class="card-title font-bold text-4xl justify-between">
+        <h1 class="card-title font-bold text-4xl items-center justify-between">
             {game.name}
 
             <slot name="gameLikeToggle" />
