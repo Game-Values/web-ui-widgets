@@ -2,18 +2,19 @@
 import { AuthOnly } from "~/entities/auth"
 import { DrawerMenu, DrawerToggle } from "~/widgets/drawer"
 
+import { useSession } from "$model"
 import { Divider } from "$ui/layout"
 
 interface $$Slots {
     default: NonNullable<unknown>
 }
+
+let { authenticated } = useSession()
 </script>
 
 <div
-    class="
-        drawer drawer-open
-        h-[calc(100dvh-4rem)]
-    "
+    class="drawer h-[calc(100dvh-4rem)]"
+    class:drawer-open={$authenticated}
 >
     <input
         id="drawer"
@@ -32,7 +33,7 @@ interface $$Slots {
             "
         >
             <label
-                class="drawer-overlay"
+                class="drawer-overlay label"
                 aria-label="close drawer"
                 for="drawer"
             />

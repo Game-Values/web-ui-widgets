@@ -58,12 +58,12 @@ export {
 
 <style>
 .modal::backdrop {
-    @apply bg-white/[0.02];
+    @apply bg-black/[0.40];
     @apply backdrop-blur-[0.125rem];
 }
 
 .modal-box {
-    --rounded-box: theme(space.2);
+    --rounded-box: theme("space.2");
 
     @apply p-7 gap-y-5;
     @apply flex flex-col;

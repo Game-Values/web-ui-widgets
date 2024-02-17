@@ -3,15 +3,6 @@
     @apply flex flex-col;
 }
 
-.form-control {
+.form > .form-control {
     @apply w-full;
-}
-
-.form-control.label {
-    @apply gap-x-4;
-    @apply flex-row justify-start;
-}
-
-.label-text {
-    @apply text-inherit leading-[inherit];
 }

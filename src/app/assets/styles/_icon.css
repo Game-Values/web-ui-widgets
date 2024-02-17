@@ -1,0 +1,8 @@
+.icon {
+    @apply inline-flex;
+    @apply text-inherit;
+}
+
+.icon > svg {
+    @apply w-full h-full;
+}

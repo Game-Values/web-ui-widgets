@@ -5,10 +5,10 @@
     @apply text-inherit;
 }
 
-.input-sm {
-    @apply px-3;
+.input.input-sm {
+    @apply px-2;
 }
 
-.input-bordered {
+.input.input-bordered {
     @apply border-white/[0.04];
 }

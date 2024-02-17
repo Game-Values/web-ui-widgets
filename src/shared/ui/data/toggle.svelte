@@ -26,14 +26,14 @@ export {
 }
 </script>
 
-<label class="form-control label cursor-pointer {className}">
+<label class="label gap-x-4 justify-start cursor-pointer {className}">
     <input
         class="toggle {inputClass}"
         type="checkbox"
         bind:checked
     />
 
-    <span class="label-text">
+    <span class="label-text text-inherit leading-[inherit]">
         <slot>
             {label}
         </slot>

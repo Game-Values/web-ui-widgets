@@ -8,7 +8,7 @@ let { form } = useAuthByEmailForm()
     class="form"
     use:form
 >
-    <label class="form-control">
+    <div class="form-control">
         <input
             name="username"
             class="input input-bordered"
@@ -16,9 +16,9 @@ let { form } = useAuthByEmailForm()
             required
             type="email"
         />
-    </label>
+    </div>
 
-    <label class="form-control">
+    <div class="form-control">
         <input
             name="password"
             class="input input-bordered"
@@ -26,9 +26,9 @@ let { form } = useAuthByEmailForm()
             required
             type="password"
         />
-    </label>
+    </div>
 
-    <label class="form-control flex-row justify-between">
+    <div class="form-control flex-row justify-between">
         <button
             class="btn btn-primary"
             type="submit"
@@ -42,5 +42,5 @@ let { form } = useAuthByEmailForm()
         >
             Forgot Password?
         </button>
-    </label>
+    </div>
 </form>

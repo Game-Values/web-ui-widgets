@@ -1,4 +1,4 @@
-export * from "$model/use-background-image"
+export * from "$model/use-background"
 export * from "$model/use-cache"
 export * from "$model/use-cookies"
 export * from "$model/use-modal"

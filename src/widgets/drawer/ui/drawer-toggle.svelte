@@ -19,7 +19,7 @@ let { setStorage: toggleDrawer, storageValue: drawerOpened } = useStorage("drawe
     {/if}
 
     <label
-        class="btn btn-circle btn-sm tooltip tooltip-right swap swap-rotate"
+        class="btn btn-circle btn-sm tooltip label tooltip-right swap swap-rotate"
         data-tip="Toggle menu"
     >
         <input

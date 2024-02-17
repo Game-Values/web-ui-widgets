@@ -6,18 +6,18 @@ import { onDestroy, onMount } from "svelte"
 import { GamesGroup } from "~/widgets/game"
 import { MainSlider } from "~/widgets/slider"
 
-import { useBackgroundImage } from "$model"
+import { useBackground } from "$model"
 import { Container, Grid, GridCol } from "$ui/layout"
 
 interface $$Props {
     games: IGame[]
 }
 
-let { setBackgroundImage, unsetBackgroundImage } = useBackgroundImage("images/bg/main-bg.png")
+let { setBackground, unsetBackground } = useBackground({ src: "images/bg/main-bg.png" })
 
-onMount(setBackgroundImage)
+onMount(setBackground)
 
-onDestroy(unsetBackgroundImage)
+onDestroy(unsetBackground)
 
 export let games: IGame[]
 </script>

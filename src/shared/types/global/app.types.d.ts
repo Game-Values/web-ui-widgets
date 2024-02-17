@@ -15,8 +15,7 @@ declare global {
         // interface PageData {}
 
         interface PageState {
-            backgroundImage?: string
-            backgroundImageSize?: { height?: string, width?: string }
+            background?: { height?: string, src: string, width?: string }
             modal?: IModal
         }
 

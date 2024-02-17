@@ -1,0 +1,3 @@
+.label {
+    @apply empty:p-0 empty:invisible;
+}

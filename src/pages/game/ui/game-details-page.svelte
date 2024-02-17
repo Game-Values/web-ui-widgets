@@ -6,7 +6,7 @@ import { onDestroy, onMount } from "svelte"
 
 import { GameInfo } from "~/widgets/game"
 
-import { useBackgroundImage } from "$model"
+import { useBackground } from "$model"
 import { SearchInput, Toggle } from "$ui/data"
 import { Container, Grid, GridCol } from "$ui/layout"
 
@@ -16,13 +16,14 @@ interface $$Props {
 
 export let game: IGame
 
-let { setBackgroundImage, unsetBackgroundImage } = (
-    useBackgroundImage(`/images/game/${kebabCase(game.name)}.png`, { height: "25rem" })
-)
+let { setBackground, unsetBackground } = useBackground({
+    height: "25rem",
+    src: `/images/game/${kebabCase(game.name)}.png`,
+})
 
-onMount(setBackgroundImage)
+onMount(setBackground)
 
-onDestroy(unsetBackgroundImage)
+onDestroy(unsetBackground)
 </script>
 
 <Container>
@@ -35,7 +36,10 @@ onDestroy(unsetBackgroundImage)
             align="center"
             span={6}
         >
-            <SearchInput class="text-base" icon="end" />
+            <SearchInput
+                class="w-full text-base"
+                placement="end"
+            />
         </GridCol>
 
         <GridCol

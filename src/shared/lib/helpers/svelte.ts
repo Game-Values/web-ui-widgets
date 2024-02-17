@@ -3,6 +3,7 @@ import type { Page } from "@sveltejs/kit"
 import type { EventDispatcher } from "svelte"
 import type { Readable } from "svelte/store"
 
+import { isFunction, isString } from "lodash-es"
 import { createEventDispatcher } from "svelte"
 import { derived } from "svelte/store"
 
@@ -17,10 +18,17 @@ export let isActiveRoute: Readable<ICallable<boolean>> = (
     ))
 )
 
+export function forwardEvent(event?: IKeyOf<HTMLElementEventMap>): ICallable
 export function forwardEvent(
-    callback: ICallable | ICallableLazy = (e: CustomEvent): CustomEvent => e,
+    callbackOrEvent?: ICallable | ICallableLazy | IKeyOf<HTMLElementEventMap>,
     event?: IKeyOf<HTMLElementEventMap>,
 ): ICallable {
+    let callback: ICallable | ICallableLazy = (
+        isFunction(callbackOrEvent)
+            ? callbackOrEvent
+            : (e: CustomEvent): CustomEvent => e
+    )
+
     let dispatch: EventDispatcher<Record<string, unknown>> = createEventDispatcher()
 
     let forward: ICallableLazy<boolean | void> = async (e: CustomEvent): Promise<boolean> => {
@@ -34,7 +42,11 @@ export function forwardEvent(
 
         await promise
 
-        return dispatch(event || e.type, e.detail)
+        let eventName: IKeyOf<HTMLElementEventMap> = (
+            event || (isString(callback) ? callback : e.type)
+        ) as IKeyOf<HTMLElementEventMap>
+
+        return dispatch(eventName, e.detail)
     }
 
     return function (e: CustomEvent): Promise<boolean | void> {

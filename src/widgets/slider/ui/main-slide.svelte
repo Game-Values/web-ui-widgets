@@ -48,13 +48,13 @@ export let title: string = ""
             flex flex-col items-baseline self-center
         "
     >
-        <h1 class="empty:(hidden)">
+        <h1 class="empty:invisible">
             <slot name="title">
                 {title}
             </slot>
         </h1>
 
-        <p class="empty:(hidden)">
+        <p class="empty:invisible">
             <slot>
                 {content}
             </slot>

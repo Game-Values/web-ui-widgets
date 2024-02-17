@@ -1,4 +1,4 @@
 .tooltip {
-    --tooltip-color: theme(backgroundColor.tooltip);
-    --tooltip-text-color: theme(textColor.secondary);
+    --tooltip-color: theme("backgroundColor.tooltip");
+    --tooltip-text-color: theme("textColor.secondary");
 }
