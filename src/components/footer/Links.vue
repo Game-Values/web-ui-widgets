@@ -60,12 +60,6 @@ let footerLinks = computed((): FooterLink[] => (
                     i18n: "Feedback",
                 },
                 {
-                    i18n: "enot.io",
-                },
-                {
-                    i18n: "PrimePayments",
-                },
-                {
                     i18n: "Help",
                     to: routerClient.getRoute(routerClient.routeNames.FAQ_GENERAL),
                 },
@@ -130,8 +124,6 @@ de:
     Job: Beruf
     Help: Hilfe
     Feedback: Feedback
-    enot.io: enot.io
-    PrimePayments: PrimePayments
 en:
     Trade: Trade
     Games: Games
@@ -140,6 +132,4 @@ en:
     Job: Job
     Help: Help
     Feedback: Feedback
-    enot.io: enot.io
-    PrimePayments: PrimePayments
 </i18n>

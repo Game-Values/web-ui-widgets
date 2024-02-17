@@ -10,7 +10,7 @@
         rel="license"
         target="_blank"
     >
-        © 2023 GameValues
+        © 2024 GameValues
     </ui-link>
 </v-space>
 </template>

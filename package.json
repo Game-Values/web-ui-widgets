@@ -100,7 +100,7 @@
         "http-status": "^1.7.3",
         "lodash-decorators": "^6.0.1",
         "matrix-js-sdk": "^30.3.0",
-        "pino": "^8.18.0",
+        "pino": "^8.19.0",
         "pino-pretty": "^10.3.1",
         "reflect-metadata": "^0.1.14"
     },
