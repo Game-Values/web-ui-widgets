@@ -18,7 +18,7 @@ export function useRoute(url?: IRouteUrl, params?: IRouteParams): IUseRoute {
         )),
 
         routeActive: derived(page, ($page: App.Page): boolean => (
-            get(use.route) === $page.url.pathname)
+            get(use.route) === $page.url.pathname),
         ),
     }
 

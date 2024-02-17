@@ -8,7 +8,7 @@ import { GameInfo } from "~/widgets/game"
 
 import { useBackground } from "$model"
 import { SearchInput, Toggle } from "$ui/data"
-import { Container, Grid, GridCol } from "$ui/layout"
+import { Grid, GridCol } from "$ui/layout"
 
 interface $$Props {
     game: IGame

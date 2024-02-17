@@ -5,7 +5,6 @@ import type { SvelteHTMLElements } from "svelte/elements"
 import { onDestroy, onMount } from "svelte"
 
 import { onElementVisible } from "$lib/helpers"
-import { LazyPromise } from "$ui/actions"
 
 interface $$Props {
     class?: string
