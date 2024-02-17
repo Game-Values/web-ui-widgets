@@ -28,7 +28,7 @@ let sizes: string = "min(1920px, 100dvw)"
 let src: string
 
 $: enhancePromise = (
-    asyncModule<IEnhanced>(`~/app/assets/${src}?enhanced&imgSizes=${sizes}`)
+    asyncModule<IEnhanced>(`${src}?enhanced&imgSizes=${sizes}`)
 )
 
 export {

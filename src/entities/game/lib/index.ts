@@ -1,2 +1,2 @@
-export * from "~/entities/game/lib/group-games"
-export * from "~/entities/game/lib/map-games-ids"
+export * from "~/entities/game/lib/game"
+export * from "~/entities/game/lib/games"

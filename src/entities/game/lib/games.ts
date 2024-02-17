@@ -4,6 +4,10 @@ import { sortBy } from "lodash-es"
 
 type TGamesGroup = Map<string, IGame[]>
 
+export function mapGamesIds(games: IGame[]): string[] {
+    return games.map((game: IGame): string => (game.gid || game.id)!)
+}
+
 export function groupGames(games: IGame[]): TGamesGroup {
     let sortedGames: IGame[] = sortBy(games, "name")
 

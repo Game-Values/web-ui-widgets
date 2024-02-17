@@ -60,7 +60,7 @@ onDestroy((): void => swiperContainer.swiper.destroy())
         <MainSlide
             action={slideAction}
             content="Invite friends and get bonuses"
-            image="images/slide/main-slide-1.png"
+            image="~/app/assets/images/slide/main-slide-1.png"
             title="Trade any in-game items in different games"
         />
     </swiper-slide>
@@ -68,13 +68,13 @@ onDestroy((): void => swiperContainer.swiper.destroy())
     <swiper-slide lazy={swiperLazySlide}>
         <MainSlide
             action={slideAction}
-            image="images/slide/main-slide-2.png"
+            image="~/app/assets/images/slide/main-slide-2.png"
             title="AI CoPilot for Gamers > [Loading______35%]"
         />
     </swiper-slide>
 
     <swiper-slide lazy={swiperLazySlide}>
-        <MainSlide image="images/slide/main-slide-3.png">
+        <MainSlide image="~/app/assets/images/slide/main-slide-3.png">
             <svelte:fragment slot="title">
                 Trade Smart with <span class="text-success">0% Fees</span> for More Possibilities!
             </svelte:fragment>
@@ -84,7 +84,7 @@ onDestroy((): void => swiperContainer.swiper.destroy())
     <swiper-slide lazy={swiperLazySlide}>
         <MainSlide
             content="Unlock Rewards: Referral Program Launching Soon!"
-            image="images/slide/main-slide-4.png"
+            image="~/app/assets/images/slide/main-slide-4.png"
             title="Referral Program"
         />
     </swiper-slide>
@@ -92,7 +92,7 @@ onDestroy((): void => swiperContainer.swiper.destroy())
     <swiper-slide lazy={swiperLazySlide}>
         <MainSlide
             content="Share Your Feedback & Ideas"
-            image="images/slide/main-slide-5.png"
+            image="~/app/assets/images/slide/main-slide-5.png"
             title="Help Shape Our Platform!"
         />
     </swiper-slide>
@@ -100,7 +100,7 @@ onDestroy((): void => swiperContainer.swiper.destroy())
     <swiper-slide lazy={swiperLazySlide}>
         <MainSlide
             content="Congratulations to our Users 🏆"
-            image="images/slide/main-slide-6.png"
+            image="~/app/assets/images/slide/main-slide-6.png"
         >
             <svelte:fragment slot="title">
                 <span class="text-warning">Top 3 Champions</span> 1st Season

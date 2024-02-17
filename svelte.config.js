@@ -18,7 +18,6 @@ const config = {
             "@/*": resolve("*"),
             "~/*": resolve("src", "*"),
             $api: resolve("src", "shared", "api"),
-            $assets: resolve("src", "app", "assets"),
             $config: resolve("src", "shared", "config"),
             $model: resolve("src", "shared", "model"),
             $schema: resolve("src", "shared", "schema"),

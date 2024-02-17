@@ -1,8 +1,6 @@
 <script lang="ts">
 import type { IGame } from "$schema/api"
 
-import { kebabCase } from "lodash-es"
-
 import { useGame } from "~/entities/game"
 
 import { route } from "$schema/routes"
@@ -18,7 +16,7 @@ interface $$Slots {
 
 let game: IGame
 
-let { liked } = useGame(game)
+let { gameIcon, gameLiked } = useGame(game)
 
 export {
     game,
@@ -34,13 +32,13 @@ export {
                 group-hover:border-[rgba(52,95,246,0.65)]
                 group-hover:shadow-[0_0.4rem_3.4rem_0_rgba(61,152,255,0.30)]
 
-                ${$liked ? "bg-primary" : "bg-white/[0.02]"}
+                ${$gameLiked ? "bg-primary" : "bg-white/[0.02]"}
             `}
-            class:group-hover:bg-gradient-to-b={$liked}
-            class:group-hover:from-primary={$liked}
-            class:group-hover:to-accent-medium-light={$liked}
+            class:group-hover:bg-gradient-to-b={$gameLiked}
+            class:group-hover:from-primary={$gameLiked}
+            class:group-hover:to-accent-medium-light={$gameLiked}
         >
-            <EnhancedImage src="icons/game/{kebabCase(game.name)}.svg" />
+            <EnhancedImage src={gameIcon} />
         </figure>
     </a>
 

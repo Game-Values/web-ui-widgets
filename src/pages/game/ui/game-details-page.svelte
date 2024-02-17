@@ -1,9 +1,9 @@
 <script lang="ts">
 import type { IGame } from "$schema/api"
 
-import { kebabCase } from "lodash-es"
 import { onDestroy, onMount } from "svelte"
 
+import { useGame } from "~/entities/game"
 import { GameInfo } from "~/widgets/game"
 
 import { useBackground } from "$model"
@@ -14,16 +14,22 @@ interface $$Props {
     game: IGame
 }
 
-export let game: IGame
+let game: IGame
+
+let { gameImage } = useGame(game)
 
 let { setBackground, unsetBackground } = useBackground({
     height: "25rem",
-    src: `/images/game/${kebabCase(game.name)}.png`,
+    src: gameImage,
 })
 
 onMount(setBackground)
 
 onDestroy(unsetBackground)
+
+export {
+    game,
+}
 </script>
 
 <Container>

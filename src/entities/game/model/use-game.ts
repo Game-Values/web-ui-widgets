@@ -1,50 +1,51 @@
 import type { IGame, IUser, IUserLike } from "$schema/api"
+import type { ICallableLazy } from "$types"
+import type { IGameSection } from "~/entities/game"
 import type { Readable } from "svelte/store"
 
-import { isString } from "lodash-es"
 import { derived } from "svelte/store"
 
-import { mapGamesIds } from "~/entities/game"
+import { getGameIcon, getGameImage, getGameSections, mapGamesIds } from "~/entities/game"
 
 import { useApi } from "$api"
 import { useSession } from "$model"
 
 type IUseGame = {
     dislikeGame(): Promise<IUserLike>
-    liked: Readable<boolean>
+    gameIcon: string
+    gameImage: string
+    gameLiked: Readable<boolean>
+    gameSections: Record<string, ICallableLazy<IGameSection>>
     likeGame(): Promise<IUserLike>
 }
 
-export function useGame(gameId: string): Promise<IUseGame>
-export function useGame(game: IGame): IUseGame
-export function useGame(gameOrGameId: IGame | string): IUseGame | Promise<IUseGame> {
+export function useGame(game: IGame): IUseGame {
     let {
         dislikeGameEndpointApiV1UsersDislikeGamePost,
         likeGameEndpointApiV1UsersLikeGamePost,
-        readGameApiV1GamesGameIdGet,
     } = useApi()
 
     let { user } = useSession()
 
-    let gameId: string = (gameOrGameId as IGame).id || gameOrGameId as string
+    let gameId: string = (game.gid || game.id)!
 
-    let use: IUseGame = {
+    return {
         dislikeGame: (): Promise<IUserLike> => (
             dislikeGameEndpointApiV1UsersDislikeGamePost(gameId)
         ),
 
-        liked: derived(user, ($user: IUser): boolean => (
+        gameIcon: getGameIcon(game),
+
+        gameImage: getGameImage(game),
+
+        gameLiked: derived(user, ($user: IUser): boolean => (
             mapGamesIds($user.liked_games || []).includes(gameId)
         )),
+
+        gameSections: getGameSections(game),
 
         likeGame: (): Promise<IUserLike> => (
             likeGameEndpointApiV1UsersLikeGamePost(gameId)
         ),
     }
-
-    return (
-        isString(gameOrGameId)
-            ? readGameApiV1GamesGameIdGet(gameOrGameId).then((): IUseGame => use)
-            : use
-    )
 }

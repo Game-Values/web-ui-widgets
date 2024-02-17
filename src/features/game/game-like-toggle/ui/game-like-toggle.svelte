@@ -11,12 +11,12 @@ import IconHeartSolid from "virtual:icons/heroicons/heart-solid"
 
 let game: IGame
 
-let { dislikeGame, liked, likeGame } = useGame(game)
+let { dislikeGame, gameLiked, likeGame } = useGame(game)
 let { updateSession, user } = useSession()
 let { addLikedGame, deleteLikedGame } = useUser($user)
 
 async function gameLikeToggle(): Promise<void> {
-    if ($liked) {
+    if ($gameLiked) {
         await dislikeGame()
 
         deleteLikedGame(game)
@@ -39,7 +39,7 @@ export {
     data-tip=""
 >
     <input
-        checked={$liked}
+        checked={$gameLiked}
         type="checkbox"
         on:change={gameLikeToggle}
     />

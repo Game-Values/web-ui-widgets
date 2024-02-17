@@ -1,3 +1,4 @@
+export type * from "$types/dom.types"
 export type * from "$types/form.types"
 export type * from "$types/headers.types"
 export type * from "$types/helpers.types"

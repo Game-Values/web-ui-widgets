@@ -93,7 +93,6 @@ module.exports = {
             "custom-groups": {
                 value: {
                     assets: [
-                        "$assets/**",
                         "virtual:icons/**",
                     ],
                     rootAlias: [

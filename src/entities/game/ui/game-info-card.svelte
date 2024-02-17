@@ -29,12 +29,12 @@ export let game: IGame
             </p>
         {/if}
 
-        <div class="card-actions justify-between">
-            <div class="flex-1">
+        <div class="card-actions flex-nowrap justify-between">
+            <div class="flex-auto">
                 <slot name="gameSections" />
             </div>
 
-            <div class="flex flex-col flex-auto">
+            <div class="flex flex-col">
                 <slot name="gameAddSection" />
 
                 <slot name="gameCreateLot" />
