@@ -1,27 +1,36 @@
 <script lang="ts">
-import type { IGame } from "$schema/api"
+import type { IGameSections } from "~/entities/game"
 
-import { GameSectionBadge, useGame } from "~/entities/game"
+import { GameSectionBadge } from "~/entities/game"
+
+import { useRoute } from "$model"
 
 interface $$Props {
-    game: IGame
+    gameSections: IGameSections
 }
 
-let game: IGame
+interface $$Slots {
+    default: { gameSection: string, gameSectionActive: string }
+}
 
-let { gameSections } = useGame(game)
+let gameSections: IGameSections
+
+let { routeParams } = useRoute()
+
+$: gameSectionActive = $routeParams.gameSection || Object.keys(gameSections)[0]
 
 export {
-    game,
+    gameSections,
 }
 </script>
 
 <ul class="flex flex-wrap gap-3">
-    {#each Object.keys(gameSections) as gameSection (gameSection)}
+    {#each Object.entries(gameSections) as [gameSection, gameSectionCount] (gameSection)}
         <li>
             <GameSectionBadge
-                {game}
                 {gameSection}
+                {gameSectionActive}
+                {gameSectionCount}
             />
         </li>
     {/each}

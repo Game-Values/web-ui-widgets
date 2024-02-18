@@ -35,12 +35,17 @@ export {
 
 <style>
 .divider {
-    @apply m-0;
+    @apply mx-0 my-2;
 }
 
 .divider:before,
 .divider:after {
     @apply h-px;
+}
+
+.divider-horizontal {
+    @apply mx-2 my-0;
+    @apply w-px;
 }
 
 .divider-horizontal:before,

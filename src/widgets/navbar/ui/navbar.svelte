@@ -1,14 +1,8 @@
 <script lang="ts">
-import { AuthOnly } from "~/entities/auth"
-import {
-    NavbarAuthButton,
-    NavbarLogo,
-    NavbarRegistrationButton,
-    NavbarStats,
-    NavbarTab,
-    NavbarTabs,
-    NavbarUserMenu,
-} from "~/widgets/navbar"
+import { AuthNavbarButton, AuthOnly } from "~/entities/auth"
+import { RegistrationNavbarButton } from "~/entities/registration"
+import { UserNavbarMenu } from "~/entities/user"
+import { NavbarLogo, NavbarStats, NavbarTab, NavbarTabs } from "~/widgets/navbar"
 
 import { SearchInput } from "$ui/data"
 import { Container, Divider } from "$ui/layout"
@@ -29,7 +23,7 @@ import { Container, Divider } from "$ui/layout"
     <NavbarLogo class="mr-auto" />
 
     <SearchInput
-        class="max-w-96 flex-1"
+        class="max-w-80"
         inputClass="input-sm"
     />
 
@@ -47,13 +41,13 @@ import { Container, Divider } from "$ui/layout"
     <Divider horizontal />
 
     <AuthOnly>
-        <NavbarUserMenu class="ml-auto" />
+        <UserNavbarMenu class="ml-auto" />
 
         <svelte:fragment slot="fallback">
             <div class="ml-auto flex gap-x-2">
-                <NavbarRegistrationButton />
+                <RegistrationNavbarButton />
 
-                <NavbarAuthButton />
+                <AuthNavbarButton />
             </div>
         </svelte:fragment>
     </AuthOnly>

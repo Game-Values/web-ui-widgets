@@ -23,7 +23,9 @@ let className: string = ""
 
 let lazy: boolean = true
 
-let sizes: string = "min(1920px, 100dvw)"
+let sizes: string = (
+    "(min-width: 1920px) 2880px, (min-width: 1080px) 1620px, (min-width: 768px) 1152px, (min-width: 320px) 480px"
+)
 
 let src: string
 
@@ -42,17 +44,17 @@ export {
 
 <LazyPromise
     promise={enhancePromise}
-    let:value
+    let:value={enhance}
 >
     <picture class={className}>
-        {#if isString(value)}
+        {#if isString(enhance)}
             <img
                 {alt}
                 loading={lazy ? "lazy" : "eager"}
-                src={value}
+                src={enhance}
             />
         {:else}
-            {#each Object.entries(value.sources) as [type, srcset] (type)}
+            {#each Object.entries(enhance.sources) as [type, srcset] (type)}
                 <source
                     {sizes}
                     {srcset}
@@ -62,10 +64,10 @@ export {
 
             <img
                 {alt}
-                height={value.img.h}
+                height={enhance.img.h}
                 loading={lazy ? "lazy" : "eager"}
-                src={value.img.src}
-                width={value.img.w}
+                src={enhance.img.src}
+                width={enhance.img.w}
             />
         {/if}
     </picture>

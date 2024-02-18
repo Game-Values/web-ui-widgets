@@ -34,7 +34,7 @@ export let game: IGame
                 <slot name="gameSections" />
             </div>
 
-            <div class="flex flex-col">
+            <div class="gap-y-2 flex flex-col">
                 <slot name="gameAddSection" />
 
                 <slot name="gameCreateLot" />

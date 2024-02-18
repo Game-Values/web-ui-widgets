@@ -1,3 +1,9 @@
+.card {
+    --rounded-box: theme("space.4");
+
+    @apply w-full;
+}
+
 .card.card-bordered {
     @apply border-white/[0.12];
 }
@@ -7,5 +13,5 @@
 }
 
 .card.card-normal .card-body {
-    --padding-card: 1rem;
+    --padding-card: theme("space.4");
 }

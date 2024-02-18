@@ -1,29 +1,30 @@
 <script lang="ts">
-import type { IGame } from "$schema/api"
 import type { IMouseEvent } from "$types"
 
-import { useGame } from "~/entities/game"
+import { startCase } from "lodash"
 
 import { goto } from "$app/navigation"
 import { useRoute, useState } from "$model"
 
 interface $$Props {
-    game: IGame
     gameSection: string
+    gameSectionActive: string
+    gameSectionCount: number
 }
-
-let game: IGame
 
 let gameSection: string
 
-let { gameSection: gameSectionActive } = useGame(game)
-let { route } = useRoute("/g/[gameId]", { gameId: game.id, gameSection })
+let gameSectionActive: string
+
+let gameSectionCount: number
+
+let { route } = useRoute({ gameSection })
 let { state } = useState()
 
-$: routeActive = gameSection === $gameSectionActive
+$: active = gameSection === gameSectionActive
 
 function selectGameSection(e: IMouseEvent<HTMLAnchorElement>): void {
-    if (!routeActive)
+    if (!active)
         goto(e.currentTarget.href, {
             noScroll: true,
             replaceState: false,
@@ -32,8 +33,9 @@ function selectGameSection(e: IMouseEvent<HTMLAnchorElement>): void {
 }
 
 export {
-    game,
     gameSection,
+    gameSectionActive,
+    gameSectionCount,
 }
 </script>
 
@@ -43,21 +45,21 @@ export {
         gap-x-1.5
         capitalize text-nowrap
     "
-    class:badge-info={routeActive}
-    class:badge-outline={!routeActive}
-    class:cursor-default={routeActive}
-    class:hover:badge-info={!routeActive}
-    class:hover:badge-outline={!routeActive}
+    class:badge-info={active}
+    class:badge-outline={!active}
+    class:cursor-default={active}
+    class:hover:badge-info={!active}
+    class:hover:badge-outline={!active}
     href={$route}
     on:click|preventDefault={selectGameSection}
 >
     <span class="text-secondary">
-        {gameSection}
+        {startCase(gameSection)}
     </span>
 
     <span class="badge">
         <span class="text-secondary">
-            0
+            {gameSectionCount}
         </span>
     </span>
 </a>

@@ -1,29 +1,27 @@
 import type { IGame, IUser, IUserLike } from "$schema/api"
-import type { ICallableLazy } from "$types"
-import type { IGameSection } from "~/entities/game"
+import type { IGameSections } from "~/entities/game"
 import type { Readable } from "svelte/store"
 
 import { derived } from "svelte/store"
 
-import { getGameIcon, getGameImage, getGameSections, mapGamesIds } from "~/entities/game"
+import { fetchGameSections, getGameIcon, getGameImage, mapGamesIds } from "~/entities/game"
 
 import { useApi } from "$api"
-import { page } from "$app/stores"
 import { useSession } from "$model"
 
 type IUseGame = {
     dislikeGame(): Promise<IUserLike>
+    fetchGameSections(): Promise<IGameSections>
     gameIcon: string
     gameImage: string
     gameLiked: Readable<boolean>
-    gameSection: Readable<string>
-    gameSections: Record<string, ICallableLazy<IGameSection>>
     likeGame(): Promise<IUserLike>
 }
 
 export function useGame(game: IGame): IUseGame {
     let {
         dislikeGameEndpointApiV1UsersDislikeGamePost,
+        getAvailableFacetsApiV1ItemsFacetsGameIdGet,
         likeGameEndpointApiV1UsersLikeGamePost,
     } = useApi()
 
@@ -31,10 +29,26 @@ export function useGame(game: IGame): IUseGame {
 
     let gameId: string = (game.gid || game.id)!
 
-    let use: IUseGame = {
+    return {
         dislikeGame: (): Promise<IUserLike> => (
             dislikeGameEndpointApiV1UsersDislikeGamePost(gameId)
         ),
+
+        fetchGameSections: async (): Promise<IGameSections> => {
+            let gameFacetsPromise: Promise<IGameSections> = getAvailableFacetsApiV1ItemsFacetsGameIdGet(game.id!)
+            let gameSectionsPromise: Promise<string[]> = fetchGameSections(game)
+
+            let [gameFacets, gameSections]: [IGameSections, string[]] = (
+                await Promise.all([
+                    gameFacetsPromise,
+                    gameSectionsPromise,
+                ])
+            )
+
+            return gameSections.reduce((result: IGameSections, gameSection: string): IGameSections => (
+                Object.assign(result, { [gameSection]: gameFacets[gameSection] || 0 })
+            ), {})
+        },
 
         gameIcon: getGameIcon(game),
 
@@ -44,16 +58,8 @@ export function useGame(game: IGame): IUseGame {
             mapGamesIds($user.liked_games || []).includes(gameId)
         )),
 
-        gameSection: derived(page, ($page: App.Page): string => (
-            $page.params.gameSection || Object.keys(use.gameSections)[0]
-        )),
-
-        gameSections: getGameSections(game),
-
         likeGame: (): Promise<IUserLike> => (
             likeGameEndpointApiV1UsersLikeGamePost(gameId)
         ),
     }
-
-    return use
 }

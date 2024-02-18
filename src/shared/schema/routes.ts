@@ -47,6 +47,9 @@ const PAGES = {
   },
   "/top-10": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
     return `${params?.locale ? `/${params?.locale}`: ''}/top-10`
+  },
+  "/u/[userId]": (params: { userId: (string | number), locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/u/${params.userId}`
   }
 }
 
@@ -171,9 +174,9 @@ export function route<T extends keyof AllTypes>(key: T, ...params: any[]): strin
 * ```
 */
 export type KIT_ROUTES = {
-  PAGES: { '/': 'locale', '/favorites': 'locale', '/funds': 'locale', '/lots': 'locale', '/lots/create': 'locale', '/messages': 'locale', '/purchases': 'locale', '/referral': 'locale', '/sales': 'locale', '/blog': 'locale', '/g/[gameId]': 'gameId' | 'locale' | 'gameSection', '/promotions': 'locale', '/top-10': 'locale' }
+  PAGES: { '/': 'locale', '/favorites': 'locale', '/funds': 'locale', '/lots': 'locale', '/lots/create': 'locale', '/messages': 'locale', '/purchases': 'locale', '/referral': 'locale', '/sales': 'locale', '/blog': 'locale', '/g/[gameId]': 'gameId' | 'locale' | 'gameSection', '/promotions': 'locale', '/top-10': 'locale', '/u/[userId]': 'userId' | 'locale' }
   SERVERS: Record<string, never>
   ACTIONS: Record<string, never>
   LINKS: Record<string, never>
-  Params: { locale: never, gameId: never, gameSection: never }
+  Params: { locale: never, gameId: never, gameSection: never, userId: never }
 }

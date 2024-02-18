@@ -1,3 +1,1 @@
-export type IGameSection = {
-    // todo
-}
+export type IGameSections = Record<string, number>

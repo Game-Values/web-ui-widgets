@@ -1,6 +1,6 @@
 import type { Api } from "$schema/api"
 import type { IModal, IRouteParams, ISession } from "$types"
-import type { Page as _Page } from "@sveltejs/kit"
+import type { Page as PageRaw } from "@sveltejs/kit"
 
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
@@ -13,9 +13,7 @@ declare global {
             session: ISession
         }
 
-        interface Page extends _Page {
-            params: IRouteParams
-        }
+        type Page = PageRaw<IRouteParams>
 
         // interface PageData {}
 

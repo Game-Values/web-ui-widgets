@@ -1,3 +1,8 @@
+import type { Currency } from "$lib/enums"
+import type { IValueOfEnum } from "$types"
+
+import { CurrencySign } from "$lib/enums"
+
 export function formatNum(num: number): string {
     // Because US uses comma to separate big numbers
     return num
@@ -5,6 +10,6 @@ export function formatNum(num: number): string {
         .replaceAll(",", " ")
 }
 
-export function formatPrice(num: number, currency: string /* todo: sign type */): string {
-    return `${formatNum(num)} ${currency}`
+export function formatPrice(num: number, currency: IValueOfEnum<Currency>): string {
+    return `${formatNum(num)} ${CurrencySign[currency]}`
 }

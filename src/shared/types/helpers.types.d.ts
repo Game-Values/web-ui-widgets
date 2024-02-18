@@ -8,6 +8,8 @@ export type IModule<T> = { default: T }
 
 export type INullable<T> = null | T
 
+export type IPagePromise<T extends Iterable<PromiseLike<T> | T>> = { pagePromise: Promise<Awaited<T>[]> }
+
 export type IValueOfEnum<T> = `${T}`
 
 export type IValueOfRecord<T> = T[IKeyOf<T>]

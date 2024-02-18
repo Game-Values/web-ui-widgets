@@ -9,8 +9,8 @@ export let data: IGamesListPageData
 </script>
 
 <LazyPromise
-    promise={data.gamesPromise}
-    let:value
+    promise={data.pagePromise}
+    let:value={[games]}
 >
-    <GamesListPage games={value} />
+    <GamesListPage {games} />
 </LazyPromise>

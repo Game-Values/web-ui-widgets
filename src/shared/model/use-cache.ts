@@ -21,7 +21,10 @@ type IUseCache = {
 let lruCache: LRUCache<string, object> | undefined
 
 onClient((): void => {
-    lruCache = new LRUCache({ max: 500, ttl: 1000 * 60 * 5 })
+    lruCache = new LRUCache({
+        max: 500,
+        ttl: 1000 * 60 * 15, // 15 min
+    })
 })
 
 export function useCache(key: ICacheKey, defaultSetter?: ICallable<ICacheVal>): IUseCache {

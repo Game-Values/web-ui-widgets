@@ -1,9 +1,6 @@
 import type { IGame } from "$schema/api"
+import type { IPagePromise } from "$types"
 
-export interface IGamesListPageData {
-    gamesPromise: Promise<IGame[]>
-}
+export type IGamesListPageData = IPagePromise<IGame[]>
 
-export interface IGameDetailsPageData {
-    gamePromise: Promise<IGame>
-}
+export type IGameDetailsPageData = IPagePromise<IGame>

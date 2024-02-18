@@ -32,7 +32,7 @@ export {
 </script>
 
 <IconInput
-    class={className}
+    class="w-full {className}"
     {inputClass}
     {placeholder}
     {placement}
