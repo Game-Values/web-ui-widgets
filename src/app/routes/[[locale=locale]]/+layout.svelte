@@ -16,9 +16,10 @@ interface $$Slots {
     default: NonNullable<unknown>
 }
 
+let data: IDefaultLayoutData
+
 let { setSession } = useSession()
 
-let data: IDefaultLayoutData
 setSession(data.session)
 
 export {

@@ -7,7 +7,6 @@ import adapter from "svelte-adapter-bun"
 const config = {
     kit: {
         adapter: adapter({
-            envPrefix: "VITE_",
             precompress: {
                 brotli: true,
                 gzip: true,

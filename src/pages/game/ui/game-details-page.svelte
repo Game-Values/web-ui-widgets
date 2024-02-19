@@ -68,7 +68,16 @@ export {
     </GridCol>
 
     <GridCol span={3}>
-        <LotsFilters />
+        <LazyPromise
+            promise={gameSectionsPromise}
+            let:value={gameSections}
+        >
+            <LotsFilters
+                class="sticky top-4"
+                {game}
+                {gameSections}
+            />
+        </LazyPromise>
     </GridCol>
 
     <GridCol span={9}>

@@ -25,11 +25,7 @@ $: active = gameSection === gameSectionActive
 
 function selectGameSection(e: IMouseEvent<HTMLAnchorElement>): void {
     if (!active)
-        goto(e.currentTarget.href, {
-            noScroll: true,
-            replaceState: false,
-            state: $state,
-        })
+        goto(e.currentTarget.href, {  state: $state })
 }
 
 export {

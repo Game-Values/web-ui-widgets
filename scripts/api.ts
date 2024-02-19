@@ -1,10 +1,9 @@
 import type { GenerateApiParamsFromSpecLiteral } from "swagger-typescript-api"
 import type { Spec } from "swagger-schema-official"
 
-import { generateApi } from "swagger-typescript-api"
+import { resolve } from "node:path"
 
-import svelteConfig from "@/svelte.config"
-import { OPENAPI_URL } from "$config"
+import { generateApi } from "swagger-typescript-api"
 
 await generateApi({
     addReadonly: true,
@@ -19,7 +18,7 @@ await generateApi({
     generateRouteTypes: true,
     generateUnionEnums: true,
     name: "api.ts",
-    output: svelteConfig.kit!.alias!.$schema,
+    output: resolve("src", "shared", "schema"),
     patch: true,
     singleHttpClient: true,
     sortRoutes: true,
@@ -27,7 +26,7 @@ await generateApi({
     typePrefix: "I",
     unwrapResponseData: true,
     spec: (
-        await fetch(OPENAPI_URL)
+        await fetch(import.meta.env.VITE_OPENAPI_URL)
             .then((res: Response): Promise<Spec> => res.json() as Promise<Spec>)
     ) satisfies Spec,
 } satisfies GenerateApiParamsFromSpecLiteral)

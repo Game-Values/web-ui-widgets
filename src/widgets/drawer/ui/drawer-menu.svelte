@@ -64,7 +64,7 @@ let links: IDrawerLink[] = [
     },
 ]
 
-let { route: lotsCreateRoute, routeActive: lotsCreateRouteActive } = useRoute("/lots/create")
+let { route: lotsCreateRoute, routeActive: lotsCreateRouteActive } = useRoute("/lots/new-listing")
 </script>
 
 <ul
@@ -86,7 +86,7 @@ let { route: lotsCreateRoute, routeActive: lotsCreateRouteActive } = useRoute("/
             <a
                 class="tooltip tooltip-right text-secondary"
                 class:active={$lotsCreateRouteActive}
-                data-tip="Create lot"
+                data-tip="New Listing"
                 href={$lotsCreateRoute}
             >
                 <IconPlusCircle />

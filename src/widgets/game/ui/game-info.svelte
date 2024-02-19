@@ -4,6 +4,7 @@ import type { IGame } from "$schema/api"
 import { AuthOnly } from "~/entities/auth"
 import { GameInfoCard } from "~/entities/game"
 
+import { useRoute } from "$model"
 import { LazyComponent } from "$ui/actions"
 
 interface $$Props {
@@ -14,7 +15,20 @@ interface $$Slots {
     default: NonNullable<unknown>
 }
 
-export let game: IGame
+let game: IGame
+
+let { routeParams } = useRoute()
+
+$: lotsCreateRoute = (
+    useRoute("/lots/new-listing", {
+        gameId: game.id,
+        gameSection: $routeParams.gameSection,
+    }).route
+)
+
+export {
+    game,
+}
 </script>
 
 <GameInfoCard {game}>
@@ -41,9 +55,12 @@ export let game: IGame
 
     <svelte:fragment slot="gameCreateLot">
         <AuthOnly>
-            <button class="btn btn-error w-72">
+            <a
+                class="btn btn-error w-72"
+                href={$lotsCreateRoute}
+            >
                 New Listing
-            </button>
+            </a>
         </AuthOnly>
     </svelte:fragment>
 </GameInfoCard>

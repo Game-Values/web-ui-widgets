@@ -3,6 +3,10 @@
     @apply flex flex-col;
 }
 
-.form > .form-control {
+.form .form-control {
     @apply w-full;
+}
+
+.form .menu {
+    @apply p-0;
 }

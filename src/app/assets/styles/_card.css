@@ -12,6 +12,10 @@
     --padding-card: 0;
 }
 
+.card.card-normal .card-title {
+    @apply mb-0;
+}
+
 .card.card-normal .card-body {
     --padding-card: theme("space.4");
 }

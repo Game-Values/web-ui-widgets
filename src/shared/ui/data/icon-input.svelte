@@ -6,6 +6,7 @@ import { forwardEvent } from "$lib/helpers"
 interface $$Props {
     class?: string
     inputClass?: string
+    name?: string
     placeholder?: string
     placement?: "end" | "start"
     type?: HTMLInputTypeAttribute
@@ -22,6 +23,8 @@ let placement: "end" | "start" = "start"
 
 let inputClass: string = ""
 
+let name: string = "search"
+
 let placeholder: string = "Search GameValues"
 
 let type: HTMLInputTypeAttribute = "text"
@@ -31,6 +34,7 @@ let value: string = ""
 export {
     className as class,
     inputClass,
+    name,
     placeholder,
     placement,
     type,
@@ -44,6 +48,7 @@ export {
     class:icon-input--icon-start={placement === "start"}
 >
     <input
+        {name}
         class="input {inputClass}"
         {placeholder}
         {...{ type }}

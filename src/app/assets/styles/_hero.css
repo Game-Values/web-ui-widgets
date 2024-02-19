@@ -1,3 +1,7 @@
+.hero .hero-content {
+    @apply w-full max-w-none;
+}
+
 .hero .hero-overlay {
     @apply bg-transparent;
 }

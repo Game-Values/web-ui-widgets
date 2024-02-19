@@ -7,7 +7,9 @@ export type IRoute = {
     url: IRouteUrl
 }
 
-export type IRouteParams = Partial<Record<keyof KIT_ROUTES["Params"], any>>
+export type IRouteQuery = Pick<IRouteParams, "gameId" | "gameSection">
+
+export type IRouteParams = Partial<Record<IKeyOf<KIT_ROUTES["Params"]>, any>>
 
 export type IRouteWithIcon = IRoute & { icon: typeof SvelteComponent<SvelteHTMLElements["svg"]> }
 

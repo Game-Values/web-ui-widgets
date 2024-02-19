@@ -156,7 +156,7 @@ module.exports = {
         {
             files: [
                 "+layout.server.ts",
-                "+page.server.ts",
+                "+layout.server.ts",
             ],
             rules: {
                 "@typescript-eslint/explicit-function-return-type": "off",

@@ -11,9 +11,9 @@ type IUseRoute = {
     route: Readable<string>
     routeActive: Readable<boolean>
     routeParams: Readable<IRouteParams>
+    routeRequiredAuth: Readable<boolean>
 }
 
-export function useRoute(params?: IRouteParams): IUseRoute
 export function useRoute(urlOrParams?: IRouteParams | IRouteUrl, params?: IRouteParams): IUseRoute {
     let use: IUseRoute = {
         route: derived(page, ($page: App.Page): string => {
@@ -37,6 +37,8 @@ export function useRoute(urlOrParams?: IRouteParams | IRouteUrl, params?: IRoute
         ),
 
         routeParams: derived(page, ($page: App.Page): IRouteParams => $page.params),
+
+        routeRequiredAuth: derived(page, ($page: App.Page): boolean => $page.route.id!.includes("(session)")),
     }
 
     return use

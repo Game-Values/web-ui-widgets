@@ -23,7 +23,7 @@ import { Container, Divider } from "$ui/layout"
     <NavbarLogo class="mr-auto" />
 
     <SearchInput
-        class="max-w-80"
+        class="max-w-64"
         inputClass="input-sm"
     />
 

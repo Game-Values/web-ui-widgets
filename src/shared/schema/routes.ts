@@ -21,8 +21,8 @@ const PAGES = {
   "/lots": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
     return `${params?.locale ? `/${params?.locale}`: ''}/lots`
   },
-  "/lots/create": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
-    return `${params?.locale ? `/${params?.locale}`: ''}/lots/create`
+  "/lots/new-listing": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]), gameId?: (string), gameSection?: (string) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/lots/new-listing${appendSp({ gameId: params?.gameId, gameSection: params?.gameSection })}`
   },
   "/messages": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
     return `${params?.locale ? `/${params?.locale}`: ''}/messages`
@@ -174,7 +174,7 @@ export function route<T extends keyof AllTypes>(key: T, ...params: any[]): strin
 * ```
 */
 export type KIT_ROUTES = {
-  PAGES: { '/': 'locale', '/favorites': 'locale', '/funds': 'locale', '/lots': 'locale', '/lots/create': 'locale', '/messages': 'locale', '/purchases': 'locale', '/referral': 'locale', '/sales': 'locale', '/blog': 'locale', '/g/[gameId]': 'gameId' | 'locale' | 'gameSection', '/promotions': 'locale', '/top-10': 'locale', '/u/[userId]': 'userId' | 'locale' }
+  PAGES: { '/': 'locale', '/favorites': 'locale', '/funds': 'locale', '/lots': 'locale', '/lots/new-listing': 'locale', '/messages': 'locale', '/purchases': 'locale', '/referral': 'locale', '/sales': 'locale', '/blog': 'locale', '/g/[gameId]': 'gameId' | 'locale' | 'gameSection', '/promotions': 'locale', '/top-10': 'locale', '/u/[userId]': 'userId' | 'locale' }
   SERVERS: Record<string, never>
   ACTIONS: Record<string, never>
   LINKS: Record<string, never>

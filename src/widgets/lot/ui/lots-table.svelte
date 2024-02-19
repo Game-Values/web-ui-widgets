@@ -8,6 +8,8 @@ import { LotsTableRow, useLots } from "~/entities/lot"
 import { useRoute } from "$model"
 import { LazyPromise } from "$ui/actions"
 
+import IconInformationCircle from "virtual:icons/heroicons/information-circle"
+
 interface $$Props {
     game: IGame
     gameSections: IGameSections
@@ -17,7 +19,7 @@ let game: IGame
 
 let gameSections: IGameSections
 
-let { lotsSearching, searchLots } = useLots()
+let { searchLots } = useLots()
 let { routeParams } = useRoute()
 
 $: useFacetsPromise = useFacets(
@@ -32,17 +34,7 @@ export {
 }
 </script>
 
-<div class="relative">
-    {#if $lotsSearching}
-        <progress
-            class="
-                progress progress-primary
-                absolute top-10 left-0
-                w-full
-            "
-        />
-    {/if}
-
+<div class="gap-y-4 flex flex-col">
     <table class="table table-xs table-zebra">
         <thead>
             <tr>
@@ -75,4 +67,23 @@ export {
             </LazyPromise>
         </tbody>
     </table>
+
+    <LazyPromise
+        promise={useFacetsPromise}
+        let:value={facets}
+    >
+        <svelte:fragment slot="loading">
+            <progress class="progress progress-primary w-full" />
+        </svelte:fragment>
+
+        {#if !facets.results.length}
+            <div class="alert text-secondary">
+                <IconInformationCircle />
+
+                <span>
+                    No data
+                </span>
+            </div>
+        {/if}
+    </LazyPromise>
 </div>
