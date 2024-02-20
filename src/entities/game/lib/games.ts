@@ -13,7 +13,7 @@ export function mapGamesIds(games: IGame[]): string[] {
 }
 
 export function groupGames(games: IGame[]): TGamesGroup {
-    return sortGames(games).reduce((result: TGamesGroup, game: IGame): TGamesGroup => {
+    return games.reduce((result: TGamesGroup, game: IGame): TGamesGroup => {
         let firstChar: string = game.name!.charAt(0)
 
         if (!result.get(firstChar))

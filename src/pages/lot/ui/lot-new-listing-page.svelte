@@ -3,7 +3,7 @@ import type { IGame } from "$schema/api"
 
 import { onDestroy, onMount } from "svelte"
 
-import { useGame, useGames } from "~/entities/game"
+import { useGame } from "~/entities/game"
 import { LotNewListingInfoCard } from "~/entities/lot"
 import { LotNewListingForm } from "~/features/lot"
 

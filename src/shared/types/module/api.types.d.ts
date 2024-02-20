@@ -3,6 +3,7 @@ import type {
     IGame as IGameRaw,
     IItemAttributes as IItemAttributesRaw,
     IItem as IItemRaw,
+    IItemCreate as IItemCreateRaw,
 } from "$schema/api"
 
 declare module "$schema/api" {
@@ -17,6 +18,10 @@ declare module "$schema/api" {
     }
 
     interface IItem extends Omit<IItemRaw, "attributes"> {
+        attributes: IItemAttributes
+    }
+
+    interface IItemCreate extends Omit<IItemCreateRaw, "attributes"> {
         attributes: IItemAttributes
         gname?: string
     }

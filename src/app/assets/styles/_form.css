@@ -8,10 +8,35 @@
     @apply w-full;
 }
 
+.form .form-control-row {
+    @apply gap-x-4;
+    @apply flex-row;
+}
+
+.form .form-control-row > * {
+    @apply flex-1;
+}
+
+.form .form-control + * {
+    @apply mt-4;
+}
+
 .form .form-control .label {
     @apply p-0;
 }
 
 .form .menu {
     @apply p-0;
+}
+
+.form .menu {
+    @apply p-0;
+}
+
+.form .menu .form-control .label {
+    @apply p-2;
+}
+
+.form .menu .form-control + * {
+    @apply mt-0;
 }

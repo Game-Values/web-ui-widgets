@@ -1,0 +1,14 @@
+.collapse .collapse-title {
+    @apply p-0;
+}
+
+.collapse .collapse-content {
+    @apply p-1;
+}
+
+.collapse .collapse-content {
+    @apply after:mt-4;
+    @apply after:w-full after:h-px;
+    @apply after:block;
+    @apply after:bg-[rgba(135,135,135,0.10)];
+}

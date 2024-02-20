@@ -1,5 +1,8 @@
 <script lang="ts">
+import type { IKeyboardEvent } from "$types"
 import type { HTMLTextareaAttributes } from "svelte/elements"
+
+import { useEventDispatcher } from "$model"
 
 interface $$Props extends HTMLTextareaAttributes {
     placement?: "end" | "start"
@@ -10,7 +13,15 @@ interface $$Slots {
     icon: NonNullable<unknown>
 }
 
+interface $$Events {
+    input: IKeyboardEvent<HTMLInputElement, string>
+}
+
+let { dispatchEvent: dispatchInputEvent } = useEventDispatcher<string>("input")
+
 let className: null | string | undefined = ""
+
+let maxlength: null | number | undefined = undefined
 
 let name: null | string | undefined = "search"
 
@@ -28,6 +39,7 @@ let value: any = undefined
 
 export {
     className as class,
+    maxlength,
     name,
     placeholder,
     placement,
@@ -46,10 +58,12 @@ export {
     <textarea
         {name}
         class="textarea textarea-bordered {textareaClass}"
+        {maxlength}
         {placeholder}
         {required}
         {rows}
         bind:value
+        on:input={e => dispatchInputEvent(e.currentTarget.value)}
     />
 
     {#if $$slots.icon}

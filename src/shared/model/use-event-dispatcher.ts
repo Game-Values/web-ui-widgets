@@ -1,11 +1,14 @@
 import type { ICallable, ICallableLazy, IKeyOf } from "$types"
+import type { DebouncedFunc } from "lodash-es"
 import type { EventDispatcher } from "svelte"
 
-import { merge } from "lodash-es"
+import { debounce, merge } from "lodash-es"
 import { createEventDispatcher } from "svelte"
 
+import { DEBOUNCE_TIMEOUT } from "$lib/consts"
+
 type IUseEvent<T> = {
-    dispatchEvent(context?: T): Promise<boolean>
+    dispatchEvent: DebouncedFunc<(context?: T) => Promise<boolean>>
 }
 
 type IEvents = IKeyOf<HTMLElementEventMap & {
@@ -20,7 +23,7 @@ export function useEventDispatcher<T = never>(
     let dispatchEvent: EventDispatcher<Record<string, unknown>> = createEventDispatcher()
 
     return {
-        dispatchEvent: async (context?: any): Promise<boolean> => {
+        dispatchEvent: debounce(async (context?: any): Promise<boolean> => {
             let callbackContext: T = await new Promise((resolve: ICallable): Promise<void> | void => {
                 let result: Promise<T> | T | undefined = callback?.()
 
@@ -32,6 +35,6 @@ export function useEventDispatcher<T = never>(
             })
 
             return dispatchEvent(event, merge(context, callbackContext))
-        },
+        }, DEBOUNCE_TIMEOUT),
     }
 }

@@ -1,34 +1,33 @@
 <script lang="ts">
-import type { IGame, IItem } from "$schema/api"
+import type { IGame, IItemCreate } from "$schema/api"
+import type { ILotsFilter } from "~/entities/lot"
 
 import { merge } from "lodash-es"
 import { onMount, tick } from "svelte"
 
 import { fetchGameSections, findGameById } from "~/entities/game"
+import { fetchLotsFilters, LotNewListingFormFinance, LotNewListingFormMain, LotNewListingFormProduct } from "~/entities/lot"
 import { useLotsNewListingForm } from "~/features/lot"
 
-import { mapFormSelectOption } from "$lib/utils"
 import { useEventDispatcher, useRoute, useWatch } from "$model"
-import { LazyPromise } from "$ui/actions"
-import { Input, Select, Textarea } from "$ui/data"
-
-import IconInformationCircle from "virtual:icons/heroicons/information-circle"
 
 interface $$Props {
     games: IGame[]
 }
 
 interface $$Events {
-    update: CustomEvent<IItem>
+    update: CustomEvent<IItemCreate>
 }
 
 let games: IGame[] = []
 
-let { dispatchEvent: dispatchUpdateEvent } = useEventDispatcher<IItem>("update")
+let { dispatchEvent: dispatchUpdateEvent } = useEventDispatcher<IItemCreate>("update")
 let { data, form, setData } = useLotsNewListingForm()
 let { routeQuery } = useRoute()
 
-let gameSectionsPromise: Promise<string[]> | undefined
+let lostFilters: ILotsFilter[] = []
+
+let gameSections: string[] = []
 
 let selectedGame: IGame | undefined
 
@@ -38,8 +37,8 @@ onMount((): void => {
     tick().then((): void => update())
 })
 
-function update(updatedData?: Partial<IItem>): void {
-    let resultData: IItem = merge({
+function update(updatedData?: Partial<IItemCreate>): void {
+    let resultData: Partial<IItemCreate> = merge({
         attributes: { type: $routeQuery.gameSection },
         gid: $routeQuery.gameId,
     }, updatedData)
@@ -48,13 +47,20 @@ function update(updatedData?: Partial<IItem>): void {
     if (!selectedGame)
         return
 
-    gameSectionsPromise = fetchGameSections(selectedGame)
-    gameSectionsPromise.then((gameSections: string[]): void => (
-        setData("attributes.type", resultData.attributes.type || gameSections[0])
-    ))
-
-    setData("gid", selectedGame.id)
+    setData("gid", selectedGame.id!)
     setData("gname", selectedGame.name)
+
+    fetchGameSections(selectedGame)
+        .then((gameSectionsRaw: string[]) => {
+            gameSections = gameSectionsRaw
+            setData("attributes.type", resultData.attributes!.type || gameSections[0])
+
+            if ($data.attributes.type)
+                fetchLotsFilters(selectedGame!, $data.attributes.type)
+                    .then((lostFiltersRaw: ILotsFilter[]) => lostFilters = lostFiltersRaw)
+            else
+                lostFilters = []
+        })
 }
 
 export {
@@ -66,79 +72,30 @@ export {
     class="form"
     use:form
 >
-    <div class="form-control">
-        <Select
-            name="gid"
-            options={games.map(game => mapFormSelectOption(game, { label: "name", value: "id" }))}
-            placement="end"
-            required
-            bind:value={$data.gid}
-            on:select={e => update({ gid: e.detail.value })}
-        >
-            <svelte:fragment slot="icon">
-                <IconInformationCircle />
-            </svelte:fragment>
-        </Select>
-    </div>
+    <LotNewListingFormMain
+        formData={$data}
+        {gameSections}
+        {games}
+        on:update={e => update(e.detail)}
+    />
 
-    {#if gameSectionsPromise}
-        <LazyPromise
-            promise={gameSectionsPromise}
-            let:value={gameSections}
-        >
-            {#if gameSections.length}
-                <div class="form-control">
-                    <Select
-                        name="attributes.type"
-                        options={gameSections.map(gameSection => ({ label: gameSection, value: gameSection }))}
-                        placement="end"
-                        required
-                        bind:value={$data.attributes.type}
-                    >
-                        <svelte:fragment slot="icon">
-                            <IconInformationCircle />
-                        </svelte:fragment>
-                    </Select>
-                </div>
-
-                <div class="form-control">
-                    <Input
-                        name="name"
-                        placement="end"
-                        required
-                        bind:value={$data.name}
-                    >
-                        <svelte:fragment slot="icon">
-                            <IconInformationCircle />
-                        </svelte:fragment>
-                    </Input>
-                </div>
-
-                <div class="form-control">
-                    <Textarea
-                        name="attributes.description"
-                        placement="end"
-                        required
-                        rows={4}
-                        bind:value={$data.attributes.description}
-                    >
-                        <svelte:fragment slot="icon">
-                            <IconInformationCircle />
-                        </svelte:fragment>
-                    </Textarea>
-                </div>
-            {:else}
-                <div
-                    class="alert text-secondary"
-                    role="alert"
-                >
-                    <IconInformationCircle />
-
-                    <span>
-                        No data
-                    </span>
-                </div>
-            {/if}
-        </LazyPromise>
+    {#if lostFilters.length}
+        <LotNewListingFormProduct
+            formData={$data}
+            {lostFilters}
+        />
     {/if}
+
+    <LotNewListingFormFinance
+        formData={$data}
+    />
+
+    <div class="form-control">
+        <button
+            class="btn btn-ring ml-auto w-full max-w-72"
+            type="submit"
+        >
+            Sell
+        </button>
+    </div>
 </form>

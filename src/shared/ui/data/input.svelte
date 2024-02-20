@@ -1,5 +1,8 @@
 <script lang="ts">
+import type { IKeyboardEvent } from "$types"
 import type { HTMLInputAttributes, HTMLInputTypeAttribute } from "svelte/elements"
+
+import { useEventDispatcher } from "$model"
 
 interface $$Props extends HTMLInputAttributes {
     inputClass?: string
@@ -9,6 +12,12 @@ interface $$Props extends HTMLInputAttributes {
 interface $$Slots {
     icon: NonNullable<unknown>
 }
+
+interface $$Events {
+    input: IKeyboardEvent<HTMLInputElement, null | number | string>
+}
+
+let { dispatchEvent: dispatchInputEvent } = useEventDispatcher<null | number | string>("input")
 
 let className: null | string | undefined = ""
 
@@ -25,6 +34,18 @@ let required: boolean | null | undefined = false
 let type: HTMLInputTypeAttribute | null | undefined = "text"
 
 let value: any = undefined
+
+function input(e: IKeyboardEvent<HTMLInputElement, string>): void {
+    switch (e.currentTarget.type) {
+        case "number":
+            dispatchInputEvent(parseInt(e.currentTarget.value, 10))
+            break
+
+        default:
+            dispatchInputEvent(e.currentTarget.value)
+            break
+    }
+}
 
 export {
     className as class,
@@ -50,6 +71,7 @@ export {
         {required}
         {...{ type }}
         bind:value
+        on:input={input}
     />
 
     {#if $$slots.icon}

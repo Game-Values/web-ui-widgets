@@ -1,10 +1,7 @@
 <script lang="ts">
-import type { IMouseEvent } from "$types"
-
 import { startCase } from "lodash"
 
-import { goto } from "$app/navigation"
-import { useRoute, useState } from "$model"
+import { useRoute } from "$model"
 
 interface $$Props {
     gameSection: string
@@ -19,14 +16,8 @@ let gameSectionActive: string
 let gameSectionCount: number
 
 let { route } = useRoute({ gameSection })
-let { state } = useState()
 
 $: active = gameSection === gameSectionActive
-
-function selectGameSection(e: IMouseEvent<HTMLAnchorElement>): void {
-    if (!active)
-        goto(e.currentTarget.href, {  state: $state })
-}
 
 export {
     gameSection,
@@ -47,7 +38,6 @@ export {
     class:hover:badge-info={!active}
     class:hover:badge-outline={!active}
     href={$route}
-    on:click|preventDefault={selectGameSection}
 >
     <span class="text-secondary">
         {startCase(gameSection)}

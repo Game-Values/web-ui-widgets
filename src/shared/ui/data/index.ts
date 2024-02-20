@@ -1,5 +1,6 @@
 export { default as Avatar } from "$ui/data/avatar.svelte"
 export { default as Checkbox } from "$ui/data/checkbox.svelte"
+export { default as Collapse } from "$ui/data/collapse.svelte"
 export { default as EnhancedImage } from "$ui/data/enhanced-image.svelte"
 export { default as Input } from "$ui/data/input.svelte"
 export { default as Radio } from "$ui/data/radio.svelte"

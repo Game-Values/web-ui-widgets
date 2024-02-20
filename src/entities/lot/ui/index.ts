@@ -1,3 +1,6 @@
+export { default as LotNewListingFormFinance } from "~/entities/lot/ui/lot-new-listing-form-finance.svelte"
+export { default as LotNewListingFormMain } from "~/entities/lot/ui/lot-new-listing-form-main.svelte"
+export { default as LotNewListingFormProduct } from "~/entities/lot/ui/lot-new-listing-form-product.svelte"
 export { default as LotNewListingInfoCard } from "~/entities/lot/ui/lot-new-listing-info-card.svelte"
 export { default as LotsFilterCheckbox } from "~/entities/lot/ui/lots-filter-checkbox.svelte"
 export { default as LotsFilterRadio } from "~/entities/lot/ui/lots-filter-radio.svelte"

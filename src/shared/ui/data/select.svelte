@@ -60,7 +60,7 @@ export {
         bind:value
         on:change={e => (
             dispatchSelectEvent(options[e.currentTarget.selectedIndex])
-                .then(() => selected = options[e.currentTarget.selectedIndex])
+                ?.then(() => selected = options[e.currentTarget.selectedIndex])
         )}
     >
         {#each options as option (option.label)}
