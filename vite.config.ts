@@ -4,6 +4,7 @@ import type { UserConfig } from "vite"
 import type { CustomPath } from "vite-plugin-kit-routes"
 
 import { join, resolve } from "node:path"
+import { env } from "node:process"
 
 import { enhancedImages } from "@sveltejs/enhanced-img"
 import { sveltekit } from "@sveltejs/kit/vite"
@@ -58,10 +59,11 @@ export default defineConfig({
         purgeCss(),
     ],
 
-    // server: {
-    //     host: true,
-    //     port: 3000,
-    // },
+    server: {
+        host: true,
+        port: env.PORT,
+        strictPort: true,
+    },
 
     test: {
         include: [

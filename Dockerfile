@@ -9,6 +9,7 @@ RUN mkdir -p /temp/dev
 COPY .browserslistrc .npmrc .nvmrc bun.lockb package.json /temp/dev/
 COPY scripts /temp/dev/scripts
 RUN cd /temp/dev && \
+    export $(xargs < .env.production) && \
     bun install --frozen-lockfile --ignore-scripts
 
 
@@ -21,4 +22,5 @@ RUN export $(xargs < .env.production) && \
 
 FROM base AS release
 COPY --from=prerelease /frontend/.build .
+RUN export $(xargs < .env.production)
 ENTRYPOINT bun .
