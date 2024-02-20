@@ -11,6 +11,7 @@ let { state } = useState()
         --image-width={$state.background.width}
         class="absolute z-0 left-0 top-0"
         alt="background-image"
+        size="lg"
         src={$state.background.src}
     />
 {/if}

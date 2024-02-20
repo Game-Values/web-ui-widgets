@@ -1,4 +1,4 @@
-import type { StoreClient } from "#build/clients"
+import type { StoreClient } from "#.build/clients"
 import type { CreateOrderApiV1OrderPostDataRaw, OrderCreateRaw } from "#schema/data-contracts"
 import type { ApiAdapter } from "~/adapters"
 

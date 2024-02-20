@@ -1,12 +1,12 @@
 <script lang="ts">
-import type { ICallable, ICallableLazy } from "$types"
+import type { ICallable, ICallableLazy, IEnhancedImageSrc } from "$types"
 
 import { EnhancedImage } from "$ui/data"
 
 interface $$Props {
     action?: IAction
     content?: string
-    image: string
+    image: IEnhancedImageSrc
     title?: string
 }
 
@@ -25,7 +25,7 @@ export let action: IAction | undefined = undefined
 
 export let content: string = ""
 
-export let image: string
+export let image: IEnhancedImageSrc
 
 export let title: string = ""
 </script>
@@ -35,6 +35,7 @@ export let title: string = ""
         <div class="hero-image hero-overlay overflow-hidden">
             <EnhancedImage
                 alt="main-slide"
+                size="lg"
                 src={image}
             />
         </div>

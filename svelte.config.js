@@ -1,16 +1,25 @@
 import { join, resolve } from "node:path"
 
+import adapter from "@sveltejs/adapter-node"
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte"
-import adapter from "svelte-adapter-bun"
+// import adapter from "svelte-adapter-bun"
 
 /** @type {import("@sveltejs/kit").Config} */
 const config = {
     kit: {
         adapter: adapter({
-            precompress: {
-                brotli: true,
-                gzip: true,
-            },
+            // dynamic_origin: true,
+            out: resolve(".build"),
+            precompress: true,
+            // precompress: {
+            //     brotli: true,
+            //     files: [
+            //         "css",
+            //         "js",
+            //         "html",
+            //     ],
+            //     gzip: true,
+            // },
         }),
 
         alias: {

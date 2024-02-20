@@ -1,25 +1,23 @@
 <script lang="ts">
-import type { INullable, ISvelteComponentConstructor } from "$types"
+import type { ILazyComponentConstructor, ILazyComponentSrc, INullable } from "$types"
 import type { ComponentConstructorOptions, SvelteComponent } from "svelte"
 
 import { onDestroy, onMount, tick } from "svelte"
 
-import { asyncComponent } from "$lib/helpers"
+import { lazyComponent } from "$lib/helpers"
 
 interface $$Props {
-    props?: ComponentConstructorOptions["props"] | undefined
-    src: string
+    props?: ComponentConstructorOptions["props"]
+    src: ILazyComponentSrc
 }
 
 let component: INullable<SvelteComponent> = null
 
 let props: ComponentConstructorOptions["props"] | undefined = undefined
 
-let src: string
+let src: ILazyComponentSrc
 
 let target: INullable<Document | Element | ShadowRoot> = null
-
-$: componentProvider = asyncComponent<ISvelteComponentConstructor>(src)
 
 onMount(load)
 
@@ -41,7 +39,7 @@ async function load(): Promise<void> {
     if (!target)
         return
 
-    let ComponentConstructor: ISvelteComponentConstructor = await componentProvider()
+    let ComponentConstructor: ILazyComponentConstructor = await lazyComponent(src)
     component = new ComponentConstructor({ props, target })
 }
 

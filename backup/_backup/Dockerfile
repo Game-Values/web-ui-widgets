@@ -10,7 +10,7 @@ RUN pnpm install --frozen-lockfile --ignore-scripts
 
 ADD . .
 
-RUN pnpm run build --dotenv .env.production
+RUN pnpm run .build --dotenv .env.production
 
 
 FROM node:20-bullseye-slim

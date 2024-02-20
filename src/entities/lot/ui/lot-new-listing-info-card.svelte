@@ -11,7 +11,7 @@ interface $$Props {
 
 let game: IGame | undefined = undefined
 
-$: gameIcon = game ? useGame(game).gameIcon : ""
+$: gameIcon = game && useGame(game).gameIcon
 
 export {
     game,
@@ -29,8 +29,8 @@ export {
                         <EnhancedImage
                             --image-width="6.25rem"
                             alt="main-slide"
-                            sizes="(min-width: 320px) 320px"
-                            src="~/app/assets/images/common/dall-e.png"
+                            size="xs"
+                            src="images/common/dall-e.png"
                         />
                     </h1>
 

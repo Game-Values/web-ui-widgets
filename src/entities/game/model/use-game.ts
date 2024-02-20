@@ -1,4 +1,5 @@
 import type { IGame, IUser, IUserLike } from "$schema/api"
+import type { IEnhancedImageSrc } from "$types"
 import type { IGameSections } from "~/entities/game"
 import type { Readable } from "svelte/store"
 
@@ -13,8 +14,8 @@ type IUseGame = {
     dislikeGame(): Promise<IUserLike>
     fetchGame(): Promise<IGame>
     fetchGameSections(): Promise<IGameSections>
-    gameIcon: string
-    gameImage: string
+    gameIcon: IEnhancedImageSrc
+    gameImage: IEnhancedImageSrc
     gameLiked: Readable<boolean>
     likeGame(): Promise<IUserLike>
 }

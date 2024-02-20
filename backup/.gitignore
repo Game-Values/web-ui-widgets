@@ -110,17 +110,17 @@ web_modules/
 
 .parcel-cache
 
-# Next.js build output
+# Next.js .build output
 
 .next
 out
 
-# Nuxt.js build / generate output
+# Nuxt.js .build / generate output
 
 .nuxt
 dist
 
-# Svelte.js build / generate output
+# Svelte.js .build / generate output
 
 .svelte-kit
 
@@ -132,7 +132,7 @@ dist
 
 # public
 
-# vuepress build output
+# vuepress .build output
 
 .vuepress/dist
 

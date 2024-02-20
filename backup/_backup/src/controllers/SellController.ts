@@ -1,4 +1,4 @@
-import type { RouterClient, StoreClient } from "#build/clients"
+import type { RouterClient, StoreClient } from "#.build/clients"
 import type { ItemRaw } from "#schema/data-contracts"
 import type { ApiAdapter } from "~/adapters"
 import type { GameController, ItemController } from "~/controllers"

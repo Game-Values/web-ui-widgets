@@ -1,5 +1,5 @@
 <script lang="ts">
-import { startCase } from "lodash"
+import { startCase } from "lodash-es"
 
 import { useRoute } from "$model"
 

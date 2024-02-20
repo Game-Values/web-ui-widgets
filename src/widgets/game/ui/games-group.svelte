@@ -3,8 +3,7 @@ import type { IGame } from "$schema/api"
 
 import { AuthOnly } from "~/entities/auth"
 import { GameGridCard, groupGames } from "~/entities/game"
-
-import { LazyComponent } from "$ui/actions"
+import { GameLikeToggle } from "~/features/game"
 
 interface $$Props {
     games: IGame[]
@@ -28,9 +27,9 @@ export let games: IGame[]
                     <GameGridCard {game}>
                         <svelte:fragment slot="gameLikeToggle">
                             <AuthOnly>
-                                <LazyComponent
-                                    props={{ class: "tooltip-bottom", game }}
-                                    src="~/features/game/game-like-toggle/ui/game-like-toggle.svelte"
+                                <GameLikeToggle
+                                    class="tooltip-bottom"
+                                    {game}
                                 />
                             </AuthOnly>
                         </svelte:fragment>

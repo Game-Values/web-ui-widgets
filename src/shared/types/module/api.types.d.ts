@@ -2,31 +2,31 @@ import type { Currency } from "$lib/enums"
 import type {
     IGame as IGameRaw,
     IItemAttributes as IItemAttributesRaw,
-    IItem as IItemRaw,
     IItemCreate as IItemCreateRaw,
+    IItem as IItemRaw,
 } from "$schema/api"
 
 declare module "$schema/api" {
-    interface IGame extends Omit<IGameRaw, "attributes" | "id"> {
+    export interface IGame extends Omit<IGameRaw, "attributes" | "id"> {
         attributes: IGameAttributes
         gid?: string
         id: string
     }
 
-    type IGameAttributes = {
-        description?: string
-    }
-
-    interface IItem extends Omit<IItemRaw, "attributes"> {
+    export interface IItem extends Omit<IItemRaw, "attributes"> {
         attributes: IItemAttributes
     }
 
-    interface IItemCreate extends Omit<IItemCreateRaw, "attributes"> {
+    export interface IItemCreate extends Omit<IItemCreateRaw, "attributes"> {
         attributes: IItemAttributes
         gname?: string
     }
 
-    type IItemAttributes = IItemAttributesRaw & {
+    export type IGameAttributes = {
+        description?: string
+    }
+
+    export type IItemAttributes = IItemAttributesRaw & {
         currency: Currency
         game: string
         price: number

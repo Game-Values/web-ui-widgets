@@ -13,7 +13,7 @@ interface $$Props {
     games: IGame[]
 }
 
-let { setBackground, unsetBackground } = useBackground({ src: "~/app/assets/images/bg/main-bg.png" })
+let { setBackground, unsetBackground } = useBackground({ src: "images/bg/main-bg.png" })
 
 onMount(setBackground)
 

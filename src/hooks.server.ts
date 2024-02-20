@@ -12,7 +12,7 @@ export async function handle({ event, resolve }): Promise<Response> {
     event.locals = {
         api: useApi({
             baseApiParams: {
-                headers: headers.toJSON(),
+                headers: Object.fromEntries(headers.entries()),
             },
         }),
         session: Object.create(null),
