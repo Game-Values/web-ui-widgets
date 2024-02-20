@@ -7,6 +7,7 @@ import { LotsTableRow, useLots } from "~/entities/lot"
 
 import { useRoute } from "$model"
 import { LazyPromise } from "$ui/actions"
+import { Empty } from "$ui/data"
 
 import IconInformationCircle from "virtual:icons/heroicons/information-circle"
 
@@ -77,16 +78,7 @@ export {
         </svelte:fragment>
 
         {#if !facets.results.length}
-            <div
-                class="alert text-secondary"
-                role="alert"
-            >
-                <IconInformationCircle />
-
-                <span>
-                    No data
-                </span>
-            </div>
+            <Empty />
         {/if}
     </LazyPromise>
 </div>

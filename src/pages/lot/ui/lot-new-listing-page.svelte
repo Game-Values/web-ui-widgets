@@ -1,13 +1,14 @@
 <script lang="ts">
 import type { IGame } from "$schema/api"
+import type { ILotNewListingPageContext } from "~/pages/lot"
 
 import { onDestroy, onMount } from "svelte"
 
 import { useGame } from "~/entities/game"
-import { LotNewListingInfoCard } from "~/entities/lot"
+import { LotNewListingInfoCard, LotNewListingSteps } from "~/entities/lot"
 import { LotNewListingForm } from "~/features/lot"
 
-import { useBackground } from "$model"
+import { useBackground, useContext } from "$model"
 import { Grid, GridCol } from "$ui/layout"
 
 interface $$Props {
@@ -15,6 +16,8 @@ interface $$Props {
 }
 
 let { setBackground, unsetBackground } = useBackground({ src: "images/bg/new-listing-bg.png" })
+
+useContext<ILotNewListingPageContext>({ step: 1 })
 
 onMount(setBackground)
 
@@ -41,14 +44,17 @@ export {
         <LotNewListingInfoCard {game} />
     </GridCol>
 
-    <GridCol span={9}>
+    <GridCol span={10}>
         <LotNewListingForm
             {games}
             on:update={fetchGame}
         />
     </GridCol>
 
-    <GridCol span={3}>
-        // steps
+    <GridCol
+        justify="center"
+        span={2}
+    >
+        <LotNewListingSteps />
     </GridCol>
 </Grid>

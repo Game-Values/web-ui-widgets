@@ -1,6 +1,7 @@
 <script lang="ts">
 import type { IGame, IItemCreate } from "$schema/api"
 import type { ILotsFilter } from "~/entities/lot"
+import type { ILotNewListingPageContext } from "~/pages/lot"
 
 import { merge } from "lodash-es"
 import { onMount, tick } from "svelte"
@@ -9,7 +10,7 @@ import { fetchGameSections, findGameById } from "~/entities/game"
 import { fetchLotsFilters, LotNewListingFormFinance, LotNewListingFormMain, LotNewListingFormProduct } from "~/entities/lot"
 import { useLotsNewListingForm } from "~/features/lot"
 
-import { useEventDispatcher, useRoute, useWatch } from "$model"
+import { useContext, useEventDispatcher, useRoute, useWatch } from "$model"
 
 interface $$Props {
     games: IGame[]
@@ -21,6 +22,7 @@ interface $$Events {
 
 let games: IGame[] = []
 
+let { updateContext } = useContext<ILotNewListingPageContext>()
 let { dispatchEvent: dispatchUpdateEvent } = useEventDispatcher<IItemCreate>("update")
 let { data, form, setData } = useLotsNewListingForm()
 let { routeQuery } = useRoute()
@@ -76,18 +78,21 @@ export {
         formData={$data}
         {gameSections}
         {games}
-        on:update={e => update(e.detail)}
+        on:update={e => {
+            update(e.detail)
+            updateContext({ step: 1 })
+        }}
     />
 
-    {#if lostFilters.length}
-        <LotNewListingFormProduct
-            formData={$data}
-            {lostFilters}
-        />
-    {/if}
+    <LotNewListingFormProduct
+        formData={$data}
+        {lostFilters}
+        on:update={() => updateContext({ step: 2 })}
+    />
 
     <LotNewListingFormFinance
         formData={$data}
+        on:update={() => updateContext({ step: 3 })}
     />
 
     <div class="form-control">

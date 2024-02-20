@@ -6,6 +6,7 @@ import { fetchLotsFilters } from "~/entities/lot"
 
 import { useRoute } from "$model"
 import { LazyComponent, LazyPromise } from "$ui/actions"
+import { Empty } from "$ui/data"
 
 import IconInformationCircle from "virtual:icons/heroicons/information-circle"
 
@@ -52,16 +53,7 @@ export {
                     />
                 {/each}
             {:else}
-                <div
-                    class="alert text-secondary"
-                    role="alert"
-                >
-                    <IconInformationCircle />
-
-                    <span>
-                        No data
-                    </span>
-                </div>
+                <Empty />
             {/if}
         </LazyPromise>
     </div>

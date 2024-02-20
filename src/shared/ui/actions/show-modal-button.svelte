@@ -21,7 +21,7 @@ let className: string = ""
 let modal: IModal
 
 let { openModal } = useModal(modal)
-let { dispatchEvent: dispatchClick } = useEventDispatcher("click", openModal)
+let { dispatchEvent: dispatchClickEvent } = useEventDispatcher("click", openModal)
 
 export {
     className as class,
@@ -31,7 +31,7 @@ export {
 
 <button
     class="btn {className}"
-    on:click={() => dispatchClick()}
+    on:click={() => dispatchClickEvent()}
 >
     <slot />
 </button>

@@ -1,8 +1,9 @@
 <script lang="ts">
 import type { IItemCreate } from "$schema/api"
+import type { ILotNewListingPageContext } from "~/pages/lot"
 
-import { useEventDispatcher } from "$model"
 import { Currency, CurrencySign } from "$lib/enums"
+import { useContext, useEventDispatcher } from "$model"
 import { Collapse, Input } from "$ui/data"
 
 interface $$Props {
@@ -13,12 +14,16 @@ interface $$Events {
     update: CustomEvent<Partial<IItemCreate>>
 }
 
+let { updateContext } = useContext<ILotNewListingPageContext>()
 let { dispatchEvent: dispatchUpdateEvent } = useEventDispatcher<Partial<IItemCreate>>("update")
 
 export let formData: IItemCreate
 </script>
 
-<Collapse title="Finance">
+<Collapse
+    title="Finance"
+    on:toggle={e => e.detail && updateContext({ step: 3 })}
+>
     <div class="form-control form-control-row">
         <Input
             name="attributes.amount"

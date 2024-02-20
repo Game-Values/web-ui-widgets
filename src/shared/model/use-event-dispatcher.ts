@@ -34,7 +34,7 @@ export function useEventDispatcher<T = never>(
                 )
             })
 
-            return dispatchEvent(event, merge(context, callbackContext))
+            return dispatchEvent(event, merge(context, callbackContext).valueOf())
         }, DEBOUNCE_TIMEOUT),
     }
 }

@@ -1,9 +1,10 @@
 <script lang="ts">
 import type { IGame, IItemCreate } from "$schema/api"
+import type { ILotNewListingPageContext } from "~/pages/lot"
 
 import { mapFormSelectOption } from "$lib/utils"
-import { useEventDispatcher } from "$model"
-import { Collapse, Input, Select, Textarea } from "$ui/data"
+import { useContext, useEventDispatcher } from "$model"
+import { Collapse, Empty, Input, Select, Textarea } from "$ui/data"
 
 import IconInformationCircle from "virtual:icons/heroicons/information-circle"
 
@@ -17,6 +18,7 @@ interface $$Events {
     update: CustomEvent<Partial<IItemCreate>>
 }
 
+let { updateContext } = useContext<ILotNewListingPageContext>()
 let { dispatchEvent: dispatchUpdateEvent } = useEventDispatcher<Partial<IItemCreate>>("update")
 
 export let formData: IItemCreate
@@ -29,6 +31,7 @@ export let gameSections: string[]
 <Collapse
     opened
     title="Main"
+    on:toggle={e => e.detail && updateContext({ step: 1 })}
 >
     <div class="form-control">
         <Select
@@ -93,15 +96,6 @@ export let gameSections: string[]
             </Textarea>
         </div>
     {:else}
-        <div
-            class="alert text-secondary"
-            role="alert"
-        >
-            <IconInformationCircle />
-
-            <span>
-                No data
-            </span>
-        </div>
+        <Empty />
     {/if}
 </Collapse>

@@ -14,14 +14,14 @@ let state: Writable<App.PageState> = writable(Object.create(null))
 
 export function useState(): IUseState {
     let use: IUseState = {
-        setState: (pageState: Partial<App.PageState>): void => {
-            onClient((): void => state.set(pageState))
+        setState: (newState: Partial<App.PageState>): void => {
+            onClient((): void => state.set(newState))
         },
 
         state: derived(state, ($state: App.PageState): App.PageState => $state),
 
-        updateState: (pageState: Partial<App.PageState>): void => {
-            onClient((): void => state.set(Object.assign(get(use.state), pageState)))
+        updateState: (updatedState: Partial<App.PageState>): void => {
+            onClient((): void => state.set(Object.assign(get(use.state), updatedState)))
         },
     }
 
