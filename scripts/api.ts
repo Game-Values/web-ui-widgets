@@ -2,6 +2,7 @@ import type { GenerateApiParamsFromSpecLiteral } from "swagger-typescript-api"
 import type { Spec } from "swagger-schema-official"
 
 import { resolve } from "node:path"
+import { env } from "node:process"
 
 import { generateApi } from "swagger-typescript-api"
 
@@ -26,7 +27,7 @@ await generateApi({
     typePrefix: "I",
     unwrapResponseData: true,
     spec: (
-        await fetch(import.meta.env.VITE_OPENAPI_URL)
+        await fetch(env.VITE_OPENAPI_URL)
             .then((res: Response): Promise<Spec> => res.json() as Promise<Spec>)
     ) satisfies Spec,
 } satisfies GenerateApiParamsFromSpecLiteral)

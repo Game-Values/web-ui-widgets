@@ -34,5 +34,5 @@ export function useApi(config?: ApiConfig): Api<unknown>["api"] {
         useCache("api", (): Api<unknown>["api"] => createApi(config))
     )
 
-    return getCache<Api<unknown>["api"]>()
+    return getCache() as Api<unknown>["api"]
 }

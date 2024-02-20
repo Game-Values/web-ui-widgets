@@ -58,10 +58,10 @@ export default defineConfig({
         purgeCss(),
     ],
 
-    server: {
-        host: true,
-        port: 3000,
-    },
+    // server: {
+    //     host: true,
+    //     port: 3000,
+    // },
 
     test: {
         include: [

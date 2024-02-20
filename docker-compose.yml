@@ -1,19 +1,19 @@
 version: "3.8"
 
 services:
-#    proxy:
-#        image: traefik:v2.10
-#        networks:
-#            - ${TRAEFIK_PUBLIC_NETWORK?Variable not set}
-#        volumes:
-#            - /var/run/docker.sock:/var/run/docker.sock
-#            - proxy:/app
-#        command:
-#            - --providers.docker.swarmmode
-#        deploy:
-#            placement:
-#                constraints:
-#                    - node.role == manager
+    proxy:
+        image: traefik:v2.10
+        networks:
+            - ${TRAEFIK_PUBLIC_NETWORK?Variable not set}
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+            - proxy:/app
+        command:
+            - --providers.docker.swarmmode
+        deploy:
+            placement:
+                constraints:
+                    - node.role == manager
 
     frontend:
         working_dir: /frontend
@@ -22,9 +22,11 @@ services:
             dockerfile: Dockerfile
         env_file:
             - .env.production
+        networks:
+            - ${TRAEFIK_PUBLIC_NETWORK?Variable not set}
 
-#networks:
-#    traefik-public:
-#
-#volumes:
-#    proxy:
+networks:
+    traefik-public:
+
+volumes:
+    proxy:

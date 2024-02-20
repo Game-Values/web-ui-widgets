@@ -7,5 +7,12 @@ docker-compose*
 README.md
 LICENSE
 .env
+.env.*
+!.env.production
 .editorconfig
 .idea
+
+
+# todo: rm
+backup
+backup.*
