@@ -1,9 +1,8 @@
-import type { Readable } from "svelte/store"
+import type { Readable, Writable } from "svelte/store"
 
-import { derived, get } from "svelte/store"
+import { derived, get, writable } from "svelte/store"
 
-import { replaceState } from "$app/navigation"
-import { page } from "$app/stores"
+import { onClient } from "$lib/helpers"
 
 type IUseState = {
     setState(pageState: App.PageState): void
@@ -11,19 +10,19 @@ type IUseState = {
     updateState(pageState: Partial<App.PageState>): void
 }
 
+let state: Writable<App.PageState> = writable(Object.create(null))
+
 export function useState(): IUseState {
     let use: IUseState = {
-        setState: (pageState: Partial<App.PageState>): void => (
-            replaceState("", pageState)
-        ),
+        setState: (pageState: Partial<App.PageState>): void => {
+            onClient((): void => state.set(pageState))
+        },
 
-        state: derived(page, (
-            ($page: App.Page): App.PageState => $page.state
-        )),
+        state: derived(state, ($state: App.PageState): App.PageState => $state),
 
-        updateState: (pageState: Partial<App.PageState>): void => (
-            replaceState("", Object.assign(get(use.state), pageState))
-        ),
+        updateState: (pageState: Partial<App.PageState>): void => {
+            onClient((): void => state.set(Object.assign(get(use.state), pageState)))
+        },
     }
 
     return use

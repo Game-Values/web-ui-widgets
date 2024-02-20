@@ -1,8 +1,7 @@
 <script lang="ts">
-import type { IModal } from "$types"
+import type { IModal, IMouseEvent } from "$types"
 
-import { forwardEvent } from "$lib/helpers"
-import { useModal } from "$model"
+import { useEventDispatcher, useModal } from "$model"
 
 interface $$Props {
     class: string
@@ -13,11 +12,16 @@ interface $$Slots {
     default: NonNullable<unknown>
 }
 
+interface $$Events {
+    click: IMouseEvent<HTMLButtonElement>
+}
+
 let className: string = ""
 
 let modal: IModal
 
 let { openModal } = useModal(modal)
+let { dispatchEvent: dispatchClick } = useEventDispatcher("click", openModal)
 
 export {
     className as class,
@@ -27,7 +31,7 @@ export {
 
 <button
     class="btn {className}"
-    on:click={forwardEvent(openModal)}
+    on:click={() => dispatchClick()}
 >
     <slot />
 </button>

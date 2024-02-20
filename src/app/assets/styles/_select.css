@@ -1,0 +1,14 @@
+.select {
+    @apply px-4;
+    @apply w-full;
+    @apply bg-input;
+    @apply text-inherit;
+}
+
+.select.select-sm {
+    @apply px-2;
+}
+
+.select.select-bordered {
+    @apply border-white/[0.04];
+}

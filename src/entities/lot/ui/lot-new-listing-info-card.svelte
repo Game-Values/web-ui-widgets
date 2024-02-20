@@ -22,7 +22,7 @@ export {
     <div class="card-body">
         <div class="hero">
             <div class="hero-content p-0 justify-between">
-                <div class="p-8 flex flex-col">
+                <div class="p-8 gap-y-2 flex flex-col">
                     <h1 class="card-title font-bold text-4xl items-center">
                         Sell with Us!
 
@@ -48,7 +48,7 @@ export {
                         </b>
                     </p>
 
-                    <ul class="mt-12 ms-6 list-disc list-inside">
+                    <ul class="mt-8 ms-8 list-disc list-inside">
                         <li>
                             <b>
                                 Quick Sales

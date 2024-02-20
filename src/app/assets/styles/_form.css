@@ -1,10 +1,15 @@
 .form {
     @apply gap-y-4;
+    @apply w-full;
     @apply flex flex-col;
 }
 
 .form .form-control {
     @apply w-full;
+}
+
+.form .form-control .label {
+    @apply p-0;
 }
 
 .form .menu {

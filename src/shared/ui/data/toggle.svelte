@@ -1,25 +1,26 @@
 <script lang="ts">
-interface $$Props {
-    checked?: boolean
-    class?: string
+import type { HTMLInputAttributes } from "svelte/elements"
+
+interface $$Props extends HTMLInputAttributes {
     inputClass?: string
     label?: string
-    name?: string
 }
 
 interface $$Slots {
     default: NonNullable<unknown>
 }
 
-let checked: boolean = false
+let checked: boolean | null | undefined = false
 
-let className: string = ""
+let className: null | string | undefined = ""
 
 let inputClass: string = ""
 
 let label: string | undefined = undefined
 
-let name: string = "toggle"
+let name: null | string | undefined = undefined
+
+let required: boolean | null | undefined = false
 
 export {
     checked,
@@ -27,6 +28,7 @@ export {
     inputClass,
     label,
     name,
+    required,
 }
 </script>
 
@@ -34,6 +36,7 @@ export {
     <input
         {name}
         class="toggle {inputClass}"
+        {required}
         type="checkbox"
         bind:checked
     />

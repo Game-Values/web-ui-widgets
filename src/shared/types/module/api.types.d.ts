@@ -10,7 +10,6 @@ declare module "$schema/api" {
         attributes: IGameAttributes
         gid?: string
         id: string
-        sections: string[]
     }
 
     type IGameAttributes = {
@@ -19,10 +18,12 @@ declare module "$schema/api" {
 
     interface IItem extends Omit<IItemRaw, "attributes"> {
         attributes: IItemAttributes
+        gname?: string
     }
 
     type IItemAttributes = IItemAttributesRaw & {
         currency: Currency
+        game: string
         price: number
     }
 }

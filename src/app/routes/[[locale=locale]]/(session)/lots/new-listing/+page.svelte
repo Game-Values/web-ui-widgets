@@ -10,7 +10,7 @@ export let data: ILotNewListingPageData
 
 <LazyPromise
     promise={data.pagePromise}
-    let:value={[game]}
+    let:value={[games]}
 >
-    <LotNewListingPage {game} />
+    <LotNewListingPage {games} />
 </LazyPromise>

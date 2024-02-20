@@ -77,7 +77,10 @@ export {
         </svelte:fragment>
 
         {#if !facets.results.length}
-            <div class="alert text-secondary">
+            <div
+                class="alert text-secondary"
+                role="alert"
+            >
                 <IconInformationCircle />
 
                 <span>

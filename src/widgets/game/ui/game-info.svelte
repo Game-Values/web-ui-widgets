@@ -56,7 +56,7 @@ export {
     <svelte:fragment slot="gameCreateLot">
         <AuthOnly>
             <a
-                class="btn btn-error w-72"
+                class="btn btn-ring w-72"
                 href={$lotsCreateRoute}
             >
                 New Listing

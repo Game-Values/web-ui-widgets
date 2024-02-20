@@ -1,0 +1,5 @@
+.alert {
+    --alert-bg: rgba(255, 255, 255, 0.02);
+
+    @apply border-white/[0.02];
+}

@@ -11,6 +11,7 @@ import { useSession } from "$model"
 
 type IUseGame = {
     dislikeGame(): Promise<IUserLike>
+    fetchGame(): Promise<IGame>
     fetchGameSections(): Promise<IGameSections>
     gameIcon: string
     gameImage: string
@@ -23,6 +24,7 @@ export function useGame(game: IGame): IUseGame {
         dislikeGameEndpointApiV1UsersDislikeGamePost,
         getAvailableFacetsApiV1ItemsFacetsGameIdGet,
         likeGameEndpointApiV1UsersLikeGamePost,
+        readGameApiV1GamesGameIdGet,
     } = useApi()
 
     let { user } = useSession()
@@ -34,8 +36,10 @@ export function useGame(game: IGame): IUseGame {
             dislikeGameEndpointApiV1UsersDislikeGamePost(gameId)
         ),
 
+        fetchGame: (): Promise<IGame> => readGameApiV1GamesGameIdGet(gameId),
+
         fetchGameSections: async (): Promise<IGameSections> => {
-            let gameFacetsPromise: Promise<IGameSections> = getAvailableFacetsApiV1ItemsFacetsGameIdGet(game.id!)
+            let gameFacetsPromise: Promise<IGameSections> = getAvailableFacetsApiV1ItemsFacetsGameIdGet(gameId)
             let gameSectionsPromise: Promise<string[]> = fetchGameSections(game)
 
             let [gameFacets, gameSections]: [IGameSections, string[]] = (

@@ -7,6 +7,13 @@
     @apply bg-secondary;
 }
 
+.btn.btn-ring {
+    @apply border-transparent;
+
+    /* todo: @apply */
+    background: linear-gradient(148deg, #E84E2C 5.28%, #E63F33 31.18%, #E1383D 51.52%, #E02C4B 78.21%);
+}
+
 .btn.btn-circle,
 .btn.btn-link {
     @apply p-0;

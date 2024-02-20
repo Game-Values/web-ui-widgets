@@ -3,5 +3,5 @@ import { Container } from "$ui/layout"
 </script>
 
 <Container>
-    Lots
+    My Lots
 </Container>

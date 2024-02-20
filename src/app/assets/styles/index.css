@@ -2,6 +2,7 @@
 
 @import "_app.css";
 
+@import "_alert.css";
 @import "_badge.css";
 @import "_btn.css";
 @import "_card.css";
@@ -14,5 +15,7 @@
 @import "_input.css";
 @import "_link.css";
 @import "_menu.css";
+@import "_select.css";
 @import "_table.css";
+@import "_textarea.css";
 @import "_tooltip.css";

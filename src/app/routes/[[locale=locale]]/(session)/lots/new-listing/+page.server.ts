@@ -1,17 +1,10 @@
 import type { IGame } from "$schema/api"
-import type { IRouteQuery } from "$types"
 import type { ILotNewListingPageData } from "~/pages/lot"
 
-export function load({ locals, url }): ILotNewListingPageData {
-    let { gameId }: IRouteQuery = url.searchParams.toJSON()
-
-    let gamePromise: Promise<IGame | undefined> = (
-        gameId
-            ? locals.api.readGameApiV1GamesGameIdGet(gameId)
-            : Promise.resolve(undefined)
-    )
+export function load({ locals }): ILotNewListingPageData {
+    let gamesPromise: Promise<IGame[]> = locals.api.readAllGamesApiV1GamesGet({ page: 0 })
 
     return {
-        pagePromise: Promise.all([gamePromise]),
+        pagePromise: Promise.all([gamesPromise]),
     }
 }

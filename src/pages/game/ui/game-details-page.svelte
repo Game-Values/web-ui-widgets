@@ -5,13 +5,16 @@ import type { IGameSections } from "~/entities/game"
 import { onDestroy, onMount } from "svelte"
 
 import { GameSectionsList, useGame } from "~/entities/game"
+import { LotsFilters } from "~/features/lot"
 import { GameInfo } from "~/widgets/game"
-import { LotsFilters, LotsTable } from "~/widgets/lot"
+import { LotsTable } from "~/widgets/lot"
 
 import { useBackground } from "$model"
 import { LazyPromise } from "$ui/actions"
-import { SearchInput, Toggle } from "$ui/data"
+import { Input, Toggle } from "$ui/data"
 import { Grid, GridCol } from "$ui/layout"
+
+import IconMagnifyingGlass from "virtual:icons/heroicons/magnifying-glass"
 
 interface $$Props {
     game: IGame
@@ -49,10 +52,16 @@ export {
         align="center"
         span={6}
     >
-        <SearchInput
+        <Input
+            class="w-full"
             placeholder="Search Lots"
             placement="end"
-        />
+            type="search"
+        >
+            <svelte:fragment slot="icon">
+                <IconMagnifyingGlass />
+            </svelte:fragment>
+        </Input>
     </GridCol>
 
     <GridCol

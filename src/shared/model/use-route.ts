@@ -1,4 +1,4 @@
-import type { IRouteParams, IRouteUrl } from "$types"
+import type { IRouteParams, IRouteQuery, IRouteUrl } from "$types"
 import type { Readable } from "svelte/store"
 
 import { isObject, isString } from "lodash-es"
@@ -11,6 +11,7 @@ type IUseRoute = {
     route: Readable<string>
     routeActive: Readable<boolean>
     routeParams: Readable<IRouteParams>
+    routeQuery: Readable<IRouteQuery>
     routeRequiredAuth: Readable<boolean>
 }
 
@@ -37,6 +38,8 @@ export function useRoute(urlOrParams?: IRouteParams | IRouteUrl, params?: IRoute
         ),
 
         routeParams: derived(page, ($page: App.Page): IRouteParams => $page.params),
+
+        routeQuery: derived(page, ($page: App.Page): IRouteParams => Object.fromEntries($page.url.searchParams)),
 
         routeRequiredAuth: derived(page, ($page: App.Page): boolean => $page.route.id!.includes("(session)")),
     }

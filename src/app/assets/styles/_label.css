@@ -1,3 +1,54 @@
 .label {
     @apply empty:p-0 empty:invisible;
 }
+
+.label.label-icon {
+    --icon-size: 1.25rem;
+
+    @apply relative;
+}
+
+.label.label-icon .icon {
+    @apply absolute inset-y-2/4;
+    @apply -translate-y-2/4;
+}
+
+.label.label-icon .textarea + .icon {
+    @apply top-6;
+}
+
+.label.label-icon-start .input {
+    @apply pl-[calc(var(--icon-size)+1rem)];
+}
+
+.label.label-icon-start .icon {
+    @apply left-4;
+}
+
+.label.label-icon-start .input.input-sm {
+    @apply pl-[calc(var(--icon-size)+0.5rem)];
+}
+
+.label.label-icon-start .input.input-sm + .icon {
+    @apply left-2;
+}
+
+.label.label-icon-end .input {
+    @apply pr-[calc(var(--icon-size)+1rem)];
+}
+
+.label.label-icon-end .icon {
+    @apply right-4;
+}
+
+.label.label-icon-end .input.input-sm {
+    @apply pr-[calc(var(--icon-size)+0.5rem)];
+}
+
+.label.label-icon-end .input.input-sm + .icon {
+    @apply right-2;
+}
+
+.label.label-icon-end .select + .icon {
+    @apply right-8;
+}

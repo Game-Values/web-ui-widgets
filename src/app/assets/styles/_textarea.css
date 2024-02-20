@@ -1,0 +1,14 @@
+.textarea {
+    @apply px-4;
+    @apply w-full;
+    @apply bg-input;
+    @apply text-inherit;
+}
+
+.textarea.textarea-sm {
+    @apply px-2;
+}
+
+.textarea.textarea-bordered {
+    @apply border-white/[0.04];
+}

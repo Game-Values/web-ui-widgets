@@ -1,5 +1,5 @@
 import type { Api } from "$schema/api"
-import type { ICallable, IKeyOf, IValueOfRecord } from "$types"
+import type { ICallable, ICallableLazy, IKeyOf, IValueOfRecord } from "$types"
 
 import { LRUCache } from "lru-cache"
 
@@ -13,8 +13,8 @@ type ICacheKey = IKeyOf<ICache>
 
 type ICacheVal = IValueOfRecord<ICache>
 
-type IUseCache = {
-    getCache<T extends ICacheVal>(): T
+type IUseCache<T> = {
+    getCache(setter?: ICallable<T> | ICallableLazy<T>): Promise<T> | T | undefined
     setCache(val: ICacheVal): void
 }
 
@@ -27,18 +27,33 @@ onClient((): void => {
     })
 })
 
-export function useCache(key: ICacheKey, defaultSetter?: ICallable<ICacheVal>): IUseCache {
-    let use: IUseCache = {
-        getCache: <T extends ICacheVal>(
-            setter: ICallable<ICacheVal> | undefined = defaultSetter,
-        ): T => {
-            if (!lruCache?.has(key) && setter)
-                use.setCache(setter())
+export function useCache<T extends ICacheVal>(
+    key: ICacheKey,
+    defaultSetter?: ICallable<T> | ICallableLazy<T>,
+): IUseCache<T> {
+    let use: IUseCache<T> = {
+        getCache: (
+            setter: ICallable<T> | ICallableLazy<T> | undefined = defaultSetter,
+        ): Promise<T> | T | undefined => {
+            let cachedValue: T | undefined = lruCache?.get(key) as T | undefined
 
-            return (
-                lruCache?.get(key) ||
-                setter?.()
-            ) as T
+            if (cachedValue)
+                return cachedValue
+
+            let result: Promise<T> | T | undefined = setter?.()
+            if (!result)
+                return undefined
+
+            if (result instanceof Promise)
+                return result.then((val: T): T => {
+                    use.setCache(val)
+
+                    return val
+                })
+
+            use.setCache(result)
+
+            return result
         },
 
         setCache: (val: ICacheVal): void => {
