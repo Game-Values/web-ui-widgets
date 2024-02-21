@@ -1,35 +1,22 @@
 <script lang="ts">
-import type { IGameSections } from "~/entities/game"
+import type { IGameDetailsPageContext } from "~/pages/game"
 
 import { GameSectionBadge } from "~/entities/game"
 
-import { useRoute } from "$model"
-
-interface $$Props {
-    gameSections: IGameSections
-}
+import { useContext } from "$model"
 
 interface $$Slots {
     default: { gameSection: string, gameSectionActive: string }
 }
 
-let gameSections: IGameSections
-
-let { routeParams } = useRoute()
-
-$: gameSectionActive = $routeParams.gameSection || Object.keys(gameSections)[0]
-
-export {
-    gameSections,
-}
+let { context } = useContext<IGameDetailsPageContext>({ gameSections: Object.create(null) })
 </script>
 
 <ul class="flex flex-wrap gap-3">
-    {#each Object.entries(gameSections) as [gameSection, gameSectionCount] (gameSection)}
+    {#each Object.entries($context.gameSections) as [gameSection, gameSectionCount] (gameSection)}
         <li>
             <GameSectionBadge
                 {gameSection}
-                {gameSectionActive}
                 {gameSectionCount}
             />
         </li>

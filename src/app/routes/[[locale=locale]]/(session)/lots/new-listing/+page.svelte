@@ -5,6 +5,10 @@ import { LotNewListingPage } from "~/pages/lot"
 
 import { LazyPromise } from "$ui/actions"
 
+interface $$Props {
+    data: ILotNewListingPageData
+}
+
 export let data: ILotNewListingPageData
 </script>
 

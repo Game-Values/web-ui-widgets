@@ -1,41 +1,24 @@
 <script lang="ts">
-import type { IGame } from "$schema/api"
-import type { IGameSections } from "~/entities/game"
+import type { IGameDetailsPageContext } from "~/pages/game"
 
 import { fetchLotsFilters } from "~/entities/lot"
 
-import { useRoute } from "$model"
+import { useContext } from "$model"
 import { LazyComponent, LazyPromise } from "$ui/actions"
 import { Empty } from "$ui/data"
 
-import IconInformationCircle from "virtual:icons/heroicons/information-circle"
+let { context } = useContext<IGameDetailsPageContext>()
 
-interface $$Props {
-    class?: string
-    game: IGame
-    gameSections: IGameSections
-}
-
-let className: string = ""
-
-let game: IGame
-
-let gameSections: IGameSections
-
-let { routeParams } = useRoute()
-
-$: gameSectionActive = $routeParams.gameSection || Object.keys(gameSections)[0]
-
-$: lotsFiltersPromise = fetchLotsFilters(game, gameSectionActive)
-
-export {
-    className as class,
-    game,
-    gameSections,
-}
+$: lotsFiltersPromise = fetchLotsFilters($context.game, $context.gameSectionActive)
 </script>
 
-<div class="card card-normal bg-white/[0.02] {className}">
+<div
+    class="
+        card card-normal
+        sticky top-4
+        bg-white/[0.02]
+    "
+>
     <div class="card-body gap-y-4">
         <h5 class="card-title">
             Filters

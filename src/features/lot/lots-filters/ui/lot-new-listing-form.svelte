@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { IGame, IItemCreate } from "$schema/api"
+import type { IItemCreate } from "$schema/api"
 import type { ILotsFilter } from "~/entities/lot"
 import type { ILotNewListingPageContext } from "~/pages/lot"
 
@@ -12,26 +12,14 @@ import { useLotsNewListingForm } from "~/features/lot"
 
 import { useContext, useEventDispatcher, useRoute, useWatch } from "$model"
 
-interface $$Props {
-    games: IGame[]
-}
-
 interface $$Events {
     update: CustomEvent<IItemCreate>
 }
 
-let games: IGame[] = []
-
-let { updateContext } = useContext<ILotNewListingPageContext>()
+let { context, updateContext } = useContext<ILotNewListingPageContext>({ gameSections: [], lotsFilters: [] })
 let { dispatchEvent: dispatchUpdateEvent } = useEventDispatcher<IItemCreate>("update")
 let { data, form, setData } = useLotsNewListingForm()
 let { routeQuery } = useRoute()
-
-let lostFilters: ILotsFilter[] = []
-
-let gameSections: string[] = []
-
-let selectedGame: IGame | undefined
 
 useWatch(data, dispatchUpdateEvent)
 
@@ -45,28 +33,24 @@ function update(updatedData?: Partial<IItemCreate>): void {
         gid: $routeQuery.gameId,
     }, updatedData)
 
-    selectedGame = findGameById(games, (resultData.gid || games[0].id)!)
-    if (!selectedGame)
+    updateContext({ game: findGameById($context.games, (resultData.gid || $context.games[0].id)!) })
+    if (!$context.game)
         return
 
-    setData("gid", selectedGame.id!)
-    setData("gname", selectedGame.name)
+    setData("gid", $context.game.id!)
+    setData("gname", $context.game.name)
 
-    fetchGameSections(selectedGame)
-        .then((gameSectionsRaw: string[]) => {
-            gameSections = gameSectionsRaw
-            setData("attributes.type", resultData.attributes!.type || gameSections[0])
+    fetchGameSections($context.game)
+        .then((gameSections: string[]) => {
+            updateContext({ gameSections })
+            setData("attributes.type", resultData.attributes!.type || $context.gameSections[0])
 
             if ($data.attributes.type)
-                fetchLotsFilters(selectedGame!, $data.attributes.type)
-                    .then((lostFiltersRaw: ILotsFilter[]) => lostFilters = lostFiltersRaw)
+                fetchLotsFilters($context.game!, $data.attributes.type)
+                    .then((lotsFilters: ILotsFilter[]) => updateContext({ lotsFilters }))
             else
-                lostFilters = []
+                updateContext({ lotsFilters: [] })
         })
-}
-
-export {
-    games,
 }
 </script>
 
@@ -75,9 +59,7 @@ export {
     use:form
 >
     <LotNewListingFormMain
-        formData={$data}
-        {gameSections}
-        {games}
+        data={$data}
         on:update={e => {
             update(e.detail)
             updateContext({ step: 1 })
@@ -85,13 +67,12 @@ export {
     />
 
     <LotNewListingFormProduct
-        formData={$data}
-        {lostFilters}
+        data={$data}
         on:update={() => updateContext({ step: 2 })}
     />
 
     <LotNewListingFormFinance
-        formData={$data}
+        data={$data}
         on:update={() => updateContext({ step: 3 })}
     />
 

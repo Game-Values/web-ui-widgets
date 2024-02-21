@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { IGame, IItemCreate } from "$schema/api"
+import type { IItemCreate } from "$schema/api"
 import type { ILotNewListingPageContext } from "~/pages/lot"
 
 import { mapFormSelectOption } from "$lib/utils"
@@ -9,23 +9,17 @@ import { Collapse, Empty, Input, Select, Textarea } from "$ui/data"
 import IconInformationCircle from "virtual:icons/heroicons/information-circle"
 
 interface $$Props {
-    formData: IItemCreate
-    games: IGame[]
-    gameSections: string[]
+    data: IItemCreate
 }
 
 interface $$Events {
     update: CustomEvent<Partial<IItemCreate>>
 }
 
-let { updateContext } = useContext<ILotNewListingPageContext>()
+let { context, updateContext } = useContext<ILotNewListingPageContext>()
 let { dispatchEvent: dispatchUpdateEvent } = useEventDispatcher<Partial<IItemCreate>>("update")
 
-export let formData: IItemCreate
-
-export let games: IGame[]
-
-export let gameSections: string[]
+export let data: IItemCreate
 </script>
 
 <Collapse
@@ -36,10 +30,10 @@ export let gameSections: string[]
     <div class="form-control">
         <Select
             name="gid"
-            options={games.map(game => mapFormSelectOption(game, { label: "name", value: "id" }))}
+            options={$context.games.map(game => mapFormSelectOption(game, { label: "name", value: "id" }))}
             placement="end"
             required
-            bind:value={formData.gid}
+            bind:value={data.gid}
             on:select={e => dispatchUpdateEvent({ gid: e.detail.value })}
         >
             <svelte:fragment slot="icon">
@@ -48,14 +42,14 @@ export let gameSections: string[]
         </Select>
     </div>
 
-    {#if gameSections.length}
+    {#if $context.gameSections.length}
         <div class="form-control">
             <Select
                 name="attributes.type"
-                options={gameSections.map(gameSection => ({ label: gameSection, value: gameSection }))}
+                options={$context.gameSections.map(gameSection => ({ label: gameSection, value: gameSection }))}
                 placement="end"
                 required
-                bind:value={formData.attributes.type}
+                bind:value={data.attributes.type}
                 on:select={e => dispatchUpdateEvent({ attributes: { type: e.detail.value } })}
             >
                 <svelte:fragment slot="icon">
@@ -70,7 +64,7 @@ export let gameSections: string[]
                 placeholder="Item name"
                 placement="end"
                 required
-                bind:value={formData.name}
+                bind:value={data.name}
                 on:input={e => dispatchUpdateEvent({ name: e.detail?.toString() })}
             >
                 <svelte:fragment slot="icon">
@@ -87,7 +81,7 @@ export let gameSections: string[]
                 placement="end"
                 required
                 rows={4}
-                bind:value={formData.attributes.description}
+                bind:value={data.attributes.description}
                 on:input={e => dispatchUpdateEvent({ attributes: { description: e.detail } })}
             >
                 <svelte:fragment slot="icon">

@@ -5,8 +5,6 @@ import type { EventDispatcher } from "svelte"
 import { debounce, merge } from "lodash-es"
 import { createEventDispatcher } from "svelte"
 
-import { DEBOUNCE_TIMEOUT } from "$lib/consts"
-
 type IUseEvent<T> = {
     dispatchEvent: DebouncedFunc<(context?: T) => Promise<boolean>>
 }
@@ -35,6 +33,6 @@ export function useEventDispatcher<T = never>(
             })
 
             return dispatchEvent(event, merge(context, callbackContext).valueOf())
-        }, DEBOUNCE_TIMEOUT),
+        }),
     }
 }

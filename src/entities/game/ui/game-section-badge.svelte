@@ -1,27 +1,26 @@
 <script lang="ts">
+import type { IGameDetailsPageContext } from "~/pages/game"
+
 import { startCase } from "lodash-es"
 
-import { useRoute } from "$model"
+import { useContext, useRoute } from "$model"
 
 interface $$Props {
     gameSection: string
-    gameSectionActive: string
     gameSectionCount: number
 }
 
 let gameSection: string
 
-let gameSectionActive: string
-
 let gameSectionCount: number
 
+let { context } = useContext<IGameDetailsPageContext>()
 let { route } = useRoute({ gameSection })
 
-$: active = gameSection === gameSectionActive
+$: active = gameSection === $context.gameSectionActive
 
 export {
     gameSection,
-    gameSectionActive,
     gameSectionCount,
 }
 </script>

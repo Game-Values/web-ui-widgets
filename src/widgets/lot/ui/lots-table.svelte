@@ -1,38 +1,21 @@
 <script lang="ts">
-import type { IGame } from "$schema/api"
-import type { IGameSections } from "~/entities/game"
+import type { IGameDetailsPageContext } from "~/pages/game"
 
 import { useFacets } from "~/entities/facets"
 import { LotsTableRow, useLots } from "~/entities/lot"
 
-import { useRoute } from "$model"
+import { useContext } from "$model"
 import { LazyPromise } from "$ui/actions"
 import { Empty } from "$ui/data"
 
-import IconInformationCircle from "virtual:icons/heroicons/information-circle"
-
-interface $$Props {
-    game: IGame
-    gameSections: IGameSections
-}
-
-let game: IGame
-
-let gameSections: IGameSections
-
+let { context } = useContext<IGameDetailsPageContext>()
 let { searchLots } = useLots()
-let { routeParams } = useRoute()
 
-$: useFacetsPromise = useFacets(
-    searchLots(game.id!, {
-        type: $routeParams.gameSection || Object.keys(gameSections)[0],
-    }),
+$: useFacetsPromise = (
+    useFacets(
+        searchLots($context.game.id!, { type: $context.gameSectionActive }),
+    )
 )
-
-export {
-    game,
-    gameSections,
-}
 </script>
 
 <div class="gap-y-4 flex flex-col">

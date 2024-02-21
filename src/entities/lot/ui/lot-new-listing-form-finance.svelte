@@ -7,7 +7,7 @@ import { useContext, useEventDispatcher } from "$model"
 import { Collapse, Input } from "$ui/data"
 
 interface $$Props {
-    formData: IItemCreate
+    data: IItemCreate
 }
 
 interface $$Events {
@@ -17,7 +17,7 @@ interface $$Events {
 let { updateContext } = useContext<ILotNewListingPageContext>()
 let { dispatchEvent: dispatchUpdateEvent } = useEventDispatcher<Partial<IItemCreate>>("update")
 
-export let formData: IItemCreate
+export let data: IItemCreate
 </script>
 
 <Collapse
@@ -31,7 +31,7 @@ export let formData: IItemCreate
             placement="end"
             required
             type="number"
-            bind:value={formData.attributes.amount}
+            bind:value={data.attributes.amount}
             on:input={e => dispatchUpdateEvent({ attributes: { amount: e.detail } })}
         />
 
@@ -41,11 +41,11 @@ export let formData: IItemCreate
             placement="end"
             required
             type="number"
-            bind:value={formData.attributes.price}
+            bind:value={data.attributes.price}
             on:input={e => dispatchUpdateEvent({ attributes: { price: e.detail } })}
         >
             <svelte:fragment slot="icon">
-                {CurrencySign[formData.attributes.currency || Currency.EUR]}
+                {CurrencySign[data.attributes.currency || Currency.EUR]}
             </svelte:fragment>
         </Input>
     </div>

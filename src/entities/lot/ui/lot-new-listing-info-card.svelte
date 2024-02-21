@@ -1,21 +1,14 @@
 <script lang="ts">
-import type { IGame } from "$schema/api"
+import type { ILotNewListingPageContext } from "~/pages/lot"
 
 import { useGame } from "~/entities/game"
 
+import { useContext } from "$model"
 import { EnhancedImage } from "$ui/data"
 
-interface $$Props {
-    game?: IGame
-}
+let { context } = useContext<ILotNewListingPageContext>()
 
-let game: IGame | undefined = undefined
-
-$: gameIcon = game && useGame(game).gameIcon
-
-export {
-    game,
-}
+$: gameIcon = $context.game && useGame($context.game).gameIcon
 </script>
 
 <div class="card card-bordered overflow-hidden backdrop-blur-2xl">

@@ -1,6 +1,6 @@
 import type { Readable, Writable } from "svelte/store"
 
-import { merge } from "lodash-es"
+import { merge, mergeWith } from "lodash-es"
 import { getContext, setContext } from "svelte"
 import { derived, get, writable } from "svelte/store"
 
@@ -20,7 +20,9 @@ function contextFactory<T>(contextKey: string): Writable<T> {
 }
 
 // todo: to all pages instead of deep props injection
-export function useContext<T>(initialContext: Partial<T> = Object.create(null)): IUseContext<T> {
+export function useContext<T = unknown>(
+    initialContext: Partial<T> = Object.create(null),
+): IUseContext<T> {
     let { route } = useRoute()
 
     let context: Writable<T> = contextFactory<T>(get(route))
@@ -32,7 +34,11 @@ export function useContext<T>(initialContext: Partial<T> = Object.create(null)):
 
         updateContext: (updatedContext: Partial<T>): void => (
             context.set(
-                merge(get(use.context), updatedContext),
+                // eslint-disable-next-line consistent-return
+                mergeWith(get(use.context), updatedContext, (oldVal: T, newVal: Partial<T>): any => {
+                    if (Array.isArray(oldVal))
+                        return newVal
+                }),
             )
         ),
     }

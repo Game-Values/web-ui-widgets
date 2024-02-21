@@ -1,48 +1,39 @@
 <script lang="ts">
-import type { IGame } from "$schema/api"
+import type { IGameDetailsPageContext } from "~/pages/game"
 
 import { AuthOnly } from "~/entities/auth"
-import { GameInfoCard } from "~/entities/game"
+import { GameInfoCard, GameSectionsList } from "~/entities/game"
 import { GameLikeToggle } from "~/features/game"
 
-import { useRoute } from "$model"
-
-interface $$Props {
-    game: IGame
-}
+import { useContext, useRoute } from "$model"
 
 interface $$Slots {
     default: NonNullable<unknown>
 }
 
-let game: IGame
-
+let { context } = useContext<IGameDetailsPageContext>()
 let { routeParams } = useRoute()
 
 $: lotsCreateRoute = (
     useRoute("/lots/new-listing", {
-        gameId: game.id,
+        gameId: $context.game.id,
         gameSection: $routeParams.gameSection,
     }).route
 )
-
-export {
-    game,
-}
 </script>
 
-<GameInfoCard {game}>
+<GameInfoCard>
     <svelte:fragment slot="gameLikeToggle">
         <AuthOnly>
             <GameLikeToggle
                 class="tooltip-left"
-                {game}
+                game={$context.game}
             />
         </AuthOnly>
     </svelte:fragment>
 
     <svelte:fragment slot="gameSections">
-        <slot />
+        <GameSectionsList />
     </svelte:fragment>
 
     <svelte:fragment slot="gameAddSection">

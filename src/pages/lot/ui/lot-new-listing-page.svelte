@@ -15,23 +15,22 @@ interface $$Props {
     games: IGame[]
 }
 
-let { setBackground, unsetBackground } = useBackground({ src: "images/bg/new-listing-bg.png" })
+let games: IGame[]
 
-useContext<ILotNewListingPageContext>({ step: 1 })
+let { context, updateContext } = useContext<ILotNewListingPageContext>({ games, step: 1 })
+let { setBackground, unsetBackground } = useBackground({ src: "images/bg/new-listing-bg.png" })
 
 onMount(setBackground)
 
 onDestroy(unsetBackground)
 
-let game: IGame | undefined = undefined
-
-let games: IGame[]
-
-async function fetchGame(e: CustomEvent<IGame>): Promise<void> {
-    if (!e.detail.gid || e.detail.gid === (game?.gid || game?.id))
+function fetchGame(e: CustomEvent<IGame>): void {
+    if (!e.detail.gid || e.detail.gid === ($context.game?.gid || $context.game?.id))
         return
 
-    game = await useGame(e.detail).fetchGame()
+    useGame(e.detail)
+        .fetchGame()
+        .then((game: IGame): void => updateContext({ game }))
 }
 
 export {
@@ -41,14 +40,11 @@ export {
 
 <Grid>
     <GridCol>
-        <LotNewListingInfoCard {game} />
+        <LotNewListingInfoCard />
     </GridCol>
 
     <GridCol span={10}>
-        <LotNewListingForm
-            {games}
-            on:update={fetchGame}
-        />
+        <LotNewListingForm on:update={fetchGame} />
     </GridCol>
 
     <GridCol

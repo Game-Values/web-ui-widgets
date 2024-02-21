@@ -1,9 +1,7 @@
 <script lang="ts">
-import type { IGame } from "$schema/api"
+import type { IGameDetailsPageContext } from "~/pages/game"
 
-interface $$Props {
-    game: IGame
-}
+import { useContext } from "$model"
 
 interface $$Slots {
     gameAddSection: NonNullable<unknown>
@@ -12,22 +10,20 @@ interface $$Slots {
     gameSections: NonNullable<unknown>
 }
 
-export let game: IGame
+let { context } = useContext<IGameDetailsPageContext>()
 </script>
 
 <div class="card card-bordered backdrop-blur-2xl">
     <div class="card-body p-8 gap-y-8">
         <h1 class="card-title font-bold text-4xl items-center justify-between">
-            {game.name}
+            {$context.game.name}
 
             <slot name="gameLikeToggle" />
         </h1>
 
-        {#if game.attributes?.description}
-            <p>
-                {@html game.attributes.description}
-            </p>
-        {/if}
+        <p>
+            {@html $context.game.attributes.description}
+        </p>
 
         <div class="card-actions flex-nowrap justify-between">
             <div class="flex-auto">

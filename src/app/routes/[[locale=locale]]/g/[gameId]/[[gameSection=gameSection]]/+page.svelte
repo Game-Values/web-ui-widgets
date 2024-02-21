@@ -5,6 +5,10 @@ import { GameDetailsPage } from "~/pages/game"
 
 import { LazyPromise } from "$ui/actions"
 
+interface $$Props {
+    data: IGameDetailsPageData
+}
+
 export let data: IGameDetailsPageData
 </script>
 

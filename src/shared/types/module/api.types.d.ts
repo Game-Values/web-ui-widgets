@@ -23,7 +23,7 @@ declare module "$schema/api" {
     }
 
     export type IGameAttributes = {
-        description?: string
+        description: string
     }
 
     export type IItemAttributes = IItemAttributesRaw & {
