@@ -21,6 +21,7 @@ export let data: IItemCreate
 </script>
 
 <Collapse
+    contentClass="flex flex-col gap-y-4"
     title="Finance"
     on:toggle={e => e.detail && updateContext({ step: 3 })}
 >

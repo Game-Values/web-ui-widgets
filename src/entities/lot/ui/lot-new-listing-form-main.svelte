@@ -23,6 +23,7 @@ export let data: IItemCreate
 </script>
 
 <Collapse
+    contentClass="flex flex-col gap-y-4"
     opened
     title="Main"
     on:toggle={e => e.detail && updateContext({ step: 1 })}

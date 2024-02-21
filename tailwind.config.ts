@@ -50,7 +50,7 @@ export default {
             "error": "#D8222F",
             "error-content": "#FFFFFF",
 
-            fontSize: "1.125rem",
+            fontSize: "1rem",
         }),
     },
 

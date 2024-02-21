@@ -29,7 +29,7 @@ export {
 }
 </script>
 
-<nav>
+<nav class="h-full">
     <ul
         class="
             tabs tabs-bordered

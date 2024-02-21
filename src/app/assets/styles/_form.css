@@ -13,16 +13,9 @@
     @apply flex-row;
 }
 
-.form .form-control > * {
+.form .form-control > .label {
+    @apply p-0;
     @apply w-full;
-}
-
-.form .form-control-row > * {
-    @apply flex-1;
-}
-
-.form .form-control + * {
-    @apply mt-4;
 }
 
 .form .menu {
@@ -35,8 +28,4 @@
 
 .form .menu .form-control .label {
     @apply p-2;
-}
-
-.form .menu .form-control + * {
-    @apply mt-0;
 }

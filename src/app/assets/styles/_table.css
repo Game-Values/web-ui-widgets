@@ -17,6 +17,10 @@
     @apply border border-solid border-white/[0.02];
 }
 
+.table.table-xs :not(thead):not(tfoot) tr {
+    @apply text-sm;
+}
+
 .table.table-xs :where(th) {
     @apply p-4;
 }

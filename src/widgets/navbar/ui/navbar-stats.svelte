@@ -38,7 +38,15 @@ let stats: IStat[] = [
 ]
 </script>
 
-<ul class="stats gap-x-4 text-sm overflow-hidden">
+<ul
+    class="
+        stats
+        relative top-0.5
+        gap-x-4
+        text-sm
+        overflow-hidden
+    "
+>
     {#each stats as stat (stat.label)}
         <li class="stat p-0 gap-x-3 border-transparent">
             <span class="stat-figure col-start-1 text-accent text-3xl">

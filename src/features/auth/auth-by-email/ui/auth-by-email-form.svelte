@@ -28,7 +28,7 @@ let { form } = useAuthByEmailForm()
         />
     </div>
 
-    <div class="form-control flex-row justify-between">
+    <div class="form-control form-control-row justify-between">
         <button
             class="btn btn-primary"
             type="submit"
