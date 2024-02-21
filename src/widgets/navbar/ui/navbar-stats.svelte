@@ -8,16 +8,10 @@ import IconMoney from "virtual:icons/common/money"
 import IconUser from "virtual:icons/common/user"
 import IconUsers from "virtual:icons/common/users"
 
-interface $$Props {
-    class?: string
-}
-
 type IStat = Pick<IRouteWithIcon, "icon"> & Pick<IRouteWithLabel, "label"> & {
     iconClass?: string
     value: number
 }
-
-let className: string = ""
 
 let stats: IStat[] = [
     {
@@ -42,13 +36,9 @@ let stats: IStat[] = [
         value: 1_758_904,
     },
 ]
-
-export {
-    className as class,
-}
 </script>
 
-<ul class="stats gap-x-4 overflow-hidden {className}">
+<ul class="stats gap-x-4 text-sm overflow-hidden">
     {#each stats as stat (stat.label)}
         <li class="stat p-0 gap-x-3 border-transparent">
             <span class="stat-figure col-start-1 text-accent text-3xl">
@@ -62,9 +52,9 @@ export {
                 {formatNum(stat.value)}
             </span>
 
-            <span class="stat-title col-start-2 capitalize text-sm">
+            <small class="stat-title col-start-2 capitalize">
                 {stat.label}
-            </span>
+            </small>
         </li>
     {/each}
 </ul>

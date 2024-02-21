@@ -3,7 +3,7 @@
 }
 
 .label.label-icon {
-    --icon-size: 1.25rem;
+    --icon-size: theme("fontSize.base");
 
     @apply relative;
 }
@@ -51,6 +51,10 @@
 
 .label.label-icon-end .input[type=number] {
     @apply pr-4;
+}
+
+.label.label-icon-end .input[type=number] + .icon {
+    @apply right-6;
 }
 
 .label.label-icon-end .select + .icon {

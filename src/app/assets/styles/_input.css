@@ -2,7 +2,6 @@
     @apply px-4;
     @apply w-full;
     @apply bg-input;
-    @apply text-inherit;
 }
 
 .input.input-sm {

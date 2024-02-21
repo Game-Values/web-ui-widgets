@@ -60,10 +60,16 @@ export {
 </script>
 
 <label
-    class="label label-icon {className}"
+    class="indicator label label-icon {className}"
     class:label-icon-end={$$slots.icon && placement === "end"}
     class:label-icon-start={$$slots.icon && placement === "start"}
 >
+    {#if required}
+        <span class="indicator-item badge badge-warning translate-x-0">
+            Required
+        </span>
+    {/if}
+
     <input
         {name}
         class="input {inputClass}"

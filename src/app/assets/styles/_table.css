@@ -1,12 +1,12 @@
 .table {
-    --rounded-box: theme("space.4");
+    --rounded-box: theme("borderRadius.2xl");
 
     @apply table-fixed;
     @apply overflow-hidden;
 }
 
 .table :where(thead, tfoot) {
-    @apply text-inherit font-bold;
+    @apply font-bold;
 }
 
 .table :where(th) {
@@ -23,10 +23,6 @@
 
 .table.table-xs :where(td) {
     @apply px-4;
-}
-
-.table.table-xs :not(thead):not(tfoot) tr {
-    @apply text-inherit;
 }
 
 .table tr.active,

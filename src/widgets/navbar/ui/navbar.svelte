@@ -2,7 +2,7 @@
 import { AuthNavbarButton, AuthOnly } from "~/entities/auth"
 import { RegistrationNavbarButton } from "~/entities/registration"
 import { UserNavbarMenu } from "~/entities/user"
-import { NavbarLogo, NavbarStats, NavbarTab, NavbarTabs } from "~/widgets/navbar"
+import { NavbarLogo, NavbarStats, NavbarTabs } from "~/widgets/navbar"
 
 import { Input } from "$ui/data"
 import { Container, Divider } from "$ui/layout"
@@ -35,16 +35,11 @@ import IconMagnifyingGlass from "virtual:icons/heroicons/magnifying-glass"
         </svelte:fragment>
     </Input>
 
-    <NavbarTabs
-        class="mt-px"
-        let:tab
-    >
-        <NavbarTab {tab} />
-    </NavbarTabs>
+    <NavbarTabs class="mt-px" />
 
     <Divider horizontal />
 
-    <NavbarStats class="relative top-0.5" />
+    <NavbarStats />
 
     <Divider horizontal />
 

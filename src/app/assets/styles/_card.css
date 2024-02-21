@@ -1,5 +1,5 @@
 .card {
-    --rounded-box: theme("space.4");
+    --rounded-box: theme("borderRadius.2xl");
 
     @apply w-full;
 }
@@ -9,7 +9,7 @@
 }
 
 .card .card-body {
-    --padding-card: 0;
+    --padding-card: theme("padding.0");
 }
 
 .card.card-normal .card-title {
@@ -17,5 +17,5 @@
 }
 
 .card.card-normal .card-body {
-    --padding-card: theme("space.4");
+    --padding-card: theme("padding.4");
 }

@@ -13,7 +13,7 @@ interface $$Slots {
 let { context } = useContext<IGameDetailsPageContext>()
 </script>
 
-<div class="card card-bordered backdrop-blur-2xl">
+<div class="card glass glass-2xl">
     <div class="card-body p-8 gap-y-8">
         <h1 class="card-title font-bold text-4xl items-center justify-between">
             {$context.game.name}

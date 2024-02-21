@@ -36,11 +36,26 @@ const PAGES = {
   "/sales": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
     return `${params?.locale ? `/${params?.locale}`: ''}/sales`
   },
+  "/about": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/about`
+  },
+  "/ai-assistant": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/ai-assistant`
+  },
   "/blog": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
     return `${params?.locale ? `/${params?.locale}`: ''}/blog`
   },
+  "/feedback": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/feedback`
+  },
   "/g/[gameId]": (params: { gameId: (string | number), locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]), gameSection?: (Parameters<typeof import('../../params/gameSection.ts').match>[0]) }) => {
     return `${params?.locale ? `/${params?.locale}`: ''}/g/${params.gameId}${params?.gameSection ? `/${params?.gameSection}`: ''}`
+  },
+  "/help": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/help`
+  },
+  "/job": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/job`
   },
   "/promotions": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
     return `${params?.locale ? `/${params?.locale}`: ''}/promotions`
@@ -71,7 +86,14 @@ const ACTIONS = {
  * LINKS
  */
 const LINKS = {
-  
+  "copyright": `https://creativecommons.org/licenses/by-nc/3.0`,
+  "discord": `https://discord.gg/dTzhKUSb3y`,
+  "facebook": `https://facebook.com/GameValues`,
+  "instagram": `https://www.instagram.com/gamevalues`,
+  "telegramChat": `https://t.me/gamevalues_chat`,
+  "telegramNews": `https://t.me/gamevalues_news`,
+  "twitch": `https://www.twitch.tv/gamevalues`,
+  "youtube": `https://www.youtube.com/channel/UCLVw1bjWVYUjRW8oBFpwx8Q`
 }
 
 type ParamValue = string | number | undefined
@@ -174,9 +196,9 @@ export function route<T extends keyof AllTypes>(key: T, ...params: any[]): strin
 * ```
 */
 export type KIT_ROUTES = {
-  PAGES: { '/': 'locale', '/favorites': 'locale', '/funds': 'locale', '/lots': 'locale', '/lots/new-listing': 'locale', '/messages': 'locale', '/purchases': 'locale', '/referral': 'locale', '/sales': 'locale', '/blog': 'locale', '/g/[gameId]': 'gameId' | 'locale' | 'gameSection', '/promotions': 'locale', '/top-10': 'locale', '/u/[userId]': 'userId' | 'locale' }
+  PAGES: { '/': 'locale', '/favorites': 'locale', '/funds': 'locale', '/lots': 'locale', '/lots/new-listing': 'locale', '/messages': 'locale', '/purchases': 'locale', '/referral': 'locale', '/sales': 'locale', '/about': 'locale', '/ai-assistant': 'locale', '/blog': 'locale', '/feedback': 'locale', '/g/[gameId]': 'gameId' | 'locale' | 'gameSection', '/help': 'locale', '/job': 'locale', '/promotions': 'locale', '/top-10': 'locale', '/u/[userId]': 'userId' | 'locale' }
   SERVERS: Record<string, never>
   ACTIONS: Record<string, never>
-  LINKS: Record<string, never>
+  LINKS: { 'copyright': never, 'discord': never, 'facebook': never, 'instagram': never, 'telegramChat': never, 'telegramNews': never, 'twitch': never, 'youtube': never }
   Params: { locale: never, gameId: never, gameSection: never, userId: never }
 }

@@ -1,7 +1,5 @@
 .tabs .tab {
-    --tab-padding: theme("space.2");
-
-    @apply text-inherit;
+    --tab-padding: theme("padding.2");
 }
 
 .tabs.tabs-bordered .tab {

@@ -12,13 +12,11 @@ interface $$Slots {
 let { context } = useContext<IGameDetailsPageContext>({ gameSections: Object.create(null) })
 </script>
 
-<ul class="flex flex-wrap gap-3">
+<nav class="gap-3 flex flex-wrap">
     {#each Object.entries($context.gameSections) as [gameSection, gameSectionCount] (gameSection)}
-        <li>
-            <GameSectionBadge
-                {gameSection}
-                {gameSectionCount}
-            />
-        </li>
+        <GameSectionBadge
+            {gameSection}
+            {gameSectionCount}
+        />
     {/each}
-</ul>
+</nav>

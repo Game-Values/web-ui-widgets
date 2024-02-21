@@ -1,4 +1,4 @@
-import type { ICallableLazy } from "$types/helpers.types"
+import type { ICallableLazy } from "$types"
 
 export type IEnhanced = {
     img: IEnhancedImage

@@ -1,1 +1,6 @@
+export { default as FooterCopyright } from "~/widgets/footer/ui/footer-copyright.svelte"
+export { default as FooterLink } from "~/widgets/footer/ui/footer-link.svelte"
+export { default as FooterLinks } from "~/widgets/footer/ui/footer-links.svelte"
+export { default as FooterLogo } from "~/widgets/footer/ui/footer-logo.svelte"
+export { default as FooterPolicy } from "~/widgets/footer/ui/footer-policy.svelte"
 export { default as Footer } from "~/widgets/footer/ui/footer.svelte"

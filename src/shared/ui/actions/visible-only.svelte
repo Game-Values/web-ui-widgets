@@ -23,10 +23,12 @@ let observer: IntersectionObserver | undefined
 
 let tag: IKeyOf<SvelteHTMLElements> = "div"
 
+let visible: boolean = false
+
 onMount((): void => {
     if (container)
         observer = onElementVisible(container, (): void => {
-            container!.style.display = "contents"
+            visible = true
             observer?.disconnect()
         })
 })
@@ -43,6 +45,9 @@ export {
     this={tag}
     bind:this={container}
     class={className}
+    class:contents={visible}
 >
-    <slot />
+    {#if visible}
+        <slot />
+    {/if}
 </svelte:element>

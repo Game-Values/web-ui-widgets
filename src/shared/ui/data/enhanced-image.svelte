@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-import type { IEnhanced, IEnhancedImages, IEnhancedImageSize } from "$types/enhanced.types"
+import type { IEnhanced, IEnhancedImages, IEnhancedImageSize } from "$types"
 
 const ENHANCED_IMAGES: IEnhancedImages = {
     lg: import.meta.glob<IEnhanced>("~/app/assets/images/**/*.png", {
@@ -76,7 +76,7 @@ import type { HTMLImgAttributes } from "svelte/elements"
 import { isString } from "lodash-es"
 
 import { extractLazyModule } from "$lib/helpers"
-import { LazyPromise } from "$ui/actions"
+import { LazyPromise, VisibleOnly } from "$ui/actions"
 
 interface $$Props extends HTMLImgAttributes {
     class?: string
@@ -107,40 +107,42 @@ export {
 }
 </script>
 
-<LazyPromise
-    promise={enhancedImagePromise}
-    let:value={enhancedImage}
->
-    <picture class={className}>
-        {#if isString(enhancedImage)}
-            <img
-                {alt}
-                loading={lazy ? "lazy" : "eager"}
-                src={enhancedImage}
-            />
-        {:else}
-            {#each Object.entries(enhancedImage.sources) as [type, srcset] (type)}
-                <source
-                    sizes={ENHANCED_IMAGES_SIZES[size]}
-                    {srcset}
-                    type="image/{type}"
+<VisibleOnly>
+    <LazyPromise
+        promise={enhancedImagePromise}
+        let:value={enhancedImage}
+    >
+        <picture class={className}>
+            {#if isString(enhancedImage)}
+                <img
+                    {alt}
+                    loading={lazy ? "lazy" : "eager"}
+                    src={enhancedImage}
                 />
-            {/each}
+            {:else}
+                {#each Object.entries(enhancedImage.sources) as [type, srcset] (type)}
+                    <source
+                        sizes={ENHANCED_IMAGES_SIZES[size]}
+                        {srcset}
+                        type="image/{type}"
+                    />
+                {/each}
 
-            <img
-                {alt}
-                height={enhancedImage.img.h}
-                loading={lazy ? "lazy" : "eager"}
-                src={enhancedImage.img.src}
-                width={enhancedImage.img.w}
-            />
-        {/if}
-    </picture>
-</LazyPromise>
+                <img
+                    {alt}
+                    height={enhancedImage.img.h}
+                    loading={lazy ? "lazy" : "eager"}
+                    src={enhancedImage.img.src}
+                    width={enhancedImage.img.w}
+                />
+            {/if}
+        </picture>
+    </LazyPromise>
+</VisibleOnly>
 
 <style>
 picture {
-    @apply w-[var(--image-width,100%)] h-[var(--image-height,auto)];
+    @apply w-[var(--image-width,theme("width.full"))] h-[var(--image-height,theme("width.auto"))];
     @apply max-w-full max-h-full;
     @apply flex items-center justify-center;
 }

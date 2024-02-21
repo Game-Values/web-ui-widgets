@@ -49,10 +49,16 @@ export {
 </script>
 
 <label
-    class="label label-icon {className}"
+    class="indicator label label-icon {className}"
     class:label-icon-end={placement === "end"}
     class:label-icon-start={placement === "start"}
 >
+    {#if required}
+        <span class="indicator-item badge badge-warning translate-x-0">
+            Required
+        </span>
+    {/if}
+
     <select
         {name}
         class="select select-bordered {selectClass}"

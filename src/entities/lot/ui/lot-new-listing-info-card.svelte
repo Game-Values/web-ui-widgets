@@ -11,7 +11,7 @@ let { context } = useContext<ILotNewListingPageContext>()
 $: gameIcon = $context.game && useGame($context.game).gameIcon
 </script>
 
-<div class="card card-bordered overflow-hidden backdrop-blur-2xl">
+<div class="card overflow-hidden glass glass-xs">
     <div class="card-body">
         <div class="hero">
             <div class="hero-content p-0 justify-between">

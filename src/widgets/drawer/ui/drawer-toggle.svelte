@@ -13,7 +13,7 @@ let { setStorage: toggleDrawer, storageValue: drawerOpened } = useStorage("drawe
     class:justify-center={!$drawerOpened}
 >
     {#if $drawerOpened}
-        <b class="text-xl uppercase">
+        <b class="uppercase">
             Menu
         </b>
     {/if}

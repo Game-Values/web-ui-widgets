@@ -44,6 +44,16 @@ export default defineConfig({
         sveltekit(),
         kitRoutes({
             generated_file_path: join("src", "shared", "schema", "routes.ts"),
+            LINKS: {
+                copyright: "https://creativecommons.org/licenses/by-nc/3.0",
+                discord: "https://discord.gg/dTzhKUSb3y",
+                facebook: "https://facebook.com/GameValues",
+                instagram: "https://www.instagram.com/gamevalues",
+                telegramChat: "https://t.me/gamevalues_chat",
+                telegramNews: "https://t.me/gamevalues_news",
+                twitch: "https://www.twitch.tv/gamevalues",
+                youtube: "https://www.youtube.com/channel/UCLVw1bjWVYUjRW8oBFpwx8Q",
+            },
             PAGES: {
                 "/lots/new-listing": {
                     explicit_search_params: {

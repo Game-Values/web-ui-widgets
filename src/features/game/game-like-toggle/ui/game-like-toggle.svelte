@@ -47,7 +47,6 @@ export {
         btn btn-circle btn-ghost btn-sm
         swap swap-rotate
         tooltip
-        text-lg
         {className}
     "
     data-tip={`${$gameLiked ? "Dislike" : "Like"} ${game.name}`}
@@ -62,7 +61,7 @@ export {
         class="
             swap-on
             absolute
-            text-negative-light
+            text-lg text-negative-light
         "
     />
 
@@ -70,7 +69,7 @@ export {
         class="
             swap-off
             absolute
-            text-info
+            text-lg text-info
         "
     />
 </label>

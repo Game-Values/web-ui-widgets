@@ -1,4 +1,7 @@
 <script lang="ts">
+import type { IKeyOf } from "$types"
+import type { SvelteHTMLElements } from "svelte/elements"
+
 interface $$Props {
     align?: IGridColAlign
     class?: string
@@ -7,6 +10,7 @@ interface $$Props {
     md?: IGridColSpan
     sm?: IGridColSpan
     span?: IGridColSpan
+    tag?: IKeyOf<SvelteHTMLElements>
     xl?: IGridColSpan
 }
 
@@ -24,13 +28,15 @@ let className: string = ""
 
 let justify: IGridColAlign = "start"
 
-let sm: IGridColSpan | undefined = undefined
+let lg: IGridColSpan | undefined = undefined
 
 let md: IGridColSpan | undefined = undefined
 
+let sm: IGridColSpan | undefined = undefined
+
 let span: IGridColSpan = 12
 
-let lg: IGridColSpan | undefined = undefined
+let tag: IKeyOf<SvelteHTMLElements> = "div"
 
 let xl: IGridColSpan | undefined = undefined
 
@@ -42,12 +48,14 @@ export {
     md,
     sm,
     span,
+    tag,
     xl,
 }
 </script>
 
-<div
-    class="flex {className}"
+<svelte:element
+    this={tag}
+    class="w-full flex {className}"
 
     class:col-span-1={span === 1}
     class:col-span-10={span === 10}
@@ -123,4 +131,4 @@ export {
     class:xl:col-span-9={xl === 9}
 >
     <slot />
-</div>
+</svelte:element>

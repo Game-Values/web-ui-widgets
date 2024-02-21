@@ -31,6 +31,7 @@ export {
         gap-x-1.5
         border-white/[0.12]
         capitalize text-nowrap
+        [&:not(.badge-info)]:bg-white/[0.12]
     "
     class:badge-info={active}
     class:badge-outline={!active}

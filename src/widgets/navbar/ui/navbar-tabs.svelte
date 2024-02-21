@@ -1,12 +1,10 @@
 <script lang="ts">
 import type { IRouteWithLabel } from "$types"
 
+import { NavbarTab } from "~/widgets/navbar"
+
 interface $$Props {
     class?: string
-}
-
-interface $$Slots {
-    default: { tab: IRouteWithLabel }
 }
 
 let className: string = ""
@@ -31,17 +29,19 @@ export {
 }
 </script>
 
-<ul
-    class="
-        tabs tabs-bordered
-        h-[calc(100%+0.5rem*2)]
-        items-center
-        uppercase
-        {className}
-    "
-    role="tablist"
->
-    {#each tabs as tab (tab.label)}
-        <slot {tab} />
-    {/each}
-</ul>
+<nav>
+    <ul
+        class="
+            tabs tabs-bordered
+            h-[calc(100%+0.5rem*2)]
+            items-center
+            uppercase
+            {className}
+        "
+        role="tablist"
+    >
+        {#each tabs as tab (tab.label)}
+            <NavbarTab {tab} />
+        {/each}
+    </ul>
+</nav>

@@ -30,11 +30,11 @@ $: useFacetsPromise = (
                     Item Name
                 </th>
 
-                <th style:width="8rem">
+                <th style:width="10rem">
                     Available
                 </th>
 
-                <th style:width="8rem">
+                <th style:width="10rem">
                     Price
                 </th>
             </tr>

@@ -15,4 +15,4 @@ export type IRouteWithIcon = IRoute & { icon: typeof SvelteComponent<SvelteHTMLE
 
 export type IRouteWithLabel = IRoute & { label: string }
 
-export type IRouteUrl = IKeyOf<KIT_ROUTES["PAGES"]>
+export type IRouteUrl = IKeyOf<KIT_ROUTES["LINKS"]> | IKeyOf<KIT_ROUTES["PAGES"]>

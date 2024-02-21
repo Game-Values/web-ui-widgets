@@ -64,49 +64,51 @@ let links: IDrawerLink[] = [
     },
 ]
 
-let { route: lotsCreateRoute, routeActive: lotsCreateRouteActive } = useRoute("/lots/new-listing")
+let { route, routeActive } = useRoute("/lots/new-listing")
 </script>
 
-<ul
-    class="menu"
-    class:w-80={$drawerOpened}
->
-    <DrawerMenuItem
-        class="flex-row justify-between"
-        link={
-            {
-                icon: IconCube,
-                iconClass: "text-info scale-150",
-                label: "My lots",
-                url: "/lots",
-            }
-        }
+<nav>
+    <ul
+        class="menu -mt-4"
+        class:w-80={$drawerOpened}
     >
-        {#if $drawerOpened}
-            <a
-                class="
-                    btn btn-sm
-                    tooltip tooltip-right
-                    inline-flex items-center justify-center
-                    text-secondary text-lg
-                "
-                class:active={$lotsCreateRouteActive}
-                data-tip="New Listing"
-                href={$lotsCreateRoute}
-            >
-                <IconPlusCircle />
-            </a>
-        {/if}
-    </DrawerMenuItem>
+        <DrawerMenuItem
+            class="flex-row justify-between"
+            link={
+                {
+                    icon: IconCube,
+                    iconClass: "text-info scale-150",
+                    label: "My lots",
+                    url: "/lots",
+                }
+            }
+        >
+            {#if $drawerOpened}
+                <a
+                    class="
+                        btn btn-sm
+                        tooltip tooltip-right
+                        inline-flex items-center justify-center
+                        text-secondary text-lg
+                    "
+                    class:active={$routeActive}
+                    data-tip="New Listing"
+                    href={$route}
+                >
+                    <IconPlusCircle />
+                </a>
+            {/if}
+        </DrawerMenuItem>
 
-    {#each links as link (link.label)}
-        <slot {link} />
+        {#each links as link (link.label)}
+            <slot {link} />
 
-        {#if link.divider}
-            <Divider
-                class="divider max-w-64 h-3 basis-px"
-                tag="li"
-            />
-        {/if}
-    {/each}
-</ul>
+            {#if link.divider}
+                <Divider
+                    class="divider max-w-64 h-3 basis-px"
+                    tag="li"
+                />
+            {/if}
+        {/each}
+    </ul>
+</nav>

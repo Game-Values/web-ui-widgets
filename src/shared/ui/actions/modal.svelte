@@ -32,7 +32,7 @@ export {
     class="modal"
     use:dialog
 >
-    <div class="modal-box">
+    <div class="modal-box glass glass-2xl">
         <form method="dialog">
             <button
                 class="
@@ -59,16 +59,15 @@ export {
 <style>
 .modal::backdrop {
     @apply bg-black/[0.40];
-    @apply backdrop-blur-[0.125rem];
+    @apply backdrop-blur-sm;
 }
 
 .modal-box {
-    --rounded-box: theme("space.2");
+    --rounded-box: theme("borderRadius.lg");
 
     @apply p-7 gap-y-5;
     @apply flex flex-col;
     @apply bg-white/[0.02];
     @apply shadow-[0_0.375rem_3.25rem_0_rgba(61,152,255,0.20)];
-    @apply backdrop-blur-2xl;
 }
 </style>

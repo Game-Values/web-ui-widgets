@@ -49,6 +49,8 @@ export default {
 
             "error": "#D8222F",
             "error-content": "#FFFFFF",
+
+            fontSize: "1.125rem",
         }),
     },
 
@@ -66,6 +68,7 @@ export default {
         extend: {
             backgroundColor: {
                 "drawer": "#161616",
+                "footer": "#151515",
                 "input": "#303030",
                 "tooltip": "#151515",
             },
