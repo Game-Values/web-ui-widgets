@@ -19,7 +19,7 @@ interface $$Props {
     <Grid>
         <GridCol
             class="gap-y-2 flex-col"
-            span={3}
+            span={6}
             tag="aside"
         >
             <FooterLogo />
@@ -39,10 +39,6 @@ interface $$Props {
             span={3}
         >
             <FooterPolicy />
-        </GridCol>
-
-        <GridCol span={3}>
-            <!-- trustpilot -->
         </GridCol>
     </Grid>
 
