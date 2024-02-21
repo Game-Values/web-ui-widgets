@@ -19,7 +19,8 @@
         "sync": "svelte-kit sync",
         "test": "run-s test:*",
         "test:integration": "playwright test",
-        "test:unit": "vitest"
+        "test:unit": "vitest",
+        "update": "bun ./scripts/update.ts"
     },
     "dependencies": {
         "@sveltestack/svelte-query": "^1.6.0",
@@ -72,7 +73,7 @@
         "unocss": "^0.58.5",
         "unocss-preset-autoprefixer": "^0.0.7",
         "unplugin-icons": "^0.18.5",
-        "vite": "^5.1.3",
+        "vite": "^5.1.4",
         "vite-plugin-kit-routes": "^0.5.2",
         "vite-plugin-tailwind-purgecss": "^0.2.0",
         "vitest": "^1.3.1"
