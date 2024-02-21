@@ -47,7 +47,10 @@ interface $$Props {
             <FooterPayments />
         </GridCol>
 
-        <GridCol span={6}>
+        <GridCol
+            justify="end"
+            span={6}
+        >
             <FooterSocialsLinks />
         </GridCol>
     </Grid>

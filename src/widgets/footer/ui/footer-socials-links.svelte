@@ -42,7 +42,7 @@ let links: IRouteWithIcon[] = [
 ]
 </script>
 
-<nav class="gap-x-4 flex">
+<nav class="gap-x-6 flex">
     {#each links as link (link.url)}
         <FooterLink
             {link}
