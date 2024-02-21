@@ -39,25 +39,25 @@ export {
                     Username
                 </a>
 
-                <small class="text-secondary">
+                <span class="text-secondary">
                     0% comp. deals
-                </small>
+                </span>
 
                 <p class="gap-x-2 flex items-center">
                     <span class="gap-x-0.5 inline-flex items-center text-positive-light">
                         <IconHandUp class="text-xxs" />
 
-                        <small>
+                        <span>
                             0%
-                        </small>
+                        </span>
                     </span>
 
                     <span class="gap-x-0.5 inline-flex items-center text-accent">
                         <IconArrowFatUp class="text-xxs" />
 
-                        <small>
+                        <span>
                             1
-                        </small>
+                        </span>
                     </span>
                 </p>
             </div>
@@ -75,9 +75,9 @@ export {
                 </b>
             </a>
 
-            <small class="text-secondary empty:(hidden)">
+            <span class="text-secondary empty:(hidden)">
                 {lot.attributes.description}
-            </small>
+            </span>
         </p>
     </td>
 

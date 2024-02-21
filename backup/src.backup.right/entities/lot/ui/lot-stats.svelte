@@ -21,8 +21,8 @@ export let lotStats: ILotStats
             {lotStats.count}
         </b>
 
-        <small>
+        <span>
             {lotStats.label}
-        </small>
+        </span>
     </div>
 </div>

@@ -19,7 +19,7 @@ $: useFacetsPromise = (
 </script>
 
 <div class="gap-y-4 flex flex-col">
-    <table class="table table-xs table-zebra">
+    <table class="table table-zebra">
         <thead>
             <tr>
                 <th style:width="12rem">

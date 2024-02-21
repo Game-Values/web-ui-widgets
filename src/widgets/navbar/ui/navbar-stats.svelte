@@ -57,7 +57,7 @@ export {
                 {formatNum(stat.value)}
             </small>
 
-            <b class="stat-title col-start-2 capitalize">
+            <b class="stat-title col-start-2 capitalize text-sm">
                 {stat.label}
             </b>
         </li>

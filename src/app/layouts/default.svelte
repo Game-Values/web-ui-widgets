@@ -2,7 +2,7 @@
 import { Drawer } from "~/widgets/drawer"
 import { Footer } from "~/widgets/footer"
 import { Navbar } from "~/widgets/navbar"
-import { BackgroundImageProvider, ModalProvider } from "~/widgets/provider"
+import { BackgroundImageProvider, ModalProvider, QueryProvider } from "~/widgets/provider"
 
 import { Container } from "$ui/layout"
 </script>
@@ -25,7 +25,9 @@ import { Container } from "$ui/layout"
             <BackgroundImageProvider />
 
             <div class="relative flex-auto">
-                <slot />
+                <QueryProvider>
+                    <slot />
+                </QueryProvider>
             </div>
 
             <Footer />
