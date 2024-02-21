@@ -70,7 +70,7 @@ export {
                 class="link link-hover"
                 href="javascript:void(0)"
             >
-                <b>
+                <b class="line-clamp-2">
                     {lot.name}
                 </b>
             </a>
