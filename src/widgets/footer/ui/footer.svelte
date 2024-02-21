@@ -15,7 +15,14 @@ interface $$Props {
 }
 </script>
 
-<footer class="footer block bg-footer">
+<footer
+    class="
+        footer
+        relative z-20
+        block
+        bg-footer
+    "
+>
     <Grid>
         <GridCol
             class="gap-y-2 flex-col"
