@@ -3,7 +3,9 @@ import {
     FooterCopyright,
     FooterLinks,
     FooterLogo,
+    FooterPayments,
     FooterPolicy,
+    FooterSocialsLinks,
 } from "~/widgets/footer"
 
 import { Grid, GridCol } from "$ui/layout"
@@ -13,7 +15,7 @@ interface $$Props {
 }
 </script>
 
-<footer class="footer bg-footer">
+<footer class="footer block bg-footer">
     <Grid>
         <GridCol
             class="gap-y-2 flex-col"
@@ -40,15 +42,17 @@ interface $$Props {
         </GridCol>
 
         <GridCol span={3}>
-            trustpilot
+            <!-- trustpilot -->
+        </GridCol>
+    </Grid>
+
+    <Grid>
+        <GridCol span={6}>
+            <FooterPayments />
         </GridCol>
 
         <GridCol span={6}>
-            payment
-        </GridCol>
-
-        <GridCol span={6}>
-            social
+            <FooterSocialsLinks />
         </GridCol>
     </Grid>
 </footer>

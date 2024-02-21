@@ -7,8 +7,8 @@ let { state } = useState()
 
 {#if $state.background}
     <EnhancedImage
-        --image-height={$state.background.height}
-        --image-width={$state.background.width}
+        --height={$state.background.height}
+        --width={$state.background.width}
         class="absolute z-0 left-0 top-0"
         alt="background-image"
         size="lg"

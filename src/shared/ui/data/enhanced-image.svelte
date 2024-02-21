@@ -138,7 +138,7 @@ export {
 
 <style>
 picture {
-    @apply w-[var(--image-width,theme("width.full"))] h-[var(--image-height,theme("width.auto"))];
+    @apply w-[var(--width,theme("width.full"))] h-[var(--height,theme("width.auto"))];
     @apply max-w-full max-h-full;
     @apply flex items-center justify-center;
 }

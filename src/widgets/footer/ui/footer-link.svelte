@@ -1,30 +1,35 @@
 <script lang="ts">
-import type { IRouteWithLabel } from "$types"
+import type { IRouteWithIcon, IRouteWithLabel } from "$types"
+import type { HTMLAnchorAttributes } from "svelte/elements"
 
 import { useRoute } from "$model"
 
 interface $$Props {
-    class?: string
-    link: IRouteWithLabel
+    link: IRouteWithIcon | IRouteWithLabel
+    target?: HTMLAnchorAttributes["target"]
 }
 
-let className: string = ""
+interface $$Slots {
+    default: NonNullable<unknown>
+}
 
-let link: IRouteWithLabel
+let link: IRouteWithIcon | IRouteWithLabel
+
+let target: HTMLAnchorAttributes["target"] = undefined
 
 let { route } = useRoute(link.url)
 
 export {
-    className as class,
     link,
+    target,
 }
 </script>
 
-<li class={className}>
-    <a
-        class="link link-hover"
-        href={$route}
-    >
+<a
+    class="link link-hover"
+    href={$route}
+>
+    <slot>
         {link.label}
-    </a>
-</li>
+    </slot>
+</a>

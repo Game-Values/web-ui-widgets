@@ -19,13 +19,8 @@ let links: IRouteWithLabel[] = [
 ]
 </script>
 
-<nav class="text-secondary">
-    <ul class="gap-y-2 flex flex-col">
-        {#each links as link (link.label)}
-            <FooterLink
-                class="text-xs"
-                {link}
-            />
-        {/each}
-    </ul>
+<nav class="gap-y-2 flex flex-col text-secondary">
+    {#each links as link (link.label)}
+        <FooterLink {link} />
+    {/each}
 </nav>

@@ -20,7 +20,7 @@ $: gameIcon = $context.game && useGame($context.game).gameIcon
                         Sell with Us!
 
                         <EnhancedImage
-                            --image-width="6.25rem"
+                            --width="6.25rem"
                             alt="main-slide"
                             size="xs"
                             src="images/common/dall-e.png"
@@ -88,7 +88,7 @@ $: gameIcon = $context.game && useGame($context.game).gameIcon
 
                 {#if gameIcon}
                     <EnhancedImage
-                        --image-width="25rem"
+                        --width="25rem"
                         src={gameIcon}
                     />
                 {/if}

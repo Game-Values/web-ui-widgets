@@ -71,10 +71,9 @@ let footerLinks: IFooterLink[] = [
 
         <ul class="gap-y-2 flex flex-col">
             {#each footerLink.links as link (link.label)}
-                <FooterLink
-                    class="text-sm"
-                    {link}
-                />
+                <li class="text-sm">
+                    <FooterLink {link} />
+                </li>
             {/each}
         </ul>
     </nav>
