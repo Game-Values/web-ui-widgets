@@ -75,9 +75,9 @@ export {
                 </b>
             </a>
 
-            <span class="text-secondary empty:(hidden)">
+            <small class="text-secondary empty:(hidden)">
                 {lot.attributes.description}
-            </span>
+            </small>
         </p>
     </td>
 

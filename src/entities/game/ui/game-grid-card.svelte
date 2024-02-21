@@ -55,9 +55,9 @@ export {
                 class="link link-hover"
                 href={$route}
             >
-                <small>
+                <b class="text-lg">
                     {game.name}
-                </small>
+                </b>
             </a>
         </h2>
 

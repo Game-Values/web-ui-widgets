@@ -55,7 +55,7 @@ export let title: string = ""
             </slot>
         </h1>
 
-        <p class="empty:invisible">
+        <p class="text-lg empty:invisible">
             <slot>
                 {content}
             </slot>

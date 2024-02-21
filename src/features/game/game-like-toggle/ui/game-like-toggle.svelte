@@ -43,7 +43,13 @@ export {
 </script>
 
 <label
-    class="btn btn-circle btn-ghost btn-sm swap swap-rotate tooltip {className}"
+    class="
+        btn btn-circle btn-ghost btn-sm
+        swap swap-rotate
+        tooltip
+        text-lg
+        {className}
+    "
     data-tip={`${$gameLiked ? "Dislike" : "Like"} ${game.name}`}
 >
     <input
@@ -55,7 +61,7 @@ export {
     <IconHeartSolid
         class="
             swap-on
-            absolute inset-0 translate-x-1/4 translate-y-1/4
+            absolute
             text-negative-light
         "
     />
@@ -63,7 +69,7 @@ export {
     <IconHeart
         class="
             swap-off
-            absolute inset-0 translate-x-1/4 translate-y-1/4
+            absolute
             text-info
         "
     />

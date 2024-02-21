@@ -1,3 +1,5 @@
+import { onDestroy, onMount } from "svelte"
+
 import { useState } from "$model"
 
 type IUseBackground = {
@@ -8,9 +10,15 @@ type IUseBackground = {
 export function useBackground(background: App.PageState["background"]): IUseBackground {
     let { updateState } = useState()
 
-    return {
+    let use: IUseBackground = {
         setBackground: (): void => updateState({ background }),
 
         unsetBackground: (): void => updateState({ background: undefined }),
     }
+
+    onMount(use.setBackground)
+
+    onDestroy(use.unsetBackground)
+
+    return use
 }

@@ -1,3 +1,9 @@
 .tabs .tab {
+    --tab-padding: theme("space.2");
+
     @apply text-inherit;
+}
+
+.tabs.tabs-bordered .tab {
+    @apply mt-1;
 }

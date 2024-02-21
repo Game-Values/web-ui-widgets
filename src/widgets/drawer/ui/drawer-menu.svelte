@@ -76,7 +76,7 @@ let { route: lotsCreateRoute, routeActive: lotsCreateRouteActive } = useRoute("/
         link={
             {
                 icon: IconCube,
-                iconClass: "text-info",
+                iconClass: "text-info scale-150",
                 label: "My lots",
                 url: "/lots",
             }
@@ -84,7 +84,12 @@ let { route: lotsCreateRoute, routeActive: lotsCreateRouteActive } = useRoute("/
     >
         {#if $drawerOpened}
             <a
-                class="tooltip tooltip-right text-secondary"
+                class="
+                    btn btn-sm
+                    tooltip tooltip-right
+                    inline-flex items-center justify-center
+                    text-secondary text-lg
+                "
                 class:active={$lotsCreateRouteActive}
                 data-tip="New Listing"
                 href={$lotsCreateRoute}

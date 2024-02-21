@@ -13,6 +13,7 @@ interface $$Props {
 }
 
 type IStat = Pick<IRouteWithIcon, "icon"> & Pick<IRouteWithLabel, "label"> & {
+    iconClass?: string
     value: number
 }
 
@@ -21,6 +22,7 @@ let className: string = ""
 let stats: IStat[] = [
     {
         icon: IconCube,
+        iconClass: "scale-125",
         label: "number of lots",
         value: 6_748,
     },
@@ -46,20 +48,23 @@ export {
 }
 </script>
 
-<ul class="stats gap-x-4 {className}">
+<ul class="stats gap-x-4 overflow-hidden {className}">
     {#each stats as stat (stat.label)}
-        <li class="stat p-0 border-transparent">
+        <li class="stat p-0 gap-x-3 border-transparent">
             <span class="stat-figure col-start-1 text-accent text-3xl">
-                <svelte:component this={stat.icon} />
+                <svelte:component
+                    this={stat.icon}
+                    class={stat.iconClass}
+                />
             </span>
 
-            <small class="stat-value col-start-2 text-sm">
+            <span class="stat-value col-start-2 text-base">
                 {formatNum(stat.value)}
-            </small>
+            </span>
 
-            <b class="stat-title col-start-2 capitalize text-sm">
+            <span class="stat-title col-start-2 capitalize text-sm">
                 {stat.label}
-            </b>
+            </span>
         </li>
     {/each}
 </ul>

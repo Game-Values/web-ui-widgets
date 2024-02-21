@@ -19,7 +19,6 @@ function contextFactory<T>(contextKey: string): Writable<T> {
     )
 }
 
-// todo: to all pages instead of deep props injection
 export function useContext<T = unknown>(
     initialContext: Partial<T> = Object.create(null),
 ): IUseContext<T> {

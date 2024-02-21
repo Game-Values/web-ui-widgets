@@ -34,8 +34,9 @@ export {
 <ul
     class="
         tabs tabs-bordered
-        h-[calc(100%+0.5rem*2)] items-center
-        font-bold uppercase
+        h-[calc(100%+0.5rem*2)]
+        items-center
+        uppercase
         {className}
     "
     role="tablist"

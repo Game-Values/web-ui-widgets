@@ -1,6 +1,6 @@
 .btn {
     @apply px-7;
-    @apply text-inherit font-bold;
+    @apply text-inherit font-extrabold;
 }
 
 .btn.btn-secondary {
@@ -17,6 +17,11 @@
 .btn.btn-circle,
 .btn.btn-link {
     @apply p-0;
+}
+
+.btn.btn-circle {
+    @apply flex;
+    @apply items-center justify-center;
 }
 
 .btn.btn-link {

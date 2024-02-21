@@ -29,6 +29,7 @@ export {
     class="
         badge badge-lg
         gap-x-1.5
+        border-white/[0.12]
         capitalize text-nowrap
     "
     class:badge-info={active}
@@ -38,24 +39,13 @@ export {
     class:hover:badge-outline={!active}
     href={$route}
 >
-    <span class="text-secondary">
+    <span class="ext-white/70 bg-white/02">
         {startCase(gameSection)}
     </span>
 
-    <span class="badge">
-        <span class="text-secondary">
+    <span class="badge bg-white/[0.12] border-white/[0.12]">
+        <span class="text-white/70">
             {gameSectionCount}
         </span>
     </span>
 </a>
-
-<style>
-.badge {
-    @apply border-white/[0.12];
-    @apply text-inherit;
-}
-
-.badge:not(.badge-info) {
-    @apply bg-white/[0.12];
-}
-</style>

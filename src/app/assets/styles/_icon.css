@@ -1,6 +1,5 @@
 .icon {
     @apply inline-flex;
-    @apply text-inherit;
 }
 
 .icon > svg {

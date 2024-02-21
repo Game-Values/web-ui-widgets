@@ -41,7 +41,7 @@ export {
         bind:checked
     />
 
-    <span class="label-text text-inherit leading-[inherit]">
+    <span class="label-text">
         <slot>
             {label}
         </slot>

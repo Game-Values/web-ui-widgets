@@ -1,7 +1,6 @@
 <script lang="ts">
 import { useRoute } from "$model"
-
-import IconLogo from "virtual:icons/common/logo"
+import { EnhancedImage } from "$ui/data"
 
 interface $$Props {
     class?: string
@@ -17,19 +16,16 @@ export {
 </script>
 
 <a
-    class="btn btn-link {className}"
+    class="
+        btn btn-link
+        relative bottom-1
+        {className}
+    "
     href={$route}
 >
-    <IconLogo
-        height="2.5rem"
-        width="9.725rem"
+    <EnhancedImage
+        alt="logo"
+        size="xs"
+        src="images/common/logo.png"
     />
 </a>
-
-<style>
-.btn {
-    @apply relative bottom-1.5;
-    @apply p-0;
-    @apply h-auto min-h-0;
-}
-</style>

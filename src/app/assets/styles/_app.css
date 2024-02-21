@@ -35,6 +35,10 @@ h6 {
     @apply font-bold text-sm;
 }
 
+small {
+    @apply text-[0.875em];
+}
+
 ::-webkit-scrollbar {
     @apply w-2 h-2;
     @apply bg-white/[0.12];

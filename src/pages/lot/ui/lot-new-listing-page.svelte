@@ -2,8 +2,6 @@
 import type { IGame } from "$schema/api"
 import type { ILotNewListingPageContext } from "~/pages/lot"
 
-import { onDestroy, onMount } from "svelte"
-
 import { useGame } from "~/entities/game"
 import { LotNewListingInfoCard, LotNewListingSteps } from "~/entities/lot"
 import { LotNewListingForm } from "~/features/lot"
@@ -18,11 +16,8 @@ interface $$Props {
 let games: IGame[]
 
 let { context, updateContext } = useContext<ILotNewListingPageContext>({ games, step: 1 })
-let { setBackground, unsetBackground } = useBackground({ src: "images/bg/new-listing-bg.png" })
 
-onMount(setBackground)
-
-onDestroy(unsetBackground)
+useBackground({ src: "images/bg/new-listing-bg.png" })
 
 function fetchGame(e: CustomEvent<IGame>): void {
     if (!e.detail.gid || e.detail.gid === ($context.game?.gid || $context.game?.id))

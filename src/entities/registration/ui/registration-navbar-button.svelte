@@ -3,8 +3,10 @@ import { ShowModalButton } from "$ui/actions"
 </script>
 
 <ShowModalButton
-    class="btn-primary btn-sm"
+    class="btn-primary btn-sm uppercase"
     modal="registration"
 >
-    Create account
+    <small>
+        Create account
+    </small>
 </ShowModalButton>

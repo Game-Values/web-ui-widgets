@@ -3,8 +3,10 @@ import { ShowModalButton } from "$ui/actions"
 </script>
 
 <ShowModalButton
-    class="btn-secondary btn-sm"
+    class="btn-secondary btn-sm uppercase"
     modal="auth"
 >
-    Login
+    <small>
+        Login
+    </small>
 </ShowModalButton>

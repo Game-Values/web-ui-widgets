@@ -142,6 +142,7 @@ export {
 picture {
     @apply w-[var(--image-width,100%)] h-[var(--image-height,auto)];
     @apply max-w-full max-h-full;
+    @apply flex items-center justify-center;
 }
 
 picture img {

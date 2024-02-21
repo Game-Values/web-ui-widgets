@@ -5,6 +5,10 @@
     @apply overflow-hidden;
 }
 
+.table :where(thead, tfoot) {
+    @apply text-inherit font-bold;
+}
+
 .table :where(th) {
     @apply bg-white/[0.02];
 }
@@ -19,6 +23,10 @@
 
 .table.table-xs :where(td) {
     @apply px-4;
+}
+
+.table.table-xs :not(thead):not(tfoot) tr {
+    @apply text-inherit;
 }
 
 .table tr.active,

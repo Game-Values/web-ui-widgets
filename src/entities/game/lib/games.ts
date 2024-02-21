@@ -13,15 +13,7 @@ export function mapGamesIds(games: IGame[]): string[] {
 }
 
 export function groupGames(games: IGame[]): TGamesGroup {
-    let gamesWithFiltersAneSections: string[] = [
-        "Apex Legends",
-    ]
-
     return games.reduce((result: TGamesGroup, game: IGame): TGamesGroup => {
-        // TODO:
-        if (!gamesWithFiltersAneSections.includes(game.name!))
-            return result
-
         let firstChar: string = game.name!.charAt(0)
 
         if (!result.get(firstChar))

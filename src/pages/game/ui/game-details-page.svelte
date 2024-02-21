@@ -3,8 +3,6 @@ import type { IGame } from "$schema/api"
 import type { IGameSections } from "~/entities/game"
 import type { IGameDetailsPageContext } from "~/pages/game"
 
-import { onDestroy, onMount } from "svelte"
-
 import { useGame } from "~/entities/game"
 import { LotsFilters } from "~/features/lot"
 import { GameInfo } from "~/widgets/game"
@@ -25,7 +23,6 @@ let game: IGame
 
 let { context, updateContext } = useContext<IGameDetailsPageContext>({ game })
 let { fetchGameSections, gameImage } = useGame(game)
-let { setBackground, unsetBackground } = useBackground({ height: "25rem", src: gameImage })
 let { routeParams } = useRoute()
 
 let gameSectionsPromise: Promise<void> = (
@@ -38,14 +35,12 @@ let gameSectionsPromise: Promise<void> = (
         ))
 )
 
+useBackground({ height: "25rem", src: gameImage })
+
 useWatch(routeParams, (): void => {
     if ($context.gameSectionActive !== $routeParams.gameSection)
         updateContext({ gameSectionActive: $routeParams.gameSection })
 })
-
-onMount(setBackground)
-
-onDestroy(unsetBackground)
 
 export {
     game,

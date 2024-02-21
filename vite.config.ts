@@ -28,7 +28,6 @@ export default defineConfig({
                     resolve("src", "app", "assets", "icons", "game"),
                 ),
             },
-            scale: 1.5,
             transform: (svg: string): string => {
                 let { data }: Output = optimize(svg, {
                     plugins: [
