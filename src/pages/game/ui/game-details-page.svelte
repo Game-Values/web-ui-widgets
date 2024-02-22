@@ -4,6 +4,7 @@ import type { IGameSections } from "~/entities/game"
 import type { IGameDetailsPageContext } from "~/pages/game"
 
 import { useGame } from "~/entities/game"
+import { HelpGameDetailsAccordion } from "~/entities/help"
 import { LotsFilters } from "~/features/lot"
 import { GameInfo } from "~/widgets/game"
 import { HelpQuestions } from "~/widgets/help"
@@ -83,14 +84,14 @@ export {
             <LotsTable />
         </GridCol>
     </Grid>
-
-    <Grid>
-        <GridCol span={7}>
-
-        </GridCol>
-
-        <GridCol span={5}>
-            <HelpQuestions vertical />
-        </GridCol>
-    </Grid>
 </LazyPromise>
+
+<Grid>
+    <GridCol span={7}>
+        <HelpGameDetailsAccordion />
+    </GridCol>
+
+    <GridCol span={5}>
+        <HelpQuestions vertical />
+    </GridCol>
+</Grid>

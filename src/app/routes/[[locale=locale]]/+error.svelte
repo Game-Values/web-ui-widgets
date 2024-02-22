@@ -15,7 +15,7 @@ import IconExclamationCircle from "virtual:icons/heroicons/exclamation-circle"
             </h1>
 
             {#if $page.error}
-                <ul class="ms-8 list-disc">
+                <ul class="ms-8 list-circle">
                     {#each Object.entries($page.error) as [key, val] (key)}
                         <li>
                             <span class="text-secondary">

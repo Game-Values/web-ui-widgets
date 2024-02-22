@@ -6,6 +6,7 @@ interface $$Props {
     contentClass?: string
     opened?: boolean
     title?: string
+    titleClass?: string
 }
 
 interface $$Events {
@@ -20,6 +21,8 @@ let opened: boolean = false
 
 let title: string = ""
 
+let titleClass: string = ""
+
 let { dispatchEvent: dispatchToggleEvent } = useEventDispatcher<boolean>("toggle")
 
 export {
@@ -27,6 +30,7 @@ export {
     contentClass,
     opened,
     title,
+    titleClass,
 }
 </script>
 
@@ -37,7 +41,7 @@ export {
         on:change={e => dispatchToggleEvent(e.currentTarget.checked)}
     />
 
-    <h2 class="collapse-title">
+    <h2 class="collapse-title {titleClass}">
         <slot name="title">
             {title}
         </slot>

@@ -43,6 +43,10 @@ strong {
     @apply font-inherit text-[1.125em];
 }
 
+ul li {
+    @apply marker:hidden;
+}
+
 ::-webkit-scrollbar {
     @apply w-2 h-2;
     @apply bg-white/[0.12];

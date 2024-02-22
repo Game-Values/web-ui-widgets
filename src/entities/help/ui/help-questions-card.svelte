@@ -13,7 +13,7 @@ export let vertical: boolean = false
 </script>
 
 <figure
-    style:height={vertical ? "40rem" : "25rem"}
+    style:height={vertical ? "45rem" : "25rem"}
     class="card hero glass"
 >
     <figcaption

@@ -41,7 +41,7 @@ $: gameIcon = $context.game && useGame($context.game).gameIcon
                         </b>
                     </p>
 
-                    <ul class="mt-8 ms-8 list-disc list-inside">
+                    <ul class="mt-8 ms-8 list-circle list-inside">
                         <li>
                             <b>
                                 Quick Sales

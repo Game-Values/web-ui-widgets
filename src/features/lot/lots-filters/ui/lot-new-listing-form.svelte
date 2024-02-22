@@ -11,6 +11,7 @@ import { fetchLotsFilters, LotNewListingFormFinance, LotNewListingFormMain, LotN
 import { useLotsNewListingForm } from "~/features/lot"
 
 import { useContext, useEventDispatcher, useRoute, useWatch } from "$model"
+import { Accordion } from "$ui/data"
 
 interface $$Events {
     update: CustomEvent<IItemCreate>
@@ -58,23 +59,33 @@ function update(updatedData?: Partial<IItemCreate>): void {
     class="form"
     use:form
 >
-    <LotNewListingFormMain
-        data={$data}
-        on:update={e => {
-            update(e.detail)
-            updateContext({ step: 1 })
-        }}
-    />
+    <Accordion
+        contentClass={
+            [
+                "px-1 py-2",
+                "flex flex-col gap-y-4",
+                "after:w-full after:h-px after:block after:bg-[rgba(135,135,135,0.10)]",
+            ].join(" ")
+        }
+    >
+        <LotNewListingFormMain
+            data={$data}
+            on:update={e => {
+                update(e.detail)
+                updateContext({ step: 1 })
+            }}
+        />
 
-    <LotNewListingFormProduct
-        data={$data}
-        on:update={() => updateContext({ step: 2 })}
-    />
+        <LotNewListingFormProduct
+            data={$data}
+            on:update={() => updateContext({ step: 2 })}
+        />
 
-    <LotNewListingFormFinance
-        data={$data}
-        on:update={() => updateContext({ step: 3 })}
-    />
+        <LotNewListingFormFinance
+            data={$data}
+            on:update={() => updateContext({ step: 3 })}
+        />
+    </Accordion>
 
     <div class="form-control">
         <button

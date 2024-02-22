@@ -146,6 +146,10 @@ export default {
                 "inherit": "inherit",
             },
 
+            listStyleType: {
+                circle: "circle",
+            },
+
             textColor: {
                 "accent": "#3478F6",
                 "primary": "#FFFFFF",

@@ -1,3 +1,4 @@
+export { default as Accordion } from "$ui/data/accordion.svelte"
 export { default as Avatar } from "$ui/data/avatar.svelte"
 export { default as Checkbox } from "$ui/data/checkbox.svelte"
 export { default as Collapse } from "$ui/data/collapse.svelte"

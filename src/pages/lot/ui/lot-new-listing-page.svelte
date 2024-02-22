@@ -3,8 +3,10 @@ import type { IGame } from "$schema/api"
 import type { ILotNewListingPageContext } from "~/pages/lot"
 
 import { useGame } from "~/entities/game"
+import { HelpNewLotListingAccordion } from "~/entities/help"
 import { LotNewListingInfoCard, LotNewListingSteps } from "~/entities/lot"
 import { LotNewListingForm } from "~/features/lot"
+import { HelpQuestions } from "~/widgets/help"
 
 import { useBackground, useContext } from "$model"
 import { Grid, GridCol } from "$ui/layout"
@@ -47,5 +49,15 @@ export {
         span={2}
     >
         <LotNewListingSteps />
+    </GridCol>
+</Grid>
+
+<Grid>
+    <GridCol span={7}>
+        <HelpNewLotListingAccordion />
+    </GridCol>
+
+    <GridCol span={5}>
+        <HelpQuestions vertical />
     </GridCol>
 </Grid>

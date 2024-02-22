@@ -33,7 +33,6 @@ export let title: string = ""
 <figure class="hero h-96 place-items-baseline">
     <div class="hero-overlay overflow-hidden">
         <EnhancedImage
-
             alt="main-slide"
             size="lg"
             src={image}
