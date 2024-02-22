@@ -10,10 +10,8 @@ import { LotsTable } from "~/widgets/lot"
 
 import { useBackground, useContext, useRoute, useWatch } from "$model"
 import { LazyPromise } from "$ui/actions"
-import { Input, Toggle } from "$ui/data"
+import { InputSearch, Toggle } from "$ui/data"
 import { Grid, GridCol } from "$ui/layout"
-
-import IconMagnifyingGlass from "virtual:icons/heroicons/magnifying-glass"
 
 interface $$Props {
     game: IGame
@@ -57,16 +55,11 @@ export {
             align="center"
             span={6}
         >
-            <Input
+            <InputSearch
                 class="w-full"
                 placeholder="Search Lots"
                 placement="end"
-                type="search"
-            >
-                <svelte:fragment slot="icon">
-                    <IconMagnifyingGlass />
-                </svelte:fragment>
-            </Input>
+            />
         </GridCol>
 
         <GridCol

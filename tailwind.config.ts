@@ -50,7 +50,53 @@ export default {
             "error": "#D8222F",
             "error-content": "#FFFFFF",
 
-            fontSize: "1rem",
+            "fontSize": "1rem",
+
+            "button.btn": {
+                "font-size": "1.0625rem",
+                "font-weight": "700",
+                "line-height": "inherit",
+            },
+
+            ".btn": {
+                "font-size": "inherit",
+                "line-height": "inherit",
+            },
+
+            ".form": {
+                "font-size": "1.125rem",
+                "line-height": "inherit",
+            },
+
+            ".input": {
+                "font-size": "inherit",
+                "line-height": "inherit",
+            },
+
+            ".menu": {
+                "font-size": "inherit",
+                "line-height": "inherit",
+            },
+
+            ".select": {
+                "font-size": "inherit",
+                "line-height": "inherit",
+            },
+
+            ".stat .stat-value": {
+                "font-size": "inherit",
+                "line-height": "inherit",
+            },
+
+            ".tabs .tab": {
+                "font-size": "inherit",
+                "line-height": "inherit",
+            },
+
+            ".textarea": {
+                "font-size": "inherit",
+                "line-height": "inherit",
+            },
         }),
     },
 
@@ -70,6 +116,8 @@ export default {
                 "drawer": "#161616",
                 "footer": "#151515",
                 "input": "#303030",
+                "select": "#303030",
+                "textarea": "#303030",
                 "tooltip": "#151515",
             },
 
@@ -92,6 +140,10 @@ export default {
             fontSize: {
                 "inherit": "inherit",
                 "xxs": "0.625rem",
+            },
+
+            fontWeight: {
+                "inherit": "inherit",
             },
 
             textColor: {

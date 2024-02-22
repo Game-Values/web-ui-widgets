@@ -13,9 +13,11 @@ let { setStorage: toggleDrawer, storageValue: drawerOpened } = useStorage("drawe
     class:justify-center={!$drawerOpened}
 >
     {#if $drawerOpened}
-        <b class="uppercase">
-            Menu
-        </b>
+        <strong class="uppercase">
+            <b>
+                Menu
+            </b>
+        </strong>
     {/if}
 
     <label
@@ -23,7 +25,7 @@ let { setStorage: toggleDrawer, storageValue: drawerOpened } = useStorage("drawe
             btn btn-circle btn-sm
             tooltip tooltip-right
             swap swap-rotate
-            text-secondary text-lg
+            text-secondary
         "
         data-tip="Toggle menu"
     >
@@ -33,20 +35,12 @@ let { setStorage: toggleDrawer, storageValue: drawerOpened } = useStorage("drawe
             on:change={() => toggleDrawer(!$drawerOpened)}
         />
 
-        <IconArrowLeftCircle
-            class="
-                swap-on
-                absolute inset-y-2/4
-                -translate-y-2/4
-            "
-        />
+        <strong class="swap-on absolute">
+            <IconArrowLeftCircle />
+        </strong>
 
-        <IconBars3
-            class="
-                swap-off
-                absolute inset-y-2/4
-                -translate-y-2/4
-            "
-        />
+        <strong class="swap-off absolute">
+            <IconBars3 />
+        </strong>
     </label>
 </div>

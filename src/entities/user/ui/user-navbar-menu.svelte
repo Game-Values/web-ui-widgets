@@ -23,11 +23,11 @@ export {
         />
     </summary>
 
-    <ul class="dropdown-content menu w-60">
+    <menu class="dropdown-content menu w-60">
         <li class="text-error">
             <button on:click={logout}>
                 Log Out
             </button>
         </li>
-    </ul>
+    </menu>
 </details>

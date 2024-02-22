@@ -55,10 +55,12 @@ export let title: string = ""
             </slot>
         </h1>
 
-        <p class="text-lg empty:invisible">
-            <slot>
-                {content}
-            </slot>
+        <p class="empty:invisible">
+            <strong>
+                <slot>
+                    {content}
+                </slot>
+            </strong>
         </p>
 
         <div class="w-full max-w-44">

@@ -28,6 +28,7 @@ export {
 <a
     class="link link-hover"
     href={$route}
+    {target}
 >
     <slot>
         {link.label}

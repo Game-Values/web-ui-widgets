@@ -2,7 +2,6 @@
     @apply gap-y-4;
     @apply w-full;
     @apply flex flex-col;
-    @apply text-xl;
 }
 
 .form .form-control {

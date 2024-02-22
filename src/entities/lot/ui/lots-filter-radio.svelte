@@ -15,7 +15,7 @@ export let lotsFilter: ILotsFilter
         {lotsFilter.name}
     </h6>
 
-    <ul class="menu">
+    <menu class="menu">
         {#each lotsFilter.buckets as bucket (bucket.label)}
             <li class="form-control">
                 <Radio
@@ -25,5 +25,5 @@ export let lotsFilter: ILotsFilter
                 />
             </li>
         {/each}
-    </ul>
+    </menu>
 </form>

@@ -3,3 +3,12 @@
     @apply bg-base-100;
     @apply shadow-[0_0.25rem_1rem_0.25rem_rgba(0,0,0,0.60)];
 }
+
+.dropdown .dropdown-content.menu {
+    @apply p-0;
+}
+
+.dropdown .dropdown-content.menu :where(li:not(.menu-title) > *:not(ul):not(details):not(.menu-title)),
+.dropdown .dropdown-content.menu :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
+    @apply px-6 py-4;
+}

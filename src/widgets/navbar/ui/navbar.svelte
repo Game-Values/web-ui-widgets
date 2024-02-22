@@ -4,10 +4,8 @@ import { RegistrationNavbarButton } from "~/entities/registration"
 import { UserNavbarMenu } from "~/entities/user"
 import { NavbarLogo, NavbarStats, NavbarTabs } from "~/widgets/navbar"
 
-import { Input } from "$ui/data"
+import { InputSearch } from "$ui/data"
 import { Container, Divider } from "$ui/layout"
-
-import IconMagnifyingGlass from "virtual:icons/heroicons/magnifying-glass"
 </script>
 
 <Container
@@ -24,16 +22,11 @@ import IconMagnifyingGlass from "virtual:icons/heroicons/magnifying-glass"
 >
     <NavbarLogo class="mr-auto" />
 
-    <Input
+    <InputSearch
         class="w-full max-w-64"
         inputClass="input-sm"
         placeholder="Search GameValues"
-        type="search"
-    >
-        <svelte:fragment slot="icon">
-            <IconMagnifyingGlass />
-        </svelte:fragment>
-    </Input>
+    />
 
     <NavbarTabs class="mt-px" />
 

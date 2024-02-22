@@ -9,7 +9,7 @@ let { route } = useRoute("copyright")
     href={$route}
     target="_blank"
 >
-    <small>
+    <samp>
         © 2024 GameValues
-    </small>
+    </samp>
 </a>

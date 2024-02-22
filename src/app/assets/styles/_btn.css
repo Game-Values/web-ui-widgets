@@ -1,6 +1,5 @@
 .btn {
     @apply px-7;
-    @apply font-extrabold text-inherit;
 }
 
 .btn.btn-secondary {

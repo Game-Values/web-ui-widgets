@@ -68,7 +68,7 @@ let { route, routeActive } = useRoute("/lots/new-listing")
 </script>
 
 <nav>
-    <ul
+    <menu
         class="menu -mt-4"
         class:w-80={$drawerOpened}
     >
@@ -89,13 +89,15 @@ let { route, routeActive } = useRoute("/lots/new-listing")
                         btn btn-sm
                         tooltip tooltip-right
                         inline-flex items-center justify-center
-                        text-secondary text-lg
+                        text-secondary
                     "
                     class:active={$routeActive}
                     data-tip="New Listing"
                     href={$route}
                 >
-                    <IconPlusCircle />
+                    <strong>
+                        <IconPlusCircle />
+                    </strong>
                 </a>
             {/if}
         </DrawerMenuItem>
@@ -110,5 +112,5 @@ let { route, routeActive } = useRoute("/lots/new-listing")
                 />
             {/if}
         {/each}
-    </ul>
+    </menu>
 </nav>

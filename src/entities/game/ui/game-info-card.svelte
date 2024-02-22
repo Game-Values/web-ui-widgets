@@ -15,8 +15,10 @@ let { context } = useContext<IGameDetailsPageContext>()
 
 <div class="card glass glass-2xl">
     <div class="card-body p-8 gap-y-8">
-        <h1 class="card-title font-bold text-4xl items-center justify-between">
-            {$context.game.name}
+        <h1 class="card-title font-bold items-center justify-between">
+            <span class="text-4xl">
+                {$context.game.name}
+            </span>
 
             <slot name="gameLikeToggle" />
         </h1>

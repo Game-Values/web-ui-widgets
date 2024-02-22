@@ -56,13 +56,15 @@ let stats: IStat[] = [
                 />
             </span>
 
-            <span class="stat-value col-start-2 text-base">
-                {formatNum(stat.value)}
+            <span class="stat-value col-start-2">
+                <strong>
+                    {formatNum(stat.value)}
+                </strong>
             </span>
 
-            <small class="stat-title col-start-2 capitalize">
+            <span class="stat-title col-start-2 capitalize">
                 {stat.label}
-            </small>
+            </span>
         </li>
     {/each}
 </ul>
