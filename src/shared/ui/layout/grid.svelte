@@ -17,7 +17,7 @@ interface $$Slots {
     default: NonNullable<unknown>
 }
 
-type IGridGap = 0 | 1 | 2 | 3 | 4 | 5 | 6
+type IGridGap = 0 | 10 | 12 | 14 | 16 | 2 | 4 | 6 | 8
 
 let className: string = ""
 
@@ -34,13 +34,15 @@ $: gridClass = (
         cleanObject({
             [className]: className,
             "gap-0": gap === 0,
-            "gap-1": gap === 1,
+            "gap-10": gap === 10,
+            "gap-12": gap === 12,
+            "gap-14": gap === 14,
+            "gap-16": gap === 16,
             "gap-2": gap === 2,
-            "gap-3": gap === 3,
             "gap-4": gap === 4,
-            "gap-5": gap === 5,
             "gap-6": gap === 6,
-            "grid grid-cols-12": "true",
+            "gap-8": gap === 8,
+            "grid grid-cols-12": true,
         }),
     ).join(" ")
 )

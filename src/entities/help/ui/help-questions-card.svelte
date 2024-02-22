@@ -1,19 +1,32 @@
 <script lang="ts">
 import { EnhancedImage } from "$ui/data"
 
+interface $$Props {
+    vertical?: boolean
+}
+
 interface $$Slots {
     helpQuestionsForm: NonNullable<unknown>
 }
+
+export let vertical: boolean = false
 </script>
 
-<figure class="card hero glass h-96">
-    <figcaption class="hero-content p-0 justify-between">
-        <div class="p-16 max-w-prose">
+<figure
+    style:height={vertical ? "40rem" : "25rem"}
+    class="card hero glass"
+>
+    <figcaption
+        class="hero-content p-0 justify-between"
+        class:flex-col={vertical}
+    >
+        <div class="p-16 w-full max-w-prose">
             <slot name="helpQuestionsForm" />
         </div>
 
         <EnhancedImage
             --height="100%"
+            class={vertical ? "ml-auto" : ""}
             alt="soldier"
             src="images/common/soldier.png"
         />

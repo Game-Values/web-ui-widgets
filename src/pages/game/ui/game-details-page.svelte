@@ -6,6 +6,7 @@ import type { IGameDetailsPageContext } from "~/pages/game"
 import { useGame } from "~/entities/game"
 import { LotsFilters } from "~/features/lot"
 import { GameInfo } from "~/widgets/game"
+import { HelpQuestions } from "~/widgets/help"
 import { LotsTable } from "~/widgets/lot"
 
 import { useBackground, useContext, useRoute, useWatch } from "$model"
@@ -80,6 +81,16 @@ export {
 
         <GridCol span={9}>
             <LotsTable />
+        </GridCol>
+    </Grid>
+
+    <Grid>
+        <GridCol span={7}>
+
+        </GridCol>
+
+        <GridCol span={5}>
+            <HelpQuestions vertical />
         </GridCol>
     </Grid>
 </LazyPromise>

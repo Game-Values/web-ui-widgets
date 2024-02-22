@@ -28,7 +28,9 @@ export {
     <GridCol>
         <MainSlider />
     </GridCol>
+</Grid>
 
+<Grid>
     <GridCol span={8}>
         <GamesGroup />
     </GridCol>
@@ -36,8 +38,10 @@ export {
     <GridCol span={4}>
         <!-- chat -->
     </GridCol>
+</Grid>
 
-    <GridCol class="mt-40">
+<Grid>
+    <GridCol>
         <HelpQuestions />
     </GridCol>
 </Grid>
