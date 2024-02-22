@@ -70,7 +70,7 @@ export default defineConfig({
 
     server: {
         host: true,
-        port: env.PORT,
+        port: env.PUBLIC_SERVER_PORT,
         strictPort: true,
     },
 
