@@ -5,6 +5,7 @@ import type { SvelteHTMLElements } from "svelte/elements"
 import { onDestroy, onMount } from "svelte"
 
 import { onElementVisible } from "$lib/helpers"
+import { useEventDispatcher } from "$model"
 
 interface $$Props {
     class?: string
@@ -15,9 +16,13 @@ interface $$Slots {
     default: NonNullable<unknown>
 }
 
+interface $$Events {
+    visible: CustomEvent<never>
+}
+
 let className: string = ""
 
-let container: HTMLElement | undefined
+let container: HTMLElement
 
 let observer: IntersectionObserver | undefined
 
@@ -25,12 +30,15 @@ let tag: IKeyOf<SvelteHTMLElements> = "div"
 
 let visible: boolean = false
 
+let { dispatchEvent: dispatchVisibleEvent } = useEventDispatcher("visible")
+
 onMount((): void => {
-    if (container)
-        observer = onElementVisible(container, (): void => {
-            visible = true
-            observer?.disconnect()
-        })
+    observer = onElementVisible(container, (): void => {
+        visible = true
+
+        dispatchVisibleEvent()
+        observer?.disconnect()
+    })
 })
 
 onDestroy((): void => observer?.disconnect())

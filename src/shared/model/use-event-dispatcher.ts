@@ -12,6 +12,7 @@ type IUseEvent<T> = {
 type IEvents = IKeyOf<HTMLElementEventMap & {
     search: string
     update: any
+    visible: never
 }>
 
 export function useEventDispatcher<T = never>(

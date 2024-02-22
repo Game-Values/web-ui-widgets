@@ -23,7 +23,7 @@ const ENHANCED_IMAGES: IEnhancedImages = {
                 format: "webp",
                 picture: true,
                 quality: 75,
-                sizes: "(min-width: 320px) 480px",
+                sizes: "(min-width: 768px) 1152px, (min-width: 320px) 480px",
                 srcset: true,
                 w: "480",
             },
@@ -138,7 +138,7 @@ export {
 
 <style>
 picture {
-    @apply w-[var(--width,theme("width.full"))] h-[var(--height,theme("width.auto"))];
+    @apply w-[var(--width,theme("width.auto"))] h-[var(--height,theme("height.auto"))];
     @apply max-w-full max-h-full;
     @apply flex items-center justify-center;
 }

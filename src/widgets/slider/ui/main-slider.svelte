@@ -8,7 +8,7 @@ let swiperOptions: SwiperOptions = {
     },
 
     autoplay: {
-        delay: 10000,
+        delay: 10_000_00,
         disableOnInteraction: true,
     },
 
@@ -122,7 +122,7 @@ onDestroy((): void => swiperContainer.swiper.destroy())
 
 <swiper-container
     bind:this={swiperContainer}
-    class="max-w-full"
+    class="w-full"
     {...swiperOptions}
 >
     <swiper-slide lazy={swiperLazySlide}>

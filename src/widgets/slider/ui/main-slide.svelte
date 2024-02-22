@@ -31,49 +31,49 @@ export let title: string = ""
 </script>
 
 <figure class="hero h-96 place-items-baseline">
-    {#if image}
-        <div class="hero-image hero-overlay overflow-hidden">
-            <EnhancedImage
-                alt="main-slide"
-                size="lg"
-                src={image}
-            />
-        </div>
-    {/if}
+    <div class="hero-overlay overflow-hidden">
+        <EnhancedImage
+
+            alt="main-slide"
+            size="lg"
+            src={image}
+        />
+    </div>
 
     <figcaption
         class="
             hero-content
-            m-12 gap-y-3
-            max-w-[25rem]
-            flex flex-col items-baseline self-center
+            p-16
+            flex-col items-baseline self-center
         "
     >
-        <h1 class="empty:invisible">
-            <slot name="title">
-                {title}
-            </slot>
-        </h1>
-
-        <p class="empty:invisible">
-            <strong>
-                <slot>
-                    {content}
+        <div class="max-w-prose flex flex-col gap-y-3">
+            <h1 class="empty:invisible">
+                <slot name="title">
+                    {title}
                 </slot>
-            </strong>
-        </p>
+            </h1>
 
-        <div class="w-full max-w-44">
-            <slot name="action">
-                {#if action}
-                    <button
-                        class="btn btn-primary btn-wide"
-                        on:click={action.handler}
-                    >
-                        {action.label}
-                    </button>
-                {/if}
-            </slot>
+            <p class="empty:invisible">
+                <strong>
+                    <slot>
+                        {content}
+                    </slot>
+                </strong>
+            </p>
+
+            <div class="w-full max-w-44">
+                <slot name="action">
+                    {#if action}
+                        <button
+                            class="btn btn-primary btn-wide"
+                            on:click={action.handler}
+                        >
+                            {action.label}
+                        </button>
+                    {/if}
+                </slot>
+            </div>
         </div>
     </figcaption>
 </figure>

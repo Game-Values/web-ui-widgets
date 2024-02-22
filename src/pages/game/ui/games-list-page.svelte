@@ -3,6 +3,7 @@ import type { IGame } from "$schema/api"
 import type { IGamesListPageContext } from "~/pages/game"
 
 import { GamesGroup } from "~/widgets/game"
+import { HelpQuestions } from "~/widgets/help"
 import { MainSlider } from "~/widgets/slider"
 
 import { useBackground, useContext } from "$model"
@@ -33,6 +34,10 @@ export {
     </GridCol>
 
     <GridCol span={4}>
-        // chat
+        <!-- chat -->
+    </GridCol>
+
+    <GridCol class="mt-40">
+        <HelpQuestions />
     </GridCol>
 </Grid>
