@@ -15,10 +15,6 @@ import IconEnvelopeSolid from "virtual:icons/heroicons/envelope-solid"
 import IconHeartSolid from "virtual:icons/heroicons/heart-solid"
 import IconPlusCircle from "virtual:icons/heroicons/plus-circle"
 
-interface $$Slots {
-    default: { link: IDrawerLink }
-}
-
 let { storageValue: drawerOpened } = useStorage("drawer", true)
 
 type IDrawerLink = IRouteWithIcon & IRouteWithLabel & {
@@ -103,7 +99,7 @@ let { route, routeActive } = useRoute("/lots/new-listing")
         </DrawerMenuItem>
 
         {#each links as link (link.label)}
-            <slot {link} />
+            <DrawerMenuItem {link} />
 
             {#if link.divider}
                 <Divider

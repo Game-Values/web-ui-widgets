@@ -73,6 +73,11 @@ export default {
                 "line-height": "inherit",
             },
 
+            ".label-text": {
+                "font-size": "inherit",
+                "line-height": "inherit",
+            },
+
             ".menu": {
                 "font-size": "inherit",
                 "line-height": "inherit",

@@ -32,7 +32,7 @@ export {
 }
 </script>
 
-<label class="label gap-x-4 justify-start cursor-pointer {className}">
+<label class="label gap-x-3 justify-start cursor-pointer {className}">
     <input
         {name}
         class="toggle {inputClass}"

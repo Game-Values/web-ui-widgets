@@ -50,10 +50,9 @@ let stats: IStat[] = [
     {#each stats as stat (stat.label)}
         <li class="stat p-0 gap-x-3 border-transparent">
             <span class="stat-figure col-start-1 text-accent text-3xl">
-                <svelte:component
-                    this={stat.icon}
-                    class={stat.iconClass}
-                />
+                <i class="icon {stat.iconClass}">
+                    <svelte:component this={stat.icon} />
+                </i>
             </span>
 
             <span class="stat-value col-start-2">

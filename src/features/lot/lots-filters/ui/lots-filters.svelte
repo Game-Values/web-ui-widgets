@@ -2,14 +2,20 @@
 import type { IGameDetailsPageContext } from "~/pages/game"
 
 import { fetchLotsFilters } from "~/entities/lot"
+import { LotsFilter } from "~/features/lot"
 
 import { useContext } from "$model"
-import { LazyComponent, LazyPromise } from "$ui/actions"
+import { LazyPromise } from "$ui/actions"
 import { Empty } from "$ui/data"
 
 let { context } = useContext<IGameDetailsPageContext>()
 
-$: lotsFiltersPromise = fetchLotsFilters($context.game, $context.gameSectionActive)
+// todo: added sections for all games and rm ternary
+$: lotsFiltersPromise = (
+    $context.gameSectionActive
+        ? fetchLotsFilters($context.game, $context.gameSectionActive)
+        : Promise.resolve([])
+)
 </script>
 
 <div
@@ -30,10 +36,7 @@ $: lotsFiltersPromise = fetchLotsFilters($context.game, $context.gameSectionActi
         >
             {#if lotsFilters.length}
                 {#each lotsFilters as lotsFilter (lotsFilter.name)}
-                    <LazyComponent
-                        props={{ lotsFilter }}
-                        src="~/entities/lot/ui/lots-filter-{lotsFilter.type}.svelte"
-                    />
+                    <LotsFilter {lotsFilter}/>
                 {/each}
             {:else}
                 <Empty />

@@ -9,9 +9,9 @@ export let lotsFilter: ILotsFilter
 </script>
 
 <form class="form">
-    <h6>
+    <h5>
         {lotsFilter.name}
-    </h6>
+    </h5>
 
     <div class="form-control px-2">
         <input

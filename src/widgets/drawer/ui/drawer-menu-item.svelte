@@ -33,16 +33,20 @@ export {
 
 <li class={className}>
     <a
-        class="tooltip-right max-w-56 flex-1 text-secondary"
+        class="
+            tooltip-right
+            max-w-56
+            flex flex-1 items-center
+            text-secondary
+        "
         class:active={$routeActive}
         class:tooltip={!$drawerOpened}
         data-tip={link.label}
         href={$route}
     >
-        <svelte:component
-            this={link.icon}
-            class="text-xl {link.iconClass}"
-        />
+        <i class="icon text-xl {link.iconClass}">
+            <svelte:component this={link.icon} />
+        </i>
 
         {#if $drawerOpened}
             <b>

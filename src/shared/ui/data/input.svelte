@@ -23,17 +23,9 @@ let className: null | string | undefined = ""
 
 let inputClass: string = ""
 
-let name: null | string | undefined = "search"
-
-let placeholder: null | string | undefined = undefined
-
 let placement: "end" | "start" = "start"
 
-let required: boolean | null | undefined = false
-
 let type: HTMLInputTypeAttribute | null | undefined = "text"
-
-let value: any = undefined
 
 function input(e: IKeyboardEvent<HTMLInputElement, string>): void {
     switch (e.currentTarget.type) {
@@ -50,12 +42,8 @@ function input(e: IKeyboardEvent<HTMLInputElement, string>): void {
 export {
     className as class,
     inputClass,
-    name,
-    placeholder,
     placement,
-    required,
     type,
-    value,
 }
 </script>
 
@@ -64,19 +52,16 @@ export {
     class:label-icon-end={$$slots.icon && placement === "end"}
     class:label-icon-start={$$slots.icon && placement === "start"}
 >
-    {#if required}
+    {#if $$restProps.required}
         <span class="indicator-item badge badge-warning translate-x-0">
             Required
         </span>
     {/if}
 
     <input
-        {name}
         class="input {inputClass}"
-        {placeholder}
-        {required}
+        {...$$restProps}
         {...{ type }}
-        bind:value
         on:input={input}
     />
 

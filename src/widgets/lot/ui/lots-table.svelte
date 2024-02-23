@@ -11,10 +11,11 @@ import { Empty } from "$ui/data"
 let { context } = useContext<IGameDetailsPageContext>()
 let { searchLots } = useLots()
 
+// todo: added sections for all games and rm ternary
 $: useFacetsPromise = (
-    useFacets(
-        searchLots($context.game.id!, { type: $context.gameSectionActive }),
-    )
+    $context.gameSectionActive
+        ? useFacets(searchLots($context.game.id!, { type: $context.gameSectionActive }))
+        : useFacets({ facet_counts: Object.create(null), results: [] })
 )
 </script>
 

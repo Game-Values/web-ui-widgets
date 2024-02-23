@@ -45,7 +45,9 @@ export {
 
                 <p class="gap-x-2 flex items-center">
                     <span class="gap-x-0.5 inline-flex items-center text-positive-light">
-                        <IconHandUp class="text-xxs" />
+                        <i class="icon text-xxs">
+                            <IconHandUp />
+                        </i>
 
                         <small>
                             0%
@@ -53,7 +55,9 @@ export {
                     </span>
 
                     <span class="gap-x-0.5 inline-flex items-center text-accent">
-                        <IconArrowFatUp class="text-xxs" />
+                        <i class="icon text-xxs">
+                            <IconArrowFatUp />
+                        </i>
 
                         <small>
                             1

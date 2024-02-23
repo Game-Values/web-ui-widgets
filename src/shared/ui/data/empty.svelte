@@ -25,9 +25,11 @@ export {
     class="alert text-secondary {className}"
     role="alert"
 >
-    <slot name="icon">
-        <IconInformationCircle />
-    </slot>
+    <i class="icon">
+        <slot name="icon">
+            <IconInformationCircle />
+        </slot>
+    </i>
 
     <p>
         <slot>

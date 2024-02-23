@@ -62,7 +62,6 @@ export default [
         type: "checkbox",
     },
     {
-        buckets: [],
         name: "Level",
         type: "range",
     },

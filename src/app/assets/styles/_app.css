@@ -35,6 +35,10 @@ h6 {
     @apply font-bold text-sm;
 }
 
+i {
+    @apply not-italic;
+}
+
 small {
     @apply text-[0.875em];
 }

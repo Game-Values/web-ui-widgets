@@ -14,12 +14,10 @@ export function useLotsNewListingForm(): IForm<IItemCreate> {
     return createForm<IItemCreate>({
         initialValues: { attributes: Object.create(null) },
         onSubmit: createItemApiV1ItemsItemPost,
-        onSuccess: (lot: IItem): void => {
-            goto(
-                get(
-                    useRoute("/g/[gameId]", { gameId: lot.gid }).route,
-                ),
-            )
+        onSuccess: (lot: IItem): Promise<void> => {
+            let { route } = useRoute("/g/[gameId]", { gameId: lot.gid, gameSection: lot.attributes.type })
+
+            return goto(get(route))
         },
     })
 }

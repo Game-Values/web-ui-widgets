@@ -7,7 +7,9 @@ import IconExclamationCircle from "virtual:icons/heroicons/exclamation-circle"
 
 <Container tag="section">
     <div class="alert" role="alert">
-        <IconExclamationCircle class="text-xl" />
+        <i class="icon text-xl">
+            <IconExclamationCircle />
+        </i>
 
         <div class="gap-y-4 flex flex-col">
             <h1>

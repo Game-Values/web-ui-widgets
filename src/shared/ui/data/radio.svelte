@@ -3,6 +3,7 @@ import type { HTMLInputAttributes } from "svelte/elements"
 
 interface $$Props extends HTMLInputAttributes {
     class?: string
+    group?: string
     inputClass?: string
     label?: string
 }
@@ -11,34 +12,32 @@ interface $$Slots {
     default: NonNullable<unknown>
 }
 
-let checked: boolean | null | undefined = false
-
 let className: null | string | undefined = ""
+
+let group: string | undefined = undefined
 
 let inputClass: string = ""
 
 let label: string | undefined = undefined
 
-let name: null | string | undefined = undefined
-
-let required: boolean | null | undefined = false
+let value: string | undefined = undefined
 
 export {
-    checked,
     className as class,
+    group,
     inputClass,
     label,
-    name,
+    value,
 }
 </script>
 
-<label class="label gap-x-4 justify-start cursor-pointer {className}">
+<label class="label gap-x-3 justify-start cursor-pointer {className}">
     <input
-        {name}
         class="radio {inputClass}"
-        {required}
+        checked={group === value}
         type="radio"
-        bind:value={checked}
+        {...$$restProps}
+        on:change={() => group = value}
     />
 
     <span class="label-text">

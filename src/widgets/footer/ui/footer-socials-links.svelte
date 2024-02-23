@@ -48,10 +48,9 @@ let links: IRouteWithIcon[] = [
             {link}
             target="_blank"
         >
-            <svelte:component
-                this={link.icon}
-                class="text-4xl"
-            />
+            <i class="icon text-4xl">
+                <svelte:component this={link.icon} />
+            </i>
         </FooterLink>
     {/each}
 </nav>

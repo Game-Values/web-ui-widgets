@@ -15,6 +15,7 @@ type IEvents = IKeyOf<HTMLElementEventMap & {
     visible: never
 }>
 
+// todo: fromEvent rxjs
 export function useEventDispatcher<T = never>(
     event: IEvents,
     callback?: ICallable<T> | ICallableLazy<T>,

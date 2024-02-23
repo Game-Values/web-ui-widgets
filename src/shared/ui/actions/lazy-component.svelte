@@ -1,55 +1,30 @@
 <script lang="ts">
-import type { ILazyComponentConstructor, ILazyComponentSrc, INullable } from "$types"
-import type { ComponentConstructorOptions, SvelteComponent } from "svelte"
-
-import { onDestroy, onMount, tick } from "svelte"
+import type { ILazyComponentConstructor, ILazyComponentSrc } from "$types"
 
 import { lazyComponent } from "$lib/helpers"
+import { LazyPromise } from "$ui/actions"
 
-interface $$Props {
-    props?: ComponentConstructorOptions["props"]
+interface $$Props extends Record<string, any> {
     src: ILazyComponentSrc
 }
 
-let component: INullable<SvelteComponent> = null
-
-let props: ComponentConstructorOptions["props"] | undefined = undefined
-
-let src: ILazyComponentSrc
-
-let target: INullable<Document | Element | ShadowRoot> = null
-
-onMount(load)
-
-onDestroy(cleanup)
-
-async function cleanup(): Promise<void> {
-    if (!component)
-        return
-
-    component.$destroy()
-    component = null
-
-    await tick()
+interface $$Slots {
+    default: { component: ILazyComponentConstructor }
 }
 
-async function load(): Promise<void> {
-    await cleanup()
-
-    if (!target)
-        return
-
-    let ComponentConstructor: ILazyComponentConstructor = await lazyComponent(src)
-    component = new ComponentConstructor({ props, target })
-}
-
-export {
-    props,
-    src,
-}
+export let src: ILazyComponentSrc
 </script>
 
-<div
-    bind:this={target}
-    class="contents"
-/>
+<LazyPromise
+    promise={lazyComponent(src)}
+    let:value={component}
+>
+    {#if $$slots.default}
+        <slot {component} />
+    {:else}
+        <svelte:component
+            this={component}
+            {...$$restProps}
+        />
+    {/if}
+</LazyPromise>

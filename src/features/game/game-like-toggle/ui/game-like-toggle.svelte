@@ -57,11 +57,15 @@ export {
         on:change={gameLikeToggle}
     />
 
-    <strong class="swap-on absolute">
-        <IconHeartSolid class="text-negative-light" />
+    <strong class="swap-on absolute flex items-center">
+        <i class="icon text-negative-light">
+            <IconHeartSolid />
+        </i>
     </strong>
 
-    <strong class="swap-off absolute">
-        <IconHeart class="text-info" />
+    <strong class="swap-off absolute flex items-center">
+        <i class="icon text-info">
+            <IconHeart />
+        </i>
     </strong>
 </label>

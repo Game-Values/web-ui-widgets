@@ -40,7 +40,9 @@ export {
                     absolute right-4 top-4
                 "
             >
-                <IconXMark />
+                <i class="icon">
+                    <IconXMark />
+                </i>
             </button>
         </form>
 

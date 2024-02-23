@@ -35,12 +35,16 @@ let { setStorage: toggleDrawer, storageValue: drawerOpened } = useStorage("drawe
             on:change={() => toggleDrawer(!$drawerOpened)}
         />
 
-        <strong class="swap-on absolute">
-            <IconArrowLeftCircle />
+        <strong class="swap-on absolute flex items-center">
+            <i class="icon">
+                <IconArrowLeftCircle />
+            </i>
         </strong>
 
-        <strong class="swap-off absolute">
-            <IconBars3 />
+        <strong class="swap-off absolute flex items-center">
+            <i class="icon">
+                <IconBars3 />
+            </i>
         </strong>
     </label>
 </div>

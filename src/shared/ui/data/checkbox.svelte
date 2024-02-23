@@ -1,41 +1,51 @@
 <script lang="ts">
-interface $$Props {
-    checked?: boolean
+import type { HTMLInputAttributes } from "svelte/elements"
+
+import { remove } from "lodash-es"
+
+interface $$Props extends HTMLInputAttributes {
     class?: string
+    group?: string[]
     inputClass?: string
     label?: string
-    name?: string
 }
 
 interface $$Slots {
     default: NonNullable<unknown>
 }
 
-let checked: boolean = false
-
 let className: string = ""
+
+let group: string[] = []
 
 let inputClass: string = ""
 
 let label: string | undefined = undefined
 
-let name: string = "checkbox"
+let value: string = ""
+
+$: checked = group.includes(value)
 
 export {
-    checked,
     className as class,
+    group,
     inputClass,
     label,
-    name,
+    value,
 }
 </script>
 
-<label class="label gap-x-4 justify-start cursor-pointer {className}">
+<label class="label gap-x-3 justify-start cursor-pointer {className}">
     <input
-        {name}
         class="checkbox {inputClass}"
+        {checked}
         type="checkbox"
-        bind:checked
+        {...$$restProps}
+        on:change={() => (
+            checked
+                ? remove(group, val => val === value)
+                : group.push(value)
+        )}
     />
 
     <span class="label-text">
