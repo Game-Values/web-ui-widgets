@@ -46,7 +46,7 @@ export {
     </td>
 
     <td>
-        {order.owner_id.slice(0, 8)}
+        No data
     </td>
 
     <td>

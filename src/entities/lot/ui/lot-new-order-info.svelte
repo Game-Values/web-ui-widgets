@@ -9,7 +9,7 @@ let { context } = useContext<ILotNewOrderPageContext>()
 
 <Collapse
     opened
-    title="Order Information"
+    title="Payment Information"
     titleClass="px-4 bg-secondary text-lg"
 >
     <table class="table table-lg table-zebra">

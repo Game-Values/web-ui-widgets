@@ -2,6 +2,7 @@
 import type { IOrderInDB } from "$schema/api"
 
 import { UserCard, UserStats } from "~/entities/user"
+import { HelpQuestions } from "~/widgets/help"
 import { UserPurchasesTable } from "~/widgets/user"
 
 import { useSession } from "$model"
@@ -38,5 +39,11 @@ export let orders: IOrderInDB[]
 
     <GridCol span={3}>
         <UserStats />
+    </GridCol>
+</Grid>
+
+<Grid>
+    <GridCol>
+        <HelpQuestions />
     </GridCol>
 </Grid>
