@@ -15,6 +15,20 @@
         />
 
         %sveltekit.head%
+
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-5H14E37192">
+            /* Google tag (gtag.js) */
+        </script>
+
+        <script>
+            /* Google tag (gtag.js) */
+            (function(d,g){window.dataLayer||=d;window.gtag||=g;gtag("js",new Date());gtag("config","G-5H14E37192")})([],function(){dataLayer.push(arguments)});
+        </script>
+
+        <script>
+            /* Yandex.Metrika counter */
+            (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(92093048,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true});
+        </script>
     </head>
 
     <body
@@ -24,5 +38,14 @@
         <div class="contents">
             %sveltekit.body%
         </div>
+
+        <noscript>
+            <!-- Yandex.Metrika counter -->
+            <img
+                class="absolute -top-[625rem] -left-[625rem]"
+                src="https://mc.yandex.ru/watch/92093048"
+                alt="Yandex.Metrika"
+            />
+        </noscript>
     </body>
 </html>
