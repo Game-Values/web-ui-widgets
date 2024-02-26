@@ -42,6 +42,9 @@ const PAGES = {
   "/sales": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
     return `${params?.locale ? `/${params?.locale}`: ''}/sales`
   },
+  "/settings": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/settings`
+  },
   "/about": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
     return `${params?.locale ? `/${params?.locale}`: ''}/about`
   },
@@ -202,7 +205,7 @@ export function route<T extends keyof AllTypes>(key: T, ...params: any[]): strin
 * ```
 */
 export type KIT_ROUTES = {
-  PAGES: { '/': 'locale', '/favorites': 'locale', '/funds': 'locale', '/lots': 'locale', '/lots/new-listing': 'locale', '/lots/new-order/[lotId]': 'lotId' | 'locale', '/messages': 'locale', '/purchases': 'locale', '/purchases/[orderId]': 'orderId' | 'locale', '/referral': 'locale', '/sales': 'locale', '/about': 'locale', '/ai-assistant': 'locale', '/blog': 'locale', '/feedback': 'locale', '/g/[gameId]': 'gameId' | 'locale' | 'gameSection', '/help': 'locale', '/job': 'locale', '/promotions': 'locale', '/top-10': 'locale', '/u/[userId]': 'userId' | 'locale' }
+  PAGES: { '/': 'locale', '/favorites': 'locale', '/funds': 'locale', '/lots': 'locale', '/lots/new-listing': 'locale', '/lots/new-order/[lotId]': 'lotId' | 'locale', '/messages': 'locale', '/purchases': 'locale', '/purchases/[orderId]': 'orderId' | 'locale', '/referral': 'locale', '/sales': 'locale', '/settings': 'locale', '/about': 'locale', '/ai-assistant': 'locale', '/blog': 'locale', '/feedback': 'locale', '/g/[gameId]': 'gameId' | 'locale' | 'gameSection', '/help': 'locale', '/job': 'locale', '/promotions': 'locale', '/top-10': 'locale', '/u/[userId]': 'userId' | 'locale' }
   SERVERS: Record<string, never>
   ACTIONS: Record<string, never>
   LINKS: { 'copyright': never, 'discord': never, 'facebook': never, 'instagram': never, 'telegramChat': never, 'telegramNews': never, 'twitch': never, 'youtube': never }

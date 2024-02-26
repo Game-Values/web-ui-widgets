@@ -3,8 +3,9 @@ import type { IGame, IItem } from "$schema/api"
 import type { ILotNewOrderPageContext } from "~/pages/lot"
 
 import { HelpNewLotOrderAccordion } from "~/entities/help"
+import { LotNewOrderInfo, LotNewOrderSteps, LotNewOrderTitle } from "~/entities/lot"
+import { LotNewOrderForm } from "~/features/lot"
 import { HelpQuestions } from "~/widgets/help"
-import { LotNewOrder } from "~/widgets/lot"
 
 import { useContext } from "$model"
 import { Grid, GridCol } from "$ui/layout"
@@ -27,8 +28,17 @@ export {
 </script>
 
 <Grid>
-    <GridCol span={7}>
-        <LotNewOrder />
+    <GridCol
+        class="gap-y-12 flex flex-col"
+        span={7}
+    >
+        <LotNewOrderTitle />
+
+        <LotNewOrderSteps />
+
+        <LotNewOrderInfo />
+
+        <LotNewOrderForm />
     </GridCol>
 
     <GridCol span={5}>

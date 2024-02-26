@@ -26,6 +26,8 @@ let { data, form, setData } = useLotsNewOrderForm()
     <div class="form-control form-control-row gap-0">
         <Input
             name="order.attributes.price"
+            max={$context.lot.attributes.amount}
+            min={0}
             placeholder="I will pay"
             placement="end"
             required
@@ -34,11 +36,7 @@ let { data, form, setData } = useLotsNewOrderForm()
             on:input={e => (
                 setData("order.attributes.amount", (e.detail * $context.lot.attributes.price) || 0)
             )}
-        >
-            <svelte:fragment slot="icon">
-                {CurrencySign[$data.order.attributes.currency]}
-            </svelte:fragment>
-        </Input>
+        />
 
         <div class="flex flex-col items-center justify-center text-3xl">
             <i class="icon">
@@ -52,6 +50,7 @@ let { data, form, setData } = useLotsNewOrderForm()
 
         <Input
             name="order.attributes.amount"
+            min={0}
             placeholder="I will receive"
             required
             type="number"

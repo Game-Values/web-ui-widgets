@@ -14,4 +14,4 @@ export type IGameDetailsPageContext = {
 
 export type IGamesListPageData = IPagePromise<IGame[]>
 
-export type IGameDetailsPageData = IPagePromise<IGame>
+export type IGameDetailsPageData = IPagePromise<IGame, IGameSections>

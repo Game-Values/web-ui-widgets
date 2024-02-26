@@ -50,8 +50,8 @@ export {
 
 <label
     class="indicator label label-icon {className}"
-    class:label-icon-end={placement === "end"}
-    class:label-icon-start={placement === "start"}
+    class:label-icon-end={$$slots.icon && placement === "end"}
+    class:label-icon-start={$$slots.icon && placement === "start"}
 >
     {#if required}
         <span class="indicator-item badge badge-warning translate-x-0">

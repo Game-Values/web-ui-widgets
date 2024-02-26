@@ -17,23 +17,21 @@ import { Grid, GridCol } from "$ui/layout"
 
 interface $$Props {
     game: IGame
+    gameSections: IGameSections
 }
 
 let game: IGame
 
-let { context, updateContext } = useContext<IGameDetailsPageContext>({ game })
-let { fetchGameSections, gameImage } = useGame(game)
+let gameSections: IGameSections
+
+let { gameImage } = useGame(game)
 let { routeParams } = useRoute()
 
-let gameSectionsPromise: Promise<void> = (
-    fetchGameSections()
-        .then((gameSections: IGameSections): void => (
-            updateContext({
-                gameSectionActive: $routeParams.gameSection || Object.keys(gameSections)[0],
-                gameSections,
-            })
-        ))
-)
+let { context, updateContext } = useContext<IGameDetailsPageContext>({
+    game,
+    gameSectionActive: $routeParams.gameSection || Object.keys(gameSections)[0],
+    gameSections,
+})
 
 useBackground({ height: "25rem", src: gameImage })
 
@@ -44,47 +42,46 @@ useWatch(routeParams, (): void => {
 
 export {
     game,
+    gameSections,
 }
 </script>
 
-<LazyPromise promise={gameSectionsPromise}>
-    <Grid>
-        <GridCol>
-            <GameInfo />
-        </GridCol>
+<Grid>
+    <GridCol>
+        <GameInfo />
+    </GridCol>
 
-        <GridCol
-            align="center"
-            span={6}
+    <GridCol
+        align="center"
+        span={6}
+    >
+        <InputSearch
+            class="w-full"
+            placeholder="Search Lots"
+            placement="end"
+        />
+    </GridCol>
+
+    <GridCol
+        align="center"
+        span={6}
+    >
+        <Toggle
+            checked
+            inputClass="toggle-success"
         >
-            <InputSearch
-                class="w-full"
-                placeholder="Search Lots"
-                placement="end"
-            />
-        </GridCol>
+            Online Players Only
+        </Toggle>
+    </GridCol>
 
-        <GridCol
-            align="center"
-            span={6}
-        >
-            <Toggle
-                checked
-                inputClass="toggle-success"
-            >
-                Online Players Only
-            </Toggle>
-        </GridCol>
+    <GridCol span={3}>
+        <LotsFilters />
+    </GridCol>
 
-        <GridCol span={3}>
-            <LotsFilters />
-        </GridCol>
-
-        <GridCol span={9}>
-            <LotsTable />
-        </GridCol>
-    </Grid>
-</LazyPromise>
+    <GridCol span={9}>
+        <LotsTable />
+    </GridCol>
+</Grid>
 
 <Grid>
     <GridCol span={7}>

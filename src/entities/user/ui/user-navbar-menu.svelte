@@ -1,5 +1,5 @@
 <script lang="ts">
-import { useSession } from "$model"
+import { useRoute, useSession } from "$model"
 import { Avatar } from "$ui/data"
 
 interface $$Props {
@@ -8,6 +8,7 @@ interface $$Props {
 
 let className: string = ""
 
+let { route: settingsRoute } = useRoute("/settings")
 let { logout, user } = useSession()
 
 export {
@@ -24,6 +25,12 @@ export {
     </summary>
 
     <menu class="dropdown-content menu w-60">
+        <li>
+            <a href={$settingsRoute}>
+                Settings
+            </a>
+        </li>
+
         <li class="text-error">
             <button on:click={logout}>
                 Log Out

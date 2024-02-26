@@ -2,7 +2,6 @@
 import type { IItemCreate } from "$schema/api"
 import type { ILotNewListingPageContext } from "~/pages/lot"
 
-import { Currency, CurrencySign } from "$lib/enums"
 import { useContext, useEventDispatcher } from "$model"
 import { Collapse, Input } from "$ui/data"
 
@@ -27,6 +26,7 @@ export let data: IItemCreate
     <div class="form-control form-control-row">
         <Input
             name="attributes.amount"
+            min={0}
             placeholder="Item amount"
             placement="end"
             required
@@ -37,16 +37,13 @@ export let data: IItemCreate
 
         <Input
             name="attributes.price"
+            min={0}
             placeholder="Item price"
             placement="end"
             required
             type="number"
             bind:value={data.attributes.price}
             on:input={e => dispatchUpdateEvent({ attributes: { price: e.detail } })}
-        >
-            <svelte:fragment slot="icon">
-                {CurrencySign[data.attributes.currency || Currency.EUR]}
-            </svelte:fragment>
-        </Input>
+        />
     </div>
 </Collapse>

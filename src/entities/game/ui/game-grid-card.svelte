@@ -39,7 +39,11 @@ export {
             class:group-hover:from-primary={$gameLiked}
             class:group-hover:to-accent-medium-light={$gameLiked}
         >
-            <EnhancedImage src={gameIcon} />
+            <EnhancedImage
+                --height="100%"
+                --width="100%"
+                src={gameIcon}
+            />
         </figure>
     </a>
 

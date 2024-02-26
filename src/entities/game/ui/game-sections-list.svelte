@@ -9,7 +9,7 @@ interface $$Slots {
     default: { gameSection: string, gameSectionActive: string }
 }
 
-let { context } = useContext<IGameDetailsPageContext>({ gameSections: Object.create(null) })
+let { context } = useContext<IGameDetailsPageContext>()
 </script>
 
 <nav class="gap-3 flex flex-wrap">
