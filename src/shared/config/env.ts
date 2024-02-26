@@ -4,6 +4,8 @@ const API_URL: string = getEnv("VITE_API_URL")
 
 const OPENAPI_URL: string = getEnv("VITE_OPENAPI_URL")
 
+const CANONICAL_URL: string = getEnv("VITE_CANONICAL_URL")
+
 /**
  * @throwable
  */
@@ -17,5 +19,6 @@ function getEnv(key: IKeyOf<ImportMetaEnv>): string {
 
 export {
     API_URL,
+    CANONICAL_URL,
     OPENAPI_URL,
 }

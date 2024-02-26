@@ -2,7 +2,7 @@
 import { Drawer } from "~/widgets/drawer"
 import { Footer } from "~/widgets/footer"
 import { Navbar } from "~/widgets/navbar"
-import { BackgroundImageProvider, ModalProvider, QueryProvider } from "~/widgets/provider"
+import { BackgroundImageProvider, ModalProvider, QueryProvider, SeoProvider } from "~/widgets/provider"
 
 import { Container } from "$ui/layout"
 </script>
@@ -35,4 +35,6 @@ import { Container } from "$ui/layout"
     </Drawer>
 
     <ModalProvider />
+
+    <SeoProvider />
 </Container>

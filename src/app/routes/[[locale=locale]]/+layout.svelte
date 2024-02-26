@@ -6,7 +6,7 @@ import "uno.css"
 
 import "~/app/assets/styles/index.css"
 import { DefaultLayout } from "~/app/layouts"
-import { withVitals } from "~/app/providers"
+import { withDateFns, withVitals } from "~/app/providers"
 
 import { useSession } from "$model"
 
@@ -24,7 +24,10 @@ let { setSession } = useSession()
 
 setSession(data.session)
 
-onMount(withVitals)
+onMount((): void => {
+    withDateFns()
+    withVitals()
+})
 
 export {
     data,

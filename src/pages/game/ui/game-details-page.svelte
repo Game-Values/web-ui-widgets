@@ -11,7 +11,6 @@ import { HelpQuestions } from "~/widgets/help"
 import { LotsTable } from "~/widgets/lot"
 
 import { useBackground, useContext, useRoute, useWatch } from "$model"
-import { LazyPromise } from "$ui/actions"
 import { InputSearch, Toggle } from "$ui/data"
 import { Grid, GridCol } from "$ui/layout"
 

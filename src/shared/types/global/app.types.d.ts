@@ -1,5 +1,5 @@
 import type { Api } from "$schema/api"
-import type { IEnhancedImageSrc, IModal, IRouteParams, ISession } from "$types"
+import type { IEnhancedImageSrc, IModal, IRouteParams, ISeo, ISession } from "$types"
 import type { Page as PageRaw } from "@sveltejs/kit"
 
 // See https://kit.svelte.dev/docs/types#app
@@ -20,6 +20,7 @@ declare global {
         interface PageState {
             background?: { height?: string, src: IEnhancedImageSrc, width?: string }
             modal?: IModal
+            seo?: ISeo
         }
 
         // interface Platform {}

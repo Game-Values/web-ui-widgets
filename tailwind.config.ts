@@ -93,6 +93,11 @@ export default {
                 "line-height": "inherit",
             },
 
+            ".table": {
+                "font-size": "inherit",
+                "line-height": "inherit",
+            },
+
             ".tabs .tab": {
                 "font-size": "inherit",
                 "line-height": "inherit",

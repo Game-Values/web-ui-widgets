@@ -24,6 +24,7 @@
     },
     "dependencies": {
         "@sveltestack/svelte-query": "^1.6.0",
+        "date-fns": "^3.3.1",
         "felte": "^1.2.14",
         "http-status": "^1.7.4",
         "js-cookie": "^3.0.5",

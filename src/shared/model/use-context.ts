@@ -34,9 +34,9 @@ export function useContext<T = unknown>(
         updateContext: (updatedContext: Partial<T>): void => (
             context.set(
                 // eslint-disable-next-line consistent-return
-                mergeWith(get(use.context), updatedContext, (oldVal: T, newVal: Partial<T>): any => {
-                    if (Array.isArray(oldVal))
-                        return newVal
+                mergeWith(get(use.context), updatedContext, (val: T, updatedVal: Partial<T>): any => {
+                    if (Array.isArray(val))
+                        return updatedVal
                 }),
             )
         ),

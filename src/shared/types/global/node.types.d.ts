@@ -4,6 +4,7 @@ declare global {
             NODE_ENV: "development" | "production"
             PORT: 3000 | 80
             VITE_API_URL: string
+            VITE_CANONICAL_URL: string
             VITE_OPENAPI_URL: string
         }
     }

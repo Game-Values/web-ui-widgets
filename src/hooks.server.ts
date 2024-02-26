@@ -16,7 +16,9 @@ export async function handle({ event, resolve }): Promise<Response> {
                 headers: Object.fromEntries(headers.entries()),
             },
         }),
-        session: Object.create(null),
+        session: {
+            locale: Locale.EN,
+        },
     }
 
     if (headers.has("authorization"))
