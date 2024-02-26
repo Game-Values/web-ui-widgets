@@ -1,6 +1,7 @@
 import type { IHeaders } from "$types"
 
 import { useApi } from "$api"
+import { Locale, Theme } from "$lib/enums"
 import { getSessionHeaders } from "$lib/helpers"
 import { useSession } from "$model"
 
@@ -25,5 +26,11 @@ export async function handle({ event, resolve }): Promise<Response> {
             logout()
         }
 
-    return resolve(event)
+    return resolve(event, {
+        transformPageChunk: ({ html }): string => (
+            html
+                .replace("%sveltekit.lang%", Locale.EN)
+                .replace("%sveltekit.theme%", Theme.DARK)
+        ),
+    })
 }
