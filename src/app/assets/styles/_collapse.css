@@ -1,9 +1,5 @@
 .collapse .collapse-title {
-    @apply p-0;
     @apply h-16;
     @apply flex items-center;
-}
-
-.collapse .collapse-content {
-    @apply p-1;
+    @apply rounded-xl;
 }

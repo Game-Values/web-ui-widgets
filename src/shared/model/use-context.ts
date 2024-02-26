@@ -1,6 +1,6 @@
 import type { Readable, Writable } from "svelte/store"
 
-import { merge, mergeWith } from "lodash-es"
+import { mergeWith } from "lodash-es"
 import { getContext, setContext } from "svelte"
 import { derived, get, writable } from "svelte/store"
 

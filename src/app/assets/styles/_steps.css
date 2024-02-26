@@ -2,14 +2,10 @@
     @apply overflow-visible;
 }
 
-.steps.steps-vertical .step {
-    @apply gap-x-4;
-}
-
 .steps .step {
     @apply min-h-32;
     @apply font-bold;
-    @apply before:w-0.5;
+    @apply before:h-0.5;
     @apply before:bg-secondary;
     @apply after:w-10 after:h-10;
     @apply after:border-2 after:border-solid after:border-white/[0.12];
@@ -18,4 +14,10 @@
 .steps .step.step-primary {
     @apply after:content-[attr(data-content)];
     @apply after:shadow-[0_0.375rem_3.25rem_0_rgba(61,152,255,0.40)];
+}
+
+.steps.steps-vertical .step {
+    @apply gap-x-4;
+    @apply first:before:h-auto;
+    @apply before:w-0.5 before:h-full;
 }

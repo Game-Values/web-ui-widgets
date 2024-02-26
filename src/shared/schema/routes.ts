@@ -24,11 +24,17 @@ const PAGES = {
   "/lots/new-listing": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]), gameId?: (string), gameSection?: (string) }) => {
     return `${params?.locale ? `/${params?.locale}`: ''}/lots/new-listing${appendSp({ gameId: params?.gameId, gameSection: params?.gameSection })}`
   },
+  "/lots/new-order/[lotId]": (params: { lotId: (string | number), locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/lots/new-order/${params.lotId}`
+  },
   "/messages": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
     return `${params?.locale ? `/${params?.locale}`: ''}/messages`
   },
   "/purchases": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
     return `${params?.locale ? `/${params?.locale}`: ''}/purchases`
+  },
+  "/purchases/[orderId]": (params: { orderId: (string | number), locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/purchases/${params.orderId}`
   },
   "/referral": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
     return `${params?.locale ? `/${params?.locale}`: ''}/referral`
@@ -196,9 +202,9 @@ export function route<T extends keyof AllTypes>(key: T, ...params: any[]): strin
 * ```
 */
 export type KIT_ROUTES = {
-  PAGES: { '/': 'locale', '/favorites': 'locale', '/funds': 'locale', '/lots': 'locale', '/lots/new-listing': 'locale', '/messages': 'locale', '/purchases': 'locale', '/referral': 'locale', '/sales': 'locale', '/about': 'locale', '/ai-assistant': 'locale', '/blog': 'locale', '/feedback': 'locale', '/g/[gameId]': 'gameId' | 'locale' | 'gameSection', '/help': 'locale', '/job': 'locale', '/promotions': 'locale', '/top-10': 'locale', '/u/[userId]': 'userId' | 'locale' }
+  PAGES: { '/': 'locale', '/favorites': 'locale', '/funds': 'locale', '/lots': 'locale', '/lots/new-listing': 'locale', '/lots/new-order/[lotId]': 'lotId' | 'locale', '/messages': 'locale', '/purchases': 'locale', '/purchases/[orderId]': 'orderId' | 'locale', '/referral': 'locale', '/sales': 'locale', '/about': 'locale', '/ai-assistant': 'locale', '/blog': 'locale', '/feedback': 'locale', '/g/[gameId]': 'gameId' | 'locale' | 'gameSection', '/help': 'locale', '/job': 'locale', '/promotions': 'locale', '/top-10': 'locale', '/u/[userId]': 'userId' | 'locale' }
   SERVERS: Record<string, never>
   ACTIONS: Record<string, never>
   LINKS: { 'copyright': never, 'discord': never, 'facebook': never, 'instagram': never, 'telegramChat': never, 'telegramNews': never, 'twitch': never, 'youtube': never }
-  Params: { locale: never, gameId: never, gameSection: never, userId: never }
+  Params: { locale: never, gameId: never, gameSection: never, lotId: never, orderId: never, userId: never }
 }

@@ -14,7 +14,8 @@ interface $$Props {
 
 let lot: IItem
 
-let { route } = useRoute("/u/[userId]", { userId: lot.owner_id })
+let { route: userRoute } = useRoute("/u/[userId]", { userId: lot.owner_id })
+let { route: lotNewOrderRoute } = useRoute("/lots/new-order/[lotId]", { lotId: lot.id })
 
 export {
     lot,
@@ -24,7 +25,7 @@ export {
 <tr>
     <td>
         <div class="gap-x-3 flex items-center">
-            <a href={$route}>
+            <a href={$userRoute}>
                 <Avatar
                     class="w-8"
                     username="Username"
@@ -34,7 +35,7 @@ export {
             <div class="flex flex-col">
                 <a
                     class="link link-hover"
-                    href={$route}
+                    href={$userRoute}
                 >
                     Username
                 </a>
@@ -72,7 +73,7 @@ export {
         <p class="flex flex-col">
             <a
                 class="link link-hover"
-                href="javascript:void(0)"
+                href={$lotNewOrderRoute}
             >
                 <b class="line-clamp-2">
                     {lot.name}

@@ -14,11 +14,13 @@
 }
 
 .label.label-icon .textarea + .icon {
-    @apply top-6;
+    @apply top-[calc(var(--icon-size)+0.325rem)];
 }
 
-.label.label-icon-start .input {
-    @apply pl-[calc(var(--icon-size)+1rem)];
+.label.label-icon-start .input,
+.label.label-icon-start .select,
+.label.label-icon-start .textarea {
+    @apply pl-[calc(var(--icon-size)+1rem*1.5)];
 }
 
 .label.label-icon-start .icon {

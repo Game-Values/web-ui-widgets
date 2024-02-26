@@ -60,7 +60,7 @@ let formModel: UnwrapRef<FormModel> = reactive({ ...getRef(item, "attributes") }
         :label="$t('order.Order comment')"
     >
         <v-textarea
-            :placeholder="$t('order[\'Specify the method of header transfer (e.g., your in-lot username)\']')"
+            :placeholder="$t('order[\'Specify the method of header transfer (e.o., your in-lot username)\']')"
         />
     </v-form-item>
 

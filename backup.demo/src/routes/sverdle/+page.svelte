@@ -28,7 +28,7 @@
 
 	/**
 	 * A map of descriptions for all letters that have been guessed,
-	 * used for adding text for assistive technology (e.g. screen readers)
+	 * used for adding text for assistive technology (e.o. screen readers)
 	 */
 	let description: Record<string, string>;
 
