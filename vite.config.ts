@@ -55,7 +55,7 @@ export default defineConfig({
                 youtube: "https://www.youtube.com/channel/UCLVw1bjWVYUjRW8oBFpwx8Q",
             },
             PAGES: {
-                "/lots/new-listing": {
+                "/lots/create": {
                     explicit_search_params: {
                         gameId: { type: "string" },
                         gameSection: { type: "string" },

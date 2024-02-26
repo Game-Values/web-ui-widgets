@@ -26,12 +26,12 @@ let links: IDrawerLink[] = [
     {
         icon: IconArchiveDown,
         label: "Sales",
-        url: "/sales",
+        url: "/order/sales",
     },
     {
         icon: IconArchiveUp,
         label: "Purchases",
-        url: "/purchases",
+        url: "/order/purchases",
     },
     {
         divider: true,
@@ -60,7 +60,7 @@ let links: IDrawerLink[] = [
     },
 ]
 
-let { route, routeActive } = useRoute("/lots/new-listing")
+let { route: lotsCreateRoute, routeActive: lotsCreateRouteActive } = useRoute("/lots/create")
 </script>
 
 <nav>
@@ -87,9 +87,9 @@ let { route, routeActive } = useRoute("/lots/new-listing")
                         inline-flex items-center justify-center
                         text-secondary
                     "
-                    class:active={$routeActive}
+                    class:active={$lotsCreateRouteActive}
                     data-tip="New Listing"
-                    href={$route}
+                    href={$lotsCreateRoute}
                 >
                     <strong>
                         <IconPlusCircle />

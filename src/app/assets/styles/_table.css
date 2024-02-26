@@ -2,7 +2,6 @@
     --rounded-box: theme("borderRadius.2xl");
 
     @apply table-fixed;
-    @apply overflow-hidden;
 }
 
 .table :where(thead, tfoot) {

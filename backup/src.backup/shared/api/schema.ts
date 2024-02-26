@@ -1111,7 +1111,7 @@ export namespace Api {
 	 * @tags users
 	 * @name CreateUserApiV1UsersCreatePost
 	 * @summary Create User
-	 * @request POST:/api/v1/users/new-listing
+	 * @request POST:/api/v1/users/create
 	 * @secure
 	 * @response `200` `ICreateUserApiV1UsersCreatePostDataRaw` Successful Response
 	 * @response `422` `IHTTPValidationErrorRaw` Validation Error
@@ -1485,7 +1485,7 @@ export namespace Api {
 	 * @tags funds
 	 * @name CreatePaymentApiV1FundsCreatePaymentPost
 	 * @summary Create Payment
-	 * @request POST:/api/v1/funds/new-listing-payment
+	 * @request POST:/api/v1/funds/create-payment
 	 * @secure
 	 * @response `200` `ICreatePaymentApiV1FundsCreatePaymentPostDataRaw` Successful Response
 	 * @response `422` `IHTTPValidationErrorRaw` Validation Error
@@ -2252,7 +2252,7 @@ export class Api<SecurityDataType extends unknown> {
 		 * @tags users
 		 * @name CreateUserApiV1UsersCreatePost
 		 * @summary Create User
-		 * @request POST:/api/v1/users/new-listing
+		 * @request POST:/api/v1/users/create
 		 * @secure
 		 * @response `200` `ICreateUserApiV1UsersCreatePostDataRaw` Successful Response
 		 * @response `422` `IHTTPValidationErrorRaw` Validation Error
@@ -2620,7 +2620,7 @@ export class Api<SecurityDataType extends unknown> {
 		 * @tags funds
 		 * @name CreatePaymentApiV1FundsCreatePaymentPost
 		 * @summary Create Payment
-		 * @request POST:/api/v1/funds/new-listing-payment
+		 * @request POST:/api/v1/funds/create-payment
 		 * @secure
 		 * @response `200` `ICreatePaymentApiV1FundsCreatePaymentPostDataRaw` Successful Response
 		 * @response `422` `IHTTPValidationErrorRaw` Validation Error

@@ -15,7 +15,7 @@ let { context } = useContext<IGameDetailsPageContext>()
 let { routeParams } = useRoute()
 
 $: lotsCreateRoute = (
-    useRoute("/lots/new-listing", {
+    useRoute("/lots/create", {
         gameId: $context.game.id,
         gameSection: $routeParams.gameSection,
     }).route

@@ -15,7 +15,7 @@ interface $$Props {
 let lot: IItem
 
 let { route: userRoute } = useRoute("/u/[userId]", { userId: lot.owner_id })
-let { route: lotNewOrderRoute } = useRoute("/lots/new-order/[lotId]", { lotId: lot.id })
+let { route: orderCreateRoute } = useRoute("/order/create/[lotId]", { lotId: lot.id })
 
 export {
     lot,
@@ -73,7 +73,7 @@ export {
         <p class="flex flex-col">
             <a
                 class="link link-hover"
-                href={$lotNewOrderRoute}
+                href={$orderCreateRoute}
             >
                 <b class="line-clamp-2">
                     {lot.name}

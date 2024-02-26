@@ -15,7 +15,7 @@ interface $$Props {
 
 let games: IGame[]
 
-useBackground({ src: "images/bg/main-bg.png" })
+useBackground({ src: "images/bg/games-list-page-bg.png" })
 
 useContext<IGamesListPageContext>({ games })
 

@@ -91,7 +91,7 @@ let size: IEnhancedImageSize = "md"
 let src: IEnhancedImageSrc
 
 $: enhancedImagePromise = extractLazyModule<IEnhanced>(
-    ENHANCED_IMAGES[size][`/src/app/assets/${src}`](),
+    ENHANCED_IMAGES[size][`/src/app/assets/${src}`]()
 )
 
 export {

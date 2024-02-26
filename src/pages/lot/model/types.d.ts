@@ -1,8 +1,8 @@
-import type { IGame, IItem } from "$schema/api"
+import type { IGame } from "$schema/api"
 import type { IPagePromise } from "$types"
 import type { ILotsFilter } from "~/entities/lot"
 
-export type ILotNewListingPageContext = {
+export type ILotCreatePageContext = {
     game?: IGame
     games: IGame[]
     gameSections: string[]
@@ -10,12 +10,4 @@ export type ILotNewListingPageContext = {
     step: 1 | 2 | 3
 }
 
-export type ILotNewOrderPageContext = {
-    game: IGame
-    lot: IItem
-    step: 1 | 2 | 3
-}
-
-export type ILotNewListingPageData = IPagePromise<IGame[]>
-
-export type ILotNewOrderPageData = IPagePromise<IItem, IGame>
+export type ILotCreatePageData = IPagePromise<IGame[]>
