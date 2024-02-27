@@ -5,6 +5,10 @@ import { Navbar } from "~/widgets/navbar"
 import { BackgroundImageProvider, ModalProvider, QueryProvider, SeoProvider } from "~/widgets/provider"
 
 import { Container } from "$ui/layout"
+
+interface $$Slots {
+    default: NonNullable<unknown>
+}
 </script>
 
 <Container

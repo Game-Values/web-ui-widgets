@@ -1,13 +1,15 @@
 import { join, resolve } from "node:path"
 
-import adapter from "@sveltejs/adapter-node"
+import adapter from "@sveltejs/adapter-static"
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte"
 
 /** @type {import("@sveltejs/kit").Config} */
 const config = {
     kit: {
         adapter: adapter({
-            out: resolve(".build"),
+            assets: resolve(".build"),
+            pages: resolve(".build"),
+            precompress: true,
         }),
 
         alias: {
@@ -22,6 +24,12 @@ const config = {
         },
 
         files: {
+            appTemplate: join("src", "app", "templates", "app.html"),
+            errorTemplate: join("src", "app", "templates", "error.html"),
+            hooks: {
+                client: join("src", "app", "hooks", "hooks.client"),
+                server: join("src", "app", "hooks", "hooks.server"),
+            },
             lib: join("src", "shared", "lib"),
             params: join("src", "app", "params"),
             routes: join("src", "app", "routes"),

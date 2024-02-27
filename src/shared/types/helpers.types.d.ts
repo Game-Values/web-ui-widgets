@@ -4,6 +4,8 @@ export type ICallableLazy<T = void> = ICallable<Promise<T>>
 
 export type IKeyOf<T> = keyof T
 
+export type ILayoutPromise<T extends Iterable<PromiseLike<T> | T>> = { layoutPromise: Promise<Awaited<T>[]> }
+
 export type IModule<T> = { default: T }
 
 export type INullable<T> = null | T
