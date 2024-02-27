@@ -7,4 +7,4 @@ export type IOrderPurchasesListPageData = IPagePromise<IOrderInDB[]>
 
 export type IOrderPurchaseDetailsPageData = IPagePromise<IOrderInDB>
 
-export type IOrderSalesListPageData = IPagePromise<IItem[]>
+export type IOrderSalesListPageData = IPagePromise<IOrderInDB[]>

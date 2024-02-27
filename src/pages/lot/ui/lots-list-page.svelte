@@ -4,7 +4,7 @@ import type { IItem } from "$schema/api"
 import { AuthOnly } from "~/entities/auth"
 import { UserCard, UserLotsStats } from "~/entities/user"
 import { HelpQuestions } from "~/widgets/help"
-import { OrderLotsAccordion } from "~/widgets/order"
+import { LotsAccordion } from "~/widgets/lot"
 import { UserStats } from "~/widgets/user"
 
 import { useRoute, useSession } from "$model"
@@ -57,7 +57,7 @@ export let lots: IItem[]
             </GridCol>
         </Grid>
 
-        <OrderLotsAccordion {lots} />
+        <LotsAccordion {lots} />
     </GridCol>
 
     <GridCol span={3}>

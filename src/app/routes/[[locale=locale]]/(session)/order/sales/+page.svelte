@@ -1,20 +1,20 @@
 <script lang="ts">
-import type { IOrderSalesListPageData } from "~/pages/order"
+import type { IOrderPurchasesListPageData } from "~/pages/order"
 
-import { OrderSalesListPage } from "~/pages/order"
+import { OrdersSalesListPage } from "~/pages/order"
 
 import { LazyPromise } from "$ui/actions"
 
 interface $$Props {
-    data: IOrderSalesListPageData
+    data: IOrderPurchasesListPageData
 }
 
-export let data: IOrderSalesListPageData
+export let data: IOrderPurchasesListPageData
 </script>
 
 <LazyPromise
     promise={data.pagePromise}
-    let:value={[lots]}
+    let:value={[orders]}
 >
-    <OrderSalesListPage {lots} />
+    <OrdersSalesListPage {orders} />
 </LazyPromise>

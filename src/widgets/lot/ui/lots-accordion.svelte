@@ -3,7 +3,7 @@ import type { IItem } from "$schema/api"
 
 import { useGame } from "~/entities/game"
 import { groupLotsByGameId } from "~/entities/lot"
-import { OrderLotsCollapse } from "~/widgets/order"
+import { LotsCollapse } from "~/widgets/lot"
 
 import { LazyPromise } from "$ui/actions"
 import { Accordion } from "$ui/data"
@@ -25,7 +25,7 @@ export {
             promise={useGame({ id: key }).fetchGame()}
             let:value={game}
         >
-            <OrderLotsCollapse
+            <LotsCollapse
                 {game}
                 lots={val}
             />

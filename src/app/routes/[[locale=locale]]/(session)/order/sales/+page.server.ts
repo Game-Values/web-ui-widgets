@@ -1,11 +1,8 @@
-import type { IItem } from "$schema/api"
+import type { IOrderInDB } from "$schema/api"
 import type { IOrderSalesListPageData } from "~/pages/order"
 
-export function load({ locals }): IOrderSalesListPageData {
-    let ordersPromise: Promise<IItem[]> = locals.api.readAllItemsApiV1ItemsAllGet({
-        owner: locals.session.user!.id,
-        page: 0,
-    })
+export function load(): IOrderSalesListPageData {
+    let ordersPromise: Promise<IOrderInDB[]> = Promise.resolve([])
 
     return {
         pagePromise: Promise.all([ordersPromise]),

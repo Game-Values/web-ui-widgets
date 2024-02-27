@@ -2,7 +2,7 @@
 import type { IGame, IItem } from "$schema/api"
 
 import { useGame } from "~/entities/game"
-import { OrderLotsTable } from "~/widgets/order"
+import { UserLotsTable } from "~/widgets/user"
 
 import { Collapse, EnhancedImage } from "$ui/data"
 
@@ -48,5 +48,5 @@ export {
         </div>
     </svelte:fragment>
 
-    <OrderLotsTable {lots} />
+    <UserLotsTable {lots} />
 </Collapse>
