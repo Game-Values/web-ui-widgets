@@ -1,7 +1,20 @@
 <script lang="ts">
-import { Container } from "$ui/layout"
+import type { IOrderSalesListPageData } from "~/pages/order"
+
+import { OrderSalesListPage } from "~/pages/order"
+
+import { LazyPromise } from "$ui/actions"
+
+interface $$Props {
+    data: IOrderSalesListPageData
+}
+
+export let data: IOrderSalesListPageData
 </script>
 
-<Container>
-    Sales
-</Container>
+<LazyPromise
+    promise={data.pagePromise}
+    let:value={[lots]}
+>
+    <OrderSalesListPage {lots} />
+</LazyPromise>

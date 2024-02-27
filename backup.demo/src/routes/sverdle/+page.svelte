@@ -72,7 +72,7 @@
 
 	/**
 	 * Trigger form logic in response to a keydown event, so that
-	 * desktop users can use the keyboard to play the game
+	 * desktop users can user the keyboard to play the game
 	 */
 	function keydown(event: KeyboardEvent) {
 		if (event.metaKey) return;

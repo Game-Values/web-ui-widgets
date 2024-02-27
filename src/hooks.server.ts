@@ -1,7 +1,7 @@
 import type { IHeaders } from "$types"
 
 import { useApi } from "$api"
-import { Locale, Theme } from "$lib/enums"
+import { Currency, Locale, Theme } from "$lib/enums"
 import { getSessionHeaders } from "$lib/helpers"
 import { useSession } from "$model"
 
@@ -17,6 +17,7 @@ export async function handle({ event, resolve }): Promise<Response> {
             },
         }),
         session: {
+            currency: Currency.EUR,
             locale: Locale.EN,
         },
     }

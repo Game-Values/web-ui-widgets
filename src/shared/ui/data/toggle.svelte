@@ -16,7 +16,7 @@ let className: null | string | undefined = ""
 
 let inputClass: string = ""
 
-let label: string | undefined = undefined
+let label: string = ""
 
 let name: null | string | undefined = undefined
 

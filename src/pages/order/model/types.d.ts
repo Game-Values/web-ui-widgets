@@ -6,3 +6,5 @@ export type IOrderCreatePageData = IPagePromise<IItem, IGame>
 export type IOrderPurchasesListPageData = IPagePromise<IOrderInDB[]>
 
 export type IOrderPurchaseDetailsPageData = IPagePromise<IOrderInDB>
+
+export type IOrderSalesListPageData = IPagePromise<IItem[]>

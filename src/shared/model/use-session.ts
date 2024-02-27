@@ -1,4 +1,4 @@
-import type { HttpCookie, Locale } from "$lib/enums"
+import type { Currency, HttpCookie, Locale } from "$lib/enums"
 import type { IToken, IUser } from "$schema/api"
 import type { ISession, IValueOfEnum } from "$types"
 import type { Readable, Writable } from "svelte/store"
@@ -11,6 +11,7 @@ import { useCookies } from "$model"
 
 type IUseSession = {
     authenticated: Readable<boolean>
+    currency: Readable<Currency>
     getSession(): ISession
     locale: Readable<Locale>
     login(token: IToken): void
@@ -27,6 +28,8 @@ export function useSession(): IUseSession {
 
     let use: IUseSession = {
         authenticated: derived(session, ($session: ISession): boolean => "user" in $session),
+
+        currency: derived(session, ($session: ISession): Currency => $session.currency),
 
         getSession: (): ISession => get(session),
 

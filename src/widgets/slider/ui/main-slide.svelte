@@ -65,7 +65,7 @@ export let title: string = ""
                 <slot name="action">
                     {#if action}
                         <button
-                            class="btn btn-primary btn-wide"
+                            class="btn btn-block btn-primary"
                             on:click={action.handler}
                         >
                             {action.label}

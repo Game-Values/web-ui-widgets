@@ -1,6 +1,7 @@
 <script lang="ts">
 import type { IItem } from "$schema/api"
 
+import { Currency } from "$lib/enums"
 import { formatNum, formatPrice } from "$lib/utils"
 import { useRoute } from "$model"
 import { Avatar } from "$ui/data"
@@ -87,10 +88,10 @@ export {
     </td>
 
     <td>
-        {formatNum(lot.attributes.amount || 0)}
+        {formatNum(lot.attributes.amount)}
     </td>
 
     <td>
-        {formatPrice(lot.attributes.price || 0, lot.attributes.currency || "EUR")}
+        {formatPrice(lot.attributes.price, lot.attributes.currency)}
     </td>
 </tr>

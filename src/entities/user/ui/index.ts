@@ -1,3 +1,7 @@
+export { default as UserAchievements } from "~/entities/user/ui/user-achievements.svelte"
+export { default as UserBalance } from "~/entities/user/ui/user-balance.svelte"
 export { default as UserCard } from "~/entities/user/ui/user-card.svelte"
+export { default as UserDecencyStats } from "~/entities/user/ui/user-decency-stats.svelte"
+export { default as UserLotsStats } from "~/entities/user/ui/user-lots-stats.svelte"
 export { default as UserNavbarMenu } from "~/entities/user/ui/user-navbar-menu.svelte"
-export { default as UserStats } from "~/entities/user/ui/user-stats.svelte"
+export { default as UserOrdersStats } from "~/entities/user/ui/user-orders-stats.svelte"

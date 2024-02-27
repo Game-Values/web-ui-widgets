@@ -1,2 +1,5 @@
 export { default as OrderDetailsTable } from "~/widgets/order/ui/order-details-table.svelte"
+export { default as OrderLotsAccordion } from "~/widgets/order/ui/order-lots-accordion.svelte"
+export { default as OrderLotsCollapse } from "~/widgets/order/ui/order-lots-collapse.svelte"
+export { default as OrderLotsTable } from "~/widgets/order/ui/order-lots-table.svelte"
 export { default as OrdersTable } from "~/widgets/order/ui/orders-table.svelte"

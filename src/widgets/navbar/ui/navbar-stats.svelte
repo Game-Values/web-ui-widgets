@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { IRouteWithIcon, IRouteWithLabel } from "$types"
+import type { IStat } from "$types"
 
 import { formatNum } from "$lib/utils"
 
@@ -8,32 +8,27 @@ import IconMoney from "virtual:icons/common/money"
 import IconUser from "virtual:icons/common/user"
 import IconUsers from "virtual:icons/common/users"
 
-type IStat = Pick<IRouteWithIcon, "icon"> & Pick<IRouteWithLabel, "label"> & {
-    iconClass?: string
-    value: number
-}
-
 let stats: IStat[] = [
     {
         icon: IconCube,
         iconClass: "scale-125",
         label: "number of lots",
-        value: 6_748,
+        value: formatNum(6_748),
     },
     {
         icon: IconMoney,
         label: "amount of deals",
-        value: 398_053,
+        value: formatNum(398_053),
     },
     {
         icon: IconUser,
         label: "online",
-        value: 246_761,
+        value: formatNum(246_761),
     },
     {
         icon: IconUsers,
         label: "all",
-        value: 1_758_904,
+        value: formatNum(1_758_904),
     },
 ]
 </script>
@@ -57,7 +52,7 @@ let stats: IStat[] = [
 
             <span class="stat-value col-start-2">
                 <strong>
-                    {formatNum(stat.value)}
+                    {stat.value}
                 </strong>
             </span>
 

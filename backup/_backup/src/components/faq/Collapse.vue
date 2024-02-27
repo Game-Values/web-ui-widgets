@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-// todo: mv all faqs to json files & use this component
+// todo: mv all faqs to json files & user this component
 
 withDefaults(defineProps<{
     faq?: {

@@ -4,6 +4,11 @@
     @apply w-full;
 }
 
+.card.card-secondary {
+    @apply bg-white/[0.02];
+    @apply border-white/[0.02];
+}
+
 .card.card-bordered {
     @apply border-white/[0.12];
 }

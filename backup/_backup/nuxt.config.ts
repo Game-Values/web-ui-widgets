@@ -322,10 +322,10 @@ let nuxtConfig: NuxtConfig = {
                         if (/vexip-ui\/style(?:\/dark)?\/((?!shared).).*.scss/.test(filepath))
                             return (
                                 code
-                                    .replace("@use './design' as *;", "@use \"@/assets/styles/vexip-ui/variables.scss\" as *;")
-                                    .replace("@use './design/variables.scss' as *;", "@use \"@/assets/styles/vexip-ui/variables.scss\" as *;")
-                                    .replace("@use '../design/variables.scss' as *;", "@use \"@/assets/styles/vexip-ui/variables.scss\" as *;")
-                                    .replace("@forward './variables.scss';", "@use \"@/assets/styles/vexip-ui/variables.scss\";")
+                                    .replace("@use './design' as *;", "@user \"@/assets/styles/vexip-ui/variables.scss\" as *;")
+                                    .replace("@use './design/variables.scss' as *;", "@user \"@/assets/styles/vexip-ui/variables.scss\" as *;")
+                                    .replace("@use '../design/variables.scss' as *;", "@user \"@/assets/styles/vexip-ui/variables.scss\" as *;")
+                                    .replace("@forward './variables.scss';", "@user \"@/assets/styles/vexip-ui/variables.scss\";")
                             )
 
                         return `

@@ -58,7 +58,7 @@ export {
 {#if subgrid}
     <svelte:element
         this={tag}
-        class={gridClass}
+        class="w-full {gridClass}"
     >
         <slot />
     </svelte:element>

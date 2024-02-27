@@ -10830,7 +10830,7 @@ packages:
 
   /rollup-plugin-inject@3.0.2:
     resolution: {integrity: sha512-ptg9PQwzs3orn4jkgXJ74bfs5vYz1NCZlSQMBUA0wKcGp5i5pA1AO3fOUEte8enhGUC+iapTCzEWw2jEFFUO/w==}
-    deprecated: This package has been deprecated and is no longer maintained. Please use @rollup/plugin-inject.
+    deprecated: This package has been deprecated and is no longer maintained. Please user @rollup/plugin-inject.
     dependencies:
       estree-walker: 0.6.1
       magic-string: 0.25.9
@@ -11318,7 +11318,7 @@ packages:
 
   /sourcemap-codec@1.4.8:
     resolution: {integrity: sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==}
-    deprecated: Please use @jridgewell/sourcemap-codec instead
+    deprecated: Please user @jridgewell/sourcemap-codec instead
     dev: true
 
   /spdx-correct@3.2.0:

@@ -1,5 +1,9 @@
 .collapse .collapse-title {
-    @apply h-16;
+    @apply min-h-16;
     @apply flex items-center;
     @apply rounded-xl;
+}
+
+.collapse.collapse-arrow > .collapse-title {
+    @apply after:inset-y-1/2;
 }

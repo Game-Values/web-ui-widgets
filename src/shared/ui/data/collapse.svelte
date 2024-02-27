@@ -9,6 +9,11 @@ interface $$Props {
     titleClass?: string
 }
 
+interface $$Slots {
+    default: NonNullable<unknown>
+    title: NonNullable<unknown>
+}
+
 interface $$Events {
     toggle: CustomEvent<boolean>
 }

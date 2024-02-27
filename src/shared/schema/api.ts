@@ -1164,7 +1164,7 @@ export namespace Api {
 		export type ResponseBody = ILoginWithMagicLinkApiV1LoginMagicEmailPostData
 	}
 	/**
-	 * @description First step with OAuth2 compatible token login, get an access token for future requests. The chat_token is used to authenticate with the chat server. In case if the chat server is not available, the user can still login, but will not be able to use the chat and chat_token will be empty.
+	 * @description First step with OAuth2 compatible token login, get an access token for future requests. The chat_token is used to authenticate with the chat server. In case if the chat server is not available, the user can still login, but will not be able to user the chat and chat_token will be empty.
 	 * @tags login
 	 * @name LoginWithOauth2ApiV1LoginOauthPost
 	 * @summary Login With Oauth2
@@ -2359,7 +2359,7 @@ export class Api<SecurityDataType extends unknown> {
 			}),
 
 		/**
-		 * @description First step with OAuth2 compatible token login, get an access token for future requests. The chat_token is used to authenticate with the chat server. In case if the chat server is not available, the user can still login, but will not be able to use the chat and chat_token will be empty.
+		 * @description First step with OAuth2 compatible token login, get an access token for future requests. The chat_token is used to authenticate with the chat server. In case if the chat server is not available, the user can still login, but will not be able to user the chat and chat_token will be empty.
 		 *
 		 * @tags login
 		 * @name LoginWithOauth2ApiV1LoginOauthPost

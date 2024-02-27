@@ -1,9 +1,10 @@
 <script lang="ts">
 import type { IOrderInDB } from "$schema/api"
 
-import { UserCard, UserStats } from "~/entities/user"
+import { UserCard } from "~/entities/user"
 import { HelpQuestions } from "~/widgets/help"
 import { OrdersTable } from "~/widgets/order"
+import { UserStats } from "~/widgets/user"
 
 import { useSession } from "$model"
 import { Grid, GridCol } from "$ui/layout"

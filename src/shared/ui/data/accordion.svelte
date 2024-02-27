@@ -47,7 +47,7 @@ export {
 </script>
 
 <div
-    class="join join-vertical {className}"
+    class="join join-vertical gap-y-4 w-full {className}"
     use:accordion
 >
     <slot />

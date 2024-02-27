@@ -18,7 +18,7 @@ let group: string | undefined = undefined
 
 let inputClass: string = ""
 
-let label: string | undefined = undefined
+let label: string = ""
 
 let value: string | undefined = undefined
 

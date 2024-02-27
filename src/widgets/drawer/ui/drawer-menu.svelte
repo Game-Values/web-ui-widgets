@@ -7,7 +7,7 @@ import { useRoute, useStorage } from "$model"
 import { Divider } from "$ui/layout"
 
 import IconArchiveDown from "virtual:icons/common/archive-down"
-import IconArchiveUp from "virtual:icons/common/archive-up"
+import IconArchiveUpError from "virtual:icons/common/archive-up-error"
 import IconCube from "virtual:icons/common/cube"
 import IconMoney from "virtual:icons/common/money"
 import IconSearchUser from "virtual:icons/common/search-user"
@@ -29,7 +29,7 @@ let links: IDrawerLink[] = [
         url: "/order/sales",
     },
     {
-        icon: IconArchiveUp,
+        icon: IconArchiveUpError,
         label: "Purchases",
         url: "/order/purchases",
     },
