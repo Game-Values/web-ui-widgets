@@ -14,7 +14,7 @@ interface $$Slots {
 let { context } = useContext<IGameDetailsPageContext>()
 let { routeParams } = useRoute()
 
-$: lotsCreateRoute = (
+$: lotCreateRoute = (
     useRoute("/lots/create", {
         gameId: $context.game.id,
         gameSection: $routeParams.gameSection,
@@ -48,7 +48,7 @@ $: lotsCreateRoute = (
         <AuthOnly>
             <a
                 class="btn btn-ring w-full max-w-72"
-                href={$lotsCreateRoute}
+                href={$lotCreateRoute}
             >
                 New Listing
             </a>

@@ -1,7 +1,10 @@
 .collapse .collapse-title {
-    @apply min-h-16;
     @apply flex items-center;
     @apply rounded-xl;
+}
+
+.collapse .collapse-title:not([class*=h-]) {
+    @apply h-16;
 }
 
 .collapse.collapse-arrow > .collapse-title {

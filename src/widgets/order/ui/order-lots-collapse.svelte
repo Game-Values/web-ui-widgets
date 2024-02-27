@@ -25,14 +25,14 @@ export {
 
 <Collapse
     contentClass="mt-4 p-0"
-    titleClass="bg-white/[0.02] text-lg"
+    titleClass="p-2 h-24 bg-white/[0.02] text-lg"
 >
     <svelte:fragment slot="title">
         <div class="gap-x-4 flex items-center">
             <EnhancedImage
                 --height="5rem"
                 --width="5rem"
-                class="glass p-2 rounded-xl"
+                class="glass p-1 rounded-xl"
                 src={gameIcon}
             />
 

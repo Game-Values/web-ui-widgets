@@ -1,12 +1,13 @@
 <script lang="ts">
 import type { IItem } from "$schema/api"
 
+import { AuthOnly } from "~/entities/auth"
 import { UserCard, UserLotsStats } from "~/entities/user"
 import { HelpQuestions } from "~/widgets/help"
 import { OrderLotsAccordion } from "~/widgets/order"
 import { UserStats } from "~/widgets/user"
 
-import { useSession } from "$model"
+import { useRoute, useSession } from "$model"
 import { InputSearch } from "$ui/data"
 import { Grid, GridCol } from "$ui/layout"
 
@@ -14,6 +15,7 @@ interface $$Props {
     lots: IItem[]
 }
 
+let { route: lotCreateRoute } = useRoute("/lots/create")
 let { user } = useSession()
 
 export let lots: IItem[]
@@ -40,8 +42,18 @@ export let lots: IItem[]
                 />
             </GridCol>
 
-            <GridCol span={6}>
-
+            <GridCol
+                justify="end"
+                span={6}
+            >
+                <AuthOnly>
+                    <a
+                        class="btn btn-ring w-full max-w-72"
+                        href={$lotCreateRoute}
+                    >
+                        New Listing
+                    </a>
+                </AuthOnly>
             </GridCol>
         </Grid>
 
