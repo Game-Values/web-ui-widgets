@@ -9,7 +9,7 @@ const config = {
         adapter: adapter({
             assets: resolve(".build"),
             pages: resolve(".build"),
-            precompress: true,
+            strict: false,
         }),
 
         alias: {
@@ -33,6 +33,10 @@ const config = {
             lib: join("src", "shared", "lib"),
             params: join("src", "app", "params"),
             routes: join("src", "app", "routes"),
+        },
+
+        prerender: {
+            crawl: true,
         },
     },
 

@@ -13,14 +13,12 @@ RUN cd /temp/dev && \
     bun install --frozen-lockfile --ignore-scripts
 
 
-FROM base AS prerelease
+FROM base AS build
 COPY --from=install /temp/dev/node_modules node_modules
 COPY . .
 RUN export $(xargs < .env.production) && \
     bun x run-s postinstall build
 
 
-FROM base AS release
-COPY --from=prerelease /frontend/.build .
-RUN export $(xargs < .env.production)
-ENTRYPOINT bun .
+FROM nginx:stable-alpine as release
+COPY --from=build /frontend/.build /usr/share/nginx/html

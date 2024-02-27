@@ -1,5 +1,6 @@
 import type { IUser } from "$schema/api"
 import type { IHeaders } from "$types"
+import type { PrerenderOption, TrailingSlash } from "@sveltejs/kit"
 import type { IDefaultLayoutData } from "~/layouts"
 
 import { useApi } from "$api"
@@ -7,9 +8,11 @@ import { Currency, Locale } from "$lib/enums"
 import { getSessionHeaders } from "$lib/helpers"
 import { useSession } from "$model"
 
-export let prerender: boolean = true
+export let prerender: PrerenderOption = "auto"
 
 export let ssr: boolean = false
+
+export let trailingSlash: TrailingSlash = "always"
 
 export async function load({ fetch }): Promise<IDefaultLayoutData> {
     let { readUserApiV1UsersGet } = useApi({ customFetch: fetch })

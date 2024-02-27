@@ -24,6 +24,8 @@ services:
             - .env.production
         networks:
             - ${TRAEFIK_PUBLIC_NETWORK?Variable not set}
+        depends_on:
+            - proxy
 
 networks:
     traefik-public:

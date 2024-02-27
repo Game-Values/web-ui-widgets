@@ -35,8 +35,8 @@ export function useRoute(urlOrParams?: IRouteParams | IRouteUrl, params?: IRoute
         }),
 
         routeActive: derived(page, ($page: App.Page): boolean => (
-            get(use.route) === $page.url.pathname),
-        ),
+            $page.url.pathname.startsWith(get(use.route))
+        )),
 
         routeParams: derived(page, ($page: App.Page): IRouteParams => $page.params),
 
