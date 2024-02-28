@@ -9,14 +9,17 @@ import { derived, writable } from "svelte/store"
 import { createChat, getHubRoom, subscribeRoomEvents, syncChat } from "~/entities/chat"
 
 type IChat = {
-    hubRoom: null | Room
+    hubRoom: Room | undefined
 }
 
 type IUseChat = {
     hubRoom: Readable<Room | undefined>
     running: Readable<boolean>
     sendMessage(roomId: string, message: string): Promise<ISendEventResponse>
-    subscribeEvents(roomId: string, callback: (event: MatrixEvent, room: Room) => void): ICallable<MatrixClient>
+    subscribeEvents(
+        roomId: string,
+        callback: (event: MatrixEvent, room: Room) => void,
+    ): ICallable<MatrixClient | undefined>
 }
 
 let chat: Writable<IChat> = writable<IChat>(Object.create(null))
@@ -36,6 +39,8 @@ export function useChat(): IUseChat {
     onDestroy((): void => {
         chatClient.removeAllListeners()
         chatClient.stopClient()
+
+        chat.set({ hubRoom: undefined })
     })
 
     return {
