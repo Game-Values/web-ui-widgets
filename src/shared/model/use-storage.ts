@@ -23,7 +23,7 @@ type IUseStorage = {
 
 const STORE_KEY: string = "game-values-store"
 
-let store: Writable<IStorage> = writable(Object.create(null))
+let store: Writable<IStorage> = writable<IStorage>(Object.create(null))
 
 onClient((): void => {
     if (localStorage.getItem(STORE_KEY))

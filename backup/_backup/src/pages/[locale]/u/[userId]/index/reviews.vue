@@ -8,7 +8,7 @@ definePageMeta({
 // let review1 = {
 //     deal: "World of Warcraft, Gold, 13 038 $",
 //     liked: true,
-//     text: "Great seller! Quickly sent the Gold, responded promptly in chat",
+//     text: "Great seller! Quickly sent the Gold, responded promptly in chat.ts",
 //     username: "Roman",
 // }
 //

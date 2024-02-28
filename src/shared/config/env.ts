@@ -2,9 +2,13 @@ import type { IKeyOf } from "$types"
 
 const API_URL: string = getEnv("VITE_API_URL")
 
-const OPENAPI_URL: string = getEnv("VITE_OPENAPI_URL")
-
 const CANONICAL_URL: string = getEnv("VITE_CANONICAL_URL")
+
+const MATRIX_GUEST_TOKEN: string = getEnv("VITE_MATRIX_GUEST_TOKEN")
+
+const MATRIX_HUB_ROOM_ID: string = getEnv("VITE_MATRIX_HUB_ROOM_ID")
+
+const MATRIX_URL: string = getEnv("VITE_MATRIX_URL")
 
 /**
  * @throwable
@@ -20,5 +24,7 @@ function getEnv(key: IKeyOf<ImportMetaEnv>): string {
 export {
     API_URL,
     CANONICAL_URL,
-    OPENAPI_URL,
+    MATRIX_GUEST_TOKEN,
+    MATRIX_HUB_ROOM_ID,
+    MATRIX_URL,
 }

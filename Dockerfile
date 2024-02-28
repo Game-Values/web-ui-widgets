@@ -20,5 +20,7 @@ RUN export $(xargs < .env.production) && \
     bun x run-s postinstall build
 
 
-FROM nginx:stable-alpine as release
-COPY --from=build /frontend/.build /usr/share/nginx/html
+FROM base AS release
+COPY --from=build /frontend/.build .
+RUN export $(xargs < .env.production)
+ENTRYPOINT bun .

@@ -44,7 +44,7 @@ export {
     </GridCol>
 
     <GridCol span={5}>
-        <!-- chat -->
+        <!-- chat.ts -->
     </GridCol>
 </Grid>
 

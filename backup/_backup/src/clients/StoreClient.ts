@@ -1,4 +1,4 @@
-import type { ChatStore } from "~/stores/chat"
+import type { ChatStore } from "~/stores/chat.ts"
 import type { FacetsStore } from "~/stores/facets"
 import type { GameStore } from "~/stores/lot"
 import type { GamesStore } from "~/stores/lot"

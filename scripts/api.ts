@@ -7,7 +7,7 @@ import { env } from "node:process"
 import { generateApi } from "swagger-typescript-api"
 
 function api(): Promise<GenerateApiOutput> {
-    return fetch(env.VITE_OPENAPI_URL!)
+    return fetch(env.OPENAPI_URL!)
         .then((res: Response): Promise<Spec> => res.json() as Promise<Spec>)
         .then((spec: Spec): Promise<GenerateApiOutput> => (
             generateApi({

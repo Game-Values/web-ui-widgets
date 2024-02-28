@@ -5,7 +5,7 @@ export const HEROICONS: (`i-heroicons:${string}`)[] = [
     "i-heroicons:arrow-small-up",
     "i-heroicons:bars-3",
     "i-heroicons:currency-dollar-solid",
-    "i-heroicons:chat-bubble-oval-left-ellipsis-solid",
+    "i-heroicons:chat.ts-bubble-oval-left-ellipsis-solid",
     "i-heroicons:check",
     "i-heroicons:cog-8-tooth-solid",
     "i-heroicons:credit-card",

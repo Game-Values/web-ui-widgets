@@ -2,6 +2,7 @@
 import type { IGame } from "$schema/api"
 import type { IGamesListPageContext } from "~/pages/game"
 
+import { ChatHub } from "~/widgets/chat"
 import { GamesGroup } from "~/widgets/game"
 import { HelpQuestions } from "~/widgets/help"
 import { MainSlider } from "~/widgets/slider"
@@ -36,7 +37,7 @@ export {
     </GridCol>
 
     <GridCol span={4}>
-        <!-- chat -->
+        <ChatHub />
     </GridCol>
 </Grid>
 

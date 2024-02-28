@@ -10,7 +10,7 @@ type IUseState = {
     updateState(pageState: Partial<App.PageState>): void
 }
 
-let state: Writable<App.PageState> = writable(Object.create(null))
+let state: Writable<App.PageState> = writable<App.PageState>(Object.create(null))
 
 export function useState(): IUseState {
     let use: IUseState = {

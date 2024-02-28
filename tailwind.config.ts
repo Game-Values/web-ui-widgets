@@ -63,6 +63,11 @@ export default {
                 "line-height": "inherit",
             },
 
+            ".chat-header": {
+                "font-size": "inherit",
+                "line-height": "inherit",
+            },
+
             ".form": {
                 "font-size": "1.125rem",
                 "line-height": "inherit",

@@ -1,6 +1,7 @@
 import type { Currency, HttpCookie, Locale } from "$lib/enums"
 import type { IToken, IUser } from "$schema/api"
 import type { ISession, IValueOfEnum } from "$types"
+import type { RequestEvent } from "@sveltejs/kit"
 import type { Readable, Writable } from "svelte/store"
 
 import { merge } from "lodash-es"
@@ -21,10 +22,10 @@ type IUseSession = {
     user: Readable<IUser>
 }
 
-let session: Writable<ISession> = writable(Object.create(null))
+let session: Writable<ISession> = writable<ISession>(Object.create(null))
 
-export function useSession(): IUseSession {
-    let { deleteCookies, setCookie } = useCookies()
+export function useSession(requestEvent?: RequestEvent): IUseSession {
+    let { deleteCookies, setCookie } = useCookies(requestEvent?.cookies)
 
     let use: IUseSession = {
         authenticated: derived(session, ($session: ISession): boolean => "user" in $session),
