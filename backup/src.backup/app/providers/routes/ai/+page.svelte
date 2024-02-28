@@ -3,5 +3,5 @@
 </Content>
 
 <script lang="ts">
-import { Content } from "~/shared/ui"
+import { Content } from "~/shared/chat-send-hub-message"
 </script>

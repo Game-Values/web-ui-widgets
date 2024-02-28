@@ -1,4 +1,5 @@
 import type { ICallable, ICallableLazy, IKeyOf } from "$types"
+import type { MaybePromise } from "@sveltejs/kit"
 import type { DebouncedFunc } from "lodash-es"
 import type { EventDispatcher } from "svelte"
 
@@ -6,10 +7,11 @@ import { debounce, merge } from "lodash-es"
 import { createEventDispatcher } from "svelte"
 
 type IUseEvent<T> = {
-    dispatchEvent: DebouncedFunc<(context?: T) => Promise<boolean>>
+    dispatchEvent: DebouncedFunc<(context?: T) => MaybePromise<any>>
 }
 
 type IEvents = IKeyOf<HTMLElementEventMap & {
+    message: string
     search: string
     update: any
     visible: never

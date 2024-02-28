@@ -1,5 +1,5 @@
 <SearchField />
 
 <script lang="ts">
-import { SearchField } from "~/shared/ui"
+import { SearchField } from "~/shared/chat-send-hub-message"
 </script>

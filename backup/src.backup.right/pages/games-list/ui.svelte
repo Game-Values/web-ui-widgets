@@ -3,7 +3,7 @@ import type { IGamesListPageData } from "~/pages/games-list"
 
 import LayoutGrid, { Cell } from "@smui/layout-grid"
 
-import { Content, Preview } from "~/shared/ui"
+import { Content, Preview } from "~/shared/chat-send-hub-message"
 import { GamesGroup } from "~/widgets/games-group"
 import { GamesSlider } from "~/widgets/games-slider"
 import { LotsStats } from "~/widgets/lots-stats"

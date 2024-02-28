@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useGamesModel, groupGames } from "~/entities/lot"
-import { UiTitle } from "~/shared/ui"
+import { UiTitle } from "~/shared/chat-send-hub-message"
 import { GameListWidget } from "~/widgets/lot"
 
 let gamesModel = useGamesModel()

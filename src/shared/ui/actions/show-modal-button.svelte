@@ -30,7 +30,7 @@ export {
 </script>
 
 <button
-    class="btn {className}"
+    class="{className}"
     on:click={() => dispatchClickEvent()}
 >
     <slot />

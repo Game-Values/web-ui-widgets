@@ -1,1 +1,1 @@
-export { default as FooterLogoEntity } from "~/entities/footer/ui/FooterLogo.vue"
+export { default as FooterLogoEntity } from "~/entities/footer/chat-send-hub-message/FooterLogo.vue"

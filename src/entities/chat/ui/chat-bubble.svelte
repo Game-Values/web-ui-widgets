@@ -10,17 +10,19 @@ interface $$Props {
 
 interface $$Slots {
     default: NonNullable<unknown>
+    sendMessage: NonNullable<unknown>
+    skeleton: NonNullable<unknown>
 }
 
 let className: string = ""
 
-let container: HTMLUListElement | undefined
+let chatContainer: HTMLUListElement | undefined
 
 let observer: MutationObserver | undefined
 
 onMount(() => {
-    if (container)
-        observer = observeElement(container, debounce((element: HTMLElement): void => (
+    if (chatContainer)
+        observer = observeElement(chatContainer, debounce((element: HTMLElement): void => (
             element.scrollTo({ top: element.scrollHeight })
         )), { childList: true })
 })
@@ -32,8 +34,7 @@ export {
 }
 </script>
 
-<ul
-    bind:this={container}
+<div
     class="
         card card-normal
         glass glass-sm
@@ -41,11 +42,18 @@ export {
         h-full
         bg-black/[0.06]
         rounded-b-2xl
-        overflow-x-hidden
-        overflow-y-auto
         shadow-none
         {className}
     "
 >
-    <slot />
-</ul>
+    <ul
+        bind:this={chatContainer}
+        class="mb-4 overflow-x-hidden overflow-y-auto"
+    >
+        <slot />
+    </ul>
+
+    <slot name="skeleton" />
+
+    <slot name="sendMessage" />
+</div>

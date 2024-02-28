@@ -1,1 +1,1 @@
-export * from "~/widgets/game/ui"
+export * from "~/widgets/game/chat-send-hub-message"

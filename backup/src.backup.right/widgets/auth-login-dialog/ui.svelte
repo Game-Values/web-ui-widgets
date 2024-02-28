@@ -3,7 +3,7 @@ import type { IToken } from "~/shared/model"
 
 import { authByOauth2Form, AuthLoginForm, closeAuthLoginModal, isAuthLoginModalOpen, setAuthCookies } from "~/entities/auth"
 import { AuthByOauth2 } from "~/features/auth"
-import { Dialog } from "~/shared/ui"
+import { Dialog } from "~/shared/chat-send-hub-message"
 
 function whenAuthSuccess(authToken: IToken): void {
     setAuthCookies(authToken)

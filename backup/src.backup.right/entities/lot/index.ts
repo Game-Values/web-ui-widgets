@@ -1,2 +1,2 @@
 export * from "~/entities/lot/core"
-export * from "~/entities/lot/ui"
+export * from "~/entities/lot/chat-send-hub-message"

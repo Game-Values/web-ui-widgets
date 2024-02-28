@@ -1,1 +1,1 @@
-export * from "~/features/header/autocomplete/ui"
+export * from "~/features/header/autocomplete/chat-send-hub-message"

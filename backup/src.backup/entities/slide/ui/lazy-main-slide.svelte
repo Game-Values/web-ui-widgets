@@ -23,11 +23,11 @@ import type { SlideAction } from "~/entities/slide/core"
 import type { TCallableLazy } from "~/shared/model"
 
 import { asyncModule } from "~/shared/lib"
-import { LazyClientOnly } from "~/shared/ui"
+import { LazyClientOnly } from "~/shared/chat-send-hub-message"
 
 let LazyMainSlide: TCallableLazy<ConstructorOfATypedSvelteComponent> = (
     (): Promise<ConstructorOfATypedSvelteComponent> => (
-        asyncModule("~/entities/slide/ui/main-slide.svelte")
+        asyncModule("~/entities/slide/chat-send-hub-message/main-slide.svelte")
     )
 )
 

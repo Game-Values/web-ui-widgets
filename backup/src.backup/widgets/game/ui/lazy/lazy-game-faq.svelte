@@ -4,11 +4,11 @@
 import type { TCallableLazy } from "~/shared/model"
 
 import { asyncModule } from "~/shared/lib"
-import { LazyClientOnly } from "~/shared/ui"
+import { LazyClientOnly } from "~/shared/chat-send-hub-message"
 
 let LazyGameFaq: TCallableLazy<ConstructorOfATypedSvelteComponent> = (
     (): Promise<ConstructorOfATypedSvelteComponent> => (
-        asyncModule("~/widgets/game/ui/game-faq.svelte")
+        asyncModule("~/widgets/game/chat-send-hub-message/game-faq.svelte")
     )
 )
 </script>

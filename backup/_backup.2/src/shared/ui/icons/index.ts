@@ -1,1 +1,1 @@
-export * from "~/shared/ui/icons/logo"
+export * from "~/shared/chat-send-hub-message/icons/logo"

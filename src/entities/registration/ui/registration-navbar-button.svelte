@@ -3,7 +3,7 @@ import { ShowModalButton } from "$ui/actions"
 </script>
 
 <ShowModalButton
-    class="btn-primary btn-sm uppercase"
+    class="btn btn-primary btn-sm uppercase"
     modal="registration"
 >
     <small>

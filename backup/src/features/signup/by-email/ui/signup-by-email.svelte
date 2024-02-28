@@ -6,7 +6,7 @@ import Textfield from "@smui/textfield"
 import { SigninButton } from "~/entities/auth"
 import { useSignupByEmailForm } from "~/features/signup"
 
-import { Form, FormField, FormSubmit, PasswordField } from "$ui"
+import { Form, FormField, FormSubmit, PasswordField } from "$chat-send-hub-message"
 
 let { data, form } = useSignupByEmailForm()
 

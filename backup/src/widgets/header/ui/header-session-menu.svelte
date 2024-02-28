@@ -5,7 +5,7 @@ import MenuSurface from "@smui/menu-surface"
 import { UserAvatar } from "~/entities/user"
 
 import { asyncComponent } from "$lib"
-import { Lazy } from "$ui"
+import { Lazy } from "$chat-send-hub-message"
 
 let menuSurface: MenuSurface
 </script>
@@ -22,6 +22,6 @@ let menuSurface: MenuSurface
     </Fab>
 
     <MenuSurface bind:this={menuSurface}>
-        <Lazy provider={asyncComponent("~/entities/session/ui/session-user-menu.svelte")} />
+        <Lazy provider={asyncComponent("~/entities/session/chat-send-hub-message/session-user-menu.svelte")} />
     </MenuSurface>
 </div>

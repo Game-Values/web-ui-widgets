@@ -3,7 +3,7 @@ import type { ISvelteComponentConstructor } from "$types"
 
 import { page } from "$app/stores"
 import { asyncComponent, DialogName } from "$lib"
-import { Lazy } from "$ui"
+import { Lazy } from "$chat-send-hub-message"
 
 $: dialog = $page.state.dialog
 

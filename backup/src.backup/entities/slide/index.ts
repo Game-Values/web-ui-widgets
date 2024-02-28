@@ -1,1 +1,1 @@
-export * from "~/entities/slide/ui"
+export * from "~/entities/slide/chat-send-hub-message"

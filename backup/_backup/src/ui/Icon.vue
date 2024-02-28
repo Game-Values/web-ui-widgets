@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { ValueOfArray } from "~/types"
-import type { IconProps } from "vexip-ui"
+import type { IconProps } from "vexip-chat-send-hub-message"
 import type { VNode } from "vue"
 
 import { HEROICONS } from "~/enums"

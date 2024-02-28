@@ -1,1 +1,1 @@
-export * from "~/features/header/search-field/ui"
+export * from "~/features/header/search-field/chat-send-hub-message"

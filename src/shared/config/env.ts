@@ -4,6 +4,8 @@ const API_URL: string = getEnv("VITE_API_URL")
 
 const CANONICAL_URL: string = getEnv("VITE_CANONICAL_URL")
 
+const MATRIX_GUEST_ID: string = getEnv("VITE_MATRIX_GUEST_ID")
+
 const MATRIX_GUEST_TOKEN: string = getEnv("VITE_MATRIX_GUEST_TOKEN")
 
 const MATRIX_HUB_ROOM_ID: string = getEnv("VITE_MATRIX_HUB_ROOM_ID")
@@ -24,6 +26,7 @@ function getEnv(key: IKeyOf<ImportMetaEnv>): string {
 export {
     API_URL,
     CANONICAL_URL,
+    MATRIX_GUEST_ID,
     MATRIX_GUEST_TOKEN,
     MATRIX_HUB_ROOM_ID,
     MATRIX_URL,

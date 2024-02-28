@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { Route, ScopedProps } from "~/types"
-import type { LinkerProps } from "vexip-ui"
+import type { LinkerProps } from "vexip-chat-send-hub-message"
 import type { VNode } from "vue"
 
 // todo: (?)

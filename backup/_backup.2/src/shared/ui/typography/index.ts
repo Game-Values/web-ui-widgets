@@ -1,2 +1,2 @@
-export { default as UiTitle } from "~/shared/ui/typography/Title.vue"
+export { default as UiTitle } from "~/shared/chat-send-hub-message/typography/Title.vue"
 

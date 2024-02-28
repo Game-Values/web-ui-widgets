@@ -1,1 +1,1 @@
-export * from "~/features/lot/show-more-button/ui"
+export * from "~/features/lot/show-more-button/chat-send-hub-message"

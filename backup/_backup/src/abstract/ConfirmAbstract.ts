@@ -1,8 +1,8 @@
 import type { AsyncComponent, Callable } from "~/types"
-import type { ConfirmOptions } from "vexip-ui"
+import type { ConfirmOptions } from "vexip-chat-send-hub-message"
 import type { Component, ComponentCustomProps } from "vue"
 
-import { Confirm } from "vexip-ui"
+import { Confirm } from "vexip-chat-send-hub-message"
 
 interface ConfirmOpenOptions {
     confirm?: ConfirmOptions

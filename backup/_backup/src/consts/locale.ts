@@ -1,7 +1,7 @@
 import type { Callable } from "~/types"
-import type { LocaleConfig } from "vexip-ui"
+import type { LocaleConfig } from "vexip-chat-send-hub-message"
 
-import { deDELocale, enUSLocale } from "vexip-ui"
+import { deDELocale, enUSLocale } from "vexip-chat-send-hub-message"
 
 import { LocaleISO } from "~/enums"
 

@@ -1,1 +1,1 @@
-export { default as HeaderWidget } from "~/widgets/header/ui/Header.vue"
+export { default as HeaderWidget } from "~/widgets/header/chat-send-hub-message/Header.vue"

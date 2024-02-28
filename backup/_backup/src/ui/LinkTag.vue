@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { Route, ScopedProps } from "~/types"
-import type { TagProps } from "vexip-ui"
+import type { TagProps } from "vexip-chat-send-hub-message"
 import type { VNode } from "vue"
 
 defineProps<TagProps & {

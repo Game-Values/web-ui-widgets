@@ -6,7 +6,7 @@ import { pick } from "lodash-es"
 
 import { authByOauth2, AuthLoginButton, authSignupForm, AuthSignupForm, closeAuthSignupModal, isAuthSignupModalOpen, setAuthCookies } from "~/entities/auth"
 import { AuthSignup } from "~/features/auth"
-import { Dialog } from "~/shared/ui"
+import { Dialog } from "~/shared/chat-send-hub-message"
 
 $: authSignupPayload = (
     pick<IAuthSignupForm, keyof IBodyCreateUserProfileApiV1UsersPost>($authSignupForm, [

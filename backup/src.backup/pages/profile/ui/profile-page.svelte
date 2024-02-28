@@ -9,7 +9,7 @@ import type { IProfilePageData } from "~/pages/profile"
 
 import LayoutGrid, { InnerGrid, Cell } from "@smui/layout-grid"
 
-import { Content } from "~/shared/ui"
+import { Content } from "~/shared/chat-send-hub-message"
 
 export let data: IProfilePageData
 </script>

@@ -26,7 +26,7 @@ const config = {
             $config: resolve("src/shared/config"),
             $model: resolve("src/shared/model"),
             $types: resolve("src/shared/types"),
-            $ui: resolve("src/shared/ui"),
+            $ui: resolve("src/shared/chat-send-hub-message"),
         },
 
         files: {

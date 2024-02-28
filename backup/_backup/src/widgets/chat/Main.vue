@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { ChatEvent } from "~/dto"
-import type { NativeScrollExposed } from "vexip-ui"
+import type { NativeScrollExposed } from "vexip-chat-send-hub-message"
 
 import { DEBOUNCE_TIMEOUT, DEFAULT_TIMEOUT } from "~/enums"
 

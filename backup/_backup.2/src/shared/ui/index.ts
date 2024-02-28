@@ -1,2 +1,2 @@
-export * from "~/shared/ui/icons"
-export * from "~/shared/ui/typography"
+export * from "~/shared/chat-send-hub-message/icons"
+export * from "~/shared/chat-send-hub-message/typography"

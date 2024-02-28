@@ -1,1 +1,1 @@
-export * from "~/entities/auth/ui"
+export * from "~/entities/auth/chat-send-hub-message"

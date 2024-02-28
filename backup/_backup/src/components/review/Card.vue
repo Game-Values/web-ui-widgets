@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { addDays } from "@vexip-ui/utils"
+import { addDays } from "@vexip-chat-send-hub-message/utils"
 
 defineProps<{
     review: {

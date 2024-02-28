@@ -1,5 +1,5 @@
 import type { AsyncComponent } from "~/types"
-import type { ToastOptions } from "vexip-ui"
+import type { ToastOptions } from "vexip-chat-send-hub-message"
 import type { Component } from "vue"
 
 import { ToastAbstract } from "~/abstract"

@@ -134,5 +134,5 @@
 <script lang="ts">
 import Accordion from "@smui-extra/accordion"
 
-import { AccordionPane } from "~/shared/ui"
+import { AccordionPane } from "~/shared/chat-send-hub-message"
 </script>

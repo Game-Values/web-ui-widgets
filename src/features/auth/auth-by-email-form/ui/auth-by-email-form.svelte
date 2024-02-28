@@ -1,6 +1,8 @@
 <script lang="ts">
 import { useAuthByEmailForm } from "~/features/auth"
 
+import { Input } from "$ui/data"
+
 let { form } = useAuthByEmailForm()
 </script>
 
@@ -9,9 +11,9 @@ let { form } = useAuthByEmailForm()
     use:form
 >
     <div class="form-control">
-        <input
+        <Input
             name="username"
-            class="input input-bordered"
+            inputClass="input-bordered"
             placeholder="Email"
             required
             type="email"
@@ -19,9 +21,9 @@ let { form } = useAuthByEmailForm()
     </div>
 
     <div class="form-control">
-        <input
+        <Input
             name="password"
-            class="input input-bordered"
+            inputClass="input-bordered"
             placeholder="Password"
             required
             type="password"

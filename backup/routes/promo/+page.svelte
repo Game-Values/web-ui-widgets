@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Content } from "$ui"
+import { Content } from "$chat-send-hub-message"
 </script>
 
 <Content>

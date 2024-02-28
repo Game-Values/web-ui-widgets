@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { ScopedProps } from "~/types"
-import type { ButtonProps } from "vexip-ui"
+import type { ButtonProps } from "vexip-chat-send-hub-message"
 import type { VNode } from "vue"
 
 defineProps<ButtonProps>()
