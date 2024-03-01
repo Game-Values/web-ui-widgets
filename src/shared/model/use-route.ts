@@ -30,7 +30,7 @@ export function useRoute(urlOrParams?: IRouteParams | IRouteUrl, params?: IRoute
                     : $page.route.id!.replace(/\/\[\[.+?]]/g, "") // replace optional params from id like <[[optional_param=optional_param_value]]>
             ) as IRouteUrl
 
-            // @ts-expect-error routeParams is correct
+            // @ts-expect-error routeUrl & routeParams are correct
             return route(routeUrl, routeParams)
         }),
 

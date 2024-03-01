@@ -20,6 +20,7 @@ declare global {
         interface PageState {
             background?: { height?: string, src: IEnhancedImageSrc, width?: string }
             modal?: IModal
+            modalState?: any
             seo?: ISeo
         }
 

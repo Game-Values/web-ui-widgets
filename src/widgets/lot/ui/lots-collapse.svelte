@@ -3,6 +3,8 @@ import type { IGame, IItem } from "$schema/api"
 import type { ILotsListPageContext } from "~/pages/lot"
 
 import { useGame } from "~/entities/game"
+import { UserLotTableRow } from "~/entities/user"
+import { LotDeleteButton, LotEditButton } from "~/features/lot"
 import { UserLotsTable } from "~/widgets/user"
 
 import { useContext } from "$model"
@@ -21,7 +23,7 @@ let { context, updateContext } = useContext<ILotsListPageContext>()
 let { gameIcon } = useGame(game)
 
 function whenLotDeleted(deletedLot: IItem): void {
-    let gamesLots: IItem[] = lots.filter((lot: IItem) => lot !== deletedLot)
+    let gamesLots: IItem[] = lots.filter((lot: IItem): boolean => lot !== deletedLot)
 
     if (gamesLots.length)
         $context.gamesLots.set(game, gamesLots)
@@ -64,6 +66,22 @@ export {
 
     <UserLotsTable
         {lots}
-        on:delete={e => whenLotDeleted(e.detail)}
-    />
+        let:lot
+    >
+        <UserLotTableRow {lot}>
+            <svelte:fragment slot="deleteLot">
+                <LotDeleteButton
+                    {lot}
+                    on:click={() => whenLotDeleted(lot)}
+                />
+            </svelte:fragment>
+
+            <svelte:fragment slot="editLot">
+                <LotEditButton
+                    {game}
+                    {lot}
+                />
+            </svelte:fragment>
+        </UserLotTableRow>
+    </UserLotsTable>
 </Collapse>

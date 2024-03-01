@@ -5,19 +5,13 @@ import type { ILotCreatePageContext } from "~/pages/lot"
 import { useGame } from "~/entities/game"
 import { HelpNewLotListingAccordion } from "~/entities/help"
 import { LotCreateInfoCard, LotCreateSteps } from "~/entities/lot"
-import { LotCreateForm } from "~/features/lot"
+import { LotForm } from "~/features/lot"
 import { HelpQuestions } from "~/widgets/help"
 
 import { useBackground, useContext } from "$model"
 import { Grid, GridCol } from "$ui/layout"
 
-interface $$Props {
-    games: IGame[]
-}
-
-let games: IGame[]
-
-let { context, updateContext } = useContext<ILotCreatePageContext>({ games, step: 1 })
+let { context, updateContext } = useContext<ILotCreatePageContext>({ step: 1 })
 
 useBackground({ src: "images/bg/lot-create-page-bg.png" })
 
@@ -29,10 +23,6 @@ function fetchGame(e: CustomEvent<IGame>): void {
         .fetchGame()
         .then((game: IGame): void => updateContext({ game }))
 }
-
-export {
-    games,
-}
 </script>
 
 <Grid>
@@ -41,7 +31,10 @@ export {
     </GridCol>
 
     <GridCol span={10}>
-        <LotCreateForm on:update={fetchGame} />
+        <LotForm
+            action="create"
+            on:update={fetchGame}
+        />
     </GridCol>
 
     <GridCol

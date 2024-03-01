@@ -5,20 +5,23 @@ import { derived } from "svelte/store"
 
 import { useState } from "$model"
 
-type IUseModal = {
+type IUseModal<T> = {
     closeModal(): void
     modalOpened: Readable<boolean>
-    openModal(): void
+    modalState: Readable<T>
+    openModal(modalState: any): void
 }
 
-export function useModal(modal: IModal): IUseModal {
+export function useModal<T = never>(modal: IModal): IUseModal<T> {
     let { state, updateState } = useState()
 
     return {
-        closeModal: (): void => updateState({ modal: undefined }),
+        closeModal: (): void => updateState({ modal: undefined, modalState: undefined }),
 
         modalOpened: derived(state, ($state: App.PageState): boolean => $state.modal === modal),
 
-        openModal: (): void => updateState({ modal }),
+        modalState: derived(state, ($state: App.PageState): T => $state.modalState),
+
+        openModal: (modalState: any): void => updateState({ modal, modalState }),
     }
 }

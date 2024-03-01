@@ -4,7 +4,7 @@ import type { ILotsFilter } from "~/entities/lot"
 
 export type ILotCreatePageContext = {
     game?: IGame
-    games: IGame[]
+    games?: IGame[]
     gameSections: string[]
     lotsFilters: ILotsFilter[]
     step: 1 | 2 | 3

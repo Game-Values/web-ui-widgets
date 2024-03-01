@@ -6,7 +6,6 @@ import { Checkbox } from "$ui/data"
 import { Divider } from "$ui/layout"
 
 import IconArchiveUpSuccess from "virtual:icons/common/archive-up-success"
-import IconPencil from "virtual:icons/common/pencil"
 import IconCheckCircleSolid from "virtual:icons/heroicons/check-circle-solid"
 import IconEyeSlashSolid from "virtual:icons/heroicons/eye-slash-solid"
 import IconMoon from "virtual:icons/heroicons/moon"
@@ -18,6 +17,7 @@ interface $$Props {
 
 interface $$Slots {
     deleteLot: NonNullable<unknown>
+    editLot: NonNullable<unknown>
 }
 
 let lot: IItem
@@ -118,16 +118,7 @@ export {
                     </i>
                 </label>
 
-                <button
-                    class="btn btn-circle btn-ghost btn-sm tooltip"
-                    data-tip="Edit"
-                >
-                    <i class="icon text-white/[0.12]">
-                        <small>
-                            <IconPencil />
-                        </small>
-                    </i>
-                </button>
+                <slot name="editLot" />
             </div>
 
             <Divider horizontal />

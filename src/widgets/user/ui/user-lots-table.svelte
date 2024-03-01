@@ -1,21 +1,15 @@
 <script lang="ts">
 import type { IItem } from "$schema/api"
 
-import { OrderLotTableRow } from "~/entities/order"
-import { LotDeleteButton } from "~/features/lot"
-
-import { useEventDispatcher } from "$model"
 import { Checkbox } from "$ui/data"
 
 interface $$Props {
     lots: IItem[]
 }
 
-interface $$Events {
-    delete: CustomEvent<IItem>
+interface $$Slots {
+    default: { lot: IItem }
 }
-
-let { dispatchEvent: dispatchDeleteEvent } = useEventDispatcher<IItem>("delete")
 
 export let lots: IItem[]
 </script>
@@ -55,14 +49,7 @@ export let lots: IItem[]
 
     <tbody>
         {#each lots as lot (lot.id)}
-            <OrderLotTableRow {lot}>
-                <svelte:fragment slot="deleteLot">
-                    <LotDeleteButton
-                        {lot}
-                        on:click={() => dispatchDeleteEvent(lot)}
-                    />
-                </svelte:fragment>
-            </OrderLotTableRow>
+            <slot {lot} />
         {/each}
     </tbody>
 </table>
