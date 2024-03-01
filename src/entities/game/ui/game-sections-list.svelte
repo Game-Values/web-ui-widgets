@@ -5,10 +5,6 @@ import { GameSectionBadge } from "~/entities/game"
 
 import { useContext } from "$model"
 
-interface $$Slots {
-    default: { gameSection: string, gameSectionActive: string }
-}
-
 let { context } = useContext<IGameDetailsPageContext>()
 </script>
 

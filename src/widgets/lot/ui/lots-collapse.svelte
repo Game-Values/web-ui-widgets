@@ -1,9 +1,11 @@
 <script lang="ts">
 import type { IGame, IItem } from "$schema/api"
+import type { ILotsListPageContext } from "~/pages/lot"
 
 import { useGame } from "~/entities/game"
 import { UserLotsTable } from "~/widgets/user"
 
+import { useContext } from "$model"
 import { Collapse, EnhancedImage } from "$ui/data"
 
 interface $$Props {
@@ -15,7 +17,19 @@ let game: IGame
 
 let lots: IItem[]
 
+let { context, updateContext } = useContext<ILotsListPageContext>()
 let { gameIcon } = useGame(game)
+
+function whenLotDeleted(deletedLot: IItem): void {
+    let gamesLots: IItem[] = lots.filter((lot: IItem) => lot !== deletedLot)
+
+    if (gamesLots.length)
+        $context.gamesLots.set(game, gamesLots)
+    else
+        $context.gamesLots.delete(game)
+
+    updateContext({ gamesLots: $context.gamesLots })
+}
 
 export {
     game,
@@ -48,5 +62,8 @@ export {
         </div>
     </svelte:fragment>
 
-    <UserLotsTable {lots} />
+    <UserLotsTable
+        {lots}
+        on:delete={e => whenLotDeleted(e.detail)}
+    />
 </Collapse>

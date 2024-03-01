@@ -11,6 +11,7 @@ type IUseEvent<T> = {
 }
 
 type IEvents = IKeyOf<HTMLElementEventMap & {
+    delete: any
     message: string
     search: string
     update: any

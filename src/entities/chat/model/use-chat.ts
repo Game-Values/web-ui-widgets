@@ -24,6 +24,7 @@ type IUseChat = {
 
 let chat: Writable<IChat> = writable<IChat>(Object.create(null))
 
+// todo: to useHubChat chat
 export function useChat(): IUseChat {
     let chatClient: MatrixClient
 

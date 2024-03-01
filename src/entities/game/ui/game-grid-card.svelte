@@ -63,7 +63,7 @@ export {
             </a>
         </h2>
 
-        <div class="relative left-2">
+        <div class="relative left-2 self-baseline">
             <slot name="gameLikeToggle" />
         </div>
     </div>

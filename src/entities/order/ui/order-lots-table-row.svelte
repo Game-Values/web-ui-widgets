@@ -7,7 +7,6 @@ import { Divider } from "$ui/layout"
 
 import IconArchiveUpSuccess from "virtual:icons/common/archive-up-success"
 import IconPencil from "virtual:icons/common/pencil"
-import IconTrash from "virtual:icons/common/trash"
 import IconCheckCircleSolid from "virtual:icons/heroicons/check-circle-solid"
 import IconEyeSlashSolid from "virtual:icons/heroicons/eye-slash-solid"
 import IconMoon from "virtual:icons/heroicons/moon"
@@ -15,6 +14,10 @@ import IconSun from "virtual:icons/heroicons/sun"
 
 interface $$Props {
     lot: IItem
+}
+
+interface $$Slots {
+    deleteLot: NonNullable<unknown>
 }
 
 let lot: IItem
@@ -129,14 +132,7 @@ export {
 
             <Divider horizontal />
 
-            <button
-                class="btn btn-circle btn-sm btn-ghost tooltip"
-                data-tip="Delete"
-            >
-                <i class="icon">
-                    <IconTrash />
-                </i>
-            </button>
+            <slot name="deleteLot" />
         </div>
     </td>
 </tr>

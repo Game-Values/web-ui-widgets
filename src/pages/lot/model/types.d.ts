@@ -10,6 +10,11 @@ export type ILotCreatePageContext = {
     step: 1 | 2 | 3
 }
 
+export type ILotsListPageContext = {
+    gamesLots: Map<IGame, IItem[]>
+    lots: IItem[]
+}
+
 export type ILotCreatePageData = IPagePromise<IGame[]>
 
 export type ILotsListPageData = IPagePromise<IItem[]>

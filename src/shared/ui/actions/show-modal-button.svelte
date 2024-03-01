@@ -13,7 +13,7 @@ interface $$Slots {
 }
 
 interface $$Events {
-    click: IMouseEvent<HTMLButtonElement>
+    click: CustomEvent<never>
 }
 
 let className: string = ""

@@ -1,5 +1,6 @@
 <script lang="ts">
 import type { IItem } from "$schema/api"
+import type { ILotsListPageContext } from "~/pages/lot"
 
 import { AuthOnly } from "~/entities/auth"
 import { UserCard, UserLotsStats } from "~/entities/user"
@@ -7,7 +8,7 @@ import { HelpQuestions } from "~/widgets/help"
 import { LotsAccordion } from "~/widgets/lot"
 import { UserStats } from "~/widgets/user"
 
-import { useRoute, useSession } from "$model"
+import { useContext, useRoute, useSession } from "$model"
 import { InputSearch } from "$ui/data"
 import { Grid, GridCol } from "$ui/layout"
 
@@ -15,10 +16,18 @@ interface $$Props {
     lots: IItem[]
 }
 
+let lots: IItem[]
+
 let { route: lotCreateRoute } = useRoute("/lots/create")
 let { user } = useSession()
 
-export let lots: IItem[]
+useContext<ILotsListPageContext>({
+    lots: lots.map((lot: IItem): IItem => Object.assign(lot, { visible: true })),
+})
+
+export {
+    lots,
+}
 </script>
 
 <Grid>
@@ -57,7 +66,7 @@ export let lots: IItem[]
             </GridCol>
         </Grid>
 
-        <LotsAccordion {lots} />
+        <LotsAccordion />
     </GridCol>
 
     <GridCol span={3}>
