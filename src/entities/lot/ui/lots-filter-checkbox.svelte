@@ -16,8 +16,17 @@ export let lotsFilter: ILotsFilter
 </script>
 
 <form class="form">
-    <h5>
+    <h5 class="gap-x-2 flex items-center">
         {lotsFilter.name}
+
+        {#if lotsFilter.info}
+            <i
+                class="tooltip tooltip-right icon text-secondary"
+                data-tip={lotsFilter.info}
+            >
+                <IconInformationCircle />
+            </i>
+        {/if}
     </h5>
 
     {#if lotsFilter.buckets}
@@ -30,7 +39,7 @@ export let lotsFilter: ILotsFilter
                         value={bucket.value}
                         bind:group
                     >
-                        <small class="gap-x-3 flex items-center">
+                        <small class="gap-x-2 flex items-center">
                             {bucket.label}
 
                             {#if bucket.tooltip}

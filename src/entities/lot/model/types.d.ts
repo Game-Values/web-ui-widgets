@@ -3,6 +3,7 @@ import type { LotsFilterType } from "~/entities/lot"
 
 export type ILotsFilter = {
     buckets?: ILotsFilterBucket[]
+    info?: string
     name: string
     type: IValueOfEnum<LotsFilterType>
 }

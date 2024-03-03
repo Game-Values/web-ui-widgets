@@ -1,6 +1,7 @@
 .table {
     --rounded-box: theme("borderRadius.2xl");
 
+    @apply static;
     @apply table-fixed;
 }
 

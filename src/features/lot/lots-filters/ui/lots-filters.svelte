@@ -25,7 +25,7 @@ $: lotsFiltersPromise = (
         bg-white/[0.02]
     "
 >
-    <div class="card-body gap-y-4">
+    <div class="card-body gap-y-8 group">
         <h5 class="card-title">
             Filters
         </h5>
