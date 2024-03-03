@@ -2,6 +2,5 @@
 
 FROM oven/bun
 WORKDIR /frontend
-COPY .build .
-RUN export $(xargs < .env.production)
-ENTRYPOINT bun .
+COPY .build .env.production ./
+ENTRYPOINT bun --env-file=.env.production .

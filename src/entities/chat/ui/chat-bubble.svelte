@@ -39,7 +39,6 @@ export {
         card card-normal
         glass glass-sm
         p-4
-        h-full
         bg-black/[0.06]
         rounded-b-2xl
         shadow-none
