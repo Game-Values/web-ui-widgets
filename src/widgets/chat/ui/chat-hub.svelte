@@ -17,7 +17,6 @@ let unsubscribeEvents: ICallable | undefined
 let roomEvents: MatrixEvent[] = []
 
 $: if ($hubRoom && !unsubscribeEvents) {
-    console.log($hubRoom)
     roomEvents = getRoomEvents($hubRoom, "m.room.message")
     unsubscribeEvents = subscribeEvents($hubRoom.roomId, (event: MatrixEvent): void => {
         roomEvents = [...roomEvents, event]
