@@ -8,6 +8,7 @@ const config = {
     kit: {
         adapter: adapter({
             out: resolve(".build"),
+            precompress: true,
         }),
 
         alias: {
@@ -31,10 +32,6 @@ const config = {
             lib: join("src", "shared", "lib"),
             params: join("src", "app", "params"),
             routes: join("src", "app", "routes"),
-        },
-
-        prerender: {
-            crawl: true,
         },
     },
 

@@ -3,6 +3,11 @@
     "version": "0.0.1",
     "type": "module",
     "private": true,
+    "author": {
+        "email": "tech@game-values.com",
+        "name": "GameValues Engineering Team",
+        "url": "https://game-values.com"
+    },
     "scripts": {
         "preinstall": "npx only-allow bun",
         "postinstall": "run-s sync api",
@@ -37,7 +42,7 @@
     "devDependencies": {
         "@iconify-json/heroicons": "^1.1.20",
         "@logux/eslint-config": "^52.0.2",
-        "@playwright/test": "^1.42.0",
+        "@playwright/test": "^1.42.1",
         "@sveltejs/adapter-node": "^4.0.1",
         "@sveltejs/enhanced-img": "^0.1.8",
         "@sveltejs/kit": "^2.5.2",
