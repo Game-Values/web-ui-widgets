@@ -55,5 +55,7 @@ export {
 
     <slot name="skeleton" />
 
-    <slot name="sendMessage" />
+    <div class="mt-auto">
+        <slot name="sendMessage" />
+    </div>
 </div>
