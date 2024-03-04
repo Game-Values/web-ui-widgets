@@ -1,7 +1,20 @@
 <script lang="ts">
-import { Container } from "$ui/layout"
+import type { IGamesFavoritesPageData } from "~/pages/game"
+
+import { GamesFavoritesPage } from "~/pages/game"
+
+import { LazyPromise } from "$ui/actions"
+
+interface $$Props {
+    data: IGamesFavoritesPageData
+}
+
+export let data: IGamesFavoritesPageData
 </script>
 
-<Container>
-    Favorites
-</Container>
+<LazyPromise
+    promise={data.pagePromise}
+    let:value={[games]}
+>
+    <GamesFavoritesPage {games} />
+</LazyPromise>

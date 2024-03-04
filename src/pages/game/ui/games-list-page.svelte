@@ -1,13 +1,12 @@
 <script lang="ts">
 import type { IGame } from "$schema/api"
-import type { IGamesListPageContext } from "~/pages/game"
 
 import { ChatHub } from "~/widgets/chat"
 import { GamesGroup } from "~/widgets/game"
 import { HelpQuestions } from "~/widgets/help"
 import { MainSlider } from "~/widgets/slider"
 
-import { useBackground, useContext } from "$model"
+import { useBackground } from "$model"
 import { Grid, GridCol } from "$ui/layout"
 
 interface $$Props {
@@ -17,8 +16,6 @@ interface $$Props {
 let games: IGame[]
 
 useBackground({ src: "images/bg/games-list-page-bg.png" })
-
-useContext<IGamesListPageContext>({ games })
 
 export {
     games,
@@ -33,7 +30,7 @@ export {
 
 <Grid>
     <GridCol span={8}>
-        <GamesGroup />
+        <GamesGroup {games} />
     </GridCol>
 
     <GridCol span={4}>

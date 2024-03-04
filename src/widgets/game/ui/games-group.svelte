@@ -1,17 +1,19 @@
 <script lang="ts">
-import type { IGamesListPageContext } from "~/pages/game"
+import type { IGame } from "$schema/api"
 
 import { AuthOnly } from "~/entities/auth"
 import { GameGridCard, groupGames } from "~/entities/game"
 import { GameLikeToggle } from "~/features/game"
 
-import { useContext } from "$model"
+interface $$Props {
+    games: IGame[]
+}
 
-let { context } = useContext<IGamesListPageContext>()
+export let games: IGame[]
 </script>
 
 <section class="flex flex-col gap-y-6">
-    {#each groupGames($context.games) as [firstChar, gamesGroup] (firstChar)}
+    {#each groupGames(games) as [firstChar, gamesGroup] (firstChar)}
         <h3>
             {firstChar}
         </h3>

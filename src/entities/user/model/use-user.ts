@@ -1,7 +1,5 @@
 import type { IGame, IUser } from "$schema/api"
 
-import { remove } from "lodash-es"
-
 type IUseUser = {
     addLikedGame(game: IGame): void
     deleteLikedGame(game: IGame): void
@@ -9,15 +7,13 @@ type IUseUser = {
 
 export function useUser(user: IUser): IUseUser {
     return {
-        addLikedGame: (game: IGame): void => (
-            user.liked_games.push(
-                Object.assign(game, { gid: game.gid || game.id }),
-            )
-        ),
+        addLikedGame: (game: IGame): void => {
+            user.liked_games = [...user.liked_games, Object.assign(game, { gid: game.gid || game.id })]
+        },
 
         deleteLikedGame: (game: IGame): void => {
-            remove(user.liked_games, (_game: IGame): boolean => (
-                (_game.gid || _game.id) === (game.gid || game.id)
+            user.liked_games = user.liked_games.filter(({ gid, id }: IGame): boolean => (
+                (gid || id) !== (game.gid || game.id)
             ))
         },
     }
