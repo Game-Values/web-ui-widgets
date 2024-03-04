@@ -2,6 +2,7 @@
 import type { IUser } from "$schema/api"
 
 import { UserCard } from "~/entities/user"
+import { HelpQuestions } from "~/widgets/help"
 import { UserStats } from "~/widgets/user"
 
 import { Grid, GridCol } from "$ui/layout"
@@ -19,7 +20,7 @@ export let user: IUser
 
 <Grid>
     <GridCol
-        class="gap-y-4 flex-col"
+        class="gap-y-6 flex-col"
         span={9}
     >
         <UserCard {user} />
@@ -29,5 +30,11 @@ export let user: IUser
 
     <GridCol span={3}>
         <UserStats />
+    </GridCol>
+</Grid>
+
+<Grid>
+    <GridCol>
+        <HelpQuestions />
     </GridCol>
 </Grid>

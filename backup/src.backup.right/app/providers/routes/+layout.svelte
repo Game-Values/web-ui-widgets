@@ -10,8 +10,8 @@ import { AuthOnly, authToken } from "~/entities/auth"
 import { asyncComponent } from "$lib"
 import { ClientOnly } from "~/shared/chat-send-hub-message"
 
-let AuthLoginDialog: TCallableLazy<ConstructorOfATypedSvelteComponent> = asyncComponent("~/widgets/auth-auth-dialog/game-details-+page.svelte")
-let AuthSignupDialog: TCallableLazy<ConstructorOfATypedSvelteComponent> = asyncComponent("~/widgets/auth-signup-dialog/game-details-+page.svelte")
+let AuthLoginDialog: TCallableLazy<ConstructorOfATypedSvelteComponent> = asyncComponent("~/widgets/auth-auth-dialog/game-details-+page@(app).svelte")
+let AuthSignupDialog: TCallableLazy<ConstructorOfATypedSvelteComponent> = asyncComponent("~/widgets/auth-signup-dialog/game-details-+page@(app).svelte")
 
 let data: App.Locals
 authToken.set(data.authToken)

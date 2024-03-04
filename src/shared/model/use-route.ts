@@ -22,7 +22,9 @@ export function useRoute(urlOrParams?: IRouteParams | IRouteUrl, params?: IRoute
     let resolveRouteUrl: ($page: App.Page) => IRouteUrl = ($page: App.Page): IRouteUrl => (
         isString(urlOrParams)
             ? urlOrParams
-            : $page.route.id!.replace(/\/\[\[.+?]]/g, "") // replace optional params from id like <[[optional_param=optional_param_value]]>
+            : $page.route.id!
+                .replace(/\/\[\[.+?]]/g, "") // replace optional params from id like <[[optional_param=optional_param_value]]>
+                .replace(/\((.*?)\//g, "") // replace all groups https://kit.svelte.dev/docs/advanced-routing#advanced-layouts-group
     ) as IRouteUrl
 
     let use: IUseRoute = {

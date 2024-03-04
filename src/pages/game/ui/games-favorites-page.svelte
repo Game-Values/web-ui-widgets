@@ -3,7 +3,6 @@ import type { IGame } from "$schema/api"
 
 import { mapGamesIds } from "~/entities/game"
 import { GamesGroup } from "~/widgets/game"
-import { HelpQuestions } from "~/widgets/help"
 
 import { useSession } from "$model"
 import { Empty } from "$ui/data"
@@ -28,7 +27,7 @@ export {
 }
 </script>
 
-<Grid>
+<Grid subgrid>
     <GridCol>
         <h1>
             Favorites ({$user.liked_games.length})
@@ -41,11 +40,5 @@ export {
         {:else}
             <Empty />
         {/if}
-    </GridCol>
-</Grid>
-
-<Grid>
-    <GridCol>
-        <HelpQuestions />
     </GridCol>
 </Grid>

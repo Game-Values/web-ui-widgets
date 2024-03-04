@@ -30,52 +30,35 @@ export {
 }
 </script>
 
-<Grid>
+<Grid subgrid>
     <GridCol
-        class="gap-y-4 flex-col"
-        span={9}
+        class="flex-col"
+        span={6}
     >
-        <UserCard user={$user} />
+        <UserLotsStats />
 
-        <Grid subgrid>
-            <GridCol
-                class="flex-col"
-                span={6}
-            >
-                <UserLotsStats />
-
-                <InputSearch
-                    class="w-full"
-                    placeholder="Search Lots"
-                    placement="end"
-                />
-            </GridCol>
-
-            <GridCol
-                justify="end"
-                span={6}
-            >
-                <AuthOnly>
-                    <a
-                        class="btn btn-ring w-full max-w-72"
-                        href={$lotCreateRoute}
-                    >
-                        New Listing
-                    </a>
-                </AuthOnly>
-            </GridCol>
-        </Grid>
-
-        <LotsAccordion />
+        <InputSearch
+            class="w-full"
+            placeholder="Search Lots"
+            placement="end"
+        />
     </GridCol>
 
-    <GridCol span={3}>
-        <UserStats />
+    <GridCol
+        justify="end"
+        span={6}
+    >
+        <AuthOnly>
+            <a
+                class="btn btn-ring w-full max-w-72"
+                href={$lotCreateRoute}
+            >
+                New Listing
+            </a>
+        </AuthOnly>
     </GridCol>
-</Grid>
 
-<Grid>
     <GridCol>
-        <HelpQuestions />
+        <LotsAccordion />
     </GridCol>
 </Grid>

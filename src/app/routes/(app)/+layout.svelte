@@ -4,7 +4,7 @@ import type { IDefaultLayoutData } from "~/layouts"
 import "uno.css"
 
 import "~/app/assets/styles/index.css"
-import { DefaultLayout } from "~/layouts"
+import { AppLayout } from "~/layouts"
 
 import { useSession } from "$model"
 
@@ -23,6 +23,6 @@ export {
 }
 </script>
 
-<DefaultLayout>
+<AppLayout>
     <slot />
-</DefaultLayout>
+</AppLayout>
