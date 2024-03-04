@@ -1,12 +1,9 @@
 <script lang="ts">
-import type { HTMLAnchorAttributes } from "svelte/elements"
-
 import { policyLinks, PolicyTab } from "~/entities/policy"
 
 interface $$Props {
     class?: string
     tabClass?: string
-    target?: HTMLAnchorAttributes["target"]
 }
 
 interface $$Slots {

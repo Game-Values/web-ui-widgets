@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { IRouteWithIcon, IRouteWithLabel } from "$types"
+import type { IRouteWithLabelAndIcon } from "$types"
 
 import { useRoute, useStorage } from "$model"
 
@@ -14,7 +14,7 @@ interface $$Slots {
     default: NonNullable<unknown>
 }
 
-type IDrawerLink = IRouteWithIcon & IRouteWithLabel & {
+type IDrawerLink = IRouteWithLabelAndIcon & {
     divider?: boolean
     iconClass?: string
 }

@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { IRouteWithIcon, IRouteWithLabel } from "$types"
+import type { IRouteWithLabel } from "$types"
 
 import { useRoute } from "$model"
 
@@ -8,13 +8,9 @@ interface $$Props {
     link: IRouteWithLabel
 }
 
-interface $$Slots {
-    default: NonNullable<unknown>
-}
-
 let className: string = ""
 
-let link: IRouteWithIcon | IRouteWithLabel
+let link: IRouteWithLabel
 
 let { route, routeActive } = useRoute(link.url)
 
@@ -32,7 +28,5 @@ export {
     `}
     href={$route}
 >
-    <slot>
-        {link.label}
-    </slot>
+    {link.label}
 </a>

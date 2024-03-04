@@ -48,7 +48,7 @@ export let footerLinks: IFooterLink[] = [
             },
             {
                 label: "Help",
-                url: "/help",
+                url: "/help/general",
             },
         ],
     },

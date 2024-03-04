@@ -60,8 +60,35 @@ const PAGES = {
   "/g/[gameId]": (params: { gameId: (string | number), locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]), gameSection?: (Parameters<typeof import('../../params/gameSection.ts').match>[0]) }) => {
     return `${params?.locale ? `/${params?.locale}`: ''}/g/${params.gameId}${params?.gameSection ? `/${params?.gameSection}`: ''}`
   },
-  "/help": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
-    return `${params?.locale ? `/${params?.locale}`: ''}/help`
+  "/help/account": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/help/account`
+  },
+  "/help/affiliate": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/help/affiliate`
+  },
+  "/help/ai-assistant": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/help/ai-assistant`
+  },
+  "/help/delivery": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/help/delivery`
+  },
+  "/help/general": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/help/general`
+  },
+  "/help/payment": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/help/payment`
+  },
+  "/help/rating": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/help/rating`
+  },
+  "/help/security": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/help/security`
+  },
+  "/help/sellers": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/help/sellers`
+  },
+  "/help/technical": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/help/technical`
   },
   "/job": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
     return `${params?.locale ? `/${params?.locale}`: ''}/job`
@@ -214,7 +241,7 @@ export function route<T extends keyof AllTypes>(key: T, ...params: any[]): strin
 * ```
 */
 export type KIT_ROUTES = {
-  PAGES: { '/': 'locale', '/favorites': 'locale', '/funds': 'locale', '/lots': 'locale', '/lots/create': 'locale', '/messages': 'locale', '/order/create/[lotId]': 'lotId' | 'locale', '/order/purchases': 'locale', '/order/purchases/[orderId]': 'orderId' | 'locale', '/order/sales': 'locale', '/referral': 'locale', '/settings': 'locale', '/about': 'locale', '/ai-assistant': 'locale', '/blog': 'locale', '/feedback': 'locale', '/g/[gameId]': 'gameId' | 'locale' | 'gameSection', '/help': 'locale', '/job': 'locale', '/policy/agreement': 'locale', '/policy/license': 'locale', '/policy/privacy': 'locale', '/promotions': 'locale', '/top-10': 'locale', '/u/[userId]': 'userId' | 'locale' }
+  PAGES: { '/': 'locale', '/favorites': 'locale', '/funds': 'locale', '/lots': 'locale', '/lots/create': 'locale', '/messages': 'locale', '/order/create/[lotId]': 'lotId' | 'locale', '/order/purchases': 'locale', '/order/purchases/[orderId]': 'orderId' | 'locale', '/order/sales': 'locale', '/referral': 'locale', '/settings': 'locale', '/about': 'locale', '/ai-assistant': 'locale', '/blog': 'locale', '/feedback': 'locale', '/g/[gameId]': 'gameId' | 'locale' | 'gameSection', '/help/account': 'locale', '/help/affiliate': 'locale', '/help/ai-assistant': 'locale', '/help/delivery': 'locale', '/help/general': 'locale', '/help/payment': 'locale', '/help/rating': 'locale', '/help/security': 'locale', '/help/sellers': 'locale', '/help/technical': 'locale', '/job': 'locale', '/policy/agreement': 'locale', '/policy/license': 'locale', '/policy/privacy': 'locale', '/promotions': 'locale', '/top-10': 'locale', '/u/[userId]': 'userId' | 'locale' }
   SERVERS: Record<string, never>
   ACTIONS: Record<string, never>
   LINKS: { 'copyright': never, 'discord': never, 'facebook': never, 'instagram': never, 'telegramChat': never, 'telegramNews': never, 'twitch': never, 'youtube': never }

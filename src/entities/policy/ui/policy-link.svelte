@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { IRouteWithIcon, IRouteWithLabel } from "$types"
+import type { IRouteWithLabel } from "$types"
 import type { HTMLAnchorAttributes } from "svelte/elements"
 
 import { useRoute } from "$model"
@@ -10,13 +10,9 @@ interface $$Props {
     target?: HTMLAnchorAttributes["target"]
 }
 
-interface $$Slots {
-    default: NonNullable<unknown>
-}
-
 let className: string = ""
 
-let link: IRouteWithIcon | IRouteWithLabel
+let link: IRouteWithLabel
 
 let target: HTMLAnchorAttributes["target"] = undefined
 
@@ -34,7 +30,5 @@ export {
     href={$route}
     {target}
 >
-    <slot>
-        {link.label}
-    </slot>
+    {link.label}
 </a>

@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { IRouteWithIcon, IRouteWithLabel } from "$types"
+import type { IRouteWithLabelAndIcon } from "$types"
 
 import { DrawerMenuItem } from "~/widgets/drawer"
 
@@ -17,7 +17,7 @@ import IconPlusCircle from "virtual:icons/heroicons/plus-circle"
 
 let { storageValue: drawerOpened } = useStorage("drawer", true)
 
-type IDrawerLink = IRouteWithIcon & IRouteWithLabel & {
+type IDrawerLink = IRouteWithLabelAndIcon & {
     divider?: boolean
     iconClass?: string
 }
