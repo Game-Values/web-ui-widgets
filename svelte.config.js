@@ -8,7 +8,6 @@ const config = {
     kit: {
         adapter: adapter({
             out: resolve(".build"),
-            precompress: true,
         }),
 
         alias: {
