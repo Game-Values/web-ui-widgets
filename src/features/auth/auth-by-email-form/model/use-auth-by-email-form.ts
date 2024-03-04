@@ -12,6 +12,7 @@ export function useAuthByEmailForm(): IForm<IBodyLoginWithOauth2ApiV1LoginOauthP
 
     return createForm<IBodyLoginWithOauth2ApiV1LoginOauthPost, IToken>({
         onSubmit: loginWithOauth2ApiV1LoginOauthPost,
+
         onSuccess: login,
     })
 }

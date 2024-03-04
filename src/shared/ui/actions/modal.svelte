@@ -5,10 +5,21 @@ import { useModal } from "$model"
 
 import IconXMark from "virtual:icons/heroicons/x-mark"
 
+interface $$Props {
+    class?: string
+    contentClass?: string
+    name: IModal
+    title?: string
+}
+
 interface $$Slots {
     default: NonNullable<unknown>
     title: NonNullable<unknown>
 }
+
+let className: string = ""
+
+let contentClass: string = ""
 
 let name: IModal
 
@@ -22,6 +33,8 @@ function dialog(node: HTMLDialogElement): void {
 }
 
 export {
+    className as class,
+    contentClass,
     name,
     title,
 }
@@ -32,7 +45,7 @@ export {
     class="modal"
     use:dialog
 >
-    <div class="modal-box glass glass-2xl">
+    <div class="modal-box glass glass-2xl {className}">
         <form method="dialog">
             <button
                 class="
@@ -52,7 +65,7 @@ export {
             </slot>
         </h3>
 
-        <div>
+        <div class={contentClass}>
             <slot />
         </div>
     </div>

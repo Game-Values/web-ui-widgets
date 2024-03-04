@@ -1,9 +1,9 @@
 <script lang="ts">
-import { AuthNavbarButton, AuthOnly } from "~/entities/auth"
-import { RegistrationNavbarButton } from "~/entities/registration"
+import { AuthOnly } from "~/entities/auth"
 import { UserNavbarMenu } from "~/entities/user"
 import { NavbarLogo, NavbarStats, NavbarTabs } from "~/widgets/navbar"
 
+import { ShowModalButton } from "$ui/actions"
 import { InputSearch } from "$ui/data"
 import { Container, Divider } from "$ui/layout"
 </script>
@@ -41,9 +41,23 @@ import { Container, Divider } from "$ui/layout"
 
         <svelte:fragment slot="fallback">
             <div class="ml-auto flex gap-x-2">
-                <RegistrationNavbarButton />
+                <ShowModalButton
+                    class="btn btn-primary btn-sm uppercase"
+                    modal="registration"
+                >
+                    <small>
+                        Create account
+                    </small>
+                </ShowModalButton>
 
-                <AuthNavbarButton />
+                <ShowModalButton
+                    class="btn btn-secondary btn-sm uppercase"
+                    modal="auth"
+                >
+                    <small>
+                        Login
+                    </small>
+                </ShowModalButton>
             </div>
         </svelte:fragment>
     </AuthOnly>

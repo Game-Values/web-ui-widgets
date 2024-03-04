@@ -1,7 +1,7 @@
 PHONY: all build image clean
 
 build:
-	bun --env-file=.env.production install
+	bun --env-file=.env.production install --frozen-lockfile
 	bun --env-file=.env.production run build
 
 clean:

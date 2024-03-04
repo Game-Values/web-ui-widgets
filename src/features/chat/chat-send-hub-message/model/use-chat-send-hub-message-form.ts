@@ -14,6 +14,7 @@ export function useChatSendHubMessageForm(): IForm<IChatSendHubMessageForm> {
 
     return createForm<IChatSendHubMessageForm, never>({
         onSubmit: (data: IChatSendHubMessageForm): Promise<string> => dispatchMessageEvent(data.message),
+
         onSuccess: (_: never, context: SubmitContext<IChatSendHubMessageForm>): void => context.reset(),
     })
 }

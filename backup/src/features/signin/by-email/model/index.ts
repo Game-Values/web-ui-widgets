@@ -1,1 +1,1 @@
-export * from "~/features/auth/auth-by-email-form/model/form"
+export * from "~/features/auth/registration-by-email-form/model/form"

@@ -1,10 +1,29 @@
 <script lang="ts">
-import { Modal } from "$ui/actions"
+import { RegistrationByEmailForm } from "~/features/registration"
+
+import { Modal, ShowModalButton } from "$ui/actions"
 </script>
 
 <Modal
     name="registration"
+    class="w-96"
+    contentClass="gap-y-4 flex flex-col"
     title="Sign Up"
 >
-    REGISTRATION MODAL
+    <RegistrationByEmailForm />
+
+    <div class="flex flex-col items-center">
+        <small class="text-secondary">
+            Already have an account on GameValues?
+        </small>
+
+        <ShowModalButton
+            class="btn btn-link"
+            modal="auth"
+        >
+            <small>
+                Log in
+            </small>
+        </ShowModalButton>
+    </div>
 </Modal>
