@@ -10,7 +10,8 @@ interface $$Props {
     user: IUser
 }
 
-let { route: settingsRoute } = useRoute("/settings/reviews")
+let { route: settingsReviewsRoute, routeActive: settingsReviewsRouteActive } = useRoute("/settings/reviews")
+let { routeActive: settingsSubscriptionRouteActive } = useRoute("/settings/subscription")
 
 export let user: IUser
 </script>
@@ -66,11 +67,13 @@ export let user: IUser
             </p>
         </div>
 
-        <a
-            class="link link-primary link-hover ml-auto"
-            href={$settingsRoute}
-        >
-            Settings
-        </a>
+        {#if !$settingsReviewsRouteActive && !$settingsSubscriptionRouteActive}
+            <a
+                class="link link-primary link-hover ml-auto"
+                href={$settingsReviewsRoute}
+            >
+                Settings
+            </a>
+        {/if}
     </div>
 </div>

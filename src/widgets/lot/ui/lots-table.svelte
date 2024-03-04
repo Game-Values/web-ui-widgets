@@ -1,21 +1,20 @@
 <script lang="ts">
+import type { IItem } from "$schema/api"
+import type { IFacets } from "~/entities/facets"
 import type { IGameDetailsPageContext } from "~/pages/game"
 
 import { useFacets } from "~/entities/facets"
 import { LotsTableRow, useLots } from "~/entities/lot"
 
-import { useContext } from "$model"
-import { LazyPromise } from "$ui/actions"
+import { useContext, useQuery } from "$model"
+import { LazyQuery } from "$ui/actions"
 import { Empty } from "$ui/data"
 
 let { context } = useContext<IGameDetailsPageContext>()
 let { searchLots } = useLots()
 
-// todo: added sections for all games and rm ternary
-$: useFacetsPromise = (
-    $context.gameSectionActive
-        ? useFacets(searchLots($context.game.id!, { type: $context.gameSectionActive }))
-        : useFacets({ facet_counts: Object.create(null), results: [] })
+$: facetsQuery = (
+    useQuery<IFacets<IItem[]>>(searchLots, $context.game.id, { type: $context.gameSectionActive }).query
 )
 </script>
 
@@ -42,27 +41,27 @@ $: useFacetsPromise = (
         </thead>
 
         <tbody>
-            <LazyPromise
-                promise={useFacetsPromise}
-                let:value={facets}
+            <LazyQuery
+                query={facetsQuery}
+                let:data={facets}
             >
-                {#each facets.results as lot (lot.id)}
+                {#each useFacets(facets).results as lot (lot.id)}
                     <LotsTableRow {lot} />
                 {/each}
-            </LazyPromise>
+            </LazyQuery>
         </tbody>
     </table>
 
-    <LazyPromise
-        promise={useFacetsPromise}
-        let:value={facets}
+    <LazyQuery
+        query={facetsQuery}
+        let:data={facets}
     >
         <svelte:fragment slot="loading">
             <progress class="progress progress-primary w-full" />
         </svelte:fragment>
 
-        {#if !facets.results.length}
+        {#if !useFacets(facets).results.length}
             <Empty />
         {/if}
-    </LazyPromise>
+    </LazyQuery>
 </div>

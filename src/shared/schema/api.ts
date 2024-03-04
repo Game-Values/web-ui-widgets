@@ -887,7 +887,7 @@ export namespace Api {
 	 * @tags funds
 	 * @name CreatePaymentApiV1FundsCreatePaymentPost
 	 * @summary Create Payment
-	 * @request POST:/api/v1/funds/create-transaction
+	 * @request POST:/api/v1/funds/create-payment
 	 * @secure
 	 * @response `200` `ICreatePaymentApiV1FundsCreatePaymentPostData` Successful Response
 	 * @response `422` `IHTTPValidationError` Validation Error
@@ -1091,11 +1091,11 @@ export namespace Api {
 		export type ResponseBody = IGetAvailableFacetsApiV1ItemsFacetsGameIdGetData
 	}
 	/**
-	 * @description Retrieve information about a specific transaction.
+	 * @description Retrieve information about a specific payment.
 	 * @tags funds
 	 * @name GetPaymentInfoApiV1FundsPaymentInfoPaymentIdGet
 	 * @summary Get Payment Info
-	 * @request GET:/api/v1/funds/transaction-info/{payment_id}
+	 * @request GET:/api/v1/funds/payment-info/{payment_id}
 	 * @secure
 	 * @response `200` `IGetPaymentInfoApiV1FundsPaymentInfoPaymentIdGetData` Successful Response
 	 * @response `422` `IHTTPValidationError` Validation Error
@@ -1486,7 +1486,7 @@ export namespace Api {
 	 * @tags funds
 	 * @name RefundPaymentApiV1FundsRefundPaymentPost
 	 * @summary Refund Payment
-	 * @request POST:/api/v1/funds/refund-transaction
+	 * @request POST:/api/v1/funds/refund-payment
 	 * @secure
 	 * @response `200` `IRefundPaymentApiV1FundsRefundPaymentPostData` Successful Response
 	 * @response `422` `IHTTPValidationError` Validation Error
@@ -1997,7 +1997,7 @@ export class Api<SecurityDataType extends unknown> {
 		 * @tags funds
 		 * @name CreatePaymentApiV1FundsCreatePaymentPost
 		 * @summary Create Payment
-		 * @request POST:/api/v1/funds/create-transaction
+		 * @request POST:/api/v1/funds/create-payment
 		 * @secure
 		 * @response `200` `ICreatePaymentApiV1FundsCreatePaymentPostData` Successful Response
 		 * @response `422` `IHTTPValidationError` Validation Error
@@ -2260,12 +2260,12 @@ export class Api<SecurityDataType extends unknown> {
 			}),
 
 		/**
-		 * @description Retrieve information about a specific transaction.
+		 * @description Retrieve information about a specific payment.
 		 *
 		 * @tags funds
 		 * @name GetPaymentInfoApiV1FundsPaymentInfoPaymentIdGet
 		 * @summary Get Payment Info
-		 * @request GET:/api/v1/funds/transaction-info/{payment_id}
+		 * @request GET:/api/v1/funds/payment-info/{payment_id}
 		 * @secure
 		 * @response `200` `IGetPaymentInfoApiV1FundsPaymentInfoPaymentIdGetData` Successful Response
 		 * @response `422` `IHTTPValidationError` Validation Error
@@ -2687,7 +2687,7 @@ export class Api<SecurityDataType extends unknown> {
 		 * @tags funds
 		 * @name RefundPaymentApiV1FundsRefundPaymentPost
 		 * @summary Refund Payment
-		 * @request POST:/api/v1/funds/refund-transaction
+		 * @request POST:/api/v1/funds/refund-payment
 		 * @secure
 		 * @response `200` `IRefundPaymentApiV1FundsRefundPaymentPostData` Successful Response
 		 * @response `422` `IHTTPValidationError` Validation Error

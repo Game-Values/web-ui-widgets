@@ -5,7 +5,13 @@ interface $$Slots {
     default: NonNullable<unknown>
 }
 
-let queryClient: QueryClient = new QueryClient()
+let queryClient: QueryClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            refetchOnWindowFocus: false,
+        },
+    },
+})
 </script>
 
 <QueryClientProvider client={queryClient}>

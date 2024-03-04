@@ -15,5 +15,8 @@ export let promise: Promise<T>
 {:then value}
     <slot {value} />
 {:catch error}
-    <slot name="error" {error} />
+    <slot
+        name="error"
+        {error}
+    />
 {/await}

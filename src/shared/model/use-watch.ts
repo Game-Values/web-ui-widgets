@@ -1,5 +1,5 @@
 import type { ICallable, ICallableLazy } from "$types"
-import type { Readable, Writable } from "svelte/store"
+import type { Readable, Unsubscriber, Writable } from "svelte/store"
 
 import { debounce } from "lodash-es"
 import { onDestroy, onMount } from "svelte"
@@ -9,7 +9,7 @@ export function useWatch<T>(
     store: Readable<T> | Writable<T>,
     subscribe: ICallable | ICallableLazy,
 ): void {
-    let unsubscribe: ICallable | undefined
+    let unsubscribe: undefined | Unsubscriber
 
     onMount((): void => {
         unsubscribe = (
