@@ -20,5 +20,5 @@ import LayoutGrid, { Cell } from "@smui/layout-grid"
 
 import { page } from "$app/stores"
 import { Content } from "~/shared/chat-send-hub-message"
-import { ProfileCard, ProfileStatistics } from "~/widgets/profile"
+import { ProfileCard, ProfileStatistics } from "~/widgets/transaction"
 </script>

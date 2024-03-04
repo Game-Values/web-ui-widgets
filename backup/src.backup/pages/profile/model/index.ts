@@ -1,1 +1,1 @@
-export type * from "~/pages/profile/core/types"
+export type * from "~/pages/transaction/core/types"

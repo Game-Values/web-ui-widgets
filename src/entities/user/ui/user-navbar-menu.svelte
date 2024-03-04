@@ -8,7 +8,7 @@ interface $$Props {
 
 let className: string = ""
 
-let { route: settingsRoute } = useRoute("/settings")
+let { route: settingsRoute } = useRoute("/settings/reviews")
 let { logout, user } = useSession()
 
 export {

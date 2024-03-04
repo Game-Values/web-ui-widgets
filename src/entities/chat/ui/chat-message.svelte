@@ -34,7 +34,10 @@ export {
             {sender}
         </b>
 
-        <time class="text-secondary">
+        <time
+            class="text-secondary"
+            datetime={event.getDate()?.toLocaleDateString()}
+        >
             <small>
                 {time}
             </small>

@@ -1,3 +1,5 @@
+export { default as NavTab } from "$ui/navigation/nav-tab.svelte"
+export { default as NavTabs } from "$ui/navigation/nav-tabs.svelte"
 export { default as SiteLink } from "$ui/navigation/site-link.svelte"
 export { default as SiteMailto } from "$ui/navigation/site-mailto.svelte"
 export { default as Steps } from "$ui/navigation/steps.svelte"

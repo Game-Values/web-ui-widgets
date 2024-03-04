@@ -10,7 +10,7 @@ interface $$Props {
     user: IUser
 }
 
-let { route: settingsRoute } = useRoute("/settings")
+let { route: settingsRoute } = useRoute("/settings/reviews")
 
 export let user: IUser
 </script>
@@ -31,8 +31,10 @@ export let user: IUser
         />
 
         <div class="max-w-[28rem] gap-y-2 flex flex-col">
-            <h2 class="gap-x-4 flex items-center capitalize">
-                {user.full_name}
+            <h2 class="card-title gap-x-4 flex items-center">
+                <span class="text-3xl capitalize">
+                    {user.full_name}
+                </span>
 
                 <EnhancedImage
                     --height="1.125rem"

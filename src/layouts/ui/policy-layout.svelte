@@ -1,9 +1,10 @@
 <script lang="ts">
-import { PolicyCard, PolicyTabs } from "~/entities/policy"
+import { PolicyCard, policyLinks } from "~/entities/policy"
 import { PolicySavePdfButton } from "~/features/policy"
 
 import { useRoute } from "$model"
 import { Grid, GridCol } from "$ui/layout"
+import { NavTabs } from "$ui/navigation"
 
 interface $$Slots {
     default: NonNullable<unknown>
@@ -14,7 +15,7 @@ let { routeMeta } = useRoute()
 
 <Grid>
     <GridCol>
-        <PolicyTabs />
+        <NavTabs links={policyLinks} />
     </GridCol>
 
     {#if $routeMeta.title}

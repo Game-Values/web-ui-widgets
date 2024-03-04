@@ -1,5 +1,5 @@
 import type { IUser } from "~/entities/user"
-import type { IProfilePageData } from "~/pages/profile"
+import type { IProfilePageData } from "~/pages/transaction"
 
 import { fetchUser } from "~/entities/user"
 

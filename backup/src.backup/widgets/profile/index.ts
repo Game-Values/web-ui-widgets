@@ -1,1 +1,1 @@
-export * from "~/widgets/profile/chat-send-hub-message"
+export * from "~/widgets/transaction/chat-send-hub-message"

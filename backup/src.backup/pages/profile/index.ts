@@ -1,2 +1,2 @@
-export * from "~/pages/profile/core"
-export * from "~/pages/profile/chat-send-hub-message"
+export * from "~/pages/transaction/core"
+export * from "~/pages/transaction/chat-send-hub-message"

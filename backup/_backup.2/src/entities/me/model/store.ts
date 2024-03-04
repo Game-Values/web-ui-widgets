@@ -1,5 +1,5 @@
 import type { IUserRaw } from "@/schema/data-contracts"
-import type { IUser } from "~/entities/profile"
+import type { IUser } from "~/entities/transaction"
 import type { UnwrapRef } from "vue"
 
 import { api } from "~/shared/httpInstance"

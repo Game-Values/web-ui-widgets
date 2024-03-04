@@ -1,1 +1,1 @@
-export * from "~/entities/profile/core"
+export * from "~/entities/transaction/core"

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 definePageMeta({
     seo: {
-        title: "Basic settings",
+        title: "Basic subscription",
     },
 })
 

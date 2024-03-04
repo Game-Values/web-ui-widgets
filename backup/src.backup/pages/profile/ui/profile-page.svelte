@@ -5,7 +5,7 @@
 </Content>
 
 <script lang="ts">
-import type { IProfilePageData } from "~/pages/profile"
+import type { IProfilePageData } from "~/pages/transaction"
 
 import LayoutGrid, { InnerGrid, Cell } from "@smui/layout-grid"
 

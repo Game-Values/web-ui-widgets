@@ -14,7 +14,7 @@ export let step: number
     steps={
         [
             "Select deal options",
-            "Make payment",
+            "Make transaction",
             "Confirm deal",
         ]
     }

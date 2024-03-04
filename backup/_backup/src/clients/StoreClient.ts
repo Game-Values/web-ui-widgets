@@ -7,9 +7,9 @@ import type { ItemsStore } from "~/stores/items"
 import type { OrderStore } from "~/stores/order"
 import type { SellStore } from "~/stores/sell"
 import type { SeoStore } from "~/stores/seo"
-import type { SettingsStore } from "~/stores/settings"
-import type { UserStore } from "~/stores/profile"
-import type { WithdrawStore } from "~/stores/withdraw"
+import type { SettingsStore } from "~/stores/subscription"
+import type { UserStore } from "~/stores/transaction"
+import type { WithdrawStore } from "~/stores/transaction"
 
 // todo: stores typing
 export class StoreClient {

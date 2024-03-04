@@ -1,6 +1,6 @@
 export * from "$lib/enums/dialog"
 export * from "$lib/enums/http"
-export * from "$lib/enums/payment"
+export * from "$lib/enums/transaction"
 export * from "$lib/enums/route"
 export * from "$lib/enums/social"
 export * from "$lib/enums/token"

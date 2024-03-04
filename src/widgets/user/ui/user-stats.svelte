@@ -6,7 +6,7 @@ import { Toggle } from "$ui/data"
 
 <div class="card card-secondary card-bordered card-normal">
     <div class="card-body gap-y-5">
-        <h3>
+        <h3 class="card-title">
             Statistics
         </h3>
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { policyLinks, PolicyTab } from "~/entities/policy"
+import { settingsLinks, SettingsTab } from "~/entities/settings"
 
 interface $$Props {
     class?: string
@@ -21,10 +21,10 @@ export {
 </script>
 
 <nav class="join {className}">
-    {#each policyLinks as policyLink (policyLink.label)}
-        <PolicyTab
+    {#each settingsLinks as settingsLink (settingsLink.label)}
+        <SettingsTab
             class="join-item {tabClass}"
-            link={policyLink}
+            link={settingsLink}
         />
     {/each}
 </nav>

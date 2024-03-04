@@ -1,5 +1,5 @@
 <script lang="ts">
-import { PaymentWithdrawPage } from "~/pages/payment"
+import { TransactionsListPage } from "~/pages/transaction"
 </script>
 
-<PaymentWithdrawPage />
+<TransactionsListPage />
