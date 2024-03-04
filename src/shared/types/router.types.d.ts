@@ -9,7 +9,7 @@ export type IRoute = {
 
 export type IRouteMeta = {
     title?: string
-    zip?: `/zip/${string}.zip`
+    zip?: `zip/${string}.zip`
 }
 
 export type IRouteQuery = Pick<IRouteParams, "gameId" | "gameSection">
