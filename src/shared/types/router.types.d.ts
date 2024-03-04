@@ -7,6 +7,11 @@ export type IRoute = {
     url: IRouteUrl
 }
 
+export type IRouteMeta = {
+    title?: string
+    zip?: `/zip/${string}.zip`
+}
+
 export type IRouteQuery = Pick<IRouteParams, "gameId" | "gameSection">
 
 export type IRouteParams = Partial<Record<IKeyOf<KIT_ROUTES["Params"]>, any>>

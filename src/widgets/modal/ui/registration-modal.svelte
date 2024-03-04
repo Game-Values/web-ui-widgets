@@ -12,7 +12,7 @@ import { Modal, ShowModalButton } from "$ui/actions"
 >
     <RegistrationByEmailForm />
 
-    <div class="flex flex-col items-center">
+    <p class="flex flex-col items-center">
         <small class="text-secondary">
             Already have an account on GameValues?
         </small>
@@ -25,5 +25,5 @@ import { Modal, ShowModalButton } from "$ui/actions"
                 Log in
             </small>
         </ShowModalButton>
-    </div>
+    </p>
 </Modal>

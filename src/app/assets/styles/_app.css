@@ -47,7 +47,38 @@ strong {
     @apply font-inherit text-[1.125em];
 }
 
-ul li {
+dl > dd > ul {
+    @apply list-disc;
+}
+
+ol {
+    @apply px-4;
+    @apply list-decimal;
+
+    counter-reset: item;
+}
+
+ol > li {
+    @apply ms-0 ps-2;
+
+    counter-increment: item;
+}
+
+ol > li ol {
+    @apply list-none;
+}
+
+ol > li ol > li {
+    @apply relative;
+}
+
+ol > li ol > li::before {
+    @apply absolute right-full;
+
+    content: counters(item, ".");
+}
+
+ul > li {
     @apply marker:hidden;
 }
 

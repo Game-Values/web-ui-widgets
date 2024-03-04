@@ -1,36 +1,5 @@
 <script lang="ts">
-import type { IStat } from "$types"
-
-import { formatNum } from "$lib/utils"
-
-import IconCube from "virtual:icons/common/cube"
-import IconMoney from "virtual:icons/common/money"
-import IconUser from "virtual:icons/common/user"
-import IconUsers from "virtual:icons/common/users"
-
-let stats: IStat[] = [
-    {
-        icon: IconCube,
-        iconClass: "scale-125",
-        label: "number of lots",
-        value: formatNum(6_748),
-    },
-    {
-        icon: IconMoney,
-        label: "amount of deals",
-        value: formatNum(398_053),
-    },
-    {
-        icon: IconUser,
-        label: "online",
-        value: formatNum(246_761),
-    },
-    {
-        icon: IconUsers,
-        label: "all",
-        value: formatNum(1_758_904),
-    },
-]
+import { navbarStats } from "~/widgets/navbar"
 </script>
 
 <ul
@@ -42,22 +11,22 @@ let stats: IStat[] = [
         overflow-hidden
     "
 >
-    {#each stats as stat (stat.label)}
+    {#each navbarStats as navbarStat (navbarStat.label)}
         <li class="stat p-0 gap-x-3 border-transparent">
             <span class="stat-figure col-start-1 text-accent text-3xl">
-                <i class="icon {stat.iconClass}">
-                    <svelte:component this={stat.icon} />
+                <i class="icon {navbarStat.iconClass}">
+                    <svelte:component this={navbarStat.icon} />
                 </i>
             </span>
 
             <span class="stat-value col-start-2">
                 <strong>
-                    {stat.value}
+                    {navbarStat.value}
                 </strong>
             </span>
 
             <span class="stat-title col-start-2 capitalize">
-                {stat.label}
+                {navbarStat.label}
             </span>
         </li>
     {/each}

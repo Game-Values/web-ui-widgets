@@ -4,7 +4,6 @@ import type { ILotFormAction } from "~/features/lot"
 
 import { createForm } from "felte"
 import { merge } from "lodash-es"
-import { get } from "svelte/store"
 
 import { useApi } from "$api"
 import { goto } from "$app/navigation"
@@ -27,10 +26,10 @@ export function useLotForm(action: ILotFormAction, lot?: IItem): IForm<IItemCrea
         },
 
         onSuccess: async (res: IItem): Promise<void> => {
-            let { route } = useRoute("/g/[gameId]", { gameId: res.gid, gameSection: res.attributes.type })
+            let { getRoute } = useRoute("/g/[gameId]", { gameId: res.gid, gameSection: res.attributes.type })
 
             if (action === "create")
-                await goto(get(route))
+                await goto(getRoute())
 
             await dispatchSubmitEvent(res)
         },

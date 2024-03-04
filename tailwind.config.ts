@@ -52,6 +52,12 @@ export default {
 
             "fontSize": "1rem",
 
+            "a.btn": {
+                "font-size": "1.0625rem",
+                "font-weight": "700",
+                "line-height": "inherit",
+            },
+
             "button.btn": {
                 "font-size": "1.0625rem",
                 "font-weight": "700",

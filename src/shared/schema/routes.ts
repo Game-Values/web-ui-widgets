@@ -66,6 +66,15 @@ const PAGES = {
   "/job": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
     return `${params?.locale ? `/${params?.locale}`: ''}/job`
   },
+  "/policy/agreement": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/policy/agreement`
+  },
+  "/policy/license": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/policy/license`
+  },
+  "/policy/privacy": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
+    return `${params?.locale ? `/${params?.locale}`: ''}/policy/privacy`
+  },
   "/promotions": (params?: { locale?: (Parameters<typeof import('../../params/locale.ts').match>[0]) }) => {
     return `${params?.locale ? `/${params?.locale}`: ''}/promotions`
   },
@@ -205,7 +214,7 @@ export function route<T extends keyof AllTypes>(key: T, ...params: any[]): strin
 * ```
 */
 export type KIT_ROUTES = {
-  PAGES: { '/': 'locale', '/favorites': 'locale', '/funds': 'locale', '/lots': 'locale', '/lots/create': 'locale', '/messages': 'locale', '/order/create/[lotId]': 'lotId' | 'locale', '/order/purchases': 'locale', '/order/purchases/[orderId]': 'orderId' | 'locale', '/order/sales': 'locale', '/referral': 'locale', '/settings': 'locale', '/about': 'locale', '/ai-assistant': 'locale', '/blog': 'locale', '/feedback': 'locale', '/g/[gameId]': 'gameId' | 'locale' | 'gameSection', '/help': 'locale', '/job': 'locale', '/promotions': 'locale', '/top-10': 'locale', '/u/[userId]': 'userId' | 'locale' }
+  PAGES: { '/': 'locale', '/favorites': 'locale', '/funds': 'locale', '/lots': 'locale', '/lots/create': 'locale', '/messages': 'locale', '/order/create/[lotId]': 'lotId' | 'locale', '/order/purchases': 'locale', '/order/purchases/[orderId]': 'orderId' | 'locale', '/order/sales': 'locale', '/referral': 'locale', '/settings': 'locale', '/about': 'locale', '/ai-assistant': 'locale', '/blog': 'locale', '/feedback': 'locale', '/g/[gameId]': 'gameId' | 'locale' | 'gameSection', '/help': 'locale', '/job': 'locale', '/policy/agreement': 'locale', '/policy/license': 'locale', '/policy/privacy': 'locale', '/promotions': 'locale', '/top-10': 'locale', '/u/[userId]': 'userId' | 'locale' }
   SERVERS: Record<string, never>
   ACTIONS: Record<string, never>
   LINKS: { 'copyright': never, 'discord': never, 'facebook': never, 'instagram': never, 'telegramChat': never, 'telegramNews': never, 'twitch': never, 'youtube': never }

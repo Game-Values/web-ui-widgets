@@ -5,7 +5,7 @@ import { debounce } from "lodash-es"
 import { onDestroy, onMount } from "svelte"
 import { derived } from "svelte/store"
 
-export function useWatch<T extends object>(
+export function useWatch<T>(
     store: Readable<T> | Writable<T>,
     subscribe: ICallable | ICallableLazy,
 ): void {

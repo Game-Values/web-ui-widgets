@@ -1,23 +1,17 @@
 <script lang="ts">
-import { EnhancedImage } from "$ui/data"
+import { footerPayments } from "~/widgets/footer"
 
-let payments: string[] = [
-    "visa",
-    "mastercard",
-    "binance",
-    "paypal",
-    "webmoney",
-]
+import { EnhancedImage } from "$ui/data"
 </script>
 
 <ul class="gap-x-8 flex">
-    {#each payments as payment (payment)}
+    {#each footerPayments as footerPayment (footerPayment)}
         <li>
             <EnhancedImage
                 --height="2.5rem"
-                alt={payment}
+                alt={footerPayment}
                 size="xs"
-                src="images/common/{payment}.png"
+                src="images/common/{footerPayment}.png"
             />
         </li>
     {/each}

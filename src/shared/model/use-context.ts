@@ -22,9 +22,9 @@ function contextFactory<T>(contextKey: string): Writable<T> {
 export function useContext<T = unknown>(
     initialContext: Partial<T> = Object.create(null),
 ): IUseContext<T> {
-    let { route } = useRoute()
+    let { getRoute } = useRoute()
 
-    let context: Writable<T> = contextFactory<T>(get(route))
+    let context: Writable<T> = contextFactory<T>(getRoute())
 
     let use: IUseContext<T> = {
         context: derived(context, ($context: T): T => $context),

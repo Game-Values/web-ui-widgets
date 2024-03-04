@@ -1,9 +1,13 @@
 <script lang="ts">
 import { useRegistrationByEmailForm } from "~/features/registration"
 
+import { useRoute } from "$model"
 import { Checkbox, Input } from "$ui/data"
 
 let { form } = useRegistrationByEmailForm()
+let { route: agreementPolicyRoute } = useRoute("/policy/agreement")
+let { route: licensePolicyRoute } = useRoute("/policy/license")
+let { route: privacyPolicyRoute } = useRoute("/policy/privacy")
 </script>
 
 <form
@@ -81,21 +85,24 @@ let { form } = useRegistrationByEmailForm()
 
                 <a
                     class="link link-primary link-hover"
-                    href="/"
+                    href={$licensePolicyRoute}
+                    target="_blank"
                 >
                     License Agreement
                 </a>,
 
                 <a
                     class="link link-primary link-hover"
-                    href="/"
+                    href={$privacyPolicyRoute}
+                    target="_blank"
                 >
                     Privacy Policy
                 </a> and
 
                 <a
                     class="link link-primary link-hover"
-                    href="/"
+                    href={$agreementPolicyRoute}
+                    target="_blank"
                 >
                     Agency Agreement
                 </a>

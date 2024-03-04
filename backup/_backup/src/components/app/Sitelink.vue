@@ -6,7 +6,7 @@ withDefaults(defineProps<{
     label?: string
     url?: string
 }>(), {
-    label: "lot-values.com",
+    label: "game-values.com",
     url: "https://game-values.com/",
 })
 

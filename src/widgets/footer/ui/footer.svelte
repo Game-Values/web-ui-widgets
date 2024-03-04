@@ -1,18 +1,8 @@
 <script lang="ts">
-import {
-    FooterCopyright,
-    FooterLinks,
-    FooterLogo,
-    FooterPayments,
-    FooterPolicy,
-    FooterSocialsLinks,
-} from "~/widgets/footer"
+import { PolicyLinks } from "~/entities/policy"
+import { FooterCopyright, FooterLinks, FooterLogo, FooterPayments, FooterSocialsLinks } from "~/widgets/footer"
 
 import { Grid, GridCol } from "$ui/layout"
-
-interface $$Props {
-    class?: string
-}
 </script>
 
 <footer
@@ -45,7 +35,7 @@ interface $$Props {
             justify="center"
             span={3}
         >
-            <FooterPolicy />
+            <PolicyLinks class="flex-col text-secondary" />
         </GridCol>
     </Grid>
 

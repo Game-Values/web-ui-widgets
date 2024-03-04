@@ -1,55 +1,15 @@
 <script lang="ts">
-import type { IRouteWithIcon } from "$types"
-
-import { FooterLink } from "~/widgets/footer"
-
-import IconDiscord from "virtual:icons/common/discord"
-import IconFacebook from "virtual:icons/common/facebook"
-import IconInstagram from "virtual:icons/common/instagram"
-import IconTelegramChat from "virtual:icons/common/telegram-chat"
-import IconTelegramNews from "virtual:icons/common/telegram-news"
-import IconTwitch from "virtual:icons/common/twitch"
-import IconYoutube from "virtual:icons/common/youtube"
-
-let links: IRouteWithIcon[] = [
-    {
-        icon: IconInstagram,
-        url: "instagram",
-    },
-    {
-        icon: IconDiscord,
-        url: "discord",
-    },
-    {
-        icon: IconYoutube,
-        url: "youtube",
-    },{
-        icon: IconTwitch,
-        url: "twitch",
-    },
-    {
-        icon: IconFacebook,
-        url: "facebook",
-    },
-    {
-        icon: IconTelegramChat,
-        url: "telegramChat",
-    },
-    {
-        icon: IconTelegramNews,
-        url: "telegramNews",
-    },
-]
+import { FooterLink, footerSocialLinks } from "~/widgets/footer"
 </script>
 
 <nav class="gap-x-6 flex">
-    {#each links as link (link.url)}
+    {#each footerSocialLinks as footerSocialLink (footerSocialLink.url)}
         <FooterLink
-            {link}
+            link={footerSocialLink}
             target="_blank"
         >
             <i class="icon text-4xl">
-                <svelte:component this={link.icon} />
+                <svelte:component this={footerSocialLink.icon} />
             </i>
         </FooterLink>
     {/each}

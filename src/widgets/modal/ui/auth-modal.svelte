@@ -12,7 +12,7 @@ import { Modal, ShowModalButton } from "$ui/actions"
 >
     <AuthByEmailForm />
 
-    <div class="flex flex-col items-center">
+    <p class="flex flex-col items-center">
         <small class="text-secondary">
             Don't have an account?
         </small>
@@ -25,5 +25,5 @@ import { Modal, ShowModalButton } from "$ui/actions"
                 Sign Up
             </small>
         </ShowModalButton>
-    </div>
+    </p>
 </Modal>

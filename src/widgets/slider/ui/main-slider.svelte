@@ -8,7 +8,7 @@ let options: SwiperOptions = {
     },
 
     autoplay: {
-        delay: 10_000_00,
+        delay: 10_000,
         disableOnInteraction: true,
     },
 

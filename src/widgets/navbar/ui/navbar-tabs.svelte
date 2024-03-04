@@ -1,28 +1,11 @@
 <script lang="ts">
-import type { IRouteWithLabel } from "$types"
-
-import { NavbarTab } from "~/widgets/navbar"
+import { navbarLinks, NavbarTab } from "~/widgets/navbar"
 
 interface $$Props {
     class?: string
 }
 
 let className: string = ""
-
-let tabs: IRouteWithLabel[] = [
-    {
-        label: "Blog",
-        url: "/blog",
-    },
-    {
-        label: "Promotions",
-        url: "/promotions",
-    },
-    {
-        label: "Top-10",
-        url: "/top-10",
-    },
-]
 
 export {
     className as class,
@@ -40,8 +23,8 @@ export {
         "
         role="tablist"
     >
-        {#each tabs as tab (tab.label)}
-            <NavbarTab {tab} />
+        {#each navbarLinks as navbarLink (navbarLink.label)}
+            <NavbarTab tab={navbarLink} />
         {/each}
     </ul>
 </nav>
