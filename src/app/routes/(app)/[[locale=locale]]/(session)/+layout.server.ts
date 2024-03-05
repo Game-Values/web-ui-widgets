@@ -1,5 +1,5 @@
 import { withAuth } from "~/app/providers"
 
-export async function load(): Promise<void> {
-    return withAuth()
+export function load({ locals }): void {
+    return withAuth(locals.session)
 }
