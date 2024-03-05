@@ -1,16 +1,20 @@
 import type { IBodyCreateUserProfileApiV1UsersPost, IBodyLoginWithOauth2ApiV1LoginOauthPost, IToken, IUser } from "$schema/api"
 import type { IForm } from "$types"
 
-import { createForm } from "felte"
-
 import { useApi } from "$api"
-import { useSession } from "$model"
+import { useForm, useSession } from "$model"
 
-export function useRegistrationByEmailForm(): IForm<IBodyCreateUserProfileApiV1UsersPost> {
+export function useAuthRegistrationByEmailForm(): IForm<
+    IBodyCreateUserProfileApiV1UsersPost,
+    IBodyLoginWithOauth2ApiV1LoginOauthPost
+> {
     let { createUserProfileApiV1UsersPost, loginWithOauth2ApiV1LoginOauthPost } = useApi()
     let { login } = useSession()
 
-    return createForm<IBodyCreateUserProfileApiV1UsersPost, IUser>({
+    return useForm<
+        IBodyCreateUserProfileApiV1UsersPost,
+        IBodyLoginWithOauth2ApiV1LoginOauthPost
+    >({
         initialValues: {
             agree_with_policy: true,
             send_notifications: true,

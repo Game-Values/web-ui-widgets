@@ -2,29 +2,32 @@ import type { IOrderCreate, IOrderInDB, IPaymentNew } from "$schema/api"
 import type { IForm } from "$types"
 import type { RecursivePartial } from "@felte/core"
 
-import { createForm } from "felte"
-
 import { useApi } from "$api"
 import { goto } from "$app/navigation"
-import { useRoute } from "$model"
+import { useForm, useRoute } from "$model"
 
 type ILotsNewOrderForm = {
     order: Required<IOrderCreate>
     payment: Required<IPaymentNew>
 }
 
-export function useOrderCreateForm(initialValues: RecursivePartial<ILotsNewOrderForm>): IForm<ILotsNewOrderForm> {
+export function useOrderCreateForm(
+    initialValues: RecursivePartial<ILotsNewOrderForm>,
+): IForm<ILotsNewOrderForm, IOrderInDB> {
     let { createOrderApiV1OrderPost } = useApi()
 
-    return createForm<ILotsNewOrderForm>({
+    return useForm<ILotsNewOrderForm, IOrderInDB>({
         initialValues,
 
-        onSubmit: async (data: ILotsNewOrderForm): Promise<IOrderInDB> => createOrderApiV1OrderPost(data.order),
+        onSubmit: async (data: ILotsNewOrderForm): Promise<IOrderInDB> => (
+            createOrderApiV1OrderPost(data.order)
+        ),
 
-        onSuccess: (order: IOrderInDB): Promise<void> => {
-            let { getRoute } = useRoute("/order/purchases/[orderId]", { orderId: order.id })
-
-            return goto(getRoute())
-        },
+        onSuccess: (order: IOrderInDB): Promise<void> => (
+            goto(
+                useRoute("/order/purchases/[orderId]", { orderId: order.id })
+                    .getRoute(),
+            )
+        ),
     })
 }

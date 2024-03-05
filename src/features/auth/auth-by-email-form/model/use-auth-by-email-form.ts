@@ -1,17 +1,17 @@
 import type { IBodyLoginWithOauth2ApiV1LoginOauthPost, IToken } from "$schema/api"
 import type { IForm } from "$types"
 
-import { createForm } from "felte"
-
 import { useApi } from "$api"
-import { useSession } from "$model"
+import { useForm, useSession } from "$model"
 
-export function useAuthByEmailForm(): IForm<IBodyLoginWithOauth2ApiV1LoginOauthPost> {
+export function useAuthByEmailForm(): IForm<IBodyLoginWithOauth2ApiV1LoginOauthPost, IToken> {
     let { loginWithOauth2ApiV1LoginOauthPost } = useApi()
     let { login } = useSession()
 
-    return createForm<IBodyLoginWithOauth2ApiV1LoginOauthPost, IToken>({
-        onSubmit: loginWithOauth2ApiV1LoginOauthPost,
+    return useForm<IBodyLoginWithOauth2ApiV1LoginOauthPost, IToken>({
+        onSubmit: (data: IBodyLoginWithOauth2ApiV1LoginOauthPost): Promise<IToken> => (
+            loginWithOauth2ApiV1LoginOauthPost(data)
+        ),
 
         onSuccess: login,
     })

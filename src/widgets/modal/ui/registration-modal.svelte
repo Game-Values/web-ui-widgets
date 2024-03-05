@@ -1,5 +1,5 @@
 <script lang="ts">
-import { RegistrationByEmailForm } from "~/features/registration"
+import { AuthRegistrationByEmailForm } from "~/features/auth"
 
 import { Modal, ShowModalButton } from "$ui/actions"
 </script>
@@ -10,7 +10,7 @@ import { Modal, ShowModalButton } from "$ui/actions"
     contentClass="gap-y-4 flex flex-col"
     title="Sign Up"
 >
-    <RegistrationByEmailForm />
+    <AuthRegistrationByEmailForm />
 
     <p class="flex flex-col items-center">
         <small class="text-secondary">

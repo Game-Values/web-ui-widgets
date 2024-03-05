@@ -1,10 +1,10 @@
 <script lang="ts">
-import { useRegistrationByEmailForm } from "~/features/registration"
+import { useAuthRegistrationByEmailForm } from "~/features/auth"
 
 import { useRoute } from "$model"
 import { Checkbox, Input } from "$ui/data"
 
-let { form } = useRegistrationByEmailForm()
+let { form } = useAuthRegistrationByEmailForm()
 let { route: agreementPolicyRoute } = useRoute("/policy/agreement")
 let { route: licensePolicyRoute } = useRoute("/policy/license")
 let { route: privacyPolicyRoute } = useRoute("/policy/privacy")

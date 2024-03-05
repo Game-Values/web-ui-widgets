@@ -1,6 +1,7 @@
 <script lang="ts">
 import { useAuthByEmailForm } from "~/features/auth"
 
+import { ShowModalButton } from "$ui/actions"
 import { Input } from "$ui/data"
 
 let { form } = useAuthByEmailForm()
@@ -38,11 +39,12 @@ let { form } = useAuthByEmailForm()
             Sign In
         </button>
 
-        <button
+        <ShowModalButton
             class="btn btn-link"
+            modal="password-recovery"
             type="reset"
         >
             Forgot Password?
-        </button>
+        </ShowModalButton>
     </div>
 </form>

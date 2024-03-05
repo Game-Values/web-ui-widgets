@@ -2,21 +2,18 @@ import type { IItem, IItemCreate, IItemUpdate } from "$schema/api"
 import type { IForm } from "$types"
 import type { ILotFormAction } from "~/features/lot"
 
-import { createForm } from "felte"
 import { merge } from "lodash-es"
 
 import { useApi } from "$api"
 import { goto } from "$app/navigation"
-import { useEventDispatcher, useRoute } from "$model"
+import { useEventDispatcher, useForm, useRoute } from "$model"
 
-export function useLotForm(action: ILotFormAction, lot?: IItem): IForm<IItemCreate> {
+export function useLotForm(action: ILotFormAction, lot?: IItem): IForm<IItemCreate, IItem> {
     let { createItemApiV1ItemsItemPost, updateItemApiV1ItemsItemItemIdPut } = useApi()
     let { dispatchEvent: dispatchSubmitEvent } = useEventDispatcher<IItem>("submit")
 
-    return createForm<IItemCreate>({
-        initialValues: merge({
-            attributes: Object.create(null),
-        }, lot),
+    return useForm<IItemCreate, IItem>({
+        initialValues: merge({ attributes: Object.create(null) }, lot),
 
         onSubmit: (data: IItemCreate | IItemUpdate): Promise<IItem> => {
             if (action === "create")
