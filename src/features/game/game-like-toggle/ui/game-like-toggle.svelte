@@ -19,8 +19,8 @@ let className: string = ""
 let game: IGame
 
 let { dislikeGame, gameLiked, likeGame } = useGame(game)
-let { updateSession, user } = useSession()
-let { addLikedGame, deleteLikedGame } = useUser($user)
+let { updateSession, user: sessionUser } = useSession()
+let { addLikedGame, deleteLikedGame } = useUser($sessionUser)
 
 async function gameLikeToggle(): Promise<void> {
     if ($gameLiked) {
@@ -33,7 +33,7 @@ async function gameLikeToggle(): Promise<void> {
         addLikedGame(game)
     }
 
-    updateSession({ user: $user })
+    updateSession({ user: $sessionUser })
 }
 
 export {

@@ -14,11 +14,11 @@ interface $$Props {
 
 let games: IGame[]
 
-let { user } = useSession()
+let { user: sessionUser } = useSession()
 
 $: favoriteGames = (
     games.filter((game: IGame): boolean => (
-        mapGamesIds($user.liked_games).includes(game.id!)
+        mapGamesIds($sessionUser.liked_games).includes(game.id!)
     ))
 )
 
@@ -30,12 +30,12 @@ export {
 <Grid subgrid>
     <GridCol>
         <h1>
-            Favorites ({$user.liked_games.length})
+            Favorites ({$sessionUser.liked_games.length})
         </h1>
     </GridCol>
 
     <GridCol>
-        {#if $user.liked_games.length}
+        {#if $sessionUser.liked_games.length}
             <GamesGroup games={favoriteGames} />
         {:else}
             <Empty />

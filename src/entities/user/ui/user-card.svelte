@@ -1,6 +1,9 @@
 <script lang="ts">
 import type { IUser } from "$schema/api"
 
+import { AuthOnly } from "~/entities/auth"
+import { SessionUserOnly } from "~/entities/session"
+
 import { useRoute } from "$model"
 import { Avatar, EnhancedImage } from "$ui/data"
 
@@ -10,8 +13,8 @@ interface $$Props {
     user: IUser
 }
 
-let { route: settingsReviewsRoute, routeActive: settingsReviewsRouteActive } = useRoute("/settings/reviews")
-let { routeActive: settingsSubscriptionRouteActive } = useRoute("/settings/subscription")
+let { route } = useRoute()
+let { route: settingsRoute } = useRoute("/settings/settings")
 
 export let user: IUser
 </script>
@@ -62,18 +65,34 @@ export let user: IUser
                 </span>
             </h2>
 
-            <p class="text-secondary">
-                Create a description for your profile or shop. Description must be no longer than 180 characters
-            </p>
+            <SessionUserOnly {user}>
+                <p class="text-secondary">
+                    <small>
+                        Create a description for your profile or shop.
+                        Description must be no longer than 180 characters
+                    </small>
+                </p>
+
+                <svelte:fragment slot="fallback">
+                    <AuthOnly>
+                        <button class="btn btn-secondary mt-auto">
+                            Send Message
+                        </button>
+                    </AuthOnly>
+                </svelte:fragment>
+            </SessionUserOnly>
         </div>
 
-        {#if !$settingsReviewsRouteActive && !$settingsSubscriptionRouteActive}
-            <a
-                class="link link-primary link-hover ml-auto"
-                href={$settingsReviewsRoute}
-            >
-                Settings
-            </a>
-        {/if}
+        <SessionUserOnly {user}>
+            <!-- todo -->
+            {#if !$route.startsWith("/settings")}
+                <a
+                    class="link link-primary link-hover ml-auto"
+                    href={$settingsRoute}
+                >
+                    Settings
+                </a>
+            {/if}
+        </SessionUserOnly>
     </div>
 </div>

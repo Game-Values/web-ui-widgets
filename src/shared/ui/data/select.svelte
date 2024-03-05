@@ -24,6 +24,8 @@ let name: null | string | undefined = undefined
 
 let options: IFormSelectOption[] = []
 
+let placeholder: null | string | undefined = undefined
+
 let placement: "end" | "start" = "start"
 
 let required: boolean | null | undefined = false
@@ -40,6 +42,7 @@ export {
     className as class,
     name,
     options,
+    placeholder,
     placement,
     required,
     selectClass,
@@ -62,6 +65,7 @@ export {
     <select
         {name}
         class="select select-bordered {selectClass}"
+        {placeholder}
         {required}
         bind:value
         on:change={e => (

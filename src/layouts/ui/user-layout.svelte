@@ -1,11 +1,13 @@
 <script lang="ts">
 import type { IUser } from "$schema/api"
 
-import { UserCard } from "~/entities/user"
+import { SessionUserOnly } from "~/entities/session"
+import { UserCard, userLinks } from "~/entities/user"
 import { HelpQuestions } from "~/widgets/help"
 import { UserStats } from "~/widgets/user"
 
 import { Grid, GridCol } from "$ui/layout"
+import { NavTabs } from "$ui/navigation"
 
 interface $$Props {
     user: IUser
@@ -25,11 +27,17 @@ export let user: IUser
     >
         <UserCard {user} />
 
+        <SessionUserOnly {user}>
+            <svelte:fragment slot="fallback">
+                <NavTabs links={userLinks} />
+            </svelte:fragment>
+        </SessionUserOnly>
+
         <slot />
     </GridCol>
 
     <GridCol span={3}>
-        <UserStats />
+        <UserStats {user} />
     </GridCol>
 </Grid>
 

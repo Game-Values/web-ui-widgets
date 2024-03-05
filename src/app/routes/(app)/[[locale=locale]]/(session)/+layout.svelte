@@ -7,9 +7,9 @@ interface $$Slots {
     default: NonNullable<unknown>
 }
 
-let { user } = useSession()
+let { user: sessionUser } = useSession()
 </script>
 
-<UserLayout user={$user}>
+<UserLayout user={$sessionUser}>
     <slot />
 </UserLayout>

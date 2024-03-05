@@ -18,7 +18,7 @@ interface $$Slots {
 
 let lot: IItem
 
-let { route: userRoute } = useRoute("/u/[userId]", { userId: lot.owner_id })
+let { route: userStorefrontRoute } = useRoute("/u/[userId]/storefront", { userId: lot.owner_id })
 let { route: orderCreateRoute } = useRoute("/order/create/[lotId]", { lotId: lot.id })
 
 export {
@@ -29,7 +29,7 @@ export {
 <tr>
     <td>
         <div class="gap-x-3 flex items-center">
-            <a href={$userRoute}>
+            <a href={$userStorefrontRoute}>
                 <Avatar
                     class="w-8"
                     username="Username"
@@ -39,7 +39,7 @@ export {
             <div class="flex flex-col">
                 <a
                     class="link link-hover"
-                    href={$userRoute}
+                    href={$userStorefrontRoute}
                 >
                     Username
                 </a>

@@ -19,16 +19,16 @@ let { context } = useContext<ILotsListPageContext>({
 
 let gamesPromise: Promise<void[]> = Promise.all(
     Array
-        .from(new Set($context.lots.map((lot: IItem): string => lot.gid!)))
+        .from(new Set($context.lots!.map((lot: IItem): string => lot.gid!)))
         .map((gameId: string): Promise<void> => (
             useGame({ id: gameId })
                 .fetchGame()
                 .then((game: IGame): void => {
                     let gamesLots: IItem[] = (
-                        $context.lots.filter((lot: IItem) => lot.gid === game.id)
+                        $context.lots!.filter((lot: IItem) => lot.gid === game.id)
                     )
 
-                    $context.gamesLots.set(game, gamesLots)
+                    $context.gamesLots!.set(game, gamesLots)
                 })
         )),
 )
@@ -36,7 +36,7 @@ let gamesPromise: Promise<void[]> = Promise.all(
 
 <Accordion>
     <LazyPromise promise={gamesPromise}>
-        {#if $context.gamesLots.size}
+        {#if $context.gamesLots?.size}
             {#each [...$context.gamesLots] as [game, lots] (game.id)}
                 {#if lots.length}
                     <LotsCollapse

@@ -26,10 +26,10 @@ export {
 }
 </script>
 
-<nav class="join {className}">
+<nav class="join w-full {className}">
     {#each links as link (link.label)}
         <NavTab
-            class="join-item {tabClass}"
+            class="join-item flex-1 {tabClass}"
             {link}
         />
     {/each}

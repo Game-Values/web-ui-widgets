@@ -6,9 +6,9 @@ import { Grid, GridCol } from "$ui/layout"
 
 <Grid subgrid>
     <GridCol>
-        <h3>
+        <h1>
             Tariff
-        </h3>
+        </h1>
     </GridCol>
 
     <GridCol>

@@ -2,11 +2,23 @@ import type { IRouteWithLabel } from "$types"
 
 export let settingsLinks: IRouteWithLabel[] = [
     {
-        label: "Reviews",
-        url: "/settings/reviews",
+        label: "Settings",
+        url: "/settings/settings",
     },
     {
-        label: "Subscription: Basic",
+        label: "Security",
+        url: "/settings/security",
+    },
+    {
+        label: "Notifications",
+        url: "/settings/notifications",
+    },
+    {
+        label: "Subscription",
         url: "/settings/subscription",
+    },
+    {
+        label: "Reviews",
+        url: "/settings/reviews",
     },
 ]

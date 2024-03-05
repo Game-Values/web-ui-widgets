@@ -1,9 +1,10 @@
+import type { IUser } from "$schema/api"
 import type { IHeaders } from "$types"
 import type { RequestEvent } from "@sveltejs/kit"
 
-import { upperFirst } from "lodash-es"
+import { isString, upperFirst } from "lodash-es"
 
-import { useCookies } from "$model"
+import { useCookies, useSession } from "$model"
 
 export function getSessionHeaders(requestEvent?: RequestEvent): IHeaders {
     let { getCookie } = useCookies(requestEvent?.cookies)
@@ -17,4 +18,12 @@ export function getSessionHeaders(requestEvent?: RequestEvent): IHeaders {
         headers.set("authorization", `${upperFirst(tokenType)} ${accessToken}`)
 
     return headers
+}
+
+export function isSessionUser(userOrUserId: IUser | string): boolean {
+    let { getSession } = useSession()
+
+    let userId: string = isString(userOrUserId) ? userOrUserId : userOrUserId.id!
+
+    return userId === getSession().user?.id
 }

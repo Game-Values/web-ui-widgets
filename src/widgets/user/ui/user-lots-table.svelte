@@ -1,6 +1,10 @@
 <script lang="ts">
 import type { IItem } from "$schema/api"
+import type { IContextUser } from "$types"
 
+import { SessionUserOnly } from "~/entities/session"
+
+import { useContext } from "$model"
 import { Checkbox } from "$ui/data"
 
 interface $$Props {
@@ -10,6 +14,8 @@ interface $$Props {
 interface $$Slots {
     default: { lot: IItem }
 }
+
+let { context } = useContext<IContextUser>()
 
 export let lots: IItem[]
 </script>
@@ -37,13 +43,15 @@ export let lots: IItem[]
                 Price
             </th>
 
-            <th style:width="6rem">
-                Status
-            </th>
+            <SessionUserOnly user={$context.user}>
+                <th style:width="6rem">
+                    Status
+                </th>
 
-            <th style:width="12rem">
-                Actions
-            </th>
+                <th style:width="12rem">
+                    Actions
+                </th>
+            </SessionUserOnly>
         </tr>
     </thead>
 

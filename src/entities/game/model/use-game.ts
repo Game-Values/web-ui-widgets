@@ -28,7 +28,7 @@ export function useGame(game: IGame): IUseGame {
         readGameApiV1GamesGameIdGet,
     } = useApi()
 
-    let { user } = useSession()
+    let { user: sessionUser } = useSession()
 
     let gameId: string = (game.gid || game.id)!
 
@@ -59,7 +59,7 @@ export function useGame(game: IGame): IUseGame {
 
         gameImage: getGameImage(game),
 
-        gameLiked: derived(user, ($user: IUser): boolean => (
+        gameLiked: derived(sessionUser, ($user: IUser): boolean => (
             mapGamesIds($user.liked_games || []).includes(gameId)
         )),
 

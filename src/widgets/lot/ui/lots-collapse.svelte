@@ -28,9 +28,9 @@ function whenLotDeleted(deletedLot: IItem): void {
     let gamesLots: IItem[] = lots.filter((lot: IItem): boolean => lot !== deletedLot)
 
     if (gamesLots.length)
-        $context.gamesLots.set(game, gamesLots)
+        $context.gamesLots!.set(game, gamesLots)
     else
-        $context.gamesLots.delete(game)
+        $context.gamesLots!.delete(game)
 
     updateContext({ gamesLots: $context.gamesLots })
 }

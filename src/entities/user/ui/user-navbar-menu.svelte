@@ -8,8 +8,8 @@ interface $$Props {
 
 let className: string = ""
 
-let { route: settingsRoute } = useRoute("/settings/reviews")
-let { logout, user } = useSession()
+let { route: settingsRoute } = useRoute("/settings/settings")
+let { logout, user: sessionUser } = useSession()
 
 export {
     className as class,
@@ -20,7 +20,7 @@ export {
     <summary class="btn btn-link">
         <Avatar
             class="w-10 ring ring-accent"
-            username={$user.full_name}
+            username={$sessionUser.full_name}
         />
     </summary>
 

@@ -20,12 +20,12 @@ let game: IGame
 
 let lot: IItem
 
-let { user } = useSession()
+let { user: sessionUser } = useSession()
 let { data, form, setData } = useOrderCreateForm({
     order: {
         attributes: {
             currency: Currency.EUR,
-            customer_id: $user.id,
+            customer_id: $sessionUser.id,
         },
         game_id: game.gid || game.id,
         owner_id: lot.owner_id,

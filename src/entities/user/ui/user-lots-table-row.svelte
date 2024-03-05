@@ -1,7 +1,11 @@
 <script lang="ts">
 import type { IItem } from "$schema/api"
+import type { IContextUser } from "$types"
+
+import { SessionUserOnly } from "~/entities/session"
 
 import { formatPrice } from "$lib/utils"
+import { useContext } from "$model"
 import { Checkbox } from "$ui/data"
 import { Divider } from "$ui/layout"
 
@@ -23,6 +27,8 @@ interface $$Slots {
 let lot: IItem
 
 let visible: boolean = true
+
+let { context } = useContext<IContextUser>()
 
 export {
     lot,
@@ -58,72 +64,74 @@ export {
         {formatPrice(lot.attributes.price, lot.attributes.currency)}
     </td>
 
-    <td>
-        <p class="inline-flex flex-col items-center text-base">
-            {#if visible}
-                <i class="icon w-6 h-6 text-positive-light">
-                    <IconCheckCircleSolid />
-                </i>
-
-                <small class="text-secondary">
-                    Visible
-                </small>
-            {:else}
-                <i class="icon w-6 h-6 text-secondary">
-                    <IconEyeSlashSolid />
-                </i>
-
-                <small class="text-secondary">
-                    Hidden
-                </small>
-            {/if}
-        </p>
-    </td>
-
-    <td>
-        <div class="flex items-center text-2xl">
-            <div class="join join-horizontal gap-x-2">
-                <button
-                    class="btn btn-circle btn-ghost btn-sm tooltip"
-                    data-tip="Up"
-                >
-                    <i class="icon text-white/[0.12]">
-                        <IconArchiveUpSuccess />
-                    </i>
-                </button>
-
-                <label
-                    class="
-                        btn btn-circle btn-ghost btn-sm
-                        swap swap-rotate
-                        tooltip
-                    "
-                    data-tip={visible ? "Hide" : "Show"}
-                >
-                    <input
-                        type="checkbox"
-                        bind:checked={visible}
-                    />
-
-                    <i class="icon swap-on absolute text-accent">
-                        <small>
-                            <IconSun />
-                        </small>
+    <SessionUserOnly user={$context.user}>
+        <td>
+            <p class="inline-flex flex-col items-center text-base">
+                {#if visible}
+                    <i class="icon w-6 h-6 text-positive-light">
+                        <IconCheckCircleSolid />
                     </i>
 
-                    <i class="icon swap-off absolute text-secondary">
-                        <small>
-                            <IconMoon />
-                        </small>
+                    <small class="text-secondary">
+                        Visible
+                    </small>
+                {:else}
+                    <i class="icon w-6 h-6 text-secondary">
+                        <IconEyeSlashSolid />
                     </i>
-                </label>
 
-                <slot name="editLot" />
+                    <small class="text-secondary">
+                        Hidden
+                    </small>
+                {/if}
+            </p>
+        </td>
+
+        <td>
+            <div class="flex items-center text-2xl">
+                <div class="join join-horizontal gap-x-2">
+                    <button
+                        class="btn btn-circle btn-ghost btn-sm tooltip"
+                        data-tip="Up"
+                    >
+                        <i class="icon text-white/[0.12]">
+                            <IconArchiveUpSuccess />
+                        </i>
+                    </button>
+
+                    <label
+                        class="
+                            btn btn-circle btn-ghost btn-sm
+                            swap swap-rotate
+                            tooltip
+                        "
+                        data-tip={visible ? "Hide" : "Show"}
+                    >
+                        <input
+                            type="checkbox"
+                            bind:checked={visible}
+                        />
+
+                        <i class="icon swap-on absolute text-accent">
+                            <small>
+                                <IconSun />
+                            </small>
+                        </i>
+
+                        <i class="icon swap-off absolute text-secondary">
+                            <small>
+                                <IconMoon />
+                            </small>
+                        </i>
+                    </label>
+
+                    <slot name="editLot" />
+                </div>
+
+                <Divider horizontal />
+
+                <slot name="deleteLot" />
             </div>
-
-            <Divider horizontal />
-
-            <slot name="deleteLot" />
-        </div>
-    </td>
+        </td>
+    </SessionUserOnly>
 </tr>
