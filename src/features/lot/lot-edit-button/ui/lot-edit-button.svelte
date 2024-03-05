@@ -5,12 +5,17 @@ import type { ILotsListPageContext } from "~/pages/lot"
 import { useContext } from "$model"
 import { ShowModalButton } from "$ui/actions"
 
-import IconPencil from "virtual:icons/common/pencil"
-
 interface $$Props {
+    class?: string
     game: IGame
     lot: IItem
 }
+
+interface $$Slots {
+    default: NonNullable<unknown>
+}
+
+let className: string = ""
 
 let game: IGame
 
@@ -30,20 +35,17 @@ function update(updatedLot: IItem): void {
 }
 
 export {
+    className as class,
     game,
     lot,
 }
 </script>
 
 <ShowModalButton
-    class="btn btn-circle btn-ghost btn-sm"
+    class={className}
     modal="edit-lot"
     modalState={{ game, lot, update }}
     tooltip="Edit"
 >
-    <i class="icon text-white/[0.12]">
-        <small>
-            <IconPencil />
-        </small>
-    </i>
+    <slot />
 </ShowModalButton>

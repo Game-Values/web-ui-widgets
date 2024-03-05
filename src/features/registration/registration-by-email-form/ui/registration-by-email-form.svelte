@@ -66,7 +66,6 @@ let { route: privacyPolicyRoute } = useRoute("/policy/privacy")
         <Checkbox
             name="send_notifications"
             inputClass="checkbox-sm checkbox-primary"
-            required
         >
             <span class="text-xs text-secondary">
                 I want to receive notifications about promotions and offers by email

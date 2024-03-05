@@ -30,7 +30,7 @@ let type: HTMLInputTypeAttribute | null | undefined = "text"
 function input(e: IKeyboardEvent<HTMLInputElement, string>): void {
     switch (e.currentTarget.type) {
         case "number":
-            dispatchInputEvent(parseInt(e.currentTarget.value, 10))
+            dispatchInputEvent(parseFloat(e.currentTarget.value))
             break
 
         default:

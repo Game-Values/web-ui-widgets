@@ -21,7 +21,9 @@ export {
         class="btn btn-link"
         href={$route}
     >
-        {tab.label}
+        <small>
+            {tab.label}
+        </small>
     </a>
 </li>
 

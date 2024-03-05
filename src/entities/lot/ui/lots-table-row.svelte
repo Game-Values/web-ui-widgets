@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { IItem } from "$schema/api"
 
-import { Currency } from "$lib/enums"
 import { formatNum, formatPrice } from "$lib/utils"
 import { useRoute } from "$model"
 import { Avatar } from "$ui/data"
@@ -11,6 +10,10 @@ import IconHandUp from "virtual:icons/common/hand-up"
 
 interface $$Props {
     lot: IItem
+}
+
+interface $$Slots {
+    editLotButton: NonNullable<unknown>
 }
 
 let lot: IItem
@@ -71,15 +74,17 @@ export {
     </td>
 
     <td>
-        <p class="flex flex-col">
-            <a
-                class="link link-hover"
-                href={$orderCreateRoute}
-            >
-                <b class="line-clamp-2">
-                    {lot.name}
-                </b>
-            </a>
+        <p class="inline-flex flex-col">
+            <slot name="editLotButton">
+                <a
+                    class="link link-hover"
+                    href={$orderCreateRoute}
+                >
+                    <b class="line-clamp-2">
+                        {lot.name}
+                    </b>
+                </a>
+            </slot>
 
             <small class="text-secondary line-clamp-2 empty:(hidden)">
                 {lot.attributes.description}

@@ -10,6 +10,8 @@ import { UserLotsTable } from "~/widgets/user"
 import { useContext } from "$model"
 import { Collapse, EnhancedImage } from "$ui/data"
 
+import IconPencil from "virtual:icons/common/pencil"
+
 interface $$Props {
     game: IGame
     lots: IItem[]
@@ -78,9 +80,16 @@ export {
 
             <svelte:fragment slot="editLot">
                 <LotEditButton
+                    class="btn btn-circle btn-ghost btn-sm"
                     {game}
                     {lot}
-                />
+                >
+                    <i class="icon text-white/[0.12]">
+                        <small>
+                            <IconPencil />
+                        </small>
+                    </i>
+                </LotEditButton>
             </svelte:fragment>
         </UserLotTableRow>
     </UserLotsTable>

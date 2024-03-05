@@ -57,7 +57,7 @@ export {
             type="number"
             bind:value={$data.order.attributes.price}
             on:input={e => (
-                setData("order.attributes.amount", (e.detail * lot.attributes.price) || 0)
+                setData("order.attributes.amount", (e.detail / lot.attributes.price) || 0)
             )}
         />
 
@@ -79,7 +79,7 @@ export {
             type="number"
             bind:value={$data.order.attributes.amount}
             on:input={e => (
-                setData("order.attributes.price", (e.detail / lot.attributes.price) || 0)
+                setData("order.attributes.price", (e.detail * lot.attributes.price) || 0)
             )}
         />
     </div>

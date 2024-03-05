@@ -1,20 +1,20 @@
 <script lang="ts">
 interface $$Props {
-    label?: string
+    mail?: string
 }
 
 interface $$Slots {
     default: NonNullable<unknown>
 }
 
-export let label: string = "support@game-values.com"
+export let mail: string = "hello@game-values.com"
 </script>
 
 <a
     class="link link-primary link-hover"
-    href="mailto:support@game-values.com"
+    href="mailto:{mail}"
 >
     <slot>
-        {label}
+        {mail}
     </slot>
 </a>
