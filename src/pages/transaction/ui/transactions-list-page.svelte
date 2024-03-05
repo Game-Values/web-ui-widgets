@@ -1,7 +1,10 @@
 <script lang="ts">
 import { formatPrice } from "$lib/utils"
+import { useRoute } from "$model"
 import { Empty } from "$ui/data"
 import { Grid, GridCol } from "$ui/layout"
+
+let { route: withdrawRoute } = useRoute("/funds/withdraw")
 </script>
 
 <Grid subgrid>
@@ -19,9 +22,12 @@ import { Grid, GridCol } from "$ui/layout"
             </b>
         </div>
 
-        <button class="btn btn-primary">
+        <a
+            class="btn btn-primary"
+            href={$withdrawRoute}
+        >
             Withdraw
-        </button>
+        </a>
     </GridCol>
 </Grid>
 
