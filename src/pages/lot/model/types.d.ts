@@ -11,8 +11,8 @@ export type ILotCreatePageContext = {
 }
 
 export type ILotsListPageContext = {
-    gamesLots: Map<IGame, IItem[]>
-    lots: IItem[]
+    gamesLots?: Map<IGame, IItem[]>
+    lots?: IItem[]
 }
 
 export type ILotCreatePageData = IPagePromise<IGame[]>

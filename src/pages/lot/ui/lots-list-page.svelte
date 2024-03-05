@@ -3,12 +3,10 @@ import type { IItem } from "$schema/api"
 import type { ILotsListPageContext } from "~/pages/lot"
 
 import { AuthOnly } from "~/entities/auth"
-import { UserCard, UserLotsStats } from "~/entities/user"
-import { HelpQuestions } from "~/widgets/help"
+import { UserLotsStats } from "~/entities/user"
 import { LotsAccordion } from "~/widgets/lot"
-import { UserStats } from "~/widgets/user"
 
-import { useContext, useRoute, useSession } from "$model"
+import { useContext, useRoute } from "$model"
 import { InputSearch } from "$ui/data"
 import { Grid, GridCol } from "$ui/layout"
 
@@ -19,7 +17,6 @@ interface $$Props {
 let lots: IItem[]
 
 let { route: lotCreateRoute } = useRoute("/lots/create")
-let { user } = useSession()
 
 useContext<ILotsListPageContext>({
     lots: lots.map((lot: IItem): IItem => Object.assign(lot, { visible: true })),
