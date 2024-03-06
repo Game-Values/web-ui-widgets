@@ -1,5 +1,5 @@
 <script lang="ts">
-import { SubscriptionsListPage } from "~/pages/subscription"
+import { SecuritySettingsPage } from "~/pages/settings"
 </script>
 
-<SubscriptionsListPage />
+<SecuritySettingsPage />

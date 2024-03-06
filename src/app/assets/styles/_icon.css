@@ -1,6 +1,6 @@
 .icon {
     @apply inline-flex;
-    @apply leading-none;
+    @apply leading-4;
 }
 
 .icon > svg {

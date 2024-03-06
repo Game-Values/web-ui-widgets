@@ -1,5 +1,5 @@
 <script lang="ts">
-import { UserSettingsForm } from "~/features/settings"
+import { NotificationsSettingsForm } from "~/features/settings"
 
 import { Grid, GridCol } from "$ui/layout"
 </script>
@@ -7,11 +7,11 @@ import { Grid, GridCol } from "$ui/layout"
 <Grid subgrid>
     <GridCol>
         <h1>
-            Settings
+            Notifications
         </h1>
     </GridCol>
 
     <GridCol span={5}>
-        <UserSettingsForm />
+        <NotificationsSettingsForm />
     </GridCol>
 </Grid>

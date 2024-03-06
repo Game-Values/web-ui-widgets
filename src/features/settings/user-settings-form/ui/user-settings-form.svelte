@@ -1,36 +1,41 @@
 <script lang="ts">
+import { useUserForm } from "~/features/user"
+
 import { Currency } from "$lib/enums"
-import { useSession } from "$model"
 import { Input, Select, Toggle } from "$ui/data"
 
-let { user } = useSession()
+let { form } = useUserForm()
 </script>
 
-<form class="form">
+<form
+    class="form"
+    use:form
+>
     <div class="form-control">
         <Input
+            name="full_name"
             disabled
             inputClass="input-bordered"
             placeholder="Nickname"
             required
-            value={$user.full_name}
         />
     </div>
 
     <div class="form-control">
         <Input
+            name="email"
             disabled
             inputClass="input-bordered"
             placeholder="Email"
             required
             type="email"
-            value={$user.email}
         />
     </div>
 
     <div class="form-control">
         <Select
-            options={[{ label: "Country", value: "Country" }]}
+            name="attributes.country"
+            options={[{ label: "USA", value: "USA" }]}
             placeholder="Country"
             required
         />
@@ -38,6 +43,7 @@ let { user } = useSession()
 
     <div class="form-control">
         <Select
+            name="attributes.currency"
             options={Object.entries(Currency).map(([label, value]) => ({ label, value }))}
             placeholder="Currency"
             required

@@ -1,5 +1,5 @@
 .form {
-    @apply gap-y-4;
+    @apply gap-y-6;
     @apply w-full;
     @apply flex flex-col;
 }
