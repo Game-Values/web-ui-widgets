@@ -15,7 +15,9 @@ let { route: mainRoute } = useRoute("/")
     <GridCol class="hero relative py-16">
         <div class="hero-overlay absolute top-0 left-0 bg-gradient-accent-light-to-dark">
             <EnhancedImage
-                alt="minecraft-bg"
+                --height="100%"
+                --width="100%"
+                alt="polygon-bg"
                 size="lg"
                 src="images/bg/polygon-bg.png"
             />
@@ -137,6 +139,8 @@ let { route: mainRoute } = useRoute("/")
     <GridCol class="hero relative py-16">
         <div class="hero-overlay absolute top-0 left-0 bg-gradient-accent-light-to-dark">
             <EnhancedImage
+                --height="100%"
+                --width="100%"
                 alt="minecraft-bg"
                 size="lg"
                 src="images/bg/minecraft-bg.png"
