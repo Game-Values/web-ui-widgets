@@ -1,3 +1,3 @@
-export type * from "~/shared/model/types"
+export type * from "~/shared/lib/types"
 
-export * from "~/shared/model/swagger"
+export * from "~/shared/lib/swagger"

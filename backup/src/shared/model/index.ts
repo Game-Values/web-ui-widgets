@@ -1,3 +1,3 @@
-export * from "$model/dialog"
-export * from "$model/session"
-export * from "$model/token"
+export * from "$lib/dialog"
+export * from "$lib/session"
+export * from "$lib/token"

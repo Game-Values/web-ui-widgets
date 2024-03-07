@@ -3,7 +3,7 @@ import type { Readable, Writable } from "svelte/store"
 
 import { derived, writable } from "svelte/store"
 
-import { useToken } from "$model"
+import { useToken } from "$lib"
 
 type ISession = {
     isAuthenticated: Readable<boolean>

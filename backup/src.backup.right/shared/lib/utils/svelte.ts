@@ -1,4 +1,4 @@
-import type { TCallable, TCallableLazy } from "~/shared/model"
+import type { TCallable, TCallableLazy } from "~/shared/lib"
 import type { EventDispatcher } from "svelte"
 
 import { createEventDispatcher } from "svelte"

@@ -1,6 +1,6 @@
 import { get } from "lodash-es"
 
-import { CURRENCY_SIGN, Currency } from "~/shared/model"
+import { CURRENCY_SIGN, Currency } from "~/shared/lib"
 
 export function formatPrice(price: number, currency: Currency): string {
     let currencySign: string = get(CURRENCY_SIGN, currency)

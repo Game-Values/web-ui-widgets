@@ -1,5 +1,5 @@
 import type { MaybePromise } from "@sveltejs/kit"
-import type { TCallable } from "~/shared/model"
+import type { TCallable } from "~/shared/lib"
 
 import { filter, forEach } from "lodash-es"
 

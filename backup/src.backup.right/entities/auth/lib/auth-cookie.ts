@@ -1,4 +1,4 @@
-import type { ICookieAttributes, IToken } from "~/shared/model"
+import type { ICookieAttributes, IToken } from "~/shared/lib"
 
 import { HttpCookie, removeCookies, setCookies } from "$lib"
 

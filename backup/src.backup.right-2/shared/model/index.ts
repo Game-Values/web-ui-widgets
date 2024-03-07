@@ -1,3 +1,3 @@
-export * from "~/shared/model/session"
-export * from "~/shared/model/swagger"
-export * from "~/shared/model/token"
+export * from "~/shared/lib/session"
+export * from "~/shared/lib/swagger"
+export * from "~/shared/lib/token"

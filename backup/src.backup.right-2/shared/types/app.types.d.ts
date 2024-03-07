@@ -3,7 +3,7 @@
 // and what to do when importing types
 
 declare module "@sveltejs/kit" {
-    import type { Api, ISession } from "~/shared/model"
+    import type { Api, ISession } from "~/shared/lib"
 
     namespace App {
         export interface Error {

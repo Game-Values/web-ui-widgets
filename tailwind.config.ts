@@ -142,6 +142,10 @@ export default {
                 "tooltip": "#151515",
             },
 
+            backgroundImage: {
+                "gradient-accent-light-to-dark": "linear-gradient(150deg, #3A82F7 5%, #076AE0 30%, #1D6DCD 50%, #246FFF 80%)",
+            },
+
             colors: {
                 "accent-light": "#3A82F7",
                 "accent-medium-light": "#5991FF",
@@ -151,6 +155,10 @@ export default {
                 "positive-dark": "#044227",
                 "positive-light": "#3BCF5E",
                 "white": "#FFFFFF",
+            },
+
+            dropShadow: {
+                icon: "0 0.25rem 0.25rem rgba(0, 0, 0, 0.25)",
             },
 
             fontFamily: {

@@ -1,5 +1,5 @@
 import { Api, HttpClient } from "~/shared/api/schema"
-import { HttpFormat, HttpHeader } from "~/shared/model"
+import { HttpFormat, HttpHeader } from "~/shared/lib"
 import { cleanObject } from "~/shared/lib"
 
 export let api: Api<never>["api"] = new Api(

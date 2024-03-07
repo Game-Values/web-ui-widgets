@@ -5,7 +5,7 @@ import type { IForm } from "$types"
 import { createForm } from "felte"
 
 import { useApi } from "$api"
-import { useToken } from "$model"
+import { useToken } from "$lib"
 
 export function useSigninByEmailForm(): IForm<IBodyLoginWithOauth2ApiV1LoginOauthPost> {
     return createForm<IBodyLoginWithOauth2ApiV1LoginOauthPost>({

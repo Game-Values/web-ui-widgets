@@ -1,8 +1,8 @@
-import type { ITokenModel } from "~/shared/model"
+import type { ITokenModel } from "~/shared/lib"
 
 import { createApi } from "~/shared/api"
 import { Token } from "~/shared/lib"
-import { useTokenModel } from "~/shared/model"
+import { useTokenModel } from "~/shared/lib"
 
 export async function handle({ event, resolve }): Promise<Response> {
     let tokenModel: ITokenModel = useTokenModel(event)

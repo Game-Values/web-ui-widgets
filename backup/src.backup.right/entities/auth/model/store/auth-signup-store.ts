@@ -1,5 +1,5 @@
 import type { IAuthSignupForm } from "~/entities/auth"
-import type { IBodyCreateUserProfileApiV1UsersPost, IUser } from "~/shared/model"
+import type { IBodyCreateUserProfileApiV1UsersPost, IUser } from "~/shared/lib"
 import type { Writable } from "svelte/store"
 
 import { writable } from "svelte/store"

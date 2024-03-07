@@ -1,4 +1,4 @@
-import type { TCallableLazy, TModule } from "~/shared/model"
+import type { TCallableLazy, TModule } from "~/shared/lib"
 
 import { cache } from "$lib"
 

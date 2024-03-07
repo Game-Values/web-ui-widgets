@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { IGame } from "~/shared/model"
+import type { IGame } from "~/shared/lib"
 
 import Button from "@smui/button"
 import Card, { ActionIcons, Actions, Media, PrimaryAction } from "@smui/card"

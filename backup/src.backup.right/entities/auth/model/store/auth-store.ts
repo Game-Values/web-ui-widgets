@@ -1,4 +1,4 @@
-import type { IToken } from "~/shared/model"
+import type { IToken } from "~/shared/lib"
 import type { Readable, Writable } from "svelte/store"
 
 import { derived, writable } from "svelte/store"

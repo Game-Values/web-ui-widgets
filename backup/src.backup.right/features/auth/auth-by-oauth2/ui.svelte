@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { IBodyLoginWithOauth2ApiV1LoginOauthPost, IToken } from "~/shared/model"
+import type { IBodyLoginWithOauth2ApiV1LoginOauthPost, IToken } from "~/shared/lib"
 
 import Button from "@smui/button"
 import { createEventDispatcher } from "svelte"

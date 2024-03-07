@@ -9,6 +9,6 @@
 <script lang="ts">
 import { lots } from "~/entities/lot"
 import { LotShowMoreButton } from "~/features/lot"
-import { LOTS_LIMIT } from "~/shared/model"
+import { LOTS_LIMIT } from "~/shared/lib"
 import { LotTable } from "~/widgets/lot"
 </script>

@@ -1,4 +1,4 @@
-import type { IUser } from "~/shared/model"
+import type { IUser } from "~/shared/lib"
 
 import { upperFirst } from "lodash-es"
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { useSession } from "$model"
+import { useSession } from "$lib"
 
 let { isAuthenticated } = useSession()
 </script>

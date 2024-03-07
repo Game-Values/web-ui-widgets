@@ -29,6 +29,7 @@ export {
     this={tag}
     class="container {className}"
     class:max-w-full={fluid}
+    class:p-0={fluid}
     class:px-6={!fluid}
     class:py-10={!fluid}
 >

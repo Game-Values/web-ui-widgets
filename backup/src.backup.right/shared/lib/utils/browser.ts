@@ -1,5 +1,5 @@
 import type { MaybePromise } from "@sveltejs/kit"
-import type { TCallable, TCallableLazy } from "~/shared/model"
+import type { TCallable, TCallableLazy } from "~/shared/lib"
 
 import { browser } from "$app/environment"
 

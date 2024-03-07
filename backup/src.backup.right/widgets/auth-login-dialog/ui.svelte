@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { IToken } from "~/shared/model"
+import type { IToken } from "~/shared/lib"
 
 import { authByOauth2Form, AuthLoginForm, closeAuthLoginModal, isAuthLoginModalOpen, setAuthCookies } from "~/entities/auth"
 import { AuthByOauth2 } from "~/features/auth"

@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { IAuthSignupForm } from "~/entities/auth"
-import type { IBodyCreateUserProfileApiV1UsersPost, IBodyLoginWithOauth2ApiV1LoginOauthPost, IToken } from "~/shared/model"
+import type { IBodyCreateUserProfileApiV1UsersPost, IBodyLoginWithOauth2ApiV1LoginOauthPost, IToken } from "~/shared/lib"
 
 import { pick } from "lodash-es"
 

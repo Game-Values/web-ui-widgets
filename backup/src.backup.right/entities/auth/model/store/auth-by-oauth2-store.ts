@@ -1,4 +1,4 @@
-import type { IBodyLoginWithOauth2ApiV1LoginOauthPost, IToken } from "~/shared/model"
+import type { IBodyLoginWithOauth2ApiV1LoginOauthPost, IToken } from "~/shared/lib"
 import type { Writable } from "svelte/store"
 
 import { writable } from "svelte/store"

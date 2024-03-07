@@ -1,9 +1,9 @@
-import type { ApiConfig } from "~/shared/model"
+import type { ApiConfig } from "~/shared/lib"
 
 import { merge } from "lodash-es"
 
 import { API_URL } from "~/shared/config"
-import { Api, HttpClient, useSessionToken } from "~/shared/model"
+import { Api, HttpClient, useSessionToken } from "~/shared/lib"
 
 import { browser } from "$app/environment"
 

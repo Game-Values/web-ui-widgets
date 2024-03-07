@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { App, TCallableLazy } from "~/shared/model"
+import type { App, TCallableLazy } from "~/shared/lib"
 
 import "uno.css"
 

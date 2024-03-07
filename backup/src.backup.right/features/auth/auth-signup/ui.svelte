@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { IBodyCreateUserProfileApiV1UsersPost, IUser } from "~/shared/model"
+import type { IBodyCreateUserProfileApiV1UsersPost, IUser } from "~/shared/lib"
 
 import Button from "@smui/button"
 import { createEventDispatcher } from "svelte"

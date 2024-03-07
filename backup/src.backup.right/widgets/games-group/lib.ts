@@ -1,4 +1,4 @@
-import type { IGame } from "~/shared/model"
+import type { IGame } from "~/shared/lib"
 
 import { sortBy } from "lodash-es"
 

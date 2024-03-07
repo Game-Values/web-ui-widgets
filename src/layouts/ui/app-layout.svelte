@@ -11,34 +11,34 @@ interface $$Slots {
 }
 </script>
 
-<Container
-    class="p-0"
-    fluid
-    tag="section"
->
-    <Navbar />
+<QueryProvider>
+    <Container
+        class="p-0"
+        fluid
+        tag="section"
+    >
+        <Navbar />
 
-    <Drawer>
-        <main
-            class="
-                relative
-                min-h-full
-                flex flex-col
-            "
-        >
-            <BackgroundImageProvider />
+        <Drawer>
+            <main
+                class="
+                    relative
+                    min-h-full
+                    flex flex-col
+                "
+            >
+                <BackgroundImageProvider />
 
-            <div class="relative flex-auto">
-                <QueryProvider>
+                <div class="relative flex-auto">
                     <slot />
-                </QueryProvider>
-            </div>
+                </div>
 
-            <Footer />
-        </main>
-    </Drawer>
+                <Footer />
+            </main>
+        </Drawer>
 
-    <ModalProvider />
+        <ModalProvider />
 
-    <SeoProvider />
-</Container>
+        <SeoProvider />
+    </Container>
+</QueryProvider>

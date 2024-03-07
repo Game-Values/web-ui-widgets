@@ -1,4 +1,4 @@
-import type { ImportMetaEnv } from "~/shared/model"
+import type { ImportMetaEnv } from "~/shared/lib"
 
 import { get } from "lodash-es"
 

@@ -14,7 +14,7 @@
 </div>
 
 <script lang="ts">
-import type { TCallableLazy } from "~/shared/model"
+import type { TCallableLazy } from "~/shared/lib"
 
 import { omit } from "lodash-es"
 import { onDestroy, onMount } from "svelte"

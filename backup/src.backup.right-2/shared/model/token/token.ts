@@ -1,5 +1,5 @@
 import type { RequestEvent } from "@sveltejs/kit"
-import type { ITokenModel } from "~/shared/model"
+import type { ITokenModel } from "~/shared/lib"
 import type Cookies from "js-cookie"
 
 import Cookie from "js-cookie"

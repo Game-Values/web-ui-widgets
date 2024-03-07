@@ -1,4 +1,4 @@
-import type { TModule } from "~/shared/model"
+import type { TModule } from "~/shared/lib"
 
 export function asyncModule<T = any>(filepath: string): Promise<T> {
     return (

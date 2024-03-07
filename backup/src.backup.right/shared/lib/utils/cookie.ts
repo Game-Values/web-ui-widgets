@@ -1,4 +1,4 @@
-import type { ICookieAttributes } from "~/shared/model"
+import type { ICookieAttributes } from "~/shared/lib"
 
 import Cookie from "js-cookie"
 

@@ -6,7 +6,7 @@ import IconButton from "@smui/icon-button"
 
 import IconXMark from "virtual:icons/heroicons/x-mark"
 
-import { useDialog } from "$model"
+import { useDialog } from "$lib"
 
 let { closeDialog, isDialogOpen } = useDialog()
 

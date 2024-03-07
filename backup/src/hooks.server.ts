@@ -1,6 +1,6 @@
 import { useApi } from "$api"
 import { Token } from "$lib"
-import { useToken } from "$model"
+import { useToken } from "$lib"
 
 export async function handle({ event, resolve }): Promise<Response> {
     let { cleanupTokens, getHeaders, getToken } = useToken(event)

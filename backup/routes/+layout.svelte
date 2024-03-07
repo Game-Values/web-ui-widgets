@@ -8,7 +8,7 @@ import { Footer } from "~/widgets/footer"
 import { Header } from "~/widgets/header"
 
 import { asyncComponent } from "$lib"
-import { updateSession } from "$model"
+import { updateSession } from "$lib"
 import { Lazy } from "$chat-send-hub-message"
 
 let data: LayoutData

@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { IGame } from "~/shared/model"
+import type { IGame } from "~/shared/lib"
 
 import IconButton from "@smui/icon-button"
 

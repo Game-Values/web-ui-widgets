@@ -1,3 +1,3 @@
-export type * from "~/shared/model/token/types"
+export type * from "~/shared/lib/token/types"
 
-export * from "~/shared/model/token/token"
+export * from "~/shared/lib/token/token"

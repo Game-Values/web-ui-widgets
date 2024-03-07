@@ -1,7 +1,5 @@
 <script lang="ts">
-import { Container } from "$ui/layout"
+import { CompanyAboutPage } from "~/pages/company"
 </script>
 
-<Container>
-    About Page
-</Container>
+<CompanyAboutPage />

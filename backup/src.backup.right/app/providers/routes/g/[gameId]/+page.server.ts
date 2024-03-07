@@ -1,5 +1,5 @@
 import type { IGameDetailsPageData } from "~/pages/game-details"
-import type { IGame } from "~/shared/model"
+import type { IGame } from "~/shared/lib"
 
 import { getGameById } from "~/entities/game"
 

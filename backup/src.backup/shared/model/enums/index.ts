@@ -1,2 +1,2 @@
-export * from "~/shared/model/enums/currency"
-export * from "~/shared/model/enums/http"
+export * from "~/shared/lib/enums/currency"
+export * from "~/shared/lib/enums/http"

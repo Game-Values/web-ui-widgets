@@ -2,7 +2,7 @@
 // for information about these interfaces
 // and what to do when importing types
 
-import type { IUser } from "~/shared/model"
+import type { IUser } from "~/shared/lib"
 
 declare module "@sveltejs/kit" {
     namespace App {

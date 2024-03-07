@@ -1,3 +1,3 @@
-export type * from "~/shared/model/session/types"
+export type * from "~/shared/lib/session/types"
 
-export * from "~/shared/model/session/session"
+export * from "~/shared/lib/session/session"

@@ -1,4 +1,4 @@
-import type { IGame, IReadAllGamesApiV1GamesGetParams } from "~/shared/model"
+import type { IGame, IReadAllGamesApiV1GamesGetParams } from "~/shared/lib"
 
 import { api } from "~/shared/api"
 

@@ -1,4 +1,4 @@
-import type { ISession } from "~/shared/model"
+import type { ISession } from "~/shared/lib"
 import type { Readable, Writable } from "svelte/store"
 
 import { isEmpty } from "lodash-es"

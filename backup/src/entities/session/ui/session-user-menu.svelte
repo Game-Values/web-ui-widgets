@@ -3,7 +3,7 @@ import List, { Item, Separator, Text } from "@smui/list"
 import { setContext } from "svelte"
 
 import { RouteLink } from "$lib"
-import { useSession } from "$model"
+import { useSession } from "$lib"
 
 let { logout } = useSession()
 

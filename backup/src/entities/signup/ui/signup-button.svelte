@@ -2,7 +2,7 @@
 import Button from "@smui/button"
 
 import { DialogName, forwardEvent } from "$lib"
-import { useDialog } from "$model"
+import { useDialog } from "$lib"
 
 let { openDialog } = useDialog()
 

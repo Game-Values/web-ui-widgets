@@ -1,4 +1,4 @@
-export type * from "~/entities/game/model/types"
+export type * from "~/entities/game/lib/types"
 
-export * from "~/entities/game/model/game"
-export * from "~/entities/game/model/games"
+export * from "~/entities/game/lib/game"
+export * from "~/entities/game/lib/games"

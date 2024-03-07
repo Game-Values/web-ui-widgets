@@ -1,7 +1,7 @@
 <LazyClientOnly component={LazyGameFaq} />
 
 <script lang="ts">
-import type { TCallableLazy } from "~/shared/model"
+import type { TCallableLazy } from "~/shared/lib"
 
 import { asyncModule } from "~/shared/lib"
 import { LazyClientOnly } from "~/shared/chat-send-hub-message"

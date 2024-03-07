@@ -1,4 +1,4 @@
-import type { IGame, IUserLike } from "~/shared/model"
+import type { IGame, IUserLike } from "~/shared/lib"
 
 import { api } from "~/shared/api"
 

@@ -1,4 +1,4 @@
-export type * from "~/shared/model/types"
+export type * from "~/shared/lib/types"
 
-export * from "~/shared/model/consts"
-export * from "~/shared/model/enums"
+export * from "~/shared/lib/consts"
+export * from "~/shared/lib/enums"

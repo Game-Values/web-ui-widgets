@@ -1,5 +1,5 @@
 import { API_URL } from "~/shared/config"
-import { Api, HttpClient } from "~/shared/model"
+import { Api, HttpClient } from "~/shared/lib"
 
 import { cleanObject, HttpHeader } from "$lib"
 
