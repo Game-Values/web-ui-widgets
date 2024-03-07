@@ -1,8 +1,11 @@
 <script lang="ts">
 import { companyMissions, companyProducts, companyValues, companyWhoWeAreList } from "~/pages/company"
 
+import { useRoute } from "$model"
 import { EnhancedImage } from "$ui/data"
 import { Container, Grid, GridCol } from "$ui/layout"
+
+let { route: mainRoute } = useRoute("/")
 </script>
 
 <Grid
@@ -30,9 +33,12 @@ import { Container, Grid, GridCol } from "$ui/layout"
                     </strong>
                 </p>
 
-                <button class="btn btn-sm btn-ring">
+                <a
+                    class="btn btn-sm btn-ring"
+                    href={$mainRoute}
+                >
                     GameValues Platform
-                </button>
+                </a>
             </Container>
         </div>
     </GridCol>
