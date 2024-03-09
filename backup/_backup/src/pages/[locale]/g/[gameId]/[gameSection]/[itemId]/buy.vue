@@ -1,10 +1,16 @@
 <script lang="ts" setup>
+import { RouteMiddleware } from "~/enums"
+
+definePageMeta({
+    middleware: RouteMiddleware.AUTH,
+})
+
 let { storeClient } = useClients()
-let { buyFacade } = useFacades()
+let { orderFacade } = useFacades()
 
-let { item } = storeToRefs(storeClient.itemStore)
+let { order } = storeToRefs(storeClient.orderStore)
 
-await buyFacade.bootstrap()
+await orderFacade.bootstrap()
 </script>
 
 <template>
@@ -24,7 +30,7 @@ await buyFacade.bootstrap()
                         scope="global"
                     >
                         <template #deal>
-                            {{ item.id }}
+                            {{ order.id }}
                         </template>
                     </i18n-t>
                 </v-title>
@@ -39,7 +45,7 @@ await buyFacade.bootstrap()
             :md="10"
             :xs="0"
         >
-            // todo: chat
+            <widget-chat-order />
         </v-column>
     </v-row>
 
@@ -59,7 +65,16 @@ await buyFacade.bootstrap()
             :md="12"
             :xs="24"
         >
-            <faq-form :height="575" />
+            <faq-form
+                class="
+                    bg-[url(/images/faq.png)]
+                    bg-no-repeat
+                "
+                style="
+                    background-position: center 25%;
+                "
+                :height="575"
+            />
         </v-column>
     </v-row>
 </ui-page>

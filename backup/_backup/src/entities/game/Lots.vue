@@ -11,7 +11,7 @@ let { searchResults } = storeToRefs(storeClient.facetsStore)
 </script>
 
 <template>
-<v-table :data="searchResults.lotsTableData">
+<v-table :data="searchResults.tableData">
     <v-table-column
         v-slot="{ row }: { row: Item }"
         :name="t('Seller')"

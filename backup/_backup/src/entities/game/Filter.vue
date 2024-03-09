@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { GameSubsection } from "~/dto"
-import type { Arrayable, AsyncComponent, FacetQuery } from "~/types"
+import type { Arrayable, AsyncComponent } from "~/types"
 import type { Component } from "vue"
 
 import { DEBOUNCE_TIMEOUT } from "~/enums"
@@ -11,8 +11,10 @@ let props = defineProps<{
     subsection: GameSubsection
 }>()
 
-let { routerClient } = useClients()
+let { routerClient, storeClient } = useClients()
 let { facetController } = useControllers()
+
+let { facetsQuery } = storeToRefs(storeClient.facetsStore)
 
 let filterFacet = computed((): Facet => (
     props.facet ||
@@ -37,20 +39,15 @@ let filterView = computed((): AsyncComponent => (
 ))
 
 let handleFilter = useDebounce(async (val: Arrayable<number | string>): Promise<void> => {
-    let facetQuery: FacetQuery = {
-        [getRef(filterFacet)]: JSON.stringify(val),
-    }
-
-    await navigateTo({
-        query: useFacetQuery(facetQuery),
-        replace: true,
+    storeClient.facetsStore.updateFacetsQuery({
+        [getRef(filterFacet)]: val,
     })
 
-    await facetController.searchFacets(routerClient.getRouteParam("gameId"), (
-        useFacetQuery({
-            [Facet.TYPE]: routerClient.getRouteParam("gameSection"),
-        })
-    ))
+    return facetController.searchFacets(routerClient.getRouteParam("gameId"), {
+        [Facet.TYPE]: routerClient.getRouteParam("gameSection"),
+
+        ...getRef(facetsQuery),
+    })
 }, DEBOUNCE_TIMEOUT)
 </script>
 
@@ -58,10 +55,7 @@ let handleFilter = useDebounce(async (val: Arrayable<number | string>): Promise<
 <component
     v-bind="subsection"
     :is="filterView"
-    :value="(
-        routerClient.getRouteQuery(filterFacet) &&
-        JSON.parse(routerClient.getRouteQuery(filterFacet))
-    )"
+    :value="useGet(facetsQuery, filterFacet, undefined)"
     @change="handleFilter"
 />
 </template>

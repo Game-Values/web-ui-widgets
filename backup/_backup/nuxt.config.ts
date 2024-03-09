@@ -2,16 +2,13 @@ import type { NuxtConfig } from "@nuxt/schema"
 
 import { env } from "node:process"
 
-// todo:
-// import { default as browserslist } from "browserslist"
-// import { browserslistToTargets } from "lightningcss"
 import { default as dynamicImport } from "vite-plugin-dynamic-import"
 import { default as inheritAttrs } from "vite-plugin-vue-setup-inherit-attrs"
 
 import { BREAKPOINTS } from "./common/consts"
 import { Locale, LocaleISO } from "./common/enums"
 import { injectReflectMetadata } from "./common/plugins"
-import { getLocale, isDebug, isDevelopment, isProduction } from "./common/utils"
+import { getLocale, isDebug, isProduction } from "./common/utils"
 import { name } from "./package.json"
 import { default as uno } from "./uno.config"
 
@@ -31,20 +28,59 @@ let nuxtConfig: NuxtConfig = {
                     type: "image/x-icons",
                 },
             ],
+            meta: [
+                {
+                    content: "ec99da99",
+                    name: "enot",
+                },
+            ],
+            noscript: [
+                {
+                    children: `
+                        <!-- Yandex.Metrika counter -->
+                        <img
+                            src="https://mc.yandex.ru/watch/92093048"
+                            style="position:absolute;left:-9999px;"
+                            alt="Yandex.Metrika"
+                        />
+                    `,
+                },
+                {
+                    children: `
+                        <!-- Prime.Payment -->
+                        <!-- prime:e770c054 -->
+                    `,
+                },
+            ],
             script: [
                 {
-                    innerHTML: "window.global ||= window",
+                    async: true,
+                    src: "https://www.googletagmanager.com/gtag/js?id=G-5H14E37192",
+                },
+                {
+                    innerHTML: `
+                        /* Google tag (gtag.js) */
+                        window.dataLayer ||= [];
+                        window.gtag ||= function() {dataLayer.push(arguments)}
+                        gtag("js", new Date());
+                        gtag("config", "G-5H14E37192");
+                    `,
+                },
+                {
+                    innerHTML: `
+                        /* Yandex.Metrika counter */
+                        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(92093048, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});
+                    `,
+                },
+                {
+                    innerHTML: `
+                        window.global ||= window;
+                    `,
                 },
             ],
             viewport: "width=device-width, initial-scale=1, maximum-scale=1, transaction-scalable=0",
         },
         rootId: name,
-    },
-
-    appConfig: {
-        build: {
-            analyze: true,
-        },
     },
 
     build: {
@@ -86,32 +122,9 @@ let nuxtConfig: NuxtConfig = {
         port: 3000,
     },
 
-    devtools: {
-        enabled: false, // isDevelopment()
-        timeline: {
-            enabled: false, // isDevelopment()
-        },
-    },
-
     dir: {
         public: "../public",
         static: "../public",
-    },
-
-    experimental: {
-        asyncContext: true,
-        asyncEntry: true,
-        crossOriginPrefetch: true,
-        externalVue: true,
-        headNext: true,
-        payloadExtraction: true,
-        reactivityTransform: true,
-        renderJsonPayloads: true,
-        restoreState: true,
-        treeshakeClientOnly: true,
-        typescriptBundlerResolution: true,
-        viewTransition: true,
-        watcher: "parcel",
     },
 
     imports: {
@@ -153,8 +166,8 @@ let nuxtConfig: NuxtConfig = {
     },
 
     modules: [
-        "@hebilicious/vue-query-nuxt",
-        "@nuxt/image",
+        // "@hebilicious/vue-query-nuxt",
+        // "@nuxt/image",
         "@unocss/nuxt",
 
         "nuxt-lazy-load",
@@ -248,26 +261,6 @@ let nuxtConfig: NuxtConfig = {
         }],
     ],
 
-    nitro: {
-        esbuild: {
-            options: {
-                color: true,
-                format: "esm",
-                minifyIdentifiers: true,
-                minifySyntax: true,
-                minifyWhitespace: true,
-                target: "esnext",
-                treeShaking: true,
-            },
-        },
-        experimental: {
-            asyncContext: true,
-            typescriptBundlerResolution: true,
-        },
-        logLevel: isDevelopment() ? +999 : 3,
-        timing: isDevelopment(),
-    },
-
     routeRules: {
         "/": {
             // todo: via middleware
@@ -292,17 +285,7 @@ let nuxtConfig: NuxtConfig = {
     srcDir: "src",
 
     vite: {
-        build: {
-            cssCodeSplit: true,
-            cssMinify: "esbuild", // todo: "lightningcss",
-            minify: "esbuild",
-            modulePreload: true,
-        },
         css: {
-            // todo:
-            // lightningcss: {
-            //     target: browserslistToTargets(browserslist(">= 0.25%")),
-            // },
             preprocessorOptions: {
                 sass: {
                     additionalData: (code: string): string => `
@@ -340,28 +323,13 @@ let nuxtConfig: NuxtConfig = {
                     },
                 },
             },
-            // todo:
-            // transformer: "lightningcss",
         },
-        devBundler: "vite-node",
         esbuild: {
-            color: true,
-            format: "esm",
-            minifyIdentifiers: true,
-            minifySyntax: true,
-            minifyWhitespace: true,
-            target: "esnext",
-            treeShaking: true,
             tsconfigRaw: {
                 compilerOptions: {
                     experimentalDecorators: true,
-                    strict: true,
                 },
             },
-        },
-        experimental: {
-            hmrPartialAccept: isDevelopment(),
-            importGlobRestoreExtension: true,
         },
         plugins: [
             dynamicImport(),
@@ -374,19 +342,6 @@ let nuxtConfig: NuxtConfig = {
                 fs: "rollup-plugin-node-polyfills/polyfills/empty",
             },
         },
-        server: {
-            preTransformRequests: true,
-        },
-        vue: {
-            isProduction: isProduction(),
-        },
-        warmupEntry: true,
-    },
-
-    vue: {
-        defineModel: true,
-        propsDestructure: true,
-        runtimeCompiler: true,
     },
 }
 

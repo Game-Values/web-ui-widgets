@@ -6,6 +6,8 @@
                 <nuxt-page />
             </nuxt-layout>
 
+            <widget-provider-chat />
+
             <widget-provider-modal />
 
             <widget-provider-seo />

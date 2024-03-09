@@ -1,3 +1,5 @@
 export * from "~/toasts/CreatedLotToast"
 export * from "~/toasts/DeletedLotToast"
+export * from "~/toasts/OrderCancelledToast"
+export * from "~/toasts/OrderCompletedToast"
 export * from "~/toasts/UserRegisteredToast"

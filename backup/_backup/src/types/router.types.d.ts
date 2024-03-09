@@ -22,8 +22,13 @@ declare module "vue-router" {
         price: string
         price_from: string
         price_till: string
+        roomId: string
         server: string
         type: GameSection
+
+        // todo: rm
+        order_id: string
+        owner_id: string
     }
 
     export interface RouteMeta {
@@ -41,7 +46,9 @@ declare module "vue-router" {
         gameSection: GameSection
         itemId: string
         locale: Locale
+        orderId: string
         paymentType: PaymentType
+        roomId: string
         userId: string
     }
 }

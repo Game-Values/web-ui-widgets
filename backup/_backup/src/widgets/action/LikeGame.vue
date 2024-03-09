@@ -32,12 +32,16 @@ async function handleLikeGameMe(): Promise<void> {
     text
 >
     <template #icon>
-        <ui-icon
+        <span
             v-if="isGameLiked"
-            heroicons="heart"
-            size="20"
-            solid
-        />
+            class="color-negative-light"
+        >
+            <ui-icon
+                heroicons="heart"
+                size="20"
+                solid
+            />
+        </span>
 
         <ui-icon
             v-else

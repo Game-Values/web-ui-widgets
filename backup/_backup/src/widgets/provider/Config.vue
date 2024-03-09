@@ -59,6 +59,9 @@ await setLocale(DEFAULT_LOCALE)
         table: {
             highlight: true,
         },
+        tooltip: {
+            transfer: true,
+        },
     }"
     :locale="useGet(VEXIP_LOCALE, DEFAULT_LOCALE_ISO)()"
 >

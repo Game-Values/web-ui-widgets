@@ -49,7 +49,11 @@ await gameFacade.bootstrap()
             :lg="18"
             :md="24"
         >
-            <entity-game-lots />
+            <v-space vertical>
+                <entity-game-selected-filters />
+
+                <entity-game-lots />
+            </v-space>
         </v-column>
     </v-row>
 
@@ -69,7 +73,16 @@ await gameFacade.bootstrap()
             :md="12"
             :xs="24"
         >
-            <faq-form :height="575" />
+            <faq-form
+                class="
+                    bg-[url(/images/faq.png)]
+                    bg-no-repeat
+                "
+                style="
+                    background-position: center 25%;
+                "
+                :height="575"
+            />
         </v-column>
     </v-row>
 </ui-page>

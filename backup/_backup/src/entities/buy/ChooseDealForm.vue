@@ -2,19 +2,39 @@
 import type { Nullable } from "~/types"
 import type { UnwrapRef } from "vue"
 
-import { OrderCurrencyRaw } from "#schema/data-contracts"
-
 interface FormModel {
     amount: Nullable<number>
-    currency: OrderCurrencyRaw,
 }
 
-let { storeClient } = useClients()
+let { routerClient, storeClient } = useClients()
 let { orderController } = useControllers()
 
 let { item } = storeToRefs(storeClient.itemStore)
+let { order } = storeToRefs(storeClient.orderStore)
 
-let formModel: UnwrapRef<FormModel> = reactive({ ...getRef(item, "attributes") })
+let formModel: UnwrapRef<FormModel> = reactive({
+    amount: null,
+})
+
+async function createOrder(): Promise<void> {
+    await orderController.createOrder({
+        attributes: {
+            amount: formModel.amount!,
+            currency: getRef(item, "attributes").currency,
+            price: formModel.amount! * getRef(item, "attributes").price,
+        },
+        game_id: routerClient.getRouteParam("gameId"),
+        owner_id: getRef(item, "owner_id"),
+    })
+
+    await navigateTo(
+        routerClient.getRoute(routerClient.routeNames.USER_ORDER, {
+            params: {
+                orderId: getRef(order, "id"),
+            },
+        }),
+    )
+}
 </script>
 
 <template>
@@ -26,8 +46,6 @@ let formModel: UnwrapRef<FormModel> = reactive({ ...getRef(item, "attributes") }
             required
         >
             <v-number-input
-                :max="item.attributes.amount"
-                :min="1"
                 :placeholder="$t('order.I will pay')"
             />
         </v-form-item>
@@ -43,8 +61,6 @@ let formModel: UnwrapRef<FormModel> = reactive({ ...getRef(item, "attributes") }
             pure
         >
             <v-number-input
-                :max="item.attributes.amount"
-                :min="1"
                 placeholder="I will receive"
             />
         </v-form-item>
@@ -68,17 +84,7 @@ let formModel: UnwrapRef<FormModel> = reactive({ ...getRef(item, "attributes") }
         <!-- todo: native submit -->
         <v-form-submit
             block
-            @submit="
-                orderController.createOrder({
-                    attributes: {
-                        amount: formModel.amount!,
-                        currency: formModel.currency,
-                        price: formModel.amount! * item.attributes.price,
-                    },
-                    game_id: item.id,
-                    owner_id: item.owner_id,
-                })
-            "
+            @submit="createOrder()"
         >
             Create order
         </v-form-submit>

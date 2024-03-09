@@ -34,17 +34,17 @@ export class Modals extends DIAbstract<ModalsTokens> {
         ]
     }
 
-    @Memoize()
+    // @Memoize()
     public get loginModal(): LoginModal {
         return this.__getInjection(this.__tokens[ModalToken.AUTH_LOGIN])
     }
 
-    @Memoize()
+    // @Memoize()
     public get recoveryPasswordModal(): RecoveryPasswordModal {
         return this.__getInjection(this.__tokens[ModalToken.AUTH_RECOVERY_PASSWORD])
     }
 
-    @Memoize()
+    // @Memoize()
     public get registrationModal(): RegistrationModal {
         return this.__getInjection(this.__tokens[ModalToken.AUTH_REGISTRATION])
     }

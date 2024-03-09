@@ -2,20 +2,59 @@
 import type { UnwrapRef } from "vue"
 
 interface FormModel {
-    // todo
+    paymentType: string
 }
 
 useI18n()
 
 let { storeClient } = useClients()
+let { orderController } = useControllers()
+let { orderCancelledToast, orderCompletedToast } = useToasts()
+
+let { order } = storeToRefs(storeClient.orderStore)
 
 let formModel: UnwrapRef<FormModel> = reactive({
-    // todo: store (?)
+    paymentType: "card",
 })
+
+async function handlePay(): Promise<void> {
+    await orderController.createPayment({
+        desc: getRef(order, "attributes").description || `Order #${getRef(order, "id")}`,
+        paymentType: formModel.paymentType,
+        sum: getRef(order, "attributes").price,
+    })
+
+    // await orderCompletedToast.open()
+}
 </script>
 
 <template>
-<v-form v-model="formModel">
+<v-form
+    :model="formModel"
+    all-required
+>
+    <v-form-item
+        label="Payment method"
+        prop="paymentType"
+    >
+        <v-select
+            :options="[
+                'card',
+                'webmoney',
+                'paypal',
+            ]"
+            placeholder="Select payment"
+        >
+            <template #prefix>
+                <ui-icon
+                    color="positive-light"
+                    heroicons="credit-card"
+                    size="24"
+                />
+            </template>
+        </v-select>
+    </v-form-item>
+
     <v-form-item>
         <v-space>
             <v-form-item
@@ -25,7 +64,7 @@ let formModel: UnwrapRef<FormModel> = reactive({
                 <!-- todo: native submit -->
                 <v-form-submit
                     block
-                    @click="storeClient.orderStore.nextOrderStep"
+                    @submit="handlePay()"
                 >
                     <i18n-t
                         keypath="label.Pay"
@@ -38,7 +77,7 @@ let formModel: UnwrapRef<FormModel> = reactive({
                 <!-- todo: native reset -->
                 <v-form-reset
                     block
-                    @click="storeClient.orderStore.prevOrderStep"
+                    @reset="orderCancelledToast.open()"
                 >
                     <i18n-t
                         keypath="order.Cancel the order"

@@ -28,7 +28,7 @@ export class Confirms extends DIAbstract<ConfirmsTokens> {
         ]
     }
 
-    @Memoize()
+    // @Memoize()
     public get deletedLotConfirm(): DeletedLotConfirm {
         return this.__getInjection(this.__tokens[ConfirmToken.DELETED_LOT])
     }

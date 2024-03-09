@@ -4,11 +4,11 @@ import type { GameSubsectionRaw } from "~/types"
 import type { ComputedRef } from "vue"
 
 import { GameSubsections } from "~/dto"
-import { Facet, FilterType } from "~/enums"
 import { createCollection } from "~/factories"
 
 let { routerClient, storeClient } = useClients()
 
+let { facetsQuery } = storeToRefs(storeClient.facetsStore)
 let { gameSectionsRaw } = storeToRefs(storeClient.gameStore)
 
 let gameSubsections: ComputedRef<GameSubsections> = computed((): GameSubsections => {
@@ -29,7 +29,7 @@ let gameSubsections: ComputedRef<GameSubsections> = computed((): GameSubsections
 function isShowSubsectionChild(section: `${GameSubsection}.${string}`): boolean {
     let [key, val]: string[] = section.split(".")
 
-    return routerClient.getRouteQuery(key).includes(val)
+    return getRef(facetsQuery, key)?.includes(val)
 }
 </script>
 
@@ -43,53 +43,85 @@ function isShowSubsectionChild(section: `${GameSubsection}.${string}`): boolean 
             Filters
         </v-title>
 
-        <v-space
+        <template
             v-for="gameSubsection in gameSubsections"
             :key="gameSubsection.name"
-            size="large"
-            vertical
         >
-            <template
-                v-if="(
-                    gameSubsection.section &&
-                    isShowSubsectionChild(gameSubsection.section)
-                )"
+            <v-space
+                v-if="gameSubsection.type"
+                size="large"
+                vertical
             >
-                <v-title
-                    :level="6"
-                    class="capitalize"
+                <template
+                    v-if="(
+                        gameSubsection.section &&
+                        isShowSubsectionChild(gameSubsection.section)
+                    )"
                 >
-                    {{ gameSubsection.name }}
-                </v-title>
+                    <v-title
+                        :level="6"
+                        class="flex items-center gap-8px capitalize"
+                    >
+                        {{ gameSubsection.name }}
 
-                <!-- todo: recursive component -->
-                <v-space
-                    v-for="gameSubsectionChild in gameSubsection.children"
-                    :key="gameSubsectionChild.name"
-                    size="large"
-                    vertical
-                >
+                        <v-tooltip
+                            v-if="gameSubsection.info"
+                            placement="right-start"
+                        >
+                            <template #trigger>
+                                <ui-icon
+                                    heroicons="information-circle"
+                                    size="18"
+                                />
+                            </template>
+
+                            <v-text v-html="gameSubsection.info" />
+                        </v-tooltip>
+                    </v-title>
+
+                    <!-- todo: recursive component -->
+                    <v-space
+                        v-for="gameSubsectionChild in gameSubsection.children"
+                        :key="gameSubsectionChild.name"
+                        size="large"
+                        vertical
+                    >
+                        <entity-game-filter
+                            :facet="gameSubsection.name"
+                            :subsection="gameSubsectionChild"
+                        />
+                    </v-space>
+                </template>
+
+                <template v-if="!gameSubsection.section && gameSubsection.type">
+                    <v-title
+                        :level="6"
+                        class="flex items-center gap-8px capitalize"
+                    >
+                        {{ gameSubsection.name }}
+
+                        <v-tooltip
+                            v-if="gameSubsection.info"
+                            placement="right-start"
+                        >
+                            <template #trigger>
+                                <ui-icon
+                                    heroicons="information-circle"
+                                    size="18"
+                                />
+                            </template>
+
+                            <v-text v-html="gameSubsection.info" />
+                        </v-tooltip>
+                    </v-title>
+
                     <entity-game-filter
                         :facet="gameSubsection.name"
-                        :subsection="gameSubsectionChild"
+                        :subsection="gameSubsection"
                     />
-                </v-space>
-            </template>
-
-            <template v-if="!gameSubsection.section">
-                <v-title
-                    :level="6"
-                    class="capitalize"
-                >
-                    {{ gameSubsection.name }}
-                </v-title>
-
-                <entity-game-filter
-                    :facet="gameSubsection.name"
-                    :subsection="gameSubsection"
-                />
-            </template>
-        </v-space>
+                </template>
+            </v-space>
+        </template>
     </v-space>
 </v-card>
 </template>

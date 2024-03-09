@@ -1,9 +1,33 @@
 <script lang="ts" setup>
 import type { User } from "~/dto"
 
-defineProps<{
+let props = defineProps<{
     user: User
 }>()
+
+let { routerClient, storeClient } = useClients()
+let { chatController } = useControllers()
+
+async function handleSendMessage(): Promise<void> {
+    let roomId: string = `${storeClient.userMeStore.user.id}_${props.user.id}`
+    await chatController.createDirectRoom(roomId, props.user.chat_id, {
+        creation_content: {
+            // recipient: props.user.id,
+            // sender: storeClient.userMeStore.user.id,
+
+            from: storeClient.userMeStore.user.id,
+            to: props.user.id,
+        },
+    })
+    await navigateTo(
+        routerClient.getRoute(routerClient.routeNames.USER_MESSAGES, {
+            params: {
+                roomId,
+                userId: storeClient.userMeStore.user.id,
+            },
+        }),
+    )
+}
 </script>
 
 <template>
@@ -58,7 +82,13 @@ defineProps<{
                 Brief profile description, seller or store information in 2-3 lines
             </v-text>
 
-            <v-button v-if="isUnauthenticated()">
+            <v-button
+                v-if="(
+                    isAuthenticated() &&
+                    storeClient.userMeStore.user.id !== user.id
+                )"
+                @click="handleSendMessage"
+            >
                 Send Message
             </v-button>
         </v-space>

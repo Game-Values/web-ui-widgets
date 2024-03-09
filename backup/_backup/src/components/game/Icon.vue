@@ -20,7 +20,7 @@ defineProps<{
         border-solid-secondary
         rounded-3
         transition-colors
-        group-hover:(bg-secondary)
+        group-hover:(border-solid border-[rgba(52,95,246,0.65)] shadow-[0_0.4rem_3.4rem_0_rgba(61,152,255,0.30)])
         group-[.liked]:(bg-accent-medium)
         group-[.liked:hover]:(bg-gradient-to-b from-accent-medium from-0% to-accent-medium-light to-100%)
         hover-group-[.liked]:(bg-accent-medium)

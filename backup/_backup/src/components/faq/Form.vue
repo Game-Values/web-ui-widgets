@@ -47,9 +47,6 @@ let faqForm: UnwrapRef<FaqForm> = reactive({
         height ||
         faqHeight
     )"
-    :style="{
-        backgroundPosition: `100% -${pxToRem(faqHeight)}`,
-    }"
 >
     <template #overlay>
         <slot>

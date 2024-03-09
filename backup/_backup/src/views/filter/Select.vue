@@ -5,5 +5,8 @@ defineProps<{
 </script>
 
 <template>
-<v-select :options="buckets" />
+<v-select
+    :options="buckets"
+    multiple
+/>
 </template>

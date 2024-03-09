@@ -1,7 +1,9 @@
 import type { CookieClient } from "~/clients"
 import type { ICreateClientOpts } from "matrix-js-sdk"
 
-import { MatrixClient } from "matrix-js-sdk"
+import { MatrixClient, Method } from "matrix-js-sdk"
+
+import { HttpHeader } from "~/enums"
 
 export class ChatClient extends MatrixClient {
     public constructor(
@@ -22,5 +24,13 @@ export class ChatClient extends MatrixClient {
         }
 
         super(createOptions)
+    }
+
+    public async syncClient(): Promise<any> {
+        return await this.http.request(Method.Get, "/sync", {}, undefined, {
+            headers: {
+                [HttpHeader.AUTHORIZATION]: `Bearer ${this._cookieClient.chatToken}`,
+            },
+        })
     }
 }

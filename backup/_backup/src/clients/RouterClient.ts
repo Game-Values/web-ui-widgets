@@ -10,14 +10,14 @@ import { RouteName } from "~/enums"
 export class RouterClient {
     private get _routeParams(): Record<keyof typeof RouteName, RouteParams> {
         return {
-            [this.routeNames.GAME_ITEM_SELL_EDIT]: {
+            [this.routeNames.USER_ITEM_EDIT]: {
                 itemId: this.getRouteParam("itemId"),
             },
             [this.routeNames.GAME]: {
                 gameId: this.getRouteParam("gameId"),
                 gameSection: this.getRouteParam("gameSection"),
             },
-            [this.routeNames.GAME_ITEM_BUY]: {
+            [this.routeNames.USER_ITEM_BUY]: {
                 gameId: this.getRouteParam("gameId"),
                 gameSection: this.getRouteParam("gameSection"),
                 itemId: this.getRouteParam("itemId"),
@@ -65,6 +65,9 @@ export class RouterClient {
     }
 
     public getRouteQuery<T = string>(routeQuery: keyof LocationQuery): T {
+        if (isClient())
+            return (new URL(location.href).searchParams.get(routeQuery) || "") as T
+
         return useGet(this.route.query, routeQuery, "") as T
     }
 
@@ -77,12 +80,12 @@ export class RouterClient {
         return useRoute()
     }
 
-    @Memoize()
+    // @Memoize()
     public get routeFacades(): Facades {
         return useFacades()
     }
 
-    @Memoize()
+    // @Memoize()
     public get routeNames(): Record<keyof typeof RouteName, RouteName> {
         return useReduce(RouteName, (
             result: Record<keyof typeof RouteName, RouteName>,
@@ -91,7 +94,7 @@ export class RouterClient {
         ): Record<keyof typeof RouteName, RouteName> => useSet(result, key, val), {})
     }
 
-    @Memoize()
+    // @Memoize()
     public get router(): TypedRouter {
         return useRouter()
     }

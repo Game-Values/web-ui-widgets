@@ -5,16 +5,17 @@ import { token } from "brandi"
 
 import { DIAbstract } from "~/abstract"
 import { ClientToken, ControllerToken, FacadeToken } from "~/enums"
-import { BuyFacade, FavoritesFacade, GameFacade, MainFacade, SellFacade, UserFacade, UserMeFacade } from "~/facades"
+import { BuyFacade, FavoritesFacade, GameFacade, MainFacade, OrderFacade, SellFacade, UserFacade, UserMeFacade } from "~/facades"
 
 interface FacadesTokens {
     [FacadeToken.BUY]: Token<BuyFacade>
     [FacadeToken.FAVORITES]: Token<FavoritesFacade>
     [FacadeToken.GAME]: Token<GameFacade>
     [FacadeToken.MAIN]: Token<MainFacade>
+    [FacadeToken.ORDER]: Token<OrderFacade>
     [FacadeToken.SELL]: Token<SellFacade>
-    [FacadeToken.USER]: Token<UserFacade>
     [FacadeToken.USER_ME]: Token<UserMeFacade>
+    [FacadeToken.USER]: Token<UserFacade>
 }
 
 export class Facades extends DIAbstract<FacadesTokens> {
@@ -23,6 +24,7 @@ export class Facades extends DIAbstract<FacadesTokens> {
         [FacadeToken.FAVORITES]: token<FavoritesFacade>(FacadeToken.FAVORITES),
         [FacadeToken.GAME]: token<GameFacade>(FacadeToken.GAME),
         [FacadeToken.MAIN]: token<MainFacade>(FacadeToken.MAIN),
+        [FacadeToken.ORDER]: token<OrderFacade>(FacadeToken.ORDER),
         [FacadeToken.SELL]: token<SellFacade>(FacadeToken.SELL),
         [FacadeToken.USER]: token<UserFacade>(FacadeToken.USER),
         [FacadeToken.USER_ME]: token<UserMeFacade>(FacadeToken.USER_ME),
@@ -34,6 +36,7 @@ export class Facades extends DIAbstract<FacadesTokens> {
             [this.__tokens[FacadeToken.FAVORITES], FavoritesFacade],
             [this.__tokens[FacadeToken.MAIN], MainFacade],
             [this.__tokens[FacadeToken.GAME], GameFacade],
+            [this.__tokens[FacadeToken.ORDER], OrderFacade],
             [this.__tokens[FacadeToken.SELL], SellFacade],
             [this.__tokens[FacadeToken.USER], UserFacade],
             [this.__tokens[FacadeToken.USER_ME], UserMeFacade],
@@ -44,7 +47,6 @@ export class Facades extends DIAbstract<FacadesTokens> {
         return [
             [
                 BuyFacade,
-                this.__getToken(ClientToken.CHAT),
                 this.__getToken(ClientToken.ROUTER),
                 this.__getToken(ClientToken.STORE),
                 this.__getToken(ControllerToken.GAME),
@@ -56,7 +58,6 @@ export class Facades extends DIAbstract<FacadesTokens> {
             ],
             [
                 MainFacade,
-                this.__getToken(ControllerToken.CHAT),
                 this.__getToken(ControllerToken.GAME),
             ],
             [
@@ -71,6 +72,12 @@ export class Facades extends DIAbstract<FacadesTokens> {
                 this.__getToken(ClientToken.STORE),
                 this.__getToken(ControllerToken.GAME),
                 this.__getToken(ControllerToken.SELL),
+            ],
+            [
+                OrderFacade,
+                this.__getToken(ClientToken.ROUTER),
+                this.__getToken(ClientToken.STORE),
+                this.__getToken(ControllerToken.ORDER),
             ],
             [
                 UserFacade,
@@ -89,37 +96,42 @@ export class Facades extends DIAbstract<FacadesTokens> {
         ]
     }
 
-    @Memoize()
+    // @Memoize()
     public get buyFacade(): BuyFacade {
         return this.__getInjection(this.__tokens[FacadeToken.BUY])
     }
 
-    @Memoize()
+    // @Memoize()
     public get favoritesFacade(): FavoritesFacade {
         return this.__getInjection(this.__tokens[FacadeToken.FAVORITES])
     }
 
-    @Memoize()
+    // @Memoize()
     public get gameFacade(): GameFacade {
         return this.__getInjection(this.__tokens[FacadeToken.GAME])
     }
 
-    @Memoize()
+    // @Memoize()
     public get mainFacade(): MainFacade {
         return this.__getInjection(this.__tokens[FacadeToken.MAIN])
     }
 
-    @Memoize()
+    // @Memoize()
+    public get orderFacade(): OrderFacade {
+        return this.__getInjection(this.__tokens[FacadeToken.ORDER])
+    }
+
+    // @Memoize()
     public get sellFacade(): SellFacade {
         return this.__getInjection(this.__tokens[FacadeToken.SELL])
     }
 
-    @Memoize()
+    // @Memoize()
     public get userFacade(): UserFacade {
         return this.__getInjection(this.__tokens[FacadeToken.USER])
     }
 
-    @Memoize()
+    // @Memoize()
     public get userMeFacade(): UserMeFacade {
         return this.__getInjection(this.__tokens[FacadeToken.USER_ME])
     }

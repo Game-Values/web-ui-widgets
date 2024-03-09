@@ -1,6 +1,8 @@
 <script lang="ts" setup>
-let { routerClient } = useClients()
+let { routerClient, storeClient } = useClients()
 let { loginModal, registrationModal } = useModals()
+
+let { user } = storeToRefs(storeClient.userMeStore)
 </script>
 
 <template>
@@ -55,25 +57,25 @@ let { loginModal, registrationModal } = useModals()
                 <!-- todo: component & i18n -->
                 <nav>
                     <v-space size="large">
-                        <ui-link>
+                        <ui-link to="/en/blog">
                             <v-title :level="6">
                                 Blog
                             </v-title>
                         </ui-link>
 
-                        <ui-link>
+                        <ui-link to="/en/promotions">
                             <v-title :level="6">
                                 Promotions
                             </v-title>
                         </ui-link>
 
-                        <ui-link>
+                        <ui-link :to="routerClient.getRoute(routerClient.routeNames.TOP_BUYERS)">
                             <v-title :level="6">
                                 TOP-10
                             </v-title>
                         </ui-link>
 
-                        <ui-link>
+                        <ui-link to="/en/ai">
                             <v-title :level="6">
                                 AI Assistant
                             </v-title>
@@ -108,7 +110,13 @@ let { loginModal, registrationModal } = useModals()
                             />
                         </ui-link>
 
-                        <ui-link>
+                        <ui-link
+                            :to="routerClient.getRoute(routerClient.routeNames.USER_MESSAGES, {
+                                params: {
+                                    userId: user.id,
+                                },
+                            })"
+                        >
                             <ui-icon
                                 heroicons="envelope"
                                 size="24"
