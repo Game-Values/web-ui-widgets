@@ -1,7 +1,6 @@
-FROM node:20-bullseye-slim
+# https://bun.sh/guides/ecosystem/docker
 
+FROM oven/bun
 WORKDIR /frontend
-
-ADD build /frontend
-
-CMD node server/index.mjs
+COPY .build .env.production ./
+ENTRYPOINT bun --env-file=.env.production .

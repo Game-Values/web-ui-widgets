@@ -1,0 +1,32 @@
+.glass {
+    --glass-blur: theme("backdropBlur.md");
+    --glass-border-opacity: theme("opacity.10");
+    --glass-reflex-opacity: theme("opacity.0");
+
+    @apply bg-none;
+}
+
+.glass.glass-xs {
+    --glass-blur: theme("backdropBlur.sm");
+}
+
+.glass.glass-sm {
+    --glass-blur: theme("backdropBlur.DEFAULT");
+}
+
+.glass.glass-md {
+    --glass-blur: theme("backdropBlur.md");
+}
+
+.glass.glass-lg {
+    --glass-blur: theme("backdropBlur.lg");
+}
+
+.glass.glass-xl {
+    --glass-blur: theme("backdropBlur.xl");
+}
+
+.glass.glass-2xl {
+    --glass-blur: theme("backdropBlur.2xl");
+}
+

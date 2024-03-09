@@ -1,0 +1,15 @@
+.mdc-chip
+    @apply px-3.5
+    @apply h-9
+    @apply bg-white/02
+    @apply border border-solid border-white/12 rounded-3xl
+    @apply first:(ml-0)
+
+    &-set
+        @apply p-0
+
+    &--selected
+        --mdc-theme-surface: theme("colors.primary")
+
+    &__text
+        @apply text-white/70

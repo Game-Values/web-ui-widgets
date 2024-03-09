@@ -1,0 +1,8 @@
+.icon {
+    @apply inline-flex;
+    @apply leading-4;
+}
+
+.icon > svg {
+    @apply w-full h-full;
+}

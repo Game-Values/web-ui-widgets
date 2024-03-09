@@ -1,19 +1,18 @@
-.DS_Store
-.cache
-.idea
-
-.eslintcache
+node_modules
+Dockerfile*
+docker-compose*
+.dockerignore
 .git
 .gitignore
-.nuxt
-.nitro
-.output
+README.md
+LICENSE
 .env
-.env.local
-.env.*.local
+.env.*
+!.env.production
+.editorconfig
+.idea
 
-*.log*
 
-dist
-node_modules
-schema
+# todo: rm
+backup
+backup.*

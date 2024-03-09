@@ -1,0 +1,11 @@
+.hero {
+    @apply overflow-hidden;
+}
+
+.hero .hero-content {
+    @apply w-full h-full max-w-none;
+}
+
+.hero .hero-overlay {
+    @apply bg-transparent;
+}

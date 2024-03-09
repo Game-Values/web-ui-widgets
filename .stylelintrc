@@ -1,3 +1,5 @@
 {
-    "extends": "@vexip-ui/stylelint-config"
+    "rules": {
+
+    }
 }

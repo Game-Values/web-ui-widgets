@@ -1,0 +1,35 @@
+.mdc-data-table {
+    @apply w-full;
+    @apply border-grey-dark;
+
+    &__table {
+        @apply text-wrap;
+
+        &-container {
+            @apply rounded-xl;
+        }
+    }
+
+    &__header-cell,
+    &__cell {
+        @apply p-6;
+        @apply border-b-grey-dark;
+        @apply leading-normal;
+    }
+
+    &__header-cell {
+        @apply bg-white/02;
+        @apply text-level-5 font-semibold;
+    }
+
+    &__cell {
+        @apply align-top;
+        @apply bg-black/06;
+    }
+
+    &__row {
+        &:not(.mdc-data-table__row--selected) {
+            @apply hover:(bg-white/02 shadow-[0_0.25rem_1.25rem_0_rgba(0,0,0,0.10)]);
+        }
+    }
+}

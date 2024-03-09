@@ -1,20 +1,14 @@
 {
-    "extends": "./.nuxt/tsconfig.json",
+    "extends": "./.svelte-kit/tsconfig.json",
     "compilerOptions": {
-        "baseUrl": "./src",
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "verbatimModuleSyntax": false,
-        "types": [
-            "@nuxt/types",
-            "@pinia/nuxt",
-            "@types/node",
-            "reflect-metadata",
-            "swiper/vue",
-            "vite/client"
-        ],
-        "typeRoots": [
-            "src/types"
-        ]
+        "allowJs": true,
+        "checkJs": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "sourceMap": true,
+        "strict": true,
+        "moduleResolution": "bundler"
     }
 }

@@ -1,0 +1,94 @@
+html,
+body {
+    @apply h-full;
+}
+
+html {
+    @apply scroll-smooth;
+}
+
+body {
+    @apply antialiased font-primary text-base;
+}
+
+h1 {
+    @apply font-bold text-4xl;
+}
+
+h2 {
+    @apply font-bold text-3xl;
+}
+
+h3 {
+    @apply font-bold text-2xl;
+}
+
+h4 {
+    @apply font-bold text-lg;
+}
+
+h5 {
+    @apply font-bold text-base;
+}
+
+h6 {
+    @apply font-bold text-sm;
+}
+
+i {
+    @apply not-italic;
+}
+
+small {
+    @apply text-[0.875em];
+}
+
+strong {
+    @apply font-inherit text-[1.125em];
+}
+
+dl > dd > ul {
+    @apply list-disc;
+}
+
+ol {
+    @apply px-4;
+    @apply list-decimal;
+
+    counter-reset: item;
+}
+
+ol > li {
+    @apply ms-0 ps-2;
+
+    counter-increment: item;
+}
+
+ol > li ol {
+    @apply list-none;
+}
+
+ol > li ol > li {
+    @apply relative;
+}
+
+ol > li ol > li::before {
+    @apply absolute right-full;
+
+    content: counters(item, ".");
+}
+
+ul > li {
+    @apply marker:hidden;
+}
+
+::-webkit-scrollbar {
+    @apply w-2 h-2;
+    @apply bg-white/[0.12];
+    @apply rounded;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-primary;
+    @apply rounded;
+}

@@ -1,9 +1,13 @@
-PHONY: all build image
+PHONY: all build image clean
 
 build:
-	pnpm run build --dotenv .env.production
+	bun --env-file=.env.production install --frozen-lockfile
+	bun --env-file=.env.production run build
+
+clean:
+	rm -rf .build
 
 image:
-	mv .output build && docker-compose up -d --build && rm -rf build
+	docker compose up -d --build
 
-all: build image
+all: build image clean

@@ -1,0 +1,13 @@
+.input {
+    @apply px-4;
+    @apply w-full;
+    @apply bg-input;
+}
+
+.input.input-sm {
+    @apply px-2;
+}
+
+.input.input-bordered {
+    @apply border-white/[0.04];
+}

@@ -1,0 +1,49 @@
+@use "vuetify/settings" with (
+    $application-background: #1B1B1C,
+
+    $body-font-family: "Montserrat",
+
+    $border-radius-root: 8px,
+
+    $button-height: 48px,
+
+    $typography: (
+        h1: (
+            size: 2.25rem,
+            weight: 700,
+            line-height: 1.5em,
+        ),
+        h2: (
+            size: 1.875rem,
+            weight: 700,
+            line-height: 1.5em,
+        ),
+        h3: (
+            size: 1.5rem,
+            weight: 700,
+            line-height: 1.5em,
+        ),
+        h4: (
+            size: 1.0625rem,
+            weight: 700,
+            line-height: 1.5em,
+        ),
+        h5: (
+            size: 1.0625rem,
+            weight: 600,
+            line-height: 1.5em,
+        ),
+        h6: (
+            size: 1rem,
+            weight: 600,
+            line-height: 1.5em,
+        ),
+    ),
+);
+
+.v-input--density-default .v-field--variant-solo,
+.v-input--density-default .v-field--variant-solo-inverted,
+.v-input--density-default .v-field--variant-solo-filled,
+.v-input--density-default .v-field--variant-filled {
+    --v-input-control-height: 48px;
+}

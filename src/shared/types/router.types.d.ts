@@ -1,0 +1,25 @@
+import type { KIT_ROUTES } from "$schema/routes"
+import type { IKeyOf } from "$types"
+import type { SvelteComponent } from "svelte"
+import type { SvelteHTMLElements } from "svelte/elements"
+
+export type IRoute = {
+    url: IRouteUrl
+}
+
+export type IRouteMeta = {
+    title?: string
+    zip?: `/zip/${string}.zip`
+}
+
+export type IRouteQuery = Pick<IRouteParams, "gameId" | "gameSection">
+
+export type IRouteParams = Partial<Record<IKeyOf<KIT_ROUTES["Params"]>, any>>
+
+export type IRouteWithIcon = IRoute & { icon: typeof SvelteComponent<SvelteHTMLElements["svg"]> }
+
+export type IRouteWithLabel = IRoute & { label: string }
+
+export type IRouteWithLabelAndIcon = IRouteWithIcon & IRouteWithLabel
+
+export type IRouteUrl = IKeyOf<KIT_ROUTES["LINKS"]> | IKeyOf<KIT_ROUTES["PAGES"]>

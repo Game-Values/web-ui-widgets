@@ -1,0 +1,26 @@
+.card {
+    --rounded-box: theme("borderRadius.2xl");
+
+    @apply w-full;
+}
+
+.card.card-secondary {
+    @apply bg-white/[0.02];
+    @apply border-white/[0.02];
+}
+
+.card.card-bordered {
+    @apply border-white/[0.12];
+}
+
+.card .card-body {
+    --padding-card: theme("padding.0");
+}
+
+.card.card-normal .card-title {
+    @apply mb-0;
+}
+
+.card.card-normal .card-body {
+    --padding-card: theme("padding.4");
+}

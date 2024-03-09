@@ -1,0 +1,2985 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "Game Values",
+        "version": "0.1.0"
+    },
+    "paths": {
+        "/api/v1/login/magic/{email}": {
+            "post": {
+                "tags": [
+                    "login"
+                ],
+                "summary": "Login With Magic Link",
+                "description": "First step of a 'magic link' login. Check if the user exists and generate a magic link. Generates two short-duration\njwt tokens, one for validation, one for email.",
+                "operationId": "login_with_magic_link_api_v1_login_magic__email__post",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Email"
+                        },
+                        "name": "email",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/WebToken"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/login/claim": {
+            "post": {
+                "tags": [
+                    "login"
+                ],
+                "summary": "Validate Magic Link",
+                "description": "Second step of a 'magic link' login.",
+                "operationId": "validate_magic_link_api_v1_login_claim_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/WebToken"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Token"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/login/oauth": {
+            "post": {
+                "tags": [
+                    "login"
+                ],
+                "summary": "Login With Oauth2",
+                "description": "First step with OAuth2 compatible token login, get an access token for future requests.\nThe chat_token is used to authenticate with the chat server. In case if the chat server is not available, the\nuser can still login, but will not be able to use the chat and chat_token will be empty.",
+                "operationId": "login_with_oauth2_api_v1_login_oauth_post",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body_login_with_oauth2_api_v1_login_oauth_post"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Token"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/login/totp": {
+            "put": {
+                "tags": [
+                    "login"
+                ],
+                "summary": "Enable Totp Authentication",
+                "description": "For validation of token before enabling TOTP.",
+                "operationId": "enable_totp_authentication_api_v1_login_totp_put",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EnableTOTP"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Msg"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "login"
+                ],
+                "summary": "Login With Totp",
+                "description": "Final validation step, using TOTP.",
+                "operationId": "login_with_totp_api_v1_login_totp_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/WebToken"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Token"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "login"
+                ],
+                "summary": "Disable Totp Authentication",
+                "description": "Disable TOTP.",
+                "operationId": "disable_totp_authentication_api_v1_login_totp_delete",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserUpdate"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Msg"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/login/refresh": {
+            "post": {
+                "tags": [
+                    "login"
+                ],
+                "summary": "Refresh Token",
+                "description": "Refresh tokens for future requests",
+                "operationId": "refresh_token_api_v1_login_refresh_post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Token"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/login/revoke": {
+            "post": {
+                "tags": [
+                    "login"
+                ],
+                "summary": "Revoke Token",
+                "description": "Revoke a refresh token",
+                "operationId": "revoke_token_api_v1_login_revoke_post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Msg"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/login/recover/{email}": {
+            "post": {
+                "tags": [
+                    "login"
+                ],
+                "summary": "Recover Password",
+                "description": "Password Recovery",
+                "operationId": "recover_password_api_v1_login_recover__email__post",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Email"
+                        },
+                        "name": "email",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "$ref": "#/components/schemas/WebToken"
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/Msg"
+                                        }
+                                    ],
+                                    "title": "Response Recover Password Api V1 Login Recover  Email  Post"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/login/reset": {
+            "post": {
+                "tags": [
+                    "login"
+                ],
+                "summary": "Reset Password",
+                "description": "Reset password",
+                "operationId": "reset_password_api_v1_login_reset_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body_reset_password_api_v1_login_reset_post"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Msg"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/users/": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Read User",
+                "description": "Get current user.",
+                "operationId": "read_user_api_v1_users__get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Update User",
+                "description": "Update user.",
+                "operationId": "update_user_api_v1_users__put",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserUpdate"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Create User Profile",
+                "description": "Create new user without the need to be logged in.",
+                "operationId": "create_user_profile_api_v1_users__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body_create_user_profile_api_v1_users__post"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/users/all": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Read All Users",
+                "description": "Retrieve all current users.",
+                "operationId": "read_all_users_api_v1_users_all_get",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "title": "Page",
+                            "default": 0
+                        },
+                        "name": "page",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "items": {
+                                        "$ref": "#/components/schemas/User"
+                                    },
+                                    "type": "array",
+                                    "title": "Response Read All Users Api V1 Users All Get"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/users/new-totp": {
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Request New Totp",
+                "description": "Request new keys to enable TOTP on the user account.",
+                "operationId": "request_new_totp_api_v1_users_new_totp_post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NewTOTP"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/users/toggle-state": {
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Toggle State",
+                "description": "Toggle user state (moderator function)",
+                "operationId": "toggle_state_api_v1_users_toggle_state_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserUpdate"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Msg"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/users/create": {
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Create User",
+                "description": "Create new user (moderator function).",
+                "operationId": "create_user_api_v1_users_create_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserCreate"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/users/tester": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Test Endpoint",
+                "description": "Test current endpoint.",
+                "operationId": "test_endpoint_api_v1_users_tester_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Msg"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/users/like-game": {
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Like Game Endpoint",
+                "description": "Endpoint to like a game.",
+                "operationId": "like_game_endpoint_api_v1_users_like_game_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "string",
+                                "title": "Liked Game"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserLike"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/users/dislike-game": {
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Dislike Game Endpoint",
+                "description": "Endpoint to dislike (unlike) a game.",
+                "operationId": "dislike_game_endpoint_api_v1_users_dislike_game_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "string",
+                                "title": "Liked Game"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserLike"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/users/users/{user_id}": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Read User",
+                "description": "Retrieve a single item by its ID.",
+                "operationId": "read_user_api_v1_users_users__user_id__get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid",
+                            "title": "User Id"
+                        },
+                        "name": "user_id",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/proxy/{path}": {
+            "get": {
+                "tags": [
+                    "proxy"
+                ],
+                "summary": "Proxy Get Request",
+                "operationId": "proxy_get_request_api_v1_proxy__path__get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "maxLength": 65536,
+                            "minLength": 1,
+                            "format": "uri",
+                            "title": "Path"
+                        },
+                        "name": "path",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response Proxy Get Request Api V1 Proxy  Path  Get"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "proxy"
+                ],
+                "summary": "Proxy Post Request",
+                "operationId": "proxy_post_request_api_v1_proxy__path__post",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "maxLength": 65536,
+                            "minLength": 1,
+                            "format": "uri",
+                            "title": "Path"
+                        },
+                        "name": "path",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response Proxy Post Request Api V1 Proxy  Path  Post"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/games/": {
+            "get": {
+                "tags": [
+                    "games"
+                ],
+                "summary": "Read All Games",
+                "description": "Retrieve games.",
+                "operationId": "read_all_games_api_v1_games__get",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "title": "Page",
+                            "default": 0
+                        },
+                        "name": "page",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "items": {
+                                        "$ref": "#/components/schemas/Game"
+                                    },
+                                    "type": "array",
+                                    "title": "Response Read All Games Api V1 Games  Get"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "games"
+                ],
+                "summary": "Create Game",
+                "description": "Create new game.",
+                "operationId": "create_game_api_v1_games__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body_create_game_api_v1_games__post"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Game"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/games/{game_id}": {
+            "get": {
+                "tags": [
+                    "games"
+                ],
+                "summary": "Read Game",
+                "description": "Get a specific game by ID.",
+                "operationId": "read_game_api_v1_games__game_id__get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Game Id"
+                        },
+                        "name": "game_id",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Game"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "games"
+                ],
+                "summary": "Update Game",
+                "description": "Update a game.",
+                "operationId": "update_game_api_v1_games__game_id__put",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Game Id"
+                        },
+                        "name": "game_id",
+                        "in": "path"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GameUpdate"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Game"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/items/item/": {
+            "post": {
+                "tags": [
+                    "items"
+                ],
+                "summary": "Create Item",
+                "description": "Create a new item.",
+                "operationId": "create_item_api_v1_items_item__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ItemCreate"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Item"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/items/item/{item_id}": {
+            "put": {
+                "tags": [
+                    "items"
+                ],
+                "summary": "Update Item",
+                "description": "Update an item.",
+                "operationId": "update_item_api_v1_items_item__item_id__put",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid",
+                            "title": "Item Id"
+                        },
+                        "name": "item_id",
+                        "in": "path"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ItemUpdate"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Item"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "items"
+                ],
+                "summary": "Delete Item",
+                "description": "Delete an item.",
+                "operationId": "delete_item_api_v1_items_item__item_id__delete",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid",
+                            "title": "Item Id"
+                        },
+                        "name": "item_id",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Msg"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/items/all": {
+            "get": {
+                "tags": [
+                    "items"
+                ],
+                "summary": "Read All Items",
+                "description": "Retrieve all current users.",
+                "operationId": "read_all_items_api_v1_items_all_get",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "title": "Page",
+                            "default": 0
+                        },
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "Owner",
+                            "default": ""
+                        },
+                        "name": "owner",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "Gid"
+                        },
+                        "name": "gid",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "items": {
+                                        "$ref": "#/components/schemas/Item"
+                                    },
+                                    "type": "array",
+                                    "title": "Response Read All Items Api V1 Items All Get"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/items/items/{item_id}": {
+            "get": {
+                "tags": [
+                    "items"
+                ],
+                "summary": "Read Item",
+                "description": "Retrieve a single item by its ID.",
+                "operationId": "read_item_api_v1_items_items__item_id__get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid",
+                            "title": "Item Id"
+                        },
+                        "name": "item_id",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Item"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/items/search/{game_id}": {
+            "post": {
+                "tags": [
+                    "items"
+                ],
+                "summary": "Faceted Search",
+                "description": "Faceted search for items. Allowed filter criteria are:\n- count\n- price\n- price_from\n- price_till\n- server\n- description\n- type",
+                "operationId": "faceted_search_api_v1_items_search__game_id__post",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid",
+                            "title": "Game Id"
+                        },
+                        "name": "game_id",
+                        "in": "path"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "additionalProperties": {
+                                    "anyOf": [
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "type": "array"
+                                        }
+                                    ]
+                                },
+                                "type": "object",
+                                "title": "Filter Criteria"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "Response Faceted Search Api V1 Items Search  Game Id  Post"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/items/facets/{game_id}": {
+            "get": {
+                "tags": [
+                    "items"
+                ],
+                "summary": "Get Available Facets",
+                "description": "Get a list of all available facet keys in the Item.attributes field.",
+                "operationId": "get_available_facets_api_v1_items_facets__game_id__get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid",
+                            "title": "Game Id"
+                        },
+                        "name": "game_id",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "additionalProperties": {
+                                        "type": "integer"
+                                    },
+                                    "type": "object",
+                                    "title": "Response Get Available Facets Api V1 Items Facets  Game Id  Get"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/funds/create-payment": {
+            "post": {
+                "tags": [
+                    "funds"
+                ],
+                "summary": "Create Payment",
+                "description": "Logic to send data to Payment API and handle the response\npaymentTypes:\nhttps://help.unitpay.money:8443/book-of-reference/payment-system-codes",
+                "operationId": "create_payment_api_v1_funds_create_payment_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PaymentNew"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "$ref": "#/components/schemas/PaymentResponse"
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/PaymentError"
+                                        }
+                                    ],
+                                    "title": "Response Create Payment Api V1 Funds Create Payment Post"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/funds/payment-info/{payment_id}": {
+            "get": {
+                "tags": [
+                    "funds"
+                ],
+                "summary": "Get Payment Info",
+                "description": "Retrieve information about a specific payment.",
+                "operationId": "get_payment_info_api_v1_funds_payment_info__payment_id__get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "title": "Payment Id"
+                        },
+                        "name": "payment_id",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "Response Get Payment Info Api V1 Funds Payment Info  Payment Id  Get"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/funds/refund-payment": {
+            "post": {
+                "tags": [
+                    "funds"
+                ],
+                "summary": "Refund Payment",
+                "operationId": "refund_payment_api_v1_funds_refund_payment_post",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "title": "Payment Id"
+                        },
+                        "name": "payment_id",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "type": "number",
+                            "title": "Sum"
+                        },
+                        "name": "sum",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/funds/payout": {
+            "post": {
+                "tags": [
+                    "funds"
+                ],
+                "summary": "Create Payout",
+                "operationId": "create_payout_api_v1_funds_payout_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PayoutRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PayoutResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/funds/payouts/info": {
+            "post": {
+                "tags": [
+                    "funds"
+                ],
+                "summary": "Get Payout Info",
+                "operationId": "get_payout_info_api_v1_funds_payouts_info_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PayoutInfoRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/order/": {
+            "post": {
+                "tags": [
+                    "order"
+                ],
+                "summary": "Create Order",
+                "description": "Create a new order.",
+                "operationId": "create_order_api_v1_order__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/OrderCreate"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OrderInDB"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/order/{order_id}": {
+            "get": {
+                "tags": [
+                    "order"
+                ],
+                "summary": "Read Order",
+                "description": "Get an order by ID.",
+                "operationId": "read_order_api_v1_order__order_id__get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid",
+                            "title": "Order Id"
+                        },
+                        "name": "order_id",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OrderInDB"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "order"
+                ],
+                "summary": "Update Order",
+                "description": "Update an order.",
+                "operationId": "update_order_api_v1_order__order_id__put",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid",
+                            "title": "Order Id"
+                        },
+                        "name": "order_id",
+                        "in": "path"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/OrderBase"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OrderInDB"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "order"
+                ],
+                "summary": "Delete Order",
+                "description": "Delete an order.",
+                "operationId": "delete_order_api_v1_order__order_id__delete",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid",
+                            "title": "Order Id"
+                        },
+                        "name": "order_id",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OrderInDB"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/order/user/{user_id}": {
+            "get": {
+                "tags": [
+                    "order"
+                ],
+                "summary": "Read Orders By Owner",
+                "description": "Get all orders for a given user.",
+                "operationId": "read_orders_by_owner_api_v1_order_user__user_id__get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid",
+                            "title": "Owner Id"
+                        },
+                        "name": "owner_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "items": {
+                                        "$ref": "#/components/schemas/OrderInDB"
+                                    },
+                                    "type": "array",
+                                    "title": "Response Read Orders By Owner Api V1 Order User  User Id  Get"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Body_create_game_api_v1_games__post": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "title": "Name"
+                    },
+                    "attributes": {
+                        "type": "string",
+                        "title": "Attributes"
+                    },
+                    "is_active": {
+                        "type": "boolean",
+                        "title": "Is Active",
+                        "default": true
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ],
+                "title": "Body_create_game_api_v1_games__post"
+            },
+            "Body_create_user_profile_api_v1_users__post": {
+                "properties": {
+                    "password": {
+                        "type": "string",
+                        "title": "Password"
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "title": "Email"
+                    },
+                    "full_name": {
+                        "type": "string",
+                        "title": "Full Name"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "password",
+                    "email"
+                ],
+                "title": "Body_create_user_profile_api_v1_users__post"
+            },
+            "Body_login_with_oauth2_api_v1_login_oauth_post": {
+                "properties": {
+                    "grant_type": {
+                        "type": "string",
+                        "pattern": "password",
+                        "title": "Grant Type"
+                    },
+                    "username": {
+                        "type": "string",
+                        "title": "Username"
+                    },
+                    "password": {
+                        "type": "string",
+                        "title": "Password"
+                    },
+                    "scope": {
+                        "type": "string",
+                        "title": "Scope",
+                        "default": ""
+                    },
+                    "client_id": {
+                        "type": "string",
+                        "title": "Client Id"
+                    },
+                    "client_secret": {
+                        "type": "string",
+                        "title": "Client Secret"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "username",
+                    "password"
+                ],
+                "title": "Body_login_with_oauth2_api_v1_login_oauth_post"
+            },
+            "Body_reset_password_api_v1_login_reset_post": {
+                "properties": {
+                    "new_password": {
+                        "type": "string",
+                        "title": "New Password"
+                    },
+                    "claim": {
+                        "type": "string",
+                        "title": "Claim"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "new_password",
+                    "claim"
+                ],
+                "title": "Body_reset_password_api_v1_login_reset_post"
+            },
+            "EnableTOTP": {
+                "properties": {
+                    "claim": {
+                        "type": "string",
+                        "title": "Claim"
+                    },
+                    "uri": {
+                        "type": "string",
+                        "title": "Uri"
+                    },
+                    "password": {
+                        "type": "string",
+                        "title": "Password"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "claim",
+                    "uri"
+                ],
+                "title": "EnableTOTP"
+            },
+            "Game": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "title": "Name"
+                    },
+                    "is_active": {
+                        "type": "boolean",
+                        "title": "Is Active",
+                        "default": true
+                    },
+                    "attributes": {
+                        "type": "object",
+                        "title": "Attributes"
+                    },
+                    "id": {
+                        "type": "string",
+                        "format": "uuid4",
+                        "title": "Id"
+                    },
+                    "created": {
+                        "type": "string",
+                        "format": "date-time",
+                        "title": "Created"
+                    },
+                    "modified": {
+                        "type": "string",
+                        "format": "date-time",
+                        "title": "Modified"
+                    }
+                },
+                "type": "object",
+                "title": "Game"
+            },
+            "GameUpdate": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "title": "Name"
+                    },
+                    "is_active": {
+                        "type": "boolean",
+                        "title": "Is Active",
+                        "default": true
+                    },
+                    "attributes": {
+                        "type": "object",
+                        "title": "Attributes"
+                    }
+                },
+                "type": "object",
+                "title": "GameUpdate"
+            },
+            "HTTPValidationError": {
+                "properties": {
+                    "detail": {
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationError"
+                        },
+                        "type": "array",
+                        "title": "Detail"
+                    }
+                },
+                "type": "object",
+                "title": "HTTPValidationError"
+            },
+            "Item": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "title": "Name"
+                    },
+                    "attributes": {
+                        "$ref": "#/components/schemas/ItemAttributes"
+                    },
+                    "is_active": {
+                        "type": "boolean",
+                        "title": "Is Active",
+                        "default": true
+                    },
+                    "owner_id": {
+                        "type": "string",
+                        "format": "uuid4",
+                        "title": "Owner Id"
+                    },
+                    "gid": {
+                        "type": "string",
+                        "format": "uuid4",
+                        "title": "Gid"
+                    },
+                    "id": {
+                        "type": "string",
+                        "format": "uuid4",
+                        "title": "Id"
+                    },
+                    "created": {
+                        "type": "string",
+                        "format": "date-time",
+                        "title": "Created"
+                    },
+                    "modified": {
+                        "type": "string",
+                        "format": "date-time",
+                        "title": "Modified"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "attributes"
+                ],
+                "title": "Item"
+            },
+            "ItemAttributes": {
+                "properties": {
+                    "amount": {
+                        "type": "integer",
+                        "title": "Amount",
+                        "default": 0
+                    },
+                    "price": {
+                        "type": "number",
+                        "title": "Price",
+                        "default": 0.0
+                    },
+                    "currency": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/ItemCurrency"
+                            }
+                        ],
+                        "default": "EUR"
+                    },
+                    "description": {
+                        "type": "string",
+                        "maxLength": 512,
+                        "minLength": 0,
+                        "title": "Description"
+                    },
+                    "type": {
+                        "type": "string",
+                        "maxLength": 32,
+                        "minLength": 1,
+                        "title": "Type"
+                    },
+                    "server": {
+                        "type": "string",
+                        "maxLength": 32,
+                        "minLength": 1,
+                        "title": "Server"
+                    }
+                },
+                "type": "object",
+                "title": "ItemAttributes"
+            },
+            "ItemCreate": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "title": "Name"
+                    },
+                    "attributes": {
+                        "$ref": "#/components/schemas/ItemAttributes"
+                    },
+                    "is_active": {
+                        "type": "boolean",
+                        "title": "Is Active",
+                        "default": true
+                    },
+                    "owner_id": {
+                        "type": "string",
+                        "format": "uuid4",
+                        "title": "Owner Id"
+                    },
+                    "gid": {
+                        "type": "string",
+                        "format": "uuid4",
+                        "title": "Gid"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "attributes",
+                    "gid"
+                ],
+                "title": "ItemCreate"
+            },
+            "ItemCurrency": {
+                "type": "string",
+                "enum": [
+                    "EUR"
+                ],
+                "title": "ItemCurrency",
+                "description": "An enumeration."
+            },
+            "ItemUpdate": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "title": "Name"
+                    },
+                    "attributes": {
+                        "$ref": "#/components/schemas/ItemAttributes"
+                    },
+                    "is_active": {
+                        "type": "boolean",
+                        "title": "Is Active",
+                        "default": true
+                    },
+                    "owner_id": {
+                        "type": "string",
+                        "format": "uuid4",
+                        "title": "Owner Id"
+                    },
+                    "gid": {
+                        "type": "string",
+                        "format": "uuid4",
+                        "title": "Gid"
+                    },
+                    "id": {
+                        "type": "string",
+                        "format": "uuid4",
+                        "title": "Id"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "attributes",
+                    "id"
+                ],
+                "title": "ItemUpdate"
+            },
+            "Msg": {
+                "properties": {
+                    "msg": {
+                        "type": "string",
+                        "title": "Msg"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "msg"
+                ],
+                "title": "Msg"
+            },
+            "NewTOTP": {
+                "properties": {
+                    "secret": {
+                        "type": "string",
+                        "title": "Secret"
+                    },
+                    "key": {
+                        "type": "string",
+                        "title": "Key"
+                    },
+                    "uri": {
+                        "type": "string",
+                        "title": "Uri"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "key",
+                    "uri"
+                ],
+                "title": "NewTOTP"
+            },
+            "OrderAttributes": {
+                "properties": {
+                    "order_id": {
+                        "type": "string",
+                        "format": "uuid4",
+                        "title": "Order Id"
+                    },
+                    "price": {
+                        "type": "number",
+                        "title": "Price",
+                        "default": 1.0
+                    },
+                    "currency": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/OrderCurrency"
+                            }
+                        ],
+                        "default": "EUR"
+                    },
+                    "amount": {
+                        "type": "integer",
+                        "title": "Amount",
+                        "default": 1
+                    }
+                },
+                "type": "object",
+                "title": "OrderAttributes"
+            },
+            "OrderBase": {
+                "properties": {
+                    "game_id": {
+                        "type": "string",
+                        "format": "uuid4",
+                        "title": "Game Id"
+                    },
+                    "owner_id": {
+                        "type": "string",
+                        "format": "uuid4",
+                        "title": "Owner Id"
+                    },
+                    "attributes": {
+                        "title": "Attributes"
+                    }
+                },
+                "type": "object",
+                "title": "OrderBase"
+            },
+            "OrderCreate": {
+                "properties": {
+                    "game_id": {
+                        "type": "string",
+                        "format": "uuid4",
+                        "title": "Game Id"
+                    },
+                    "owner_id": {
+                        "type": "string",
+                        "format": "uuid4",
+                        "title": "Owner Id"
+                    },
+                    "attributes": {
+                        "$ref": "#/components/schemas/OrderAttributes"
+                    }
+                },
+                "type": "object",
+                "title": "OrderCreate"
+            },
+            "OrderCurrency": {
+                "type": "string",
+                "enum": [
+                    "EUR"
+                ],
+                "title": "OrderCurrency",
+                "description": "An enumeration."
+            },
+            "OrderInDB": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid4",
+                        "title": "Id"
+                    },
+                    "game_id": {
+                        "type": "string",
+                        "format": "uuid4",
+                        "title": "Game Id"
+                    },
+                    "owner_id": {
+                        "type": "string",
+                        "format": "uuid4",
+                        "title": "Owner Id"
+                    },
+                    "created": {
+                        "title": "Created"
+                    },
+                    "attributes": {
+                        "type": "object",
+                        "title": "Attributes"
+                    }
+                },
+                "type": "object",
+                "title": "OrderInDB"
+            },
+            "PaymentError": {
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "title": "Message"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "message"
+                ],
+                "title": "PaymentError"
+            },
+            "PaymentNew": {
+                "properties": {
+                    "paymentType": {
+                        "type": "string",
+                        "title": "Paymenttype"
+                    },
+                    "sum": {
+                        "type": "number",
+                        "title": "Sum"
+                    },
+                    "desc": {
+                        "type": "string",
+                        "title": "Desc"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "paymentType",
+                    "sum",
+                    "desc"
+                ],
+                "title": "PaymentNew"
+            },
+            "PaymentResponse": {
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "title": "Message"
+                    },
+                    "paymentId": {
+                        "type": "integer",
+                        "title": "Paymentid"
+                    },
+                    "type": {
+                        "type": "string",
+                        "title": "Type"
+                    },
+                    "redirectUrl": {
+                        "type": "string",
+                        "title": "Redirecturl"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "message",
+                    "paymentId",
+                    "type",
+                    "redirectUrl"
+                ],
+                "title": "PaymentResponse"
+            },
+            "PayoutInfoRequest": {
+                "properties": {
+                    "login": {
+                        "type": "string",
+                        "title": "Login"
+                    },
+                    "secretKey": {
+                        "type": "string",
+                        "title": "Secretkey"
+                    },
+                    "transactionId": {
+                        "type": "string",
+                        "title": "Transactionid"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "login",
+                    "secretKey",
+                    "transactionId"
+                ],
+                "title": "PayoutInfoRequest"
+            },
+            "PayoutRequest": {
+                "properties": {
+                    "login": {
+                        "type": "string",
+                        "title": "Login"
+                    },
+                    "secretKey": {
+                        "type": "string",
+                        "title": "Secretkey"
+                    },
+                    "purse": {
+                        "type": "string",
+                        "title": "Purse"
+                    },
+                    "transactionId": {
+                        "type": "string",
+                        "title": "Transactionid"
+                    },
+                    "sum": {
+                        "type": "number",
+                        "title": "Sum"
+                    },
+                    "paymentType": {
+                        "type": "string",
+                        "title": "Paymenttype"
+                    },
+                    "projectId": {
+                        "type": "integer",
+                        "title": "Projectid"
+                    },
+                    "comment": {
+                        "type": "string",
+                        "title": "Comment"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "login",
+                    "secretKey",
+                    "purse",
+                    "transactionId",
+                    "sum",
+                    "paymentType"
+                ],
+                "title": "PayoutRequest"
+            },
+            "PayoutResponse": {
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "title": "Message"
+                    },
+                    "status": {
+                        "type": "string",
+                        "title": "Status"
+                    },
+                    "payoutId": {
+                        "type": "integer",
+                        "title": "Payoutid"
+                    },
+                    "partnerBalance": {
+                        "type": "number",
+                        "title": "Partnerbalance"
+                    },
+                    "createDate": {
+                        "type": "string",
+                        "title": "Createdate"
+                    },
+                    "completeDate": {
+                        "type": "string",
+                        "title": "Completedate"
+                    },
+                    "sum": {
+                        "type": "number",
+                        "title": "Sum"
+                    },
+                    "payoutCommission": {
+                        "type": "number",
+                        "title": "Payoutcommission"
+                    },
+                    "partnerCommission": {
+                        "type": "number",
+                        "title": "Partnercommission"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "message",
+                    "status",
+                    "payoutId",
+                    "partnerBalance",
+                    "createDate",
+                    "completeDate",
+                    "sum",
+                    "payoutCommission",
+                    "partnerCommission"
+                ],
+                "title": "PayoutResponse"
+            },
+            "Token": {
+                "properties": {
+                    "access_token": {
+                        "type": "string",
+                        "title": "Access Token"
+                    },
+                    "chat_token": {
+                        "type": "string",
+                        "title": "Chat Token"
+                    },
+                    "chat_uid": {
+                        "type": "string",
+                        "title": "Chat Uid"
+                    },
+                    "refresh_token": {
+                        "type": "string",
+                        "title": "Refresh Token"
+                    },
+                    "token_type": {
+                        "type": "string",
+                        "title": "Token Type"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "access_token",
+                    "token_type"
+                ],
+                "title": "Token"
+            },
+            "User": {
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "title": "Email"
+                    },
+                    "email_validated": {
+                        "type": "boolean",
+                        "title": "Email Validated",
+                        "default": false
+                    },
+                    "is_active": {
+                        "type": "boolean",
+                        "title": "Is Active",
+                        "default": true
+                    },
+                    "is_superuser": {
+                        "type": "boolean",
+                        "title": "Is Superuser",
+                        "default": false
+                    },
+                    "full_name": {
+                        "type": "string",
+                        "title": "Full Name"
+                    },
+                    "liked_games": {
+                        "title": "Liked Games",
+                        "description": "List of UUIDs of liked games"
+                    },
+                    "attributes": {
+                        "type": "object",
+                        "title": "Attributes"
+                    },
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "title": "Id"
+                    },
+                    "password": {
+                        "type": "boolean",
+                        "title": "Password",
+                        "default": false
+                    },
+                    "totp": {
+                        "type": "boolean",
+                        "title": "Totp",
+                        "default": false
+                    },
+                    "chat_id": {
+                        "type": "string",
+                        "title": "Chat Id"
+                    }
+                },
+                "type": "object",
+                "title": "User"
+            },
+            "UserCreate": {
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "title": "Email"
+                    },
+                    "email_validated": {
+                        "type": "boolean",
+                        "title": "Email Validated",
+                        "default": false
+                    },
+                    "is_active": {
+                        "type": "boolean",
+                        "title": "Is Active",
+                        "default": true
+                    },
+                    "is_superuser": {
+                        "type": "boolean",
+                        "title": "Is Superuser",
+                        "default": false
+                    },
+                    "full_name": {
+                        "type": "string",
+                        "title": "Full Name"
+                    },
+                    "liked_games": {
+                        "items": {},
+                        "type": "array",
+                        "title": "Liked Games"
+                    },
+                    "attributes": {
+                        "type": "object",
+                        "title": "Attributes"
+                    },
+                    "password": {
+                        "type": "string",
+                        "maxLength": 64,
+                        "minLength": 8,
+                        "title": "Password"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "email"
+                ],
+                "title": "UserCreate"
+            },
+            "UserLike": {
+                "properties": {
+                    "liked_game": {
+                        "type": "string",
+                        "format": "uuid",
+                        "title": "Liked Game"
+                    }
+                },
+                "type": "object",
+                "title": "UserLike"
+            },
+            "UserUpdate": {
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "title": "Email"
+                    },
+                    "email_validated": {
+                        "type": "boolean",
+                        "title": "Email Validated",
+                        "default": false
+                    },
+                    "is_active": {
+                        "type": "boolean",
+                        "title": "Is Active",
+                        "default": true
+                    },
+                    "is_superuser": {
+                        "type": "boolean",
+                        "title": "Is Superuser",
+                        "default": false
+                    },
+                    "full_name": {
+                        "type": "string",
+                        "title": "Full Name"
+                    },
+                    "liked_games": {
+                        "items": {},
+                        "type": "array",
+                        "title": "Liked Games"
+                    },
+                    "attributes": {
+                        "type": "object",
+                        "title": "Attributes"
+                    },
+                    "original": {
+                        "type": "string",
+                        "maxLength": 64,
+                        "minLength": 8,
+                        "title": "Original"
+                    },
+                    "password": {
+                        "type": "string",
+                        "maxLength": 64,
+                        "minLength": 8,
+                        "title": "Password"
+                    }
+                },
+                "type": "object",
+                "title": "UserUpdate"
+            },
+            "ValidationError": {
+                "properties": {
+                    "loc": {
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "integer"
+                                }
+                            ]
+                        },
+                        "type": "array",
+                        "title": "Location"
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Message"
+                    },
+                    "type": {
+                        "type": "string",
+                        "title": "Error Type"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "loc",
+                    "msg",
+                    "type"
+                ],
+                "title": "ValidationError"
+            },
+            "WebToken": {
+                "properties": {
+                    "claim": {
+                        "type": "string",
+                        "title": "Claim"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "claim"
+                ],
+                "title": "WebToken"
+            }
+        },
+        "securitySchemes": {
+            "OAuth2PasswordBearer": {
+                "type": "oauth2",
+                "flows": {
+                    "password": {
+                        "scopes": {},
+                        "tokenUrl": "/api/v1/login/oauth"
+                    }
+                }
+            }
+        }
+    }
+}

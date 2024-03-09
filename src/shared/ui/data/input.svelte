@@ -1,0 +1,80 @@
+<script lang="ts">
+import type { IKeyboardEvent } from "$types"
+import type { HTMLInputAttributes, HTMLInputTypeAttribute } from "svelte/elements"
+
+import { useEventDispatcher } from "$model"
+
+interface $$Props extends HTMLInputAttributes {
+    inputClass?: string
+    placement?: "end" | "start"
+}
+
+interface $$Slots {
+    icon: NonNullable<unknown>
+}
+
+interface $$Events {
+    input: IKeyboardEvent<HTMLInputElement, null | number | string>
+}
+
+let { dispatchEvent: dispatchInputEvent } = useEventDispatcher<null | number | string>("input")
+
+let className: null | string | undefined = ""
+
+let inputClass: string = ""
+
+let placement: "end" | "start" = "start"
+
+let type: HTMLInputTypeAttribute | null | undefined = "text"
+
+function input(e: IKeyboardEvent<HTMLInputElement, string>): void {
+    switch (e.currentTarget.type) {
+        case "number":
+            dispatchInputEvent(parseFloat(e.currentTarget.value))
+            break
+
+        default:
+            dispatchInputEvent(e.currentTarget.value)
+            break
+    }
+}
+
+export {
+    className as class,
+    inputClass,
+    placement,
+    type,
+}
+</script>
+
+<label
+    class="indicator label label-icon {className}"
+    class:label-icon-end={$$slots.icon && placement === "end"}
+    class:label-icon-start={$$slots.icon && placement === "start"}
+>
+    {#if $$restProps.required}
+        <span class="indicator-item badge badge-warning translate-x-0">
+            Required
+        </span>
+    {/if}
+
+    <input
+        class="input {inputClass}"
+        {...$$restProps}
+        {...{ type }}
+        on:input={input}
+    />
+
+    {#if $$slots.icon}
+        <i
+            style:height="var(--icon-size)"
+            style:width="var(--icon-size)"
+            class="icon"
+        >
+            <slot
+                name="icon"
+                class="w-full h-full"
+            />
+        </i>
+    {/if}
+</label>

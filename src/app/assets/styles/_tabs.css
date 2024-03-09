@@ -1,0 +1,7 @@
+.tabs .tab {
+    --tab-padding: theme("padding.2");
+}
+
+.tabs.tabs-bordered .tab {
+    @apply mt-1;
+}

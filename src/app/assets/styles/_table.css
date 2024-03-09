@@ -1,0 +1,41 @@
+.table {
+    --rounded-box: theme("borderRadius.2xl");
+
+    @apply static;
+    @apply table-fixed;
+}
+
+.table :where(thead, tfoot) {
+    @apply font-bold;
+}
+
+.table :where(th) {
+    @apply bg-white/[0.02];
+}
+
+.table :where(th, td) {
+    @apply border border-solid border-white/[0.02];
+}
+
+.table.table-xs :not(thead):not(tfoot) tr {
+    @apply text-sm;
+}
+
+.table.table-xs :where(th) {
+    @apply p-4;
+}
+
+.table.table-xs :where(td) {
+    @apply px-4;
+}
+
+.table tr.active,
+.table tr.active:nth-child(even),
+.table-zebra tbody tr:nth-child(even) {
+    @apply bg-white/[0.02];
+}
+
+.table :where(thead, tbody) :where(tr:not(:last-child)),
+.table :where(thead, tbody) :where(tr:first-child:last-child) {
+    @apply border-white/[0.02];
+}

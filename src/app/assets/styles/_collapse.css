@@ -1,0 +1,12 @@
+.collapse .collapse-title {
+    @apply flex items-center;
+    @apply rounded-xl;
+}
+
+.collapse .collapse-title:not([class*=h-]) {
+    @apply h-16;
+}
+
+.collapse.collapse-arrow > .collapse-title {
+    @apply after:inset-y-1/2;
+}

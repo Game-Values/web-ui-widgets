@@ -1,0 +1,31 @@
+.form {
+    @apply gap-y-6;
+    @apply w-full;
+    @apply flex flex-col;
+}
+
+.form .form-control {
+    @apply w-full;
+}
+
+.form .form-control-row {
+    @apply gap-x-4;
+    @apply flex-row;
+}
+
+.form .form-control > .label {
+    @apply p-0;
+    @apply w-full;
+}
+
+.form .menu {
+    @apply p-0;
+}
+
+.form .menu {
+    @apply p-0;
+}
+
+.form .menu .form-control .label {
+    @apply p-2;
+}
