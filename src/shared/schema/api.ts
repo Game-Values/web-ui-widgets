@@ -77,15 +77,6 @@ export type ICreateOrderApiV1OrderPostData = IOrderInDB
 
 export type ICreateOrderApiV1OrderPostError = IHTTPValidationError
 
-/** Response Create Payment Api V1 Funds Create Payment Post */
-export type ICreatePaymentApiV1FundsCreatePaymentPostData = IPaymentResponse | IPaymentError
-
-export type ICreatePaymentApiV1FundsCreatePaymentPostError = IHTTPValidationError
-
-export type ICreatePayoutApiV1FundsPayoutPostData = IPayoutResponse
-
-export type ICreatePayoutApiV1FundsPayoutPostError = IHTTPValidationError
-
 export type ICreateUserApiV1UsersCreatePostData = IUser
 
 export type ICreateUserApiV1UsersCreatePostError = IHTTPValidationError
@@ -180,15 +171,6 @@ export interface IGameUpdate {
 export type IGetAvailableFacetsApiV1ItemsFacetsGameIdGetData = Record<string, number>
 
 export type IGetAvailableFacetsApiV1ItemsFacetsGameIdGetError = IHTTPValidationError
-
-/** Response Get Payment Info Api V1 Funds Payment Info  Payment Id  Get */
-export type IGetPaymentInfoApiV1FundsPaymentInfoPaymentIdGetData = object
-
-export type IGetPaymentInfoApiV1FundsPaymentInfoPaymentIdGetError = IHTTPValidationError
-
-export type IGetPayoutInfoApiV1FundsPayoutsInfoPostData = any
-
-export type IGetPayoutInfoApiV1FundsPayoutsInfoPostError = IHTTPValidationError
 
 /** HTTPValidationError */
 export interface IHTTPValidationError {
@@ -443,86 +425,6 @@ export interface IOrderInDB {
 	owner_id?: string
 }
 
-/** PaymentError */
-export interface IPaymentError {
-	/** Message */
-	message: string
-}
-
-/** PaymentNew */
-export interface IPaymentNew {
-	/** Desc */
-	desc: string
-	/** Paymenttype */
-	paymentType: string
-	/** Sum */
-	sum: number
-}
-
-/** PaymentResponse */
-export interface IPaymentResponse {
-	/** Message */
-	message: string
-	/** Paymentid */
-	paymentId: number
-	/** Redirecturl */
-	redirectUrl: string
-	/** Type */
-	type: string
-}
-
-/** PayoutInfoRequest */
-export interface IPayoutInfoRequest {
-	/** Login */
-	login: string
-	/** Secretkey */
-	secretKey: string
-	/** Transactionid */
-	transactionId: string
-}
-
-/** PayoutRequest */
-export interface IPayoutRequest {
-	/** Comment */
-	comment?: string
-	/** Login */
-	login: string
-	/** Paymenttype */
-	paymentType: string
-	/** Projectid */
-	projectId?: number
-	/** Purse */
-	purse: string
-	/** Secretkey */
-	secretKey: string
-	/** Sum */
-	sum: number
-	/** Transactionid */
-	transactionId: string
-}
-
-/** PayoutResponse */
-export interface IPayoutResponse {
-	/** Completedate */
-	completeDate: string
-	/** Createdate */
-	createDate: string
-	/** Message */
-	message: string
-	/** Partnerbalance */
-	partnerBalance: number
-	/** Partnercommission */
-	partnerCommission: number
-	/** Payoutcommission */
-	payoutCommission: number
-	/** Payoutid */
-	payoutId: number
-	/** Status */
-	status: string
-	/** Sum */
-	sum: number
-}
-
 /** Response Proxy Get Request Api V1 Proxy  Path  Get */
 export type IProxyGetRequestApiV1ProxyPathGetData = any
 
@@ -617,17 +519,6 @@ export type IRecoverPasswordApiV1LoginRecoverEmailPostData = IWebToken | IMsg
 export type IRecoverPasswordApiV1LoginRecoverEmailPostError = IHTTPValidationError
 
 export type IRefreshTokenApiV1LoginRefreshPostData = IToken
-
-export type IRefundPaymentApiV1FundsRefundPaymentPostData = any
-
-export type IRefundPaymentApiV1FundsRefundPaymentPostError = IHTTPValidationError
-
-export interface IRefundPaymentApiV1FundsRefundPaymentPostParams {
-	/** Payment Id */
-	payment_id: number
-	/** Sum */
-	sum?: number
-}
 
 export type IRequestNewTotpApiV1UsersNewTotpPostData = INewTOTP
 
@@ -883,40 +774,6 @@ export namespace Api {
 		export type ResponseBody = ICreateOrderApiV1OrderPostData
 	}
 	/**
-	 * @description Logic to send data to Payment API and handle the response paymentTypes: https://help.unitpay.money:8443/book-of-reference/payment-system-codes
-	 * @tags funds
-	 * @name CreatePaymentApiV1FundsCreatePaymentPost
-	 * @summary Create Payment
-	 * @request POST:/api/v1/funds/create-payment
-	 * @secure
-	 * @response `200` `ICreatePaymentApiV1FundsCreatePaymentPostData` Successful Response
-	 * @response `422` `IHTTPValidationError` Validation Error
-	 */
-	export namespace CreatePaymentApiV1FundsCreatePaymentPost {
-		export type RequestParams = {}
-		export type RequestQuery = {}
-		export type RequestBody = IPaymentNew
-		export type RequestHeaders = {}
-		export type ResponseBody = ICreatePaymentApiV1FundsCreatePaymentPostData
-	}
-	/**
-	 * No description
-	 * @tags funds
-	 * @name CreatePayoutApiV1FundsPayoutPost
-	 * @summary Create Payout
-	 * @request POST:/api/v1/funds/payout
-	 * @secure
-	 * @response `200` `ICreatePayoutApiV1FundsPayoutPostData` Successful Response
-	 * @response `422` `IHTTPValidationError` Validation Error
-	 */
-	export namespace CreatePayoutApiV1FundsPayoutPost {
-		export type RequestParams = {}
-		export type RequestQuery = {}
-		export type RequestBody = IPayoutRequest
-		export type RequestHeaders = {}
-		export type ResponseBody = ICreatePayoutApiV1FundsPayoutPostData
-	}
-	/**
 	 * @description Create new user (moderator function).
 	 * @tags users
 	 * @name CreateUserApiV1UsersCreatePost
@@ -1089,43 +946,6 @@ export namespace Api {
 		export type RequestBody = never
 		export type RequestHeaders = {}
 		export type ResponseBody = IGetAvailableFacetsApiV1ItemsFacetsGameIdGetData
-	}
-	/**
-	 * @description Retrieve information about a specific payment.
-	 * @tags funds
-	 * @name GetPaymentInfoApiV1FundsPaymentInfoPaymentIdGet
-	 * @summary Get Payment Info
-	 * @request GET:/api/v1/funds/payment-info/{payment_id}
-	 * @secure
-	 * @response `200` `IGetPaymentInfoApiV1FundsPaymentInfoPaymentIdGetData` Successful Response
-	 * @response `422` `IHTTPValidationError` Validation Error
-	 */
-	export namespace GetPaymentInfoApiV1FundsPaymentInfoPaymentIdGet {
-		export type RequestParams = {
-			/** Payment Id */
-			paymentId: number
-		}
-		export type RequestQuery = {}
-		export type RequestBody = never
-		export type RequestHeaders = {}
-		export type ResponseBody = IGetPaymentInfoApiV1FundsPaymentInfoPaymentIdGetData
-	}
-	/**
-	 * No description
-	 * @tags funds
-	 * @name GetPayoutInfoApiV1FundsPayoutsInfoPost
-	 * @summary Get Payout Info
-	 * @request POST:/api/v1/funds/payouts/info
-	 * @secure
-	 * @response `200` `IGetPayoutInfoApiV1FundsPayoutsInfoPostData` Successful Response
-	 * @response `422` `IHTTPValidationError` Validation Error
-	 */
-	export namespace GetPayoutInfoApiV1FundsPayoutsInfoPost {
-		export type RequestParams = {}
-		export type RequestQuery = {}
-		export type RequestBody = IPayoutInfoRequest
-		export type RequestHeaders = {}
-		export type ResponseBody = IGetPayoutInfoApiV1FundsPayoutsInfoPostData
 	}
 	/**
 	 * @description Endpoint to like a game.
@@ -1480,28 +1300,6 @@ export namespace Api {
 		export type RequestBody = never
 		export type RequestHeaders = {}
 		export type ResponseBody = IRefreshTokenApiV1LoginRefreshPostData
-	}
-	/**
-	 * No description
-	 * @tags funds
-	 * @name RefundPaymentApiV1FundsRefundPaymentPost
-	 * @summary Refund Payment
-	 * @request POST:/api/v1/funds/refund-payment
-	 * @secure
-	 * @response `200` `IRefundPaymentApiV1FundsRefundPaymentPostData` Successful Response
-	 * @response `422` `IHTTPValidationError` Validation Error
-	 */
-	export namespace RefundPaymentApiV1FundsRefundPaymentPost {
-		export type RequestParams = {}
-		export type RequestQuery = {
-			/** Payment Id */
-			payment_id: number
-			/** Sum */
-			sum?: number
-		}
-		export type RequestBody = never
-		export type RequestHeaders = {}
-		export type ResponseBody = IRefundPaymentApiV1FundsRefundPaymentPostData
 	}
 	/**
 	 * @description Request new keys to enable TOTP on the user account.
@@ -1992,54 +1790,6 @@ export class Api<SecurityDataType extends unknown> {
 			}),
 
 		/**
-		 * @description Logic to send data to Payment API and handle the response paymentTypes: https://help.unitpay.money:8443/book-of-reference/payment-system-codes
-		 *
-		 * @tags funds
-		 * @name CreatePaymentApiV1FundsCreatePaymentPost
-		 * @summary Create Payment
-		 * @request POST:/api/v1/funds/create-payment
-		 * @secure
-		 * @response `200` `ICreatePaymentApiV1FundsCreatePaymentPostData` Successful Response
-		 * @response `422` `IHTTPValidationError` Validation Error
-		 */
-		createPaymentApiV1FundsCreatePaymentPost: (data: IPaymentNew, params: RequestParams = {}) =>
-			this.http.request<
-				ICreatePaymentApiV1FundsCreatePaymentPostData,
-				ICreatePaymentApiV1FundsCreatePaymentPostError
-			>({
-				path: `/api/v1/funds/create-payment`,
-				method: "POST",
-				body: data,
-				secure: true,
-				type: ContentType.Json,
-				...params,
-			}),
-
-		/**
-		 * No description
-		 *
-		 * @tags funds
-		 * @name CreatePayoutApiV1FundsPayoutPost
-		 * @summary Create Payout
-		 * @request POST:/api/v1/funds/payout
-		 * @secure
-		 * @response `200` `ICreatePayoutApiV1FundsPayoutPostData` Successful Response
-		 * @response `422` `IHTTPValidationError` Validation Error
-		 */
-		createPayoutApiV1FundsPayoutPost: (data: IPayoutRequest, params: RequestParams = {}) =>
-			this.http.request<
-				ICreatePayoutApiV1FundsPayoutPostData,
-				ICreatePayoutApiV1FundsPayoutPostError
-			>({
-				path: `/api/v1/funds/payout`,
-				method: "POST",
-				body: data,
-				secure: true,
-				type: ContentType.Json,
-				...params,
-			}),
-
-		/**
 		 * @description Create new user (moderator function).
 		 *
 		 * @tags users
@@ -2256,58 +2006,6 @@ export class Api<SecurityDataType extends unknown> {
 			>({
 				path: `/api/v1/items/facets/${gameId}`,
 				method: "GET",
-				...params,
-			}),
-
-		/**
-		 * @description Retrieve information about a specific payment.
-		 *
-		 * @tags funds
-		 * @name GetPaymentInfoApiV1FundsPaymentInfoPaymentIdGet
-		 * @summary Get Payment Info
-		 * @request GET:/api/v1/funds/payment-info/{payment_id}
-		 * @secure
-		 * @response `200` `IGetPaymentInfoApiV1FundsPaymentInfoPaymentIdGetData` Successful Response
-		 * @response `422` `IHTTPValidationError` Validation Error
-		 */
-		getPaymentInfoApiV1FundsPaymentInfoPaymentIdGet: (
-			paymentId: number,
-			params: RequestParams = {}
-		) =>
-			this.http.request<
-				IGetPaymentInfoApiV1FundsPaymentInfoPaymentIdGetData,
-				IGetPaymentInfoApiV1FundsPaymentInfoPaymentIdGetError
-			>({
-				path: `/api/v1/funds/payment-info/${paymentId}`,
-				method: "GET",
-				secure: true,
-				...params,
-			}),
-
-		/**
-		 * No description
-		 *
-		 * @tags funds
-		 * @name GetPayoutInfoApiV1FundsPayoutsInfoPost
-		 * @summary Get Payout Info
-		 * @request POST:/api/v1/funds/payouts/info
-		 * @secure
-		 * @response `200` `IGetPayoutInfoApiV1FundsPayoutsInfoPostData` Successful Response
-		 * @response `422` `IHTTPValidationError` Validation Error
-		 */
-		getPayoutInfoApiV1FundsPayoutsInfoPost: (
-			data: IPayoutInfoRequest,
-			params: RequestParams = {}
-		) =>
-			this.http.request<
-				IGetPayoutInfoApiV1FundsPayoutsInfoPostData,
-				IGetPayoutInfoApiV1FundsPayoutsInfoPostError
-			>({
-				path: `/api/v1/funds/payouts/info`,
-				method: "POST",
-				body: data,
-				secure: true,
-				type: ContentType.Json,
 				...params,
 			}),
 
@@ -2677,32 +2375,6 @@ export class Api<SecurityDataType extends unknown> {
 			this.http.request<IRefreshTokenApiV1LoginRefreshPostData, any>({
 				path: `/api/v1/login/refresh`,
 				method: "POST",
-				secure: true,
-				...params,
-			}),
-
-		/**
-		 * No description
-		 *
-		 * @tags funds
-		 * @name RefundPaymentApiV1FundsRefundPaymentPost
-		 * @summary Refund Payment
-		 * @request POST:/api/v1/funds/refund-payment
-		 * @secure
-		 * @response `200` `IRefundPaymentApiV1FundsRefundPaymentPostData` Successful Response
-		 * @response `422` `IHTTPValidationError` Validation Error
-		 */
-		refundPaymentApiV1FundsRefundPaymentPost: (
-			query: IRefundPaymentApiV1FundsRefundPaymentPostParams,
-			params: RequestParams = {}
-		) =>
-			this.http.request<
-				IRefundPaymentApiV1FundsRefundPaymentPostData,
-				IRefundPaymentApiV1FundsRefundPaymentPostError
-			>({
-				path: `/api/v1/funds/refund-payment`,
-				method: "POST",
-				query: query,
 				secure: true,
 				...params,
 			}),
