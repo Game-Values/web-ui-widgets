@@ -9,3 +9,9 @@ export type ICompanyProduct = {
 export type ICompanyValue = ICompanyProduct & {
     description: string
 }
+
+export type ICompanyVersion = {
+    date: string
+    name: string
+    version: string
+}

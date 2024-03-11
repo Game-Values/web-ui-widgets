@@ -79,6 +79,10 @@ export let companyValues: ICompanyValue[] = [
     },
 ]
 
+export let companyVersions = [
+
+]
+
 export let companyWhoWeAreList: string[] = [
     "GameValues is a startup and dynamically growing international digital P2P-Trading platform for gamers, founded in 2023 in Berlin by a group of serial and tech entrepreneurs.",
     "Here, we are rethinking the approach to the gaming economy. GameValues is not just a trading platform — we aim to become a global hub.",

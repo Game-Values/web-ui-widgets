@@ -24,14 +24,16 @@ let { route: mainRoute } = useRoute("/")
         </div>
 
         <div class="hero-content">
-            <Container class="gap-y-4 flex flex-col items-center">
+            <Container class="gap-y-4 max-w-[60rem] flex flex-col items-center text-center">
                 <h1>
-                    World-Leading Peer 2 Peer Digital Platform for Gamers
+                    GameValues Insights: Latest Updates & Releases
                 </h1>
 
                 <p>
                     <strong>
-                        Buy, sell, and discover exclusive digital in-game items
+                        At GameValues, innovation propels us forward. Every update brings us closer to transforming
+                        the gaming world. In our blog, you'll find the latest innovations and enhancements
+                        for the gaming community.
                     </strong>
                 </p>
 
