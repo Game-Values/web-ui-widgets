@@ -26,6 +26,7 @@ services:
             - ${TRAEFIK_PUBLIC_NETWORK?Variable not set}
         depends_on:
             - proxy
+        restart: unless-stopped
 
 networks:
     traefik-public:
