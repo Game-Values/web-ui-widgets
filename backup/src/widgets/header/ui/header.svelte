@@ -6,7 +6,7 @@ import Autocomplete from "@smui-extra/autocomplete"
 import { SessionOnly } from "~/entities/session"
 import { HeaderLinks, HeaderLogo, HeaderSession, HeaderSignin } from "~/widgets/header"
 
-import { Content, SearchField } from "$chat-send-hub-message"
+import { Content, SearchField } from "$chat-send-hub-message-form"
 </script>
 
 <TopAppBar

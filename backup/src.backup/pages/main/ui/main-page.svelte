@@ -19,7 +19,7 @@ import game-detailstype { IMainPageData } from "~/routes/main"
 
 import LayoutGrid, { Cell } from "@smui/layout-grid"
 
-import { Content } from "~/shared/chat-send-hub-message"
+import { Content } from "~/shared/chat-send-hub-message-form"
 import { GameGroup } from "~/widgets/game"
 import { MainSlider } from "~/widgets/slider"
 

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { Route, ScopedProps } from "~/types"
-import type { DropdownItemProps } from "vexip-chat-send-hub-message"
+import type { DropdownItemProps } from "vexip-chat-send-hub-message-form"
 import type { VNode } from "vue"
 
 defineProps<DropdownItemProps & {

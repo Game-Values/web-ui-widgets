@@ -1,29 +1,12 @@
 <script lang="ts">
-import type { ICallable } from "$types"
-import type { MatrixEvent } from "matrix-js-sdk"
-
-import { onDestroy } from "svelte"
-
 import { AuthOnly } from "~/entities/auth"
-import { ChatBubble, ChatMessage, ChatMessageSkeleton, getRoomEvents, useChat } from "~/entities/chat"
-import { ChatSendHubMessage } from "~/features/chat"
+import { ChatBubble, ChatMessage, ChatMessageSkeleton, useChatHub } from "~/entities/chat"
+import { ChatSendMessageForm } from "~/features/chat"
 
 import { ShowModalButton } from "$ui/actions"
 import { Collapse } from "$ui/data"
 
-let { hubRoom, sendMessage, subscribeEvents } = useChat()
-
-let unsubscribeEvents: ICallable | undefined
-let roomEvents: MatrixEvent[] = []
-
-$: if ($hubRoom && !unsubscribeEvents) {
-    roomEvents = getRoomEvents($hubRoom, "m.room.message")
-    unsubscribeEvents = subscribeEvents($hubRoom.roomId, (event: MatrixEvent): void => {
-        roomEvents = [...roomEvents, event]
-    })
-}
-
-onDestroy((): void => unsubscribeEvents?.())
+let { hubMessageEvents, hubRoom, sendHubMessage } = useChatHub()
 </script>
 
 <Collapse
@@ -34,8 +17,11 @@ onDestroy((): void => unsubscribeEvents?.())
     titleClass="px-6 py-10 bg-primary text-2xl shadow-[0_0.375rem_3.25rem_0_rgba(61,152,255,0.40)]"
 >
     <ChatBubble class="h-[calc(100dvh-(4rem+5rem+1rem*2))]">
-        {#each roomEvents as roomEvent (roomEvent.getId())}
-            <ChatMessage event={roomEvent} />
+        {#each $hubMessageEvents as hubMessageEvent (hubMessageEvent.getId())}
+            <ChatMessage
+                class="chat-start"
+                event={hubMessageEvent}
+            />
         {/each}
 
         <svelte:fragment slot="skeleton">
@@ -47,7 +33,7 @@ onDestroy((): void => unsubscribeEvents?.())
         <svelte:fragment slot="sendMessage">
             {#if $hubRoom}
                 <AuthOnly>
-                    <ChatSendHubMessage on:message={e => sendMessage($hubRoom.roomId, e.detail)} />
+                    <ChatSendMessageForm on:message={e => sendHubMessage(e.detail)} />
 
                     <svelte:fragment slot="fallback">
                         <div

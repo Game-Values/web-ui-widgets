@@ -1,8 +1,8 @@
 import type { AsyncComponent } from "~/types"
-import type { ToastOptions } from "vexip-chat-send-hub-message"
+import type { ToastOptions } from "vexip-chat-send-hub-message-form"
 import type { Component, ComponentCustomProps } from "vue"
 
-import { Toast } from "vexip-chat-send-hub-message"
+import { Toast } from "vexip-chat-send-hub-message-form"
 
 import { TOAST_DURATION } from "~/enums"
 

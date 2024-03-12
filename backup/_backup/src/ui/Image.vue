@@ -1,7 +1,7 @@
 <script inherit-attrs="false" lang="ts" setup>
 import type { ScopedProps } from "~/types"
 // import type { ImageOptions, ImageSizes } from "@nuxt/image"
-import type { ImageProps } from "vexip-chat-send-hub-message"
+import type { ImageProps } from "vexip-chat-send-hub-message-form"
 import type { VNode } from "vue"
 
 // import { Breakpoint } from "~/enums"

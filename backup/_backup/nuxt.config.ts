@@ -95,8 +95,8 @@ let nuxtConfig: NuxtConfig = {
             prefix: "entity",
         },
         {
-            path: "~/chat-send-hub-message",
-            prefix: "chat-send-hub-message",
+            path: "~/chat-send-hub-message-form",
+            prefix: "chat-send-hub-message-form",
         },
         {
             path: "~/views",
@@ -111,7 +111,7 @@ let nuxtConfig: NuxtConfig = {
     ],
 
     css: [
-        "@/assets/styles/vexip-chat-send-hub-message/index.css",
+        "@/assets/styles/vexip-chat-send-hub-message-form/index.css",
         "@/assets/styles/index.css",
     ],
 
@@ -228,7 +228,7 @@ let nuxtConfig: NuxtConfig = {
             provider: "log",
         }],
 
-        ["@vexip-chat-send-hub-message/nuxt", {
+        ["@vexip-chat-send-hub-message-form/nuxt", {
             importStyle: false,
             resolveIcon: false,
         }],
@@ -305,10 +305,10 @@ let nuxtConfig: NuxtConfig = {
                         if (/vexip-ui\/style(?:\/dark)?\/((?!shared).).*.scss/.test(filepath))
                             return (
                                 code
-                                    .replace("@use './design' as *;", "@user \"@/assets/styles/vexip-chat-send-hub-message/variables.scss\" as *;")
-                                    .replace("@use './design/variables.scss' as *;", "@user \"@/assets/styles/vexip-chat-send-hub-message/variables.scss\" as *;")
-                                    .replace("@use '../design/variables.scss' as *;", "@user \"@/assets/styles/vexip-chat-send-hub-message/variables.scss\" as *;")
-                                    .replace("@forward './variables.scss';", "@user \"@/assets/styles/vexip-chat-send-hub-message/variables.scss\";")
+                                    .replace("@use './design' as *;", "@user \"@/assets/styles/vexip-chat-send-hub-message-form/variables.scss\" as *;")
+                                    .replace("@use './design/variables.scss' as *;", "@user \"@/assets/styles/vexip-chat-send-hub-message-form/variables.scss\" as *;")
+                                    .replace("@use '../design/variables.scss' as *;", "@user \"@/assets/styles/vexip-chat-send-hub-message-form/variables.scss\" as *;")
+                                    .replace("@forward './variables.scss';", "@user \"@/assets/styles/vexip-chat-send-hub-message-form/variables.scss\";")
                             )
 
                         return `

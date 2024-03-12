@@ -10,7 +10,7 @@ import {
     FooterSocialLinks,
 } from "~/widgets/footer"
 
-import { Content } from "$chat-send-hub-message"
+import { Content } from "$chat-send-hub-message-form"
 </script>
 
 <footer class="pt-8 pb-16 bg-grey-extra-dark">

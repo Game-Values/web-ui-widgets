@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { IGame } from "~/entities/lot"
 
-import { UiTitle } from "~/shared/chat-send-hub-message"
+import { UiTitle } from "~/shared/chat-send-hub-message-form"
 
 defineProps<{
     game: IGame,

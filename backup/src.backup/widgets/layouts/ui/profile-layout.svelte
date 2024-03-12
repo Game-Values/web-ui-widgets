@@ -19,6 +19,6 @@
 import LayoutGrid, { Cell } from "@smui/layout-grid"
 
 import { page } from "$app/stores"
-import { Content } from "~/shared/chat-send-hub-message"
+import { Content } from "~/shared/chat-send-hub-message-form"
 import { ProfileCard, ProfileStatistics } from "~/widgets/transaction"
 </script>

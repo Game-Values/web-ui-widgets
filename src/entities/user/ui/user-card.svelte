@@ -13,6 +13,10 @@ interface $$Props {
     user: IUser
 }
 
+interface $$Slots {
+    chatSendUserMessageButton: NonNullable<unknown>
+}
+
 let { route } = useRoute()
 let { route: settingsRoute } = useRoute("/settings/settings")
 
@@ -75,9 +79,7 @@ export let user: IUser
 
                 <svelte:fragment slot="fallback">
                     <AuthOnly>
-                        <button class="btn btn-secondary mt-auto">
-                            Send Message
-                        </button>
+                        <slot name="chatSendUserMessageButton" />
                     </AuthOnly>
                 </svelte:fragment>
             </SessionUserOnly>

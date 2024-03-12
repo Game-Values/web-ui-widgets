@@ -4,7 +4,7 @@ import Checkbox from "@smui/checkbox"
 import Textfield from "@smui/textfield"
 
 import { authSignupForm } from "~/entities/auth"
-import { Form, FormField, PasswordField } from "~/shared/chat-send-hub-message"
+import { Form, FormField, PasswordField } from "~/shared/chat-send-hub-message-form"
 </script>
 
 <Form>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { UiLogoIcon } from "~/shared/chat-send-hub-message/icons"
+import { UiLogoIcon } from "~/shared/chat-send-hub-message-form/icons"
 </script>
 
 <template>

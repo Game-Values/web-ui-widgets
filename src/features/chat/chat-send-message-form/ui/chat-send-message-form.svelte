@@ -1,5 +1,5 @@
 <script lang="ts">
-import { useChatSendHubMessageForm } from "~/features/chat"
+import { useChatSendMessageForm } from "~/features/chat"
 
 import { Input } from "$ui/data"
 
@@ -9,7 +9,7 @@ interface $$Events {
     message: CustomEvent<string>
 }
 
-let { form } = useChatSendHubMessageForm()
+let { form } = useChatSendMessageForm()
 </script>
 
 <form

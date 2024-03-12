@@ -1,6 +1,11 @@
 import type { IDefaultLayoutData } from "~/layouts"
 
-export async function load({ locals }): Promise<IDefaultLayoutData> {
+import { withAuth } from "~/app/providers"
+
+export async function load({ locals, route }): Promise<IDefaultLayoutData> {
+    if (/\(session\)/.test(route.id))
+        withAuth(locals.session)
+
     return {
         session: locals.session,
     }

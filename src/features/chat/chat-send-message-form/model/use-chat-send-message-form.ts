@@ -7,7 +7,7 @@ type IChatSendHubMessageForm = {
     message: string
 }
 
-export function useChatSendHubMessageForm(): IForm<IChatSendHubMessageForm> {
+export function useChatSendMessageForm(): IForm<IChatSendHubMessageForm> {
     let { dispatchEvent: dispatchMessageEvent } = useEventDispatcher<string>("message")
 
     return useForm<IChatSendHubMessageForm, never>({

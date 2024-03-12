@@ -8,7 +8,7 @@ import IconLogo from "virtual:icons/custom/logo"
 import { headerLinks } from "~/app/layouts/header"
 import { AuthLoginButton, AuthOnly, AuthSignupButton } from "~/entities/auth"
 import { LotsAutocomplete } from "~/features/lot"
-import { Content } from "~/shared/chat-send-hub-message"
+import { Content } from "~/shared/chat-send-hub-message-form"
 </script>
 
 <TopAppBar

@@ -9,7 +9,7 @@ import type { IGame } from "~/entities/game"
 
 import { kebabCase } from "lodash-es"
 
-import { LazyImage } from "~/shared/chat-send-hub-message"
+import { LazyImage } from "~/shared/chat-send-hub-message-form"
 
 export let game: IGame
 </script>

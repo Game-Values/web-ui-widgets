@@ -3,6 +3,7 @@ import type { IUser } from "$schema/api"
 
 import { SessionUserOnly } from "~/entities/session"
 import { UserCard, userLinks } from "~/entities/user"
+import { ChatSendUserMessageButton } from "~/features/chat"
 import { HelpQuestions } from "~/widgets/help"
 import { UserStats } from "~/widgets/user"
 
@@ -25,7 +26,14 @@ export let user: IUser
         class="gap-y-6 flex-col"
         span={9}
     >
-        <UserCard {user} />
+        <UserCard {user}>
+            <svelte:fragment slot="chatSendUserMessageButton">
+                <ChatSendUserMessageButton
+                    class="mt-auto"
+                    {user}
+                />
+            </svelte:fragment>
+        </UserCard>
 
         <SessionUserOnly {user}>
             <svelte:fragment slot="fallback">

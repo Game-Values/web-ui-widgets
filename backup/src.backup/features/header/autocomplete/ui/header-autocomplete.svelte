@@ -5,5 +5,5 @@
 <script lang="ts">
 import Autocomplete from "@smui-extra/autocomplete"
 
-import { Search } from "~/shared/chat-send-hub-message"
+import { Search } from "~/shared/chat-send-hub-message-form"
 </script>

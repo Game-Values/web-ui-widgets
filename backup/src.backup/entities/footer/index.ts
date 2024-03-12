@@ -1,1 +1,1 @@
-export * from "~/entities/footer/chat-send-hub-message"
+export * from "~/entities/footer/chat-send-hub-message-form"

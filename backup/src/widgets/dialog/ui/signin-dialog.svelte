@@ -2,7 +2,7 @@
 import { SigninByEmail } from "~/features/auth"
 
 import { DialogName } from "$lib"
-import { Dialog } from "$chat-send-hub-message"
+import { Dialog } from "$chat-send-hub-message-form"
 </script>
 
 <Dialog

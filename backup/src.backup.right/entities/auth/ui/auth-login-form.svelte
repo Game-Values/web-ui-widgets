@@ -3,7 +3,7 @@ import Button from "@smui/button"
 import Textfield from "@smui/textfield"
 
 import { authByOauth2Form } from "~/entities/auth"
-import { Form, FormField, PasswordField } from "~/shared/chat-send-hub-message"
+import { Form, FormField, PasswordField } from "~/shared/chat-send-hub-message-form"
 </script>
 
 <Form>

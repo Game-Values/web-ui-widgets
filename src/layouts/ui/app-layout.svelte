@@ -2,7 +2,7 @@
 import { Drawer } from "~/widgets/drawer"
 import { Footer } from "~/widgets/footer"
 import { Navbar } from "~/widgets/navbar"
-import { BackgroundImageProvider, ModalProvider, QueryProvider, SeoProvider } from "~/widgets/provider"
+import { BackgroundImageProvider, ChatProvider, ModalProvider, QueryProvider, SeoProvider } from "~/widgets/provider"
 
 import { Container } from "$ui/layout"
 
@@ -36,6 +36,8 @@ interface $$Slots {
                 <Footer />
             </main>
         </Drawer>
+
+        <ChatProvider />
 
         <ModalProvider />
 

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { UiTitle } from "~/shared/chat-send-hub-message"
+import { UiTitle } from "~/shared/chat-send-hub-message-form"
 </script>
 
 <template>

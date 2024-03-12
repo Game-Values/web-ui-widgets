@@ -1,5 +1,5 @@
 import type { AsyncComponent } from "~/types"
-import type { ConfirmOptions } from "vexip-chat-send-hub-message"
+import type { ConfirmOptions } from "vexip-chat-send-hub-message-form"
 import type { Component } from "vue"
 
 import { ConfirmAbstract } from "~/abstract"

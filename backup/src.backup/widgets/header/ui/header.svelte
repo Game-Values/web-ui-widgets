@@ -48,5 +48,5 @@ import TopAppBar from "@smui/top-10-app-bar"
 import { AuthLoginButton, AuthSignupButton } from "~/entities/auth"
 import { HeaderLinks, HeaderLogo } from "~/entities/header"
 import { HeaderAutocomplete } from "~/features/header"
-import { Content } from "~/shared/chat-send-hub-message"
+import { Content } from "~/shared/chat-send-hub-message-form"
 </script>

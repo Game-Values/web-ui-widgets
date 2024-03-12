@@ -21,10 +21,12 @@ let chatContainer: HTMLUListElement | undefined
 let observer: MutationObserver | undefined
 
 onMount(() => {
-    if (chatContainer)
+    if (chatContainer) {
+        chatContainer.scrollTo({ top: chatContainer.scrollHeight })
         observer = observeElement(chatContainer, debounce((element: HTMLElement): void => (
             element.scrollTo({ top: element.scrollHeight })
         )), { childList: true })
+    }
 })
 
 onDestroy((): void => observer?.disconnect())
@@ -38,6 +40,7 @@ export {
     class="
         card card-normal
         glass glass-sm
+        w-full h-full
         p-4
         bg-black/[0.06]
         rounded-b-2xl
@@ -47,7 +50,7 @@ export {
 >
     <ul
         bind:this={chatContainer}
-        class="mb-4 overflow-x-hidden overflow-y-auto"
+        class="mb-4 pr-4 overflow-x-hidden overflow-y-auto"
     >
         <slot />
     </ul>

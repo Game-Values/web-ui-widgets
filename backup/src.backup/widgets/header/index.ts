@@ -1,1 +1,1 @@
-export * from "~/widgets/header/chat-send-hub-message"
+export * from "~/widgets/header/chat-send-hub-message-form"

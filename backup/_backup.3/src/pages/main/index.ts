@@ -1,1 +1,1 @@
-export * from "~/slider/main/chat-send-hub-message"
+export * from "~/slider/main/chat-send-hub-message-form"

@@ -1,4 +1,4 @@
-export * from "~/shared/chat-send-hub-message/lazy"
+export * from "~/shared/chat-send-hub-message-form/lazy"
 
 export { default as AccordionPane } from "~/shared/ui/accordion-pane.svelte"
 export { default as Content } from "~/shared/ui/content.svelte"

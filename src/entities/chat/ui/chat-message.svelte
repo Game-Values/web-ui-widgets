@@ -5,8 +5,11 @@ import { timeAgo } from "$lib/utils"
 import { Avatar } from "$ui/data"
 
 interface $$Props {
+    class?: string
     event: MatrixEvent
 }
+
+let className: string = ""
 
 let event: MatrixEvent
 
@@ -17,11 +20,12 @@ $: sender = event.sender?.name || event.getSender()
 $: time = timeAgo(event.getDate()!)
 
 export {
+    className as class,
     event,
 }
 </script>
 
-<li class="chat chat-start">
+<li class="chat {className}">
     <div class="chat-image avatar">
         <Avatar
             class="w-8"

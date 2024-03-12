@@ -52,7 +52,7 @@ import { onDestroy } from "svelte"
 
 import { lotsSearch } from "~/entities/lot"
 import { LotOnlinePlayersToggle, LotSearch } from "~/features/lot"
-import { Content } from "~/shared/chat-send-hub-message"
+import { Content } from "~/shared/chat-send-hub-message-form"
 import { GameInfo, GameLots, GamePreview, LazyGameFaq } from "~/widgets/game"
 
 

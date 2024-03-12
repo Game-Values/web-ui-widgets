@@ -9,7 +9,7 @@ import { Header } from "~/widgets/header"
 
 import { asyncComponent } from "$lib"
 import { updateSession } from "$lib"
-import { Lazy } from "$chat-send-hub-message"
+import { Lazy } from "$chat-send-hub-message-form"
 
 let data: LayoutData
 updateSession(data.session)
@@ -29,4 +29,4 @@ export {
     <Footer />
 </section>
 
-<Lazy provider={asyncComponent("~/widgets/dialog/chat-send-hub-message/modal-provider.svelte")} />
+<Lazy provider={asyncComponent("~/widgets/dialog/chat-send-hub-message-form/modal-provider.svelte")} />

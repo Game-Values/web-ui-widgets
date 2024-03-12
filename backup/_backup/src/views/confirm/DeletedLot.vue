@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { Callable } from "~/types"
-import type { ConfirmOptions } from "vexip-chat-send-hub-message"
+import type { ConfirmOptions } from "vexip-chat-send-hub-message-form"
 
 defineProps<{
     cancel: Callable<boolean>

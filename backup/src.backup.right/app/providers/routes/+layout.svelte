@@ -8,7 +8,7 @@ import { Footer } from "~/app/layouts/footer"
 import { Header } from "~/app/layouts/header"
 import { AuthOnly, authToken } from "~/entities/auth"
 import { asyncComponent } from "$lib"
-import { ClientOnly } from "~/shared/chat-send-hub-message"
+import { ClientOnly } from "~/shared/chat-send-hub-message-form"
 
 let AuthLoginDialog: TCallableLazy<ConstructorOfATypedSvelteComponent> = asyncComponent("~/widgets/auth-auth-dialog/game-details-+page@(app).svelte")
 let AuthSignupDialog: TCallableLazy<ConstructorOfATypedSvelteComponent> = asyncComponent("~/widgets/auth-signup-dialog/game-details-+page@(app).svelte")

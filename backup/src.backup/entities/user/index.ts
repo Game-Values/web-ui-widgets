@@ -1,2 +1,2 @@
 export * from "~/entities/user/core"
-export * from "~/entities/user/chat-send-hub-message"
+export * from "~/entities/user/chat-send-hub-message-form"
