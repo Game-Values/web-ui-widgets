@@ -1,6 +1,15 @@
 import type { ICallable, INullable } from "$types"
 import type { MaybePromise } from "@sveltejs/kit"
-import type { EmittedEvents, EventEmitterEvents, ICreateRoomOpts, ISendEventResponse, MatrixClient, MatrixEvent, Room } from "matrix-js-sdk"
+import type {
+    EmittedEvents,
+    EventEmitterEvents,
+    ICreateRoomOpts,
+    ISendEventResponse,
+    MatrixClient,
+    MatrixEvent,
+    Room,
+    RoomMember,
+} from "matrix-js-sdk"
 import type { Readable, Writable } from "svelte/store"
 
 import { MsgType } from "matrix-js-sdk"
@@ -53,14 +62,23 @@ export function useChat(): IUseChat {
             ))
         ),
 
-        sendMessage: (roomId: string, message: string): Promise<INullable<ISendEventResponse>> => {
+        sendMessage: async (roomId: string, message: string): Promise<INullable<ISendEventResponse>> => {
             let { chatClient } = get<IChatState>(chatState)
 
             let room: INullable<Room> = chatClient?.getRoom(roomId) || null
-            if (room && room.maySendMessage())
-                return chatClient!.sendMessage(roomId, { body: message, msgtype: MsgType.Text })
+            if (!room)
+                return Promise.resolve(null)
 
-            return Promise.resolve(null)
+            let joined: boolean = Boolean(
+                room
+                    .getJoinedMembers()
+                    .find((roomMember: RoomMember): boolean => roomMember.userId === chatClient!.getUserId()),
+            )
+
+            if (!joined)
+                await chatClient!.joinRoom(room.roomId)
+
+            return chatClient!.sendMessage(roomId, { body: message, msgtype: MsgType.Text })
         },
 
         startChat: async (): Promise<void> => (
