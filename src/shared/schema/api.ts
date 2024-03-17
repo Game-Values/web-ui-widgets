@@ -9,6 +9,156 @@
  * ---------------------------------------------------------------
  */
 
+/** Account */
+export interface IAccount {
+	/**
+	 * Behaviorscore
+	 * @exclusiveMin 0
+	 * @exclusiveMax 10000
+	 */
+	BehaviorScore?: number
+	/** Dotaplus */
+	DotaPlus?: boolean
+	/** Firststeamverification */
+	FirstSteamVerification?: boolean
+	/**
+	 * Hours
+	 * @exclusiveMin 0
+	 * @exclusiveMax 10000
+	 */
+	Hours?: number
+	/** Inventory */
+	Inventory?: boolean
+	/** Kind */
+	Kind: IAccountKindEnum
+	/** An enumeration. */
+	LinkedPaymentMethod?: IAccountPaymentMethods
+	/** Linkedphone */
+	LinkedPhone?: boolean
+	/**
+	 * Losses
+	 * @exclusiveMin 0
+	 * @exclusiveMax 10000
+	 */
+	Losses?: number
+	/**
+	 * Mmr
+	 * @exclusiveMin 0
+	 * @exclusiveMax 10000
+	 */
+	MMR?: number
+	/**
+	 * Owners
+	 * @exclusiveMin 0
+	 * @exclusiveMax 10000
+	 */
+	Owners?: number
+	/** An enumeration. */
+	Rank: IAccountRanks
+	/** An enumeration. */
+	Region: IAccountRegions
+	/**
+	 * Registrationdate
+	 * @format date
+	 */
+	RegistrationDate?: string
+	/** Steamguard */
+	SteamGuard?: boolean
+	/** An enumeration. */
+	Type: IAccountTypes
+	/** Vacbanned */
+	VACBanned?: boolean
+	/**
+	 * Wins
+	 * @exclusiveMin 0
+	 * @exclusiveMax 10000
+	 */
+	Wins?: number
+}
+
+/** Kind */
+export type IAccountKindEnum = "Account"
+
+/**
+ * AccountPaymentMethods
+ * An enumeration.
+ */
+export type IAccountPaymentMethods =
+	| "Credit/Debit"
+	| "PayPal"
+	| "Steam Wallet"
+	| "Bank Transfer"
+	| "Electronic Funds Transfer"
+	| "Prepaid Card (or Payment Card)"
+	| "WebMoney"
+	| "Yandex Money"
+	| "Steam Codes (or Gift Cards)"
+	| "Mobile Payment"
+	| "Skrill"
+	| "Alipay"
+	| "iDeal"
+	| "Sofort"
+	| "GiroPay"
+	| "Other"
+
+/**
+ * AccountRanks
+ * An enumeration.
+ */
+export type IAccountRanks =
+	| "Herald"
+	| "Guardian"
+	| "Crusader"
+	| "Archon"
+	| "Legend"
+	| "Ancient"
+	| "Divine"
+	| "Immortal"
+	| "Top1"
+	| "Top10"
+	| "Top100"
+	| "Top1000"
+
+/**
+ * AccountRegions
+ * An enumeration.
+ */
+export type IAccountRegions =
+	| "Argentina"
+	| "Brazil"
+	| "China TC Guangdong"
+	| "ChinaShanghai"
+	| "China TC Wuhan"
+	| "China TC Zhejiang"
+	| "China UC"
+	| "China UC2"
+	| "Dubai"
+	| "Europe East"
+	| "Europe West"
+	| "India"
+	| "Japan"
+	| "Peru"
+	| "Russia"
+	| "South Africa"
+	| "South Asia"
+	| "US East"
+	| "US West"
+
+/**
+ * AccountTypes
+ * An enumeration.
+ */
+export type IAccountTypes = "Rated" | "Unranked" | "TBD"
+
+/** AnyGame */
+export interface IAnyGame {
+	/** Game */
+	Game: IAnyGameGameEnum
+}
+
+/** Game */
+export type IAnyGameGameEnum = "AnyGame"
+
 /** Body_create_game_api_v1_games__post */
 export interface IBodyCreateGameApiV1GamesPost {
 	/** Attributes */
@@ -65,6 +215,100 @@ export interface IBodyResetPasswordApiV1LoginResetPost {
 	new_password: string
 }
 
+/** Calibration */
+export interface ICalibration {
+	CoachingServices?: IMMRBoostCoachingServices
+	/**
+	 * Durationdays
+	 * @exclusiveMin 0
+	 * @exclusiveMax 10
+	 */
+	DurationDays: number
+	/** An enumeration. */
+	Hero: IHeroes
+	/** Kind */
+	Kind: ICalibrationKindEnum
+	/** An enumeration. */
+	Range: IMMRBoostRanges
+	/** An enumeration. */
+	Type: IMMRBoostTypes
+	/** An enumeration. */
+	Wins: ICalibrationWins
+}
+
+/** Kind */
+export type ICalibrationKindEnum = "Calibration"
+
+/**
+ * CalibrationWins
+ * An enumeration.
+ */
+export type ICalibrationWins =
+	| "Under 50%"
+	| "50% - 60%"
+	| "60% - 70%"
+	| "70% - 80%"
+	| "80% - 90%"
+	| "90% - 100%"
+
+/** Coaching */
+export interface ICoaching {
+	/**
+	 * Durationgames
+	 * @exclusiveMin 1
+	 * @exclusiveMax 10
+	 */
+	DurationGames?: number
+	/**
+	 * Durationminutes
+	 * @exclusiveMin 1
+	 * @exclusiveMax 600
+	 */
+	DurationMinutes?: number
+	/** An enumeration. */
+	Hero: IHeroes
+	/** Kind */
+	Kind: ICoachingKindEnum
+	/**
+	 * Language
+	 * @maxLength 64
+	 */
+	Language?: string
+	MMRRanges: IMMRBoostRanges[]
+	/** An enumeration. */
+	Role: ICoachingRoles
+	/** An enumeration. */
+	Specialization: ICoachingSpecializations
+}
+
+/** Kind */
+export type ICoachingKindEnum = "Coaching"
+
+/**
+ * CoachingRoles
+ * An enumeration.
+ */
+export type ICoachingRoles =
+	| "Position 1 - Safe Lane"
+	| "Position 2 - Mid Lane"
+	| "Position 3 - Off Lane"
+	| "Position 4 - Support"
+	| "Position 5 - Hard Support"
+
+/**
+ * CoachingSpecializations
+ * An enumeration.
+ */
+export type ICoachingSpecializations =
+	| "Theory and General Gameplay"
+	| "Practical Gameplay and Mechanics"
+	| "Replay Analysis"
+	| "Role Training"
+	| "Team Strategy Development"
+	| "Mental Coaching and Psychological Training"
+	| "Hero Training"
+	| "Customized Training"
+
 export type ICreateGameApiV1GamesPostData = IGame
 
 export type ICreateGameApiV1GamesPostError = IHTTPValidationError
@@ -103,6 +347,41 @@ export type IDislikeGameEndpointApiV1UsersDislikeGamePostError = IHTTPValidation
 
 /** Liked Game */
 export type IDislikeGameEndpointApiV1UsersDislikeGamePostPayload = string
+
+/** DotaItem */
+export interface IDotaItem {
+	/** Game */
+	Game: IDotaItemGameEnum
+	/** Item */
+	Item:
+		| ({
+				Kind: "Account"
+		  } & IAccount)
+		| ({
+				Kind: "Calibration"
+		  } & ICalibration)
+		| ({
+				Kind: "Coaching"
+		  } & ICoaching)
+		| ({
+				Kind: "MMRBoost"
+		  } & IMMRBoost)
+		| ({
+				Kind: "LPRemoval"
+		  } & ILPRemoval)
+		| ({
+				Kind: "PlusServices"
+		  } & IPlusServices)
+		| ({
+				Kind: "Other"
+		  } & IOther)
+		| ({
+				Kind: "Loot"
+		  } & ILoot)
+}
+
+/** Game */
+export type IDotaItemGameEnum = "Dota"
 
 /** EnableTOTP */
 export interface IEnableTOTP {
@@ -178,6 +457,137 @@ export interface IHTTPValidationError {
 	detail?: IValidationError[]
 }
 
+/**
+ * Heroes
+ * An enumeration.
+ */
+export type IHeroes =
+	| "Any"
+	| "Abaddon"
+	| "Alchemist"
+	| "Ancient Apparition"
+	| "Anti-Mage"
+	| "Arc Warden"
+	| "Axe"
+	| "Bane"
+	| "Batrider"
+	| "Beastmaster"
+	| "Bloodseeker"
+	| "Bounty Hunter"
+	| "Brewmaster"
+	| "Bristleback"
+	| "Broodmother"
+	| "Centaur Warrunner"
+	| "Chaos Knight"
+	| "Chen"
+	| "Clinkz"
+	| "Clockwerk"
+	| "Crystal Maiden"
+	| "Dark Seer"
+	| "Dark Willow"
+	| "Dawnbreaker"
+	| "Dazzle"
+	| "Death Prophet"
+	| "Disruptor"
+	| "Doom"
+	| "Dragon Knight"
+	| "Drow Ranger"
+	| "Earth Spirit"
+	| "Earthshaker"
+	| "Elder Titan"
+	| "Ember Spirit"
+	| "Enchantress"
+	| "Enigma"
+	| "Faceless Void"
+	| "Grimstroke"
+	| "Gyrocopter"
+	| "Hoodwink"
+	| "Huskar"
+	| "Invoker"
+	| "Io"
+	| "Jakiro"
+	| "Juggernaut"
+	| "Keeper of the Light"
+	| "Kunkka"
+	| "Legion Commander"
+	| "Leshrac"
+	| "Lich"
+	| "Lifestealer"
+	| "Lina"
+	| "Lion"
+	| "Lone Druid"
+	| "Luna"
+	| "Lycan"
+	| "Magnus"
+	| "Marci"
+	| "Mars"
+	| "Medusa"
+	| "Meepo"
+	| "Mirana"
+	| "Monkey King"
+	| "Morphling"
+	| "Muerta"
+	| "Naga Siren"
+	| "Nature's Prophet"
+	| "Necrophos"
+	| "Night Stalker"
+	| "Nyx Assassin"
+	| "Ogre Magi"
+	| "Omniknight"
+	| "Oracle"
+	| "Outworld Destroyer"
+	| "Pangolier"
+	| "Phantom Assassin"
+	| "Phantom Lancer"
+	| "Phoenix"
+	| "Primal Beast"
+	| "Puck"
+	| "Pudge"
+	| "Pugna"
+	| "Queen of Pain"
+	| "Razor"
+	| "Riki"
+	| "Rubick"
+	| "Sand King"
+	| "Shadow Demon"
+	| "Shadow Fiend"
+	| "Shadow Shaman"
+	| "Silencer"
+	| "Skywrath Mage"
+	| "Slardar"
+	| "Slark"
+	| "Snapfire"
+	| "Sniper"
+	| "Spectre"
+	| "Spirit Breaker"
+	| "Storm Spirit"
+	| "Sven"
+	| "Techies"
+	| "Templar Assassin"
+	| "Terrorblade"
+	| "Tidehunter"
+	| "Timbersaw"
+	| "Tinker"
+	| "Tiny"
+	| "Treant Protector"
+	| "Troll Warlord"
+	| "Tusk"
+	| "Underlord"
+	| "Undying"
+	| "Ursa"
+	| "Vengeful Spirit"
+	| "Venomancer"
+	| "Viper"
+	| "Visage"
+	| "Void Spirit"
+	| "Warlock"
+	| "Weaver"
+	| "Windranger"
+	| "Winter Wyvern"
+	| "Witch Doctor"
+	| "Wraith King"
+	| "Zeus"
+
 /** Item */
 export interface IItem {
 	attributes: IItemAttributes
@@ -230,6 +640,14 @@ export interface IItemAttributes {
 	 * @maxLength 512
 	 */
 	description?: string
+	/** Offer */
+	offer:
+		| ({
+				Game: "Dota"
+		  } & IDotaItem)
+		| ({
+				Game: "AnyGame"
+		  } & IAnyGame)
 	/**
 	 * Price
 	 * @default 0
@@ -277,6 +695,86 @@ export interface IItemCreate {
  */
 export type IItemCurrency = "EUR"
 
+/**
+ * ItemMarketabilities
+ * An enumeration.
+ */
+export type IItemMarketabilities = "Marketable" | "Not Marketable" | "Not Tradable" | "Tradable"
+
+/**
+ * ItemQuantities
+ * An enumeration.
+ */
+export type IItemQuantities =
+	| "Standard"
+	| "Inscribed"
+	| "Auspicious"
+	| "Genuine"
+	| "Autographed"
+	| "Heroic"
+	| "Base"
+	| "Frozen"
+	| "Cursed"
+	| "Infused"
+	| "Corrupted"
+	| "Unusual"
+	| "Exalted"
+	| "Elder"
+	| "Glitter"
+	| "Gold"
+	| "Holo"
+	| "Legacy"
+	| "Ascendant"
+	| "Favored"
+
+/**
+ * ItemRarities
+ * An enumeration.
+ */
+export type IItemRarities =
+	| "Common"
+	| "Mythical"
+	| "Uncommon"
+	| "Rare"
+	| "Immortal"
+	| "Legendary"
+	| "Seasonal"
+	| "Arcana"
+	| "Ancient"
+
+/**
+ * ItemTypes
+ * An enumeration.
+ */
+export type IItemTypes =
+	| "Any"
+	| "Announcer"
+	| "Bundle"
+	| "Courier"
+	| "Cursor Pack"
+	| "Dire Towers"
+	| "Emblem"
+	| "Emoticon Tool"
+	| "Gem / Rune"
+	| "HUD Skin"
+	| "League"
+	| "Loading Screen"
+	| "Misc"
+	| "Music"
+	| "Pennant"
+	| "Player Card"
+	| "Radiant Towers"
+	| "Retired Chest"
+	| "Sticker"
+	| "Sticker Capsule"
+	| "Taunt"
+	| "Terrain"
+	| "Tool"
+	| "Treasure"
+	| "Treasure Key"
+	| "Ward"
+	| "Wearable"
+
 /** ItemUpdate */
 export interface IItemUpdate {
 	attributes: IItemAttributes
@@ -304,6 +802,24 @@ export interface IItemUpdate {
 	owner_id?: string
 }
 
+/** LPRemoval */
+export interface ILPRemoval {
+	/**
+	 * Durationdays
+	 * @exclusiveMin 0
+	 * @exclusiveMax 10
+	 */
+	DurationDays: number
+	/**
+	 * Gamesnumber
+	 * @exclusiveMin 1
+	 * @exclusiveMax 5
+	 */
+	GamesNumber: number
+	/** Kind */
+	Kind: ILpRemovalKindEnum
+}
+
 export type ILikeGameEndpointApiV1UsersLikeGamePostData = IUserLike
 
 export type ILikeGameEndpointApiV1UsersLikeGamePostError = IHTTPValidationError
@@ -322,6 +838,144 @@ export type ILoginWithOauth2ApiV1LoginOauthPostError = IHTTPValidationError
 export type ILoginWithTotpApiV1LoginTotpPostData = IToken
 
 export type ILoginWithTotpApiV1LoginTotpPostError = IHTTPValidationError
+
+/** Loot */
+export interface ILoot {
+	/**
+	 * Description
+	 * @maxLength 2048
+	 */
+	Description?: string
+	/** An enumeration. */
+	Hero: IHeroes
+	/** Kind */
+	Kind: ILootKindEnum
+	/** An enumeration. */
+	Marketability: IItemMarketabilities
+	/** An enumeration. */
+	Quantity: IItemQuantities
+	/** An enumeration. */
+	Rarity: IItemRarities
+	/** An enumeration. */
+	Type: IItemTypes
+}
+
+/** Kind */
+export type ILootKindEnum = "Loot"
+
+/** Kind */
+export type ILpRemovalKindEnum = "LPRemoval"
+
+/** MMRBoost */
+export interface IMMRBoost {
+	CoachingServices?: IMMRBoostCoachingServices
+	/** An enumeration. */
+	Duration: IMMRBoostDurations
+	/** An enumeration. */
+	Experience: IMMRBoostExperience
+	/** Kind */
+	Kind: IMmrBoostKindEnum
+	Range: IMMRBoostRanges[]
+	/** An enumeration. */
+	Region: IAccountRegions
+	/** An enumeration. */
+	Type: IMMRBoostTypes
+}
+
+/** MMRBoostCoachingServices */
+export interface IMMRBoostCoachingServices {
+	/**
+	 * Behavioralcoaching
+	 * @default "Behavioral Coaching"
+	 */
+	BehavioralCoaching?: string
+	/**
+	 * Flexibleschedule
+	 * @default "Flexible Schedule"
+	 */
+	FlexibleSchedule?: string
+	/**
+	 * Gameanalysis
+	 * @default "Game Analysis"
+	 */
+	GameAnalysis?: string
+	/**
+	 * Herospecializationtraining
+	 * @default "Hero Specialization Training"
+	 */
+	HeroSpecializationTraining?: string
+	/**
+	 * Livestreaming
+	 * @default "Live Streaming"
+	 */
+	LiveStreaming?: string
+	/**
+	 * Personalcoaching
+	 * @default "Personal Coaching"
+	 */
+	PersonalCoaching?: string
+	/**
+	 * Progressreports
+	 * @default "Progress Reports"
+	 */
+	ProgressReports?: string
+	/**
+	 * Teamplayimprovement
+	 * @default "Team Play Improvement"
+	 */
+	TeamPlayImprovement?: string
+}
+
+/**
+ * MMRBoostDurations
+ * An enumeration.
+ */
+export type IMMRBoostDurations = "Quick" | "Standard" | "Extended" | "Long"
+
+/**
+ * MMRBoostExperience
+ * An enumeration.
+ */
+export type IMMRBoostExperience = "Beginner" | "Intermediate" | "Professional" | "Expert"
+
+/**
+ * MMRBoostRanges
+ * An enumeration.
+ */
+export type IMMRBoostRanges =
+	| "+1 Win"
+	| "+100 MMR"
+	| "+769 MMR"
+	| "101-500 MMR"
+	| "501-1000 MMR"
+	| "1001-1500 MMR"
+	| "1501-2000 MMR"
+	| "2001-2500 MMR"
+	| "2501-3000 MMR"
+	| "3001-3500 MMR"
+	| "3501-4000 MMR"
+	| "4001-4500 MMR"
+	| "4501-5000 MMR"
+	| "5001-5500 MMR"
+	| "5501-6000 MMR"
+	| "6001-6500 MMR"
+	| "6501-7000 MMR"
+	| "7001-7500 MMR"
+	| "7501-8000 MMR"
+	| "8001-8500 MMR"
+	| "8501-9000 MMR"
+	| "9001-9500 MMR"
+	| "9501-10000 MMR"
+	| "10001+ MMR"
+
+/**
+ * MMRBoostTypes
+ * An enumeration.
+ */
+export type IMMRBoostTypes = "Solo" | "Party" | "Any"
+
+/** Kind */
+export type IMmrBoostKindEnum = "MMRBoost"
 
 /** Msg */
 export interface IMsg {
@@ -424,6 +1078,58 @@ export interface IOrderInDB {
 	 */
 	owner_id?: string
 }
+
+/** Other */
+export interface IOther {
+	/** Kind */
+	Kind: IOtherKindEnum
+	/** An enumeration. */
+	Service: IOtherServices
+}
+
+/** Kind */
+export type IOtherKindEnum = "Other"
+
+/**
+ * OtherServices
+ * An enumeration.
+ */
+export type IOtherServices =
+	| "Turbo Mode Assistance"
+	| "Quests Completion"
+	| "Behavior Score Boost"
+	| "Item & Hero Customization"
+	| "Battle Cup Victory"
+	| "Token Farming"
+	| "PC Optimization"
+	| "Account Management"
+	| "Streaming & Content Creation"
+	| "Event Participation"
+	| "Guild Services"
+	| "Workshop & Custom Content"
+	| "Special Requests"
+
+/** PlusServices */
+export interface IPlusServices {
+	/** Kind */
+	Kind: IPlusServicesKindEnum
+	/** An enumeration. */
+	Type: IPlusServicesTypes
+}
+
+/** Kind */
+export type IPlusServicesKindEnum = "PlusServices"
+
+/**
+ * PlusServicesTypes
+ * An enumeration.
+ */
+export type IPlusServicesTypes =
+	| "Battle Cup Victory"
+	| "Hero Leveling"
+	| "Dota+ Quests Completion"
+	| "Dota+ Subscription"
+	| "Customized Dota+ Services"
 
 /** Response Proxy Get Request Api V1 Proxy  Path  Get */
 export type IProxyGetRequestApiV1ProxyPathGetData = any
